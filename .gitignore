@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.env
+results/*.json
+results/*.csv
+!results/.gitkeep
+.mypy_cache/
+.ruff_cache/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc

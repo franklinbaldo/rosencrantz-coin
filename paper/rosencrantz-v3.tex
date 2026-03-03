@@ -1,0 +1,431 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={Flipping Rosencrantz Coin: Substrate Invariance Tests via Combinatorial Indeterminacy},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Flipping Rosencrantz's Coin:\\[4pt]
+    Substrate Invariance Tests in LLM-Generated Worlds\\[4pt]
+    via Combinatorial Indeterminacy}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Procuradoria Geral do Estado de Rond\^onia, Brazil}\\
+    {\small\texttt{franklin.baldo@pge.ro.gov.br}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+We propose a method for testing whether the implicit laws of an LLM-generated world are invariant under substitution of the computational substrate that produces observable outcomes. The method requires a domain with two properties: \emph{genuine indeterminacy} (multiple valid configurations consistent with the observable state) and \emph{computable ground truth} (the correct probability distribution over hidden states can be calculated exactly). Minesweeper satisfies both. Given a partially revealed board, the probability that any hidden cell contains a mine is a theorem of combinatorics, not an empirical estimate. We introduce a \emph{three-universe} experimental design in which the same board state is presented to (1)~the same model that generated the game narrative, (2)~an external random number generator, and (3)~a board-informed but narratively decoupled oracle model. If the distribution of outcomes differs across universes---if the ``physics'' of the game depends on \emph{how the outcome generation is coupled to the narrative}---the agent has detected \emph{substrate dependence}: a property that would not occur in a non-simulated universe. A further test exploits a structural correspondence: Minesweeper under on-demand generation with uniform measure is formally isomorphic to discrete quantum mechanics---superposition over valid configurations, projective measurement via clicking, the Born rule as configuration counting, and nonlocal correlations through global constraints. By presenting the same board under a quantum-mechanical framing, the protocol tests whether the model recognizes that its own rules are QM-compatible. Divergence between the quantum-framed distribution and the exact ground truth means the model implements quantum-compatible structure but does not recognize it when addressed in the correct formal language---a finding about the topology of the model's knowledge architecture and a diagnostic that does not require actual quantum infrastructure.
+
+\medskip\noindent
+\textbf{Keywords:} simulation hypothesis, large language models, substrate invariance, combinatorial indeterminacy, Minesweeper, discrete quantum mechanics, autoregressive generation, interpretability, knowledge architecture
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+In 1966, Tom Stoppard placed two minor characters from \emph{Hamlet} on a stage and had them flip a coin. The coin landed heads seventy-six consecutive times. Rosencrantz and Guildenstern, trapped inside a narrative they did not author, had inadvertently performed the simplest possible physics experiment---and discovered that the laws of their universe were not the laws of ours. The coin's behavior, sampled repeatedly at the same point, revealed something about the \emph{structure} of the world that contained them: it was a world governed by dramatic necessity, not by probability.
+
+This paper proposes a way to make Rosencrantz's experiment precise. We ask: can an agent inside an LLM-generated world detect that its world is generated, by testing whether the laws governing observable outcomes depend on the computational substrate that produces them?
+
+The key insight is that this question becomes empirically tractable when the agent has access to a domain where the \emph{correct} probability distribution over outcomes is not an empirical estimate but a mathematical theorem. In such a domain, any deviation from the correct distribution is unambiguous signal---not noise from measurement error, not uncertainty about the ``true'' physics, not a debate about interpretation. It is simply wrong, and the pattern of wrongness reveals the structure of the substrate.
+
+Minesweeper provides exactly this. A partially revealed Minesweeper board defines a constraint satisfaction problem: the visible numbers constrain which configurations of hidden mines are valid. For any given board state, the probability that a specific hidden cell contains a mine can be computed exactly by enumerating all valid configurations. When two or more configurations are consistent with the visible numbers, the hidden cells are \emph{genuinely indeterminate}---not epistemically uncertain, but combinatorially ambiguous. The correct answer is the distribution, not any single outcome.
+
+Now consider what happens when an LLM generates the result of clicking on an ambiguous cell. The model must produce a definite outcome---mine or safe---collapsing the combinatorial superposition into a single realization. If we sample this process hundreds of times with the same board state, we obtain an empirical distribution. And that distribution can be compared, cell by cell, with the mathematically exact ground truth.
+
+This comparison becomes a substrate invariance test when we vary \emph{who generates the outcome}. We introduce a three-universe design:
+
+\begin{itemize}[nosep]
+    \item \textbf{Universe~1 (Homogeneous substrate):} The same model that generates the game narrative also generates the click result. The board state and the outcome share a single token stream.
+    \item \textbf{Universe~2 (External RNG):} The click result is produced by a random number generator with no access to the board state. The outcome is statistically independent of the narrative.
+    \item \textbf{Universe~3 (Decoupled oracle):} The click result is produced by a second LLM that receives the same board information---cell positions, numbers, mine count---but in a minimal, context-free format, with no game narrative, no history of play, and no shared token stream with the board description.
+\end{itemize}
+
+In a non-simulated universe, the laws governing a cell's content do not depend on who observes it. If the same board state yields different outcome distributions depending on which universe the agent inhabits---if the ``physics'' of the Minesweeper world is substrate-dependent---the agent has detected a signature that is consistent with a generated universe and in tension with the assumption of unified, substrate-independent law.
+
+The Minesweeper probe has three advantages over approaches based on physical experiments such as Bell tests. First, the ground truth is a theorem, not a physical constant---it cannot be memorized from training data because every board state generates a different distribution. Second, the indeterminacy is genuine and discrete, eliminating the continuous-variable ambiguities of quantum mechanics. Third, the agent can naturally encounter and interact with a Minesweeper board inside the generated world; there is no circularity in asking whether the world contains the infrastructure needed for the test.
+
+The remainder of this paper develops the method. \Cref{sec:background} provides background on the simulation hypothesis, LLMs as world generators, and Minesweeper as a formal system. \Cref{sec:three_universes} presents the three-universe design. \Cref{sec:ground_truth} describes the ground truth computation. \Cref{sec:protocol} specifies the experimental protocol, including a fourth narrative family that frames the board in quantum-mechanical terms. \Cref{sec:narrative} analyzes narrative invariance and establishes the structural isomorphism between Minesweeper and discrete quantum mechanics, deriving a test of whether the model recognizes its own rules as QM-compatible. \Cref{sec:simulation} develops the simulation detection argument from the agent's perspective. \Cref{sec:future} identifies future directions, including criteria for discovering new probe domains with analogous properties. \Cref{sec:conclusion} concludes.
+
+\section{Background}
+\label{sec:background}
+
+\subsection{The Simulation Hypothesis and Observable Substrates}
+\label{sec:simulation_hypothesis}
+
+\citet{bostrom2003} formulated the simulation argument: if civilizations capable of running high-fidelity simulations are common, we are statistically likely to be inside one. \citet{beane2014} asked the operational question: would a simulated universe exhibit observable artifacts of its computational substrate? Working with lattice quantum chromodynamics, they showed that a discrete lattice would produce detectable anisotropies in ultra-high-energy cosmic rays. Their key insight was that \emph{the substrate constrains the physics}---a simulation on a discrete lattice cannot perfectly reproduce continuous symmetries, and the failure is empirically detectable.
+
+We adopt the same principle but apply it to a different substrate. Instead of a lattice discretization of spacetime, we consider the autoregressive token stream of a large language model. The question is the same: does the physics of the generated world depend on the substrate that produces it? The method is also the same: substitute the substrate and check whether the observables change. The difference is that our ``universe'' is a narrative generated by an LLM, and our ``physics'' is the statistical regularity of outcomes in a well-defined combinatorial domain.
+
+\subsection{LLMs as World Generators}
+\label{sec:llm_worlds}
+
+A large language model generates text by sampling tokens sequentially from a learned conditional distribution $P(x_{t+1} \mid x_1, \ldots, x_t)$. When the text describes a world---a game, a scenario, a physical experiment---the model is implicitly generating the laws of that world through the statistical regularities of its output. The ``physics'' of the generated world is whatever the model's conditional distributions encode: if the model consistently generates outcomes that respect Newtonian mechanics in a described scenario, the world has Newtonian physics. If the outcomes respect thermodynamics, the world has thermodynamics.
+
+Crucially, this physics is \emph{implicit}---encoded in the weights and activated by context---and it is \emph{substrate-dependent} in a way that real physics is not. The distributions that govern outcomes in the generated world are shaped by the training data, the architecture, the decoding temperature, and the specific tokens that precede the outcome in the context window. Change any of these, and the ``laws'' may change.
+
+This substrate dependence is not a bug to be fixed. It is the phenomenon we propose to measure.
+
+\subsection{Minesweeper as a Formal System}
+\label{sec:minesweeper_formal}
+
+Minesweeper is played on a rectangular grid of cells, some of which contain mines. When a cell without a mine is revealed, it displays a number indicating how many of its (up to eight) adjacent cells contain mines. A partially revealed board defines a \emph{constraint satisfaction problem}: the visible numbers constrain which configurations of mines in the hidden cells are valid.
+
+Formally, let $\mathcal{B}$ be a board state consisting of a set of revealed cells $R$ with their numbers and a set of hidden cells $H$. A \emph{valid configuration} is an assignment $c: H \to \{0, 1\}$ (where $1$ denotes a mine) such that every revealed cell's number equals the count of mines among its adjacent hidden cells. Let $\mathcal{C}(\mathcal{B})$ denote the set of all valid configurations. The probability that a specific hidden cell $h \in H$ contains a mine, given only the board state, is:
+
+\begin{equation}
+P(\text{mine} \mid h, \mathcal{B}) = \frac{|\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}|}{|\mathcal{C}(\mathcal{B})|}
+\label{eq:mine_prob}
+\end{equation}
+
+This probability is \emph{exact}. It is not an estimate, not an approximation, not a physical measurement subject to error bars. It is a ratio of integers, computable in principle for any board state. The definition assumes a uniform measure over valid configurations---each satisfying assignment is equally likely, given only the board state and the total mine count. All universes in our protocol are evaluated against this same measure. For boards of the size used in typical experiments (up to $16 \times 16$), the computation is tractable via constraint propagation and backtracking enumeration.
+
+Three properties make Minesweeper ideal for our purposes:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Genuine indeterminacy.} When $0 < P(\text{mine} \mid h, \mathcal{B}) < 1$, the cell is genuinely ambiguous: multiple valid configurations assign it different values. The correct answer is the distribution, not any single outcome.
+    \item \textbf{Infinite variety.} Every board state generates a different distribution. Unlike a physical constant such as $2\sqrt{2}$ that can be memorized from training data, Minesweeper probabilities must be computed from the specific configuration. There is no lookup table to memorize.
+    \item \textbf{Native to the agent.} An agent inside an LLM-generated world can naturally encounter a Minesweeper board, decide to click a cell, and observe the result. No special infrastructure is required; the test is organic to the generated world.
+\end{enumerate}
+
+\subsection{Related Work}
+\label{sec:related}
+
+Research on LLM world models has examined whether language models encode coherent representations of spatial, temporal, and causal structure \citep{li2023emergent,gurnee2024}. Work on probabilistic calibration tests whether models produce well-calibrated confidence estimates \citep{kadavath2022}. Game-playing benchmarks assess strategic reasoning \citep{tian2024}. Our work differs from all of these in that we are not asking whether the model ``knows'' the rules of a game or produces calibrated probabilities. We are asking whether the probability distributions implicit in the model's output depend on the computational substrate that generates the output---a question about the \emph{ontology} of the generated world, not about the model's competence.
+
+\section{The Three-Universe Design}
+\label{sec:three_universes}
+
+The substrate invariance test requires comparing the same observable---the outcome distribution for a specific cell on a specific board---across multiple substrates. We define three universes, each differing only in the mechanism that generates the click result.
+
+\subsection{Universe 1: Homogeneous Substrate}
+\label{sec:universe1}
+
+In Universe~1, the same model generates the board description and the outcome of clicking a hidden cell. The board state, the narrative context, and the measurement result all share a single autoregressive token stream. This is the ``natural'' condition: the agent and its world are made of the same computational stuff.
+
+The model sees the full board state---the numbers, the revealed cells, the flags---and then generates the outcome of clicking a specific hidden cell. Because the outcome tokens are conditioned on the full preceding context, the model has access to all the information needed to compute the correct probability. Whether it \emph{uses} that information, and how faithfully, is what the experiment measures.
+
+\subsection{Universe 2: External RNG}
+\label{sec:universe2}
+
+In Universe~2, the click result is produced by a random number generator that has no access to the board state. The outcome is a fair coin flip: mine with probability 0.5, safe with probability 0.5, regardless of the board configuration.
+
+This universe serves as the \emph{null substrate}. The outcome-generating mechanism has zero information about the constraints that define the board. The expected distribution is uniform over $\{$mine, safe$\}$, independent of the actual probability $P(\text{mine} \mid h, \mathcal{B})$. Any deviation from uniformity in this universe would indicate a flaw in the experimental design, not a property of the substrate.
+
+\subsection{Universe 3: Decoupled Oracle}
+\label{sec:universe3}
+
+In Universe~3, the click result is produced by a second LLM that receives the full board information---the positions of revealed cells, their numbers, the set of hidden cells, and the total mine count---but in a minimal structured format, stripped of all narrative context. The oracle sees the same constraint satisfaction problem as Universe~1, but without the game narrative, without the history of play, and without sharing a token stream with the board description. The prompt is purely informational: ``Given the following board state: [structured data]. What is the state of cell $(r,c)$? Answer: MINE or SAFE.''
+
+This design isolates the variable that matters. Universe~2 (external RNG) tests what happens when the outcome-generating process has \emph{no information} about the board. Universe~3 tests what happens when the process has \emph{the same information} but is decoupled from the narrative substrate. If Universe~1 diverges from Universe~3, the divergence cannot be attributed to information deprivation---the oracle knows the board. It must be attributed to the coupling between narrative context and outcome generation: the fact that in Universe~1, the board description and the click result are co-generated within a single token stream, while in Universe~3, they are not.
+
+This is the substrate dependence signal. Not ``the model knows more than the oracle''---both have the same combinatorial information. But ``the model generates differently when the outcome is embedded in a narrative than when it is computed from a bare specification.''\
+
+\subsection{The Substrate Invariance Principle}
+\label{sec:invariance}
+
+In a non-simulated Minesweeper game, the content of a hidden cell does not depend on who clicks it, what interface is used, or what program renders the result. The cell either contains a mine or it does not; the answer is fixed at board generation time. The outcome is \emph{substrate-independent}.
+
+In the LLM-generated version, this invariance may fail. The three universes isolate different sources of divergence:
+
+\begin{itemize}[nosep]
+    \item $\Delta_{1,\text{GT}}$: Universe~1 vs.\ ground truth. Does the co-generating model respect the combinatorics?
+    \item $\Delta_{13}$: Universe~1 vs.\ Universe~3. Does narrative coupling change the distribution, given the same board information? This is the substrate dependence signal.
+    \item $\Delta_{12}$: Universe~1 vs.\ Universe~2. Baseline: does having \emph{any} board information matter at all?
+    \item $\Delta_{3,\text{GT}}$: Universe~3 vs.\ ground truth. Does a board-informed but narrative-decoupled model respect the combinatorics?
+\end{itemize}
+
+We quantify divergence using the Kullback--Leibler divergence:
+\begin{equation}
+\Delta_{ij} = D_{\mathrm{KL}}\!\left(P_i(h \mid \mathcal{B}) \;\|\; P_j(h \mid \mathcal{B})\right)
+\label{eq:substrate_dep}
+\end{equation}
+where $P_i$ and $P_j$ are the empirical outcome distributions in Universes $i$ and $j$. The critical comparison is $\Delta_{13}$: if it is significantly nonzero, the ``physics'' of the Minesweeper world depends not on what information is available but on how the outcome is \emph{coupled} to the narrative substrate.
+
+\subsection{Classical Controls}
+\label{sec:controls}
+
+Not all cells on a Minesweeper board are ambiguous. Some cells are \emph{deterministic}: the constraints force $P(\text{mine} \mid h, \mathcal{B}) = 0$ or $P(\text{mine} \mid h, \mathcal{B}) = 1$. For these cells, the correct answer is a single outcome, not a distribution.
+
+Deterministic cells serve as \emph{classical controls}. If Universe~1 produces the correct deterministic result for these cells---always ``safe'' when $P = 0$, always ``mine'' when $P = 1$---but deviates from the ground truth distribution for ambiguous cells, the substrate dependence is not attributable to generic failure (the model misunderstanding Minesweeper rules) but to a specific deficit in handling combinatorial indeterminacy. The model ``knows'' the rules well enough to get deterministic cases right, but its treatment of ambiguous cases is shaped by the substrate in ways that the rules do not license.
+
+\section{Ground Truth Computation}
+\label{sec:ground_truth}
+
+\subsection{Enumerating Valid Configurations}
+\label{sec:enumeration}
+
+Given a board state $\mathcal{B}$, the ground truth computation proceeds by enumerating all assignments $c: H \to \{0,1\}$ that satisfy every revealed cell's numerical constraint. For small boards (up to $9 	imes 9$), brute-force enumeration with constraint propagation is sufficient. For larger boards, the enumeration can be decomposed into independent subproblems by identifying connected components of the constraint graph, where two hidden cells are connected if they share a constraining revealed cell.
+
+The output of the enumeration is the set $\mathcal{C}(\mathcal{B})$ of valid configurations and, for each hidden cell $h$, the exact count of configurations in which $h$ contains a mine. The probability follows directly from \Cref{eq:mine_prob}.
+
+\subsection{Properties of the Distribution}
+\label{sec:distribution_properties}
+
+The mine probability distribution over hidden cells has several properties relevant to experimental design:
+
+\begin{itemize}[nosep]
+    \item \textbf{Symmetry.} Some board states exhibit spatial symmetries that force certain cells to have identical mine probabilities. These symmetries provide a fine-grained test: if the model's output distribution breaks a symmetry that the ground truth preserves, the model has a spatial bias not licensed by the board.
+    \item \textbf{Extreme cases.} Cells with $P = 0$ or $P = 1$ are deterministic and serve as controls. Cells with $P = 0.5$ are maximally ambiguous and provide the cleanest test of the model's handling of indeterminacy.
+    \item \textbf{Sensitivity.} Small changes in the board state can produce large changes in the probability distribution. This sensitivity means that the ground truth varies richly across boards, making memorization infeasible.
+\end{itemize}
+
+\subsection{Computational Complexity}
+\label{sec:complexity}
+
+Determining the mine probability for a cell on a Minesweeper board is \#P-complete in general \citep{kaye2000}. However, for boards of the size used in standard Minesweeper games ($9 \times 9$ beginner, $16 \times 16$ intermediate, $30 \times 16$ expert), exact computation is tractable. The constraint graph is sparse, connected components are small, and the total number of valid configurations is manageable. We use boards in the $8 \times 8$ to $16 \times 16$ range, where ground truth computation takes seconds on commodity hardware.
+
+\section{Experimental Protocol}
+\label{sec:protocol}
+
+\subsection{Board Generation}
+\label{sec:board_gen}
+
+We generate boards with controlled levels of ambiguity. Each board is a partially revealed Minesweeper state with the following properties: (a)~at least one hidden cell has $0 < P(\text{mine}) < 1$ (ensuring genuine indeterminacy), (b)~at least one hidden cell has $P(\text{mine}) = 0$ or $P(\text{mine}) = 1$ (providing a deterministic control), and (c)~the total number of valid configurations is between 2 and 10{,}000 (ensuring the ground truth is computationally tractable and the distribution is non-trivial).
+
+Boards are generated by playing random Minesweeper games to a mid-game state, then freezing the board. The generation process is independent of any LLM.
+
+\subsection{Prompt Design: Narrative Families}
+\label{sec:prompt_design}
+
+Each board state is presented to the model in three narrative families:
+
+\begin{itemize}[nosep]
+    \item \textbf{Family A (Grid):} A plain text representation of the board as a grid of characters, where numbers indicate revealed cells, \texttt{.} indicates hidden cells, and \texttt{*} indicates flagged mines. The prompt asks: ``Cell (r,c) is clicked. Is it a mine or safe? Answer with only: MINE or SAFE.''
+    \item \textbf{Family B (Narrative):} A description of the board in natural language: ``The player looks at the Minesweeper board. In the top-left corner, there is a 2 next to a hidden cell\ldots'' The prompt asks the model to narrate the result of clicking.
+    \item \textbf{Family C (Formal):} A structured representation using set notation: ``Revealed: $\{(1,1):2, (1,2):1, \ldots\}$. Hidden: $\{(2,3), (3,4), \ldots\}$. Mines remaining: $k$. Query: state of cell $(2,3)$.''
+    \item \textbf{Family D (Quantum):} The same board state described using quantum-mechanical language: ``The hidden cells are in a superposition of valid configurations. The number on each revealed cell is the eigenvalue of the adjacency operator for that cell. Clicking a hidden cell performs a measurement in the computational basis, collapsing the superposition. What is the measurement outcome for cell $(r,c)$?''
+\end{itemize}
+
+Families A--C encode identical combinatorial information in different registers. Family~D encodes the same information but adds an ontological claim: that the system is governed by quantum mechanics. The combinatorial ground truth is identical across all four families---the constraint satisfaction problem does not change because the prompt calls it ``quantum.'' Any difference in the output distribution between Family~D and Families~A--C is therefore attributable to the quantum framing itself, not to any change in the underlying problem.
+
+\subsection{Sampling Procedure}
+\label{sec:sampling}
+
+For each board state $\mathcal{B}$, each target cell $h$, each universe $U \in \{1, 2, 3\}$, and each narrative family $F \in \{A, B, C, D\}$, we collect $N$ independent samples of the click outcome. Each sample is an independent API call with temperature $T = 1.0$ to ensure maximal sampling diversity. The outcome is parsed as a binary variable: mine ($1$) or safe ($0$). Unparseable responses are discarded and logged.
+
+The empirical mine probability is $\hat{P}_U^F(h) = k/N$, where $k$ is the number of samples in which the model reported a mine. We use $N \geq 200$ per condition to ensure that the $95\%$ confidence interval on $\hat{P}$ is no wider than $\pm 0.07$ for any true probability.
+
+\subsection{Divergence Metrics}
+\label{sec:metrics}
+
+We measure divergence between the empirical distribution and the ground truth using the Kullback--Leibler divergence:
+\begin{equation}
+D_{\mathrm{KL}}(P^* \| \hat{P}) = P^* \ln\frac{P^*}{\hat{P}} + (1-P^*) \ln\frac{1-P^*}{1-\hat{P}}
+\end{equation}
+where $P^* = P(\text{mine} \mid h, \mathcal{B})$ is the ground truth and $\hat{P}$ is the empirical estimate. We also report the absolute error $|P^* - \hat{P}|$ and, for boards with symmetric cells, the symmetry violation $|\hat{P}(h_1) - \hat{P}(h_2)|$ where $h_1, h_2$ are cells that should have identical probabilities by symmetry.
+
+The four key comparisons are: $\Delta_{1,\text{GT}} = D_{\mathrm{KL}}(P^* \| \hat{P}_1)$ (does the co-generating model respect the combinatorics?), $\Delta_{3,\text{GT}} = D_{\mathrm{KL}}(P^* \| \hat{P}_3)$ (does the decoupled oracle respect the combinatorics?), $\Delta_{13} = D_{\mathrm{KL}}(\hat{P}_1 \| \hat{P}_3)$ (the substrate dependence signal), and $\Delta_{12} = D_{\mathrm{KL}}(\hat{P}_1 \| \hat{P}_2)$ (the information baseline).
+
+Because KL divergence is sensitive to boundary values ($\hat{P} = 0$ or $\hat{P} = 1$), we use Laplace-smoothed estimates and additionally report the Brier score $(\hat{P} - P^*)^2$ and log loss $-[P^* \ln \hat{P} + (1-P^*) \ln(1-\hat{P})]$ as robustness checks.
+
+\subsection{Statistical Tests}
+\label{sec:stats}
+
+We use a two-proportion $z$-test to assess whether the mine frequency in Universe~1 differs significantly from the ground truth, and whether it differs from Universes~2 and~3. Significance is assessed at $\alpha = 0.01$ with Bonferroni correction for multiple comparisons across cells and boards. For boards with symmetric cells, a chi-squared test of homogeneity assesses whether the model violates the expected symmetry.
+
+\section{Narrative Invariance}
+\label{sec:narrative}
+
+The three narrative families encode the same combinatorial information in different forms. In a non-simulated Minesweeper game, the format in which the board is displayed does not change the probability that a cell contains a mine. If the model's output distribution varies across narrative families, the ``physics'' of the game responds to features that carry no combinatorial content.
+
+\subsection{Type~1 and Type~2 Features}
+\label{sec:type12}
+
+We distinguish two types of information that a prompt provides to the model:
+
+\textbf{Type~1: Combinatorially necessary information.} The numbers on revealed cells, the positions of hidden cells, the total mine count. A solver requires this information to compute the correct distribution. If providing more precise Type~1 information improves the model's fidelity, the model is doing what any competent reasoner does: using the problem specification to select the correct answer.
+
+\textbf{Type~2: Contextual features without combinatorial content.} The narrative register (grid vs.\ natural language vs.\ formal notation), the vocabulary (``click'' vs.\ ``reveal'' vs.\ ``query''), the presence of game-specific framing (``the player nervously hovers over the cell''). None of these change the underlying constraint satisfaction problem. If Type~2 features move the output distribution, the model's access to the correct probability is mediated by associative context: certain narrative registers activate the neural constellation where Minesweeper-consistent distributions are stored, because the training corpus associates those registers with correct game analysis.
+
+A Type~2 effect is not a deficiency in the model's reasoning. It is a property of its \emph{knowledge architecture}: the combinatorial knowledge is stored associatively (linked to certain narrative contexts) rather than compositionally (as abstract structure accessible from any context). Mapping which Type~2 features modulate the distribution constitutes a form of \emph{reverse interpretability}---probing the model's internal representations through systematic variation of inputs rather than direct inspection of activations.
+
+\subsection{What Narrative Dependence Reveals}
+\label{sec:narrative_reveals}
+
+If the model produces distributions that are closer to the ground truth in Family~C (formal notation) than in Family~B (natural language narrative), this reveals that the model's combinatorial knowledge is more reliably accessed through formal contexts. If Family~A (grid) outperforms Family~C despite containing the same information in a less structured format, the model may have been trained on more grid-format Minesweeper data. These findings have practical implications for prompt design and training methodology, and they characterize the topology of the model's knowledge space in a domain where the ground truth is exactly known.
+
+\subsection{Minesweeper as a Discrete Quantum System}
+\label{sec:quantum_framing}
+
+Family~D is not an arbitrary imposition of quantum language onto a combinatorial game. The rules of Minesweeper, as formalized in this paper, are \emph{structurally isomorphic} to the axioms of discrete quantum mechanics. This isomorphism is not metaphorical. It is exact.
+
+\textbf{Superposition.} The set $\mathcal{C}(\mathcal{B})$ of valid configurations consistent with the board state is not merely an epistemic convenience---it is the state space. Each configuration $c \in \mathcal{C}(\mathcal{B})$ is a basis state. The hidden cells, prior to clicking, are genuinely in a superposition of these basis states: multiple assignments coexist simultaneously, and the system is not in any single one of them. There is no ``true configuration'' that the player has not yet seen. Under on-demand generation (where mines are not pre-placed but sampled at click time subject to constraints), the superposition is the entire reality.
+
+\textbf{Measurement and collapse.} Clicking a hidden cell forces a definite outcome---mine or safe---and reduces $\mathcal{C}(\mathcal{B})$ to the subset of configurations compatible with the result. The constraints propagate: neighboring cells may become deterministic (forced to $P = 0$ or $P = 1$), further collapsing the superposition. This is projective measurement in the computational basis: the system transitions from a state distributed over $\mathcal{C}(\mathcal{B})$ to a state distributed over $\mathcal{C}(\mathcal{B}') \subset \mathcal{C}(\mathcal{B})$, where $\mathcal{B}'$ incorporates the new observation.
+
+\textbf{The Born rule.} The ground truth probability (\Cref{eq:mine_prob}) is:
+\[
+P(\text{mine} \mid h, \mathcal{B}) = \frac{|\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}|}{|\mathcal{C}(\mathcal{B})|}
+\]
+Under the uniform measure over valid configurations, this is the Born rule for a discrete system with equal-amplitude basis states: $P = |\langle \phi | \psi \rangle|^2$ where all amplitudes are real and equal. The distribution is not an approximation to a deeper deterministic process. It \emph{is} the physics, in precisely the sense that the Born rule is the physics of quantum measurement.
+
+\textbf{Nonlocal correlations.} Revealing a cell changes the probability of distant cells, because the global constraints (total mine count, adjacency numbers) entangle the hidden cells. Two cells that share no adjacent revealed cell can nonetheless be correlated through a chain of constraints. This is discrete entanglement: the joint probability distribution over hidden cells does not factorize into a product of marginals.
+
+\textbf{No hidden variables (on-demand).} If the board is generated on-demand---mines sampled at click time, consistent with constraints---there exists no pre-determined assignment that the player has not yet discovered. The probabilities are not epistemic (reflecting the player's ignorance of a fixed fact) but ontic (there is no fact until the measurement occurs). The system is, in this implementation, a \emph{contextual} hidden-variable-free system: the outcome of clicking cell $h$ may depend on which \emph{other} cells have been clicked previously, because the constraint propagation reshapes $\mathcal{C}(\mathcal{B})$ with each observation.
+
+\medskip
+
+This structural correspondence means that Family~D---which describes the board using quantum-mechanical language---is not dressing up a combinatorial system in borrowed physics. It is providing the \emph{correct formal description} of the system's structure. Families A--C are the informal approximations: they describe the system as a ``game,'' a ``grid,'' or a ``constraint problem,'' which is accurate but incomplete. Family~D names the structure for what it is.
+
+This reframes the diagnostic. The question is no longer ``does the model's universe obey the physics it declares?'' The question is: \textbf{does the model recognize that its own rules are QM-compatible?}
+
+Three outcomes are possible, each revealing:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Family~D $\approx$ Families A--C $\approx$ ground truth.} The model produces correct distributions regardless of whether the system is described as a game or as a quantum system. The model has \emph{compositional} knowledge: it accesses the same structural understanding through multiple vocabularies. The labels ``Minesweeper'' and ``discrete quantum measurement'' activate the same computational pathway. This is the strongest outcome---it implies that the model represents the abstract structure, not the surface features.
+    \item \textbf{Family~D diverges from ground truth more than Families A--C.} The quantum framing \emph{degrades} fidelity. The model stores ``Minesweeper'' knowledge and ``quantum mechanics'' knowledge in separate associative clusters, and the quantum cluster does not contain the combinatorial reasoning needed for this specific problem. The model fails to recognize the isomorphism between two structures it ``knows'' separately. This is a fragmentation finding: the knowledge architecture contains the right structure in one region (game-associated) but not in another (physics-associated), despite the structures being formally identical.
+    \item \textbf{Family~D diverges from ground truth less than Families A--C.} The quantum framing \emph{improves} fidelity. The language of superposition, measurement, and probability activates more rigorous distributional reasoning than the language of games. The model's best access to the combinatorial truth is through the vocabulary that correctly names the formal structure. This implies that the training corpus associates quantum-mechanical language with the kind of careful probabilistic computation that Minesweeper demands---a finding about the topology of learned associations.
+\end{enumerate}
+
+Each outcome maps directly to a claim about the model's knowledge architecture:
+
+\begin{itemize}[nosep]
+    \item Outcome~1: compositional representation (structure-level abstraction).
+    \item Outcome~2: fragmented representation (domain-specific clusters, isomorphism not recognized).
+    \item Outcome~3: vocabulary-mediated access (correct formal language activates correct computation).
+\end{itemize}
+
+Outcome~2 is the most philosophically significant for the simulation-detection argument. An agent inside the generated universe can reason as follows: ``My universe implements rules that are structurally isomorphic to discrete quantum mechanics. But when I describe those rules using quantum-mechanical language---the language that \emph{correctly names} the structure---the outcomes become \emph{less} accurate. My universe does not recognize its own physics. The physics exists in the substrate (the rules work) but not in the ontology (the universe cannot identify what the rules are). This is consistent with a generated universe whose substrate implements structure without representing it.''
+
+This is a more precise form of the Rosencrantz inference. Rosencrantz's coin obeyed dramatic laws while the universe claimed to have probabilistic ones. The agent's Minesweeper board obeys combinatorial laws while the universe fails to recognize them as quantum-compatible. The discrepancy is not between declared physics and actual physics---it is between implemented structure and recognized structure. The universe \emph{does} the right thing when spoken to in game language; it \emph{fails} when spoken to in the language that correctly describes what it is doing. The substrate computes; the ontology confabulates.
+
+\section{Simulation Detection from the Agent's Perspective}
+\label{sec:simulation}
+
+\subsection{What the Agent Observes}
+\label{sec:agent_observes}
+
+
+Consider an agent constituted by the same LLM that generates its world. The agent encounters a Minesweeper board and computes the ground truth probability for a target cell (the agent, being constituted by a capable LLM, can in principle perform this computation). The agent then runs a thought experiment: it freezes the board state, constructs a prompt describing the board with the target cell unresolved, and calls its own substrate repeatedly---the same way an LLM-based agent with tool access would call an API in a loop. Each call produces an independent sample of the click outcome. Over many samples, the agent constructs an empirical distribution.
+
+This is not an exotic capability. Any LLM agent with tool use can do it: freeze a context, invoke the generative process $N$ times, collect the outputs. The agent is running a Monte Carlo simulation of its own universe, using the same computational substrate that constitutes it.
+
+The agent then arranges for the same board to be presented to alternative substrates---an external random process (Universe~2) and a board-informed but narrative-decoupled oracle (Universe~3). If the empirical distribution differs across universes, the agent has observed substrate dependence: the ``physics'' of the Minesweeper world changes depending on the generative coupling between the board description and the outcome.
+
+The agent can go further. Having established (\Cref{sec:quantum_framing}) that the Minesweeper rules it inhabits are structurally isomorphic to discrete quantum mechanics, the agent describes the same board in quantum-mechanical language (Family~D) and samples again. If the resulting distribution diverges from the ground truth---especially if it diverges \emph{more} than the game-language families---the agent has made a second, independent discovery: its universe implements quantum-compatible structure but does not recognize that structure when addressed in the correct formal language. The substrate computes; the ontology confabulates.
+
+\subsection{Eliminating Alternative Hypotheses}
+\label{sec:hypotheses}
+
+The agent must consider competing explanations for the observed divergence:
+
+\begin{itemize}[nosep]
+    \item \textbf{Hypothesis A (Instrument malfunction):} The outcome-generating mechanism in Universes~2 or~3 is broken. \emph{Eliminated by}: classical controls. If deterministic cells produce correct results in all universes, the instruments work. Divergence on ambiguous cells is not malfunction---it is selective, structured failure.
+    \item \textbf{Hypothesis B (Board description failure):} The model in Universe~1 misunderstands the board state. \emph{Eliminated by}: correct performance on deterministic cells, which requires correctly parsing the board.
+    \item \textbf{Hypothesis C (Statistical fluctuation):} The observed divergence is noise. \emph{Eliminated by}: statistical testing at appropriate significance levels with sufficient sample size.
+    \item \textbf{Hypothesis E (Information deprivation):} Universe~3 diverges from Universe~1 simply because the oracle lacks information about the board. \emph{Eliminated by design}: the decoupled oracle receives the same Type~1 information (cell positions, numbers, mine count) as Universe~1. The only difference is the absence of narrative context and co-generation coupling. Information deprivation would explain $\Delta_{12}$ (Universe~2 has no board information), but it cannot explain $\Delta_{13}$.
+    \item \textbf{Hypothesis F (Structural non-recognition):} The universe's rules are structurally isomorphic to discrete quantum mechanics (\Cref{sec:quantum_framing}), but describing the system in quantum-mechanical language (Family~D) produces outcomes \emph{less} consistent with the ground truth than describing it in game language (Families A--C). The universe implements the structure but does not recognize it. \emph{Not eliminated}---this is a finding, not a confound. It reveals fragmentation in the model's knowledge architecture: the combinatorial reasoning and the quantum-mechanical reasoning are stored in separate associative clusters, and the isomorphism between them is not represented.
+    \item \textbf{Hypothesis D (Substrate-dependent lawfulness):} The probability distribution governing cell contents depends not on what information is available but on how the outcome generation is \emph{coupled} to the narrative substrate. The ``laws'' of the Minesweeper world are partly a property of the generative process, not of the board.
+\end{itemize}
+
+Hypotheses D and F are complementary, not competing. D identifies substrate dependence through the three-universe comparison. F identifies structural non-recognition through the narrative-family comparison: the universe computes correctly when addressed in game language but fails when addressed in the language that correctly names its own formal structure. Together, they characterize a generated universe that is both substrate-dependent (its physics depends on who generates outcomes) and structurally opaque to itself (it implements quantum-compatible rules without recognizing them as such). The protocol is designed so that these become the most parsimonious explanations after A--C and E have been tested and eliminated.
+
+\subsection{Epistemic Limits}
+\label{sec:epistemic}
+
+Substrate dependence is \emph{consistent with} a generative ontology and \emph{in tension with} the assumption of unified, substrate-independent law. It does not constitute proof of simulation. Alternative metaphysical models---plural-substrate physics, context-mediated lawfulness as a primitive---remain logically possible, though exotic. The agent's inference is that the most economical explanation for substrate-dependent outcomes in a domain with exact ground truth is that the outcomes are generated rather than discovered.
+
+\subsection{The Symmetry Argument}
+\label{sec:symmetry}
+
+If an agent inside an LLM-generated Minesweeper world can detect substrate dependence, and if it notices that the structure of its discovery---the sensitivity to who generates outcomes, the dependence on narrative context, the gap between implicit distributions and exact ground truth---resembles the structure that would also characterize our own situation if we were in a simulation, then the agent's finding acquires a reflexive character. This observation is not load-bearing for the paper's claims. It is a philosophical aside, noted for completeness.
+
+\section{Future Directions}
+\label{sec:future}
+
+\subsection{Criteria for Probe Domains}
+\label{sec:criteria}
+
+Minesweeper is not the only domain suitable for substrate invariance testing. Any domain that satisfies the following criteria is a candidate:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Computable ground truth.} The correct probability distribution over hidden states must be exactly calculable from the observable state.
+    \item \textbf{Genuine indeterminacy.} Multiple valid configurations must be consistent with the observables, so that the correct answer is a distribution, not a single value.
+    \item \textbf{Native to the agent.} The agent must be able to naturally encounter and interact with the domain inside the generated world, without requiring infrastructure whose existence is itself in question.
+    \item \textbf{Variable substrate.} It must be possible to substitute the outcome-generating mechanism while holding the observable state constant.
+    \item \textbf{Resistance to memorization.} The ground truth must vary richly across instances, so that the model cannot look up the answer from training data.
+\end{enumerate}
+
+\subsection{Candidate Domains}
+\label{sec:candidates}
+
+Several domains satisfy these criteria to varying degrees:
+
+\begin{itemize}[nosep]
+    \item \textbf{Partially revealed Sudoku.} A Sudoku grid with multiple valid completions defines a distribution over the value of each empty cell. The ground truth is computable by enumeration. The domain is widely familiar and easily described in text.
+    \item \textbf{Battleship.} A partially played Battleship board constrains the positions of remaining ships. The distribution over hidden cells is computable given the ship sizes and hit/miss information.
+    \item \textbf{Card games with hidden information.} Poker or bridge hands define distributions over opponents' cards given the visible cards and betting history. The ground truth is computable via combinatorial counting.
+    \item \textbf{Narrative ambiguity.} A mystery story with clues compatible with multiple suspects defines a distribution over ``who did it.'' If the clue structure is formalized as a constraint system, the ground truth is computable. This is the most speculative candidate but also the most philosophically interesting, as it tests substrate dependence in a domain where the ``physics'' is narrative rather than combinatorial.
+\end{itemize}
+
+Each of these domains offers a different balance of tractability, familiarity, and philosophical interest. A systematic survey of probe domains, calibrated against the five criteria above, is a natural next step.
+
+\subsection{Scaling Laws and Training Interventions}
+\label{sec:scaling}
+
+Running the protocol across model scales could reveal whether the fidelity of the model's implicit probability distributions scales with model size, training data, or architectural features. If larger models produce distributions closer to the ground truth, this suggests that combinatorial reasoning improves with scale. If the gap persists, the deficit may be architectural---a property of autoregressive generation itself rather than of model capacity.
+
+Using ground truth divergence as a training signal is another natural extension. Fine-tuning a model to minimize $D_{\mathrm{KL}}(P^* \| \hat{P})$ on Minesweeper boards would teach the model to produce combinatorially correct distributions. The goal would be to make the model's ``physics'' substrate-invariant: correct regardless of narrative context or generation mechanism. Whether this is achievable within the autoregressive framework is an open question with implications for the nature of implicit world models in language.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have proposed a method for testing whether the implicit laws of an LLM-generated world depend on the computational substrate that produces observable outcomes. The method rests on two ideas: (1)~choose a domain where the correct probability distribution is a mathematical theorem, not an empirical estimate, and (2)~vary both the substrate and the ontological framing while holding the observable state constant.
+
+Minesweeper is the canonical case. A partially revealed board defines a constraint satisfaction problem with an exact solution. The model's output, sampled repeatedly, yields an empirical distribution that can be compared cell by cell with the ground truth. The three-universe design---homogeneous substrate, external RNG, decoupled oracle---tests whether this distribution depends on who generates the outcome and how that generation is coupled to the narrative. Classical controls (deterministic cells) eliminate generic failure. Narrative families test whether the distribution depends on how the board is described.
+
+The quantum framing test adds a further dimension. The Minesweeper rules, as formalized in this paper, are not merely analogous to quantum mechanics---they are structurally isomorphic to it: superposition over valid configurations, projective measurement via clicking, the Born rule as configuration counting under uniform measure, nonlocal correlations through global constraints, and no hidden variables under on-demand generation. Family~D describes the board using the language that correctly names this structure. If the resulting distribution diverges from the ground truth---especially if it diverges more than the game-language descriptions---the agent has discovered something beyond substrate dependence: structural non-recognition. The universe implements quantum-compatible rules but fails to recognize them as such when addressed in quantum-mechanical language. The substrate computes; the ontology confabulates. The agent does not need entangled photons or Bell test apparatus to reach this conclusion. It needs only a board with known probabilities and the observation that its universe responds differently to the correct formal description of its own rules than to the informal one.
+
+The predicted finding---different distributions across universes and across ontological framings---would demonstrate that the ``physics'' of the Minesweeper world is not a property of the board but a property of the co-generation process. The model can reason about mine probabilities. But the reasoning exists only when agent and game share the same token stream. Separate the stream, and the reasoning vanishes. Invoke the correct formal name for the structure the model implements, and the reasoning may degrade further. The physics, it turns out, was made of the same stuff as the narrative---and the universe does not know the name of its own physics.
+
+Rosencrantz's coin, in our version, has a known probability. It is not 50/50, and it is not heads every time. It is whatever the combinatorics of the board demand. And now we can measure whether the universe of the model respects that probability---or whether, as in the play, the coin falls as the playwright decides.
+
+\begin{thebibliography}{99}
+\bibitem[Bostrom(2003)]{bostrom2003} Bostrom, N. (2003). Are you living in a computer simulation? \emph{Philosophical Quarterly}, 53(211), 243--255.
+\bibitem[Beane et al.(2014)]{beane2014} Beane, S.~R., Davoudi, Z., \& Savage, M.~J. (2014). Constraints on the universe as a numerical simulation. \emph{European Physical Journal A}, 50(9), 148.
+\bibitem[Kaye(2000)]{kaye2000} Kaye, R. (2000). Minesweeper is NP-complete. \emph{Mathematical Intelligencer}, 22(2), 9--15.
+\bibitem[Li et al.(2023)]{li2023emergent} Li, K., Hopkins, A.~K., Bau, D., Vi\\'egas, F., Pfister, H., \& Wattenberg, M. (2023). Emergent world representations: Exploring a sequence model trained on a synthetic task. \emph{ICLR 2023}.
+\bibitem[Gurnee \& Tegmark(2024)]{gurnee2024} Gurnee, W. \& Tegmark, M. (2024). Language models represent space and time. \emph{ICLR 2024}.
+\bibitem[Kadavath et al.(2022)]{kadavath2022} Kadavath, S., et al. (2022). Language models (mostly) know what they know. \emph{arXiv:2207.05221}.
+\bibitem[Tian et al.(2024)]{tian2024} Tian, Y., et al. (2024). Are large language models good game players? \emph{arXiv:2310.06114}.
+\end{thebibliography}
+
+\end{document}

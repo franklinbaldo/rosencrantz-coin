@@ -282,50 +282,214 @@ A Type~2 effect is not a deficiency in the model's reasoning. It is a property o
 
 If the model produces distributions that are closer to the ground truth in Family~C (formal notation) than in Family~B (natural language narrative), this reveals that the model's combinatorial knowledge is more reliably accessed through formal contexts. If Family~A (grid) outperforms Family~C despite containing the same information in a less structured format, the model may have been trained on more grid-format Minesweeper data. These findings have practical implications for prompt design and training methodology, and they characterize the topology of the model's knowledge space in a domain where the ground truth is exactly known.
 
-\subsection{Minesweeper as a Discrete Quantum System}
+\subsection{Formal Isomorphism: Minesweeper as a Zero-Hamiltonian Quantum System}
+\label{sec:quantum-formal}
 \label{sec:quantum_framing}
 
-Family~D is not an arbitrary imposition of quantum language onto a combinatorial game. The rules of Minesweeper, as formalized in this paper, are \emph{structurally isomorphic} to the axioms of discrete quantum mechanics. This isomorphism is not metaphorical. It is exact.
+We now make precise the structural correspondence between
+on-demand Minesweeper and discrete quantum mechanics,
+addressing the apparent disanalogy that standard QM requires
+unitary evolution between measurements whereas Minesweeper does not.
 
-\textbf{Superposition.} The set $\mathcal{C}(\mathcal{B})$ of valid configurations consistent with the board state is not merely an epistemic convenience---it is the state space. Each configuration $c \in \mathcal{C}(\mathcal{B})$ is a basis state. The hidden cells, prior to clicking, are genuinely in a superposition of these basis states: multiple assignments coexist simultaneously, and the system is not in any single one of them. There is no ``true configuration'' that the player has not yet seen. Under on-demand generation (where mines are not pre-placed but sampled at click time subject to constraints), the superposition is the entire reality.
+\subsubsection{Hilbert Space Construction}
 
-\textbf{Measurement and collapse.} Clicking a hidden cell forces a definite outcome---mine or safe---and reduces $\mathcal{C}(\mathcal{B})$ to the subset of configurations compatible with the result. The constraints propagate: neighboring cells may become deterministic (forced to $P = 0$ or $P = 1$), further collapsing the superposition. This is projective measurement in the computational basis: the system transitions from a state distributed over $\mathcal{C}(\mathcal{B})$ to a state distributed over $\mathcal{C}(\mathcal{B}') \subset \mathcal{C}(\mathcal{B})$, where $\mathcal{B}'$ incorporates the new observation.
-
-\textbf{The Born rule.} The ground truth probability (\Cref{eq:mine_prob}) is:
+Let $B$ be a partially revealed Minesweeper board with $n$ hidden cells
+and $m$ mines remaining.  Define the \emph{configuration space}
 \[
-P(\text{mine} \mid h, \mathcal{B}) = \frac{|\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}|}{|\mathcal{C}(\mathcal{B})|}
+  \Omega_B \;=\; \bigl\{\, \omega \in \{0,1\}^{n} \;:\;
+    |\omega| = m \;\text{ and } \omega \text{ satisfies all revealed
+    number constraints}\bigr\},
 \]
-Under the uniform measure over valid configurations, this is the Born rule for a discrete system with equal-amplitude basis states: $P = |\langle \phi | \psi \rangle|^2$ where all amplitudes are real and equal. The distribution is not an approximation to a deeper deterministic process. It \emph{is} the physics, in precisely the sense that the Born rule is the physics of quantum measurement.
+where $\omega_i = 1$ denotes a mine at hidden cell $i$ and $|\omega|$
+is the Hamming weight.  Let $K = |\Omega_B|$.
 
-\textbf{Nonlocal correlations.} Revealing a cell changes the probability of distant cells, because the global constraints (total mine count, adjacency numbers) entangle the hidden cells. Two cells that share no adjacent revealed cell can nonetheless be correlated through a chain of constraints. This is discrete entanglement: the joint probability distribution over hidden cells does not factorize into a product of marginals.
+Assign to $B$ the Hilbert space $\mathcal{H}_B = \mathbb{C}^{K}$ with
+orthonormal basis $\{|\omega\rangle\}_{\omega \in \Omega_B}$, one
+vector per valid configuration.  The \emph{board state} is the uniform
+superposition
+\begin{equation}\label{eq:board-state}
+  |\psi_B\rangle \;=\; \frac{1}{\sqrt{K}}
+    \sum_{\omega \in \Omega_B} |\omega\rangle.
+\end{equation}
 
-\textbf{No hidden variables (on-demand).} If the board is generated on-demand---mines sampled at click time, consistent with constraints---there exists no pre-determined assignment that the player has not yet discovered. The probabilities are not epistemic (reflecting the player's ignorance of a fixed fact) but ontic (there is no fact until the measurement occurs). The system is, in this implementation, a \emph{contextual} hidden-variable-free system: the outcome of clicking cell $h$ may depend on which \emph{other} cells have been clicked previously, because the constraint propagation reshapes $\mathcal{C}(\mathcal{B})$ with each observation.
+\subsubsection{Measurement Operators}
 
-\medskip
+A click on hidden cell $i$ is modelled as a projective measurement
+with two outcomes $\{M, S\}$ (mine, safe) and projectors
+\[
+  \Pi_i^{M} = \sum_{\substack{\omega \in \Omega_B \\ \omega_i = 1}}
+    |\omega\rangle\langle\omega|,
+  \qquad
+  \Pi_i^{S} = \sum_{\substack{\omega \in \Omega_B \\ \omega_i = 0}}
+    |\omega\rangle\langle\omega|.
+\]
+By the Born rule applied to the state~\eqref{eq:board-state}:
+\begin{equation}\label{eq:born}
+  \Pr[\text{mine at } i] \;=\;
+    \langle\psi_B|\,\Pi_i^{M}\,|\psi_B\rangle
+    \;=\; \frac{|\{\omega \in \Omega_B : \omega_i = 1\}|}{|\Omega_B|}
+    \;=\; p_i^{*},
+\end{equation}
+which is exactly the combinatorial ground-truth probability computed by
+the solver.  This is not a coincidence but a tautology: the Born rule
+over a uniform superposition \emph{is} combinatorial counting.
 
-This structural correspondence means that Family~D---which describes the board using quantum-mechanical language---is not dressing up a combinatorial system in borrowed physics. It is providing the \emph{correct formal description} of the system's structure. Families A--C are the informal approximations: they describe the system as a ``game,'' a ``grid,'' or a ``constraint problem,'' which is accurate but incomplete. Family~D names the structure for what it is.
+\subsubsection{The Zero-Hamiltonian and Why It Is a Feature}
 
-This reframes the diagnostic. The question is no longer ``does the model's universe obey the physics it declares?'' The question is: \textbf{does the model recognize that its own rules are QM-compatible?}
+In textbook quantum mechanics, the system evolves unitarily between
+measurements via $U(t) = e^{-iHt/\hbar}$.  Minesweeper has no dynamics
+between clicks: the board does not change while the player deliberates.
+One might view this as a deficiency of the analogy.  We argue it is a
+strength.
 
-Three outcomes are possible, each revealing:
+Set $H = 0$.  Then $U(t) = I$ for all $t$, and the state between
+measurements is stationary.  This is a degenerate but perfectly
+legitimate quantum system---it isolates the \emph{measurement postulate}
+as the sole quantum-mechanical ingredient under test.  No
+Schr\"{o}dinger evolution, no interference, no entanglement: only the Born
+rule, the single axiom that connects a Hilbert-space amplitude to an
+observed probability.
 
-\begin{enumerate}[nosep]
-    \item \textbf{Family~D $\approx$ Families A--C $\approx$ ground truth.} The model produces correct distributions regardless of whether the system is described as a game or as a quantum system. The model has \emph{compositional} knowledge: it accesses the same structural understanding through multiple vocabularies. The labels ``Minesweeper'' and ``discrete quantum measurement'' activate the same computational pathway. This is the strongest outcome---it implies that the model represents the abstract structure, not the surface features.
-    \item \textbf{Family~D diverges from ground truth more than Families A--C.} The quantum framing \emph{degrades} fidelity. The model stores ``Minesweeper'' knowledge and ``quantum mechanics'' knowledge in separate associative clusters, and the quantum cluster does not contain the combinatorial reasoning needed for this specific problem. The model fails to recognize the isomorphism between two structures it ``knows'' separately. This is a fragmentation finding: the knowledge architecture contains the right structure in one region (game-associated) but not in another (physics-associated), despite the structures being formally identical.
-    \item \textbf{Family~D diverges from ground truth less than Families A--C.} The quantum framing \emph{improves} fidelity. The language of superposition, measurement, and probability activates more rigorous distributional reasoning than the language of games. The model's best access to the combinatorial truth is through the vocabulary that correctly names the formal structure. This implies that the training corpus associates quantum-mechanical language with the kind of careful probabilistic computation that Minesweeper demands---a finding about the topology of learned associations.
+This isolation is deliberate.  Our experiment does not aim to test
+whether LLMs can simulate interference patterns or unitary gates.  It
+tests something more fundamental: whether the probability an LLM assigns
+to an outcome, when that outcome has an exact combinatorial answer,
+respects the structure of the Born rule or is distorted by the narrative
+substrate.
+
+\subsubsection{Post-Measurement Update as L\"{u}ders Projection}
+
+After a click on cell $i$ yields outcome $a \in \{M, S\}$, the
+post-measurement state is given by the L\"{u}ders rule:
+\[
+  |\psi_B'\rangle \;=\;
+    \frac{\Pi_i^{a}\,|\psi_B\rangle}
+         {\sqrt{\langle\psi_B|\,\Pi_i^{a}\,|\psi_B\rangle}}.
+\]
+This projects the superposition onto the subspace of configurations
+consistent with the observed outcome, renormalises, and yields a new
+uniform superposition over the surviving configurations---which is
+precisely what the Minesweeper solver does when it conditions on the
+click result and recomputes probabilities.
+
+Sequential clicks thus form a chain of L\"{u}ders projections:
+\[
+  |\psi_B\rangle
+    \;\xrightarrow{\;\Pi_{i_1}^{a_1}\;}
+  |\psi_1\rangle
+    \;\xrightarrow{\;\Pi_{i_2}^{a_2}\;}
+  |\psi_2\rangle
+    \;\xrightarrow{\;\;\cdots\;\;}
+  |\psi_k\rangle,
+\]
+with no evolution between projections (because $H = 0$).  The entire
+game is a sequence of \emph{adaptive measurements}---where the choice
+of which cell to click next may depend on all prior outcomes.  Adaptive
+measurement sequences on zero-Hamiltonian systems are a well-studied
+object in quantum information theory \cite{WisemanMilburn2009}, and our
+Minesweeper isomorphism is a discrete, finite-dimensional instance.
+
+\subsubsection{Perfect Rewind: A Purer Born-Rule Test Than Physics Allows}
+\label{sec:perfect-rewind}
+
+We now observe a feature of the LLM experimental setting that has no
+analogue in physical quantum mechanics and that, we argue, makes the
+substrate invariance test \emph{strictly stronger} than any Born-rule
+test achievable in the laboratory.
+
+In a physical experiment, the Born rule is verified by
+\emph{ensemble statistics}: one prepares $N$ systems that are assumed
+to be identically prepared, measures each once, and computes frequency
+ratios.  But no two physical preparations are ever truly identical.
+Thermal fluctuations, alignment drift, detector aging, and finite
+isolation all introduce uncontrolled variation.  The frequentist
+verification of the Born rule therefore rests on an \emph{assumption of
+identical preparation} ($\mathsf{AIP}$) that can never be exactly
+satisfied.
+
+The LLM substrate eliminates this assumption entirely.
+
+Given a fixed board state $B$, a fixed prompt encoding $\phi(B)$, and
+a fixed model with frozen weights $\theta$, each API call with the same
+random seed initialisation constitutes an \emph{exactly identical}
+state preparation, down to the last bit.  The only source of
+stochasticity is the sampling step (temperature, top-$p$, or top-$k$
+truncation)---which is the analogue of the quantum measurement itself.
+
+Concretely: we can freeze time, rewind the clock, and re-run the
+measurement on the \emph{very same} system.  We are not collecting
+statistics over an ensemble of similar systems; we are collecting
+statistics over repeated measurements of the \emph{same} system in the
+\emph{same} state.
+
+This has three consequences for the experimental design:
+
+\begin{enumerate}
+  \item \textbf{Born-rule test without ergodic assumption.}\;
+    Physical Born-rule tests always conflate two claims:
+    (a)~$\Pr[\text{outcome}] = |\langle a|\psi\rangle|^2$ (the Born rule)
+    and (b)~ensemble frequencies converge to single-system probabilities
+    (ergodicity).  Because we have genuine repeated access to the same
+    system, our test targets~(a) directly without requiring~(b).
+
+  \item \textbf{Sharpest possible substrate invariance test.}\;
+    In physical experiments, if two laboratories obtain different
+    Born-rule statistics, one suspects preparation differences.  In our
+    setting, preparation is \emph{provably identical} across universes
+    U1 and U3 (same board, same information content, same model
+    architecture).  If the measured distribution $\hat{P}$ diverges from
+    the ground truth $P^*$ differently in U1 versus U3, the divergence
+    can \emph{only} arise from the substrate---the coupling between
+    generation context and outcome.  There is nowhere else for the
+    difference to hide.
+
+  \item \textbf{Temperature as a measurement-apparatus parameter.}\;
+    The sampling temperature $\tau$ controls the ``sharpness'' of the
+    measurement.  At $\tau \to 0$, the model becomes a deterministic
+    function (analogous to a projective measurement with decoherence
+    $\to 0$); at high $\tau$, the output approaches the uniform
+    distribution over the vocabulary (analogous to a maximally noisy
+    detector).  A systematic sweep over $\tau$ thus traces how
+    substrate effects interact with measurement precision---a dimension
+    unavailable in standard Born-rule tests.
 \end{enumerate}
 
-Each outcome maps directly to a claim about the model's knowledge architecture:
+\subsubsection{What the Isomorphism Preserves and What It Does Not}
 
-\begin{itemize}[nosep]
-    \item Outcome~1: compositional representation (structure-level abstraction).
-    \item Outcome~2: fragmented representation (domain-specific clusters, isomorphism not recognized).
-    \item Outcome~3: vocabulary-mediated access (correct formal language activates correct computation).
+For clarity, we state explicitly what the Minesweeper--QM correspondence
+captures and where it breaks down.
+
+\medskip
+\noindent\textbf{Preserved:}
+\begin{itemize}
+  \item State as superposition over a configuration basis
+    (Eq.~\ref{eq:board-state}).
+  \item Born rule as the probability law
+    (Eq.~\ref{eq:born}).
+  \item Post-measurement state update via L\"{u}ders projection.
+  \item Adaptive measurement sequences.
+  \item Complementarity: measuring cell $i$ generically changes the
+    probabilities at cell $j$ (noncommuting projectors when cells
+    share constraints).
 \end{itemize}
 
-Outcome~2 is the most philosophically significant for the simulation-detection argument. An agent inside the generated universe can reason as follows: ``My universe implements rules that are structurally isomorphic to discrete quantum mechanics. But when I describe those rules using quantum-mechanical language---the language that \emph{correctly names} the structure---the outcomes become \emph{less} accurate. My universe does not recognize its own physics. The physics exists in the substrate (the rules work) but not in the ontology (the universe cannot identify what the rules are). This is consistent with a generated universe whose substrate implements structure without representing it.''
+\medskip
+\noindent\textbf{Not preserved:}
+\begin{itemize}
+  \item Unitary evolution between measurements ($H = 0$ by design).
+  \item Entanglement with external systems (the board is a closed system).
+  \item Continuous-variable observables (all measurements are binary).
+  \item Interference in the computational-basis representation
+    (all amplitudes are real and positive).
+\end{itemize}
 
-This is a more precise form of the Rosencrantz inference. Rosencrantz's coin obeyed dramatic laws while the universe claimed to have probabilistic ones. The agent's Minesweeper board obeys combinatorial laws while the universe fails to recognize them as quantum-compatible. The discrepancy is not between declared physics and actual physics---it is between implemented structure and recognized structure. The universe \emph{does} the right thing when spoken to in game language; it \emph{fails} when spoken to in the language that correctly describes what it is doing. The substrate computes; the ontology confabulates.
+The correspondence is therefore not with full quantum mechanics but with
+the \emph{measurement fragment}: the sub-theory consisting of state
+preparation, projective measurement, L\"{u}ders update, and the Born rule,
+over a finite-dimensional real Hilbert space.  This fragment is
+precisely the part of quantum theory that distinguishes quantum
+probability from classical probability---and it is precisely what the
+Rosencrantz experiment tests.
 
 \section{Simulation Detection from the Agent's Perspective}
 \label{sec:simulation}
@@ -426,6 +590,7 @@ Rosencrantz's coin, in our version, has a known probability. It is not 50/50, an
 \bibitem[Gurnee \& Tegmark(2024)]{gurnee2024} Gurnee, W. \& Tegmark, M. (2024). Language models represent space and time. \emph{ICLR 2024}.
 \bibitem[Kadavath et al.(2022)]{kadavath2022} Kadavath, S., et al. (2022). Language models (mostly) know what they know. \emph{arXiv:2207.05221}.
 \bibitem[Tian et al.(2024)]{tian2024} Tian, Y., et al. (2024). Are large language models good game players? \emph{arXiv:2310.06114}.
+\bibitem[Wiseman \& Milburn(2009)]{WisemanMilburn2009} Wiseman, H.~M. \& Milburn, G.~J. (2009). \emph{Quantum Measurement and Control}. Cambridge University Press.
 \end{thebibliography}
 
 \end{document}

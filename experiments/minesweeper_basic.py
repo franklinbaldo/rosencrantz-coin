@@ -16,19 +16,20 @@ Environment variables:
     ROSENCRANTZ_MINES:    Mine count (default: 4)
 """
 
-import sys
-import os
 import json
+import os
+import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
+from rosencrantz.analysis import (
+    BoardResult,
+    kl_between_universes,
+)
 from rosencrantz.board import generate_board
 from rosencrantz.solver import solve
 from rosencrantz.universes import run_universe1, run_universe2, run_universe3
-from rosencrantz.analysis import (
-    BoardResult, CellResult, kl_between_universes, proportion_z_test,
-)
 
 
 def main():

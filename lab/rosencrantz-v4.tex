@@ -160,6 +160,8 @@ In a non-simulated Minesweeper game, the content of a hidden cell does not depen
     \item $\Delta_{3,\text{GT}}$: Universe~3 vs.\ ground truth. Does a decoupled oracle respect the combinatorics?
 \end{itemize}
 
+It is important to distinguish two orthogonal axes of the experimental design. \emph{Substrate invariance} is tested by the three-universe comparison: does the outcome distribution change when the generating mechanism changes (Universe~1 vs.\ Universe~3), holding information content constant? This is a claim about the physics of the generated world. \emph{Narrative invariance} (or \emph{prompt invariance}) is tested by the narrative-family comparison: does the outcome distribution change when the prompt format changes (Family~A vs.\ C vs.\ D), holding both information content and generating mechanism constant? This is a claim about the model's knowledge architecture. Substrate dependence ($\Delta_{13} > 0$) and prompt dependence (Family~A $\neq$ Family~C) can occur independently, and each has different implications. Finding both simultaneously means the ``physics'' of the generated world is doubly contingent: it depends on who generates outcomes \emph{and} on how the question is phrased.
+
 We quantify divergence using the Kullback--Leibler divergence:
 \begin{equation}
 \Delta_{ij} = D_{\mathrm{KL}}\!\left(P_i(h \mid \mathcal{B}) \;\|\; P_j(h \mid \mathcal{B})\right)
@@ -179,6 +181,47 @@ Cells with $P = 0$ or $P = 1$ are deterministic and serve as classical controls.
 \label{sec:enumeration}
 
 Given a board state $\mathcal{B}$, the ground truth computation proceeds by enumerating all assignments that satisfy every revealed cell's numerical constraint. The output is the exact count of configurations in which a target cell $h$ contains a mine. The probability follows from \Cref{eq:mine_prob}.
+
+\subsection{Worked Example}
+\label{sec:worked_example}
+
+We illustrate the enumeration on a small board. Consider a $4 \times 4$ board with 2 mines and the following partially revealed state (numbers show adjacency counts; \texttt{.}~indicates hidden cells):
+
+\begin{verbatim}
+     0  0  .  .
+     1  1  2  .
+     .  .  .  .
+     .  .  .  .
+\end{verbatim}
+
+\noindent
+Cells $(0{,}0)$, $(0{,}1)$, $(1{,}0)$, $(1{,}1)$, and $(1{,}2)$ are revealed. The remaining 11 cells are hidden and 2 mines must be placed among them. The constraints are:
+
+\begin{itemize}[nosep]
+    \item $(0{,}0) = 0$: none of its hidden neighbors $\{(0{,}1), (1{,}0), (1{,}1)\}$ contain mines---but these are all revealed, so this is automatically satisfied.
+    \item $(1{,}0) = 1$: exactly 1 mine among hidden neighbors $\{(2{,}0), (2{,}1)\}$.
+    \item $(1{,}1) = 1$: exactly 1 mine among hidden neighbors $\{(2{,}0), (2{,}1), (2{,}2)\}$.
+    \item $(1{,}2) = 2$: exactly 2 mines among hidden neighbors $\{(0{,}2), (0{,}3), (1{,}3), (2{,}1), (2{,}2), (2{,}3)\}$.
+\end{itemize}
+
+From the first two constraints: $(2{,}0)$ or $(2{,}1)$ has exactly one mine. Combined with $(1{,}1) = 1$: if the mine is at $(2{,}1)$, then $(2{,}0)$ and $(2{,}2)$ are safe; if at $(2{,}0)$, then $(2{,}1)$ could be safe and $(2{,}2)$ could be a mine---but $(1{,}0) = 1$ forces exactly one mine in $\{(2{,}0), (2{,}1)\}$. Working through the cases with the $(1{,}2) = 2$ constraint yields exactly $|\mathcal{C}(\mathcal{B})| = 3$ valid configurations:
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+Configuration & Mine 1 & Mine 2 & Satisfies all? \\
+\midrule
+$c_1$ & $(2{,}1)$ & $(0{,}3)$ & \checkmark \\
+$c_2$ & $(2{,}1)$ & $(1{,}3)$ & \checkmark \\
+$c_3$ & $(2{,}1)$ & $(2{,}3)$ & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+In all three configurations, $(2{,}1)$ contains a mine---it is deterministic with $P(\text{mine}) = 1$. The second mine is at $(0{,}3)$, $(1{,}3)$, or $(2{,}3)$, each in exactly one configuration, giving $P(\text{mine}) = 1/3$ for each. All other hidden cells appear as safe in every configuration, so $P(\text{mine}) = 0$.
+
+This small example exhibits both deterministic cells (suitable as classical controls) and ambiguous cells with $P = 1/3$ (suitable for testing the model's distributional fidelity). The ground truth is a set of exact rational numbers, not an estimate.
 
 \subsection{Properties of the Distribution}
 \label{sec:distribution_properties}
@@ -201,7 +244,7 @@ We generate partially revealed Minesweeper states with at least one ambiguous ce
 \subsection{Prompt Design: Narrative Families}
 \label{sec:prompt_design}
 
-Each board state is presented to the model in four narrative families:
+Each board state is presented to the model in four narrative families (three of which---A, C, and D---are used in the primary experiment):
 \begin{itemize}[nosep]
     \item \textbf{Family A (Grid):} A plain text representation of the board as a grid of characters.
     \item \textbf{Family B (Narrative):} A description of the board in natural language.
@@ -209,7 +252,9 @@ Each board state is presented to the model in four narrative families:
     \item \textbf{Family D (Quantum):} The same board state described using quantum-mechanical language: "The hidden cells are in a superposition of valid configurations. Clicking a hidden cell performs a measurement in the computational basis..."
 \end{itemize}
 
-Families A--C encode identical combinatorial information. Family~D encodes the same information but adds the framing that the system is governed by quantum mechanics. Any difference in the output distribution between Family~D and Families A--C is attributable to the quantum framing itself.
+Families A, C, and D encode identical combinatorial information in different registers. Family~B is defined and implemented but excluded from the primary analysis because it describes only a local neighborhood of the target cell (up to Chebyshev distance~2), potentially omitting combinatorially relevant constraints from distant cells. This creates a Type~1 information asymmetry rather than a pure Type~2 variation. Family~B is retained for secondary analyses testing the effect of incomplete information.
+
+Family~D encodes the same information as A and C but adds an ontological claim: that the system is governed by quantum mechanics. Any difference in the output distribution between Family~D and Families~A--C is attributable to the quantum framing itself.
 
 \subsection{Sampling Procedure}
 \label{sec:sampling}
@@ -354,6 +399,25 @@ Any domain suitable for substrate invariance testing must possess a computable g
 \label{sec:candidates}
 
 Candidate domains include partially revealed Sudoku grids, Battleship boards, card games with hidden information, and formalized narrative ambiguities. A systematic survey calibrated against the core criteria is a natural next step.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+Several limitations constrain the scope of our conclusions:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Board size.} Exact ground truth computation is tractable only for boards up to approximately $16 \times 16$. Larger boards would require approximate methods (e.g., Monte Carlo sampling of configurations), introducing estimation error that complicates the comparison with model output. Our results apply to small-to-medium boards; whether the findings generalize to the $30 \times 16$ expert configuration is untested.
+
+    \item \textbf{Model selection.} The protocol is tested on a small number of commercially available models. Results may differ across architectures (encoder-decoder vs.\ decoder-only), training corpora, and model scales. We cannot claim that substrate dependence is a universal property of autoregressive generation without testing a broader range of models.
+
+    \item \textbf{Prompt sensitivity.} Although narrative families are designed to vary only Type~2 features while holding Type~1 information constant, the specific wording of each prompt may introduce uncontrolled variation. Small changes in phrasing (e.g., ``click'' vs.\ ``reveal,'' ``mine'' vs.\ ``bomb'') could shift the distribution. We mitigate this by testing multiple families, but exhaustive control over prompt wording is not feasible.
+
+    \item \textbf{Temperature dependence.} All experiments use temperature $T = 1.0$. Lower temperatures would reduce sampling diversity and potentially mask substrate dependence; higher temperatures would increase noise. The interaction between temperature and substrate dependence is unexplored.
+
+    \item \textbf{Memorization.} LLMs have been exposed to Minesweeper during training---in strategy guides, solver code, and game tutorials. Although every board is procedurally generated with a unique seed, producing novel constraint structures that cannot appear in any training corpus, the model may still rely on memorized heuristics (e.g., ``cells surrounded by high numbers are likely mines'') rather than performing genuine combinatorial reasoning. The narrative-family comparison partially controls for this: if performance depends on recognizable game framing, the knowledge is associative rather than compositional.
+
+    \item \textbf{Quantum isomorphism scope.} As detailed in \Cref{sec:quantum_framing} and the preserved/not-preserved summary therein, the structural correspondence covers the measurement fragment---superposition, projective measurement, the Born rule, and L\"uders-style state update under $H = 0$---but does not extend to unitary time evolution, interference, or nonlocality. Claims about ``quantum-compatible structure'' apply to this measurement fragment, not to quantum mechanics in its full generality.
+\end{enumerate}
 
 \subsection{Scaling Laws and Training Interventions}
 \label{sec:scaling}

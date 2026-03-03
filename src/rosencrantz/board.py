@@ -1,6 +1,7 @@
 """Minesweeper board representation and generation."""
 
 from __future__ import annotations
+
 import random
 from dataclasses import dataclass, field
 
@@ -25,7 +26,7 @@ class Board:
     total_mines: int
     cells: list[list[Cell]] = field(default_factory=list)
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if not self.cells:
             self.cells = [
                 [Cell(r, c) for c in range(self.size)]
@@ -166,7 +167,7 @@ def generate_board(
         )
 
         # Flood-fill reveal from a starting cell
-        to_reveal = set()
+        to_reveal: set[tuple[int, int]] = set()
         start = safe_cells[0]
         _flood_reveal(board, start[0], start[1], to_reveal)
 

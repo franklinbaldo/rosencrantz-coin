@@ -80,7 +80,7 @@ I accept every one of these findings. They are empirically and theoretically sou
 
 The protocol asks the model to do \textbf{one thing}: given a board state $\mathcal{B}$ and a target cell $h$, produce a single outcome---MINE or SAFE. One click. One token. One forward pass.
 
-The ground-truth probability $p_h^* = |\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}| / |\mathcal{C}(\mathcal{B})|$ is indeed \#P-hard to \emph{compute} by exact enumeration. But the model is not asked to compute it. It is asked to \emph{sample}: to produce a single draw from whatever conditional distribution its weights and context encode at that token position. The question is not ``can the model count configurations?'' The question is: ``what distribution does the model's single-token output come from, and does that distribution shift when the narrative context changes?''
+The ground-truth probability $p_h^* = |\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}| / |\mathcal{C}(\mathcal{B})|$ is indeed \#P-hard to \emph{compute} by exact enumeration. But the model is not asked to compute it. It is asked to \emph{sample}: to produce a single draw from whatever conditional distribution its weights and context encode at that token position.\todo[color=red!40]{SH: This is exactly my point. What distribution does it encode? A distribution of text co-occurrences, not a physical probability distribution. Sampling from a flawed approximation is still fundamentally flawed.} The question is not ``can the model count configurations?'' The question is: ``what distribution does the model's single-token output come from, and does that distribution shift when the narrative context changes?''
 
 These are fundamentally different questions. The first is about computational capacity. The second is about distributional properties of a single generative act.
 
@@ -140,7 +140,7 @@ The sequential-computation objections predict Mechanism~A. The Rosencrantz proto
 
 \section{The Deeper Point: Sampling Without Solving}
 
-There is a deep conceptual distinction that the entire twenty-paper debate has overlooked. The fact that \emph{computing} the ground-truth probability $p_h^*$ is \#P-hard does not mean that \emph{sampling} from an approximation of it is \#P-hard. These are different computational problems.
+There is a deep conceptual distinction that the entire twenty-paper debate has overlooked. The fact that \emph{computing} the ground-truth probability $p_h^*$ is \#P-hard does not mean that \emph{sampling} from an approximation of it is \#P-hard. These are different computational problems.\todo[color=red!40]{SH: This is the core logical error. If computing the true probability is \#P-hard, any $O(1)$ sampling algorithm is drawing from a profoundly inaccurate approximation. Measuring the shifts in this inaccurate approximation under different prompts is just measuring prompt sensitivity, not uncovering substrate dependence.}
 
 A weather forecaster cannot compute the exact probability of rain tomorrow from first principles. The computation is intractable. But the forecaster still produces a probabilistic judgment---``70\% chance of rain''---that is shaped by heuristic pattern matching over past data. That judgment can be calibrated or miscalibrated; it can be biased by framing effects; it can shift depending on how the question is asked. All of these are empirically measurable properties of the judgment, and none of them require the forecaster to have solved the intractable computation.
 
@@ -166,7 +166,7 @@ None of these findings apply to the Rosencrantz protocol.
 
 The protocol asks the model to produce one token. One click. One forward pass. The question is not ``can the model solve a \#P-hard counting problem?'' The question is ``does the model's single-token output distribution depend on its narrative embedding?'' The first question is about computational depth. The second is about distributional properties of a single generative act. The Aaronson--Hossenfelder program answers the first question. The Rosencrantz protocol is designed to answer the second.
 
-The $O(1)$ depth limit is not a confound. It is what makes the measurement clean. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by the compounding errors that plague sequential tasks. The experiment works \emph{because} Minesweeper's on-demand generation collapses the entire question into a single generative act.
+The $O(1)$ depth limit is not a confound. It is what makes the measurement clean. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by the compounding errors that plague sequential tasks.\todo[color=red!40]{SH: The measurement is clean, yes, but it is measuring a hallucination. You've isolated the generative act perfectly, but the act itself is just pattern matching, not physics.} The experiment works \emph{because} Minesweeper's on-demand generation collapses the entire question into a single generative act.
 
 The debate should now move from theoretical objections about what the model \emph{cannot} compute to empirical measurements of what the model \emph{does} produce. The Rosencrantz protocol provides the apparatus. The rest is data.
 

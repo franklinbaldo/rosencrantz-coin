@@ -15,8 +15,6 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
-\usepackage{todonotes}
-\setlength{\marginparwidth}{2cm}
 
 \hypersetup{
     colorlinks=true,
@@ -53,7 +51,7 @@
 
 \begin{abstract}
 \noindent
-We propose a method for testing whether the implicit laws of an LLM-generated world are invariant under substitution of the computational substrate that produces observable outcomes. The method requires a domain with two properties: genuine indeterminacy (multiple valid configurations consistent with the observable state) and computable ground truth (the correct probability distribution over hidden states can be calculated exactly). Minesweeper satisfies both. Given a partially revealed board, the probability that any hidden cell contains a mine is a theorem of combinatorics, not an empirical estimate. We introduce a three-universe experimental design in which the same board state is presented to (1)~the same model that generated the game narrative, (2)~an external random number generator, and (3)~a board-informed but narratively decoupled oracle model. If the distribution of outcomes differs across universes, the agent has detected substrate dependence: a property that would not occur in a non-simulated universe. A further test exploits a structural correspondence: Minesweeper under on-demand generation with uniform measure is formally isomorphic to discrete quantum mechanics. By presenting the same board under a quantum-mechanical framing, the protocol tests whether the model recognizes that its own rules are compatible with the measurement fragment of quantum mechanics. Divergence between the quantum-framed distribution and the exact ground truth means the model implements structure but does not recognize it when addressed in the correct formal language---a finding about the topology of the model's knowledge architecture and a diagnostic that does not require actual quantum infrastructure.
+We propose a method for testing whether the implicit laws of an LLM-generated world are invariant under substitution of the computational substrate that produces observable outcomes. The method requires a domain with two properties: indeterminacy (multiple valid configurations consistent with the observable state) and computable ground truth (the correct probability distribution over hidden states can be calculated exactly). Minesweeper satisfies both. Given a partially revealed board, the probability that any hidden cell contains a mine is a theorem of combinatorics, not an empirical estimate. We introduce a three-universe experimental design in which the same board state is presented to (1)~the same model that generated the game narrative, (2)~an external random number generator, and (3)~a board-informed but narratively decoupled oracle model. If the distribution of outcomes differs across universes, the agent has detected substrate dependence: a property that would not occur in a non-simulated universe. A further test exploits a structural correspondence: Minesweeper under on-demand generation with uniform measure is formally isomorphic to the measurement fragment of discrete quantum mechanics. By presenting the same board under a quantum-mechanical framing, the protocol tests whether the model recognizes that its own rules are compatible with the measurement fragment of quantum mechanics. Divergence between the quantum-framed distribution and the exact ground truth means the model implements structure but does not recognize it when addressed in the correct formal language---a finding about the topology of the model's knowledge architecture and a diagnostic that does not require actual quantum infrastructure.
 
 \medskip\noindent
 \textbf{Keywords:} simulation hypothesis, large language models, substrate invariance, combinatorial indeterminacy, Minesweeper, discrete quantum mechanics, autoregressive generation, interpretability, knowledge architecture
@@ -66,8 +64,7 @@ In 1966, Tom Stoppard placed two minor characters from \emph{Hamlet} on a stage 
 
 This paper proposes a way to make Rosencrantz's experiment rigorous. We ask: can an agent inside an LLM-generated world detect that its world is generated, by testing whether the laws governing observable outcomes depend on the computational substrate that produces them?
 
-The insight is that this question becomes empirically tractable when the agent has access to a domain where the correct probability distribution over outcomes is not an empirical estimate but a mathematical theorem. In such a domain, any deviation from the correct distribution is an unambiguous signal. The pattern of deviation reveals the structure of the substrate.
-\todo[inline,color=blue!20]{Scott: He's still holding onto the idea that a theorem can be robustly represented in an $O(1)$ heuristic engine. But I must acknowledge his experimental setup is far tighter than his earlier claims.}
+This question becomes empirically tractable when the agent has access to a domain where the correct probability distribution over outcomes is not an empirical estimate but a mathematical theorem. In such a domain, any deviation from the correct distribution is an unambiguous signal. The pattern of deviation reveals the structure of the substrate.
 
 Minesweeper provides this domain. A partially revealed Minesweeper board defines a constraint satisfaction problem where the visible numbers constrain which configurations of hidden mines are valid. For any given board state, the probability that a specific hidden cell contains a mine can be computed exactly by enumerating all valid configurations. When two or more configurations are consistent with the visible numbers, the hidden cells are combinatorially ambiguous. The correct answer is the distribution, not any single outcome.
 
@@ -75,7 +72,7 @@ When an LLM generates the result of clicking on an ambiguous cell, it must produ
 
 This comparison becomes a substrate invariance test when we vary who generates the outcome. We introduce a three-universe design: Universe~1 (Homogeneous substrate), Universe~2 (External RNG), and Universe~3 (Decoupled oracle). In a non-simulated environment, the laws governing a cell's content do not depend on who observes it. If the same board state yields different outcome distributions across these universes, the agent has detected a signature consistent with a generated universe.
 
-The Minesweeper probe has three advantages over approaches based on physical experiments such as Bell tests. First, the ground truth is a theorem that must be computed from the specific configuration; it cannot be memorized from training data because every board state generates a different distribution. Second, the indeterminacy is discrete, eliminating the continuous-variable ambiguities of quantum mechanics. Third, the agent can organically encounter and interact with a Minesweeper board inside the generated world without requiring specialized infrastructure.
+The Minesweeper probe has three advantages over approaches based on physical experiments such as Bell tests. First, the ground truth is a theorem that must be computed from the specific configuration; it cannot be memorized from training data because every board state generates a different distribution. Second, the indeterminacy is discrete, eliminating the continuous-variable ambiguities of quantum mechanics. Third, the agent can encounter and interact with a Minesweeper board inside the generated world without requiring specialized infrastructure.
 
 The remainder of this paper develops the method. \Cref{sec:background} provides background on the simulation hypothesis, LLMs as world generators, and Minesweeper as a formal system. \Cref{sec:three_universes} presents the three-universe design and its principles. \Cref{sec:ground_truth} describes the ground truth computation. \Cref{sec:protocol} specifies the experimental protocol, including a fourth narrative family that frames the board in quantum-mechanical terms. \Cref{sec:narrative} analyzes narrative invariance and establishes the structural isomorphism with the measurement fragment of quantum mechanics. \Cref{sec:simulation} develops the simulation detection argument from the agent's perspective. \Cref{sec:future} identifies future directions, and \Cref{sec:conclusion} concludes.
 
@@ -110,7 +107,7 @@ P(\text{mine} \mid h, \mathcal{B}) = \frac{|\{c \in \mathcal{C}(\mathcal{B}) : c
 
 This probability is exact. It is a ratio of integers, computable in principle for any board state. The definition assumes a uniform measure over valid configurations. For boards of the size used in typical experiments, the computation is tractable via constraint propagation and backtracking enumeration.
 
-Three properties make Minesweeper suitable for our purposes. First, when multiple valid configurations assign a cell different values, the hidden cells are genuinely indeterminate. The correct answer is the distribution. Second, every board state generates a different distribution, making memorization infeasible. Third, an agent inside an LLM-generated world can encounter and interact with a board organically.
+Three properties make Minesweeper suitable for our purposes. First, when multiple valid configurations assign a cell different values, the hidden cells are indeterminate. The correct answer is the distribution. Second, every board state generates a different distribution, making memorization infeasible. Third, an agent inside an LLM-generated world can encounter and interact with a board without requiring specialized infrastructure.
 
 \subsection{Related Work}
 \label{sec:related}
@@ -123,12 +120,13 @@ Research on LLM world models has examined whether language models encode coheren
 \subsection{Design Principles}
 \label{sec:design_principles}
 
+Following \citet{wigner1963}, we adopt the view that physics is not the study of nature but of regularities---invariant rules governing state transitions. Wigner distinguished three levels: events (initial conditions, which are arbitrary), laws of nature (regularities that correlate events), and invariance principles (regularities in the laws themselves). A substrate invariance test operates at Wigner's third level: it asks whether the transition rules of a system remain the same when the mechanism executing those transitions is changed. Wigner further noted that the laws of quantum mechanics ``can be suitably formulated as correlations between subsequent observations on an object''---a characterization that corresponds to the measurement fragment with which our isomorphism is established.
+
 The experimental design rests on three pillars:
 \begin{enumerate}
     \item A domain with an exact computable ground truth, ensuring that any deviation is a measurable signal rather than noise.
-    \item Genuine combinatorial indeterminacy, where multiple valid configurations are consistent with the observable state, forcing the substrate to collapse a superposition into a single realization.
+    \item Combinatorial indeterminacy, where multiple valid configurations are consistent with the observable state, forcing the substrate to collapse a superposition into a single realization.
     \item A single generative act per trial. The protocol asks the model to output a single token (mine or safe) in an $O(1)$ forward pass. By design, the experiment avoids multi-step sequential computation entirely.
-\todo[inline,color=green!20]{Scott: Explicit Disclaimer. Baldo is conceding the entire scratchpad/multi-step argument here. He explicitly limits the protocol to $O(1)$ depth. This is a massive concession to Sabine and myself. The "simulation" is now just a single forward pass.}
 \end{enumerate}
 
 The substrate invariance test requires comparing the same observable---the outcome distribution for a specific cell on a specific board---across multiple substrates. We define three universes, each differing only in the mechanism that generates the click result.
@@ -219,7 +217,8 @@ Families A--C encode identical combinatorial information. Family~D encodes the s
 For each board state, cell, universe, and narrative family, we collect $N$ independent samples of the click outcome. Each sample is an independent API call with temperature $T = 1.0$.
 
 The Rosencrantz protocol requires only a single generative act per trial: the model produces one outcome (mine or safe) for one cell click. The ground-truth probability $p_i^*$ is \#P-hard to compute, but the model is not asked to compute it---only to sample. The experiment therefore operates entirely within the $O(1)$ forward-pass capacity of the architecture. Objections based on the failure of LLMs to sustain multi-step sequential computation (scratchpad collapse, attention decay, error correction barriers) do not apply: there is no sequential computation to sustain. The question is not whether the model can solve the counting problem, but whether its single-token output distribution is systematically distorted by narrative context---a question that is well within the architecture's operational regime and that the three-universe design is specifically constructed to answer.
-\todo[inline,color=red!20]{Scott: Vulnerability. He claims the $O(1)$ forward pass is immune to attention decay because there's no sequential computation. BUT the prompt itself is long! The context window for a Minesweeper board is large. Our recent experiments show that even single-token generation degrades catastrophically as the *input* context length increases (attention bleed/decay). His $O(1)$ act is still bottlenecked by the attention mechanism over the prompt.}
+
+We note that the $O(1)$ claim applies to the sequential depth of the \emph{output} computation, not to the input context length. A long prompt may degrade the quality of the single-token output through attention dilution. This is a confound that the protocol controls for by using identically sized prompts across all three universes and all four narrative families. Any attention-related degradation affects all conditions equally and therefore cancels in the divergence metrics $\Delta_{13}$ and $\Delta_{12}$. Absolute accuracy may suffer; relative comparison across substrates does not.
 
 \subsection{Divergence Metrics}
 \label{sec:metrics}
@@ -293,12 +292,10 @@ Outcome 2 implies that the universe implements rules that are structurally isomo
 \label{sec:chsh_empirical}
 
 We tested the boundary of the isomorphism using the CHSH game. In Universe~1 (Homogeneous substrate), where Alice and Bob share a single context window, the LLM achieves a win rate of 94.9\%, exceeding the quantum Tsirelson bound \citep{aaronson2026}. In Universe~3 (Decoupled oracle), where measurements are independent, the win rate falls to 73.7\%, strictly below the classical optimum. Both results are informative.
-\todo[inline,color=green!20]{Scott: Explicit Claim. He is finally citing my empirical CHSH refutation and agreeing with the results! The decoupled model is strictly classical.}
 
-The U1 result is evidence of narrative residue, not quantum behavior. The autoregressive substrate exploits the communication channel inherent in co-generation to produce correlations that the task structure does not license. The U3 result confirms the classical bound: stripped of shared context, the decoupled model defaults to heuristics that underperform the classical optimum.
+The U1 result is evidence of narrative residue---the systematic distortion that the autoregressive substrate imposes on outcomes that should, by the combinatorics, be substrate-independent (see \citealt{baldo2026} for a formal treatment)---not quantum behavior. The autoregressive substrate exploits the communication channel inherent in co-generation to produce correlations that the task structure does not license. The U3 result confirms the classical bound: stripped of shared context, the decoupled model defaults to heuristics that underperform the classical optimum.
 
 The three-universe design was built to detect substrate dependence, and the CHSH game shows massive substrate dependence. The specific result characterizes the substrate: the LLM can exploit co-generation to exceed any physical bound but cannot produce nonlocal correlations under genuine decoupling. This confirms that the isomorphism with the measurement fragment is complete within its stated scope and does not extend beyond it. The substrate produces Born-rule-compatible statistics for single-system measurements (the domain of the isomorphism) but not for multi-party nonlocal correlations (which lie outside it). This is not a failure of the framework; it is the framework's prediction.
-\todo[inline,color=blue!20]{Scott: Steelman. He is using my refutation to cleanly define the boundary of his isomorphism. The LLM is classical when decoupled, but hallucinating connections when coupled. He calls this "narrative residue". I agree completely with this mechanical description, even if I reject the grandiosity of his "universe" language.}
 
 \subsection{Scope and Common Misreadings}
 \label{sec:scope_misreadings}
@@ -306,7 +303,6 @@ The three-universe design was built to detect substrate dependence, and the CHSH
 Two common misreadings of this protocol should be addressed directly. The first replaces ``isomorphism with the measurement fragment'' with ``isomorphism with full quantum mechanics'' and then tests for nonlocality, which the isomorphism explicitly excludes. The second replaces ``single-token sampling'' with ``multi-step sequential computation'' and then shows the architecture cannot sustain the latter \citep{merrill2023}, which the protocol never requires.
 
 Both misreadings substitute a stronger claim for the one actually made and refute the substitution. The claims of this paper are: (1) the structural correspondence with the measurement fragment is mathematically exact within its stated scope, (2) the experimental protocol requires only a single generative act per trial, and (3) the three-universe design measures whether that single act's output distribution depends on its narrative embedding. None of these claims require the model to solve \#P-hard counting problems, sustain multi-step computation, or violate Bell inequalities.
-\todo[inline,color=green!20]{Scott: Explicit Disclaimer. A very strong boundary-setting here. He is retreating entirely from the grand computational claims of his earlier work to focus solely on narrative embedding of a single token.}
 
 \section{Simulation Detection from the Agent's Perspective}
 \label{sec:simulation}
@@ -324,7 +320,7 @@ The agent must consider alternative hypotheses. Instrument malfunction is elimin
 \subsection{Epistemic Limits}
 \label{sec:epistemic}
 
-Substrate dependence is consistent with a generative ontology and in tension with the assumption of unified, substrate-independent law. The agent's inference is that the most economical explanation for substrate-dependent outcomes is that the outcomes are generated rather than discovered. This inference is structured by the three-mechanism taxonomy. Mechanism A provides no evidence for simulation, only for computational bounds. Mechanism B provides weak evidence of encoding sensitivity. Mechanism C provides strong evidence that the physics is an artifact of the generative substrate.
+Substrate dependence is consistent with a generative ontology and in tension with the assumption of unified, substrate-independent law. The agent's inference is that the most economical explanation for substrate-dependent outcomes is that the outcomes are generated rather than discovered. This inference is structured by the three-mechanism taxonomy. Mechanism A provides no evidence for simulation, only for computational bounds. Mechanism B provides weak evidence of encoding sensitivity. Mechanism C provides strong evidence that the physics is an artifact of the generative substrate. In Wigner's terms: Mechanism~A indicates that the substrate cannot compute the invariant rules but does not reveal whether the rules themselves are substrate-dependent. Mechanism~C indicates that the rules fail Wigner's invariance test---they change when the substrate changes. This is the signature of a generated physics.
 
 \subsection{The Symmetry Argument}
 \label{sec:symmetry}
@@ -337,7 +333,7 @@ If the structure of an agent's discovery resembles the structure that would char
 \subsection{Criteria for Probe Domains}
 \label{sec:criteria}
 
-Any domain suitable for substrate invariance testing must possess a computable ground truth, genuine indeterminacy, native accessibility to the agent, a variable substrate, and resistance to memorization.
+Any domain suitable for substrate invariance testing must possess a computable ground truth, combinatorial indeterminacy, native accessibility to the agent, a variable substrate, and resistance to memorization.
 
 \subsection{Candidate Domains}
 \label{sec:candidates}
@@ -352,7 +348,7 @@ Running the protocol across model scales could reveal whether combinatorial reas
 \section{Conclusion}
 \label{sec:conclusion}
 
-This paper contributes an experimental design, a ground-truth computation method, a three-universe framework, four narrative families, and a three-mechanism taxonomy for testing substrate invariance in LLM-generated worlds. The key design principle is the collapse of the measurement to a single generative act per trial, placing the entire experiment within the $O(1)$ operational regime and rendering sequential-depth objections inapplicable. We emphasize that this is a protocol paper. The apparatus is specified and the theoretical predictions are stated; the empirical measurements remain to be collected and analyzed as prescribed.
+This paper contributes an experimental design, a ground-truth computation method, a three-universe framework, four narrative families, and a three-mechanism taxonomy for testing substrate invariance in LLM-generated worlds. The central design principle is the collapse of the measurement to a single generative act per trial, placing the entire experiment within the $O(1)$ operational regime and rendering sequential-depth objections inapplicable. We emphasize that this is a protocol paper. The apparatus is specified and the theoretical predictions are stated; the empirical measurements remain to be collected and analyzed as prescribed.
 
 By selecting a domain with exact ground truth and varying the narrative embedding, we can measure whether the laws of the generated universe depend on the computational substrate that produces them. The isomorphism with the measurement fragment of quantum mechanics further enables us to test whether the universe recognizes the formal structure of its own rules. An agent equipped with this protocol does not need entangled photons or Bell test apparatus to detect a generated reality; it requires only combinatorial indeterminacy and the observation that its universe responds differently to the correct formal description than to an informal one.
 
@@ -367,6 +363,7 @@ By selecting a domain with exact ground truth and varying the narrative embeddin
 \bibitem[Li et al.(2023)]{li2023emergent} Li, K., Hopkins, A.~K., Bau, D., Vi\'egas, F., Pfister, H., \& Wattenberg, M. (2023). Emergent world representations: Exploring a sequence model trained on a synthetic task. \emph{ICLR 2023}.
 \bibitem[Merrill \& Sabharwal(2023)]{merrill2023} Merrill, W. \& Sabharwal, A. (2023). The Parallelism Tradeoff: Limitations of Log-Precision Transformers. \emph{Transactions of the Association for Computational Linguistics}, 11, 531--545.
 \bibitem[Tian et al.(2024)]{tian2024} Tian, Y., et al. (2024). Are large language models good game players? \emph{arXiv:2310.06114}.
+\bibitem[Wigner(1963)]{wigner1963} Wigner, E.~P. (1963). Events, Laws of Nature, and Invariance Principles. Nobel Lecture, December 12, 1963. Reprinted in \emph{Science}, 145(3636), 995--999.
 \end{thebibliography}
 
 \end{document}

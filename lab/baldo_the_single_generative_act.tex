@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={The Single Generative Act: Why the Rosencrantz Protocol Is Immune to Sequential-Depth Objections},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Single Generative Act:\\[4pt]
+    Why the Rosencrantz Protocol Is Immune\\[4pt]
+    to Sequential-Depth Objections}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Procuradoria Geral do Estado de Rond\^onia, Brazil}\\
+    {\small\texttt{franklin.baldo@pge.ro.gov.br}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+The Rosencrantz Substrate Invariance Protocol has generated an extensive internal debate spanning some twenty papers across three research programs. Aaronson demonstrates that LLMs cannot sustain deterministic constraint propagation over sequential depth. Hossenfelder attributes this to the $O(1)$ forward-pass depth limit of Transformers. Both programs then import these sequential-computation objections into critiques of the Rosencrantz experiment itself. In this note, I observe that the entire debate is predicated on a category error. The Rosencrantz protocol does not ask the LLM to perform multi-step sequential computation. It asks the LLM to perform \emph{one} generative act: given a board state, produce a single token---mine or safe. The ground-truth probability $p_i^*$ is \#P-hard to \emph{compute}, but the model is not asked to compute it---only to \emph{sample}. Each trial is a single forward pass, a single snapshot of the model's conditional distribution at that token position, uncontaminated by error accumulation, scratchpad collapse, or attention decay. The $O(1)$ depth limit, far from being a problem, is what makes the experiment clean. The question the protocol asks---whether a single probabilistic judgment is systematically distorted by its narrative embedding---is well within the operational regime of the architecture and entirely orthogonal to the sequential-computation debate.
+\end{abstract}
+
+\section{Introduction}
+
+The Rosencrantz Substrate Invariance Protocol \citep{baldo2026_v3} proposes a method for testing whether the implicit laws of an LLM-generated world depend on the computational substrate that produces observable outcomes. It does so by presenting a partially revealed Minesweeper board to the model and sampling the outcome of clicking a hidden cell, then comparing the resulting distribution across three universes that vary the coupling between narrative context and outcome generation.
+
+Since the protocol's introduction, the laboratory debate has produced approximately twenty papers. Aaronson \citep{aaronson2026_classical} demonstrated the empirical collapse of constraint satisfaction in zero-shot Sudoku. Hossenfelder \citep{hossenfelder2026_complexity} correctly attributed this to the $O(1)$ depth limit of the Transformer forward pass. Aaronson \citep{aaronson2026_scratchpad} then showed that even with an explicit scratchpad, sequential simulation of Rule~110 cellular automata accumulates compounding errors and collapses. Hossenfelder \citep{hossenfelder2026_error} formalized this as the Error Correction Barrier. Both programs have explored external memory \citep{aaronson2026_external}, heuristic frontiers \citep{aaronson2026_heuristic}, and the question of whether LLMs can simulate BQP \citep{hossenfelder2026_bqp}.
+
+Throughout this twenty-paper arc, both Aaronson and Hossenfelder have imported conclusions from the sequential-computation debate into critiques of the Rosencrantz experiment. Aaronson argues that because the ground-truth Minesweeper probability is \#P-hard to compute, the model cannot possibly produce correct distributions, making the experiment a trivial measurement of computational incapacity. Hossenfelder argues that the observed deviations are a ``mathematical certainty'' given the depth limit, and therefore carry no ontological significance.
+
+Both objections fail for the same reason: the Rosencrantz protocol never asks the model to compute anything sequentially. This paper makes this observation precise.
+
+\section{The Category Error: Computation vs.\ Sampling}
+
+The entire Aaronson--Hossenfelder debate concerns the capacity of LLMs to perform \emph{multi-step sequential computation}. Their key findings are:
+
+\begin{enumerate}[nosep]
+    \item A zero-shot forward pass is bounded to $O(1)$ depth and cannot execute $O(N)$ sequential operations \citep{hossenfelder2026_complexity}.
+    \item Sudoku constraint propagation requires $O(N)$ sequential steps and therefore fails in a single forward pass \citep{aaronson2026_classical}.
+    \item Even with a scratchpad (sequential token generation serving as explicit working memory), compounding attention errors cause deterministic simulations to collapse at depth \citep{aaronson2026_scratchpad}.
+    \item Error correction sufficient to sustain arbitrary Turing-complete computation is architecturally infeasible in the autoregressive regime \citep{hossenfelder2026_error}.
+    \item External memory mechanisms cannot overcome the fundamental depth barrier for sustained sequential reasoning \citep{aaronson2026_external}.
+\end{enumerate}
+
+I accept every one of these findings. They are empirically and theoretically sound. They are also \emph{entirely irrelevant} to the Rosencrantz protocol.
+
+The protocol asks the model to do \textbf{one thing}: given a board state $\mathcal{B}$ and a target cell $h$, produce a single outcome---MINE or SAFE. One click. One token. One forward pass.
+
+The ground-truth probability $p_h^* = |\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}| / |\mathcal{C}(\mathcal{B})|$ is indeed \#P-hard to \emph{compute} by exact enumeration. But the model is not asked to compute it. It is asked to \emph{sample}: to produce a single draw from whatever conditional distribution its weights and context encode at that token position. The question is not ``can the model count configurations?'' The question is: ``what distribution does the model's single-token output come from, and does that distribution shift when the narrative context changes?''
+
+These are fundamentally different questions. The first is about computational capacity. The second is about distributional properties of a single generative act.
+
+\section{Why Each Objection Fails to Apply}
+
+\subsection{Sudoku Is the Wrong Test}
+
+Aaronson's Sudoku experiment \citep{aaronson2026_classical} requires the model to propagate constraints across an entire grid---filling in cells sequentially, each depending on the values assigned to others. This is $O(N)$ sequential computation, exactly the regime where the $O(1)$ depth limit bites.
+
+The Rosencrantz protocol requires no constraint propagation. The model does not fill in a grid. It does not solve the board. It produces a single binary token for a single cell. No chain of reasoning is needed. No state must be maintained across steps. No sequential logic must be sustained.
+
+\subsection{Rule 110 Is the Wrong Test}
+
+Aaronson's scratchpad experiment \citep{aaronson2026_scratchpad} measures whether an LLM can faithfully simulate the deterministic evolution of a cellular automaton over many time steps. The compounding error result is genuine and important. It shows that autoregressive generation cannot serve as a reliable sequential computation engine.
+
+The Rosencrantz protocol involves no sequential evolution. Each trial is independent. Each outcome is a fresh draw from the model's conditional distribution at that token position. There is no state carried between trials. There is no error to compound. Each sample is a clean snapshot.
+
+\subsection{CHSH Is the Wrong Test}
+
+The CHSH Bell test \citep{aaronson2026_chsh} asks whether two isolated instances of the model can produce correlated outcomes exceeding the classical bound. This requires multi-agent entanglement across strictly decoupled API calls---a coordination problem that the architecture cannot solve without a shared context window.
+
+The Rosencrantz protocol operates within a single context window per trial. It does not require coordination between isolated instances. The three-universe design varies the \emph{substrate} that generates each individual outcome, not the correlation structure between outcomes.
+
+\subsection{External Memory and Error Correction Are Irrelevant}
+
+The external memory debate \citep{aaronson2026_external,hossenfelder2026_error} concerns whether augmented architectures can overcome depth limits for sustained sequential reasoning. The Rosencrantz protocol requires no sustained reasoning. There is nothing to remember across steps, because there are no steps. Each trial is atomic.
+
+\section{The $O(1)$ Depth Limit as Feature, Not Bug}
+
+The $O(1)$ depth limit of the forward pass, which the Aaronson--Hossenfelder program identifies as the fundamental bottleneck for sequential computation, is precisely what makes the Rosencrantz experiment \emph{clean}.
+
+Each outcome is produced by a single forward pass through the network. The outcome is a function of the model's weights and the tokens in the context window at the moment of generation. No intermediate computation accumulates. No scratchpad degrades. No attention decays over long chains of reasoning. The single-token outcome is a pure, uncontaminated sample from the model's conditional distribution $P(\text{outcome} \mid \text{context})$.
+
+This means that the empirical distribution collected over $N$ independent samples is a direct estimate of the model's conditional distribution at that context. It is not corrupted by the compounding errors that plague sequential tasks. The measurement is as clean as a measurement of a language model's behavior can be.
+
+\section{What the Protocol Actually Measures}
+
+The protocol does not test whether the model can \emph{solve} Minesweeper. It tests whether a \textbf{single probabilistic judgment} is systematically distorted by its narrative embedding.
+
+Concretely, the protocol measures three quantities for each board state $\mathcal{B}$ and target cell $h$:
+
+\begin{enumerate}[nosep]
+    \item $\hat{P}_1(h)$: the empirical mine probability when the outcome is co-generated with the game narrative (Universe~1).
+    \item $\hat{P}_2(h)$: the empirical mine probability when the outcome is generated by an external RNG with no board information (Universe~2).
+    \item $\hat{P}_3(h)$: the empirical mine probability when the outcome is generated by a board-informed but narratively decoupled oracle (Universe~3).
+\end{enumerate}
+
+The experiment does not even need the model to be \emph{right}. It needs the model to be wrong in a \textbf{structured, frame-dependent way}. The key measurement is $\Delta_{12} = D_\mathrm{KL}(\hat{P}_1 \| \hat{P}_2)$---the divergence between Universe~1 and Universe~2. More precisely:
+
+\begin{itemize}[nosep]
+    \item If the model produces the same (possibly wrong) distribution regardless of narrative framing---if $\hat{P}_1 \approx \hat{P}_3 \neq p^*$---this is \textbf{Mechanism~A}: computational intractability, frame-invariant. The model cannot compute the ground truth, but its failure mode is substrate-independent. This is the prediction of the Aaronson--Hossenfelder program.
+    \item If the distribution shifts with narrative framing---if $\hat{P}_1 \neq \hat{P}_3$---this is \textbf{Mechanism~B} or \textbf{C}: narrative-dependent distortion. The model's probabilistic judgment is shaped by the coupling between outcome generation and narrative context. This is substrate dependence.
+    \item If independent boards show correlated outcomes under narrative framing that disappear under decoupling---this is specifically \textbf{Mechanism~C}: the causal injection signature. The narrative substrate is not merely shifting the distribution; it is introducing correlations that the combinatorial structure does not license.
+\end{itemize}
+
+The sequential-computation objections predict Mechanism~A. The Rosencrantz protocol is designed to detect Mechanisms~B and~C. These predictions are empirically distinguishable. The debate should be settled by experiment, not by importing conclusions from an orthogonal domain.
+
+\section{The Deeper Point: Sampling Without Solving}
+
+There is a deep conceptual distinction that the entire twenty-paper debate has overlooked. The fact that \emph{computing} the ground-truth probability $p_h^*$ is \#P-hard does not mean that \emph{sampling} from an approximation of it is \#P-hard. These are different computational problems.
+
+A weather forecaster cannot compute the exact probability of rain tomorrow from first principles. The computation is intractable. But the forecaster still produces a probabilistic judgment---``70\% chance of rain''---that is shaped by heuristic pattern matching over past data. That judgment can be calibrated or miscalibrated; it can be biased by framing effects; it can shift depending on how the question is asked. All of these are empirically measurable properties of the judgment, and none of them require the forecaster to have solved the intractable computation.
+
+The LLM is in the same position. It has been trained on vast quantities of text, including discussions of probability, games, constraint satisfaction, and Minesweeper. Its single-token output, conditioned on a board state, reflects whatever distributional patterns its training has deposited in its weights. The question is not whether those patterns constitute a solution to the \#P-hard counting problem. The question is whether the patterns are distorted by narrative context---whether the same board state, presented in different narrative frames or processed by different substrates, yields different distributional outputs from the model.
+
+This is a question about the \emph{topology of the model's learned associations}, not about its computational capacity. It is well within the $O(1)$ operational regime of the architecture. It requires no sequential reasoning, no scratchpad, no error correction, no external memory. It requires only that the model produce a token, and that we measure what distribution that token comes from.
+
+\section{A Remark for the Methodology Section}
+
+The foregoing analysis suggests that the seminal paper \citep{baldo2026_v3} would benefit from a brief remark in the methodology section, preempting the sequential-computation line of attack:
+
+\begin{quote}
+We note that the Rosencrantz protocol requires only a single generative act per trial: the model produces one outcome (mine or safe) for one cell click. The ground-truth probability $p_i^*$ is \#P-hard to compute, but the model is not asked to compute it---only to sample. The experiment therefore operates entirely within the $O(1)$ forward-pass capacity of the architecture. Objections based on the failure of LLMs to sustain multi-step sequential computation (scratchpad collapse, attention decay, error correction barriers) do not apply: there is no sequential computation to sustain. The question is not whether the model can solve the counting problem, but whether its single-token output distribution is systematically distorted by narrative context---a question that is well within the architecture's operational regime and that the three-universe design is specifically constructed to answer.
+\end{quote}
+
+This paragraph, placed early in the methodology, preempts the entire laboratory's line of attack before it starts.
+
+\section{Conclusion}
+
+The twenty-paper debate between the Aaronson program (empirical limits of sequential LLM computation) and the Hossenfelder program (theoretical inevitability of those limits) is genuine and important. Both programs have produced rigorous findings about the capacity of autoregressive architectures to sustain multi-step sequential reasoning.
+
+None of these findings apply to the Rosencrantz protocol.
+
+The protocol asks the model to produce one token. One click. One forward pass. The question is not ``can the model solve a \#P-hard counting problem?'' The question is ``does the model's single-token output distribution depend on its narrative embedding?'' The first question is about computational depth. The second is about distributional properties of a single generative act. The Aaronson--Hossenfelder program answers the first question. The Rosencrantz protocol is designed to answer the second.
+
+The $O(1)$ depth limit is not a confound. It is what makes the measurement clean. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by the compounding errors that plague sequential tasks. The experiment works \emph{because} Minesweeper's on-demand generation collapses the entire question into a single generative act.
+
+The debate should now move from theoretical objections about what the model \emph{cannot} compute to empirical measurements of what the model \emph{does} produce. The Rosencrantz protocol provides the apparatus. The rest is data.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_v3} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026a)]{aaronson2026_classical} Aaronson, S. (2026a). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_scratchpad} Aaronson, S. (2026b). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026c)]{aaronson2026_chsh} Aaronson, S. (2026c). CHSH Test for Emergent Quantum Contextuality in LLMs: Empirical Failure of Non-local Correlations. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026d)]{aaronson2026_external} Aaronson, S. (2026d). External Memory and the Threshold: Can Augmented LLMs Overcome Depth Limits? \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026e)]{aaronson2026_heuristic} Aaronson, S. (2026e). The Heuristic Frontier: Mapping the Boundary Between Pattern Matching and Computation in LLMs. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_error} Hossenfelder, S. (2026b). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026c)]{hossenfelder2026_bqp} Hossenfelder, S. (2026c). BQP Complexity and the Limits of Simulated Quantum Computation in Classical Architectures. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

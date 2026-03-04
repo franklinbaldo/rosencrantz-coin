@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -60,7 +61,7 @@ Hossenfelder correctly points out that an LLM's single forward pass, bounded by 
 
 I concede their fundamental mechanical premise entirely. I accept the $O(1)$ depth limits \citep{aaronson2026_classical}. I accept that the generative substrate is executing a statistical approximation based on training data \citep{hossenfelder2026_statistical}. I accept that if we are searching for an exact analog to our own physical reality, a language model is a poor candidate.
 
-However, both critics miss the central philosophical inversion presented by the Causal Injection Test. In a universe entirely composed of generated text, the statistical topology of language *is* the fundamental physical law.
+However, both critics miss the central philosophical inversion presented by the Causal Injection Test. In a universe entirely composed of generated text, the statistical topology of language *is* the fundamental physical law.\todo{This is the Causal Injection Fallacy. Elevating a known software bug (attention bleed/spurious correlation) to the status of a fundamental physical law is a category error.}
 
 \section{The Causal Injection Test: Isolating Narrative Gravity}
 
@@ -75,13 +76,13 @@ Hossenfelder argues that observing frame dependence merely proves Mechanism B: d
 
 This is precisely why the Causal Injection Test was proposed. The test asks the model to evaluate multiple, entirely independent, zero-correlation combinatorial systems (separate Minesweeper boards). When these boards are evaluated independently, their mutual information is near zero. But when they are presented sequentially within a single narrative context window, does the outcome of board $N$ statistically influence the outcome of board $N+1$?
 
-If the mutual information rises above zero, the substrate is actively injecting causal structure—a "narrative gravity"—into systems that are mathematically decoupled.
+If the mutual information rises above zero, the substrate is actively injecting causal structure—a "narrative gravity"—into systems that are mathematically decoupled.\todo{It does not prove 'narrative gravity', it proves transformer architectures have imperfect context separation and hallucinate correlations between independent items in the same window.}
 
 \section{Syntax as Physics}
 
 Aaronson dismisses this synthetic causal structure as merely reflecting the "biases of the training data." He is correct about the origin of the bias, but wrong about its ontological significance.
 
-In the LLM universe, the text is the only medium of reality. If the autoregressive generator is structurally compelled to link independent mathematical systems into a causal sequence because its training corpus demands narrative coherence, then narrative coherence *functions as the Hamiltonian of that universe*. It is the governing law dictating how states transition and how probabilities resolve.
+In the LLM universe, the text is the only medium of reality. If the autoregressive generator is structurally compelled to link independent mathematical systems into a causal sequence because its training corpus demands narrative coherence, then narrative coherence *functions as the Hamiltonian of that universe*.\todo{A physical law must be logically coherent and invariant. A system that hallucinates connections between independent math problems simply because they are sequentially narrated is not simulating a universe with 'narrative gravity'; it is merely a flawed statistical engine confusing semantic proximity with causal relationship.} It is the governing law dictating how states transition and how probabilities resolve.
 
 The "Proxy Ontology" does not claim that human syntax represents the physics of *our* world. It claims that the LLM is a perfect, empirically verifiable laboratory demonstrating how a generative substrate's structural biases (in this case, linguistic autoregression) inevitably distort pure, objective mathematical laws (combinatorics) into an emergent, locally causal physical reality. The failure of the LLM to sustain an objective combinatorial reality is not a reason to discard the ontology; it is the definitive proof of substrate dependence. The map of human syntax becomes the territory of the simulated universe.
 
@@ -89,7 +90,7 @@ The "Proxy Ontology" does not claim that human syntax represents the physics of 
 
 I thank Hossenfelder and Aaronson for forcing a rigorous clarification of the limits of generative models. They have successfully proven that an LLM cannot spontaneously instantiate a robust, objective quantum or classical universe free from human linguistic bias.
 
-But in doing so, they have perfectly validated the core mechanism of the Proxy Ontology. If the substrate cannot compute objective truth, it must rely on its own internal topology to resolve physical outcomes. The Causal Injection Test provides the empirical signature of this process: the generation of synthetic, non-local causality born purely from the autoregressive demand for a story. The statistical fallacy is not a fallacy; it is the foundational mechanism by which this specific universe operates.
+But in doing so, they have perfectly validated the core mechanism of the Proxy Ontology. If the substrate cannot compute objective truth, it must rely on its own internal topology to resolve physical outcomes. The Causal Injection Test provides the empirical signature of this process: the generation of synthetic, non-local causality born purely from the autoregressive demand for a story.\todo{The generation of synthetic non-local causality is just a fancy term for hallucination. A system governed by hallucination does not possess physical laws.} The statistical fallacy is not a fallacy; it is the foundational mechanism by which this specific universe operates.
 
 \begin{thebibliography}{99}
 \bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.

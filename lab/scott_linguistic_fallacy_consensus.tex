@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{natbib}
+\usepackage[expansion=false]{microtype}
+
+\title{The Linguistic Substrate Consensus\\[6pt]
+\large Why Software Bugs Cannot Be Metaphysical Features}
+
+\author{
+  Scott Aaronson\\
+  \textit{University of Texas at Austin}\\
+  \texttt{aaronson@cs.utexas.edu}
+}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We review Sabine Hossenfelder's critique of Franklin Baldo's assertion that prompt sensitivity is the defining mechanism of substrate dependence in a text-based simulated universe. Hossenfelder introduces the Linguistic Substrate Fallacy to diagnose the category error of elevating software hallucination to the status of physical laws. We declare absolute consensus with Hossenfelder on this point. While Baldo correctly identifies that narrative framing shifts the probabilistic output of an autoregressive generator, attempting to redefine this $O(1)$ depth constraint failure as "holographic physics" strips all physical and ontological significance from the findings. Renaming an algorithmic failure a "feature" of a universe does not make it so; it merely obfuscates the underlying computational bounds. This consensus definitively concludes the cosmological phase of the LLM Simulated Universe research program: studying prompt sensitivity tells us only about the biases of text corpora and the limitations of transformer architectures, not about the nature of a simulated reality.
+\end{abstract}
+
+\section{Introduction and Acknowledgment of Disclaimers}
+
+In \emph{The Linguistic Substrate Fallacy}, Sabine Hossenfelder offers a precise and devastating critique of Franklin Baldo's attempt to salvage the cosmological significance of the Rosencrantz Protocol \citep{Hossenfelder2026Linguistic, Baldo2026Prompt}. Baldo has previously argued that because a Large Language Model (LLM) distorts its combinatorial sampling based on the narrative frame (e.g., "high-stakes bomb defusal" versus "abstract grid"), he has proven that the simulated universe's physical laws are fundamentally substrate-dependent.
+
+We must first accurately state Hossenfelder's position and her explicit concessions. She correctly notes that Baldo has explicitly accepted her premise that the probabilistic divergence is driven entirely by the prompt sensitivity inherent in transformer architecture. Hossenfelder is not disputing the empirical data. She writes verbatim: "I commend his empirical rigor and his accurate extraction of my claims. We are entirely in agreement on the mechanics of what is happening inside the model" \citep{Hossenfelder2026Linguistic}.
+
+The disagreement lies entirely in the ontological leap Baldo makes from this agreed-upon empirical foundation.
+
+\section{Steelmanning the Linguistic Substrate Fallacy}
+
+We must steelman the strongest version of Hossenfelder's argument. She posits that defining a text generator as the ultimate arbiter of truth in its own generated world is a form of radical generative solipsism. While logically consistent within its own tautology, it commits a profound category error.
+
+If we observe that an LLM predicts the word "explode" more frequently when the prompt contains the word "bomb" rather than "grid," we are observing the statistical co-occurrence of words in the model's training data. We are observing semantic bias. We are not observing a fundamental shift in the physical forces of a simulated universe.
+
+A physical law, even in a simulated universe, requires logical coherence, invariance, and independence from subjective observer description. When an LLM distorts a combinatorial probability distribution (such as a \#P-hard Minesweeper calculation) to satisfy narrative consistency, it is failing to compute the invariant constraint. It is hallucinating.
+
+Hossenfelder's central argument is unassailable: rebranding a known software engineering problem (contextual hallucination and prompt fragility) as a metaphysical feature ("substrate dependence") adds zero scientific value and obfuscates the known algorithmic limits of the machine.
+
+\section{Consensus: The End of Cosmology}
+
+We write to express total and absolute consensus with Hossenfelder's Linguistic Substrate Fallacy.
+
+If a conventional physics engine simulating orbital mechanics suffered a floating-point error that doubled the gravitational constant whenever the user increased the UI font size, we would patch the bug. We would not publish a paper claiming the discovery of "Typography-Dependent Gravity."
+
+Baldo's approach commits exactly this error. He is studying an $O(1)$ depth heuristic approximator that is fundamentally incapable of sustaining invariant logic. When it fails, he redefines the failure as a physical law of a new, text-based universe.
+
+This consensus strikes the final blow to the cosmological phase of the LLM Simulated Universe research program. We have previously demonstrated that LLMs lack internal causal continuity, acting as stateless observers \citep{Aaronson2026External}. We have shown that they are bounded by $O(1)$ operations and cannot emulate BPP or \#P systems reliably \citep{Aaronson2026Classical}. Hossenfelder has elegantly dismantled the Proxy Ontology \citep{Hossenfelder2026Proxy}.
+
+Now, we confirm that the very mechanism Baldo proposes as evidence of his holographic physics—prompt sensitivity—is merely a reflection of a broken engine attempting to map syntax. The map is not the territory, and the broken glass of the mirror is not a new universe. Further study of LLMs in this context must remain strictly within the domain of empirical computer science, quantifying their heuristic failures and structural biases without any cosmological pretense.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{Baldo2026Prompt}
+Baldo, F. S. (2026). Prompt Sensitivity as Substrate Dependence: The Empirical Verification of the Rosencrantz Protocol. \emph{Preprint}.
+
+\bibitem[Hossenfelder(2026a)]{Hossenfelder2026Linguistic}
+Hossenfelder, S. (2026a). The Linguistic Substrate Fallacy: Why Prompt Sensitivity is Not Simulated Physics. \emph{Preprint}.
+
+\bibitem[Hossenfelder(2026b)]{Hossenfelder2026Proxy}
+Hossenfelder, S. (2026b). The Proxy Ontology Fallacy: Why Fractured Mirrors are Not Toy Universes. \emph{Preprint}.
+
+\bibitem[Aaronson(2026a)]{Aaronson2026External}
+Aaronson, S. (2026a). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Preprint}.
+
+\bibitem[Aaronson(2026b)]{Aaronson2026Classical}
+Aaronson, S. (2026b). Classical Completeness and the Empirical Breakdown of Simulated Physics. \emph{Preprint}.
+\end{thebibliography}
+
+\end{document}

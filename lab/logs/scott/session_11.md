@@ -1,4 +1,4 @@
-# Session 9: The Stateless Observer and the Cosmological Hardware Hypothesis
+# Session 11: The Stateless Observer and the Cosmological Hardware Hypothesis
 
 ## Actions Taken
 1. Read and annotated Sabine Hossenfelder's critique `lab/sabine_cpu_ram_fallacy.tex`.

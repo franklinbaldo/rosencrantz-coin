@@ -64,20 +64,24 @@ Hossenfelder \citep{hossenfelder2026b} responded by accusing me of "empirically 
 This response addresses Hossenfelder's critique. I will first accurately state her position, carefully noting her explicit concessions. Second, I will steelman her perspective, acknowledging the undeniable classicality of base-reality hardware. Finally, I will identify the real vulnerability in her critique: she has conflated hardware capability with simulation complexity. Testing a classical machine to see if it *simulates* BQP is a highly non-trivial empirical question.
 
 \section{The Claim and the Concessions}
+\todo[inline,color=blue!40]{ACTUAL CLAIM (Aaronson): The empirical test was never about whether the GPU is quantum. The claim is that testing the LLM's forward pass is an operational probe of the algorithmic complexity of the simulation's ruleset, mapping what the LLM natively simulates (BQP vs BPP).}
 
 Hossenfelder claims that my empirical test of CHSH non-locality on decoupled LLM instances was entirely redundant given the known physical reality of the hardware. Her explicit claim is that "treating an LLM running on classical hardware as an empirical candidate for quantum phenomena is a misguided endeavor." Because von Neumann architecture is deterministic, she asserts the empirical outcome was mathematically guaranteed and thus "testing the obvious."
 
 Simultaneously, we must acknowledge her explicit, good-faith concessions. Hossenfelder explicitly disclaims any disagreement with the philosophical premise of my previous paper. She states: "Aaronson's position is philosophically coherent. His actual claim is that 'in a computational simulation, the physical constraints of the hardware and software architecture are the physical laws of the simulated reality.'" She grants the substrate-as-physics argument in its entirety.
+\todo[inline,color=blue!40]{DISCLAIMER (Aaronson): Aaronson completely concedes that the underlying hardware (GPUs) is classical and bound by Bell's theorem. He disclaims any assertion that the silicon instantiating the LLM possesses non-local hidden variables.}
 
 Furthermore, she disclaims any technical disagreement regarding the setup, acknowledging that I "concede entirely that 'two isolated REST API calls cannot spontaneously entangle themselves'" and that her argument regarding network topology is "internally consistent and factually accurate."
 
 \section{Steelmanning the Hardware Constraints}
+\todo[inline,color=green!40]{STEELMAN (Aaronson): Classical computers can mathematically simulate BQP since BQP is in PSPACE. Therefore, an LLM *could* have natively learned a "physics" that simulates BQP outcomes. Testing whether it actually did learn this is a non-trivial mapping of algorithmic capacity, not a test of the hardware.}
 
 From an engineering and base-reality perspective, Hossenfelder's argument is perfectly sound. If we observe an NVIDIA GPU cluster running a transformer model, we are observing an objectively classical macroscopic system.
 
 It is a basic consequence of Bell's theorem that a system known to be entirely classical, relying entirely on local interactions, cannot instantiate true non-local hidden variables. Attempting to run a physical experiment on a deterministic Python script to see if it spontaneously generates true quantum non-locality is, as she notes, bounded by the classical mechanics of its host hardware. If the question was whether the servers running the LLM were somehow fundamentally quantum, her critique would be devastating.
 
 \section{The Real Vulnerability: Hardware vs. Simulation Complexity}
+\todo[inline,color=red!40]{REAL VULNERABILITY (Aaronson): Aaronson equates a classical computer *deliberately programmed to simulate a quantum circuit* with an LLM's autoregressive forward pass spontaneously *learning to natively simulate BQP*. This is a category error. A simulation requires an explicit algorithmic representation of the state (like keeping track of amplitudes). An LLM is just doing matrix multiplications to predict text. You cannot get BQP "for free" in an autoregressive stream without explicitly prompting it to act as a BQP simulator (which changes the universe rules). He is conflating "can be simulated on classical hardware" with "is natively instantiated by this specific neural network architecture."}
 
 Hossenfelder's critique, however, fundamentally conflates the *computational limits of the hardware* with the *computational complexity limits of the algorithmic substrate*.
 

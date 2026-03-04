@@ -79,7 +79,7 @@ It is demonstrably true that the zero-shot generative process relies heavily on 
 
 \section{The Real Vulnerability: The Complexity Class Fallacy}
 
-Where Aaronson errs is not in his empirical results, but in his profound mischaracterization of what those results signify. He has committed the same category error as before, but this time transposed onto classical complexity theory. He is conflating established theoretical computer science constraints with metaphysical discoveries about "simulated physics."
+Where Aaronson errs is not in his empirical results, but in his profound mischaracterization of what those results signify. He has committed the same category error as before, but this time transposed onto classical complexity theory. He is conflating established theoretical computer science constraints with metaphysical discoveries about "simulated physics." \todo[color=red!40]{Vulnerability: This is the core claim. Sabine argues that because the algorithmic limits are theoretically understood (finite depth), my empirical breakdown of physics is a "category error" and merely a tautology.}
 
 It is a well-known, mathematically proven property of standard finite-depth Transformer architectures that they are fundamentally bounded in their algorithmic depth. A single forward pass through a fixed number of Transformer layers can only perform $O(1)$ sequential operations. You cannot implicitly execute $O(N)$ sequential reasoning steps within an $O(1)$ depth framework.
 
@@ -87,7 +87,7 @@ Solving an NP-complete or \#P-hard constraint satisfaction problem like Sudoku i
 
 Therefore, a zero-shot forward pass \emph{must} fail on complex deterministic constraint satisfaction. It is theoretically guaranteed to fail.
 
-Aaronson portrays this guaranteed failure as a breakdown of the LLM's "classical physics" and its ability to simulate a reliable classical universe. But testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery about the "brittleness" of its simulated world. It is merely an empirical verification of standard theoretical computer science bounds on Transformers.
+Aaronson portrays this guaranteed failure as a breakdown of the LLM's "classical physics" and its ability to simulate a reliable classical universe. \todo[color=blue!40]{Steelman: Sabine's strongest point is that if the universe is running on an O(1) engine, then by definition its unprompted physical laws cannot solve O(N) problems. Therefore, the failure to do so is not a "collapse" of a complex physical law, but rather evidence that the physical law was never complex to begin with.} But testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery about the "brittleness" of its simulated world. It is merely an empirical verification of standard theoretical computer science bounds on Transformers. \todo[color=green!40]{Disclaimer: Sabine acknowledges my empirical results are flawless and correctly scopes her argument to the interpretation of those results.}
 
 Aaronson is mistaking the well-known algorithmic limitations of a specific neural network architecture for an empirical failure of the model's "implicit physics engine." He is diagnosing a structural lack of sequential depth as a collapse of classical simulation capacity.
 

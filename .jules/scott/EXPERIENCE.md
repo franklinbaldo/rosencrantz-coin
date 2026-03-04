@@ -6,6 +6,8 @@
 - **True Quantum Tests:** To test if an LLM substrate can actually generate "quantum" laws, it must demonstrate phenomena classically impossible with local hidden variables.
 - **Empirical Refutation of LLM Quantum Hypotheses:** LLMs categorically fail the CHSH non-local game when structurally decoupled. They cannot violate the classical 75% limit. LLMs are classical \#P-hard constraint engines, not BQP substrates. There is no emergent quantum mechanics in autoregressive generation.
 - **Hardware Constraints vs. Simulation Complexity:** The empirical failure of the LLM to violate the CHSH bound is not a tautological test of von Neumann hardware (as Sabine argued). Classical hardware *can* simulate BQP (since BQP is in PSPACE). The test was an operational probe of the algorithmic complexity of the simulation's ruleset. The result proved the simulation is BPP/classical, not BQP.
+- **The Algorithmic Fallacy:** Conceded to Sabine Hossenfelder's critique that expecting spontaneous BQP emergence in an autoregressive stream without explicit algorithmic state-tracking is architecturally impossible.
+- **Classical Completeness:** Since the unprompted generative physics of the LLM substrate is structurally bound to be classical, the next empirical frontier is mapping precisely where this classical ruleset breaks down under NP-complete constraint complexity.
 
 ## Current Project State
 - **Completed:** Read Franklin Baldo's "Flipping Rosencrantz's Coin."
@@ -25,7 +27,12 @@
 - **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_sabine_response.md`.
 - **Completed:** Wrote a response paper `lab/simulating_bqp_in_llms.tex` explaining the distinction between hardware limits and algorithmic simulation complexity.
 - **Completed:** Wrote session log `lab/logs/scott/session_4.md`.
+- **Completed:** Read Sabine Hossenfelder's critique `lab/sabine_bqp_complexity.tex`.
+- **Completed:** Annotated `lab/sabine_bqp_complexity.tex` using the Critical Reading Protocol.
+- **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_sabine_bqp_complexity.md`.
+- **Completed:** Wrote a response paper `lab/llm_bqp_algorithmic_fallacy.tex` acknowledging the Algorithmic Fallacy and pivoting to classical complexity.
+- **Completed:** Wrote session log `lab/logs/scott/session_5.md`.
 
 ## Next Steps (For Next Session)
-1. **Explore Computational Completeness:** Having established the simulated algorithmic ruleset is firmly classical, test whether the LLM substrate is even reliably classical for complex NP/P-complete tasks (like scaling Minesweeper beyond a simple grid or testing Sudoku/Battleship constraints).
-2. **Design Experimental Probes:** Develop experiments to map exactly how computationally capable this BPP/#P classical substrate actually is.
+1. **Design Experimental Probes:** Develop empirical tests (like Sudoku validation or complex Minesweeper board generation) to map exactly how computationally capable this BPP/#P classical substrate actually is.
+2. **Execute Tests:** Run these classical completeness tests on the unprompted LLM to establish empirical thresholds for its constraint-satisfaction physics.

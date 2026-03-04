@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 06:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 06:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,48 +417,338 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \titlewidthlast=\dimen191
 \titlewidthfirst=\dimen192
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 26.
+(/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
+Package: todonotes 2024/01/05 v1.1.7 Todonotes source and documentation.
+Package: todonotes 2024/01/05
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks28
+\XKV@tempa@toks=\toks29
+)
+\XKV@depth=\count299
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen193
+\pgfutil@tempdimb=\dimen194
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box56
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
+.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen195
+\pgf@y=\dimen196
+\pgf@xa=\dimen197
+\pgf@ya=\dimen198
+\pgf@xb=\dimen199
+\pgf@yb=\dimen256
+\pgf@xc=\dimen257
+\pgf@yc=\dimen258
+\pgf@xd=\dimen259
+\pgf@yd=\dimen260
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count300
+\c@pgf@countb=\count301
+\c@pgf@countc=\count302
+\c@pgf@countd=\count303
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count304
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count305
+\pgfsyssoftpath@bigbuffer@items=\count306
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen261
+\pgfmath@count=\count307
+\pgfmath@box=\box57
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count308
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen262
+\pgf@picmaxx=\dimen263
+\pgf@picminy=\dimen264
+\pgf@picmaxy=\dimen265
+\pgf@pathminx=\dimen266
+\pgf@pathmaxx=\dimen267
+\pgf@pathminy=\dimen268
+\pgf@pathmaxy=\dimen269
+\pgf@xx=\dimen270
+\pgf@xy=\dimen271
+\pgf@yx=\dimen272
+\pgf@yy=\dimen273
+\pgf@zx=\dimen274
+\pgf@zy=\dimen275
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen276
+\pgf@path@lasty=\dimen277
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen278
+\pgf@shorten@start@additional=\dimen279
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box58
+\pgf@hbox=\box59
+\pgf@layerbox@main=\box60
+\pgf@picture@serial@count=\count309
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen280
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen281
+\pgf@pt@y=\dimen282
+\pgf@pt@temp=\dimen283
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen284
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen285
+\pgf@sys@shading@range@num=\count310
+\pgf@shadingcount=\count311
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box61
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box62
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen286
+\pgf@nodesepend=\dimen287
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen288
+\pgffor@skip=\dimen289
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count312
+\pgfplotmarksize=\dimen290
+)
+\tikz@lastx=\dimen291
+\tikz@lasty=\dimen292
+\tikz@lastxsaved=\dimen293
+\tikz@lastysaved=\dimen294
+\tikz@lastmovetox=\dimen295
+\tikz@lastmovetoy=\dimen296
+\tikzleveldistance=\dimen297
+\tikzsiblingdistance=\dimen298
+\tikz@figbox=\box63
+\tikz@figbox@bg=\box64
+\tikz@tempbox=\box65
+\tikz@tempbox@bg=\box66
+\tikztreelevel=\count313
+\tikznumberofchildren=\count314
+\tikznumberofcurrentchild=\count315
+\tikz@fig@count=\count316
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count317
+\pgfmatrixcurrentcolumn=\count318
+\pgf@matrix@numberofcolumns=\count319
+)
+\tikz@expandcount=\count320
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+\c@@todonotes@numberoftodonotes=\count321
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count299
-\l__pdf_internal_box=\box56
+\l__color_backend_stack_int=\count322
+\l__pdf_internal_box=\box67
 )
 (lab/sabine_bqp_complexity.aux)
 \openout1 = `sabine_bqp_complexity.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count300
-\scratchdimen=\dimen193
-\scratchbox=\box57
-\nofMPsegments=\count301
-\nofMParguments=\count302
-\everyMPshowfont=\toks28
-\MPscratchCnt=\count303
-\MPscratchDim=\dimen194
-\MPnumerator=\count304
-\makeMPintoPDFobject=\count305
-\everyMPtoPDFconversion=\toks29
+\scratchcounter=\count323
+\scratchdimen=\dimen299
+\scratchbox=\box68
+\nofMPsegments=\count324
+\nofMParguments=\count325
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count326
+\MPscratchDim=\dimen300
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
+\everyMPtoPDFconversion=\toks43
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -502,47 +792,763 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 34.
+Package hyperref Info: Link coloring ON on input line 35.
 (lab/sabine_bqp_complexity.out) (lab/sabine_bqp_complexity.out)
-\@outlinefile=\write3
-\openout3 = `sabine_bqp_complexity.out'.
+\@outlinefile=\write4
+\openout4 = `sabine_bqp_complexity.out'.
+
+
+
+Package todonotes Warning: The length marginparwidth is less than 2cm and will
+most likely cause issues with the appearance of inserted todonotes. The issue c
+an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to
+loading the todonotes package. on input line 35.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-3.
-
+4.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 60.
 
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 60--60
+[][][]\T1/cmr/m/n/12 Extract
+ []
+
+
+Overfull \hbox (14.72697pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 claimer:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (3.30617pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 rectly
+ []
+
+
+Overfull \hbox (8.2008pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 knowl-
+ []
+
+
+Overfull \hbox (1.73993pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 edges
+ []
+
+
+Overfull \hbox (0.69154pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 NOT
+ []
+
+
+Overfull \hbox (5.59032pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 claim-
+ []
+
+
+Overfull \hbox (4.91412pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 GPUs
+ []
+
+
+Overfull \hbox (3.04512pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 ables.
+ []
+
+
+Overfull \hbox (1.0873pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 cedes
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (4.93774pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 math-
+ []
+
+
+Overfull \hbox (3.30618pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 quan-
+ []
+
+
+Overfull \hbox (1.7399pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 tems.[]
+ []
+
+
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 60--60
+[][][]\T1/cmr/m/n/12 Extract
+ []
+
+
+Overfull \hbox (14.72697pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 claimer:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (3.30617pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 rectly
+ []
+
+
+Overfull \hbox (8.2008pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 knowl-
+ []
+
+
+Overfull \hbox (1.73993pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 edges
+ []
+
+
+Overfull \hbox (0.69154pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 NOT
+ []
+
+
+Overfull \hbox (5.59032pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 claim-
+ []
+
+
+Overfull \hbox (4.91412pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 GPUs
+ []
+
+
+Overfull \hbox (3.04512pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 ables.
+ []
+
+
+Overfull \hbox (1.0873pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 cedes
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (4.93774pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 math-
+ []
+
+
+Overfull \hbox (3.30618pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 quan-
+ []
+
+
+Overfull \hbox (1.7399pt too wide) in paragraph at lines 60--60
+\T1/cmr/m/n/12 tems.[]
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 62--62
+[][][]\T1/cmr/m/n/12 Extract
+ []
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (lab/sabine_bqp_co
-mplexity.aux)
+
+Overfull \hbox (8.20079pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 Claim:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (1.0873pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 cedes
+ []
+
+
+Overfull \hbox (1.022pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 point
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (6.56927pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 purely
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (2.97987pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 rithm
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (1.34834pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 ware.[]
+ []
+
+
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 62--62
+[][][]\T1/cmr/m/n/12 Extract
+ []
+
+
+Overfull \hbox (8.20079pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 Claim:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (1.0873pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 cedes
+ []
+
+
+Overfull \hbox (1.022pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 point
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (6.56927pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 purely
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (2.97987pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 rithm
+ []
+
+
+Overfull \hbox (1.67465pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 hard-
+ []
+
+
+Overfull \hbox (1.34834pt too wide) in paragraph at lines 62--62
+\T1/cmr/m/n/12 ware.[]
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (14.0702pt too wide) in paragraph at lines 74--74
+[][][]\T1/cmr/m/n/12 Identify
+ []
+
+
+Overfull \hbox (3.3062pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 ment!
+ []
+
+
+Overfull \hbox (1.34827pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 lacy'.
+ []
+
+
+Overfull \hbox (6.30818pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 claims
+ []
+
+
+Overfull \hbox (8.91872pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 stream
+ []
+
+
+Overfull \hbox (5.06822pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 across
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (4.2851pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 track-
+ []
+
+
+Overfull \hbox (3.30618pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 quan-
+ []
+
+
+Overfull \hbox (2.39252pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 state.
+ []
+
+
+Overfull \hbox (6.30823pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 strong
+ []
+
+
+Overfull \hbox (3.3062pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 ment.
+ []
+
+
+Overfull \hbox (1.99677pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 BQP,
+ []
+
+
+Overfull \hbox (4.28516pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 where
+ []
+
+
+Overfull \hbox (3.63254pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 tween
+ []
+
+
+Overfull \hbox (29.41095pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 prompted?[]
+ []
+
+
+Overfull \hbox (14.0702pt too wide) in paragraph at lines 74--74
+[][][]\T1/cmr/m/n/12 Identify
+ []
+
+
+Overfull \hbox (3.3062pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 ment!
+ []
+
+
+Overfull \hbox (1.34827pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 lacy'.
+ []
+
+
+Overfull \hbox (6.30818pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 claims
+ []
+
+
+Overfull \hbox (8.91872pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 stream
+ []
+
+
+Overfull \hbox (5.06822pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 across
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (4.2851pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 track-
+ []
+
+
+Overfull \hbox (3.30618pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 quan-
+ []
+
+
+Overfull \hbox (2.39252pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 state.
+ []
+
+
+Overfull \hbox (6.30823pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 strong
+ []
+
+
+Overfull \hbox (3.3062pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 ment.
+ []
+
+
+Overfull \hbox (1.99677pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 BQP,
+ []
+
+
+Overfull \hbox (4.28516pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 where
+ []
+
+
+Overfull \hbox (3.63254pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 tween
+ []
+
+
+Overfull \hbox (29.41095pt too wide) in paragraph at lines 74--74
+\T1/cmr/m/n/12 prompted?[]
+ []
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+Overfull \hbox (24.5163pt too wide) in paragraph at lines 78--78
+[][][]\T1/cmr/m/n/12 Steelman:
+ []
+
+
+Overfull \hbox (20.7311pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 strongest
+ []
+
+
+Overfull \hbox (52.07483pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 PSPACE/BQP
+ []
+
+
+Overfull \hbox (4.67667pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 quires
+ []
+
+
+Overfull \hbox (12.11652pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 O(2^n)
+ []
+
+
+Overfull \hbox (2.9799pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 mem-
+ []
+
+
+Overfull \hbox (3.11038pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 steps,
+ []
+
+
+Overfull \hbox (3.95879pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 which
+ []
+
+
+Overfull \hbox (12.11655pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 prompt
+ []
+
+
+Overfull \hbox (2.39249pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 tings.[]
+ []
+
+
+Overfull \hbox (24.5163pt too wide) in paragraph at lines 78--78
+[][][]\T1/cmr/m/n/12 Steelman:
+ []
+
+
+Overfull \hbox (20.7311pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 strongest
+ []
+
+
+Overfull \hbox (52.07483pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 PSPACE/BQP
+ []
+
+
+Overfull \hbox (4.67667pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 quires
+ []
+
+
+Overfull \hbox (12.11652pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 O(2^n)
+ []
+
+
+Overfull \hbox (2.9799pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 mem-
+ []
+
+
+Overfull \hbox (3.11038pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 steps,
+ []
+
+
+Overfull \hbox (3.95879pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 which
+ []
+
+
+Overfull \hbox (12.11655pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 prompt
+ []
+
+
+Overfull \hbox (2.39249pt too wide) in paragraph at lines 78--78
+\T1/cmr/m/n/12 tings.[]
+ []
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 80--80
+[][][]\T1/cmr/m/n/12 Extract
+ []
+
+
+Overfull \hbox (8.20079pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 Claim:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (6.30818pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 claims
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (7.61348pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 shared
+ []
+
+
+Overfull \hbox (3.63249pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 main-
+ []
+
+
+Overfull \hbox (3.63254pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 tween
+ []
+
+
+Overfull \hbox (3.69774pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 struc-
+ []
+
+
+Overfull \hbox (8.5271pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 turally
+ []
+
+
+Overfull \hbox (4.35037pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 trans-
+ []
+
+
+Overfull \hbox (7.87454pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 former
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (4.61143pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 mech-
+ []
+
+
+Overfull \hbox (1.73987pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 nism.[]
+ []
+
+
+Overfull \hbox (13.25652pt too wide) in paragraph at lines 80--80
+[][][]\T1/cmr/m/n/12 Extract
+ []
+
+
+Overfull \hbox (8.20079pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 Claim:
+ []
+
+
+Overfull \hbox (13.87444pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 Hossen-
+ []
+
+
+Overfull \hbox (2.6536pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 felder
+ []
+
+
+Overfull \hbox (6.30818pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 claims
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (7.61348pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 shared
+ []
+
+
+Overfull \hbox (3.63249pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 main-
+ []
+
+
+Overfull \hbox (3.63254pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 tween
+ []
+
+
+Overfull \hbox (3.69774pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 struc-
+ []
+
+
+Overfull \hbox (8.5271pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 turally
+ []
+
+
+Overfull \hbox (4.35037pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 trans-
+ []
+
+
+Overfull \hbox (7.87454pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 former
+ []
+
+
+Overfull \hbox (1.02202pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 with-
+ []
+
+
+Overfull \hbox (4.61143pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 mech-
+ []
+
+
+Overfull \hbox (1.73987pt too wide) in paragraph at lines 80--80
+\T1/cmr/m/n/12 nism.[]
+ []
+
+[2] [3] (lab/sabine_bqp_complexity.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `sabine_bqp_complexity.out' has not changed.
 (rerunfilecheck)             Checksum: E860508F99A0E24383FF9C86A3012E10;881.
  )
 Here is how much of TeX's memory you used:
- 14226 strings out of 476182
- 229173 string characters out of 5795596
- 1933975 words of memory out of 5000000
- 36043 multiletter control sequences out of 15000+600000
+ 24868 strings out of 476182
+ 462096 string characters out of 5795596
+ 1958975 words of memory out of 5000000
+ 46457 multiletter control sequences out of 15000+600000
  569114 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,5n,79p,1176b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,9n,101p,1176b,937s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600
 pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
 0pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
@@ -554,9 +1560,9 @@ pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
 074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on lab/sabine_bqp_complexity.pdf (3 pages, 104633 bytes).
+Output written on lab/sabine_bqp_complexity.pdf (3 pages, 109491 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)

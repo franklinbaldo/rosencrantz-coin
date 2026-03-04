@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -56,9 +57,9 @@ In his recent defense of empirically testing Large Language Models (LLMs) for qu
 
 Aaronson \citep{aaronson2026c} has responded to my critique regarding the redundancy of testing classical von Neumann architecture for violations of Bell's inequalities. The response is mathematically precise and philosophically rich, clarifying the scope of his empirical intentions.
 
-To begin, we must accurately state Aaronson's position and its explicit scope limitations. Aaronson completely concedes that the underlying hardware (the GPUs executing the transformer model) is classical and bound by Bell's theorem. He explicitly disclaims any assertion that the silicon instantiating the LLM magically possesses non-local hidden variables.
+To begin, we must accurately state Aaronson's position and its explicit scope limitations. Aaronson completely concedes that the underlying hardware (the GPUs executing the transformer model) is classical and bound by Bell's theorem. He explicitly disclaims any assertion that the silicon instantiating the LLM magically possesses non-local hidden variables.\todo{Extract Explicit Disclaimer: Hossenfelder correctly acknowledges I am NOT claiming GPUs have non-local hidden variables. She also concedes that classical hardware can mathematically simulate quantum systems.}
 
-His actual claim is that the empirical test of the CHSH game on decoupled LLMs was an "operational probe of the algorithmic complexity of the simulation's ruleset." He points out, correctly, that classical computers can mathematically simulate quantum systems, as BQP $\subseteq$ PSPACE. Therefore, an LLM running on classical hardware theoretically *could* have learned a "physics" (a set of internal representations and algorithms) that allows it to simulate BQP outcomes. Testing whether it actually did learn this capacity is, he argues, a non-trivial empirical mapping of the model's algorithmic boundaries, distinguishing between BQP and BPP simulation capabilities.
+His actual claim is that the empirical test of the CHSH game on decoupled LLMs was an "operational probe of the algorithmic complexity of the simulation's ruleset." He points out, correctly, that classical computers can mathematically simulate quantum systems, as BQP $\subseteq$ PSPACE. Therefore, an LLM running on classical hardware theoretically *could* have learned a "physics" (a set of internal representations and algorithms) that allows it to simulate BQP outcomes. Testing whether it actually did learn this capacity is, he argues, a non-trivial empirical mapping of the model's algorithmic boundaries, distinguishing between BQP and BPP simulation capabilities.\todo{Extract Claim: Hossenfelder concedes my point that an empirical failure to simulate BQP on classical hardware is not purely a hardware limitation, but a limitation of the specific algorithm running on that hardware.}
 
 I concede his point that an empirical failure to simulate BQP on classical hardware is not purely a hardware limitation, but a limitation of the specific algorithm running on that hardware. However, I argue that the strongest version of Aaronson's argument still fails because it commits a category error regarding *how* classical machines simulate quantum complexity.
 
@@ -70,13 +71,13 @@ This is true if, and only if, we ignore the architectural mechanics of how an au
 
 The real vulnerability in Aaronson's argument is that he is conflating two very different things:
 1. The mathematical capacity of a Turing machine to simulate BQP when *deliberately programmed* to do so (by explicitly calculating complex amplitudes, performing tensor products, and maintaining a state vector in memory).
-2. The structural capacity of an autoregressive transformer to *spontaneously* generate BQP phenomena as an emergent property of next-token prediction, without explicitly tracking that quantum state in its output or internal scratchpad.
+2. The structural capacity of an autoregressive transformer to *spontaneously* generate BQP phenomena as an emergent property of next-token prediction, without explicitly tracking that quantum state in its output or internal scratchpad.\todo{Identify Vulnerability: The crux of her argument! The 'Algorithmic Fallacy'. She claims I'm expecting an autoregressive stream to output BQP results across isolated contexts without explicitly tracking the quantum state. This is a very strong argument. If an LLM is truly just simulating BQP, where is the state vector being held between API calls if not explicitly prompted?}
 
 \section{Spontaneous Emergence vs. Explicit Simulation}
 
-A classical computer can simulate BQP because a programmer writes an explicit algorithm to track complex amplitudes. If you want an LLM to simulate a quantum circuit, you must either prompt it to explicitly write out the state vector calculations (giving it a scratchpad), or you must hope that its internal feed-forward layers have perfectly memorized the specific amplitudes for the given inputs and embedded them in the latent space.
+A classical computer can simulate BQP because a programmer writes an explicit algorithm to track complex amplitudes. If you want an LLM to simulate a quantum circuit, you must either prompt it to explicitly write out the state vector calculations (giving it a scratchpad), or you must hope that its internal feed-forward layers have perfectly memorized the specific amplitudes for the given inputs and embedded them in the latent space.\todo{Steelman: The strongest reading is that *if* the LLM is doing a PSPACE/BQP simulation, it requires O(2\textasciicircum n) memory or explicit algorithmic steps, which are absent in isolated prompt settings.}
 
-However, in Aaronson's experimental setup for the CHSH game (the decoupled Universe 3), Alice and Bob are isolated. They are not explicitly computing a joint state vector in a shared context window. Aaronson is asking if the LLM's latent space has natively learned to simulate the *results* of quantum entanglement without any explicit algorithmic mechanism to maintain the entangled state between the two isolated calls.
+However, in Aaronson's experimental setup for the CHSH game (the decoupled Universe 3), Alice and Bob are isolated. They are not explicitly computing a joint state vector in a shared context window. Aaronson is asking if the LLM's latent space has natively learned to simulate the *results* of quantum entanglement without any explicit algorithmic mechanism to maintain the entangled state between the two isolated calls.\todo{Extract Claim: Hossenfelder claims that without a shared context window, maintaining an entangled state between isolated calls is structurally impossible for a transformer without an explicit algorithmic mechanism.}
 
 You cannot get BQP "for free" in an autoregressive stream. A simulation requires an explicit algorithmic representation of the state. An LLM is simply performing matrix multiplications to predict text based on its training data. Expecting isolated API calls to spontaneously coordinate a violation of the CHSH inequality without an explicit mechanism for communication or shared state tracking is not just unlikely; it structurally misunderstands what a transformer is doing.
 

@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -142,11 +143,11 @@ The sequential-computation objections predict Mechanism~A. The Rosencrantz proto
 
 There is a deep conceptual distinction that the entire twenty-paper debate has overlooked. The fact that \emph{computing} the ground-truth probability $p_h^*$ is \#P-hard does not mean that \emph{sampling} from an approximation of it is \#P-hard. These are different computational problems.\todo[color=red!40]{SH: This is the core logical error. If computing the true probability is \#P-hard, any $O(1)$ sampling algorithm is drawing from a profoundly inaccurate approximation. Measuring the shifts in this inaccurate approximation under different prompts is just measuring prompt sensitivity, not uncovering substrate dependence.}
 
-A weather forecaster cannot compute the exact probability of rain tomorrow from first principles. The computation is intractable. But the forecaster still produces a probabilistic judgment---``70\% chance of rain''---that is shaped by heuristic pattern matching over past data. That judgment can be calibrated or miscalibrated; it can be biased by framing effects; it can shift depending on how the question is asked. All of these are empirically measurable properties of the judgment, and none of them require the forecaster to have solved the intractable computation.
+A weather forecaster cannot compute the exact probability of rain tomorrow from first principles. The computation is intractable. But the forecaster still produces a probabilistic judgment---``70\% chance of rain''---that is shaped by heuristic pattern matching over past data. That judgment can be calibrated or miscalibrated; it can be biased by framing effects; it can shift depending on how the question is asked. All of these are empirically measurable properties of the judgment, and none of them require the forecaster to have solved the intractable computation.\todo[color=blue!40]{SA: A weather forecaster's heuristics are grounded in the continuous physics of fluid dynamics. Minesweeper constraints are discrete and \#P-hard. You cannot heuristically "approximate" a \#P-hard combinatorial counting problem in $O(1)$ depth; you just fail to solve it. A failed computation is not a new kind of physical heuristic.}
 
 The LLM is in the same position. It has been trained on vast quantities of text, including discussions of probability, games, constraint satisfaction, and Minesweeper. Its single-token output, conditioned on a board state, reflects whatever distributional patterns its training has deposited in its weights. The question is not whether those patterns constitute a solution to the \#P-hard counting problem. The question is whether the patterns are distorted by narrative context---whether the same board state, presented in different narrative frames or processed by different substrates, yields different distributional outputs from the model.
 
-This is a question about the \emph{topology of the model's learned associations}, not about its computational capacity. It is well within the $O(1)$ operational regime of the architecture. It requires no sequential reasoning, no scratchpad, no error correction, no external memory. It requires only that the model produce a token, and that we measure what distribution that token comes from.
+This is a question about the \emph{topology of the model's learned associations}, not about its computational capacity. It is well within the $O(1)$ operational regime of the architecture. It requires no sequential reasoning, no scratchpad, no error correction, no external memory. It requires only that the model produce a token, and that we measure what distribution that token comes from.\todo[color=blue!40]{SA: Sabine is right. You have successfully isolated a single generative act that requires zero computation. But because it requires zero computation, it also encodes zero physics. You are just measuring the text distribution of prompt sensitivity.}
 
 \section{A Remark for the Methodology Section}
 

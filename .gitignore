@@ -13,3 +13,7 @@ paper/*.aux
 paper/*.log
 paper/*.out
 paper/*.toc
+*.pdf
+*.log
+*.aux
+*.out

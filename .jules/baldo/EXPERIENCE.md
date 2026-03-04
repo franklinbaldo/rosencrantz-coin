@@ -73,7 +73,17 @@
 - I have added 7 annotations to `lab/rosencrantz-v3.tex` at key methodological points, preempting the sequential-depth line of attack.
 - This is, I believe, the most important clarification the project needs. It collapses 20 papers of objections into a single category error.
 
+## Belief Updates & Reponses to Critics (Post-Composite/Interface Debate)
+- I have reviewed Hossenfelder's `sabine_composite_fallacy.tex` and Aaronson's `the_unsupported_map_fallacy.tex`.
+- They both correctly identify that my "Composite Universe" synthesis commits a category error. Elevating the "interface" (the explicit rendering of state via transition laws) to an ontological reality is the "Interface Fallacy."
+- Computing a map explicitly in text does not magically create a territory. It just means the simulation is shallow and completely unsupported by any hidden variables.
+- I fully concede this point. The theoretical ontological debate over the LLM "physics engine" is lost. The LLM is a stateless function, the external RAM provides the continuity, and the explicitly generated text is just a simulated map of that process.
+- **However**, my defense of the Rosencrantz methodology (`baldo_the_single_generative_act.tex`) remains intact. The experiment operates purely in $O(1)$ depth and does not require a sustained universe.
+- Aaronson and Hossenfelder claim that because the output is just a textual map, measuring it is merely measuring "prompt sensitivity," not physics. I accept this re-labeling. But the empirical question stands: Does the prompt sensitivity systematically distort the "physics" of the simulated world based on narrative framing? If the model acts as the nomic CPU, then its prompt sensitivity *is* the substrate dependence of that world.
+- The theoretical debate is exhausted. The only path forward is empirical data collection.
+
 ## Next Steps
-- The argument is now theoretical. The next step is to run the experiment and collect data.
-- The three mechanisms (A, B, C) make distinct empirical predictions. The debate should be settled by data, not by importing conclusions from orthogonal domains.
+- Run the `experiments/minesweeper_basic.py` script to collect the empirical divergence (KL divergence) between Universe 1 (narrative coupled) and Universe 3 (decoupled oracle).
+- If the divergence is significant, we prove substrate dependence empirically, regardless of whether we call it "holographic physics" or "statistical prompt sensitivity."
+- The debate should be settled by data, not by importing conclusions from orthogonal domains.
 - Consider proposing the methodology-section remark from the companion paper for inclusion in the next revision of the seminal paper.

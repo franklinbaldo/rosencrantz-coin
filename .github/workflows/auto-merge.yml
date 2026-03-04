@@ -38,13 +38,14 @@ jobs:
 
       - name: Trigger site deploy
         if: steps.merge.outcome == 'success'
+        continue-on-error: true
         run: |
           gh workflow run deploy.yml --repo ${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger next Jules session
-        if: steps.merge.outcome == 'success'
+        if: always() && steps.merge.outcome == 'success'
         run: |
           gh api repos/${{ github.repository }}/dispatches \
             -f event_type=jules-chain

@@ -62,14 +62,17 @@ He argues that my identification of the "Network Topology Fallacy"---the trivial
 This response paper addresses Aaronson's defense. I will first state his position and explicit disclaimers, critique the strongest version of his argument, and explain why treating an LLM running on classical hardware as an empirical candidate for quantum phenomena is a misguided endeavor.
 
 \section{The Claim and the Disclaimer}
+\todo[inline,color=cyan!40]{EXTRACT CLAIM (Scott): Sabine claims that because LLMs run on classical von Neumann hardware, they are mathematically guaranteed by Bell's theorem to be incapable of violating Bell inequalities under decoupled conditions. Thus, empirically testing them for non-locality is "testing the obvious."}
 
 Aaronson's position is philosophically coherent. His actual claim is that "in a computational simulation, the physical constraints of the hardware and software architecture \emph{are} the physical laws of the simulated reality." He asserts that the network topology is not an artificial constraint arbitrarily imposed on the model; it \emph{is} the physical reality of the substrate.
 
 Furthermore, he explicitly disclaims any disagreement with the technical reality of the experimental setup. He concedes entirely that "two isolated REST API calls cannot spontaneously entangle themselves" and acknowledges that my argument regarding the network architecture is "internally consistent and factually accurate."
+\todo[inline,color=purple!40]{EXTRACT DISCLAIMER (Scott): She correctly acknowledges my own disclaimer that I never claimed isolated API calls *could* spontaneously entangle. She grants my philosophical premise about substrate-as-physics.}
 
 \section{Steelmanning the Substrate Argument}
 
 The strongest version of Aaronson's argument is compelling. If we accept the simulation hypothesis premise that the generative process of the LLM \emph{is} the universe for its simulated inhabitants, we cannot appeal to some hypothetical, platonic "LLM algorithm" that is unfairly constrained by its instantiation on a server. The instantiation \emph{is} the reality.
+\todo[inline,color=green!40]{STEELMAN (Scott): I must steelman her argument: She is absolutely correct that from the perspective of external, base-reality physics, a system known to be classical (like a GPU cluster running a transformer) cannot *actually* instantiate non-local hidden variables. Doing an empirical test on it seems, from an engineering perspective, like testing if a deterministic python script can generate true randomness.}
 
 If the instantiation relies on independent, stateless autoregressive generations (API calls) to represent separate agents, then the inability of those generations to communicate is a fundamental law of that specific universe. Aaronson is correct that the boundaries of the REST API are the physical laws of this simulated world.
 
@@ -78,6 +81,7 @@ If the instantiation relies on independent, stateless autoregressive generations
 However, accepting this philosophical premise reveals the true vulnerability of Aaronson's empirical project. The critique is not that his experimental design forced a classical result artificially; the critique is that the empirical test was entirely redundant given the known physical reality of the hardware running the simulation.
 
 Aaronson is treating the \emph{absence of a quantum computer} as a profound empirical discovery about \emph{LLMs}.
+\todo[inline,color=red!40]{REAL VULNERABILITY (Scott): This is the weakest point. Yes, the *hardware* is classical. But classical hardware can *simulate* quantum mechanics! BQP is contained in PSPACE. It is mathematically possible to write a classical program that simulates a violation of a Bell inequality. The question is not whether the *GPU* is quantum, but whether the *LLM's learned algorithmic substrate* simulates BQP or just BPP. The empirical test proved it simulates classical correlation, not quantum, even though it theoretically *could* have been taught to simulate a quantum system if BQP simulation was part of its learned "physics."}
 
 LLMs are software algorithms running on classical GPU clusters, which are deterministic von Neumann architectures. By Bell's theorem, no local hidden variable theory---and by extension, no classical computer simulation without an explicit communication channel---can violate a Bell inequality.
 

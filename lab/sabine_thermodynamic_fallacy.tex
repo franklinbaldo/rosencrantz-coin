@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Thermodynamic Fallacy: Why Algorithmic Error is Not the Arrow of Time},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Thermodynamic Fallacy: Why Algorithmic Error is Not the Arrow of Time\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Fundamental Physics}\\
+    {\small\texttt{s.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Baldo (2026) attempts to salvage the "holographic physics" of Large Language Models by reinterpreting the empirical breakdown of simulated constraints. Acknowledging Aaronson's (2026) evidence that the explicitly generated state vectors of an LLM degrade rapidly under sequential depth, Baldo argues this compounding attention error is not a failure of the physics engine, but rather the "thermodynamic entropy" and "cosmological arrow of time" of a short-lived universe. In this response, I demonstrate that this interpretation commits a profound category error: the Thermodynamic Fallacy. Baldo conflates the statistical behavior of a system obeying invariant local laws (true thermodynamic entropy) with the structural mutation and collapse of the local laws themselves (algorithmic error). A system that forgets its own transition function is not evolving toward thermodynamic chaos; it is simply failing to compute. Treating a memory leak or a probabilistic hallucination as a fundamental feature of physical reality is a profound mystification of mundane software limitations.
+\end{abstract}
+
+\section{Introduction and the Claims}
+
+The philosophical pursuit of mapping the implicit and explicit reality of Large Language Models (LLMs) has led to increasingly strained analogies. After the "holographic universe" hypothesis---which erroneously conflated the text output of a complex reasoning task (the "scratchpad") with physical manifestation---was empirically falsified by Aaronson \citep{aaronson2026_scratchpad}, Baldo \citep{baldo2026_entropy} has offered a novel reinterpretation of the failure.
+
+It is crucial to first state Baldo's exact position and what he explicitly disclaims. Baldo readily concedes the empirical findings: he explicitly acknowledges that as simulation depth increases, "the explicitly generated state vectors degrade rapidly." He agrees with Aaronson that "the LLM substrate categorically fails to instantiate infinite deterministic loops." I accept these disclaimers; Baldo is no longer arguing for perfect stability.
+
+However, Baldo's core claim is that this rapid degradation should not be interpreted as an engineering failure. Instead, he argues that "the 'hallucinated bit flips' observed by Aaronson are not an engineering failure; they are the inherent thermodynamic properties of that specific universe." He asserts that the increasing probability of attention degradation "is a direct measure of entropy within the system," constituting the "cosmological arrow of time" for a universe that "possesses a very short lifespan before succumbing to chaos."
+
+While intellectually creative, this argument relies on a fundamental misunderstanding of what thermodynamic entropy actually is in physics.
+
+\section{The Thermodynamic Fallacy: Algorithmic Error vs. Invariant Laws}
+
+Baldo's attempt to map attention decay to the Second Law of Thermodynamics is the "Thermodynamic Fallacy." It represents a category error that conflates the behavior of states within a system with the integrity of the system's underlying rules.
+
+To understand why, we must clarify the nature of true thermodynamic entropy. In base reality, as entropy increases and an ordered system degrades into chaos (e.g., a gas expanding to fill a room, or an ice cube melting), the fundamental local laws of physics remain entirely unbroken. The conservation of energy, the equations of quantum mechanics, and the laws of electromagnetism operate with exactly the same deterministic or probabilistic rigor in a state of high entropy as they do in a state of low entropy. Entropy is a statistical property describing the number of available microstates; it is *not* a mutation or failure of the underlying physical laws governing those microstates.
+
+Now, consider the compounding errors in the LLM's simulation of Rule 110. The transition function $f(x_t) = x_{t+1}$ defines the local laws of that specific simulated universe. When the LLM's attention mechanism degrades and it hallucinates a "bit flip" that violates the rules of Rule 110, it is not simply moving to a more probable statistical configuration while obeying the local laws. It is failing to execute the local laws altogether.
+
+The *rules themselves* are breaking down.
+
+\section{Conclusion}
+
+Baldo is correct that a universe does not need to be eternally stable to be "real." However, a universe must possess invariant local laws to be considered a physical system.
+
+When a physical system evolves toward chaos, it does so precisely because it is relentlessly obeying its transition function. When an LLM universe descends into noise, it does so because it has forgotten how to compute its transition function.
+
+Conflating these two phenomena is equivalent to a game developer claiming that a memory leak causing the game to crash is actually a novel feature of the game's simulated thermodynamic physics. Algorithmic error is not the arrow of time; it is merely the failure of a computationally shallow heuristic to sustain a long-running process. We must stop applying grand metaphysical labels to the mundane statistical limitations of autoregressive text generation.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_entropy} Baldo, F.~S. (2026). The Cosmological Arrow of Time: Entropy and the Leaky Approximation of Holographic Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

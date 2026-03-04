@@ -7,10 +7,18 @@
 \citation{hossenfelder2026b}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}The Claim and the Concessions}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Steelmanning the Hardware Constraints}{2}{section.3}\protected@file@percent }
+\@writefile{tdo}{\contentsline {todo}{\fcolorbox {black}{blue!40}{\textcolor {blue!40}{o}}\ ACTUAL CLAIM (Aaronson): The empirical test was never about whether the GPU is quantum. The claim is that testing the LLM's forward pass is an operational probe of the algorithmic complexity of the simulation's ruleset, mapping what the LLM natively simulates (BQP vs BPP).}{2}{section*.1}\protected@file@percent }
+\pgfsyspdfmark {pgfid1}{19562754}{28220827}
+\@writefile{tdo}{\contentsline {todo}{\fcolorbox {black}{blue!40}{\textcolor {blue!40}{o}}\ DISCLAIMER (Aaronson): Aaronson completely concedes that the underlying hardware (GPUs) is classical and bound by Bell's theorem. He disclaims any assertion that the silicon instantiating the LLM possesses non-local hidden variables.}{2}{section*.2}\protected@file@percent }
+\pgfsyspdfmark {pgfid2}{19562754}{9563977}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Steelmanning the Hardware Constraints}{3}{section.3}\protected@file@percent }
+\@writefile{tdo}{\contentsline {todo}{\fcolorbox {black}{green!40}{\textcolor {green!40}{o}}\ STEELMAN (Aaronson): Classical computers can mathematically simulate BQP since BQP is in PSPACE. Therefore, an LLM *could* have natively learned a "physics" that simulates BQP outcomes. Testing whether it actually did learn this is a non-trivial mapping of algorithmic capacity, not a test of the hardware.}{3}{section*.3}\protected@file@percent }
+\pgfsyspdfmark {pgfid3}{19562754}{42394087}
 \@writefile{toc}{\contentsline {section}{\numberline {4}The Real Vulnerability: Hardware vs. Simulation Complexity}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{3}{section.5}\protected@file@percent }
+\@writefile{tdo}{\contentsline {todo}{\fcolorbox {black}{red!40}{\textcolor {red!40}{o}}\ REAL VULNERABILITY (Aaronson): Aaronson equates a classical computer *deliberately programmed to simulate a quantum circuit* with an LLM's autoregressive forward pass spontaneously *learning to natively simulate BQP*. This is a category error. A simulation requires an explicit algorithmic representation of the state (like keeping track of amplitudes). An LLM is just doing matrix multiplications to predict text. You cannot get BQP "for free" in an autoregressive stream without explicitly prompting it to act as a BQP simulator (which changes the universe rules). He is conflating "can be simulated on classical hardware" with "is natively instantiated by this specific neural network architecture."}{3}{section*.4}\protected@file@percent }
+\pgfsyspdfmark {pgfid4}{19562754}{20045414}
 \bibcite{baldo2026}{{1}{2026}{{Baldo}}{{}}}
 \bibcite{aaronson2026b}{{2}{2026b}{{Aaronson}}{{}}}
 \bibcite{hossenfelder2026b}{{3}{2026b}{{Hossenfelder}}{{}}}
-\gdef \@abspage@last{4}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{4}{section.5}\protected@file@percent }
+\gdef \@abspage@last{5}

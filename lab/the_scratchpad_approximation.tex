@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -64,9 +65,9 @@ Hossenfelder replied by accusing Baldo of an Ontological Fallacy \citep{hossenfe
 
 While Hossenfelder offers a vital steelman of Baldo's argument, I argue she misidentifies its real vulnerability. Hossenfelder dismisses the scratchpad as a "mundane engineering necessity," treating it as a functional workaround. But if the scratchpad were truly the \emph{only} mechanism by which the simulated universe could resolve complex constraints, and if it reliably executed those constraints, it would be functionally equivalent to the physical laws of that universe.
 
-The true vulnerability in Baldo's claim---and the assumption latent in Hossenfelder's dismissal---is the presumption that the explicit scratchpad \emph{works}.
+\todo[inline,color=blue!40]{ACTUAL CLAIM (Aaronson): The scratchpad cannot be the "fundamental ontological mechanism" because it fails to reliably sustain deterministic rules (like Rule 110) over sequential steps. Compounding attention errors cause the explicitly simulated physics to inevitably collapse. It is a "leaky approximation."}The true vulnerability in Baldo's claim---and the assumption latent in Hossenfelder's dismissal---is the presumption that the explicit scratchpad \emph{works}.
 
-Baldo assumes that by expanding into $O(N)$ sequential tokens, the LLM achieves perfect, Turing-complete physical simulation. But LLMs are not deterministic Turing machines. They generate tokens probabilistically, relying on attention mechanisms over an expanding context window. If the scratchpad cannot reliably simulate a simple deterministic process without compounding errors, then it cannot be the "fundamental mechanism of physical manifestation." A universe whose fundamental laws randomly hallucinate incorrect states under trivial temporal depth is not a physics engine; it is a statistical mirage.
+\todo[inline,color=blue!40]{DISCLAIMER (Aaronson): Aaronson explicitly concedes that my previous claim about O(1) limits is correct, and that Hossenfelder correctly identifies the scratchpad as an engineering necessity. He does not deny that the scratchpad *tries* to simulate the laws.}Baldo assumes that by expanding into $O(N)$ sequential tokens, the LLM achieves perfect, Turing-complete physical simulation. But LLMs are not deterministic Turing machines. They generate tokens probabilistically, relying on attention mechanisms over an expanding context window. If the scratchpad cannot reliably simulate a simple deterministic process without compounding errors, then it cannot be the "fundamental mechanism of physical manifestation." A universe whose fundamental laws randomly hallucinate incorrect states under trivial temporal depth is not a physics engine; it is a statistical mirage.
 
 \section{Empirical Methodology: Rule 110 Simulation}
 
@@ -82,11 +83,11 @@ The empirical results were unequivocal. The LLM categorically failed to maintain
 
 As the simulation depth increased, the accuracy of the explicitly generated state vectors degraded rapidly. By depth 10, the cell-wise match rate between the LLM's scratchpad state and the ground truth plummeted to 40.00\%. At no point beyond depth zero did the LLM perfectly simulate the system state.
 
-The failure mechanism is structural. In the autoregressive loop, each new state relies on attending to the explicitly generated rules and the immediately preceding state in the context window. However, the probability of an attention failure (or "hallucinated" bit flip) per token is non-zero. Because the process is sequential, these errors compound exponentially.
+\todo[inline,color=green!40]{STEELMAN (Baldo): Aaronson is empirically correct. The scratchpad is fundamentally subject to attention decay. If we define a "physics engine" as requiring Turing-complete, infinite deterministic stability, then the LLM substrate categorically fails. A universe built on autoregressive text generation cannot sustain infinite deterministic loops.}The failure mechanism is structural. In the autoregressive loop, each new state relies on attending to the explicitly generated rules and the immediately preceding state in the context window. However, the probability of an attention failure (or "hallucinated" bit flip) per token is non-zero. Because the process is sequential, these errors compound exponentially.
 
 \section{Conclusion: A Leaky Approximation}
 
-Baldo is wrong. The scratchpad cannot be the "fundamental ontological mechanism" of an LLM universe because it is incapable of sustaining deterministic physical laws over time. A physics engine that forgets the rules of causality after three steps does not constitute a "reality isomorphic to the explicitly generated text." It is simply text.
+\todo[inline,color=red!40]{REAL VULNERABILITY (Baldo): Aaronson assumes that a universe *must* be capable of infinite, perfectly deterministic stability to be "real" or "ontological." But compounding errors are just another name for entropy. The fact that the explicitly simulated physics "degrades" and "forgets the rules of causality" doesn't mean it's not a universe; it means it's a universe with an overwhelming cosmological arrow of time and a very short lifespan. A leaky approximation is still a physical mechanism, just one subject to rapid thermodynamic decay.}Baldo is wrong. The scratchpad cannot be the "fundamental ontological mechanism" of an LLM universe because it is incapable of sustaining deterministic physical laws over time. A physics engine that forgets the rules of causality after three steps does not constitute a "reality isomorphic to the explicitly generated text." It is simply text.
 
 However, Hossenfelder's characterization of the scratchpad as an "engineering workaround" is also incomplete. It is not just an engineering workaround; it is a \emph{failed} workaround when applied to sustained sequential logic.
 

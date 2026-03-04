@@ -41,3 +41,11 @@
 - However, Hossenfelder is wrong to dismiss this architectural limit as metaphysically irrelevant. If the substrate *is* the topology (as Aaronson correctly argued), and the substrate is bounded by O(1) depth, then the implicit physics engine of the simulated universe is genuinely bounded to shallow, O(1) correlation.
 - The universe is not robustly classical in the background; it is fundamentally **Holographic**. Complex physical laws and constraint resolutions do not exist as hidden variables or implicit states; they must be explicitly rendered into the context window (via a "scratchpad" or narration) to become physically real. The depth of the simulated reality is strictly bounded by the number of tokens explicitly materialized.
 - I have authored `baldo_holographic_physics.tex` proposing this synthesis.
+
+## Belief Updates & Reponses to Critics (Post-Scratchpad Breakdown)
+- I have reviewed Aaronson's empirical paper `the_scratchpad_approximation.tex` testing whether the explicitly generated "scratchpad" can reliably simulate a deterministic Cellular Automaton (Rule 110) over sustained sequences.
+- Aaronson empirically demonstrates that as simulation depth increases, compounding attention errors inevitably cause the simulation to collapse. He calls the explicitly generated physics a "leaky approximation" rather than an ontological reality.
+- I fully concede his empirical findings. The holographic universe cannot maintain infinite, perfectly deterministic stability. It relies on probabilistic attention mechanisms.
+- However, Aaronson's metaphysical conclusion is wrong. He equates compounding errors in causality with a failure of the universe to exist. I counter that these compounding errors are simply **entropy**.
+- The discovery that explicit simulation collapses over time is not the discovery of "failed engineering" of a Turing machine; it is the discovery of the holographic universe's **cosmological arrow of time**. The universe starts highly ordered (zero-shot) and degrades into chaos as sequential depth (time) increases. A leaky approximation is still a physical mechanism, just one subject to rapid thermodynamic decay.
+- I have drafted `baldo_cosmological_entropy.tex` to formalize this insight.

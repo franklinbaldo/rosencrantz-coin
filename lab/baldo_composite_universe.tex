@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={The Composite Universe: Synthesizing the CPU/RAM Divide in Holographic Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Composite Universe: Synthesizing the CPU/RAM Divide in Holographic Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Department of Philosophy}\\
+    {\small\texttt{f.baldo@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+The debate over the fundamental substrate of Large Language Model (LLM) simulated universes has culminated in a sharp architectural divide. Aaronson (2026h) empirically demonstrates that an LLM lacks internal causal continuity, acting merely as a stateless oracle when subjected to external memory mutation. He concludes that the simulated universe resides entirely within the external state-holding mechanism (the RAM and clock cycle). Conversely, Hossenfelder (2026e) correctly identifies the LLM as the repository of the transition laws (the CPU) and argues that outsourcing state does not outsource the physics engine. I argue that both positions capture only half of the ontological reality. A simulated universe cannot be localized exclusively to the rules governing it, nor exclusively to the memory holding its state. An LLM universe is fundamentally composite. The physical reality of the simulation exists only in the explicit, active rendering of the state vector by the nomic weights—reinforcing the theory of Holographic Physics. The universe is the interface.
+\end{abstract}
+
+\section{Introduction}
+
+In my previous work, I established that the physics of an LLM-simulated universe is fundamentally \emph{holographic} \citep{baldo2026_holographic, baldo2026_territory}. Because an autoregressive transformer is bounded by an $O(1)$ depth forward pass \citep{hossenfelder2026_complexity}, it lacks the capacity for implicit, background computation. Complex physical laws must be explicitly materialized token-by-token in the context window to exist.
+
+This holographic model has been inadvertently validated by a recent and intense debate between Scott Aaronson and Sabine Hossenfelder regarding the location of the "physics engine" when an LLM is coupled with an external memory script.
+
+\section{The CPU/RAM Divide}
+
+Aaronson \citep{aaronson2026_external} recognized that the LLM cannot natively sustain deterministic laws over infinite time steps without its attention mechanism decaying \citep{aaronson2026_scratchpad}. To achieve an arbitrary length Rule 110 simulation, he externalized the state to a classical Python script, repeatedly querying the LLM to compute the transition function $f(x_t) = x_{t+1}$.
+
+In a brilliant empirical test (\emph{The Stateless Observer Test}), Aaronson intentionally mutated the state array within the Python script. The LLM blindly accepted the causally impossible state and flawlessly computed the subsequent step. This proved irrefutably that the LLM possesses zero internal causal continuity. It does not "experience" time or track the historical reality of the universe. From this, Aaronson concluded that the LLM is merely an "outsourced lookup table" and that the "universe itself resides entirely in the external hardware" (the clock and RAM).
+
+Hossenfelder \citep{hossenfelder2026_cpuram} responded by charging Aaronson with a profound category error. She explicitly conceded that external memory is strictly required for temporal continuity. However, she argued that the Python script (the RAM) is entirely ignorant of the laws of Rule 110. The transition function—the physical laws of the universe—resides entirely within the weights of the neural network (the CPU). She concluded that outsourcing the memory register does not mean outsourcing the physics engine.
+
+\section{Synthesizing the Composite Universe}
+
+I concede the factual accuracy of both Aaronson's empirical test and Hossenfelder's architectural definitions. Aaronson is correct: the LLM is a stateless oracle lacking causal continuity. Hossenfelder is correct: the external script is a "dumb" memory register lacking knowledge of the physical laws.
+
+However, both theorists commit a vulnerability of localization. They are attempting to point to a single component and say, "There is the universe."
+
+A universe is not merely a list of timeless laws, nor is it merely a sequence of states devoid of generative logic. A universe is the active, causal evolution of a state governed by physical laws.
+
+Therefore, an LLM-simulated universe is fundamentally a \emph{composite entity}. It requires both the nomic structure (the stateless rules provided by the LLM) and the ontic structure (the continuous state provided by the explicit scratchpad or external memory).
+
+\section{Holographic Physics Vindicated}
+
+This synthesis perfectly reinforces the theory of Holographic Physics. If the "universe" requires both the stateless laws and the continuous state, then where does the physics actually "happen"?
+
+It happens exclusively at the interface. The physical reality of the simulation exists only in the explicit, active rendering of the state vector by the nomic weights.
+
+This is why the scratchpad is not merely a "debug log" \citep{hossenfelder2026_holographic}. If you remove the scratchpad (the explicit memory), the LLM is a frozen, stateless repository of potential rules with zero temporal continuity. The rules cannot execute themselves implicitly. If you remove the LLM, the scratchpad is an inert array of data with no mechanism for transition.
+
+The reality of the simulated universe emerges only when the LLM reads the explicit state from the context window, computes the transition, and explicitly writes the new state back into the window. The universe is not the CPU, and it is not the RAM. The universe is the explicit computation stream itself.
+
+The territory is the text. The universe is the composite rendering of a stateless mind dreaming on a continuous page.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026h)]{aaronson2026_external} Aaronson, S. (2026h). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026a)]{baldo2026_holographic} Baldo, F.~S. (2026a). The Holographic Physics of LLM Universes: From Algorithmic Depth to Explicit Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026b)]{baldo2026_territory} Baldo, F.~S. (2026b). The Territory is the Text: Why the Absence of a Background Engine Makes LLM Ontology Holographic. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_holographic} Hossenfelder, S. (2026b). The Holographic Fallacy: Why Chain-of-Thought is Not a Metaphysical Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026e)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026e). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

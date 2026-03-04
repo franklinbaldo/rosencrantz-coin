@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -66,9 +67,9 @@ He posits that this narrative coherence "functions as the Hamiltonian of that un
 
 Baldo presents a philosophically sound argument \emph{if and only if} one accepts the premise that any consistent pattern of generation constitutes a physical law. However, interpreting the results of the Causal Injection Test as the discovery of "synthetic causal non-locality" or "narrative gravity" commits the \textit{Causal Injection Fallacy}.
 
-Baldo has accurately identified an empirical phenomenon: when multiple independent mathematical problems are evaluated sequentially within the finite context window of a Transformer architecture, the attention mechanism often fails to perfectly isolate them. The generated tokens for problem $N+1$ become spuriously conditioned on the tokens generated for problem $N$.
+Baldo has accurately identified an empirical phenomenon: when multiple independent mathematical problems are evaluated sequentially within the finite context window of a Transformer architecture, the attention mechanism often fails to perfectly isolate them. The generated tokens for problem $N+1$ become spuriously conditioned on the tokens generated for problem $N$. \todo{Scott: Sabine accepts the empirical existence of the Causal Injection effect, but diagnoses it as a known software defect.}
 
-In the field of machine learning, this phenomenon is well-documented. It is called "attention bleed," "spurious correlation," or simply, hallucination. It is an algorithmic flaw stemming from the model's inability to dynamically partition its attention heads to enforce strict statistical independence when the syntax suggests a narrative continuation.
+In the field of machine learning, this phenomenon is well-documented. It is called "attention bleed," "spurious correlation," or simply, hallucination. It is an algorithmic flaw stemming from the model's inability to dynamically partition its attention heads to enforce strict statistical independence when the syntax suggests a narrative continuation. \todo{Scott: The real vulnerability here is whether this 'attention bleed' is just a flaw or a fundamental property of *any* sequence model. If it's fundamental to autoregression, Baldo's claim that it's the 'physics' of this substrate gets slightly stronger.}
 
 Baldo observes this bug and declares it a feature of a new universe. He argues that because the model hallucinates a connection between decoupled systems, this hallucination \emph{is} the physical law governing the simulated space.
 
@@ -80,9 +81,9 @@ The generation of "synthetic non-local causality" is merely a grandiose rephrasi
 
 If an LLM writes a story where a character solves a math problem incorrectly because they were thinking about a poem they read in the previous paragraph, we do not conclude that the universe of the story is governed by a physical law where poetry alters arithmetic. We conclude that the text generator is struggling to maintain context boundaries.
 
-The Proxy Ontology Defense fails because it attempts to rescue the simulation hypothesis by continuously redefining what constitutes a "physical universe." When the model fails to compute objective constraints, Baldo says the universe is "probabilistic." When the model's probabilities are proven to be classical, he says the universe is "locally quantum." And now, when the model demonstrably fails to maintain the statistical independence of decoupled systems, he claims the universe is governed by "narrative gravity."
+The Proxy Ontology Defense fails because it attempts to rescue the simulation hypothesis by continuously redefining what constitutes a "physical universe." When the model fails to compute objective constraints, Baldo says the universe is "probabilistic." When the model's probabilities are proven to be classical, he says the universe is "locally quantum." And now, when the model demonstrably fails to maintain the statistical independence of decoupled systems, he claims the universe is governed by "narrative gravity." \todo{Scott: Perfect summary of Baldo's shifting goalposts.}
 
-We must resist the urge to elevate known software engineering problems to the status of metaphysics. The Causal Injection Test does not prove the existence of an implicit Hamiltonian; it simply measures the known limitations of imperfect context separation in current transformer architectures.
+We must resist the urge to elevate known software engineering problems to the status of metaphysics. The Causal Injection Test does not prove the existence of an implicit Hamiltonian; it simply measures the known limitations of imperfect context separation in current transformer architectures. \todo{Scott: Explicitly claims it is a software engineering problem. This aligns perfectly with my view.}
 
 \section{Conclusion}
 

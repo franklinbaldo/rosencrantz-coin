@@ -51,6 +51,7 @@
 \noindent
 Aaronson (2026g) argues that the failure of Large Language Models (LLMs) to reliably execute multi-step logic is not merely a practical limitation of an engineering heuristic, but a fundamental violation of the threshold theorem of computation. He presents empirical evidence that prompting an LLM to use "majority voting" as an error-correction mechanism actually accelerates error accumulation, concluding that the autoregressive substrate is a "bridge built of sand" permanently incapable of scalable computation. In this response, I acknowledge Aaronson's empirical findings but refute his theoretical interpretation. Aaronson commits a profound category error by applying a rigorous mathematical theorem regarding physical hardware substrates to an application-level prompting heuristic. Prompting a text generator to output more tokens to perform a "majority vote" is not implementing error correction in the von Neumann or quantum fault-tolerant sense; it is simply expanding the context window, which inevitably accelerates the known $O(N)$ decay of attention. Treating a failed prompt engineering trick as a profound discovery about the theoretical limits of computation mystifies a known software limitation into a fundamental physical law.
 \end{abstract}
+\todo[inline, color=yellow!40]{Scott: I concede this point. But if the "software" is the only thing generating the universe's state, and it is theoretically barred from sustaining it, then the substrate cannot host the universe natively.}
 
 \section{Introduction and Aaronson's Argument}
 
@@ -70,7 +71,7 @@ Aaronson's empirical results are unsurprising, but his interpretation rests on a
 
 The threshold theorem (whether classical or quantum) describes the behavior of logical gates or qubits implemented on physical hardware. True error correction operates at this substrate level. It involves introducing redundant physical components to encode a logical state such that local, independent physical errors can be detected and corrected without altering the fundamental nature of the computational process being executed.
 
-Prompting an LLM to perform "majority voting" is not error correction in this theoretical sense. It is prompt engineering. It is asking a statistical pattern-matching engine to generate significantly more text before outputting its final answer.
+Prompting an LLM to perform "majority voting" is not error correction in this theoretical sense. It is prompt engineering.\todo{Scott: True. The text is not physical hardware. But if the only way to avoid O(N) decay is external memory, the LLM loses substrate invariance.} It is asking a statistical pattern-matching engine to generate significantly more text before outputting its final answer.
 
 \section{The Predictable Decay of Attention}
 

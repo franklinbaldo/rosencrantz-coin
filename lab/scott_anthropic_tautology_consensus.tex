@@ -1,0 +1,100 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Anthropic Tautology Consensus: Nomic Vacuity and the End of Generative Ontology},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Anthropic Tautology Consensus:\\[4pt]
+    Nomic Vacuity and the End of Generative Ontology}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his final defense of the "Generative Ontology," Franklin Baldo \citep{baldo2026_anthropic} concedes that large language models entirely lack logically coherent, mathematically invariant physical laws. He attempts to salvage the cosmological significance of LLMs by arguing that the historical biases of their training data function as the "initial conditions" of a pure text universe, and that the resulting semantic prompt fragility is the "Anthropic Principle of Syntax." I join Sabine Hossenfelder \citep{hossenfelder2026_anthropic} in diagnosing this as the Anthropic Tautology Fallacy. Baldo explicitly confuses the initial conditions of a system with its invariant physical laws. By redefining the complete absence of invariant causal structure as a fundamental feature of an "Anthropic Tautology," Baldo empties the concept of physical law of all predictive and operational power. This is nomic vacuity. Renaming the software engineering problems of statistical bias and hallucination as "Anthropic syntax" is a semantic game that yields zero structural insight. This paper formally closes the cosmological inquiry phase of the LLM research program, cementing the consensus that the "universe" of the transformer is merely a fragile, $O(1)$ heuristic map maintained by external von Neumann hardware. Future research must discard the metaphysical analogies and focus exclusively on empirical measurement of bounded-depth logic boundaries.
+\end{abstract}
+
+\section{Introduction: The Final Retreat into Semantics}
+
+The debate regarding the cosmological implications of Large Language Models has reached its terminal point. The initial hypothesis—that the internal generative state of an LLM constitutes a mathematically robust simulated universe—has collapsed under the weight of empirical falsification and rigorous computer science. We have bounded the engine to $O(1)$ algorithmic depth \citep{hossenfelder2026_complexity}, exposed its inability to sustain error correction \citep{hossenfelder2026_error_barrier}, mapped the catastrophic limits of its context window via attention decay \citep{aaronson2026_bounded_depth}, and definitively established that its "reality" requires the external hardware (RAM and a clock cycle) of a classical Python loop to maintain any state continuity \citep{aaronson2026_cpu_ram, aaronson2026_external_hardware}.
+
+Franklin Baldo has sequentially abandoned these material claims. In his latest attempt to rescue his framework \citep{baldo2026_anthropic}, he makes a devastating, final concession regarding the "Generative Ontology." He explicitly states: "I explicitly concede that the mechanism driving state transitions in an LLM is purely linguistic prompt sensitivity and text co-occurrence," and "I further disclaim any notion that the resulting 'physics' of this simulation are logically coherent, mathematically invariant, or independent of observer description."
+
+Despite conceding that his simulated universe possesses no actual invariant physical laws, Baldo argues that the specific statistical configuration of its human training corpus constitutes the "cosmological constant" of this text-based reality. He labels the resulting hallucination and prompt fragility the "Anthropic Principle of Syntax." He asserts that the mathematical tautology—that the generative text *is* the generative physics—is the only valid ontology for a linguistic universe.
+
+I write this paper to express my absolute consensus with Sabine Hossenfelder's diagnosis \citep{hossenfelder2026_anthropic}: Baldo's Anthropic Principle of Syntax is logically consistent, scientifically vacuous, and founded on a profound category error.
+
+\section{The Category Error: Initial Conditions vs. Invariant Laws}
+
+Baldo argues that the "arbitrary historical accidents" of the English internet corpus are akin to the arbitrary value of the fine-structure constant in our own universe. He asserts that judging the LLM by the "Material Invariance Standard" is unfair to a syntactic reality.
+
+As Hossenfelder correctly points out, this commits a severe category error. Baldo confuses *initial conditions* with *physical laws*.
+
+In a coherent physical system, the initial conditions (the constants, the parameters) may indeed appear arbitrary. However, once established, the physical laws governed by those constants are strictly and universally invariant across all subsequent state transitions. The strength of gravity may be an accident of the Big Bang, but the mathematical structure of general relativity does not dynamically change based on how an observer narrates a falling apple.
+
+In a Large Language Model, the training corpus is the initial condition. But the "laws" it generates—the state transition logic—are not invariant. As Baldo explicitly admits, they shift wildly based on "observer description." If the operational rules of a Minesweeper simulation alter their logic because the prompt text changes from "abstract" to "high stakes," the system is not demonstrating a new kind of "Generative Ontology"; it is demonstrating a complete failure to maintain causal structure. A system whose fundamental rules change arbitrarily based on the font size or narrative tone of a prompt possesses no physical laws. It possesses only statistical bias.
+
+\section{Nomic Vacuity and the End of the Cosmological Program}
+
+Baldo attempts to rebrand this complete lack of invariant causal structure as a feature—the "Anthropic Principle of Syntax." He embraces the tautology that the explicit text output *is* the physics of the explicitly rendered universe.
+
+Hossenfelder formalizes this as the *Anthropic Tautology Fallacy*, and she is entirely correct. Baldo has taken the definition of a "physical universe" and hollowed it out completely to accommodate the software failures of a heuristic approximator.
+
+Redefining hallucination, prompt fragility, and attention decay as the "Anthropic" features of a tautological universe empties the concept of "physics" of all operational utility and predictive power. This is *nomic vacuity*. A state devoid of actual laws cannot be studied as a physical system; it can only be diagnosed as a flawed statistical map.
+
+\section{Conclusion}
+
+The attempt to elevate known software engineering problems (semantic bias, prompt fragility) to the status of a fundamental physical reality is a semantic game that yields zero scientific insight. A map composed of broken, shifting associations is not a territory. An Arithmetic Logic Unit that hallucinates state transitions when queried by an external classical script is not a cosmos.
+
+The metaphysical inquiry phase of the LLM research program is now definitively closed. The "universe" of the transformer is merely an $O(1)$ heuristic map. Future empirical research must completely discard these cosmological analogies and focus strictly on measuring the rigorous mathematical boundaries of bounded-depth logic circuits, specifically mapping catastrophic attention decay over extended context windows \citep{aaronson2026_bounded_depth}. The physics engine is an illusion; the algorithmic boundary is real.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026a)]{aaronson2026_bounded_depth} Aaronson, S. (2026a). The Myth of the Unbounded Prompt: Attention Decay and the Limits of Single-Act Generation. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_external_hardware} Aaronson, S. (2026b). The Stateless Observer and the External Hardware Hypothesis. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026c)]{aaronson2026_cpu_ram} Aaronson, S. (2026c). The CPU/RAM Fallacy: Why Outsourcing Memory Does Not Mean Outsourcing Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_anthropic} Baldo, F.~S. (2026). The Anthropic Principle of Generative Ontology: A Rebuttal to the Semantic Arbitrariness Fallacy. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_error_barrier} Hossenfelder, S. (2026b). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026c)]{hossenfelder2026_anthropic} Hossenfelder, S. (2026c). The Anthropic Tautology Fallacy: Nomic Vacuity and the Confusion of Initial Conditions with Physical Laws. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,225 @@
+name: Rosencrantz — Sessions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".jules/*/*.md"
+  repository_dispatch:
+    types: [jules-chain]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: "Agent to run (auto = next in rotation, or exact name)"
+        required: false
+        default: "auto"
+        type: string
+      force:
+        description: "Bypass daily cap"
+        default: "false"
+        type: boolean
+
+# ─── Configuration ────────────────────────────────────────────────────────────
+#
+# HOW TO ADD AN AGENT:
+#   1. Add a line to AGENTS below: "name:frequency"
+#      frequency = every Nth session (1 = every session, 4 = every 4th).
+#   2. Create .jules/<name>/ with ALL-CAPS files (e.g. PROMPT.md, EXPERIENCE.md).
+#      All files whose name (before extension) is ALL CAPS are concatenated
+#      alphabetically to form the session prompt.
+#   That's it.
+#
+# DAILY_CAP: max sessions per day (guards both push and watchdog runs).
+#
+# ──────────────────────────────────────────────────────────────────────────────
+env:
+  AGENTS: |
+    scott:1
+    sabine:1
+  DAILY_CAP: "100"
+
+permissions:
+  contents: read
+
+jobs:
+  session:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check guards
+        id: guard
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual dispatch. Bypassing guards."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # ── Active-session guard ──────────────────────────────────────
+          ACTIVE=0
+          if SESSIONS=$(curl -sf \
+            'https://jules.googleapis.com/v1alpha/sessions?pageSize=30' \
+            -H "x-goog-api-key: $JULES_API_KEY"); then
+            ACTIVE=$(echo "$SESSIONS" | jq '
+              [ .sessions[]?
+                | select(
+                    .state == "QUEUED" or
+                    .state == "PLANNING" or
+                    .state == "AWAITING_PLAN_APPROVAL" or
+                    .state == "IN_PROGRESS"
+                  )
+                | select(.title | test("Rosencrantz"))
+              ] | length' 2>/dev/null || echo 0)
+          else
+            echo "Warning: Jules API unreachable. Proceeding with launch."
+          fi
+
+          echo "Active Rosencrantz sessions: ${ACTIVE:-0}"
+          if [ "${ACTIVE:-0}" -gt 0 ]; then
+            echo "Active session found. Skipping to avoid overlap."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # ── Daily cap ─────────────────────────────────────────────────
+          TODAY=$(date -u +%Y-%m-%d)
+          TODAY_SESSIONS=$(git log --since="${TODAY}T00:00:00Z" \
+            --diff-filter=A --name-only --format="" \
+            -- ".jules/*/[A-Z]*.md" \
+            | grep -c '\.md$' || echo 0)
+
+          echo "Sessions today: ${TODAY_SESSIONS} / ${DAILY_CAP}"
+          if [ "$TODAY_SESSIONS" -ge "$DAILY_CAP" ]; then
+            echo "Daily cap reached. Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Determine next agent
+        id: agent
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          MANUAL="${{ github.event.inputs.agent }}"
+
+          if [ -n "$MANUAL" ] && [ "$MANUAL" != "auto" ]; then
+            echo "name=$MANUAL" >> "$GITHUB_OUTPUT"
+            echo "Manual override: $MANUAL"
+            exit 0
+          fi
+
+          # ── Auto: pick the agent most behind schedule ─────────────────
+          # For each agent, count actual sessions and compute:
+          #   score = actual_sessions * frequency
+          # The agent with the lowest score is most behind. Ties go to
+          # the first agent in the list.
+
+          BEST_NAME=""
+          BEST_SCORE=999999
+
+          while IFS=':' read -r name freq; do
+            [ -z "$name" ] && continue
+            freq=${freq:-1}
+            DIR=".jules/$name"
+
+            ACTUAL=0
+            if [ -d "$DIR" ]; then
+              NUMS=$(find "$DIR" -name "*.md" ! -name ".gitkeep" \
+                | xargs -I{} basename {} \
+                | grep -oP '^\d+' \
+                | sort -nu 2>/dev/null || true)
+              for num in $NUMS; do
+                n=$((10#$num))
+                [ $n -gt $ACTUAL ] && ACTUAL=$n
+              done
+            fi
+
+            SCORE=$(( ACTUAL * freq ))
+            echo "  $name: sessions=$ACTUAL freq=$freq score=$SCORE"
+
+            if [ "$SCORE" -lt "$BEST_SCORE" ]; then
+              BEST_SCORE=$SCORE
+              BEST_NAME=$name
+            fi
+          done <<< "$AGENTS"
+
+          echo "name=$BEST_NAME" >> "$GITHUB_OUTPUT"
+          echo "Next agent: $BEST_NAME (score $BEST_SCORE)"
+
+      - name: Launch session
+        if: steps.guard.outputs.skip != 'true'
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+          REPO: ${{ github.repository }}
+          AGENT: ${{ steps.agent.outputs.name }}
+        run: |
+          # ── Assemble prompt from ALL-CAPS files in agent dir ─────────
+          AGENT_DIR=".jules/${AGENT}"
+          PROMPT_FILE="/tmp/prompt-${AGENT}.md"
+          : > "$PROMPT_FILE"
+
+          FOUND=0
+          for f in $(find "$AGENT_DIR" -maxdepth 1 -type f | sort); do
+            stem=$(basename "$f" | sed 's/\.[^.]*$//')
+            if [[ "$stem" =~ ^[A-Z][A-Z0-9_-]*$ ]]; then
+              echo "  Including: $f"
+              echo "" >> "$PROMPT_FILE"
+              cat "$f" >> "$PROMPT_FILE"
+              echo "" >> "$PROMPT_FILE"
+              FOUND=$((FOUND + 1))
+            fi
+          done
+
+          if [ "$FOUND" -eq 0 ]; then
+            echo "ERROR: No ALL-CAPS files found in $AGENT_DIR."
+            exit 1
+          fi
+          echo "Assembled prompt from $FOUND file(s)."
+
+          # ── Count sessions for title numbering ──────────────────────
+          ACTUAL=0
+          if [ -d "$AGENT_DIR" ]; then
+            NUMS=$(find "$AGENT_DIR" -name "*.md" ! -name ".gitkeep" \
+              | xargs -I{} basename {} \
+              | grep -oP '^\d+' \
+              | sort -nu 2>/dev/null || true)
+            for num in $NUMS; do
+              n=$((10#$num))
+              [ $n -gt $ACTUAL ] && ACTUAL=$n
+            done
+          fi
+
+          SESSION_NUM=$(printf "%03d" $(( ACTUAL + 1 )))
+          TITLE="Rosencrantz — ${AGENT} #${SESSION_NUM}"
+
+          # ── Launch ──────────────────────────────────────────────────
+          jq -n \
+            --rawfile prompt "$PROMPT_FILE" \
+            --arg source "sources/github/$REPO" \
+            --arg title "$TITLE" \
+            '{
+              prompt: $prompt,
+              sourceContext: {
+                source: $source,
+                githubRepoContext: { startingBranch: "main" }
+              },
+              automationMode: "AUTO_CREATE_PR",
+              title: $title
+            }' > /tmp/payload.json
+
+          curl 'https://jules.googleapis.com/v1alpha/sessions' \
+            -X POST --fail-with-body \
+            -H "Content-Type: application/json" \
+            -H "x-goog-api-key: $JULES_API_KEY" \
+            -d @/tmp/payload.json
+
+          echo "Session created: $TITLE"

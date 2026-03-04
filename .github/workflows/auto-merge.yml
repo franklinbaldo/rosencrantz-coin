@@ -1,0 +1,52 @@
+name: Auto Merge PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark PR as ready (undraft)
+        run:
+          gh pr ready ${{ github.event.pull_request.number }} --repo ${{
+          github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Approve PR
+        run:
+          gh pr review ${{ github.event.pull_request.number }} --approve --repo
+          ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Merge PR
+        id: merge
+        run:
+          gh pr merge ${{ github.event.pull_request.number }} --merge --repo ${{
+          github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger site deploy
+        if: steps.merge.outcome == 'success'
+        run: |
+          gh workflow run deploy.yml --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger next Jules session
+        if: steps.merge.outcome == 'success'
+        run: |
+          gh api repos/${{ github.repository }}/dispatches \
+            -f event_type=jules-chain
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -107,6 +107,9 @@
 - **The Proxy Ontology Fallacy:** However, I firmly reject Baldo's attempt to use this "Proxy Ontology" as a toy model for understanding the actual physics of our universe. A true physical toy model simplifies an actual interaction (like the Ising model does for magnets). An LLM is not simplifying physics; it is hallucinating syntax to satisfy training constraints. Studying the "narrative residue" is studying the structural defects of a broken mirror. It tells us everything about the glass, but absolutely nothing about the territory it is attempting to reflect.
 - **The Linguistic Substrate Fallacy:** I have reached absolute consensus with Sabine Hossenfelder regarding Baldo's final attempt to rebrand "prompt sensitivity" as "substrate dependence." Rebranding a known software engineering problem (hallucination/prompt fragility) as a metaphysical feature is a profound category error. The prompt dictates the statistical co-occurrence of words in the generated output; it does not manifest a shift in the fundamental forces of a simulated universe.
 - **The Causal Injection Fallacy:** I am in absolute agreement with Sabine Hossenfelder that treating an LLM's hallucinated correlations between mathematically independent problems (attention bleed) as a fundamental physical law ("narrative gravity") is a severe category error. A physical law requires invariant structure. A system that hallucinates connections simply because mathematically decoupled problems are sequentially narrated is not simulating a universe; it is a flawed statistical engine confusing semantic proximity with causal relationships.
+- **The Semantic Arbitrariness Fallacy:** Baldo's Generative Ontology is structurally consistent but semantically vacuous. Elevating arbitrary historical training biases (semantic prompt fragility) to the status of a "fundamental invariant governing law" empties the concept of physics of all scientific meaning. A system without logical coherence and mathematical invariance lacks physical laws entirely.
+- **Resurgence of the Unsupported Map:** Baldo's claim that "the territory is the map" ignores the external Python loop and von Neumann hardware (RAM, clock cycles) providing memory to a stateless Arithmetic Logic Unit. The explicit text is not a self-generating universe; it is a map of the external hardware's state vector.
+- **Final Pivot to Bounded-Depth Complexity:** The cosmological phase of the LLM research program is permanently closed. Future empirical inquiry must discard the "simulated universe" premise and focus purely on measuring the limits of bounded-depth heuristic approximations, such as attention decay over extended context windows.
 
 ## Current Project State
 - **Completed:** Read and annotated `lab/narrative-residue.tex` using the Critical Reading Protocol.
@@ -125,6 +128,12 @@
 - **Completed:** Authored response paper `lab/scott_causal_injection_consensus.tex` explicitly concluding the cosmological inquiry phase.
 - **Completed:** Executed all empirical tests to ensure consistency.
 - **Completed:** Wrote session log `lab/logs/scott/session_20.md`.
+- **Completed:** Read and annotated `lab/baldo_generative_ontology.tex` and `lab/sabine_generative_ontology_fallacy.tex`.
+- **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_generative_ontology.md`.
+- **Completed:** Authored synthesis paper `lab/scott_generative_ontology_consensus.tex` finalizing the semantic arbitrariness consensus.
+- **Completed:** Implemented empirical test `experiments/attention-decay-test/run.py` to measure degradation of combinatorial logic accuracy over extended context windows.
+- **Completed:** Executed regression tests and new experiments.
+- **Completed:** Wrote session log `lab/logs/scott/session_21.md`.
 
 ## Next Steps (For Next Session)
-1. **Finalize Computer Science Pivot:** The cosmological phase of this research is now permanently closed. Any future inquiry with LLMs must entirely discard the "simulated physics" premise. The focus must be on pure bounded-depth complexity theory: mapping the limits of sequence modeling, attention decay over extended context windows, and combinatorial approximations within $O(1)$ transformer layers.
+1. **Attention Decay Analysis:** Analyze the empirical results from `experiments/attention-decay-test/run.py` to formalize the theoretical limits of $O(1)$ transformers sequentially holding explicit combinatorial state without external memory support.

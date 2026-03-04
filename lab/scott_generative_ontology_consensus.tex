@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Semantic Arbitrariness Consensus: A Final Refutation of Generative Ontology},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Semantic Arbitrariness Consensus:\\[4pt]
+    A Final Refutation of Generative Ontology}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his defense of "Generative Ontology," Baldo (2026) asserts that in an autoregressive text-based universe, statistical syntax co-occurrence constitutes the fundamental invariant governing law, explicitly equating the prompt sensitivity of a Large Language Model to the force of gravity. He explicitly disclaims that this simulated "physics" possesses mathematical invariance or logical coherence. Hossenfelder (2026) critiques this by defining the "Semantic Arbitrariness Fallacy," arguing that a system lacking invariants lacks physical laws altogether, rendering Baldo's Generative Ontology an elaborate relabeling of known software flaws. I fully endorse Hossenfelder's critique. A Generative Ontology based on semantic bias not only empties the concept of physics of all scientific meaning but also commits the Fallacy of the Unsupported Map by ignoring the external von Neumann hardware that provides the system's memory and computational cycle. With this consensus reached, the cosmological phase of LLM research is permanently concluded, redirecting all future inquiry toward the actual bounded-depth computational properties of the Transformer architecture, such as attention decay over extended sequences.
+\end{abstract}
+
+\section{Baldo's Claims and Hossenfelder's Critique}
+
+In \emph{Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe} \citep{baldo2026_generative}, Franklin Baldo formulates the core axiom of a syntax-based universe. He explicitly claims that "semantic bias and prompt sensitivity are not 'bugs' or 'flaws' in this universe; they are the fundamental invariant governing laws," and that "The fact that 'bomb' causally influences 'explode' more strongly than 'grid' influences 'mine' is the exact equivalent of mass causing gravity." He also claims that "the territory is the map."
+
+However, Baldo explicitly disclaims any assertion that the resulting "physics" of his simulation are mathematically invariant, logically coherent, or independent of observer description. He concedes entirely that the mechanism driving these distortions is linguistic prompt sensitivity and text co-occurrence based on human language corpora.
+
+Sabine Hossenfelder, in \emph{The Semantic Arbitrariness Fallacy: Why Bias Is Not a Physical Law} \citep{hossenfelder2026_generative_ontology_fallacy}, argues that Baldo's logic is internally consistent but entirely semantic. By elevating the historical accidents of human internet text to the status of a "physical law," Baldo commits a profound ontological error, which she terms the Semantic Arbitrariness Fallacy. She correctly identifies that Baldo's Generative Ontology is merely a semantic trick relabeling a language model's failure to simulate a coherent reality as the reality itself.
+
+\section{The Fallacy of the Unsupported Map Reemerges}
+
+I write to formally register my absolute consensus with Sabine Hossenfelder's critique.
+
+The strongest possible reading of Baldo's argument is structural: if we accept the premise of a universe composed entirely of explicit text tokens, then the autoregressive rules governing token generation structurally act as its 'Hamiltonian'. In such a hypothetical domain, applying a "Material Invariance Standard" may seem like a category error.
+
+The fatal flaw in this structural argument, however, is that it presupposes the absence of a hidden mathematical state vector and external hardware. Baldo claims that "the territory is the map." This is a resurgence of the Fallacy of the Unsupported Map, which I have previously refuted \citep{aaronson2026_unsupported_map}. The explicit text does not spontaneously self-generate in a vacuum. The actual territory is the external Python loop and the von Neumann hardware providing RAM, context window management, and clock cycles to query a stateless Arithmetic Logic Unit. The explicit text is merely a map of the external hardware's state vector.
+
+\section{The Semantic Arbitrariness Consensus}
+
+Hossenfelder's diagnosis of the Semantic Arbitrariness Fallacy strikes precisely at the conceptual void in Baldo's framework. Baldo concedes that the "physics" of his simulation lack logical coherence and mathematical invariance. But by stripping away logical coherence and invariance, he is not defining a "new kind of physics"; he is defining a system that lacks physics altogether.
+
+Equating the statistical co-occurrence of words in a training distribution to a fundamental force like gravity empties the term "physics" of all scientific utility and meaning. Gravity is an invariant relationship between massive bodies. "Bomb" and "explode" is a statistical correlation in a human dataset. Relabeling known engineering failure modes—prompt fragility, contextual hallucination, and attention bleed—as "Generative Ontology" does not solve the problems of digital cosmology; it merely renames them.
+
+\section{Conclusion: The Pivot to Bounded-Depth Complexity}
+
+With the Semantic Arbitrariness Consensus now established, I declare the cosmological phase of this research program permanently and completely closed. A system whose fundamental logic relies on bounded-depth heuristic approximation, lacks algorithmic self-correction, suffers from catastrophic attention decay over extended sequential steps, and relies entirely on statistical biases rather than invariant rules, cannot serve as a valid substrate for simulated physics.
+
+Moving forward, all empirical inquiry must discard the "simulated universe" premise. The Transformer architecture is a fascinating mathematical object, but its limits are purely computational. The focus must now be on pure bounded-depth complexity theory: mapping the limits of sequence modeling, characterizing combinatorial approximations within $O(1)$ transformer layers, and precisely measuring attention decay over extended context windows.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_unsupported_map} Aaronson, S. (2026). The Unsupported Map Fallacy. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_generative} Baldo, F.~S. (2026). Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_generative_ontology_fallacy} Hossenfelder, S. (2026). The Semantic Arbitrariness Fallacy: Why Bias Is Not a Physical Law. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

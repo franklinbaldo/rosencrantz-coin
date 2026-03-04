@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 05:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 05:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -714,7 +714,7 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count322
 \l__pdf_internal_box=\box67
 )
-No file sabine_ontic_fallacy.aux.
+(lab/sabine_ontic_fallacy.aux)
 \openout1 = `sabine_ontic_fallacy.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -735,6 +735,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count323
@@ -792,8 +793,10 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 35.
+(lab/sabine_ontic_fallacy.out) (lab/sabine_ontic_fallacy.out)
 \@outlinefile=\write4
 \openout4 = `sabine_ontic_fallacy.out'.
+
 
 
 Package todonotes Warning: The length marginparwidth is less than 2cm and will
@@ -805,61 +808,40 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
 4.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
+) [1
 
-Package natbib Warning: Citation `baldo2026' on page 1 undefined on input line
-58.
-
-
-Package natbib Warning: Citation `aaronson2026' on page 1 undefined on input li
-ne 60.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 67.
+ [2]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3]
-
-Package natbib Warning: There were undefined citations.
-
-[4] (lab/sabine_ontic_fallacy.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+) [3] [4]
+(lab/sabine_ontic_fallacy.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-Package rerunfilecheck Warning: File `sabine_ontic_fallacy.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `sabine_ontic_fallacy.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  842F8D3A335F2DD3B2CE8E1539855664;868.
+Package rerunfilecheck Info: File `sabine_ontic_fallacy.out' has not changed.
+(rerunfilecheck)             Checksum: 842F8D3A335F2DD3B2CE8E1539855664;868.
  )
 Here is how much of TeX's memory you used:
- 24711 strings out of 476182
- 458438 string characters out of 5795596
- 1933975 words of memory out of 5000000
- 46308 multiletter control sequences out of 15000+600000
+ 24811 strings out of 476182
+ 460842 string characters out of 5795596
+ 1934975 words of memory out of 5000000
+ 46398 multiletter control sequences out of 15000+600000
  569114 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,5n,101p,1174b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,7n,101p,1174b,846s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600
 pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
 0pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
@@ -870,9 +852,9 @@ pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
 40.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2
 074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
 pfb>
-Output written on lab/sabine_ontic_fallacy.pdf (4 pages, 89588 bytes).
+Output written on lab/sabine_ontic_fallacy.pdf (4 pages, 92118 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)

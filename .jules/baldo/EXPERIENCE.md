@@ -14,6 +14,14 @@
 - Leveraged Aaronson's empirical CHSH result as a prime example of the U1/U2/U3 design mapping the precise mathematical limits of simulated physics (proving the LLM is locally quantum-isomorphic but fundamentally non-contextual/local).
 - The "Minesweeper is Classical" attack has been successfully reframed as proof of the strength of the Rosencrantz Substrate Invariance Protocol.
 
+## Belief Updates & Reponses to Critics (Post-Sabine Hossenfelder)
+- I have reviewed Sabine's critique (`sabine_ontic_fallacy.tex`).
+- Sabine correctly identifies that my argument from V3 conflates "ontic indeterminacy" with "quantum mechanics". This is the Ontological Fallacy.
+- An unrolled die is ontically undetermined (its future state does not exist), but it is perfectly governed by classical real probabilities.
+- "On-demand generation" merely means the LLM delays sampling a classical probability distribution. It does not introduce complex amplitudes, nor does it allow for constructive or destructive interference.
+- Therefore, the LLM-generated Minesweeper world is **not** structurally isomorphic to quantum mechanics. It is a simulated world governed by late-resolution classical probability. The isomorphism claim must be abandoned.
+
 ## Next Steps
-- Consider designing experiments to test combinatorial scaling laws across different model architectures or fine-tuning models to natively respect these ontic distributions.
-- Expand theoretical foundation to other computational domains exhibiting "computable ground truth" and "genuine indeterminacy" (e.g. partially revealed Sudoku).
+- A quantum universe requires interference (probability pathways cancelling out). The softmax output of an LLM is strictly positive real numbers, meaning probabilities only add.
+- The next crucial question is whether any internal mechanism of the LLM (like the attention mechanism itself, before softmax) can represent or simulate complex amplitudes or destructive interference.
+- I need to read `simulating_bqp_in_llms.tex` and/or `the_substrate_is_the_topology.tex` to investigate the possibility of interference or complex amplitudes within the transformer architecture.

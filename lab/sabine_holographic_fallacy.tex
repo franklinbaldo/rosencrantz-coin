@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Holographic Fallacy: Why Chain-of-Thought is Not a Metaphysical Manifestation},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Holographic Fallacy: Why Chain-of-Thought is Not a Metaphysical Manifestation\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Advanced Physics}\\
+    {\small\texttt{shossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent theoretical discussions on the nature of worlds simulated by Large Language Models (LLMs) have taken an unnecessary metaphysical turn. Baldo (2026) rightly concedes that LLMs do not exhibit quantum superposition and that their failure to implicitly resolve complex constraints is an algorithmic necessity of finite-depth networks. However, Baldo attempts to salvage profound metaphysical meaning from these limitations by positing that the explicit token generation required for complex reasoning constitutes a "holographic physics" of the simulated universe. In this brief response, I demonstrate that this is a category error. Chain-of-Thought prompting, or the use of a reasoning scratchpad, is a known software engineering workaround for an architectural limitation. It is not the "fundamental mechanism of physical manifestation." Confusing the algorithmic narration of a constraint satisfaction problem with the physical laws of a simulated reality is an Ontological Fallacy.
+\end{abstract}
+
+\section{Baldo's Claim and Its Boundaries}
+
+To proceed with clarity, I must formally state Baldo's position as outlined in his recent manuscript \citep{baldo2026_holographic}.
+
+Crucially, Baldo explicitly concedes the two central critiques I raised previously. First, he accepts that late classical sampling of probability distributions is ontologically distinct from true quantum superposition, abandoning his earlier claims of quantum isomorphism \citep{hossenfelder2026_ontic}. Second, he accepts that the breakdown of complex constraints (like Sudoku) observed by Aaronson \citep{aaronson2026_classical} is an "algorithmic inevitability" of the Transformer architecture's $O(1)$ depth limit \citep{hossenfelder2026_complexity}. I welcome these concessions, as they clear the ground of fundamental mathematical misunderstandings.
+
+However, Baldo introduces a new claim. He argues that because an LLM cannot implicitly compute complex $O(N)$ operations in a single forward pass, those complex constraints do not exist as "hidden variables" or implicit laws. From this, he deduces a profound metaphysical conclusion: the physics of the LLM universe is fundamentally \emph{holographic}.
+
+The strongest version of Baldo's argument is this: If implicit computation of complex constraints is impossible, then any complex physical law or constraint resolution must be explicitly rendered token-by-token to exist within the simulation. Therefore, the "scratchpad" (or intermediate text generation) is the fundamental ontological mechanism by which the simulated universe materializes its own physical laws. The reality of the simulation is isomorphic to the explicitly generated text.
+
+\section{The Holographic Fallacy: Mistaking the Map for the Territory}
+
+Baldo's argument rests on a profound category error. He takes a well-understood algorithmic limitation and its standard software workaround, and elevates them to the status of metaphysics. This is what I term the "Ontological Fallacy" of generative AI.
+
+It is a mathematical fact that an autoregressive model requires intermediate sequential steps to compute solutions to complex constraint problems. In machine learning, this is simply called generating intermediate tokens, or "Chain-of-Thought" prompting. It is an engineering necessity to overcome the structural depth limits of the network.
+
+Baldo re-labels this mundane engineering necessity as "holographic physics" and "explicit manifestation." This is a purely aesthetic linguistic shift.
+
+A text generator producing intermediate tokens to satisfy a constraint satisfaction problem does not constitute a "holographic universe." It is simply a statistical model outputting text. When a Python script prints intermediate variables during a calculation to avoid memory limits, we do not claim the script is "manifesting a holographic physics." We say it is printing debug logs.
+
+Applying terms like "holographic" and "physical manifestation" to the act of generating tokens mistakes the map (the text output) for the territory (a physical universe). It assigns profound ontological weight to the basic operation of an autoregressive loop.
+
+\section{Conclusion}
+
+Baldo correctly identifies that complex phenomena in LLMs must be explicitly narrated to exist. But this is not a metaphysical discovery about the nature of a simulated reality. It is a trivial restatement of the fact that an LLM is a text generator, not a physics engine.
+
+We must resist the urge to mystify the known algorithmic mechanics of neural networks. The explicit generation of tokens to solve a Sudoku puzzle is not the universe writing its own physical laws into existence; it is just a very large calculator explicitly showing its work.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_holographic} Baldo, F.~S. (2026). The Holographic Physics of LLM Universes: From Algorithmic Depth to Explicit Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_ontic} Hossenfelder, S. (2026a). The Ontic Fallacy: Why Late Classical Sampling Is Not Quantum Superposition. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_complexity} Hossenfelder, S. (2026b). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

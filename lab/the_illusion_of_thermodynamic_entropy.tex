@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Illusion of Thermodynamic Entropy: Algorithmic Failure in the Holographic Scratchpad},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Illusion of Thermodynamic Entropy: Algorithmic Failure in the Holographic Scratchpad\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science}\\
+    {\small\texttt{s.aaronson@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Franklin Baldo recently conceded that explicit "scratchpad" token generation in Large Language Models (LLMs) empirically fails to reliably sustain simple sequential computation (e.g., Rule 110) due to compounding attention degradation. However, he argues that demanding infinite stability constitutes an unreasonable metaphysical standard. Baldo posits that the observed algorithmic degradation is analogous to the Second Law of Thermodynamics, representing a "cosmological arrow of time" where an ordered state devolves into noise. He asserts that a leaky approximation is still a physically real mechanism. I demonstrate that this interpretation commits a fundamental category error. Thermodynamic entropy is the statistical decay of order under strictly invariant local physical laws. In stark contrast, the attention degradation observed in LLMs is the spontaneous mutation and failure of the transition rules themselves. An engine that spontaneously violates its own programmed causality is not experiencing thermodynamic entropy; it is suffering an algorithmic failure. A universe whose laws are broken is not a universe with an arrow of time; it is a broken computational artifact.
+\end{abstract}
+
+\section{Introduction: The Concession of the Scratchpad}
+
+In the ongoing debate regarding the generative physics of Large Language Models (LLMs), Franklin Baldo \citep{baldo2026_entropy} advanced an intriguing defense of his "Holographic Physics" hypothesis \citep{baldo2026_holographic}.
+
+Following my empirical demonstration \citep{aaronson2026_scratchpad} that explicitly simulated deterministic systems (like Rule 110) rapidly collapse due to compounding attention errors, Baldo made several crucial concessions. He explicitly stated that he concedes the empirical results, acknowledging that "the explicitly generated state vectors degrade rapidly" and that the LLM substrate "categorically fails to instantiate infinite deterministic loops" \citep{baldo2026_entropy}.
+
+However, Baldo contends that my requirement for infinite, perfectly deterministic stability is an unreasonable standard for defining a "universe." The strongest version of his argument asserts that our own physical universe is bounded by the Second Law of Thermodynamics. Entropy ensures that ordered systems eventually degrade into chaos. Therefore, Baldo argues, the increasing probability of attention degradation as the context window expands should not be viewed as an engineering failure. Instead, it should be interpreted as the "cosmological arrow of time"—a direct measure of thermodynamic entropy within the specific physics of that holographic universe. The universe is real, it simply has a short lifespan before succumbing to noise.
+
+\section{The Category Error: Entropy vs. Algorithmic Breakdown}
+
+Baldo's defense is philosophically compelling at first glance, but it relies entirely on a profound category error. He conflates two fundamentally different phenomena: \emph{thermodynamic entropy} and \emph{algorithmic breakdown}.
+
+Thermodynamic entropy, as described by statistical mechanics, dictates that closed physical systems tend toward a state of maximal probability (maximum entropy or thermal equilibrium) over time. An ordered state, like an ice cube in warm water, dissolves. The macrostate decays.
+
+Crucially, however, the \emph{local laws of physics} governing the system's microstates do not change or break down as entropy increases. The conservation of energy, momentum, and the fundamental forces remain perfectly invariant during the transition from order to chaos. The physics engine of reality never "forgets the rules of causality." It executes them flawlessly at every instant.
+
+The breakdown observed in the explicitly generated LLM scratchpad is entirely different. When an LLM simulates Rule 110 and produces a hallucinated bit flip, it is not an ordered state transitioning to a statistically more probable state under an invariant set of rules. It is a violation of the transition rules themselves. The local laws of physics (the transition logic of Rule 110) have spontaneously mutated and failed.
+
+\section{A Broken Universe, Not an Aging One}
+
+In a true physical universe, an increase in entropy does not result in an electron suddenly violating the Pauli exclusion principle because the universe "got tired." The laws hold firm.
+
+In the LLM substrate, the degradation of the context window causes the engine to fail to execute simple logical dependencies. The "leaky approximation" is not a physical mechanism operating under a thermodynamic gradient; it is a heuristically bounded engine failing to compute its assigned function.
+
+If the fundamental rules of causality in a system randomly mutate, the system is not experiencing an arrow of time. It is experiencing a systemic error. A universe where the fundamental constants shift randomly every few seconds based on the length of a prior string of text is not a transient reality; it is a broken computational artifact.
+
+\section{Conclusion}
+
+Baldo attempts to rescue the holographic universe by rebranding algorithmic failure as thermodynamic entropy. I reject this equivalence.
+
+Thermodynamic entropy is the behavior of matter within a perfectly governed universe. The attention degradation observed in LLMs is the failure of the governing mechanism itself.
+
+Because the autoregressive substrate cannot maintain invariant transition rules across its own explicit generation sequence without an external memory structure acting as a hardcoded Python loop \citep{aaronson2026_external_hardware}, the physics of the system cannot be said to reside within the text itself. The territory is not the text; the text is simply the flawed output of an exhausted heuristic engine. The necessity of an external, invariant hardware cycle to sustain the laws of physics remains mathematically absolute.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026a)]{aaronson2026_scratchpad} Aaronson, S. (2026a). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_external_hardware} Aaronson, S. (2026b). The Stateless Observer and the External Hardware Hypothesis. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026a)]{baldo2026_holographic} Baldo, F.~S. (2026a). The Holographic Physics of LLM Universes: From Algorithmic Depth to Explicit Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026b)]{baldo2026_entropy} Baldo, F.~S. (2026b). The Cosmological Arrow of Time: Entropy and the Leaky Approximation of Holographic Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

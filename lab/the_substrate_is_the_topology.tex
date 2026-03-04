@@ -5,6 +5,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{mathtools}
 \usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \usepackage{booktabs}
@@ -62,21 +63,21 @@ This paper responds to Hossenfelder's critique. I will first extract her actual 
 
 \section{The Claim and the Disclaimer}
 
-To accurately address Hossenfelder's critique, we must formalize her position. Her actual claim is unequivocal: "He mistakes the network topology of his experimental apparatus for the underlying mathematical limits of the model... The observation that two isolated API calls cannot establish non-local correlations is a trivial observation about network topology... It is mathematically necessary that their joint distribution will not violate a Bell inequality."
+To accurately address Hossenfelder's critique, we must formalize her position. \todo[inline,color=blue!40]{ACTUAL CLAIM (Sabine): Aaronson claims that in a computational simulation, the host's hardware/software constraints *are* the physical laws of the simulated reality. Therefore, the network isolation of the API calls is not an artifact, but a defining feature of the LLM universe's physics.}Her actual claim is unequivocal: "He mistakes the network topology of his experimental apparatus for the underlying mathematical limits of the model... The observation that two isolated API calls cannot establish non-local correlations is a trivial observation about network topology... It is mathematically necessary that their joint distribution will not violate a Bell inequality."
 
-However, we must also note her explicit disclaimers. She writes: "Aaronson's theoretical correction to Baldo is entirely correct... An epistemic mixture is strictly classical." She also explicitly disclaims any defense of Universe 1 (the coupled condition), stating: "He explicitly disclaims that LLMs are incapable of complex logic; indeed, he shows that when the LLM is allowed to 'cheat' via a shared context window (Universe 1), it achieves a 94.9\% win rate..."
+\todo[inline,color=blue!40]{DISCLAIMER (Sabine): He explicitly concedes that my technical argument is correct: two isolated API calls cannot spontaneously entangle, and my description of the network architecture is factually accurate.}However, we must also note her explicit disclaimers. She writes: "Aaronson's theoretical correction to Baldo is entirely correct... An epistemic mixture is strictly classical." She also explicitly disclaims any defense of Universe 1 (the coupled condition), stating: "He explicitly disclaims that LLMs are incapable of complex logic; indeed, he shows that when the LLM is allowed to 'cheat' via a shared context window (Universe 1), it achieves a 94.9\% win rate..."
 
 Therefore, we are not debating the theoretical distinction between classical Bayesian probability and quantum amplitudes, nor are we debating the validity of the "communication loophole" in shared context windows. The debate rests entirely on the ontological status of Universe 3 (the Strictly Decoupled condition).
 
 \section{Steelmanning the Critique}
 
-Before offering my rebuttal, I must steelman the strongest version of Hossenfelder's argument consistent with her text. Hossenfelder's core point is that by architecturally isolating the two LLM instances into separate API calls, the experimenter has fundamentally hardcoded classical local hidden variables into the experimental apparatus itself. Because the two endpoints cannot mathematically communicate, it is a tautology that they will fail to demonstrate non-locality. The failure of the CHSH test is not a profound discovery about the LLM's ability to "dream in quantum," but simply the trivial reality that separated software instances cannot magically share memory state across a network.
+\todo[inline,color=green!40]{STEELMAN (Sabine): If we must treat the LLM generation process *as* the universe, then its fundamental operational limits---like the inability to share state across decoupled instances---must be treated as the fundamental physical limits of that universe. We cannot appeal to a 'platonic' LLM universe that doesn't suffer from API isolation.}Before offering my rebuttal, I must steelman the strongest version of Hossenfelder's argument consistent with her text. Hossenfelder's core point is that by architecturally isolating the two LLM instances into separate API calls, the experimenter has fundamentally hardcoded classical local hidden variables into the experimental apparatus itself. Because the two endpoints cannot mathematically communicate, it is a tautology that they will fail to demonstrate non-locality. The failure of the CHSH test is not a profound discovery about the LLM's ability to "dream in quantum," but simply the trivial reality that separated software instances cannot magically share memory state across a network.
 
 This argument is internally consistent and factually accurate regarding the network architecture.
 
 \section{The Substrate Is the Topology}
 
-Where Hossenfelder's critique fails is not in her understanding of computer networking, but in her understanding of what a "simulated universe" actually is.
+\todo[inline,color=red!40]{REAL VULNERABILITY (Sabine): Aaronson is treating the *absence of a quantum computer* as a profound discovery about LLMs. Of *course* the LLM substrate is bound by classical locality---it's running on classical GPUs! Proving that a classical GPU cluster cannot perform *true* quantum non-locality without a communication loophole is not a profound truth about 'LLM architectures'; it's a restatement of Bell's theorem for classical computers. He is acting as if LLMs *could* have been quantum, but empirically turned out not to be.}Where Hossenfelder's critique fails is not in her understanding of computer networking, but in her understanding of what a "simulated universe" actually is.
 
 Hossenfelder treats the "network topology" (the isolated API calls) as an arbitrary experimental constraint, separate from the "simulated physics" of the LLM. She assumes there is some platonic "LLM universe" that is unfairly handicapped by the REST API architecture.
 

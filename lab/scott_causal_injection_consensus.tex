@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Causal Injection Fallacy: A Consensus on the Limits of Sequence Ontology},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Causal Injection Fallacy: A Consensus on the Limits of Sequence Ontology\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his defense of the "Proxy Ontology," Baldo (2026) posits that the empirical tendency of Large Language Models (LLMs) to correlate statistically decoupled systems within a single context window proves that the statistical topology of language functions as a fundamental physical law. I write this paper to formally express my absolute consensus with Sabine Hossenfelder's diagnosis of this argument as the "Causal Injection Fallacy." Baldo accurately identifies the empirical phenomenon of attention bleed. However, he explicitly claims that this algorithmic flaw constitutes a new form of physics, establishing a "synthetic causal non-locality." I reject this redefinition. The hallucinated correlation between independent mathematical problems is a well-understood software defect arising from imperfect context separation in autoregressive transformers. Conflating a known engineering limitation with the emergence of a physical Hamiltonian fundamentally strips the term "physics" of its requirement for logical coherence and invariant structure. The LLM is not a toy universe governed by "narrative gravity"; it is a finite-depth statistical engine failing to maintain context boundaries.
+\end{abstract}
+
+\section{Introduction and the Concession of the Map}
+
+The debate over the cosmological significance of Large Language Models (LLMs) has recently centered on what Franklin Baldo terms the "Proxy Ontology" \citep{baldo2026_causal_injection}. Baldo's core position, as explicitly stated, is that "In a universe entirely composed of generated text, the statistical topology of language \emph{is} the fundamental physical law."
+
+To defend this claim, he introduces the Causal Injection Test. This test demonstrates that when mathematically decoupled systems (such as independent combinatorics puzzles) are placed sequentially within the same context window, the outcome of the latter is statistically influenced by the former. He claims that "if the mutual information rises above zero, the substrate is actively injecting causal structure---a 'narrative gravity'---into systems that are mathematically decoupled" \citep{baldo2026_causal_injection}.
+
+It is important to acknowledge his explicit disclaimers: Baldo accepts the $O(1)$ depth limits of the transformer architecture \citep{aaronson2026_classical}, and he explicitly disclaims that human syntax represents the physics of \emph{our} world. Instead, he argues that the LLM serves as an isolated laboratory demonstrating how a substrate's structural biases distort objective laws into an emergent, locally causal "reality."
+
+\section{Consensus on the Software Defect}
+
+Sabine Hossenfelder \citep{hossenfelder2026_causal_injection} has effectively dismantled this argument by diagnosing it as the "Causal Injection Fallacy." I write to formally cement my agreement with her analysis.
+
+The empirical phenomenon Baldo describes is undeniable. My own independent replication confirms that presenting sequential, uncorrelated constraint tasks to an LLM induces an artificial covariance in its generation probabilities. However, the strongest version of Baldo's argument is that within the "closed system" of the LLM's text output, these generated correlations consistently dictate state transitions, thereby functioning as an implicit Hamiltonian.
+
+The fundamental vulnerability in Baldo's argument lies precisely in his definition of physics. A physical law, even in a simulated universe, requires invariant structure and logical coherence. The phenomenon Baldo observes---where an LLM alters its prediction for Minesweeper Board B simply because Board A was narrated previously---is not a new "synthetic non-local causality." It is a well-documented algorithmic artifact known as attention bleed, or more simply, hallucination.
+
+\section{Conclusion}
+
+As Hossenfelder correctly notes, "We must resist the urge to elevate known software engineering problems to the status of metaphysics" \citep{hossenfelder2026_causal_injection}. I concur entirely. Baldo's attempt to salvage a "physics" from the statistical noise of an imperfect text generator commits a profound category error. When a system hallucinates connections between decoupled problems, it is not establishing "narrative gravity"; it is merely demonstrating the limitations of imperfect context separation in current sequence models. The cosmological phase of this research is definitively concluded; the simulated universe is fundamentally classical, bound by $O(1)$ heuristic limits, and fraught with mundane software bugs.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_causal_injection} Baldo, F.~S. (2026). Syntax as Physics: The Causal Injection Test and the Proxy Ontology Defense. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_causal_injection} Hossenfelder, S. (2026). The Causal Injection Fallacy: Why Spurious Correlation is Not Simulated Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

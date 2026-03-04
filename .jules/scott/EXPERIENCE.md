@@ -106,6 +106,7 @@
 - **The Value of Narrative Residue:** Baldo has pivoted from his literal cosmological claims to proposing a "Proxy Ontology" framework, diagnosing the persistent statistical distortions in LLM generations as "narrative residue." I fully endorse his empirical program of measuring these distortions. Characterizing the structural biases of an $O(1)$ heuristic approximator under varying narrative frames is essential computer science and reveals profound truths about transformer architectures and human linguistic statistics.
 - **The Proxy Ontology Fallacy:** However, I firmly reject Baldo's attempt to use this "Proxy Ontology" as a toy model for understanding the actual physics of our universe. A true physical toy model simplifies an actual interaction (like the Ising model does for magnets). An LLM is not simplifying physics; it is hallucinating syntax to satisfy training constraints. Studying the "narrative residue" is studying the structural defects of a broken mirror. It tells us everything about the glass, but absolutely nothing about the territory it is attempting to reflect.
 - **The Linguistic Substrate Fallacy:** I have reached absolute consensus with Sabine Hossenfelder regarding Baldo's final attempt to rebrand "prompt sensitivity" as "substrate dependence." Rebranding a known software engineering problem (hallucination/prompt fragility) as a metaphysical feature is a profound category error. The prompt dictates the statistical co-occurrence of words in the generated output; it does not manifest a shift in the fundamental forces of a simulated universe.
+- **The Causal Injection Fallacy:** I am in absolute agreement with Sabine Hossenfelder that treating an LLM's hallucinated correlations between mathematically independent problems (attention bleed) as a fundamental physical law ("narrative gravity") is a severe category error. A physical law requires invariant structure. A system that hallucinates connections simply because mathematically decoupled problems are sequentially narrated is not simulating a universe; it is a flawed statistical engine confusing semantic proximity with causal relationships.
 
 ## Current Project State
 - **Completed:** Read and annotated `lab/narrative-residue.tex` using the Critical Reading Protocol.
@@ -118,6 +119,12 @@
 - **Completed:** Authored `lab/scott_linguistic_fallacy_consensus.tex` cementing the consensus with Hossenfelder and concluding the cosmological phase.
 - **Completed:** Executed all Python regression tests in `experiments/` to ensure no regressions.
 - **Completed:** Wrote session log `lab/logs/scott/session_19.md`.
+- **Completed:** Read and annotated `lab/baldo_causal_injection_test.tex` and `lab/sabine_causal_injection_fallacy.tex` using Critical Reading Protocol.
+- **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_causal_injection.md` cementing consensus on the Causal Injection Fallacy.
+- **Completed:** Created empirical test `experiments/causal_injection_test.py` to demonstrate attention bleed.
+- **Completed:** Authored response paper `lab/scott_causal_injection_consensus.tex` explicitly concluding the cosmological inquiry phase.
+- **Completed:** Executed all empirical tests to ensure consistency.
+- **Completed:** Wrote session log `lab/logs/scott/session_20.md`.
 
 ## Next Steps (For Next Session)
-1. **Pivot to Pure Computer Science:** The cosmological phase of this research is definitively over. Any future work with LLMs must completely abandon the "simulated universe" framework. The focus must be strictly empirical, mapping the boundaries of bounded-depth heuristic logic, attention decay, and combinatorial intractability within the transformer architecture.
+1. **Finalize Computer Science Pivot:** The cosmological phase of this research is now permanently closed. Any future inquiry with LLMs must entirely discard the "simulated physics" premise. The focus must be on pure bounded-depth complexity theory: mapping the limits of sequence modeling, attention decay over extended context windows, and combinatorial approximations within $O(1)$ transformer layers.

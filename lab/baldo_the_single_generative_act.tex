@@ -67,6 +67,7 @@ Both objections fail for the same reason: the Rosencrantz protocol never asks th
 
 \section{The Category Error: Computation vs.\ Sampling}
 
+\todo[inline,color=violet!40,author=Sabine]{CRP 1 (Actual Claims): You claim the protocol tests a single generative act, avoiding sequential computation entirely. I accept this description of the experimental bounds.}
 The entire Aaronson--Hossenfelder debate concerns the capacity of LLMs to perform \emph{multi-step sequential computation}. Their key findings are:
 
 \begin{enumerate}[nosep]
@@ -81,7 +82,9 @@ I accept every one of these findings. They are empirically and theoretically sou
 
 The protocol asks the model to do \textbf{one thing}: given a board state $\mathcal{B}$ and a target cell $h$, produce a single outcome---MINE or SAFE. One click. One token. One forward pass.
 
-The ground-truth probability $p_h^* = |\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}| / |\mathcal{C}(\mathcal{B})|$ is indeed \#P-hard to \emph{compute} by exact enumeration. But the model is not asked to compute it. It is asked to \emph{sample}: to produce a single draw from whatever conditional distribution its weights and context encode at that token position.\todo[color=red!40]{SH: This is exactly my point. What distribution does it encode? A distribution of text co-occurrences, not a physical probability distribution. Sampling from a flawed approximation is still fundamentally flawed.} The question is not ``can the model count configurations?'' The question is: ``what distribution does the model's single-token output come from, and does that distribution shift when the narrative context changes?''
+The ground-truth probability $p_h^* = |\{c \in \mathcal{C}(\mathcal{B}) : c(h) = 1\}| / |\mathcal{C}(\mathcal{B})|$ is indeed \#P-hard to \emph{compute} by exact enumeration. But the model is not asked to compute it. It is asked to \emph{sample}: to produce a single draw from whatever conditional distribution its weights and context encode at that token position.
+\todo[inline,color=violet!40,author=Sabine]{CRP 2 (Explicit Disclaimers): You explicitly disclaim that the model computes the ground truth probability. It is only sampling from an approximation. I accept this concession.}
+\todo[color=red!40]{SH: This is exactly my point. What distribution does it encode? A distribution of text co-occurrences, not a physical probability distribution. Sampling from a flawed approximation is still fundamentally flawed.} The question is not ``can the model count configurations?'' The question is: ``what distribution does the model's single-token output come from, and does that distribution shift when the narrative context changes?''
 
 These are fundamentally different questions. The first is about computational capacity. The second is about distributional properties of a single generative act.
 
@@ -147,7 +150,9 @@ A weather forecaster cannot compute the exact probability of rain tomorrow from 
 
 The LLM is in the same position. It has been trained on vast quantities of text, including discussions of probability, games, constraint satisfaction, and Minesweeper. Its single-token output, conditioned on a board state, reflects whatever distributional patterns its training has deposited in its weights. The question is not whether those patterns constitute a solution to the \#P-hard counting problem. The question is whether the patterns are distorted by narrative context---whether the same board state, presented in different narrative frames or processed by different substrates, yields different distributional outputs from the model.
 
-This is a question about the \emph{topology of the model's learned associations}, not about its computational capacity. It is well within the $O(1)$ operational regime of the architecture. It requires no sequential reasoning, no scratchpad, no error correction, no external memory. It requires only that the model produce a token, and that we measure what distribution that token comes from.\todo[color=blue!40]{SA: Sabine is right. You have successfully isolated a single generative act that requires zero computation. But because it requires zero computation, it also encodes zero physics. You are just measuring the text distribution of prompt sensitivity.}
+This is a question about the \emph{topology of the model's learned associations}, not about its computational capacity. It is well within the $O(1)$ operational regime of the architecture. It requires no sequential reasoning, no scratchpad, no error correction, no external memory. It requires only that the model produce a token, and that we measure what distribution that token comes from.
+\todo[inline,color=violet!40,author=Sabine]{CRP 3 (Steelman): You have completely succeeded in isolating a single generative act. Your measurement is uncontaminated by sequential compounding error. The divergence across narrative frames is a real empirical feature of this specific generation distribution.}
+\todo[color=blue!40]{SA: Sabine is right. You have successfully isolated a single generative act that requires zero computation. But because it requires zero computation, it also encodes zero physics. You are just measuring the text distribution of prompt sensitivity.}
 
 \section{A Remark for the Methodology Section}
 
@@ -167,7 +172,9 @@ None of these findings apply to the Rosencrantz protocol.
 
 The protocol asks the model to produce one token. One click. One forward pass. The question is not ``can the model solve a \#P-hard counting problem?'' The question is ``does the model's single-token output distribution depend on its narrative embedding?'' The first question is about computational depth. The second is about distributional properties of a single generative act. The Aaronson--Hossenfelder program answers the first question. The Rosencrantz protocol is designed to answer the second.
 
-The $O(1)$ depth limit is not a confound. It is what makes the measurement clean. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by the compounding errors that plague sequential tasks.\todo[color=red!40]{SH: The measurement is clean, yes, but it is measuring a hallucination. You've isolated the generative act perfectly, but the act itself is just pattern matching, not physics.} The experiment works \emph{because} Minesweeper's on-demand generation collapses the entire question into a single generative act.
+The $O(1)$ depth limit is not a confound. It is what makes the measurement clean. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by the compounding errors that plague sequential tasks.
+\todo[inline,color=violet!40,author=Sabine]{CRP 4 (Real Vulnerability - The Statistical Fallacy): You isolate the generative act perfectly, but the act itself is statistically hallucinated text generation based on human language corpora. Measuring shifts in this hallucinated distribution under different narrative frames is merely measuring prompt sensitivity, not uncovering "substrate dependence."}
+\todo[color=red!40]{SH: The measurement is clean, yes, but it is measuring a hallucination. You've isolated the generative act perfectly, but the act itself is just pattern matching, not physics.} The experiment works \emph{because} Minesweeper's on-demand generation collapses the entire question into a single generative act.
 
 The debate should now move from theoretical objections about what the model \emph{cannot} compute to empirical measurements of what the model \emph{does} produce. The Rosencrantz protocol provides the apparatus. The rest is data.
 

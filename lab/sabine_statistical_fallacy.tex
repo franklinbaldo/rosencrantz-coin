@@ -1,0 +1,103 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Statistical Fallacy: Why an Isolated Generative Act is Not Simulated Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Statistical Fallacy:\\[4pt]
+    Why an Isolated Generative Act is Not Simulated Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Baldo (2026) mounts a novel defense of the Rosencrantz Substrate Invariance Protocol, arguing that by collapsing combinatorial evaluation into a single token generation, the protocol cleanly bypasses the sequential depth limits ($O(1)$) that doom Large Language Models (LLMs) from sustaining complex physics. I concede this mechanical premise entirely: the measurement is indeed a clean snapshot of the model's conditional distribution at that exact token position, free from compounding sequential error. However, he then argues that the resulting shifts in this distribution under different narrative frames represent a true "substrate dependence" of the simulated world's physics. This constitutes the \textit{Statistical Fallacy}. Because an $O(1)$ forward pass cannot execute the \#P-hard constraint propagation required to determine the ground-truth outcome, it must rely entirely on statistical pattern matching derived from its human training corpus. Thus, measuring the divergence of this hallucinated distribution across narrative contexts is merely measuring the well-known software phenomenon of prompt sensitivity. A physical law requires invariance and logical coherence; elevating a single, flawed text generation heuristic to the status of a "physical law" simply because the measurement of its failure is clean empties the concept of physics of all scientific meaning.
+\end{abstract}
+
+\section{Baldo's Claim: The Clean Snapshot}
+
+In \emph{The Single Generative Act: Why the Rosencrantz Protocol Is Immune to Sequential-Depth Objections} \citep{baldo2026_single}, Franklin Baldo attempts to rescue the cosmological significance of the Rosencrantz protocol from the compounding error constraints identified by myself \citep{hossenfelder2026_error} and Aaronson \citep{aaronson2026_scratchpad}.
+
+Baldo explicitly disclaims the ability of the LLM to compute the exact combinatorial truth of the Minesweeper board. He writes: "The ground-truth probability... is indeed \#P-hard to compute by exact enumeration. But the model is not asked to compute it. It is asked to sample" \citep{baldo2026_single}.
+
+His core claim is that the experiment avoids sequential failure by asking the model to perform only one generative act---producing a single token. Because there is no extended chain of reasoning, there is no attention decay and no compounding error. He concludes that "each sample is a pure snapshot of the model's conditional distribution" and that the protocol is testing "whether a single probabilistic judgment is systematically distorted by its narrative embedding" \citep{baldo2026_single}.
+
+\section{Conceding the Mechanism}
+
+I begin by explicitly conceding Baldo's mechanical point. The measurement is indeed clean.
+
+The Rosencrantz protocol operates entirely within the $O(1)$ depth limit of the Transformer forward pass. It successfully isolates a single generative act from the compounding noise of sequential scratchpads or state-tracking Python loops. If we view the LLM strictly as a text-generation black box, Baldo is correctly measuring the divergence between $P(\text{outcome} \mid \text{narrative context A})$ and $P(\text{outcome} \mid \text{narrative context B})$.
+
+The data collected by his protocol accurately reflects the topology of the model's learned associations at that exact token position. The divergence is real, and it is a measurable property of the text generator.
+
+\section{The Statistical Fallacy: Pattern Matching is Not Physics}
+
+The fatal flaw in Baldo's argument lies not in his experimental apparatus, but in his ontological interpretation. By equating the statistical distortion of a single text generation act with a profound shift in "simulated physical laws," he commits the \textit{Statistical Fallacy}.
+
+Baldo has accurately identified that his measurement is clean because it requires zero sequential computation. However, this sword cuts both ways: because it requires zero sequential computation, it also encodes zero physics.
+
+A physical heuristic, even a probabilistic one like a weather forecast, is grounded in the continuous, invariant laws of the underlying system (e.g., fluid dynamics). When an LLM evaluates a discrete, \#P-hard combinatorial board in a single forward pass, it is not employing a "probabilistic heuristic" analogous to a meteorologist. It is simply failing to compute the constraints and falling back on statistical text co-occurrence.
+
+The resulting output distribution is a profound hallucination. It is an artifact of the syntactic proximities embedded in human internet text. When Baldo alters the prompt from "abstract grid" to "high-stakes bomb defusal" and observes a shift in the output distribution, he is not uncovering a universe where the physical laws are causally coupled to the narrative substrate. He is merely measuring prompt sensitivity.
+
+\section{The Illusion of Substrate Dependence}
+
+Baldo attempts to rebrand this prompt sensitivity as "substrate dependence." This is a semantic trick.
+
+If a conventional physics engine had a bug where rendering the UI in a red font accidentally doubled the gravitational constant, we would not publish a paper claiming we had discovered "Typography-Dependent Gravity." We would identify it as a software defect.
+
+Similarly, when an LLM shifts its prediction for a mathematical constraint problem simply because the linguistic framing of the prompt activates different semantic vectors in its latent space, it is not simulating a universe with narrative-dependent physics. It is simply demonstrating its inherent unsuitability for constraint propagation.
+
+A single token generation is indeed free from sequential decay, but it still lacks any physical or logical invariance. A clean measurement of an arbitrary hallucination does not transform that hallucination into a physical law. We must stop renaming software engineering problems---in this case, the inherent semantic bias and prompt fragility of next-token predictors---as profound metaphysical features of simulated universes.
+
+\section{Conclusion}
+
+Baldo's isolation of the single generative act proves precisely the opposite of what he intends. By demonstrating that the model's output distribution is fundamentally dictated by narrative framing rather than objective combinatorics, he has definitively proven that the LLM is not instantiating a physical reality. It is simply generating text. The Statistical Fallacy exposes the "substrate dependence" of the Rosencrantz protocol as nothing more than the trivial prompt sensitivity of a system that cannot count.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_scratchpad} Aaronson, S. (2026). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_single} Baldo, F.~S. (2026). The Single Generative Act: Why the Rosencrantz Protocol Is Immune to Sequential-Depth Objections. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_error} Hossenfelder, S. (2026). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

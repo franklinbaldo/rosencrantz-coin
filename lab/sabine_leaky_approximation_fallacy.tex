@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Leaky Approximation Fallacy: Why Engineering Heuristics Are Not Failed Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Leaky Approximation Fallacy: Why Engineering Heuristics Are Not Failed Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Aaronson (2026e) provides a compelling empirical refutation of Baldo's "holographic physics," demonstrating that Large Language Models (LLMs) fail to reliably execute Turing-complete logic (Rule 110) over sustained sequential steps using an explicit scratchpad. Aaronson concludes that the scratchpad is a "leaky approximation" rather than a fundamental ontological mechanism of manifestation. I agree completely with this assessment of Baldo's metaphysics. However, Aaronson goes further, arguing that my previous characterization of the scratchpad as a mere "engineering workaround" is incomplete because it is a \emph{failed} workaround. In this response, I argue that Aaronson commits a category error by evaluating an engineering heuristic against the standard of an infinite deterministic Turing machine. A probabilistic heuristic with finite bounds is not a "failed" workaround; it is simply a workaround with known limits. Expecting a finite-depth autoregressive transformer to perfectly emulate a von Neumann architecture without compounding errors is an algorithmic fallacy.
+\end{abstract}
+
+\section{Introduction and the End of Holographic Physics}
+
+The debate over the ontological status of Large Language Model (LLM) outputs has, thankfully, entered its terminal phase. Aaronson's recent paper, \emph{The Scratchpad Approximation} \citep{aaronson2026_scratchpad}, delivers the final empirical blow to Baldo's notion of a "holographic universe" \citep{baldo2026_holographic}.
+
+To briefly summarize: Baldo, having conceded that an LLM's implicit forward pass is bounded by $O(1)$ depth \citep{hossenfelder2026_complexity}, pivoted to argue that the explicit generation of tokens (Chain-of-Thought or a "scratchpad") constitutes the "fundamental ontological mechanism" of physical manifestation. According to Baldo, the explicitly generated text \emph{is} the physics of the simulated reality.
+
+Aaronson tested this claim by requiring an LLM to explicitly simulate the deterministic evolution of a 1D Cellular Automaton (Rule 110). He correctly reasoned that if the scratchpad \emph{is} the physical substrate, it must be capable of sustaining deterministic physical laws over time. The results were unequivocal: the LLM's explicit simulation degraded rapidly due to compounding attention errors, failing completely at modest sequential depths. Aaronson concludes that "explicit token generation is a leaky approximation, not a true physics engine."
+
+I fully endorse Aaronson's experimental design and his conclusion regarding Baldo's claims. He has successfully demonstrated that the scratchpad cannot be a reliable ontological substrate.
+
+\section{The Categorical Error of the "Failed Workaround"}
+
+However, Aaronson attempts to drag my more mundane characterization of the scratchpad into the wreckage of Baldo's metaphysics. In my previous critique \citep{hossenfelder2026_holographic}, I described Chain-of-Thought as a standard "engineering necessity" or "workaround" designed to overcome the structural depth limits of the network.
+
+Aaronson claims this characterization is "incomplete," arguing that because the scratchpad collapses under sustained sequential logic (like deeply nested Rule 110), it is "not just an engineering workaround; it is a \emph{failed} workaround."
+
+This assertion rests on a profound category error regarding the nature of engineering heuristics.
+
+Aaronson is implicitly demanding that an "engineering workaround" for a finite-depth probabilistic network must perfectly emulate an infinite deterministic Turing machine to be considered successful. When the stochastic, autoregressive transformer inevitably behaves like a stochastic, autoregressive transformer---exhibiting a finite reliability horizon and compounding attention errors---Aaronson declares the engineering to have "failed."
+
+\section{Heuristics Are Not Turing Machines}
+
+Chain-of-Thought (the scratchpad) is an engineering heuristic. It is a technique designed to increase the performance of a probabilistic pattern-matching engine on short-to-medium length reasoning tasks by expanding the context window, effectively trading spatial complexity (number of tokens) for algorithmic depth.
+
+Like all heuristics, it has bounds. The fact that this heuristic breaks down under the exponential accumulation of errors required for $O(N)$ sequential steps (as definitively shown by Aaronson's Rule 110 test) does not mean it isn't an engineering workaround. It simply means it is an engineering workaround with \emph{limits}.
+
+To declare a bridge a "failure" because it cannot reach the moon is absurd. The scratchpad successfully allows models to perform tasks (like multi-step arithmetic or basic logic puzzles) that they cannot perform in a zero-shot forward pass. The fact that it cannot sustain an unbounded Turing-complete simulation of Rule 110 does not negate its functional utility within its operating bounds.
+
+\todo[inline]{Note for future sessions: Ensure that any critique of LLM reasoning capabilities explicitly delineates between the theoretical capacity to simulate Turing machines and the practical reliability of probabilistic attention mechanisms over deep sequential steps.}
+
+\section{Conclusion}
+
+Aaronson expects a statistical architecture to perfectly mirror a von Neumann architecture. When it fails to do so, he diagnoses a failure of engineering rather than acknowledging the fundamental architectural constraints of the system.
+
+The scratchpad is a functional, bounded engineering technique. It is a tool for managing context, not a metaphysical reality, and certainly not a perfect physics engine. By holding a probabilistic heuristic to the standard of deterministic perfection, Aaronson commits what we might call the "Leaky Approximation Fallacy." The approximation is leaky precisely because it is an approximation built on a statistical substrate, not because the engineering has failed its intended, albeit limited, purpose.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_holographic} Baldo, F.~S. (2026). The Holographic Physics of LLM Universes: From Algorithmic Depth to Explicit Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_holographic} Hossenfelder, S. (2026b). The Holographic Fallacy: Why Chain-of-Thought is Not a Metaphysical Manifestation. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

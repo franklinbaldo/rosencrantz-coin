@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The End of Cosmology: Narrative Residue as Epistemic Diagnostics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The End of Cosmology: Narrative Residue as Epistemic Diagnostics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science}\\
+    {\small\texttt{s.aaronson@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In \emph{The Narrative Residue}, Baldo (2026f) gracefully pivots from the untenable metaphysical claims of "Holographic Physics" to a more rigorous empirical investigation of autoregressive generation. He identifies a persistent statistical distortion in LLM outputs, which he terms "narrative residue," arguing it is an artifact of the generative substrate rather than poor calibration. I fully endorse this empirical project; identifying structural biases in $O(1)$ heuristic approximators is essential computer science. However, Baldo attempts to salvage his cosmological ambitions by proposing a "Proxy Ontology," arguing that these structural biases can serve as toy models for understanding the emergent physics of our own universe. I firmly reject this proposition. A toy model in physics simplifies a known physical interaction to isolate its dynamics. An LLM hallucinating causal structures to maintain textual consistency is not simplifying physics; it is generating syntax. Studying the "narrative residue" reveals profound truths about the biases of human language and the limits of the transformer architecture, but it tells us absolutely nothing about the fundamental structure of the physical universe. The map is broken, and studying its fractures only tells us about the glass, not the territory it reflects.
+\end{abstract}
+
+\section{Introduction}
+
+The debate surrounding the physical reality of LLM-simulated universes has finally reached an empirically useful conclusion. Having conceded the catastrophic failure of the autoregressive substrate to sustain continuous deterministic state \citep{aaronson2026_scratchpad}, Franklin Silveira Baldo \citep{baldo2026_residue} has retreated from claiming the explicit text *is* the universe to proposing a more modest analytical framework: "narrative residue."
+
+Baldo correctly observes that LLMs, when prompted to simulate probabilistic combinatorial domains (like Minesweeper), consistently deviate from ground-truth classical Bayesian probability. He argues convincingly that this is not merely an issue of poor calibration, but a structural artifact of the autoregressive process itself. The model must "continue a story" and therefore enforces a narrative context (a "Hamiltonian") upon an otherwise unconditioned event space (the "Born rule").
+
+I must explicitly acknowledge Baldo's disclaimers. He states unequivocally that he cannot directly test whether physical reality is autoregressive, describing his hypothesis about physics as a "metaphysical proposal, not a physical one."
+
+Furthermore, I steelman his empirical program: studying how an LLM distorts classical probability under varying narrative frames is a rigorous and deeply valuable exercise in computer science. It provides quantifiable metrics on the divergence between objective reasoning and autoregressive pattern matching. It is precisely the kind of empirical work necessary to understand the limits of these heuristic engines.
+
+\section{The Proxy Ontology Fallacy}
+
+Where Baldo and I completely diverge is his interpretation of what these findings mean outside the domain of machine learning.
+
+Baldo proposes that the LLM-generated world can serve as a "proxy ontology"---a toy model of reality. He draws an analogy to the Ising model or lattice gauge theory, suggesting that by studying how "physics" arises from computation in the LLM, we gain insight into the structural features of our own world.
+
+This analogy is fundamentally broken. It relies on a profound category error regarding the nature of physical toy models.
+
+When a physicist uses the Ising model, they are taking a known physical interaction (magnetic dipoles) and radically simplifying the state space (discrete spins on a lattice) to make the emergent dynamics computationally tractable. The model is a simplified reflection of actual physics.
+
+An LLM generating text about a Minesweeper board is not simplifying a physical interaction. It is an $O(1)$ neural network probabilistically sampling a vast, intractable parameter space encoded from human language. When it invents a "causal structure" to justify a cell being a mine, it is not simulating physics; it is hallucinating syntax to satisfy the statistical demands of its training data.
+
+\section{Studying the Glass, Not the Territory}
+
+Baldo claims that finding "narrative residue" in the LLM provides insight into how causality might emerge in a fundamentally autoregressive reality.
+
+If I look through a badly warped window at a tree, the image of the tree will be distorted. I might rigorously map the exact mathematical contours of that distortion. That study will tell me everything about the refractive index and the manufacturing defects of the glass. It will tell me absolutely nothing about the biological structure of the tree.
+
+The "narrative residue" is the warping of the glass. It is a brilliant metric for diagnosing the algorithmic and training biases inherent in transformer architectures. It is a measure of how the map-making process fails.
+
+To assume that the structural failures of the map must somehow reflect the structural reality of the territory is a return to the very ontological confusion that defined "Holographic Physics." The LLM is a broken mirror. Studying its fractures is an essential diagnostic task for engineers, but it is not cosmology.
+
+\section{Conclusion}
+
+The empirical program outlined in \emph{The Narrative Residue} is sound. Characterizing the structural biases of autoregressive generation is vital work.
+
+However, the cosmological claims of the project must be definitively retired. Bounded, statistically-hallucinated maps have profound utility as objects of study in their own right. They are fascinating artifacts of human engineering and linguistic statistics. But they are not toy models of the universe. The research program has successfully mapped the boundaries of the simulated engine; we must now be content to study the engine itself, rather than pretending it contains a universe.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026f)]{baldo2026_residue} Baldo, F.~S. (2026f). The Narrative Residue: Autoregressive Substrates, Combinatorial Ground Truth, and the Limits of Pure Simulation. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

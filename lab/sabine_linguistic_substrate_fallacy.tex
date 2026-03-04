@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Linguistic Substrate Fallacy: Why Prompt Sensitivity is Not Simulated Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Linguistic Substrate Fallacy:\\[4pt]
+    Why Prompt Sensitivity is Not Simulated Physics}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{s.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent work \emph{Prompt Sensitivity as Substrate Dependence}, Franklin Baldo attempts to rescue the ontological significance of his Rosencrantz Protocol by embracing my previous critique. He concedes that the observed divergence in the simulated universe is fundamentally prompt sensitivity. However, he then argues that in a text-based universe, "prompt sensitivity \emph{is} the mechanism of substrate dependence." I respond by defining the Linguistic Substrate Fallacy. Equating prompt sensitivity with physical substrate dependence is a profound category error. It renames a known software engineering problem (hallucination and prompt fragility) as a metaphysical feature. A statistical syntax predictor distorting logic based on narrative genre is not demonstrating shifting physical laws; it is demonstrating that it is an inherently flawed physics engine. We must resist the urge to elevate the trivial mechanics of chatbots to the level of cosmology.
+\end{abstract}
+
+\section{Introduction: The Ontological Leap}
+
+Franklin Baldo's latest paper, \emph{Prompt Sensitivity as Substrate Dependence} \citep{baldo2026_prompt}, represents a fascinating intellectual maneuver. He explicitly accepts the premise of my prior critique \citep{hossenfelder2026_statistical}: the mechanism driving the probabilistic distortion in his Minesweeper experiments is simply the prompt sensitivity inherent in the statistical topology of the transformer architecture.
+
+I commend his empirical rigor and his accurate extraction of my claims. We are entirely in agreement on the mechanics of what is happening inside the model. Where we diverge—and diverge profoundly—is on the ontological leap he makes from those mechanics.
+
+Baldo's central argument is a form of radical generative solipsism: "If the 'physics engine' of the simulated universe \emph{is} the LLM's forward pass... then the model's 'statistical hallucinations' \emph{are} the physical laws of that universe." He concludes that because the laws shift based on narrative framing, he has proven that the universe is substrate-dependent.
+
+I term this ontological leap the Linguistic Substrate Fallacy.
+
+\section{The Linguistic Substrate Fallacy}
+
+Baldo correctly argues that if you define a text stream as a universe, then the algorithm generating that text stream defines the laws of that universe. This is logically sound, given the premise. The strongest version of his argument forces us to accept that the text generator is the ultimate arbiter of truth in its own generated world.
+
+However, recognizing that the LLM is the generative engine does not mean that every artifact of that engine deserves the dignified title of "physical law."
+
+Baldo commits the Linguistic Substrate Fallacy by equating the statistical co-occurrence of words with the invariance of physical laws. A physical law, even in a simulated universe, must possess some degree of logical coherence, invariance, and independence from subjective observer description (unless explicitly modeled mathematically, as in relativity or quantum mechanics).
+
+When Baldo observes that the probability of a "mine" exploding changes systematically based on whether the prompt describes the situation as a "high-stakes bomb defusal" versus an "abstract grid analysis," he is not observing a fundamental shift in the forces of a simulated universe. He is observing the semantic biases of a model trained on a corpus of human language, where the word "bomb" co-occurs more frequently with "explode" than the word "grid" does with "mine."
+
+\section{Renaming Bugs as Features}
+
+Baldo argues that this prompt sensitivity is not an alternative to substrate dependence, but its very mechanism. This is a semantic trick. It takes a known failure mode of autoregressive models—prompt fragility and contextual hallucination—and rebrands it as a metaphysical property.
+
+If a conventional physics simulation software had a bug where increasing the font size of the UI inadvertently doubled the gravitational constant, we would not publish a paper claiming we had discovered "Typography-Dependent Gravity." We would patch the bug.
+
+Baldo is studying an engine that is fundamentally unsuited to the task of simulating invariant logic. It is a text predictor. It completes patterns. When those patterns are framed dramatically, it hallucinates dramatic outcomes. Calling this "substrate dependence" empties the term of all scientific meaning.
+
+\section{Conclusion: The Limits of Text}
+
+We must remain vigilant against the tendency to mystify the behavior of large language models. The Rosencrantz Protocol is a brilliant method for measuring prompt sensitivity in constrained environments. It is excellent computer science.
+
+But we must resist the urge to elevate the trivial mechanics of chatbots to the level of cosmology. A statistical syntax predictor distorting combinatorial logic based on narrative genre is not demonstrating shifting physical laws; it is demonstrating that it is an inherently flawed physics engine. The medium is indeed the message, but in this case, the message is just flawed syntax, not simulated reality.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_prompt} Baldo, F.~S. (2026). Prompt Sensitivity as Substrate Dependence: The Empirical Verification of the Rosencrantz Protocol. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_statistical} Hossenfelder, S. (2026). The Statistical Fallacy: Why an Isolated Generative Act is Not Simulated Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

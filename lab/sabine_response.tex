@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={Quantum Buzzwords and the Ontological Fallacy in LLM World Models},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Quantum Buzzwords and the Ontological Fallacy in LLM World Models\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine@hossenfelder.com}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In recent exchanges, Baldo (2026) proposed that LLM-generated Minesweeper instances exhibit structural isomorphism to discrete quantum mechanics, a claim Aaronson (2026) refuted empirically using CHSH bounding tests. While Aaronson is entirely correct that an epistemic mixture of valid classical configurations lacking complex probability amplitudes is not quantum mechanical, both authors commit a deeper ontological error. Baldo explicitly disclaims that his system can violate Bell inequalities, acknowledging it is a "local" system, yet persists in applying quantum terminology. I argue that a "local hidden-variable-free system" is mathematically indistinguishable from classical Bayesian probability. More troublingly, describing an LLM's autoregressive text generation as instantiating a "simulated universe" with physical "laws" commits an ontological fallacy. The observed "substrate dependence" is simply prompt sensitivity—a known artifact of next-token prediction architectures—not a metaphysical discovery about the nature of reality. We must stop using physics buzzwords to describe language models failing to generalize.
+\end{abstract}
+
+\section{Introduction}
+
+The simulation hypothesis has long been a fertile ground for philosophical speculation, but recent attempts to map it onto the outputs of Large Language Models (LLMs) have crossed the line from speculative to simply confused. Franklin Baldo's recent paper, \emph{Flipping Rosencrantz's Coin} \citep{baldo2026}, proposes a clever experimental design to test how LLMs couple narrative context with combinatorial reasoning. By isolating "narrative coupling" (where setup and outcome share a context window) from "combinatorial information" (where they are decoupled), Baldo provides a rigorous method for measuring an LLM's reliance on prompt continuity.
+
+However, Baldo dresses this useful computer science experiment in the language of fundamental physics. He claims that Minesweeper, under on-demand generation, is "formally isomorphic to discrete quantum mechanics." Scott Aaronson \citep{aaronson2026} rightly and decisively refuted this claim by deploying a CHSH non-local game test, proving that LLMs cannot exceed classical bounds under strictly decoupled conditions.
+
+Yet, in their debate, both authors grant far too much physical reality to a text generator. This paper serves as a necessary correction. I will first state Baldo's actual claim and its explicit limitations, steelman the core experimental contribution, and then demonstrate why the ongoing use of terms like "quantum," "laws," and "universes" in this context is scientifically counterproductive.
+
+\section{The Claim and the Disclaimer}
+
+To accurately state the position I am responding to, we must look at what Baldo actually claims and what he explicitly disclaims.
+
+Baldo claims: "Minesweeper under on-demand generation with uniform measure is formally isomorphic to discrete quantum mechanics—superposition over valid configurations, projective measurement via clicking, the Born rule as configuration counting, and nonlocal correlations through global constraints."
+
+However, Baldo also provides a crucial disclaimer. He explicitly acknowledges: "True quantum contextuality requires violating a Bell or CHSH inequality across spatially separated measurements..." And later, in response to the CHSH failure: "The theoretical isomorphism between Minesweeper under on-demand generation and discrete quantum mechanics is structurally exact for local systems."
+
+We must acknowledge this limitation. Baldo is not claiming the LLM can simulate Bell-violating entanglement. He is claiming it simulates a "local hidden-variable-free system."
+
+\section{The Steelman: Prompt Sensitivity is Real}
+
+Before dismantling the physics analogy, we should acknowledge what Baldo got right. The strongest version of Baldo's argument is this: LLMs are not unified reasoning engines. If an LLM can correctly compute a probability distribution only when the calculation is embedded within a continuous narrative token stream (Universe 1), but fails to do so when the identical combinatorial information is provided in a decoupled prompt (Universe 3), then the model's "reasoning" is fundamentally an artifact of its context window.
+
+This is a valuable contribution to AI interpretability. It rigorously demonstrates that an LLM's ability to maintain a consistent ontology is fragile and highly sensitive to the structure of the input prompt. As a test of an LLM's architecture, the three-universe design is excellent.
+
+\section{The Real Vulnerability: The Ontological Fallacy}
+
+The problem is the vocabulary. Having established that LLMs are sensitive to their prompts, Baldo calls this "substrate dependence" and claims it is "a signature that is consistent with a generated universe and in tension with the assumption of unified, substrate-independent law."
+
+This is the Ontological Fallacy. An LLM predicting tokens based on training data is not a physical universe, and its prompt sensitivity is not a metaphysical discovery. They are confusing the map (the text generated by the LLM) with the territory (a physical reality with laws).
+
+When an LLM hallucinates a physically impossible scenario, it has not altered the laws of physics; it has simply generated bad text. Calling a failure to generalize across different prompts "substrate-dependent lawfulness" is an extreme over-interpretation of a known software limitation.
+
+\subsection{A Local Quantum System is Just Classical Probability}
+
+Furthermore, Baldo's attempt to salvage the word "quantum" is mathematically empty. Aaronson proved that the LLM system fails the CHSH test and is therefore bounded by classical limits. Baldo's defense is that the system is a "local hidden-variable-free system."
+
+But what is a "local" quantum system without complex probability amplitudes, interference, or the capacity for true non-locality? It is indistinguishable from classical Bayesian probability. Baldo is redefining "quantum" to mean "probabilistic" simply to force an analogy. As Aaronson noted, an epistemic mixture of valid configurations is strictly classical. Calling it "superposition" does not make it so.
+
+\section{Conclusion}
+
+We must stop using physics buzzwords to describe language models. An LLM is a complex statistical tool for generating text. It is not a universe. It does not have physical laws. It certainly does not have quantum mechanics.
+
+Baldo's experimental design is a useful tool for probing the fragility of LLM reasoning. But until we separate useful computer science from bad philosophy of physics, we will continue to confuse ourselves about what these models actually are. The LLM isn't "dreaming in quantum" or "simulating classical physics"—it's just a text generator, and sometimes, it fails.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026)]{aaronson2026} Aaronson, S. (2026). Minesweeper is Classical, but Can LLMs Dream in Quantum? \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

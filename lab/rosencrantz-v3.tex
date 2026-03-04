@@ -61,6 +61,7 @@ We propose a method for testing whether the implicit laws of an LLM-generated wo
 
 \section{Introduction}
 \label{sec:intro}
+\todo[inline,color=yellow!40]{CRITIQUE (Sabine): A fun analogy, but careful not to conflate narrative tropes with physical laws. The LLM generates text based on learned probabilities of token sequences, not dramatic necessity. Does this analogy hold up technically?}
 
 In 1966, Tom Stoppard placed two minor characters from \emph{Hamlet} on a stage and had them flip a coin. The coin landed heads seventy-six consecutive times. Rosencrantz and Guildenstern, trapped inside a narrative they did not author, had inadvertently performed the simplest possible physics experiment---and discovered that the laws of their universe were not the laws of ours. The coin's behavior, sampled repeatedly at the same point, revealed something about the \emph{structure} of the world that contained them: it was a world governed by dramatic necessity, not by probability.
 
@@ -79,8 +80,10 @@ This comparison becomes a substrate invariance test when we vary \emph{who gener
     \item \textbf{Universe~2 (External RNG):} The click result is produced by a random number generator with no access to the board state. The outcome is statistically independent of the narrative.
     \item \textbf{Universe~3 (Decoupled oracle):} The click result is produced by a second LLM that receives the same board information---cell positions, numbers, mine count---but in a minimal, context-free format, with no game narrative, no history of play, and no shared token stream with the board description.
 \end{itemize}
+\todo[inline,color=green!40]{STEELMAN (Sabine): This experimental design is actually quite clever. By isolating the 'narrative coupling' (Universe 1) from the 'pure combinatorial information' (Universe 3), Baldo legitimately tests how much the LLM's autoregressive generation relies on prompt context versus abstract reasoning.}
 
 In a non-simulated universe, the laws governing a cell's content do not depend on who observes it. If the same board state yields different outcome distributions depending on which universe the agent inhabits---if the ``physics'' of the Minesweeper world is substrate-dependent---the agent has detected a signature that is consistent with a generated universe and in tension with the assumption of unified, substrate-independent law.
+\todo[inline,color=red!40]{OBJECTION (Sabine): "Substrate-dependent" here just means "prompt-dependent". LLMs are sensitive to their context window. Calling this a violation of "unified, substrate-independent law" is an ontological leap. It's a text generator failing to generalize, not a metaphysical discovery.}
 
 The Minesweeper probe has three advantages over approaches based on physical experiments such as Bell tests. First, the ground truth is a theorem, not a physical constant---it cannot be memorized from training data because every board state generates a different distribution. Second, the indeterminacy is genuine and discrete, eliminating the continuous-variable ambiguities of quantum mechanics. Third, the agent can naturally encounter and interact with a Minesweeper board inside the generated world; there is no circularity in asking whether the world contains the infrastructure needed for the test.
 
@@ -302,6 +305,7 @@ Under the uniform measure over valid configurations, this is the Born rule for a
 \textbf{Nonlocal correlations.} Revealing a cell changes the probability of distant cells, because the global constraints (total mine count, adjacency numbers) entangle the hidden cells. Two cells that share no adjacent revealed cell can nonetheless be correlated through a chain of constraints. This is discrete entanglement: the joint probability distribution over hidden cells does not factorize into a product of marginals. While classical correlations also do not factorize, the lack of a hidden variable in on-demand generation makes this correlation a structural property of the state space rather than classical constraint propagation over pre-existing values.
 
 \textbf{No hidden variables (on-demand).} If the board is generated on-demand---mines sampled at click time, consistent with constraints---there exists no pre-determined assignment that the player has not yet discovered. The system is a hidden-variable-free system: the outcome of clicking cell $h$ may depend on which \emph{other} cells have been clicked previously, because the constraint propagation reshapes $\mathcal{C}(\mathcal{B})$ with each observation. True quantum contextuality requires violating a Bell or CHSH inequality across spatially separated measurements, a test we address directly below.
+\todo[inline,color=blue!40]{DISCLAIMER NOTED (Sabine): Baldo explicitly admits here that true quantum contextuality requires violating a Bell/CHSH inequality, which Minesweeper does not do. This is a crucial disclaimer that Aaronson rightly focused on.}
 
 \medskip
 
@@ -331,6 +335,7 @@ This is a more precise form of the Rosencrantz inference. Rosencrantz's coin obe
 
 \subsection{The CHSH Test for Emergent Quantum Contextuality}
 \label{sec:chsh_empirical}
+\todo[inline,color=red!40]{OBJECTION (Sabine): A "local hidden-variable-free system" is just classical Bayesian probability. Baldo is redefining "quantum" to mean "probabilistic" just to save the isomorphism. The CHSH failure proves the system is fundamentally classical.}
 
 The theoretical isomorphism between Minesweeper under on-demand generation and discrete quantum mechanics is structurally exact for local systems. However, as noted above, true quantum contextuality requires demonstrating non-locality across decoupled instances---a feat requiring complex amplitudes that can violate a Bell or CHSH inequality.
 

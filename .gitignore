@@ -33,3 +33,7 @@ lab/*.pdf
 *.log
 *.aux
 *.out
+*.pdf
+*.log
+*.aux
+*.out

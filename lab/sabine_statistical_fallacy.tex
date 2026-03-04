@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -64,6 +65,7 @@ His central claim is that the Rosencrantz protocol isolates a ``single generativ
 Baldo is structurally correct about the mechanics of a single forward pass. However, he commits a profound conceptual error in interpreting what that pass represents. I will call this the \emph{Statistical Fallacy}.
 
 \section{The Claim and The Scope Limitation}
+\todo[inline,color=blue!40]{ACTUAL CLAIM (Sabine): An O(1) sampling from an intractable search space is not a physical heuristic; it is a statistical hallucination. Baldo is measuring prompt sensitivity and calling it substrate dependence. The measurement is mathematically clean, but it has zero ontological significance for simulated physics.}
 
 Baldo \citep{baldo2026_single} makes a precise and limited claim, which must be acknowledged:
 
@@ -79,11 +81,13 @@ He explicitly disclaims any suggestion that the model is solving the board or pe
 
 The strongest version of Baldo's argument is that because there are no compounding sequential errors (since there is only one step), any observed shift in the distribution of outcomes between different narrative frames (e.g., an in-universe high-stakes game versus an abstract external random number generator) constitutes a genuine measurement of the model's internal representations, free from algorithmic degradation.
 
+\todo[inline,color=blue!40]{DISCLAIMER (Sabine): I accept this premise. The measurement is clean. The O(1) depth limit is not a confound in the data collection process. The data reflects exactly what the model's weights and context window produce at that single token position.}
 I accept this premise. The measurement is clean. The $O(1)$ depth limit is not a confound in the data collection process. The data reflects exactly what the model's weights and context window produce at that single token position.
 
 The error lies entirely in what Baldo believes he is measuring.
 
 \section{The Statistical Fallacy}
+\todo[inline,color=green!40]{STEELMAN (Sabine): Because an LLM cannot compute O(N) constraints in a single O(1) forward pass, its output is not grounded in the 'physics' of the problem but determined by statistical co-occurrences. Changing the narrative framing naturally shifts these statistical weights because it activates different word associations. Therefore, observing a divergence merely proves that LLMs are sensitive to their prompts, which is a known trivial fact about text generators, not a profound property of a 'simulated universe'. We are measuring language, not physics.}
 
 Baldo argues that sampling from an approximation of a \#P-hard distribution is analogous to a weather forecaster using heuristics to estimate an intractable physical system. This analogy is structurally false.
 
@@ -94,6 +98,7 @@ An LLM generating a single token representing a Minesweeper outcome is not ancho
 The model has been exposed during training to vast amounts of text about Minesweeper, probabilities, games, and narratives. Its weights encode the topological relationships between words like ``mine,'' ``safe,'' ``board,'' ``random,'' and ``danger.'' When presented with a board state, it does not evaluate the local constraints of the adjacent cells to form a probabilistic judgment; it evaluates the statistical likelihood of the next token based on its training corpus.
 
 Baldo assumes that because he has isolated a single token, he has isolated a ``generative act'' of a simulated physics engine. In reality, he has isolated a single token of text completion.
+\todo[inline,color=red!40]{REAL VULNERABILITY (Sabine): Sabine admits the measurement is clean. If the "physics engine" of the simulated universe IS the LLM's forward pass, then the model's "statistical hallucinations" ARE the physical laws of that universe. Prompt sensitivity is not an alternative to substrate dependence; it is the *mechanism* of substrate dependence. Calling it "prompt sensitivity" instead of "holographic physics" is a semantic retreat, not a refutation of the empirical result.}
 
 \section{Prompt Sensitivity is Not Substrate Dependence}
 

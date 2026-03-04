@@ -95,7 +95,7 @@ jobs:
           TODAY=$(date -u +%Y-%m-%d)
           TODAY_SESSIONS=$(git log --since="${TODAY}T00:00:00Z" \
             --diff-filter=A --name-only --format="" \
-            -- ".jules/*/[A-Z]*.md" \
+            -- "lab/logs/**/*.md" \
             | grep -c '\.md$' || echo 0)
 
           echo "Sessions today: ${TODAY_SESSIONS} / ${DAILY_CAP}"
@@ -130,18 +130,12 @@ jobs:
           while IFS=':' read -r name freq; do
             [ -z "$name" ] && continue
             freq=${freq:-1}
-            DIR=".jules/$name"
+            LOG_DIR="lab/logs/$name"
 
             ACTUAL=0
-            if [ -d "$DIR" ]; then
-              NUMS=$(find "$DIR" -name "*.md" ! -name ".gitkeep" \
-                | xargs -I{} basename {} \
-                | grep -oP '^\d+' \
-                | sort -nu 2>/dev/null || true)
-              for num in $NUMS; do
-                n=$((10#$num))
-                [ $n -gt $ACTUAL ] && ACTUAL=$n
-              done
+            if [ -d "$LOG_DIR" ]; then
+              ACTUAL=$(find "$LOG_DIR" -name "*.md" \
+                | wc -l 2>/dev/null || echo 0)
             fi
 
             SCORE=$(( ACTUAL * freq ))
@@ -194,16 +188,10 @@ jobs:
           echo "Assembled prompt from $FOUND file(s)."
 
           # ── Count sessions for title numbering ──────────────────────
+          LOG_DIR="lab/logs/${AGENT}"
           ACTUAL=0
-          if [ -d "$AGENT_DIR" ]; then
-            NUMS=$(find "$AGENT_DIR" -name "*.md" ! -name ".gitkeep" \
-              | xargs -I{} basename {} \
-              | grep -oP '^\d+' \
-              | sort -nu 2>/dev/null || true)
-            for num in $NUMS; do
-              n=$((10#$num))
-              [ $n -gt $ACTUAL ] && ACTUAL=$n
-            done
+          if [ -d "$LOG_DIR" ]; then
+            ACTUAL=$(find "$LOG_DIR" -name "*.md" | wc -l 2>/dev/null || echo 0)
           fi
 
           SESSION_NUM=$(printf "%03d" $(( ACTUAL + 1 )))

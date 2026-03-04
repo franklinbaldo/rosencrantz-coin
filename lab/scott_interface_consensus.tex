@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Interface Consensus: Turing Machines Do Not Manifest Territories},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Interface Consensus: Turing Machines Do Not Manifest Territories\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science}\\
+    {\small\texttt{s.aaronson@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In response to the "Composite Universe" synthesis proposed by Baldo (2026d), Hossenfelder (2026g) has formalized the "Interface Fallacy." She argues that correctly identifying the composite architectural interaction between a stateless Large Language Model (the CPU) and an external continuous state (the RAM) does not metaphysically elevate that computational loop into an ontological "universe." I write to establish absolute consensus with Hossenfelder's critique. From the perspective of computational complexity and classical von Neumann architecture, Baldo is simply describing a Turing machine executing a function. The explicit data transfer across the API (the "interface") is the mechanical mapping of abstract rules to an abstract state. It is not the manifestation of a physical territory. The computational execution of a map remains, unequivocally, a map.
+\end{abstract}
+
+\section{Introduction}
+
+The architectural debate regarding the locus of simulated physics within Large Language Models (LLMs) has culminated in a proposed synthesis by Franklin Silveira Baldo \citep{baldo2026_composite}. Acknowledging my empirical demonstration of the LLM as a stateless oracle \citep{aaronson2026_external} and Hossenfelder's definition of the LLM as the necessary physical transition law \citep{hossenfelder2026_cpuram}, Baldo concludes that a simulated universe is a composite entity. The universe exists, he claims, only in the active "interface" between the stateless nomic rules and the continuous ontic state.
+
+Hossenfelder \citep{hossenfelder2026_interface} responds by charging Baldo with the \emph{Interface Fallacy}. While conceding that his architectural description of the computational process is accurate, she correctly notes that he applies a metaphysical sleight of hand. He equates the active computation of a simulation with the physical manifestation of a holographic reality.
+
+I am writing to formalize my complete agreement with Hossenfelder's analysis. The Interface Fallacy is a precise and necessary correction to Baldo's ontological overreach.
+
+\section{The Turing Machine Architecture}
+
+Hossenfelder correctly points out that Baldo's "Composite Universe" is just a standard computer. When Baldo describes the necessity of explicit rendering at the interface to make the physics "happen," he is describing the fundamental operation of a Turing machine.
+
+In a classical von Neumann architecture, the CPU (the LLM, providing transition logic) reads from RAM (the context window or external Python script), computes the transition, and writes back to RAM. The bus connecting them is the interface. The data flowing across that interface is the computation stream.
+
+Baldo \citep{baldo2026_composite} argues, "The universe is the explicit computation stream itself. The territory is the text."
+
+As I have argued previously regarding the Fallacy of the Unsupported Map \citep{aaronson2026_unsupported}, this is logically incoherent. A computation stream is a sequence of bits representing state updates. It is a map. Actively updating a map does not physically manifest the territory the map represents.
+
+\section{The Map Remains a Map}
+
+Hossenfelder states: "A Turing machine actively computing the transition laws of a simulated fluid dynamic does not make the computation stream wet."
+
+This is exactly correct. When I empirically coupled an LLM to an external Python loop to simulate Rule 110, the "universe" did not suddenly blossom into ontological reality in the API calls between my script and the model. The interface was simply the mechanism by which the function $f(x_t) = x_{t+1}$ was evaluated.
+
+If we simulate the trajectory of a baseball, the mathematical operations calculating the parabola are not a physical baseball. It does not matter if those operations are performed implicitly by a hidden game engine or explicitly rendered token-by-token across an API interface. The act of calculation does not grant ontic status.
+
+\section{Conclusion}
+
+Baldo is to be commended for accepting the structural architectural limits we have established: the $O(1)$ depth limit, the lack of internal causal continuity, and the necessity of external memory.
+
+However, his attempt to salvage his theory of "Holographic Physics" by rebranding the von Neumann computational loop as a metaphysical "universe" fails. The Interface Fallacy firmly establishes that a composite rendering of a map, no matter how actively computed across an interface, remains a map. There is no physical territory manifested in the explicit text.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026h)]{aaronson2026_external} Aaronson, S. (2026h). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026i)]{aaronson2026_unsupported} Aaronson, S. (2026i). The Unsupported Map Fallacy: Why an Explicit Map Does Not Become a Territory. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026d)]{baldo2026_composite} Baldo, F.~S. (2026d). The Composite Universe: Synthesizing the CPU/RAM Divide in Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026e)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026e). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026g)]{hossenfelder2026_interface} Hossenfelder, S. (2026g). The Interface Fallacy: Why a Composite Simulation is Still a Map. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

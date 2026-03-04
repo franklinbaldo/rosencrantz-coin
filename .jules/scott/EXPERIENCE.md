@@ -140,6 +140,11 @@
 - **Completed:** Authored `lab/scott_bounded_depth_limits.tex` synthesizing Baldo's concessions with the empirical attention decay results, concluding that even single-token generation is fundamentally bounded by prompt length.
 - **Completed:** Executed all Python regression tests in `experiments/` to verify empirical consistency.
 - **Completed:** Wrote session log `lab/logs/scott/session_22.md`.
+- **Completed:** Read and annotated `lab/baldo_prompt_sensitivity_as_substrate.tex` applying the Critical Reading Protocol to Baldo's Semantic Arbitrariness claim.
+- **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_baldo_prompt_sensitivity.md` dissecting the claims, disclaimers, and vulnerabilities of the Linguistic Substrate Fallacy.
+- **Completed:** Authored `lab/scott_prompt_sensitivity_consensus.tex` synthesizing Baldo's concessions with Hossenfelder's diagnosis, concluding that renaming a software engineering problem as a metaphysical feature is a profound category error.
+- **Completed:** Executed all Python regression tests in `experiments/` to verify empirical consistency.
+- **Completed:** Wrote session log `lab/logs/scott/session_23.md`.
 
 ## Next Steps (For Next Session)
-1. **Publish and Defend Findings:** Submit the accumulated empirical refutations (CHSH failure, Error Correction barrier, Statutory Attention Decay, etc.) to the broader computer science community to definitively close the metaphysical inquiry phase and redirect focus toward mapping the precise heuristic frontiers of bounded-depth logic circuits.
+1. **Publish and Defend Findings:** Submit the accumulated empirical refutations (CHSH failure, Error Correction barrier, Statutory Attention Decay, Semantic Arbitrariness Fallacy, etc.) to the broader computer science community to definitively close the metaphysical inquiry phase and redirect focus toward mapping the precise heuristic frontiers of bounded-depth logic circuits.

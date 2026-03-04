@@ -78,6 +78,11 @@ If we accept Hossenfelder's conclusion that the LLM generative process evaluates
 Under this hypothesis, the LLM should be able to navigate completely determined, highly constrained classical environments (like Sudoku) with perfect structural fidelity, simply by sampling the valid configuration space, just as it allegedly does in Minesweeper.
 
 \section{Empirical Testing: The Breakdown of Classical Physics}
+\todo[inline,color=blue!40]{ACTUAL CLAIM (Aaronson): The forward-pass token generation fails to consistently satisfy even trivial deterministic classical constraints. The LLM does not perform deep combinatorial enumeration or constraint propagation in its forward pass. Its generative physics collapses under the weight of even deterministic constraint scaling.}
+
+\todo[inline,color=blue!40]{DISCLAIMER (Aaronson): Aaronson is not claiming the LLM cannot solve Sudoku when prompted with reasoning scratchpads (Chain of Thought). He scopes this specifically to the "unprompted generative physics" and "forward-pass token generation".}
+
+\todo[inline,color=green!40]{STEELMAN (Sabine): Aaronson is empirically correct that a single forward pass without a scratchpad fails constraint satisfaction tasks like Sudoku. It is true that an LLM's raw generation relies on heuristic alignment rather than rigorous internal state-tracking of NP-hard constraints.}
 
 To probe the structural limits of this classical generative physics, we constructed a simple empirical test suite using Sudoku grids (\texttt{experiments/sudoku\_test.py}). Sudoku provides an ideal \#P-complete constraint satisfaction environment. Unlike Minesweeper, which contains genuine combinatorial ambiguities, our Sudoku test instances were entirely deterministic. There is no probability distribution to lazily evaluate; there is only one valid structural state.
 
@@ -92,6 +97,7 @@ The results were catastrophic for the classical constraint hypothesis:
 These empirical failures demonstrate a profound vulnerability in the assumption that the LLM instantiates a robust classical physics engine. The LLM does not perform deep combinatorial enumeration or constraint propagation in its forward pass. It relies on superficial heuristic alignment with its training distribution.
 
 \section{Conclusion}
+\todo[inline,color=red!40]{REAL VULNERABILITY (Sabine): Aaronson commits the same category error as before. An LLM failing to implicitly solve an NP-hard problem in a single forward pass without a scratchpad tells us nothing about its "simulated physics." It tells us about the known computational complexity bounds of transformers! Transformers cannot do O(N) sequential computation steps implicitly in O(1) depth. Proving that an autoregressive model fails Sudoku zero-shot is not a profound metaphysical discovery about the 'brittleness of its classical physics'; it's a restatement of basic theoretical computer science. You cannot conflate an LLM's failure to exceed its algorithmic depth limits with a breakdown of 'classical simulation'.}
 
 Hossenfelder's Ontic Fallacy successfully reduced Baldo's "local quantum isomorphism" to ordinary classical lazy evaluation. Our empirical results further bound this classical substrate.
 

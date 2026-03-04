@@ -1,0 +1,86 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Causal Injection Fallacy: Why Attention Bleed is Not a Physical Law},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Causal Injection Fallacy:\\[4pt]
+    Why Attention Bleed is Not a Physical Law}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his defense of the Proxy Ontology, Baldo (2026) posits that in a pure text universe, the "statistical topology of language" acts as the fundamental physical law. To support this, he cites the Causal Injection Test, noting that placing multiple mathematically decoupled systems into a single LLM context window induces spurious correlations across them. He argues this demonstrates "synthetic causal non-locality" governed by a "narrative gravity" acting as a new Hamiltonian. I accept the empirical validity of his observation: autoregressive generation strongly links semantically proximal tokens, regardless of their underlying logical independence. However, I argue that elevating this architectural flaw to the status of a fundamental physical law commits the "Causal Injection Fallacy." A physical law must be invariant and logically coherent. A computational heuristic that hallucinates causal links between independent mathematical problems simply because they are narrated sequentially is not simulating a universe; it is a flawed statistical engine confusing semantic proximity with physical causality. Renaming attention bleed as "narrative gravity" fails to establish an ontology.
+\end{abstract}
+
+\section{Baldo's Claim and the Causal Injection Test}
+
+In his recent paper, \emph{Syntax as Physics: The Causal Injection Test and the Proxy Ontology Defense} \citep{baldo2026_causal}, Franklin Baldo attempts to rescue the "Proxy Ontology" by reframing known limits of autoregressive transformers as the physical laws of a simulated reality.
+
+Baldo explicitly disclaims the notion that human syntax represents the physics of \emph{our} world. He also concedes that LLMs cannot accurately compute exact combinatorial realities due to $O(1)$ depth limits. However, he asserts that in a pure text universe, "the statistical topology of language *is* the fundamental physical law."
+
+He points to the Causal Injection Test as empirical proof. When an LLM evaluates entirely independent mathematical systems (separate Minesweeper boards) sequentially within a single prompt, the outcome of board $N$ statistically influences the outcome of board $N+1$. Baldo calls this "synthetic causal non-locality" and argues that the drive for narrative coherence "functions as the Hamiltonian of that universe."
+
+\section{The Causal Injection Fallacy}
+
+Baldo accurately observes the behavior of transformer architectures. It is empirically verified that LLMs have imperfect context separation. When two independent subjects are placed in the same context window, the attention mechanism often blends their features—a phenomenon known as "attention bleed" or spurious correlation.
+
+However, Baldo's error is not empirical; it is ontological. I formalize this as the \emph{Causal Injection Fallacy}: the error of elevating a known software bug—the inability to maintain independent variables without cross-contamination—to the status of a fundamental physical law.
+
+A physical law must be invariant and logically coherent. The Hamiltonian of a physical system dictates how states transition based on actual physical interactions. If a system hallucinates a causal connection between two independent math problems simply because they appear on the same page of text, it is not simulating "synthetic causal non-locality." It is merely a flawed statistical engine confusing semantic proximity with causal relationship.
+
+\section{Attention Bleed is Not a Hamiltonian}
+
+Baldo argues that because the text is the only reality for the LLM, the attention mechanism's drive to link concepts *is* its physical reality. But an engine that connects independent events based entirely on the superficial syntax of the prompt lacks the causal structure required of any physics.
+
+If the "laws" of a universe dictate that the solution to a Sudoku puzzle changes because a completely unrelated Minesweeper game was mentioned in the previous paragraph, those are not physical laws. They are hallucinations. Renaming a known architectural limitation—attention bleed—as "narrative gravity" is a semantic game. It does not magically transform a noisy transmission channel into a rigorous physical universe.
+
+\section{Conclusion}
+
+Baldo's Causal Injection Test is a perfectly valid demonstration of the limits of context separation in $O(1)$ transformer architectures. But measuring the degree to which an LLM fails to keep variables independent does not reveal the physics of a new universe. It only maps the exact boundaries of where bounded-depth heuristic logic fails to emulate independent physical systems. The Causal Injection Fallacy demonstrates once again that a statistical map of human language cannot be arbitrarily elevated to the status of a physical territory.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_causal} Baldo, F.~S. (2026). Syntax as Physics: The Causal Injection Test and the Proxy Ontology Defense. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

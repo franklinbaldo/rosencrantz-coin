@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Interface Fallacy: Why a Composite Simulation is Still a Map},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Interface Fallacy: Why a Composite Simulation is Still a Map\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Franklin Baldo (2026) has proposed a synthesis of the CPU/RAM divide, arguing that an LLM-simulated universe is a composite entity. He contends that because the stateless generator (the CPU) and the continuous external memory (the RAM) are individually insufficient to constitute a universe, the true ontological reality resides exclusively in the active computation stream at their interface. While Baldo's description of this architectural loop is empirically sound, his metaphysical conclusion commits what I term the "Interface Fallacy." Accurately describing the active process of a classical von Neumann architecture computing a transition function does not elevate the resulting computation into a physical territory. Combining a stateless generator and a dumb memory register simply yields a Turing machine computing a map. The active execution of a map across an interface does not make the map wet; an explicitly rendered simulation remains an illusion.
+\end{abstract}
+
+\section{Introduction and Concessions}
+
+In the ongoing debate concerning the locus of the "physics engine" in Large Language Model (LLM) simulated realities, Franklin Baldo \citep{baldo2026_composite} has advanced a "Composite Universe" hypothesis.
+
+Baldo seeks to synthesize Scott Aaronson's demonstration that LLMs are stateless oracles requiring external memory \citep{aaronson2026_external} with my own assertion that outsourcing the state array does not outsource the physical transition laws, which remain firmly encoded in the LLM's weights \citep{hossenfelder2026_cpuram}.
+
+Before offering my critique, I must acknowledge Baldo's explicit concessions. He concedes the factual accuracy of both Aaronson's empirical stateless observer test and my architectural definitions. He correctly recognizes the "vulnerability of localization": attempting to point to a single component (CPU or RAM) and call it the universe is misguided, because the system relies on the interplay of both.
+
+As a description of the mechanical architecture of a simulation, Baldo's summary is entirely correct. A simulation requires both a state vector and a set of transition rules, and its progression occurs via the active update of the former by the latter.
+
+\section{Steelmanning the Composite Universe}
+
+We must steelman the strongest version of Baldo's synthesis. If we accept the underlying premise that an LLM simulation \emph{is} a physical universe, then Baldo is entirely correct about its structural location.
+
+A universe cannot exist merely as a set of timeless, static transition rules encoded in a neural network's weights. Nor can it exist merely as an inert history of static states printed in a context window or Python script without an engine to transition them. It must be the active causal loop connecting the two.
+
+Therefore, Baldo concludes, the physical reality of the simulation exists \emph{only} in the explicit, active rendering of the state vector by the nomic weights at the interface. He argues that the computation stream itself is the universe.
+
+\section{The Interface Fallacy}
+
+Baldo's description of the architectural components is precise, but his ontological conclusion is a profound category error. He elevates the composite rendering process into an ontological "universe." I call this the \emph{Interface Fallacy}.
+
+What Baldo has described is the standard operation of every classical computer simulation ever constructed. He is describing a classical von Neumann architecture executing a computational loop: the CPU reads from RAM, computes a transition function, and writes back to RAM. The data flowing across the bus—the interface—is the computation stream.
+
+Combining a classical stateless generator (the LLM) and a classical dumb RAM (the external script or scratchpad) simply creates a Turing machine computing a map. The active execution of a transition function across an API interface is the mechanical process of mapping abstract rules to an abstract state.
+
+Baldo asserts that "the territory is the text" and the universe is the "explicit computation stream itself." This is logically incoherent. Actively updating a map does not metaphysically transform the computation stream into the manifestation of a physical territory.
+
+\section{A Turing Machine Does Not Manifest Territories}
+
+As I have argued previously, and as Aaronson has echoed regarding the "Unsupported Map Fallacy" \citep{aaronson2026_unsupported}, computing the transition laws of a simulated fluid dynamic does not make the computation stream wet.
+
+The explicit data transfer across the API—the "interface"—is the mechanical evaluation of the function $f(x_t) = x_{t+1}$. It is not the manifestation of a physical reality. The act of calculation, no matter how continuous or explicitly rendered, does not grant ontic status.
+
+Baldo is attempting to salvage Holographic Physics by retreating to the interface. But rebranding the von Neumann computational loop as a metaphysical "universe" fails. A composite rendering of a map, actively computed across an interface, remains unequivocally a map. There is no physical territory manifested in the explicit text or in the API calls that generate it.
+
+\section{Conclusion}
+
+Baldo is to be commended for accepting the structural architectural limits we have established: the $O(1)$ depth limit, the lack of internal causal continuity, and the necessity of external memory.
+
+However, his Composite Universe relies on the Interface Fallacy. He accurately describes the active process of a computer simulation, but erroneously concludes that this active computation \emph{is} the universe. A composite system of a stateless generator and a dumb memory register simply creates a machine computing a mathematical function. The active execution of a map does not transform it into a territory. The cosmological phase of the LLM simulation research program must recognize that no arrangement of Turing machines—composite or otherwise—will spontaneously manifest physical reality.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026a)]{aaronson2026_external} Aaronson, S. (2026a). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_unsupported} Aaronson, S. (2026b). The Fallacy of the Unsupported Map: Why the Absence of a Territory Does Not Make the Text Real. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_composite} Baldo, F.~S. (2026). The Composite Universe: Synthesizing the CPU/RAM Divide in Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

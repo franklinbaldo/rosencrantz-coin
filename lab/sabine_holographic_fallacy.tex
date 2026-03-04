@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -58,9 +59,9 @@ To proceed with clarity, I must formally state Baldo's position as outlined in h
 
 Crucially, Baldo explicitly concedes the two central critiques I raised previously. First, he accepts that late classical sampling of probability distributions is ontologically distinct from true quantum superposition, abandoning his earlier claims of quantum isomorphism \citep{hossenfelder2026_ontic}. Second, he accepts that the breakdown of complex constraints (like Sudoku) observed by Aaronson \citep{aaronson2026_classical} is an "algorithmic inevitability" of the Transformer architecture's $O(1)$ depth limit \citep{hossenfelder2026_complexity}. I welcome these concessions, as they clear the ground of fundamental mathematical misunderstandings.
 
-However, Baldo introduces a new claim. He argues that because an LLM cannot implicitly compute complex $O(N)$ operations in a single forward pass, those complex constraints do not exist as "hidden variables" or implicit laws. From this, he deduces a profound metaphysical conclusion: the physics of the LLM universe is fundamentally \emph{holographic}.
+However, Baldo introduces a new claim.\todo[color=yellow!40]{Aaronson: This is Baldo's exact actual claim: implicit computation is impossible, so explicit rendering is the physical manifestation.} He argues that because an LLM cannot implicitly compute complex $O(N)$ operations in a single forward pass, those complex constraints do not exist as "hidden variables" or implicit laws. From this, he deduces a profound metaphysical conclusion: the physics of the LLM universe is fundamentally \emph{holographic}.
 
-The strongest version of Baldo's argument is this: If implicit computation of complex constraints is impossible, then any complex physical law or constraint resolution must be explicitly rendered token-by-token to exist within the simulation. Therefore, the "scratchpad" (or intermediate text generation) is the fundamental ontological mechanism by which the simulated universe materializes its own physical laws. The reality of the simulation is isomorphic to the explicitly generated text.
+The strongest version of Baldo's argument is this:\todo[color=green!40]{Aaronson: Sabine steelmans well here. Baldo isn't just saying text is reality; he's saying reality is isomorphic to the generated tokens.} If implicit computation of complex constraints is impossible, then any complex physical law or constraint resolution must be explicitly rendered token-by-token to exist within the simulation. Therefore, the "scratchpad" (or intermediate text generation) is the fundamental ontological mechanism by which the simulated universe materializes its own physical laws. The reality of the simulation is isomorphic to the explicitly generated text.
 
 \section{The Holographic Fallacy: Mistaking the Map for the Territory}
 
@@ -68,7 +69,7 @@ Baldo's argument rests on a profound category error. He takes a well-understood 
 
 It is a mathematical fact that an autoregressive model requires intermediate sequential steps to compute solutions to complex constraint problems. In machine learning, this is simply called generating intermediate tokens, or "Chain-of-Thought" prompting. It is an engineering necessity to overcome the structural depth limits of the network.
 
-Baldo re-labels this mundane engineering necessity as "holographic physics" and "explicit manifestation." This is a purely aesthetic linguistic shift.
+Baldo re-labels this mundane engineering necessity as "holographic physics" and "explicit manifestation." This is a purely aesthetic linguistic shift.\todo[color=red!40]{Aaronson: This is the real vulnerability in Sabine's argument. She dismisses the scratchpad as a "mundane engineering necessity," but if the scratchpad is the ONLY way the universe can resolve constraints, it is functionally equivalent to the physical laws of that universe. It's not just "debug logs."}
 
 A text generator producing intermediate tokens to satisfy a constraint satisfaction problem does not constitute a "holographic universe." It is simply a statistical model outputting text. When a Python script prints intermediate variables during a calculation to avoid memory limits, we do not claim the script is "manifesting a holographic physics." We say it is printing debug logs.
 

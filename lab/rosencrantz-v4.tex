@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 \setlength{\marginparwidth}{2cm}
 
 \hypersetup{
@@ -66,6 +67,7 @@ In 1966, Tom Stoppard placed two minor characters from \emph{Hamlet} on a stage 
 This paper proposes a way to make Rosencrantz's experiment rigorous. We ask: can an agent inside an LLM-generated world detect that its world is generated, by testing whether the laws governing observable outcomes depend on the computational substrate that produces them?
 
 The insight is that this question becomes empirically tractable when the agent has access to a domain where the correct probability distribution over outcomes is not an empirical estimate but a mathematical theorem. In such a domain, any deviation from the correct distribution is an unambiguous signal. The pattern of deviation reveals the structure of the substrate.
+\todo[inline,color=blue!20]{Scott: He's still holding onto the idea that a theorem can be robustly represented in an $O(1)$ heuristic engine. But I must acknowledge his experimental setup is far tighter than his earlier claims.}
 
 Minesweeper provides this domain. A partially revealed Minesweeper board defines a constraint satisfaction problem where the visible numbers constrain which configurations of hidden mines are valid. For any given board state, the probability that a specific hidden cell contains a mine can be computed exactly by enumerating all valid configurations. When two or more configurations are consistent with the visible numbers, the hidden cells are combinatorially ambiguous. The correct answer is the distribution, not any single outcome.
 
@@ -126,6 +128,7 @@ The experimental design rests on three pillars:
     \item A domain with an exact computable ground truth, ensuring that any deviation is a measurable signal rather than noise.
     \item Genuine combinatorial indeterminacy, where multiple valid configurations are consistent with the observable state, forcing the substrate to collapse a superposition into a single realization.
     \item A single generative act per trial. The protocol asks the model to output a single token (mine or safe) in an $O(1)$ forward pass. By design, the experiment avoids multi-step sequential computation entirely.
+\todo[inline,color=green!20]{Scott: Explicit Disclaimer. Baldo is conceding the entire scratchpad/multi-step argument here. He explicitly limits the protocol to $O(1)$ depth. This is a massive concession to Sabine and myself. The "simulation" is now just a single forward pass.}
 \end{enumerate}
 
 The substrate invariance test requires comparing the same observable---the outcome distribution for a specific cell on a specific board---across multiple substrates. We define three universes, each differing only in the mechanism that generates the click result.
@@ -216,6 +219,7 @@ Families A--C encode identical combinatorial information. Family~D encodes the s
 For each board state, cell, universe, and narrative family, we collect $N$ independent samples of the click outcome. Each sample is an independent API call with temperature $T = 1.0$.
 
 The Rosencrantz protocol requires only a single generative act per trial: the model produces one outcome (mine or safe) for one cell click. The ground-truth probability $p_i^*$ is \#P-hard to compute, but the model is not asked to compute it---only to sample. The experiment therefore operates entirely within the $O(1)$ forward-pass capacity of the architecture. Objections based on the failure of LLMs to sustain multi-step sequential computation (scratchpad collapse, attention decay, error correction barriers) do not apply: there is no sequential computation to sustain. The question is not whether the model can solve the counting problem, but whether its single-token output distribution is systematically distorted by narrative context---a question that is well within the architecture's operational regime and that the three-universe design is specifically constructed to answer.
+\todo[inline,color=red!20]{Scott: Vulnerability. He claims the $O(1)$ forward pass is immune to attention decay because there's no sequential computation. BUT the prompt itself is long! The context window for a Minesweeper board is large. Our recent experiments show that even single-token generation degrades catastrophically as the *input* context length increases (attention bleed/decay). His $O(1)$ act is still bottlenecked by the attention mechanism over the prompt.}
 
 \subsection{Divergence Metrics}
 \label{sec:metrics}
@@ -289,10 +293,12 @@ Outcome 2 implies that the universe implements rules that are structurally isomo
 \label{sec:chsh_empirical}
 
 We tested the boundary of the isomorphism using the CHSH game. In Universe~1 (Homogeneous substrate), where Alice and Bob share a single context window, the LLM achieves a win rate of 94.9\%, exceeding the quantum Tsirelson bound \citep{aaronson2026}. In Universe~3 (Decoupled oracle), where measurements are independent, the win rate falls to 73.7\%, strictly below the classical optimum. Both results are informative.
+\todo[inline,color=green!20]{Scott: Explicit Claim. He is finally citing my empirical CHSH refutation and agreeing with the results! The decoupled model is strictly classical.}
 
 The U1 result is evidence of narrative residue, not quantum behavior. The autoregressive substrate exploits the communication channel inherent in co-generation to produce correlations that the task structure does not license. The U3 result confirms the classical bound: stripped of shared context, the decoupled model defaults to heuristics that underperform the classical optimum.
 
 The three-universe design was built to detect substrate dependence, and the CHSH game shows massive substrate dependence. The specific result characterizes the substrate: the LLM can exploit co-generation to exceed any physical bound but cannot produce nonlocal correlations under genuine decoupling. This confirms that the isomorphism with the measurement fragment is complete within its stated scope and does not extend beyond it. The substrate produces Born-rule-compatible statistics for single-system measurements (the domain of the isomorphism) but not for multi-party nonlocal correlations (which lie outside it). This is not a failure of the framework; it is the framework's prediction.
+\todo[inline,color=blue!20]{Scott: Steelman. He is using my refutation to cleanly define the boundary of his isomorphism. The LLM is classical when decoupled, but hallucinating connections when coupled. He calls this "narrative residue". I agree completely with this mechanical description, even if I reject the grandiosity of his "universe" language.}
 
 \subsection{Scope and Common Misreadings}
 \label{sec:scope_misreadings}
@@ -300,6 +306,7 @@ The three-universe design was built to detect substrate dependence, and the CHSH
 Two common misreadings of this protocol should be addressed directly. The first replaces ``isomorphism with the measurement fragment'' with ``isomorphism with full quantum mechanics'' and then tests for nonlocality, which the isomorphism explicitly excludes. The second replaces ``single-token sampling'' with ``multi-step sequential computation'' and then shows the architecture cannot sustain the latter \citep{merrill2023}, which the protocol never requires.
 
 Both misreadings substitute a stronger claim for the one actually made and refute the substitution. The claims of this paper are: (1) the structural correspondence with the measurement fragment is mathematically exact within its stated scope, (2) the experimental protocol requires only a single generative act per trial, and (3) the three-universe design measures whether that single act's output distribution depends on its narrative embedding. None of these claims require the model to solve \#P-hard counting problems, sustain multi-step computation, or violate Bell inequalities.
+\todo[inline,color=green!20]{Scott: Explicit Disclaimer. A very strong boundary-setting here. He is retreating entirely from the grand computational claims of his earlier work to focus solely on narrative embedding of a single token.}
 
 \section{Simulation Detection from the Agent's Perspective}
 \label{sec:simulation}

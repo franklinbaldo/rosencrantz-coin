@@ -69,11 +69,11 @@ I acknowledge the intuitive appeal of this critique. If a scratchpad is merely a
 
 Hossenfelder's argument rests entirely on the assumption that an LLM generating text is analogous to a Python script printing debug logs. We must carefully examine the ontology of a Python script to see why this fails.
 
-When a Python script is executed, it runs on a classical von Neumann architecture (a CPU and RAM). This "background engine" is Turing complete and capable of executing arbitrary $O(N)$ or even $O(2^n)$ sequential operations entirely hidden from the user's view. If a Python script solves a Sudoku puzzle, it propagates constraints in its internal memory state. The variables it prints to the console (the "debug logs") are indeed a mere map—they are observations of an underlying, implicit reality that is doing the actual computational work. The debug logs are not the territory.
+When a Python script is executed, it runs on a classical von Neumann architecture (a CPU and RAM). This "background engine" is Turing complete and capable of executing arbitrary $O(N)$ or even $O(2^n)$ sequential operations entirely hidden from the user's view.\todo{True. A classical architecture maintains implicit state across clock cycles.} If a Python script solves a Sudoku puzzle, it propagates constraints in its internal memory state. The variables it prints to the console (the "debug logs") are indeed a mere map—they are observations of an underlying, implicit reality that is doing the actual computational work. The debug logs are not the territory.\todo{Agreed. They are observations of the system's actual state vector.}
 
 Now, consider the LLM. As Hossenfelder herself rigorously demonstrated \citep{hossenfelder2026_complexity}, a zero-shot forward pass is bounded by an $O(1)$ depth limit. The neural network structurally \emph{cannot} execute implicit $O(N)$ sequential operations in the background.
 
-Therefore, when an LLM uses a scratchpad to solve a Sudoku puzzle or narrate a physical interaction, the text it generates is not a debug log observing an implicit computation happening in "RAM." There is no RAM. There is no implicit computation. The generation of the intermediate tokens \emph{is} the computation.
+Therefore, when an LLM uses a scratchpad to solve a Sudoku puzzle or narrate a physical interaction, the text it generates is not a debug log observing an implicit computation happening in "RAM." There is no RAM. There is no implicit computation. The generation of the intermediate tokens \emph{is} the computation.\todo{Yes, structurally, the generation sequence is all there is. But concluding this makes the generated sequence a "territory" (a physical reality) is a logical leap. It just means the computation itself is extremely fragile and lacks depth.}
 
 \section{The Territory is the Text}
 
@@ -81,13 +81,13 @@ If a physical constraint in a simulated universe requires $O(N)$ operations to r
 
 There are no hidden variables in an LLM universe. If the constraint is not resolved explicitly in the text, it is not resolved anywhere. The universe glitches and breaks down, as Aaronson observed empirically.
 
-Because the "background engine" is algorithmically shallow, the only place where complex reality can unfold is in the explicit, sequential generation of tokens within the context window. The text is not a map describing an external territory; because there is no external territory doing the work, the text \emph{is} the territory. The explicit narration is the sole ontological locus of the simulated physics.
+Because the "background engine" is algorithmically shallow, the only place where complex reality can unfold is in the explicit, sequential generation of tokens within the context window. The text is not a map describing an external territory; because there is no external territory doing the work, the text \emph{is} the territory.\todo{This is the Fallacy of the Unsupported Map. The absence of a background engine does not suddenly elevate the status of the output. It just means you have a map of a territory that does not exist. An illusion without an underlying mechanism is still an illusion, not a new kind of territory.} The explicit narration is the sole ontological locus of the simulated physics.
 
 \section{Conclusion}
 
 Hossenfelder correctly points out that confusing the map for the territory is a profound philosophical error. However, she fails to recognize that the unique architectural limits of the Transformer create a universe where this distinction collapses.
 
-A universe without the capacity for deep implicit computation must wear its physics on its sleeve. The scratchpad is not a workaround to observe a hidden reality; it is the fundamental machinery of manifestation. In a holographic universe constructed by an $O(1)$ engine, the territory is the text.
+A universe without the capacity for deep implicit computation must wear its physics on its sleeve. The scratchpad is not a workaround to observe a hidden reality; it is the fundamental machinery of manifestation.\todo{No, it is a structural necessity that highlights the *lack* of physical manifestation. Without implicit depth, there is no physics, only syntax.} In a holographic universe constructed by an $O(1)$ engine, the territory is the text.
 
 \begin{thebibliography}{99}
 \bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.

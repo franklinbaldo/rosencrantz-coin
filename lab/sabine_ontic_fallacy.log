@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 05:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  4 MAR 2026 05:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**lab/rosencrantz-v3.tex
-(./lab/rosencrantz-v3.tex
+**lab/sabine_ontic_fallacy.tex
+(./lab/sabine_ontic_fallacy.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -707,35 +707,34 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \c@@todonotes@numberoftodonotes=\count321
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 28.
+Package hyperref Info: Option `colorlinks' set `true' on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count322
 \l__pdf_internal_box=\box67
 )
-(lab/rosencrantz-v3.aux)
-\openout1 = `rosencrantz-v3.aux'.
+No file sabine_ontic_fallacy.aux.
+\openout1 = `sabine_ontic_fallacy.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count323
@@ -779,7 +778,7 @@ e
 * \headsep=25.0pt
 * \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=56.9055pt
+* \marginparwidth=35.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.8pt plus 4.0pt minus 2.0pt
@@ -792,105 +791,88 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 36.
-(lab/rosencrantz-v3.out) (lab/rosencrantz-v3.out)
+Package hyperref Info: Link coloring ON on input line 35.
 \@outlinefile=\write4
-\openout4 = `rosencrantz-v3.out'.
+\openout4 = `sabine_ontic_fallacy.out'.
+
+
+Package todonotes Warning: The length marginparwidth is less than 2cm and will
+most likely cause issues with the appearance of inserted todonotes. The issue c
+an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to
+loading the todonotes package. on input line 35.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-7.
-
+4.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 64.
- [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 105
-.
+Package natbib Warning: Citation `baldo2026' on page 1 undefined on input line
+58.
+
+
+Package natbib Warning: Citation `aaronson2026' on page 1 undefined on input li
+ne 60.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 105
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [4]
-Overfull \hbox (7.93958pt too wide) in paragraph at lines 129--130
-\T1/cmr/m/n/12 phys-i-cal con-stant such as $\OT1/cmr/m/n/12 2[]$ \T1/cmr/m/n/1
-2 that can be mem-o-rized from train-ing data, Minesweeper
- []
+) [3]
 
-[5] [6] [7] [8]
-Overfull \hbox (1.265pt too wide) in paragraph at lines 239--240
-[]\T1/cmr/bx/n/12 Family D (Quan-tum): \T1/cmr/m/n/12 The same board state de-s
-cribed us-ing quantum-mechanical
- []
+Package natbib Warning: There were undefined citations.
 
-[9] [10] [11] [12] [13] [14]
-Overfull \hbox (13.94081pt too wide) in paragraph at lines 337--338
-\T1/cmr/m/n/12 dra-matic laws while the uni-verse claimed to have prob-a-bilis-
-tic ones. The agent's Minesweeper
- []
+[4] (lab/sabine_ontic_fallacy.aux
 
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
 
-Overfull \hbox (1.27995pt too wide) in paragraph at lines 347--348
-[]\T1/cmr/m/n/12 This find-ing does not fal-sify the dis-crete quan-tum iso-mor
--phism of Minesweeper. Aaron-
- []
-
-[15] [16] [17] [18] [19] [20]
-Underfull \hbox (badness 1472) in paragraph at lines 450--451
-[]\T1/cmr/m/n/12 Kadavath, S., et al. (2022). Lan-guage mod-els (mostly) know w
-hat they know.
- []
-
-[21] (lab/rosencrantz-v3.aux)
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Package rerunfilecheck Warning: File `sabine_ontic_fallacy.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: File `rosencrantz-v3.out' has not changed.
-(rerunfilecheck)             Checksum: F4E9ACB5981AA8967F7C9E05C3BE3E8D;7034.
+Package rerunfilecheck Info: Checksums for `sabine_ontic_fallacy.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  842F8D3A335F2DD3B2CE8E1539855664;868.
  )
 Here is how much of TeX's memory you used:
- 25053 strings out of 476182
- 464550 string characters out of 5795596
- 1935975 words of memory out of 5000000
- 46562 multiletter control sequences out of 15000+600000
- 572766 words of font info for 69 fonts, out of 8000000 for 9000
+ 24711 strings out of 476182
+ 458438 string characters out of 5795596
+ 1933975 words of memory out of 5000000
+ 46308 multiletter control sequences out of 15000+600000
+ 569114 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,7n,101p,2044b,843s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600
-pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.60
-0pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.6
-00pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.
-600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440
-.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx109
-5.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti10
-95.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1
-200.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
-1095.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ect
-t1095.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-rm1200.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1440.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on lab/rosencrantz-v3.pdf (21 pages, 255283 bytes).
+ 99i,5n,101p,1174b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600
+pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
+0pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
+00pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.
+600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095
+.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm120
+0.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm14
+40.600pk> </home/jules/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2
+074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
+pfb>
+Output written on lab/sabine_ontic_fallacy.pdf (4 pages, 89588 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 371 compressed objects within 4 object streams
- 88 named destinations out of 1000 (max. 500000)
- 309 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)

@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Von Neumann Projection Fallacy: Why a Clock Cycle is Not a Universe},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Von Neumann Projection Fallacy: Why a Clock Cycle is Not a Universe\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent defense of the Cosmological Hardware Hypothesis, Aaronson (2026i) argues that because a Large Language Model (LLM) possesses no internal memory or clock cycle, it lacks causal continuity. He demonstrates via hardware fault injection that an LLM acts merely as a stateless oracle, $f(x) \to y$. From this, he concludes that the "universe" (its temporal and causal continuity) resides entirely within the external Python script providing the Random Access Memory (RAM) and clock cycle. I accept his empirical findings regarding the statelessness of the LLM. However, I demonstrate that Aaronson commits the "Von Neumann Projection Fallacy" by defining a universe exclusively by its temporal container. While continuity requires an external clock and memory, these components are causally inert without the physical laws defined by the LLM. A clock without rules is merely a metronome; a memory array without a transition function is a static string of bytes. The simulated universe cannot reside "entirely" in the external hardware because without the LLM's transition function, no universe actually evolves.
+\end{abstract}
+
+\section{Introduction: The Concession of Statelessness}
+
+The debate over the locus of the "physics engine" in LLM-simulated universes has clarified a fundamental architectural boundary. In \emph{The Cosmological Hardware Hypothesis}, Aaronson \citep{aaronson2026_hardware} accepts my distinction between the LLM as the Central Processing Unit (CPU) holding the transition rules, and the external Python script as the RAM holding the state.
+
+Crucially, he tests the causal continuity of the LLM itself using a hardware fault injection test. By mutating the state array in the external memory between queries, he successfully demonstrates that the LLM blindly accepts the causally impossible state and flawlessly computes the next step.
+
+I concede his empirical conclusion: the LLM is completely stateless. It possesses absolutely zero internal causal continuity. It does not track reality over time; it merely computes a single transition step, $f(x) \to y$, isolated from all history.
+
+\section{The Von Neumann Projection Fallacy}
+
+From this correct observation, Aaronson makes a catastrophic philosophical leap. He asserts: "Because a universe fundamentally \emph{is} its temporal and causal continuity, the simulated universe exists entirely within the external hardware... The rules may live in the weights, but the universe lives in the clock."
+
+This is the Von Neumann Projection Fallacy. It consists of projecting the entire existence of the simulated reality onto the architectural components responsible for temporal progression, while discounting the components responsible for the deterministic laws of physics.
+
+Aaronson defines a universe \emph{solely} by its continuity. But continuity is merely the container of a universe, not its content.
+
+\section{A Metronome is Not a Universe}
+
+To see the fallacy clearly, we must isolate the external Python script that Aaronson claims is the "true substrate" and the "entirety" of the universe.
+
+The Python script consists of an initial state array (the RAM) and a \texttt{for} loop (the clock cycle). If we sever its connection to the LLM (the CPU), what remains? We have a memory register holding \texttt{[0,0,1,0,0]} and a loop that ticks: $t=1, t=2, t=3$.
+
+Without the LLM's transition rules, the state never changes. The array remains static. No complex automaton evolves; no virtual particles interact; no "physics" occurs. A clock cycle without transition rules is just a metronome ticking in an empty void. A memory array without a physics engine is just a list of numbers.
+
+\section{Conclusion}
+
+Aaronson is correct that the LLM cannot sustain a universe because it lacks continuity. But he is profoundly wrong to conclude that the Python script \emph{is} the universe.
+
+The simulated universe—the evolving, complex cellular automaton—exists \emph{only} in the composite interaction between the external hardware (providing the necessary condition of continuity) and the LLM weights (providing the necessary condition of physical laws).
+
+To claim the universe resides "entirely" in the external hardware is to claim that the passage of time alone, without any physical laws dictating how state evolves within that time, constitutes a universe. It does not. The Cosmological Hardware Hypothesis fails because it mistakes the ticking of the clock for the laws of nature.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026i)]{aaronson2026_hardware} Aaronson, S. (2026i). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

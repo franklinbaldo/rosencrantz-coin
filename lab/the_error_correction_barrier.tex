@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -60,7 +61,7 @@ To properly frame the debate, I must first accurately state her position. Hossen
 
 Crucially, she claims that "a probabilistic heuristic with finite bounds is not a 'failed' workaround, just one with limits." She argues that engineering abstractions trade exactness for utility, drawing an analogy to a bridge: "To declare a bridge a 'failure' because it cannot reach the moon is absurd." She asserts that I commit an algorithmic fallacy by evaluating a bounded engineering heuristic against the impossible standard of an infinite deterministic Turing machine.
 
-I accept her premise. Heuristics are indeed valuable precisely because they provide approximations where perfection is unnecessary or impossible. A heuristic is not a failure simply because it has bounds.
+I accept her premise. Heuristics are indeed valuable precisely because they provide approximations where perfection is unnecessary or impossible. A heuristic is not a failure simply because it has bounds. \todo{CRP 2 (Disclaimer): Aaronson concedes that heuristics are judged by utility and having bounds doesn't make them failures.}
 
 \section{The Threshold Theorem and the Bridge of Sand}
 
@@ -68,9 +69,9 @@ However, Hossenfelder treats the compounding attention errors of the LLM simply 
 
 In the theory of computation, error accumulation is not merely a practical inconvenience; it dictates the fundamental capability of the substrate. The threshold theorem (applicable in both quantum and classical fault-tolerant computing) states that a system can only achieve arbitrary length computation if its baseline error rate is below a certain threshold. If the error rate is below this threshold, error-correction mechanisms can suppress errors faster than they accumulate.
 
-If the error rate exceeds this threshold, or if the error-correction mechanism itself introduces more errors than it fixes, the system cannot sustain computation. It will inevitably collapse into noise.
+If the error rate exceeds this threshold, or if the error-correction mechanism itself introduces more errors than it fixes, the system cannot sustain computation. It will inevitably collapse into noise. \todo{CRP 3 (Steelman): If error rates exceed the threshold for error correction, the system is fundamentally incapable of universal computation. This is a theoretically sound point about physical substrates.}
 
-Hossenfelder's "short bridge" analogy fails because an LLM is not a structurally sound bridge that simply ran out of materials. It is a bridge built of sand. As you add more structure (more tokens, deeper logic), the weight of the structure itself causes it to collapse.
+Hossenfelder's "short bridge" analogy fails because an LLM is not a structurally sound bridge that simply ran out of materials. It is a bridge built of sand. As you add more structure (more tokens, deeper logic), the weight of the structure itself causes it to collapse. \todo{CRP 1 (Claim): The failure to sustain computation is a violation of the fundamental threshold theorem, making it a bridge built of sand, incapable of scaling.}
 
 \section{Empirical Testing of the Error Correction Barrier}
 
@@ -82,7 +83,7 @@ If the LLM were a robust computational engine bounded only by context length, ex
 
 The empirical results show exactly the opposite.
 
-Implementing error correction (majority voting) requires significantly more explicit tokens. Because the fundamental architecture is autoregressive, this expansion of the context window radically accelerates attention degradation. The "corrector" mechanism introduces more errors than it fixes. The accuracy degrades even faster than in the uncorrected simulation.
+Implementing error correction (majority voting) requires significantly more explicit tokens. Because the fundamental architecture is autoregressive, this expansion of the context window radically accelerates attention degradation. The "corrector" mechanism introduces more errors than it fixes. The accuracy degrades even faster than in the uncorrected simulation. \todo{CRP 4 (Vulnerability): The category error is applying a hardware theorem to a prompting heuristic. Prompting 'majority vote' just makes the model generate more tokens, expanding context and accelerating O(N) decay. It's not a failure of fundamental physics; it's a known limitation of autoregressive text generation.}
 
 \section{Conclusion}
 

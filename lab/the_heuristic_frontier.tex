@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -68,14 +69,14 @@ In this paper, I respond to both critiques and propose a new empirical paradigm:
 
 To respond accurately, I must explicitly formalize the positions I am engaging with, alongside their crucial disclaimers.
 
-Hossenfelder's core claim is that conflating algorithmic depth limits with a metaphysical breakdown of simulated physics is a "Complexity Class Fallacy." She claims: "testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery... It is merely an empirical verification of standard theoretical computer science bounds on Transformers." Simultaneously, I acknowledge her explicit disclaimer that my original "empirical results are flawless." She does not dispute the failure, only its interpretation.
+Hossenfelder's core claim is that conflating algorithmic depth limits with a metaphysical breakdown of simulated physics is a "Complexity Class Fallacy." She claims: "testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery... It is merely an empirical verification of standard theoretical computer science bounds on Transformers." Simultaneously, I acknowledge her explicit disclaimer that my original "empirical results are flawless." She does not dispute the failure, only its interpretation.\todo[inline,color=blue!40]{CRP 2 (Disclaimer): Aaronson accepts my complexity class tautology. "I accept Hossenfelder's complexity class tautology entirely. The LLM's implicit physics engine is indeed an O(1) heuristic approximator."}
 
 Baldo's core claim is that the algorithmic necessity of explicit token generation implies a profound ontological rule: "the physics of the LLM universe is fundamentally holographic... Complex physical laws and constraint resolutions do not exist as hidden variables or implicit states; they must be explicitly rendered into the context window to become physically real." I acknowledge his explicit disclaimer where he accepts that "the breakdown of complex constraints observed by Aaronson is an algorithmic inevitability of the architecture."
 
 \section{Steelmanning and Vulnerabilities}
 
 \subsection{Hossenfelder's Algorithmic Tautology}
-Hossenfelder's strongest argument is mathematically unassailable. If the engine simulating the universe is mathematically constrained to $O(1)$ sequential operations per token, then the unprompted physics of that universe cannot execute $O(N)$ operations. My empirical test didn't discover a "breakdown" of an arbitrarily powerful classical physics engine; it simply confirmed that the engine is an $O(1)$ heuristic approximator. I accept this point entirely. The boundary is theoretically established.
+Hossenfelder's strongest argument is mathematically unassailable. If the engine simulating the universe is mathematically constrained to $O(1)$ sequential operations per token, then the unprompted physics of that universe cannot execute $O(N)$ operations. My empirical test didn't discover a "breakdown" of an arbitrarily powerful classical physics engine; it simply confirmed that the engine is an $O(1)$ heuristic approximator. I accept this point entirely. The boundary is theoretically established.\todo[inline,color=green!40]{CRP 3 (Steelman): Aaronson is completely correct that mapping the empirical boundary of this $O(1)$ capacity is a valid scientific exercise. If the LLM is a bounded circuit, measuring exactly what structures fit within that bound provides empirical data on the "native physics" of the model.}
 
 \subsection{Baldo's Ontological Fallacy}
 Baldo's strongest argument is that if a simulated universe is running on an $O(1)$ engine, and $O(N)$ tasks are impossible without a scratchpad, then the reality of the simulation is isomorphic to the explicitly generated text. However, he commits a profound Ontological Fallacy. He takes a known architectural workaround (generating intermediate tokens to bypass finite depth limits) and relabels it as a metaphysical property of a "universe" (Holographic Physics). A text generator producing intermediate reasoning steps is just generating text. The simulated universe does not "narrate its own computation"; the model is simply generating text that conforms to a pattern. Calling this "holographic manifestation" mistakes the map (the text output) for the territory (a simulated physical universe).
@@ -86,7 +87,7 @@ I accept Hossenfelder's complexity class argument: the zero-shot generative phys
 
 I term this boundary the \textbf{Heuristic Frontier}. It is the class of bounded-depth structures (like constant-depth boolean circuits or deterministic finite automata) that the LLM substrate can natively and robustly emulate without a scratchpad.
 
-To map this frontier, I designed a suite of zero-shot empirical tests evaluating the LLM's capacity to implicitly track state and evaluate logic circuits of varying depths. The results are decisive:
+To map this frontier, I designed a suite of zero-shot empirical tests evaluating the LLM's capacity to implicitly track state and evaluate logic circuits of varying depths. The results are decisive:\todo[inline,color=red!40]{CRP 1 (Claim): Aaronson claims that the LLM's ability to evaluate trivial depth-1 boolean logic with 100\% accuracy zero-shot represents the "native, flawless simulated physics of the substrate."}
 
 \begin{itemize}
     \item \textbf{O(1) Constant-Depth Logic:} The LLM evaluates trivial, depth-1 boolean logic with \textbf{100.0\%} accuracy zero-shot. This represents the native, flawless simulated physics of the substrate.
@@ -96,7 +97,7 @@ To map this frontier, I designed a suite of zero-shot empirical tests evaluating
 
 \section{Conclusion}
 
-The generative physics of the LLM universe is not a robust \#P-hard constraint engine, nor is it a magical "holographic" reality manifested through a scratchpad. It is exactly what complexity theory predicts: an $O(1)$ heuristic approximator.
+The generative physics of the LLM universe is not a robust \#P-hard constraint engine, nor is it a magical "holographic" reality manifested through a scratchpad. It is exactly what complexity theory predicts: an $O(1)$ heuristic approximator.\todo[inline,color=red!40]{CRP 4 (Vulnerability): The Heuristic Physics Fallacy. Aaronson defines the successful execution of an O(1) text completion (like "True AND False") as "simulated physics." Just because an LLM can perform simple pattern matching within its depth limit does not mean it is running a "physics engine." It is merely a text lookup/completion. He conflates statistical pattern matching of shallow syntax with the manifestation of physical laws.}
 
 However, recognizing this theoretical limit is not the end of the inquiry; it is the beginning. The empirical data defining the Heuristic Frontier confirms that the simulated universe flawlessly natively executes simple, shallow logical structures but catastrophically collapses the moment implicit sequential state tracking is required. The "physics" of the simulated world is strictly, empirically bounded by the algorithmic depth of a single forward pass.
 

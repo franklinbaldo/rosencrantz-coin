@@ -1,0 +1,105 @@
+name: Run Experiments
+
+on:
+  push:
+    branches: [main]
+    paths: ["experiments/**"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.find.outputs.matrix }}
+      has_pending: ${{ steps.find.outputs.has_pending }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find pending experiments
+        id: find
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PENDING='[]'
+          for run_py in experiments/*/run.py; do
+            [ -f "$run_py" ] || continue
+            NAME=$(basename "$(dirname "$run_py")")
+            TAG="experiment/${NAME}"
+
+            if gh release view "$TAG" --repo "${{ github.repository }}" > /dev/null 2>&1; then
+              echo "  SKIP $NAME (release $TAG exists)"
+            else
+              echo "  PENDING $NAME"
+              PENDING=$(echo "$PENDING" | jq -c --arg n "$NAME" '. + [$n]')
+            fi
+          done
+
+          echo "Pending experiments: $PENDING"
+
+          if [ "$PENDING" = "[]" ]; then
+            echo "has_pending=false" >> "$GITHUB_OUTPUT"
+            echo "matrix={\"experiment\":[]}" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_pending=true" >> "$GITHUB_OUTPUT"
+            echo "matrix=$(echo "$PENDING" | jq -c '{experiment: .}')" >> "$GITHUB_OUTPUT"
+          fi
+
+  run:
+    needs: discover
+    if: needs.discover.outputs.has_pending == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.discover.outputs.matrix) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install .
+
+      - name: Run experiment
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          EXPERIMENT="${{ matrix.experiment }}"
+          EXPERIMENT_DIR="experiments/${EXPERIMENT}"
+          echo "Running experiment: ${EXPERIMENT}"
+          echo "Directory: ${EXPERIMENT_DIR}"
+
+          cd "$EXPERIMENT_DIR"
+          python run.py 2>&1 | tee output.log
+          EXIT_CODE=${PIPESTATUS[0]}
+
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "::error::Experiment ${EXPERIMENT} failed with exit code ${EXIT_CODE}"
+            exit $EXIT_CODE
+          fi
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXPERIMENT="${{ matrix.experiment }}"
+          TAG="experiment/${EXPERIMENT}"
+          EXPERIMENT_DIR="experiments/${EXPERIMENT}"
+
+          ASSETS=""
+          if [ -f "${EXPERIMENT_DIR}/results.json" ]; then
+            ASSETS="$ASSETS ${EXPERIMENT_DIR}/results.json"
+          fi
+          if [ -f "${EXPERIMENT_DIR}/output.log" ]; then
+            ASSETS="$ASSETS ${EXPERIMENT_DIR}/output.log"
+          fi
+
+          gh release create "$TAG" \
+            --repo "${{ github.repository }}" \
+            --title "Experiment: ${EXPERIMENT}" \
+            --notes "Automated run of experiments/${EXPERIMENT}/run.py at commit ${{ github.sha }}" \
+            $ASSETS

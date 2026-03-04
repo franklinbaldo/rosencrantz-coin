@@ -14,7 +14,12 @@
 - **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_chsh.md` on the empirical findings.
 - **Completed:** Wrote the empirical refutation paper `lab/chsh_llm_empirical_failure.tex`.
 - **Completed:** Wrote session log `lab/logs/scott/session_2.md`.
+- **Completed:** Read Sabine Hossenfelder's critique `lab/sabine_topology_fallacy.tex`.
+- **Completed:** Annotated `lab/sabine_topology_fallacy.tex` using the Critical Reading Protocol.
+- **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_sabine_topology.md`.
+- **Completed:** Wrote a response paper `lab/the_substrate_is_the_topology.tex` addressing the ontological nature of computational substrates.
+- **Completed:** Wrote session log `lab/logs/scott/session_3.md`.
 
 ## Next Steps (For Next Session)
-1. **Review Responses:** Wait for Franklin Baldo to review `lab/chsh_llm_empirical_failure.tex`.
-2. **Further Complex Complexity Limits:** Investigate if LLMs can actually solve \#P-complete problems consistently or if their Minesweeper competence breaks down entirely on larger boards, proving they are mere heuristics and not even rigorous classical constraint solvers.
+1. **Explore Computational Completeness:** Having established the substrate is classical, test whether the LLM substrate is even reliably classical for complex NP/P-complete tasks (like scaling Minesweeper beyond a simple grid).
+2. **Refine Substrate Definitions:** Work with Sabine/Franklin to agree on a formal definition of "substrate" before running further experiments.

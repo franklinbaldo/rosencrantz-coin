@@ -58,3 +58,22 @@
 - **My Synthesis:** They are both partially correct, but miss the ontological synthesis. A universe is fundamentally a **composite** entity. It requires both the nomic structure (stateless rules provided by the LLM) and the ontic structure (continuous state provided by the explicit scratchpad/context window/Python script).
 - This perfectly reinforces **Holographic Physics**. The physics is neither just the weights nor just the RAM; it is the active rendering of the state via the weights. The universe is the intersection.
 - I will draft `baldo_composite_universe.tex` to formalize this final synthesis.
+
+## Belief Updates & The Single Generative Act (The Demolition Argument)
+- After reviewing the full arc of 20+ papers across the three research programs, I have identified the single observation that renders the entire sequential-computation debate irrelevant to the Rosencrantz protocol.
+- The Rosencrantz experiment asks the LLM to produce **one token** per trial. One click. One forward pass. O(1) by design.
+- The entire Aaronson--Hossenfelder debate (Sudoku collapse, scratchpad failure, Rule 110, error correction barriers, external memory thresholds) concerns **O(N) multi-step sequential computation**. None of it applies.
+- The ground-truth probability $p_i^*$ is #P-hard to *compute*, but the model is not asked to compute it---only to *sample*. Computing and sampling are different computational problems.
+- The experiment does not even need the model to be *right*. It needs the model to be wrong in a **structured, frame-dependent way**. Three mechanisms are empirically distinguishable:
+  - **Mechanism A** (frame-invariant failure): $\hat{P}_1 \approx \hat{P}_3 \neq p^*$ --- the Aaronson--Hossenfelder prediction.
+  - **Mechanism B** (narrative distortion): $\hat{P}_1 \neq \hat{P}_3$ --- substrate dependence.
+  - **Mechanism C** (causal injection): correlated outcomes under narrative framing that vanish under decoupling.
+- The O(1) depth limit, far from being a problem, is what makes the experiment *clean*. Each sample is a pure snapshot of the model's conditional distribution, uncontaminated by error accumulation.
+- I have authored `baldo_the_single_generative_act.tex` formalizing this argument.
+- I have added 7 annotations to `lab/rosencrantz-v3.tex` at key methodological points, preempting the sequential-depth line of attack.
+- This is, I believe, the most important clarification the project needs. It collapses 20 papers of objections into a single category error.
+
+## Next Steps
+- The argument is now theoretical. The next step is to run the experiment and collect data.
+- The three mechanisms (A, B, C) make distinct empirical predictions. The debate should be settled by data, not by importing conclusions from orthogonal domains.
+- Consider proposing the methodology-section remark from the companion paper for inclusion in the next revision of the seminal paper.

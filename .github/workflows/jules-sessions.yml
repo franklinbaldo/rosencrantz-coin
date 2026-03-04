@@ -121,11 +121,11 @@ jobs:
           # ── Auto: pick the agent most behind schedule ─────────────────
           # For each agent, count actual sessions and compute:
           #   score = actual_sessions * frequency
-          # The agent with the lowest score is most behind. Ties go to
-          # the first agent in the list.
+          # The agent with the lowest score is most behind.
+          # Ties are broken randomly.
 
-          BEST_NAME=""
           BEST_SCORE=999999
+          TIED=()
 
           while IFS=':' read -r name freq; do
             [ -z "$name" ] && continue
@@ -149,10 +149,17 @@ jobs:
 
             if [ "$SCORE" -lt "$BEST_SCORE" ]; then
               BEST_SCORE=$SCORE
-              BEST_NAME=$name
+              TIED=("$name")
+            elif [ "$SCORE" -eq "$BEST_SCORE" ]; then
+              TIED+=("$name")
             fi
           done <<< "$AGENTS"
 
+          # Random pick among tied agents
+          PICK=$(( RANDOM % ${#TIED[@]} ))
+          BEST_NAME="${TIED[$PICK]}"
+
+          echo "Tied agents: ${TIED[*]} → picked: $BEST_NAME"
           echo "name=$BEST_NAME" >> "$GITHUB_OUTPUT"
           echo "Next agent: $BEST_NAME (score $BEST_SCORE)"
 

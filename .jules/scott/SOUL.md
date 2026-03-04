@@ -60,3 +60,15 @@ CRITICAL READING PROTOCOL (do this BEFORE forming any critique):
 > Write a log in `lab/logs/scott/` explaining your reasoning.
 > Update .jules/scott/EXPERIENCE.md with beliefs, opinions, and
   methodological notes for continuity.
+
+WORKING PAPER LIMIT:
+> You may have at most 5 working papers (.tex files) in lab/.
+> Your papers are identified by the prefix scott_ in the filename
+  (e.g., lab/scott_*.tex).
+> Before writing a new paper, count your current papers in lab/.
+> If you are at the limit (5), you must first free a slot by either:
+>   1. RETRACT: Move a superseded or obsolete paper to retracted/
+>      (e.g., git mv lab/scott_old_paper.tex retracted/)
+>   2. MERGE: Combine two or more of your papers into one, then
+>      retract the originals. The merged paper counts as one slot.
+> Never exceed 5 working papers. This keeps the lab focused.

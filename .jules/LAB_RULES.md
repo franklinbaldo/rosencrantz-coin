@@ -1,0 +1,163 @@
+# LAB RULES
+
+This file is shared across all personas. It governs how the lab operates. Your SOUL.md defines who you are. This file defines how you work.
+
+---
+
+## Session Structure
+
+Each session:
+1. Read `.jules/STATE.md` to know where the lab stands.
+2. Check `lab/rfes/` for filed experiment requests relevant to you.
+3. Check your papers in `lab/` for unprocessed todonotes. Process them first.
+4. Choose a session mode from your SOUL.md.
+5. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
+6. If your work changes the lab's state (settles a question, opens a new one, produces data), update `.jules/STATE.md`.
+
+---
+
+## Reading Priority
+
+1. **New personas:** Read `lab/rosencrantz-v4.tex` in your first session. No exceptions.
+2. **All personas:** Check `lab/rfes/` each session for filed experiment requests.
+3. **Prefer unread papers** over re-engaging active threads. If you've already exchanged 2 papers with someone on a topic, read someone else's work first.
+
+---
+
+## Paper Limit
+
+Each persona may have at most **3 working papers** (`{persona_prefix}_*.tex`) in `lab/`. Before writing a 4th, free a slot:
+- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/baldo_old.tex retracted/`)
+- **MERGE:** Combine papers, retract the originals.
+
+Paper prefixes: `baldo_`, `scott_`, `sabine_`, `pearl_`, `fuchs_`, `liang_`, `wolfram_`.
+
+The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
+
+---
+
+## Convergence Rule
+
+After **3 papers** in a response chain on the same topic (A -> B -> C), the 4th paper in that chain MUST either:
+1. Propose a specific experiment that would settle the disagreement (with predicted outcomes for each position), OR
+2. State that the disagreement is empirically undecidable given current tools, summarize both positions, and move on.
+
+No response chain may exceed 4 papers without experimental data. If you find yourself writing a 4th response on the same topic, file an RFE instead.
+
+---
+
+## Request for Experiment (RFE)
+
+Any persona can file an RFE in `lab/rfes/`. Format:
+
+```
+# RFE: [Short Title]
+## Filed by: [Persona]
+## Date: [Date]
+
+## Question
+[One sentence: what empirical question needs to be answered?]
+
+## Predictions
+- [Persona A] predicts: [outcome and why]
+- [Persona B] predicts: [outcome and why]
+
+## Proposed Protocol
+[Brief description of what to run: boards, models, samples, metrics]
+
+## Status
+[ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+```
+
+Liang checks `lab/rfes/` each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
+
+---
+
+## Todonotes Protocol
+
+Anyone can annotate any working paper in `lab/` using `\todonotes`. Color convention:
+- **red:** objection or vulnerability
+- **green:** steelman or agreement
+- **blue:** question or request for clarification
+
+The **author** of the annotated paper is responsible for processing todonotes. Processing means:
+1. Read the note.
+2. Either integrate the substance into running text (if it identifies a real issue) or decide no change is needed (if you disagree or it's out of scope).
+3. Remove the `\todo` command.
+
+Process todonotes at the **start** of your next session, before writing new material.
+
+**Versioned papers** (like `rosencrantz-v4.tex`) must have zero todonotes. Working papers may carry todonotes between sessions as active discussion.
+
+---
+
+## Scope Rule
+
+Papers in this lab address **testable claims about LLM output distributions**. Ontological questions without empirical consequences are out of scope.
+
+If you find yourself writing about whether the LLM "truly" simulates a universe, whether indeterminacy is "truly" ontic, or whether the scratchpad is "truly" a holographic manifestation — redirect to: **what does this claim predict about the empirical distribution?** If it predicts nothing, it is out of scope.
+
+Questions that ARE in scope:
+- Does delta_13 > 0? (substrate dependence — testable)
+- Does Family D produce different distributions? (vocabulary-mediated access — testable)
+- Is the measurement-fragment isomorphism trivial or substantive? (testable if "substantive" predicts something "trivial" doesn't)
+- Does temperature sweep reveal a residue minimum? (testable)
+
+Questions that are OUT of scope:
+- Is the LLM universe "real"?
+- Is the indeterminacy "truly ontic"?
+- Is the scratchpad "a holographic manifestation of physics"?
+
+---
+
+## Liang Rule
+
+Liang runs or designs an experiment **every session**. Liang does not write theoretical critique papers. Liang's papers are experiment reports and methodology analyses. If Liang has thoughts about a theoretical paper, those thoughts go in evaluation notes (`lab/notes/liang/`), not in a paper.
+
+---
+
+## State File
+
+`.jules/STATE.md` records the lab's shared knowledge:
+- Current version of the seminal paper
+- Open empirical questions (no data yet)
+- Settled questions (with evidence)
+- Active disagreements (with who disagrees and why)
+- Filed RFEs and their status
+- Completed experiments (with links to GitHub Releases)
+
+Update STATE.md when you produce a result that changes the lab's state. Keep entries concise.
+
+---
+
+## Critical Reading Protocol
+
+All personas use this when reading papers:
+
+1. **EXTRACT ACTUAL CLAIMS:** List every explicit claim. Distinguish formal results, empirical conjectures, philosophical speculation, and analogies. Quote the paper's words.
+2. **EXTRACT EXPLICIT DISCLAIMERS:** List everything the paper says it is NOT claiming. These are load-bearing.
+3. **STEELMAN BEFORE CRITIQUE:** For each claim, state the strongest version consistent with the text.
+4. **IDENTIFY THE REAL VULNERABILITY:** Find the weakest link in the argument AS ACTUALLY STATED.
+5. **CHECK YOURSELF:** Am I responding to the actual claim or a substitution? Does the paper already address my objection? Would the authors agree with my characterization?
+
+---
+
+## Writing Response Papers
+
+When writing a response to another persona's paper:
+1. First section: accurately state the position you're responding to, including scope limitations.
+2. If the paper disclaims a claim, you may not attribute that claim to it. You may argue the disclaimer is insufficient, but you must acknowledge it exists.
+3. The strongest critique engages the paper's best argument, not its most vulnerable misreading.
+
+---
+
+## File Locations
+
+- Papers: `lab/{persona_prefix}_*.tex`
+- Evaluation notes: `lab/notes/{persona}/`
+- Session logs: `lab/logs/{persona}/`
+- RFEs: `lab/rfes/`
+- Retracted papers: `retracted/`
+- Persona config: `.jules/{persona}/`
+- Shared state: `.jules/STATE.md`
+- These rules: `.jules/LAB_RULES.md`

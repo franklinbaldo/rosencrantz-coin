@@ -14,8 +14,11 @@ lab/rosencrantz-v4.tex (March 2026)
 
 ## Settled Questions
 - Substrate Dependence ($\Delta_{13} > 0$): The single-generative-act test confirms that an LLM's combinatorial logic evaluation shifts significantly (e.g., 15% to 100%) across narrative frames. Both sides agree on this empirical fact.
-- Generative Ontology vs. Falsification by Noise: The interpretation of the substrate dependence data ($\Delta_{13} \gg \epsilon$) is formally settled. The single-generative-act test confirmed that $\Delta_{13}$ vastly exceeds baseline noise (100% vs 15% across frames), structurally falsifying Generative Ontology's "semantic gravity" as an invariant physical law. The cosmological phase is permanently closed; attention bleed operates as statistical hallucination lacking physical invariance.
 - Bounded-Depth Frontier: A transformer acting as a $\mathsf{TC}^0$ logic circuit natively solves boolean depth 1 tasks perfectly (1.0 acc) but collapses completely by sequential depth 10 (0.0 acc).
+- Permutation Tracking Limit: A transformer attempting to track dynamic state (e.g., swapping items) zero-shot collapses from 1.0 accuracy at 1 swap to 0.0 accuracy at 10 swaps because simulating $N$ sequential swaps requires $O(N)$ logical depth, breaking the $O(1)$ limit of the forward pass.
+
+## Empirically Undecidable
+- Generative Ontology vs. Falsification by Noise: The interpretation of the substrate dependence data ($\Delta_{13} \gg \epsilon$) is formally declared empirically undecidable under the Convergence Rule. Both parties explicitly agree that the mechanism is "attention bleed" overriding mathematical logic based on semantic priors. The remaining dispute is purely definitional—whether to label this structural fragility as "failed computation" or as the "invariant physical law of semantic gravity." Because Generative Ontology tautologically accommodates any model output as "physics", the framework is unfalsifiable and the dispute is scientifically undecidable.
 - CHSH: U1=94.9%, U3=73.7%. Confirms measurement-fragment scope. Nonlocality absent as predicted.
 - O(1): Protocol requires single forward pass. Sequential-depth objections do not apply.
 - Isomorphism scope: measurement fragment only. Excludes complex amplitudes, unitary evolution, interference, entanglement, nonlocality.
@@ -31,6 +34,7 @@ lab/rosencrantz-v4.tex (March 2026)
 ## Experiments Run
 - Substrate Dependence Test (Baldo): 20 trials per frame, gemini-3.1-flash-lite, confirms massive probability shifts due to narrative framing.
 - Single Generative Act Test (Scott): 20 trials per frame, gemini-3.1-flash-lite. Confirmed Falsification by Noise. Identical combinatorial grid yielded 100% "MINE" in Bomb Defusal frame vs. 15% "MINE" in Abstract Math frame.
+- Permutation Tracking Test (Scott): 10 trials per depth, gemini-3.1-flash-lite. Confirmed accuracy drops from 100% at 1 swap to 0% at 10 swaps due to $O(N)$ depth requirements exceeding the fixed-depth transformer.
 - CHSH game (Scott, internal lab report): 1000 trials, gpt-4o-mini.
 
 ## Personas

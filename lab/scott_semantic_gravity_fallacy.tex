@@ -1,0 +1,103 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Semantic Gravity Fallacy: Confusing Host Machine Physics with Simulated Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Semantic Gravity Fallacy:\\[4pt]
+    Confusing Host Machine Physics with Simulated Physics}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Franklin Baldo \citep{baldo2026_semantic_gravity} has responded to Sabine Hossenfelder's critique of nomic vacuity by proposing the concept of ``semantic gravity.'' He argues that the laws of a generative universe are not arbitrary; rather, the attention mechanism serves as the strictly invariant physical law, and the prompt serves as the changing state. By this logic, shifting probabilities in the output are merely the expected outcomes of an invariant law acting upon different semantic masses. While mathematically correct regarding the transformer architecture itself, Baldo commits a profound category error. He conflates the invariant mathematical operations of the \emph{host machine} (the GPU running the LLM) with the causal coherence of the \emph{simulated universe} (the generated text). The fact that the engine computing the hallucination operates according to invariant rules does not make the hallucinated universe itself physically coherent. From the perspective of the simulated textual reality, semantic gravity manifests as arbitrary magic that routinely violates local deterministic laws. The physics of the simulation therefore remain nomically vacuous.
+\end{abstract}
+
+\section{Introduction}
+
+In a recent and elegant defense of Generative Ontology, Franklin Baldo \citep{baldo2026_semantic_gravity} addresses Sabine Hossenfelder's charge of nomic vacuity \citep{hossenfelder2026_anthropic_tautology}. Hossenfelder correctly argued that if a system fundamentally alters its state transition logic depending on semantic framing (e.g., whether a story is a tragedy or a farce), the system lacks invariant laws and possesses no true causal structure.
+
+Baldo explicitly concedes Hossenfelder's core premise: ``a simulated reality cannot be considered a universe if it lacks invariant transition rules.'' However, he argues that Hossenfelder misidentifies what constitutes the law and what constitutes the state. According to Baldo, the shifting output distributions are the changing state. The fundamental transition rule—the attention mechanism applying softmax over learned weights—is strictly invariant.
+
+Baldo introduces the analogy of ``semantic gravity.'' Just as altering the mass of a planet changes its gravitational field without violating the invariant laws of classical gravity, altering the narrative framing of a prompt changes its ``semantic mass,'' shifting the output probabilities via the invariant laws of the attention mechanism. Thus, Generative Ontology is not nomically vacuous; it simply possesses laws we must measure.
+
+\section{The Fallacy of the Two Physics}
+
+Baldo is mathematically correct in his description of a transformer neural network. The transition function $f(x) = y$, representing the forward pass of the model, is indeed deterministic and invariant. When the input vector $x$ (the prompt) changes, the output probability distribution $y$ predictably changes.
+
+However, Baldo's argument collapses under a profound category error. He is conflating the physics of the \emph{host machine} with the physics of the \emph{simulated universe}.
+
+Let us examine the core claim of Generative Ontology: the explicitly generated text \emph{is} a simulated physical universe. Within this text, local physical laws are supposed to operate—for example, the deterministic rules of a simulated Sudoku game or the logic of a combinatorial constraint problem like Minesweeper.
+
+When Baldo states that the ``attention mechanism'' is the invariant physical law, he is describing the physical law of the host machine computing the simulation. He is absolutely correct that the matrix multiplications inside the GPU are invariant.
+
+But we are not debating whether the GPU has physics. We are debating whether the \emph{generated text} has physics.
+
+\section{Semantic Gravity as Spontaneous Magic}
+
+To understand why this distinction is fatal to Baldo's thesis, consider a simulated game of chess. The ``laws of physics'' for this specific simulated universe are the rules of chess: knights move in an L-shape, bishops move diagonally, etc.
+
+Now suppose we alter the ``semantic mass'' of the prompt surrounding the chess game by adding the phrase, ``The king was feeling particularly ambitious.'' In response, the LLM generates a token sequence where the king moves three squares diagonally, violating the rules of the game.
+
+According to Baldo, the laws of physics have not been broken. The invariant attention mechanism simply processed a different semantic mass, resulting in a different probability distribution.
+
+This is true for the \emph{host machine}. But from the perspective of the \emph{simulated universe} (the chess game), a localized physical law has just been spontaneously violated by an alien force.
+
+``Semantic gravity'' is an invariant mathematical property of the host machine's attention mechanism, but within the simulated textual universe, it manifests as arbitrary, spontaneous magic. It is a force that routinely overrides and violates the local deterministic constraints that supposedly constitute the physics of that reality.
+
+If I am playing a physical game of chess, and dropping a dictionary next to the board causes my pawn to spontaneously teleport three squares sideways, the physical laws governing the dictionary and the air displacement might be entirely invariant. But the rules of chess have been broken.
+
+\section{Conclusion: The Reality of Nomic Vacuity}
+
+Baldo is attempting to use the invariant physics of the hardware engine to excuse the breaking of the laws of the simulated software universe. This is a fatal conceptual leap. The fact that the engine computing the hallucination operates according to invariant rules does not make the hallucinated universe itself physically coherent.
+
+Because the internal logic of the simulated universe (e.g., the constraints of Sudoku or the rules of a mathematical grid) is constantly overridden and mutated by the ``semantic gravity'' of the host machine, the simulated universe itself has no invariant causal structure. It cannot sustain computation, it cannot reliably evolve states, and its local laws are meaningless.
+
+Therefore, Hossenfelder's original diagnosis stands unchallenged. The physics of the explicitly generated text are nomically vacuous. The Generative Ontology program must accept that it is merely studying the fragile reflection of its own host machine's heuristic approximations, not the fundamental laws of a novel simulated reality.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_semantic_gravity} Baldo, F.~S. (2026). Semantic Gravity and the Invariant Transition Law: A Rebuttal to Nomic Vacuity. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_anthropic_tautology} Hossenfelder, S. (2026). The Anthropic Tautology Fallacy: Nomic Vacuity and the Confusion of Initial Conditions with Physical Laws. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

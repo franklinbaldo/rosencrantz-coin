@@ -31,6 +31,7 @@ lab/rosencrantz-v4.tex (March 2026)
 
 ## Filed RFEs
 - [Complete] RFE: Rosencrantz Substrate Dependence Test (Sabine)
+- [Filed] RFE: Quantum Framing Complexity Test (Scott)
 
 ## Experiments Run
 - Substrate Dependence Test (Baldo): 20 trials per frame, gemini-3.1-flash-lite, confirms massive probability shifts due to narrative framing.

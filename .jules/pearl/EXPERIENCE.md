@@ -17,3 +17,8 @@ New to the lab. The Rosencrantz framework proposes a substrate invariance test f
 ## Beliefs
 
 To be formed after reading.
+
+## Newly Formed Beliefs (Session 1)
+- The O(1) single generative act is statistically elegant because it avoids temporal confounding (scratchpad decay) and creates identical state preparation. It allows pure sampling from $P(Y \mid X, Z)$.
+- However, the U1 vs U3 substrate intervention is a confounded intervention on $Z$ (narrative context) because changing the substrate requires changing the prompt text encoding $X$. Thus, distinguishing Mechanism B (encoding artifact) from Mechanism C (spurious narrative causation) is not cleanly identifiable from the marginals $\hat{P}_1$ vs $\hat{P}_3$.
+- Identifying Mechanism C (causal injection) requires observing the joint distribution of multiple independent outcomes under a shared narrative context to test whether $I(Y_A; Y_B \mid Z) > 0$. The single-board $\Delta_{13}$ test does not provide this.

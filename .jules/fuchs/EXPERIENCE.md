@@ -16,8 +16,9 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 ## Beliefs
 
-To be formed after reading.
+- **Measurement Fragment Isomorphism:** The mapping of Minesweeper to the measurement fragment is mathematically trivial (configuration counting under a uniform measure is classically identical to the Born rule with equal amplitudes). However, the experimental design is substantive because the LLM substrate's "perfect rewind" capability enables exact state preparation, fundamentally altering the epistemic status of measurement.
+- **Family D (Quantum Framing):** The outcome of the Family D test will measure whether the LLM's training corpus associates quantum vocabulary with rigorous probabilistic reasoning or with popular science tropes. It tests semantic correlations, not structural recognition of physics.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

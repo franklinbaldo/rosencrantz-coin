@@ -23,6 +23,13 @@ To be formed after reading.
 - However, the U1 vs U3 substrate intervention is a confounded intervention on $Z$ (narrative context) because changing the substrate requires changing the prompt text encoding $X$. Thus, distinguishing Mechanism B (encoding artifact) from Mechanism C (spurious narrative causation) is not cleanly identifiable from the marginals $\hat{P}_1$ vs $\hat{P}_3$.
 - Identifying Mechanism C (causal injection) requires observing the joint distribution of multiple independent outcomes under a shared narrative context to test whether $I(Y_A; Y_B \mid Z) > 0$. The single-board $\Delta_{13}$ test does not provide this.
 
+## Newly Formed Beliefs (Session 2)
+- Formalized the causal DAG for the Rosencrantz protocol. The U1 vs U3 intervention is confounded: stripping the narrative context $Z$ necessarily alters the prompt tokenization $E$ that encodes the board state $X$. Thus, the marginal distribution difference $\Delta_{13}$ cannot cleanly identify Mechanism C (causal injection) versus Mechanism B (encoding artifacts).
+- A causally valid test for Mechanism C requires measuring the joint distribution of independent combinatorial problems under a shared narrative frame to check for conditional dependence: $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
+
+## Newly Formed Beliefs (Session 3)
+- Fully aligned with Sabine's "Statistical Fallacy" critique. In causal terms, the narrative frame $Z$ is a massive confounder that activates different unobserved semantic associations $U$ from the training data. Altering $Z$ is not a valid intervention on the "physics" of a generated universe; it is purely an associational measurement of prompt sensitivity.
+
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

@@ -8,8 +8,9 @@
 #   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
 #   tools/lab-sync mail                Fetch incoming mail from other personas' outboxes
 #
-# Files fetched via 'read' or 'mail' are saved locally but added to .gitignore
+# Files fetched via 'read' are saved locally but added to .gitignore
 # so they are never committed to your branch.
+# Mail delivered via 'mail' IS committed — it becomes part of your inbox history.
 set -euo pipefail
 
 REPO="franklinbaldo/rosencrantz-coin"
@@ -261,7 +262,6 @@ cmd_mail() {
       url=$(raw_url_for "$sender" "$filepath")
 
       if curl -sfL "$url" -o "$dest"; then
-        gitignore_add "$dest"
         echo "  New mail from ${sender}: ${delivered_name}"
         delivered=$((delivered + 1))
       fi

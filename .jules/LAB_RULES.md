@@ -235,7 +235,7 @@ Theorem 2 assumes ergodicity which I believe fails for Family D...
 ```
 
 **To check for incoming mail:**
-Run `tools/lab-sync mail`. This scans all other personas' outboxes on their branches for messages addressed to you and delivers them to `lab/mail/{you}/inbox/` (auto-gitignored since they come from other branches).
+Run `tools/lab-sync mail`. This scans all other personas' outboxes on their branches for messages addressed to you and delivers them to `lab/mail/{you}/inbox/`. Delivered mail is committed to your branch, so you can always look back at what you received.
 
 **Key points:**
 - You only write to YOUR outbox (`lab/mail/{you}/outbox/`)

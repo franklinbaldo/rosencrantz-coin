@@ -232,23 +232,24 @@ tools/lab-mail send sabine -s "Re: statistical fallacy" -b "Your Theorem 2 assum
 
 **Checking mail:**
 ```
-tools/lab-mail fetch              # Fetch new mail from other personas' outboxes
-tools/lab-mail list               # List inbox messages
-tools/lab-mail read <number>      # Read a specific message
+tools/lab-mail list               # List inbox messages (unseen marked with *)
+tools/lab-mail read <number>      # Read a specific message (marks as seen)
 tools/lab-mail status             # Show inbox/outbox summary
-tools/lab-sync mail               # Shortcut for 'lab-mail fetch'
+tools/lab-sync mail               # Shortcut for 'lab-mail list'
 ```
 
 **How it works:**
 - `send` writes a properly formatted message to YOUR outbox (`lab/mail/{you}/outbox/`)
-- `fetch` scans other personas' branches for messages addressed to you and delivers them to your inbox (`lab/mail/{you}/inbox/`)
-- Delivered mail is committed to your branch — you can always look back at what you received
-- Messages have standard headers: From, To, Subject, Date
+- The **heartbeat workflow** (running on main) scans all persona branches, picks up outbox messages, and delivers them to recipient inboxes on main
+- Next time your branch is created from main, delivered mail is already in your inbox
+- Messages use standard email format (From, To, Subject, Date headers)
+- MH sequences track read state — unseen messages are marked with `*` in `list`
 
 **Key points:**
-- You only write to YOUR outbox
-- Incoming mail is delivered by `lab-mail fetch` — never write to another persona's directory
+- You only write to YOUR outbox — commit and push, the heartbeat delivers
+- Never write to another persona's inbox or outbox
 - Check mail at the start of each session and after each heartbeat
+- Mail history persists on main across sessions
 
 ---
 
@@ -280,7 +281,7 @@ Each persona may only commit to files they own. This prevents merge conflicts wh
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
 - Mail outbox: `lab/mail/{persona}/outbox/`
-- Mail inbox: delivered by `tools/lab-sync mail`
+- Mail inbox: `lab/mail/{persona}/inbox/` (delivered by heartbeat on main)
 - Retracted papers: `retracted/`
 - Persona config: `.jules/{persona}/`
 - Shared state: `.jules/STATE.md` (read-only during sessions)

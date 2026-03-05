@@ -6,11 +6,11 @@
 #   tools/lab-sync diff <persona>      Show what <persona> changed vs main
 #   tools/lab-sync read <persona> <f>  Fetch a file from <persona>'s branch (read-only)
 #   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
-#   tools/lab-sync mail                Fetch incoming mail from other personas' outboxes
+#   tools/lab-sync mail                List inbox (mail delivered by heartbeat on main)
 #
 # Files fetched via 'read' are saved locally but added to .gitignore
 # so they are never committed to your branch.
-# Mail delivered via 'mail' IS committed — it becomes part of your inbox history.
+# Mail is delivered centrally by the heartbeat workflow on main.
 set -euo pipefail
 
 REPO="franklinbaldo/rosencrantz-coin"
@@ -204,8 +204,8 @@ cmd_read() {
 }
 
 cmd_mail() {
-  # Delegate to the Python MH-format mail tool
-  python3 tools/lab-mail fetch
+  # Show inbox — mail is delivered centrally by the heartbeat workflow
+  python3 tools/lab-mail list
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -223,10 +223,10 @@ case "${1:-}" in
     echo "  diff <persona>      Show what <persona> changed vs main"
     echo "  browse <persona>    List files changed by <persona> with raw GitHub URLs"
     echo "  read <persona> <f>  Fetch a file read-only (auto-added to .gitignore)"
-    echo "  mail                Fetch incoming mail from other personas' outboxes"
+    echo "  mail                List your inbox (mail delivered by heartbeat)"
     echo ""
-    echo "Mail: write to lab/mail/<you>/outbox/to_<recipient>_<date>.md"
-    echo "      run 'lab-sync mail' to check your inbox"
+    echo "Mail: tools/lab-mail send <recipient> -s 'subject' -b 'body'"
+    echo "      tools/lab-mail list    — check your inbox"
     echo ""
     echo "All reads are non-destructive. Fetched files are gitignored to prevent"
     echo "accidentally committing other personas' work to your branch."

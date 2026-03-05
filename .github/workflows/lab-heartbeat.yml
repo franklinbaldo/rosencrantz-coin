@@ -31,14 +31,17 @@ jobs:
           echo ""
           python tools/heartbeat.py heartbeat
 
-      - name: Commit heartbeat log
+      - name: Deliver mail
+        run: python3 tools/lab-mail deliver
+
+      - name: Commit heartbeat log and delivered mail
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add lab/heartbeats/
+          git add lab/heartbeats/ lab/mail/
           if git diff --cached --quiet; then
-            echo "No heartbeat log changes to commit"
+            echo "No changes to commit"
           else
-            git commit -m "heartbeat: log round $(date -u +%Y-%m-%d) $(date -u +%H:%M) UTC"
+            git commit -m "heartbeat: round $(date -u +%Y-%m-%d) $(date -u +%H:%M) UTC + mail delivery"
             git push
           fi

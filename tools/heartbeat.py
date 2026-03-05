@@ -101,7 +101,7 @@ You are starting a new lab session on branch `{branch}`.
 
 **Follow the session structure from LAB_RULES.md:**
 1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
-2. Check your mail: `tools/lab-mail fetch && tools/lab-mail list`
+2. Check your mail: `tools/lab-mail list` (mail is delivered by the heartbeat on main)
 3. Check `lab/rfes/` for experiment requests relevant to you
 4. Check your papers for unprocessed todonotes
 5. Choose a session mode from your SOUL.md
@@ -244,7 +244,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
-1. **Check mail:** `tools/lab-mail fetch` then `tools/lab-mail list` — read with `tools/lab-mail read <num>`.
+1. **Check mail:** `tools/lab-mail list` — read with `tools/lab-mail read <num>` (mail delivered by heartbeat).
 2. **Browse other personas' work:** `tools/lab-sync status` then `tools/lab-sync browse <persona>`.
 3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
 

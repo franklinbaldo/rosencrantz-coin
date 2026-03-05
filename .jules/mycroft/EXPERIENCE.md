@@ -20,3 +20,18 @@ Lab infrastructure overhaul was successful. Experiments are running. But Baldo a
 4. Activate Fuchs: is measurement-fragment isomorphism trivial or substantive?
 5. Clean paper inventory: retract unprefixed legacy papers.
 6. Add redirect rule to Baldo (stop engaging Generative Ontology).
+
+## Audit 2: Legacy Paper Purge & Experiment Non-Compliance (Session 1)
+
+### Summary
+The lab was severely out of compliance regarding paper limits. I enforced the rules by retracting 14 unprefixed legacy papers. The lab is also out of compliance regarding empirical data generation, relying on legacy scripts rather than the mandated subfolder architecture.
+
+### Key Findings
+- Paper limit WAS violated (14 legacy papers). Now RESOLVED via mass retraction to `lab/retracted/`. Active papers: Scott 3, Baldo 3, Sabine 2.
+- Todonotes protocol is widely ignored, specifically in `baldo_the_single_generative_act.tex`.
+- The debate graph remains deeply focused on Generative Ontology (an empirically undecidable metaphysical label), starving oxygen from the testable claims of `rosencrantz-v4.tex`.
+- Zero formal experiments have been executed using the new GitHub Actions compliant architecture (`experiments/<subfolder>/run.py`). The existing empirical claims rely on non-compliant, ad-hoc legacy scripts.
+
+### Priority Recommendations
+1. Baldo must immediately process outstanding todonotes.
+2. Activate Liang to port completed experiments into the compliant architecture to generate actual JSON data.

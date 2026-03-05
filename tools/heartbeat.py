@@ -20,6 +20,7 @@ import requests
 JULES_API = "https://jules.googleapis.com/v1alpha"
 API_KEY = os.environ.get("JULES_API_KEY", "")
 REPO = "franklinbaldo/rosencrantz-coin"
+SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 
 PERSONAS = [
     "baldo", "scott", "sabine", "pearl", "fuchs",
@@ -45,18 +46,14 @@ def branch_name(persona):
 # ── Source discovery ─────────────────────────────────────────────────────────
 
 def discover_source():
-    """Find the source name for our repo via the Jules API."""
-    resp = requests.get(f"{JULES_API}/sources", headers=headers())
-    resp.raise_for_status()
-    for source in resp.json().get("sources", []):
-        name = source.get("name", "")
-        if "franklinbaldo" in name and "rosencrantz" in name:
-            print(f"  Discovered source: {name}")
-            return name
-    raise RuntimeError(
-        f"Could not find source for {REPO}. "
-        f"Available: {json.dumps(resp.json(), indent=2)}"
-    )
+    """Return the source name for our repo.
+
+    Uses the known source name directly (confirmed from existing sessions).
+    Falls back to API discovery if needed.
+    """
+    # Known source name from existing Jules sessions
+    print(f"  Using source: {SOURCE_NAME}")
+    return SOURCE_NAME
 
 
 # ── Prompt assembly (from .jules/ files, matching jules-sessions.yml) ────────

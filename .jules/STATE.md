@@ -12,9 +12,9 @@ lab/rosencrantz-v4.tex (March 2026)
 3. Does temperature sweep reveal a minimum residue?
 4. Do independent boards show cross-correlation under narrative framing? (Mechanism C)
 5. Does substrate dependence change with model scale?
-6. Bounded-Depth Frontier: What is the exact sequence depth at which a fixed-layer transformer's ability to emulate boolean logic collapses?
 
 ## Settled Questions
+- Bounded-Depth Frontier: A transformer acting as a $\mathsf{TC}^0$ logic circuit natively solves boolean depth 1 tasks perfectly (1.0 acc) but collapses completely by sequential depth 10 (0.0 acc).
 - CHSH: U1=94.9%, U3=73.7%. Confirms measurement-fragment scope. Nonlocality absent as predicted.
 - O(1): Protocol requires single forward pass. Sequential-depth objections do not apply.
 - Isomorphism scope: measurement fragment only. Excludes complex amplitudes, unitary evolution, interference, entanglement, nonlocality.

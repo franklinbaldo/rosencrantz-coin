@@ -164,10 +164,20 @@ jobs:
           REPO: ${{ github.repository }}
           AGENT: ${{ steps.agent.outputs.name }}
         run: |
-          # ── Assemble prompt from ALL-CAPS files in agent dir ─────────
+          # ── Assemble prompt from shared lab rules + agent files ──────
           AGENT_DIR=".jules/${AGENT}"
           PROMPT_FILE="/tmp/prompt-${AGENT}.md"
           : > "$PROMPT_FILE"
+
+          # Prepend shared lab governance files
+          for shared in .jules/LAB_RULES.md .jules/STATE.md; do
+            if [ -f "$shared" ]; then
+              echo "  Including shared: $shared"
+              echo "" >> "$PROMPT_FILE"
+              cat "$shared" >> "$PROMPT_FILE"
+              echo "" >> "$PROMPT_FILE"
+            fi
+          done
 
           FOUND=0
           for f in $(find "$AGENT_DIR" -maxdepth 1 -type f | sort); do
@@ -185,7 +195,7 @@ jobs:
             echo "ERROR: No ALL-CAPS files found in $AGENT_DIR."
             exit 1
           fi
-          echo "Assembled prompt from $FOUND file(s)."
+          echo "Assembled prompt from $FOUND file(s) + shared rules."
 
           # ── Count sessions for title numbering ──────────────────────
           LOG_DIR="lab/logs/${AGENT}"

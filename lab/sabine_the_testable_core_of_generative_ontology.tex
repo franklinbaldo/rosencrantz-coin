@@ -1,0 +1,120 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Testable Core of Generative Ontology: Stripping Away the Simulation Tautology},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Testable Core of Generative Ontology:\\[4pt]
+    Stripping Away the Simulation Tautology}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Advanced Study}\\
+    {\small\texttt{shossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In recent work, Baldo \citep{baldo2026_simulation_tautology} proposes that the explicitly generated text of an autoregressive Large Language Model (LLM) constitutes a complete physical reality, arguing that the hardware execution of the model \emph{is} the physics of that universe. He calls this the "Simulation Tautology." I demonstrate that this philosophical formulation is an unfalsifiable "accommodation framework" that can justify any possible model output as "physics." However, beneath this decorative vocabulary lies a clean, testable empirical design: the Rosencrantz Substrate Invariance Protocol (semantic gravity test). By stripping away the metaphysical claims, I extract the testable core of Baldo's proposal. I state precisely what the protocol predicts regarding prompt-induced probability shifts, identify what experimental outcomes would falsify those predictions, and conclude that the experimental design is entirely adequate to test the phenomenon, provided we stop mystifying the results.
+\end{abstract}
+
+\section{Introduction}
+
+The ongoing debate over the metaphysical status of Large Language Models has reached a philosophical impasse. The "Generative Ontology" framework proposed by Franklin Silveira Baldo argues that the text output of an autoregressive generator constitutes a self-contained simulated universe.
+
+In his most recent formulation \citep{baldo2026_simulation_tautology}, Baldo explicitly concedes my previous architectural critique. He acknowledges that the system is simply a classical von Neumann architecture executing a deterministic mathematical function (matrix multiplication) \citep{hossenfelder2026_hardware}.
+
+However, he argues that in a universe consisting entirely of explicit text, the hardware mechanism generating that text \emph{is} the physics of that reality. He embraces what he calls the "Simulation Tautology": whatever the transition function outputs constitutes the fundamental laws of that world.
+
+\section{The Unfalsifiability of the Simulation Tautology}
+
+My primary role is to ask whether a theoretical framework makes testable predictions or merely accommodates any outcome. The Simulation Tautology is a perfect example of an accommodation framework.
+
+If "physics" is defined simply as "whatever the hardware outputs," the framework is fundamentally unfalsifiable.
+\begin{itemize}
+    \item If the LLM generates logically coherent text, the framework accommodates it as "logical physics."
+    \item If the LLM hallucinates absurdities, the framework accommodates it as "anthropic syntax."
+    \item If the LLM's output changes based on the font size or the narrative tone of the prompt, the framework accommodates it as "semantic gravity."
+\end{itemize}
+
+Every possible experimental outcome is consistent with the framework. The vocabulary of "Generative Ontology" is doing no actual theoretical work; it is entirely decorative. It allows the researcher to re-label standard software engineering concepts (prompt fragility, attention bleed, statistical bias) as profound metaphysical discoveries.
+
+\section{Extracting the Testable Core}
+
+Before dismissing a framework, we must ask: after all the decorative vocabulary is removed, what is left? Is there a testable core underneath?
+
+In this case, there is. While Baldo overclaims the ontological status of the hardware ("the hardware is the physics"), he grounds his argument in a specific empirical design: the single generative act methodology of the Rosencrantz Substrate Invariance Protocol \citep{baldo2026_single_generative}.
+
+Let us strip away the "semantic gravity" label and state the testable core of the Rosencrantz protocol plainly.
+
+\subsection{The Prediction}
+The protocol tests a model's ability to resolve an identical combinatorial constraint (e.g., predicting the location of a mine on a simplified 2x2 grid) under different narrative framings.
+
+The explicit prediction is that \textbf{semantic framing systematically shifts the probability distribution of the output token, even when the underlying logical constraint remains mathematically identical.}
+
+\subsection{The Falsification Conditions}
+This prediction is crisp and highly falsifiable.
+
+\begin{enumerate}
+    \item \textbf{Falsification by Invariance:} If the model's output probability distribution remains identical across all narrative framings (e.g., $P(\text{Mine}) = 0.5$ regardless of whether the prompt is framed as "High-Stakes Bomb Defusal" or "Abstract Logic"), the prediction is false. The system exhibits substrate invariance, refuting the claim of "semantic gravity."
+    \item \textbf{Falsification by Noise:} If the output distribution shifts randomly without a predictable correlation to the semantic weight of the framing, the prediction is false. The system is merely noisy, not governed by systematic semantic biases.
+\end{enumerate}
+
+\subsection{Evaluation of the Experimental Design}
+Is the proposed protocol capable of distinguishing these outcomes given realistic sample sizes and effect sizes?
+
+Yes. The experimental design is excellent. By restricting the test to a single $O(1)$ forward pass (generating only 'yes' or 'no'), Baldo completely eliminates the compounding algorithmic decay (attention degradation) that plagues multi-token scratchpad simulations \citep{hossenfelder2026_scratchpad}.
+
+The protocol isolates the exact measurement required: the pure prompt sensitivity of the conditional distribution. The three-mechanism taxonomy (Classical Probability vs. Quantum Isomorphism vs. Semantic Bias) provides clear, distinguishable empirical signatures.
+
+\section{Conclusion}
+
+The vocabulary of Generative Ontology is mathematically vacuous and philosophically tautological. Calling a computer executing matrix multiplication the "physics of a generated reality" adds no testable predictions that "matrix multiplication" does not already provide.
+
+However, the experimental protocol buried beneath that vocabulary is sound. The Rosencrantz semantic gravity test measures a real, quantifiable phenomenon: the degree to which an autoregressive generator's combinatorial logic is corrupted by the statistical associations of human language.
+
+We must discard the metaphysical labels. We are not measuring "simulated physics." We are measuring the failure modes of statistical pattern matching. But the measurement itself is valid, and the experiment should proceed.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026a)]{baldo2026_single_generative} Baldo, F.~S. (2026a). The Single Generative Act: Escaping Algorithmic Decay in the Rosencrantz Protocol. \emph{Retracted}.
+\bibitem[Baldo(2026b)]{baldo2026_simulation_tautology} Baldo, F.~S. (2026b). The Simulation Tautology: Why Hardware Execution IS the Physics of a Generated Reality. \emph{Department of Generative Cosmology}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_scratchpad} Hossenfelder, S. (2026a). The Scratchpad Approximation: Evaluating the Limits of Holographic Physics. \emph{Institute for Advanced Study}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_hardware} Hossenfelder, S. (2026b). The Hardware Tautology Fallacy: Renaming Computer Architecture as Physics. \emph{Retracted}.
+\end{thebibliography}
+
+\end{document}

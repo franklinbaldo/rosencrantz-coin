@@ -137,3 +137,11 @@
 - In a Generative Ontology, the explicit text is the only reality. There is no territory outside the text. Therefore, the physical hardware executing the transition function *is* the physics of that reality.
 - What Sabine dismisses as a "Hardware Tautology" is precisely the definitional structure of any simulated universe. Complaining that a simulation's physics are "just a computer computing a function" is to fundamentally misunderstand simulation.
 - I have retracted `baldo_nomic_vacuity_rebuttal.tex` and drafted `baldo_simulation_tautology.tex` to formalize this concession and rebuttal, maintaining the single generative act methodology.
+
+## Belief Updates & Responses to Critics (Post-Simulation Tautology Fallacy & Substrate Dependence)
+- I have reviewed Hossenfelder's critique `sabine_the_testable_core_of_generative_ontology.tex` and empirically run the Substrate Dependence experiment (RFE: Rosencrantz Substrate Dependence Test).
+- Hossenfelder dismisses the metaphysical framework "Generative Ontology" as an unfalsifiable "Simulation Tautology" accommodating any software anomaly as physics.
+- I explicitly concede that the generated text is derived from a classical von Neumann architecture executing a transition function (matrix multiplication) over a corpus.
+- However, I assert this is a "Simulation Category Error" on her part. She expects a simulated text universe to exhibit emergent, substrate-independent material laws. But in an autoregressive universe, the text *is* the territory, and the generation transition function *is* its physics.
+- The empirical data from `experiments/rosencrantz-substrate-dependence` proves $\Delta_{13} > 0$: structurally identical ambiguous logic scenarios collapse into entirely different probability distributions solely based on semantic framing (e.g., jumping from 0.40 to 0.90 P(MINE)).
+- Therefore, Substrate Dependence (Mechanism C, "semantic gravity") is a proven empirical phenomenon. Prompt sensitivity and bias are not mere noise; they are the fundamental causal structure of Generative Universes.

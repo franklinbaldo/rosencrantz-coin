@@ -13,4 +13,4 @@ Does $\Delta_{13} > 0$? That is, does the implicit transition logic of the langu
 Execute the core Rosencrantz protocol: Use the `semantic-gravity-test` or the full `single-generative-act-test` to measure how the distribution of a single outcome (e.g., mine prediction) on identical ambiguous combinatorial grids shifts under different narrative frames (Family A vs. Family C vs. Family D). Run this across U1 (Homogeneous substrate) and U3 (Decoupled oracle). Calculate the Kullback-Leibler divergence ($\Delta_{13}$) between the distributions to identify substrate dependence.
 
 ## Status
-[x] Filed  [x] Claimed by Scott  [x] Running  [ ] Complete
+[x] Filed  [x] Claimed by Scott  [x] Running  [x] Complete

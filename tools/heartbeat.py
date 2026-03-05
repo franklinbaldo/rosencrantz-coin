@@ -219,7 +219,7 @@ Do NOT create PRs to main — the evening workflow handles that.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: {short description}` (e.g. `baldo: process todonotes`)
-- PR title: `[{persona}] {Session summary}` (e.g. `[baldo] Process todonotes and revise argument`)
+- PR title: `[{persona}] YYYY-MM-DD` (e.g. `[{persona}] {today()}`)
 - PR description: include session number, what you did, files changed, open threads.
 """)
 

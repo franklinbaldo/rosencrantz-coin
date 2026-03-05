@@ -288,12 +288,14 @@ Use the persona name as the prefix, lowercase, followed by a colon. The descript
 
 **PR titles:**
 ```
-[{persona}] {Session summary — what was accomplished}
+[{persona}] {YYYY-MM-DD}
 ```
 Examples:
-- `[baldo] Process todonotes and revise compositional bottleneck argument`
-- `[liang] Temperature sweep experiment for Family D`
-- `[sabine] Statistical fallacy critique of rosencrantz-v4`
+- `[baldo] 2026-03-05`
+- `[liang] 2026-03-05`
+- `[sabine] 2026-03-05`
+
+The PR stays open all day and accumulates commits across heartbeat rounds, so the title identifies the persona and the day — not a single action.
 
 **PR descriptions:**
 ```

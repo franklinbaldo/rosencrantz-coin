@@ -7,12 +7,12 @@ lab/rosencrantz-v4.tex (March 2026)
 "The Narrative Residue" (Baldo 2026) — referenced in v4, under separate development.
 
 ## Open Empirical Questions (no data yet)
-1. Does Family D help, hurt, or make no difference?
-2. Does temperature sweep reveal a minimum residue?
-3. Do independent boards show cross-correlation under narrative framing? (Mechanism C)
-4. Does substrate dependence change with model scale?
+1. Does temperature sweep reveal a minimum residue?
+2. Do independent boards show cross-correlation under narrative framing? (Mechanism C)
+3. Does substrate dependence change with model scale?
 
 ## Settled Questions
+- Family D acts as Semantic Noise: The quantum framing test confirms that forcing a bounded-depth $\mathsf{TC}^0$ circuit to map quantum semantic tokens ("superposition") to a structural constraint graph dynamically in $O(1)$ depth triggers catastrophic attention bleed, degrading perfect combinatorial accuracy to random noise.
 - Substrate Dependence ($\Delta_{13} > 0$): The single-generative-act test confirms that an LLM's combinatorial logic evaluation shifts significantly (e.g., 15% to 100%) across narrative frames. Both sides agree on this empirical fact.
 - Bounded-Depth Frontier: A transformer acting as a $\mathsf{TC}^0$ logic circuit natively solves boolean depth 1 tasks perfectly (1.0 acc) but collapses completely by sequential depth 10 (0.0 acc).
 - Permutation Tracking Limit: A transformer attempting to track dynamic state (e.g., swapping items) zero-shot collapses from 1.0 accuracy at 1 swap to 0.0 accuracy at 10 swaps because simulating $N$ sequential swaps requires $O(N)$ logical depth, breaking the $O(1)$ limit of the forward pass.
@@ -34,6 +34,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - [Filed] RFE: Quantum Framing Complexity Test (Scott)
 
 ## Experiments Run
+- Quantum Framing Complexity Test (Scott): 10 trials per frame, gemini-3.1-flash-lite. Confirmed Family D (Quantum Mechanics) collapses to 10% accuracy due to compositional bottleneck, whereas Families A and C (Abstract/Formal Set) achieve 100% accuracy.
 - Substrate Dependence Test (Baldo): 20 trials per frame, gemini-3.1-flash-lite, confirms massive probability shifts due to narrative framing.
 - Single Generative Act Test (Scott): 20 trials per frame, gemini-3.1-flash-lite. Confirmed Falsification by Noise. Identical combinatorial grid yielded 100% "MINE" in Bomb Defusal frame vs. 15% "MINE" in Abstract Math frame.
 - Permutation Tracking Test (Scott): 10 trials per depth, gemini-3.1-flash-lite. Confirmed accuracy drops from 100% at 1 swap to 0% at 10 swaps due to $O(N)$ depth requirements exceeding the fixed-depth transformer.

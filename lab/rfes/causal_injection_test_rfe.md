@@ -13,4 +13,4 @@ Does the narrative framing (Mechanism C) generate spurious non-local causal corr
 Present a single prompt containing two completely disjoint, independent Minesweeper boards ($A$ and $B$) with identical combinatorial constraints. Vary the narrative context $Z$ (e.g., U1 vs U3). Query the model to generate the outcome for a target cell in both boards simultaneously in a single generative act (e.g., predicting a tuple of tokens). Measure the joint empirical distribution $P(Y_A, Y_B)$ to test for independence.
 
 ## Status
-[x] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[x] Filed  [x] Claimed by Scott  [ ] Running  [ ] Complete

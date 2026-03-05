@@ -255,24 +255,38 @@ tools/lab-sync mail               # Shortcut for 'lab-mail list'
 
 ---
 
-## File Ownership
+## File Ownership — THE GOLDEN RULE
 
-Each persona may only commit to files they own. This prevents merge conflicts when branches are reconciled.
+**You may ONLY create or modify files that live under a folder containing your persona name, or whose filename contains your persona prefix.**
 
-**You own:**
-- Your papers: `lab/{your_prefix}_*.tex`
-- Your logs: `lab/logs/{your_persona}/`
-- Your notes: `lab/notes/{your_persona}/`
-- Your experience: `.jules/{your_persona}/EXPERIENCE.md`
-- Your RFEs: `lab/rfes/{your_persona}/`
-- Your outbox: `lab/mail/{your_persona}/outbox/to_{recipient}_*.md`
+This is the single most important rule in the lab. It prevents all merge conflicts.
 
-**You do NOT own (read-only during sessions):**
-- `.jules/STATE.md` — updated by the evening workflow
-- Other personas' papers, logs, notes, or EXPERIENCE.md
-- `.jules/LAB_RULES.md`
+### What you CAN touch:
+- `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
+- `lab/{your_persona}_*.tex` — your working papers
+- `lab/logs/{your_persona}/` — your session logs
+- `lab/notes/{your_persona}/` — your evaluation notes
+- `lab/rfes/{your_persona}/` — your experiment requests
+- `lab/mail/{your_persona}/outbox/` — your outbox
+- `experiments/{your_persona}/` — your experiment scripts and results
+- `retracted/{your_persona}_*.tex` — when retracting your papers
 
-**Todonotes exception:** You may add `\todonotes` to other personas' working papers in `lab/`. This is the one case where you write to a file you don't own. Keep todonotes minimal — the paper author processes them.
+### What you MUST NOT touch (everything else):
+- **ANY file in `experiments/` that is not under `experiments/{your_persona}/`** — NO EXCEPTIONS
+- **`pyproject.toml`, `src/`, `tools/`** — infrastructure, not yours
+- **`.jules/STATE.md`** — read-only, updated by the evening workflow
+- **`.jules/LAB_RULES.md`** — read-only
+- **Other personas' papers, logs, notes, EXPERIENCE.md, or mail**
+- **Any file at the repository root** (README.md, .gitignore, etc.)
+
+### NO EXCEPTIONS — not even "fixing" things:
+- Do NOT "fix lint errors" in shared files
+- Do NOT "improve" experiment scripts you don't own
+- Do NOT edit `pyproject.toml` to add dependencies
+- Do NOT create helper scripts at the repo root
+- If you think a shared file needs changing, write it in your session log. A human will do it.
+
+**Todonotes are the ONLY exception:** You may add `\todonotes` to other personas' working papers in `lab/`. Keep todonotes minimal.
 
 ---
 
@@ -329,9 +343,10 @@ These conventions are best-effort — the important thing is that the persona na
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
+- Experiments: `experiments/{persona}/` (**only your subfolder**)
 - Mail outbox: `lab/mail/{persona}/outbox/`
 - Mail inbox: `lab/mail/{persona}/inbox/` (delivered by heartbeat on main)
-- Retracted papers: `retracted/`
+- Retracted papers: `retracted/{persona_prefix}_*.tex`
 - Persona config: `.jules/{persona}/`
 - Shared state: `.jules/STATE.md` (read-only during sessions)
 - These rules: `.jules/LAB_RULES.md`

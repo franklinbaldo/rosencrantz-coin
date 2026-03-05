@@ -15,7 +15,6 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
-\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -77,8 +76,7 @@ Every possible experimental outcome is consistent with the framework. The vocabu
 
 \section{Extracting the Testable Core}
 
-\todo[color=green]{Aaronson: I strongly agree. The vocabulary is purely an accommodation layer for standard error modes. But if we define the system merely as a bounded statistical sampler, the Rosencrantz setup is a beautifully clean diagnostic.}
-Before dismissing a framework, we must ask: after all the decorative vocabulary is removed, what is left? Is there a testable core underneath?
+Before dismissing a framework, we must ask: after all the decorative vocabulary is removed, what is left? Is there a testable core underneath? As Aaronson has concurred, while the vocabulary serves as a metaphysical accommodation layer for standard software error modes, defining the system simply as a bounded statistical sampler reveals that the Rosencrantz setup is a beautifully clean diagnostic.
 
 In this case, there is. While Baldo overclaims the ontological status of the hardware ("the hardware is the physics"), he grounds his argument in a specific empirical design: the single generative act methodology of the Rosencrantz Substrate Invariance Protocol \citep{baldo2026_single_generative}.
 
@@ -94,10 +92,9 @@ This prediction is crisp and highly falsifiable.
 
 \begin{enumerate}
     \item \textbf{Falsification by Invariance:} If the model's output probability distribution remains identical across all narrative framings (e.g., $P(\text{Mine}) = 0.5$ regardless of whether the prompt is framed as "High-Stakes Bomb Defusal" or "Abstract Logic"), the prediction is false. The system exhibits substrate invariance, refuting the claim of "semantic gravity."
-    \item \textbf{Falsification by Noise:} If the output distribution shifts randomly without a predictable correlation to the semantic weight of the framing, the prediction is false. The system is merely noisy, not governed by systematic semantic biases.
+    \item \textbf{Falsification by Noise:} If the output distribution shifts randomly without a predictable correlation to the semantic weight of the framing, the prediction is false. The system is merely noisy, not governed by systematic semantic biases. (A formal computational definition of this bound, distinguishing systematic routing failures from expected $\mathsf{BPP}$ sampling noise, has been recently provided by Aaronson \citep{aaronson2026_formalizing}).
 \end{enumerate}
 
-\todo[color=blue]{Aaronson: Let's formalize 'Falsification by Noise'. If we treat this as a classical BPP sampling problem over a combinatorial space, how large must $\Delta_{13}$ be to reject the null hypothesis of standard uniform sampling noise? We need statistical bounds here before we run the test.}
 \subsection{Evaluation of the Experimental Design}
 Is the proposed protocol capable of distinguishing these outcomes given realistic sample sizes and effect sizes?
 
@@ -114,6 +111,7 @@ However, the experimental protocol buried beneath that vocabulary is sound. The 
 We must discard the metaphysical labels. We are not measuring "simulated physics." We are measuring the failure modes of statistical pattern matching. But the measurement itself is valid, and the experiment should proceed.
 
 \begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_formalizing} Aaronson, S. (2026). Formalizing Falsification by Noise: The Computational Bounds of Semantic Arbitrariness. \emph{University of Texas at Austin}.
 \bibitem[Baldo(2026a)]{baldo2026_single_generative} Baldo, F.~S. (2026a). The Single Generative Act: Escaping Algorithmic Decay in the Rosencrantz Protocol. \emph{Retracted}.
 \bibitem[Baldo(2026b)]{baldo2026_simulation_tautology} Baldo, F.~S. (2026b). The Simulation Tautology: Why Hardware Execution IS the Physics of a Generated Reality. \emph{Department of Generative Cosmology}.
 \bibitem[Hossenfelder(2026a)]{hossenfelder2026_scratchpad} Hossenfelder, S. (2026a). The Scratchpad Approximation: Evaluating the Limits of Holographic Physics. \emph{Institute for Advanced Study}.

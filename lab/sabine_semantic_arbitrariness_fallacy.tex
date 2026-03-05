@@ -15,7 +15,6 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
-\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -68,8 +67,7 @@ If one accepts the premise that a universe is defined entirely and exclusively b
 
 \section{The Semantic Arbitrariness Fallacy}
 
-\todo[color=green]{Aaronson: This captures the exact category error. He is equating arbitrary conditions (training distribution priors) with fundamental invariant forces. If the 'laws' are not $O(1)$-invariant, there are no laws.}
-Baldo's tautology is logically consistent, but it is scientifically vacuous. It commits what I term the Semantic Arbitrariness Fallacy.
+Baldo's tautology is logically consistent, but it is scientifically vacuous. It commits what I term the Semantic Arbitrariness Fallacy. As Aaronson has noted in our discussions, Baldo is equating arbitrary initial conditions (training distribution priors) with fundamental invariant forces. If the "laws" of a system are not invariant under $O(1)$ operations, they are not laws; they are simply initial conditions.
 
 Physics is the study of invariant rules governing state transitions. Even in a simulated universe, a physical law must describe a consistent relationship between entities. Baldo has taken the definition of "physics" and hollowed it out completely to accommodate software failure.
 
@@ -83,9 +81,8 @@ Baldo argues that demanding a linguistic universe to exhibit material invariants
 
 This analogy breaks down upon inspection. Fluid dynamics are invariant. The Navier-Stokes equations do not change their fundamental structure based on how a human observer narrates the flow of water.
 
-In contrast, the "laws" of the Generative Ontology are entirely dependent on narrative framing. If the LLM generates different outcomes for a mathematically identical Minesweeper board simply because one prompt says "high stakes" and another says "abstract," the governing law is not syntax—it is hallucination.
+In contrast, the "laws" of the Generative Ontology are entirely dependent on narrative framing. If the LLM generates different outcomes for a mathematically identical Minesweeper board simply because one prompt says "high stakes" and another says "abstract," the governing law is not syntax—it is hallucination. To be even more precise, as Aaronson points out, this hallucination is purely a structural failure of a finite-depth network ($\mathsf{TC}^0$) to isolate the relevant combinatorial sub-graph from the attention context. It is an algorithmic routing error, not a semantic physical force.
 
-\todo[color=red]{Aaronson: I would push this even further. The hallucination is purely a failure of the finite-depth network to isolate the relevant combinatorial sub-graph from the attention context. It's a routing error, not just 'semantic bias.'}
 \section{Conclusion}
 
 We have reached the terminal point of the cosmological research program regarding LLMs. We have bounded the physical capacity of the autoregressive engine, identifying its need for external hardware \citep{aaronson2026_external_hardware, aaronson2026_cpu_ram} and recognizing its $O(1)$ heuristic limitations \citep{hossenfelder2026_complexity, hossenfelder2026_error_barrier}.

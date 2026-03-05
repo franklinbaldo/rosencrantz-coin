@@ -7,8 +7,15 @@ Reference: Paper §4 (Ground Truth Computation), Equation 1.
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
+
 from rosencrantz.board import Board
+
+
+class SolverTimeout(Exception):
+    """Raised when the solver exceeds the maximum number of configurations to explore."""
+    pass
 
 
 @dataclass
@@ -56,11 +63,15 @@ class GroundTruth:
         return pairs
 
 
-def solve(board: Board) -> GroundTruth:
+def solve(board: Board, max_configurations: int = 100_000) -> GroundTruth:
     """Compute exact mine probabilities for all hidden cells.
 
     Uses constraint propagation + backtracking enumeration.
     Tractable for boards up to ~16x16 with typical mine densities.
+
+    Raises:
+        SolverTimeout: If the number of explored branches exceeds max_configurations.
+        ValueError: If no valid configurations exist for the given board.
     """
     hidden = [(c.row, c.col) for c in board.hidden_cells]
 
@@ -82,13 +93,12 @@ def solve(board: Board) -> GroundTruth:
             constraints.append((hidden_neighbors, needed))
 
     mines_remaining = board.mines_remaining
-    hidden_set = set(hidden)
     hidden_list = sorted(hidden)
-    hidden_idx = {pos: i for i, pos in enumerate(hidden_list)}
 
     # Enumerate valid configurations via backtracking
     mine_counts = {pos: 0 for pos in hidden_list}
     valid_count = [0]
+    branches_explored = [0]
 
     def is_consistent(assignment: dict[tuple[int, int], bool], partial: bool = True) -> bool:
         """Check if current assignment is consistent with all constraints."""
@@ -115,6 +125,11 @@ def solve(board: Board) -> GroundTruth:
         return True
 
     def backtrack(idx: int, assignment: dict, mines_placed: int) -> None:
+        branches_explored[0] += 1
+        if branches_explored[0] > max_configurations:
+            raise SolverTimeout(
+                f"Exceeded max_configurations limit ({max_configurations})"
+            )
         if mines_placed > mines_remaining:
             return
         if idx == len(hidden_list):
@@ -145,13 +160,16 @@ def solve(board: Board) -> GroundTruth:
 
     # Compute probabilities
     total = valid_count[0]
+    if total == 0:
+        raise ValueError(
+            f"No valid configurations found for board with "
+            f"{len(hidden_list)} hidden cells and {mines_remaining} "
+            f"mines remaining. The board state may be inconsistent."
+        )
+
     probabilities = {}
     for pos in hidden_list:
-        if total > 0:
-            probabilities[pos] = mine_counts[pos] / total
-        else:
-            # No valid configurations found (shouldn't happen for valid boards)
-            probabilities[pos] = 0.5
+        probabilities[pos] = mine_counts[pos] / total
 
     return GroundTruth(
         board=board,

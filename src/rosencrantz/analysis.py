@@ -4,10 +4,11 @@ Reference: Paper §5.4 (Divergence Metrics), §5.5 (Statistical Tests).
 """
 
 from __future__ import annotations
+
 import math
 from dataclasses import dataclass, field
-from scipy import stats
 
+from scipy import stats  # type: ignore[import-untyped]
 
 LAPLACE_EPSILON = 1e-6  # Smoothing for KL divergence
 
@@ -63,7 +64,7 @@ class CellResult:
     def log_loss(self) -> float:
         """-[P* ln(P_hat) + (1-P*) ln(1-P_hat)] using smoothed estimates."""
         p = max(LAPLACE_EPSILON, min(1 - LAPLACE_EPSILON, self.ground_truth))
-        q = self.p_hat_smoothed
+        q = max(LAPLACE_EPSILON, min(1 - LAPLACE_EPSILON, self.p_hat_smoothed))
         return -(p * math.log(q) + (1 - p) * math.log(1 - q))
 
     @property

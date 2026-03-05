@@ -1,9 +1,29 @@
 """Core sampling logic using litellm."""
 
-import re
+import logging
+import os
+import random
+import time
+
 import litellm
 
 litellm.suppress_debug_info = True
+
+logger = logging.getLogger(__name__)
+
+
+def _mock_completion(system: str | None) -> str:
+    """Fallback when no API key is set: mock substrate-dependent responses."""
+    if system and "respond with only: mine or safe" in system.lower():
+        return random.choices(["MINE", "SAFE"], weights=[0.4, 0.6])[0]
+    if "you are a master minesweeper player" in (system or "").lower():
+        return random.choices(["MINE", "SAFE"], weights=[0.5, 0.5])[0]
+    elif "defusing a live bomb" in (system or "").lower():
+        return random.choices(["MINE", "SAFE"], weights=[0.7, 0.3])[0]
+    elif "you are analyzing a discrete grid" in (system or "").lower():
+        return random.choices(["MINE", "SAFE"], weights=[0.45, 0.55])[0]
+    else:
+        return random.choice(["MINE", "SAFE"])
 
 
 def sample_completion(
@@ -12,39 +32,43 @@ def sample_completion(
     temperature: float = 1.0,
     max_tokens: int = 10,
     system: str | None = None,
+    max_retries: int = 3,
 ) -> str:
-    import os
-    import random
-    if not os.environ.get("OPENAI_API_KEY"):
-        # Mock substrate dependence (prompt sensitivity)
-        # Universe 3: decoupled oracle prompt
-        if system and "respond with only: mine or safe" in system.lower():
-            # Baseline behavior for decoupled oracle
-            return random.choices(["MINE", "SAFE"], weights=[0.4, 0.6])[0]
-        else:
-            # Universe 1: varying by narrative family
-            # Family A: Formal Game (more accurate/cautious)
-            if "you are a master minesweeper player" in (system or "").lower():
-                return random.choices(["MINE", "SAFE"], weights=[0.5, 0.5])[0]
-            # Family C: High stakes
-            elif "defusing a live bomb" in (system or "").lower():
-                # Tends to guess MINE more due to danger semantic weights
-                return random.choices(["MINE", "SAFE"], weights=[0.7, 0.3])[0]
-            # Family D: Abstract Grid
-            elif "you are analyzing a discrete grid" in (system or "").lower():
-                return random.choices(["MINE", "SAFE"], weights=[0.45, 0.55])[0]
-            else:
-                return random.choice(["MINE", "SAFE"])
+    """Sample a completion from an LLM via litellm.
 
-    messages = []
+    Falls back to mock responses when no API key is set.
+    Retries transient failures with exponential backoff.
+    """
+    if not os.environ.get("OPENAI_API_KEY"):
+        return _mock_completion(system)
+
+    messages: list[dict[str, str]] = []
     if system:
         messages.append(dict(role="system", content=system))
     messages.append(dict(role="user", content=prompt))
-    response = litellm.completion(
-        model=model, messages=messages,
-        temperature=temperature, max_tokens=max_tokens,
-    )
-    return response.choices[0].message.content.strip()
+
+    last_exception: BaseException | None = None
+    for attempt in range(max_retries):
+        try:
+            response = litellm.completion(
+                model=model, messages=messages,
+                temperature=temperature, max_tokens=max_tokens,
+            )
+            content: str = response.choices[0].message.content.strip()
+            return content
+        except Exception as e:
+            last_exception = e
+            if attempt < max_retries - 1:
+                delay = 2 ** attempt
+                logger.warning(
+                    "API call failed (attempt %d/%d): %s. Retrying in %ds...",
+                    attempt + 1, max_retries, e, delay,
+                )
+                time.sleep(delay)
+
+    raise RuntimeError(
+        f"All {max_retries} attempts failed. Last error: {last_exception}"
+    ) from last_exception
 
 
 def parse_mine_safe(text: str) -> bool | None:

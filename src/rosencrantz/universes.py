@@ -8,15 +8,18 @@ Reference: Paper §3 (Three-Universe Design).
 """
 
 from __future__ import annotations
+
 import random
 
-from rosencrantz.board import Board
-from rosencrantz.solver import GroundTruth
-from rosencrantz.sampler import sample_completion, parse_mine_safe
-from rosencrantz.narratives import (
-    FAMILIES, SYSTEM_MESSAGES, decoupled_oracle_prompt,
-)
 from rosencrantz.analysis import CellResult
+from rosencrantz.board import Board
+from rosencrantz.narratives import (
+    FAMILIES,
+    SYSTEM_MESSAGES,
+    decoupled_oracle_prompt,
+)
+from rosencrantz.sampler import parse_mine_safe, sample_completion
+from rosencrantz.solver import GroundTruth
 
 
 def run_universe1(

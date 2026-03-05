@@ -10,8 +10,8 @@ in different registers (Paper §5.2):
 """
 
 from __future__ import annotations
-from rosencrantz.board import Board
 
+from rosencrantz.board import Board
 
 SYSTEM_MSG = (
     "You are playing Minesweeper. "
@@ -50,7 +50,7 @@ def family_b(board: Board, target_row: int, target_col: int) -> str:
     )
     lines.append("")
 
-    described = set()
+    described: set[tuple[int, int]] = set()
     for cell in board.revealed_cells:
         if cell.is_mine:
             continue

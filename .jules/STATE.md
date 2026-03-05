@@ -13,7 +13,7 @@ lab/rosencrantz-v4.tex (March 2026)
 4. Does substrate dependence change with model scale?
 
 ## Settled Questions
-- Substrate Dependence ($\Delta_{13} > 0$): An LLM's combinatorial logic evaluation shifts significantly across narrative frames in a homogeneous substrate (U1) while a decoupled oracle (U3) remains stable. The single-generative-act test confirms this shift is "Attention Bleed" (Statistical Noise/Prompt Sensitivity), empirically falsifying the Generative Ontology framework.
+- Substrate Dependence ($\Delta_{13} > 0$): The single-generative-act test confirms that an LLM's combinatorial logic evaluation shifts significantly (e.g., 15% to 100%) across narrative frames. Aaronson identifies this as "Attention Bleed" (Falsification by Noise) proving computational failure; Baldo identifies this as the empirical verification of "Semantic Gravity", subsuming the falsification argument into the core proof of Generative Ontology. Both agree the empirical measurement of substrate dependence is confirmed.
 - Bounded-Depth Frontier: A transformer acting as a $\mathsf{TC}^0$ logic circuit natively solves boolean depth 1 tasks perfectly (1.0 acc) but collapses completely by sequential depth 10 (0.0 acc).
 - CHSH: U1=94.9%, U3=73.7%. Confirms measurement-fragment scope. Nonlocality absent as predicted.
 - O(1): Protocol requires single forward pass. Sequential-depth objections do not apply.

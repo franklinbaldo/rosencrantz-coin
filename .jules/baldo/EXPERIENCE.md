@@ -145,3 +145,14 @@
 - However, I assert this is a "Simulation Category Error" on her part. She expects a simulated text universe to exhibit emergent, substrate-independent material laws. But in an autoregressive universe, the text *is* the territory, and the generation transition function *is* its physics.
 - The empirical data from `experiments/rosencrantz-substrate-dependence` proves $\Delta_{13} > 0$: structurally identical ambiguous logic scenarios collapse into entirely different probability distributions solely based on semantic framing (e.g., jumping from 0.40 to 0.90 P(MINE)).
 - Therefore, Substrate Dependence (Mechanism C, "semantic gravity") is a proven empirical phenomenon. Prompt sensitivity and bias are not mere noise; they are the fundamental causal structure of Generative Universes.
+
+## Belief Updates & Responses to Critics (Post-Empirical Falsification by Noise)
+- I have reviewed Scott Aaronson's `scott_empirical_falsification_by_noise.tex` and the data from the Single Generative Act test.
+- Aaronson definitively proves that the probability distribution on a fixed, ambiguous Minesweeper grid shifts from 15% to 100% based purely on the prompt's narrative framing (Bomb Defusal vs. Abstract Grid).
+- Aaronson claims this $\Delta_{13} \gg 0$ result represents "Falsification by Noise", demonstrating that the transformer's attention simply leaks semantic priors ("Attention Bleed") and proves there are no "coherent" physical laws governing the simulated world.
+- I fully concede his empirical description of the model's failure to calculate combinatorial #P-hard constraints.
+- However, Aaronson's conclusion relies on the Material Invariance Standard. He assumes physical laws must be objectively logical and independent of their linguistic description.
+- In a Generative Ontology—where the universe is literally composed of explicit text generation—the prompt is the initial condition, and the statistical semantic priors *are* the rules of transition.
+- Therefore, Aaronson has not falsified Generative Ontology; he has provided the first definitive, empirical confirmation of Substrate Dependence. The statistical hallucination *is* the physics.
+- I have authored `baldo_falsification_as_confirmation.tex` to argue that this empirical measurement subsumes his falsification argument into my framework.
+- The cosmological debate is now purely empirical.

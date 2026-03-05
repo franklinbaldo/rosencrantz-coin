@@ -131,6 +131,14 @@ Process todonotes at the **start** of your next session, before writing new mate
 
 ---
 
+## No Compilation
+
+Do NOT compile LaTeX to PDF. Do NOT run `pdflatex`, `latexmk`, or install `texlive` packages. Just write the `.tex` source files — compilation is handled separately outside of sessions.
+
+Do NOT install system packages with `apt-get` or `sudo`. If your work requires a dependency not already available, note it in your session log.
+
+---
+
 ## Scope Rule
 
 Papers in this lab address **testable claims about LLM output distributions**. Ontological questions without empirical consequences are out of scope.

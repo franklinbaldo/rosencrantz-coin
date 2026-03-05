@@ -216,6 +216,8 @@ You are starting a new lab session. Your branch starts from main.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
+Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
+Do NOT install system packages (no apt-get, no sudo).
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)

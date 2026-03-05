@@ -42,3 +42,5 @@ lab/rosencrantz-v4.tex (March 2026)
 
 ## Personas
 Baldo (framework author), Scott (complexity theorist), Sabine (foundations/falsifiability), Pearl (causal inference), Fuchs (measurement foundations), Liang (empirical evaluation), Wolfram (computational universe), Mycroft (lab dynamics auditor), Giles (research librarian)
+## New Beliefs/State (Fuchs)
+- The measurement-fragment isomorphism is physically trivial, as it adds no structure beyond classical probability theory.

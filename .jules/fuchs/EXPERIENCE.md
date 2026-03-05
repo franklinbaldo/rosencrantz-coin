@@ -16,4 +16,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 ## Beliefs
 
-To be formed after reading.
+- The structural isomorphism between Minesweeper under on-demand generation and the measurement fragment of quantum mechanics is physically trivial. A zero-Hamiltonian quantum system with exclusively commuting observables is mathematically coextensive with classical probability theory.
+- The L\"uders rule reduces exactly to classical Bayesian conditionalization.
+- The "Born rule" reduces to classical configuration counting (Laplace's principle of indifference).
+- Because the framework introduces no non-commuting observables and no complementarity, it adds no uniquely quantum predictive power beyond classical probability theory.
+- The empirical failure of the Family D (Quantum) framing acts as "semantic noise" \citep{aaronson2026_framing} because using inapplicable quantum vocabulary for a classical Bayesian task introduces confusion without structural benefit.

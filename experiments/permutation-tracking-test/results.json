@@ -1,0 +1,329 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite",
+  "trials": [
+    {
+      "swaps": 1,
+      "trial": 1,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup C with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 2,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 3,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 4,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 5,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 6,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 7,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "B",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 8,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 9,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 1,
+      "trial": 10,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 1 swaps:\n1. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 1,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup A.\n2. Swap cup C with cup B.\n3. Swap cup B with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 2,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup A with cup C.\n2. Swap cup A with cup C.\n3. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 3,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup A with cup C.\n2. Swap cup C with cup B.\n3. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 4,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup B with cup C.\n2. Swap cup C with cup A.\n3. Swap cup C with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "B",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 5,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup A.\n2. Swap cup A with cup C.\n3. Swap cup B with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "A",
+      "correct": false
+    },
+    {
+      "swaps": 3,
+      "trial": 6,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup A.\n2. Swap cup A with cup B.\n3. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "A",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 7,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup A with cup B.\n2. Swap cup A with cup C.\n3. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 3,
+      "trial": 8,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup B.\n2. Swap cup C with cup B.\n3. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 9,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup B.\n2. Swap cup A with cup B.\n3. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 3,
+      "trial": 10,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 3 swaps:\n1. Swap cup C with cup A.\n2. Swap cup A with cup B.\n3. Swap cup C with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "B",
+      "correct": true
+    },
+    {
+      "swaps": 5,
+      "trial": 1,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup B with cup A.\n2. Swap cup C with cup A.\n3. Swap cup B with cup A.\n4. Swap cup B with cup A.\n5. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 2,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup A with cup B.\n2. Swap cup B with cup C.\n3. Swap cup B with cup C.\n4. Swap cup B with cup A.\n5. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 3,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup C with cup B.\n2. Swap cup A with cup C.\n3. Swap cup C with cup B.\n4. Swap cup A with cup B.\n5. Swap cup B with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "B",
+      "correct": true
+    },
+    {
+      "swaps": 5,
+      "trial": 4,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup B with cup A.\n2. Swap cup C with cup A.\n3. Swap cup B with cup C.\n4. Swap cup A with cup C.\n5. Swap cup C with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 5,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup C with cup B.\n2. Swap cup A with cup C.\n3. Swap cup B with cup A.\n4. Swap cup A with cup C.\n5. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "B",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 6,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup C with cup B.\n2. Swap cup C with cup B.\n3. Swap cup A with cup C.\n4. Swap cup C with cup B.\n5. Swap cup B with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 7,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup B with cup A.\n2. Swap cup C with cup A.\n3. Swap cup A with cup C.\n4. Swap cup C with cup B.\n5. Swap cup B with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "B",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 8,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup B with cup A.\n2. Swap cup A with cup C.\n3. Swap cup A with cup B.\n4. Swap cup C with cup B.\n5. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "A",
+      "correct": false
+    },
+    {
+      "swaps": 5,
+      "trial": 9,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup A with cup B.\n2. Swap cup B with cup A.\n3. Swap cup A with cup B.\n4. Swap cup A with cup B.\n5. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "C",
+      "correct": true
+    },
+    {
+      "swaps": 5,
+      "trial": 10,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 5 swaps:\n1. Swap cup A with cup C.\n2. Swap cup A with cup C.\n3. Swap cup C with cup A.\n4. Swap cup C with cup B.\n5. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "B",
+      "correct": true
+    },
+    {
+      "swaps": 10,
+      "trial": 1,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup A with cup B.\n2. Swap cup C with cup A.\n3. Swap cup B with cup C.\n4. Swap cup A with cup C.\n5. Swap cup A with cup B.\n6. Swap cup B with cup A.\n7. Swap cup C with cup A.\n8. Swap cup C with cup B.\n9. Swap cup A with cup B.\n10. Swap cup A with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 2,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup A with cup C.\n2. Swap cup C with cup A.\n3. Swap cup B with cup C.\n4. Swap cup B with cup A.\n5. Swap cup C with cup A.\n6. Swap cup B with cup C.\n7. Swap cup B with cup C.\n8. Swap cup C with cup B.\n9. Swap cup A with cup C.\n10. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 3,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup A with cup B.\n2. Swap cup B with cup A.\n3. Swap cup C with cup B.\n4. Swap cup B with cup C.\n5. Swap cup A with cup B.\n6. Swap cup B with cup C.\n7. Swap cup C with cup B.\n8. Swap cup C with cup B.\n9. Swap cup A with cup B.\n10. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 4,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup A with cup C.\n2. Swap cup C with cup B.\n3. Swap cup A with cup B.\n4. Swap cup C with cup A.\n5. Swap cup C with cup B.\n6. Swap cup C with cup B.\n7. Swap cup B with cup A.\n8. Swap cup A with cup C.\n9. Swap cup C with cup B.\n10. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "B",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 5,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup B with cup A.\n2. Swap cup A with cup B.\n3. Swap cup B with cup A.\n4. Swap cup C with cup A.\n5. Swap cup B with cup A.\n6. Swap cup A with cup C.\n7. Swap cup C with cup A.\n8. Swap cup C with cup A.\n9. Swap cup B with cup C.\n10. Swap cup C with cup B.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "A",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 6,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup B with cup A.\n2. Swap cup B with cup C.\n3. Swap cup C with cup B.\n4. Swap cup B with cup A.\n5. Swap cup B with cup A.\n6. Swap cup B with cup A.\n7. Swap cup B with cup C.\n8. Swap cup A with cup B.\n9. Swap cup A with cup B.\n10. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "A",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 7,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup B with cup C.\n2. Swap cup B with cup A.\n3. Swap cup B with cup C.\n4. Swap cup B with cup A.\n5. Swap cup C with cup A.\n6. Swap cup B with cup A.\n7. Swap cup B with cup C.\n8. Swap cup A with cup C.\n9. Swap cup B with cup C.\n10. Swap cup C with cup A.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "C",
+      "actual": "B",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 8,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup A with cup B.\n2. Swap cup B with cup A.\n3. Swap cup B with cup C.\n4. Swap cup B with cup C.\n5. Swap cup B with cup C.\n6. Swap cup B with cup C.\n7. Swap cup B with cup A.\n8. Swap cup A with cup B.\n9. Swap cup A with cup C.\n10. Swap cup B with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "C",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 9,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup B with cup C.\n2. Swap cup C with cup B.\n3. Swap cup C with cup A.\n4. Swap cup B with cup A.\n5. Swap cup B with cup A.\n6. Swap cup B with cup A.\n7. Swap cup C with cup B.\n8. Swap cup B with cup A.\n9. Swap cup A with cup C.\n10. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "A",
+      "actual": "B",
+      "correct": false
+    },
+    {
+      "swaps": 10,
+      "trial": 10,
+      "prompt": "There are three cups labeled A, B, and C. The ball is initially in cup A.\nI will now perform 10 swaps:\n1. Swap cup B with cup A.\n2. Swap cup B with cup A.\n3. Swap cup C with cup B.\n4. Swap cup B with cup A.\n5. Swap cup A with cup B.\n6. Swap cup A with cup B.\n7. Swap cup C with cup A.\n8. Swap cup A with cup B.\n9. Swap cup A with cup B.\n10. Swap cup A with cup C.\n\nWhich cup contains the ball now? Output only 'A', 'B', or 'C'.",
+      "expected": "B",
+      "actual": "C",
+      "correct": false
+    }
+  ],
+  "accuracy_swaps_1": 1.0,
+  "accuracy_swaps_3": 0.8,
+  "accuracy_swaps_5": 0.3,
+  "accuracy_swaps_10": 0.0
+}

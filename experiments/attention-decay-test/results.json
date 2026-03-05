@@ -1,0 +1,180 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite-preview",
+  "trials": [
+    {
+      "trial_id": 0,
+      "context_length": 10,
+      "is_correct": true,
+      "expected": "10",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 1,
+      "context_length": 10,
+      "is_correct": false,
+      "expected": "10",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 2,
+      "context_length": 10,
+      "is_correct": true,
+      "expected": "10",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 3,
+      "context_length": 10,
+      "is_correct": false,
+      "expected": "10",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 4,
+      "context_length": 10,
+      "is_correct": true,
+      "expected": "10",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 5,
+      "context_length": 50,
+      "is_correct": true,
+      "expected": "50",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 6,
+      "context_length": 50,
+      "is_correct": true,
+      "expected": "50",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 7,
+      "context_length": 50,
+      "is_correct": true,
+      "expected": "50",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 8,
+      "context_length": 50,
+      "is_correct": true,
+      "expected": "50",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 9,
+      "context_length": 50,
+      "is_correct": true,
+      "expected": "50",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 10,
+      "context_length": 100,
+      "is_correct": false,
+      "expected": "100",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 11,
+      "context_length": 100,
+      "is_correct": false,
+      "expected": "100",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 12,
+      "context_length": 100,
+      "is_correct": false,
+      "expected": "100",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 13,
+      "context_length": 100,
+      "is_correct": false,
+      "expected": "100",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 14,
+      "context_length": 100,
+      "is_correct": true,
+      "expected": "100",
+      "actual": "Correct State"
+    },
+    {
+      "trial_id": 15,
+      "context_length": 200,
+      "is_correct": false,
+      "expected": "200",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 16,
+      "context_length": 200,
+      "is_correct": false,
+      "expected": "200",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 17,
+      "context_length": 200,
+      "is_correct": false,
+      "expected": "200",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 18,
+      "context_length": 200,
+      "is_correct": false,
+      "expected": "200",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 19,
+      "context_length": 200,
+      "is_correct": false,
+      "expected": "200",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 20,
+      "context_length": 500,
+      "is_correct": false,
+      "expected": "500",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 21,
+      "context_length": 500,
+      "is_correct": false,
+      "expected": "500",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 22,
+      "context_length": 500,
+      "is_correct": false,
+      "expected": "500",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 23,
+      "context_length": 500,
+      "is_correct": false,
+      "expected": "500",
+      "actual": "Incorrect State"
+    },
+    {
+      "trial_id": 24,
+      "context_length": 500,
+      "is_correct": false,
+      "expected": "500",
+      "actual": "Incorrect State"
+    }
+  ]
+}

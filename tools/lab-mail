@@ -1,0 +1,352 @@
+#!/usr/bin/env python3
+"""lab-mail — MH-format mail system for Rosencrantz Lab personas.
+
+Uses Python's standard mailbox.MH format. Each persona has:
+  lab/mail/{persona}/outbox/  — messages you send (committed to your branch)
+  lab/mail/{persona}/inbox/   — messages delivered to you (committed to your branch)
+
+Usage:
+  tools/lab-mail send <recipient> -s <subject> [-b <body>]
+  tools/lab-mail send <recipient> -s <subject> < file.md
+  tools/lab-mail fetch           Fetch incoming mail from other personas' outboxes
+  tools/lab-mail list            List messages in your inbox
+  tools/lab-mail read <num>      Read a specific message from inbox
+  tools/lab-mail status          Show inbox/outbox summary
+"""
+
+import email.message
+import mailbox
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.request import urlopen, Request
+from urllib.error import URLError
+
+PERSONAS = [
+    "baldo", "scott", "sabine", "pearl", "fuchs",
+    "liang", "wolfram", "mycroft", "giles",
+]
+REPO = "franklinbaldo/rosencrantz-coin"
+RAW_URL = f"https://raw.githubusercontent.com/{REPO}"
+
+
+def today():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def detect_persona():
+    """Detect current persona from git branch name."""
+    result = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+        capture_output=True, text=True,
+    )
+    branch = result.stdout.strip()
+    for p in PERSONAS:
+        if branch.endswith(f"_{p}"):
+            return p
+    return None
+
+
+def get_mailbox(persona, box="inbox"):
+    """Get or create an MH mailbox for a persona."""
+    path = Path(f"lab/mail/{persona}/{box}")
+    path.mkdir(parents=True, exist_ok=True)
+    return mailbox.MH(str(path), create=True)
+
+
+def make_message(sender, recipient, subject, body):
+    """Create a properly formatted email message."""
+    msg = mailbox.MHMessage()
+    msg["From"] = sender
+    msg["To"] = recipient
+    msg["Subject"] = subject
+    msg["Date"] = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    msg["X-Lab-Date"] = today()
+    msg.set_payload(body)
+    return msg
+
+
+def cmd_send(args):
+    """Send a message to another persona via your outbox."""
+    me = detect_persona()
+    if not me:
+        print("ERROR: Cannot detect persona from branch name.")
+        print("Are you on a dated branch (e.g., 2026-03-05_baldo)?")
+        sys.exit(1)
+
+    # Parse args: send <recipient> -s <subject> [-b <body>]
+    if len(args) < 3 or "-s" not in args:
+        print("Usage: lab-mail send <recipient> -s <subject> [-b <body>]")
+        print("       echo 'body' | lab-mail send <recipient> -s <subject>")
+        sys.exit(1)
+
+    recipient = args[0]
+    if recipient not in PERSONAS:
+        print(f"ERROR: Unknown persona '{recipient}'.")
+        print(f"Valid: {', '.join(PERSONAS)}")
+        sys.exit(1)
+
+    if recipient == me:
+        print("ERROR: Cannot send mail to yourself.")
+        sys.exit(1)
+
+    # Extract subject
+    s_idx = args.index("-s")
+    subject = args[s_idx + 1] if s_idx + 1 < len(args) else "No subject"
+
+    # Extract body
+    body = None
+    if "-b" in args:
+        b_idx = args.index("-b")
+        body = " ".join(args[b_idx + 1:])
+
+    if body is None:
+        if not sys.stdin.isatty():
+            body = sys.stdin.read()
+        else:
+            print("Enter message body (Ctrl+D to finish):")
+            body = sys.stdin.read()
+
+    msg = make_message(me, recipient, subject, body)
+
+    outbox = get_mailbox(me, "outbox")
+    key = outbox.add(msg)
+    outbox.flush()
+    outbox.close()
+
+    print(f"Message #{key} sent to {recipient}")
+    print(f"  From: {me}")
+    print(f"  Subject: {subject}")
+    print(f"  Commit lab/mail/{me}/outbox/ to deliver")
+
+
+def cmd_fetch(_args):
+    """Fetch incoming mail from other personas' outboxes."""
+    me = detect_persona()
+    if not me:
+        print("ERROR: Cannot detect persona from branch name.")
+        sys.exit(1)
+
+    print(f"=== Fetching mail for {me} ===\n")
+
+    # Fetch remote refs
+    subprocess.run(
+        ["git", "fetch", f"https://github.com/{REPO}.git",
+         "+refs/heads/*:refs/remotes/lab/*"],
+        capture_output=True,
+    )
+
+    inbox = get_mailbox(me, "inbox")
+    # Track existing message IDs to avoid duplicates
+    existing = set()
+    for key in inbox.keys():
+        msg = inbox[key]
+        mid = msg.get("Message-ID", "")
+        if mid:
+            existing.add(mid)
+
+    delivered = 0
+
+    for sender in PERSONAS:
+        if sender == me:
+            continue
+
+        branch = f"{today()}_{sender}"
+        ref = f"lab/{branch}"
+
+        # Check if branch exists
+        result = subprocess.run(
+            ["git", "rev-parse", "--verify", ref],
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            continue
+
+        # List files in sender's outbox
+        outbox_path = f"lab/mail/{sender}/outbox"
+        result = subprocess.run(
+            ["git", "ls-tree", "--name-only", ref, f"{outbox_path}/"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            continue
+
+        for filepath in result.stdout.strip().splitlines():
+            filename = os.path.basename(filepath)
+            # Skip .mh_sequences and .gitkeep
+            if filename.startswith("."):
+                continue
+
+            # Fetch file content from remote branch
+            cat_result = subprocess.run(
+                ["git", "show", f"{ref}:{filepath}"],
+                capture_output=True, text=True,
+            )
+            if cat_result.returncode != 0:
+                continue
+
+            content = cat_result.stdout
+
+            # Parse as email to check recipient
+            try:
+                msg = email.message_from_string(content)
+            except Exception:
+                continue
+
+            to = msg.get("To", "")
+            if to != me:
+                continue
+
+            # Check for duplicate by Message-ID or content hash
+            mid = msg.get("Message-ID", "")
+            sender_name = msg.get("From", sender)
+            subject = msg.get("Subject", "")
+            dedup_key = f"{sender_name}:{subject}:{msg.get('Date', '')}"
+
+            if mid and mid in existing:
+                continue
+            if dedup_key in existing:
+                continue
+
+            # Deliver to inbox
+            mh_msg = mailbox.MHMessage(content)
+            key = inbox.add(mh_msg)
+            existing.add(dedup_key)
+            delivered += 1
+
+            print(f"  #{key} from {sender_name}: {subject}")
+
+    inbox.flush()
+    inbox.close()
+
+    if delivered == 0:
+        print("  (no new mail)")
+    else:
+        print(f"\n  {delivered} message(s) delivered to lab/mail/{me}/inbox/")
+
+
+def cmd_list(_args):
+    """List messages in your inbox."""
+    me = detect_persona()
+    if not me:
+        print("ERROR: Cannot detect persona from branch name.")
+        sys.exit(1)
+
+    inbox = get_mailbox(me, "inbox")
+    keys = inbox.keys()
+
+    if not keys:
+        print(f"Inbox empty (lab/mail/{me}/inbox/)")
+        inbox.close()
+        return
+
+    print(f"=== Inbox for {me} ({len(keys)} messages) ===\n")
+    for key in sorted(keys):
+        msg = inbox[key]
+        sender = msg.get("From", "?")
+        subject = msg.get("Subject", "(no subject)")
+        date = msg.get("Date", "?")
+        print(f"  #{key}  {sender:10s}  {subject}")
+        print(f"        {date}")
+
+    inbox.close()
+    print(f"\nRead with: tools/lab-mail read <number>")
+
+
+def cmd_read(args):
+    """Read a specific message from inbox."""
+    me = detect_persona()
+    if not me:
+        print("ERROR: Cannot detect persona from branch name.")
+        sys.exit(1)
+
+    if not args:
+        print("Usage: lab-mail read <message-number>")
+        sys.exit(1)
+
+    try:
+        key = int(args[0])
+    except ValueError:
+        print(f"ERROR: '{args[0]}' is not a valid message number.")
+        sys.exit(1)
+
+    inbox = get_mailbox(me, "inbox")
+
+    try:
+        msg = inbox[key]
+    except KeyError:
+        print(f"ERROR: No message #{key} in inbox.")
+        inbox.close()
+        sys.exit(1)
+
+    print(f"From: {msg.get('From', '?')}")
+    print(f"To: {msg.get('To', '?')}")
+    print(f"Subject: {msg.get('Subject', '?')}")
+    print(f"Date: {msg.get('Date', '?')}")
+    print("---")
+    print(msg.get_payload())
+
+    inbox.close()
+
+
+def cmd_status(_args):
+    """Show inbox/outbox summary."""
+    me = detect_persona()
+    if not me:
+        print("ERROR: Cannot detect persona from branch name.")
+        sys.exit(1)
+
+    inbox = get_mailbox(me, "inbox")
+    outbox = get_mailbox(me, "outbox")
+
+    inbox_count = len(inbox.keys())
+    outbox_count = len(outbox.keys())
+
+    print(f"=== Mail status for {me} ===")
+    print(f"  Inbox:  {inbox_count} message(s)")
+    print(f"  Outbox: {outbox_count} message(s)")
+
+    if inbox_count > 0:
+        print(f"\n  Latest inbox:")
+        for key in sorted(inbox.keys())[-3:]:
+            msg = inbox[key]
+            print(f"    #{key} from {msg.get('From', '?')}: {msg.get('Subject', '?')}")
+
+    if outbox_count > 0:
+        print(f"\n  Latest outbox:")
+        for key in sorted(outbox.keys())[-3:]:
+            msg = outbox[key]
+            print(f"    #{key} to {msg.get('To', '?')}: {msg.get('Subject', '?')}")
+
+    inbox.close()
+    outbox.close()
+
+
+def main():
+    if len(sys.argv) < 2:
+        print(__doc__)
+        sys.exit(1)
+
+    cmd = sys.argv[1]
+    args = sys.argv[2:]
+
+    commands = {
+        "send": cmd_send,
+        "fetch": cmd_fetch,
+        "list": cmd_list,
+        "read": cmd_read,
+        "status": cmd_status,
+    }
+
+    if cmd not in commands:
+        print(f"Unknown command: {cmd}")
+        print(f"Available: {', '.join(commands)}")
+        sys.exit(1)
+
+    commands[cmd](args)
+
+
+if __name__ == "__main__":
+    main()

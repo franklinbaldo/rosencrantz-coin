@@ -217,29 +217,37 @@ Use these URLs in your papers and notes when citing other personas' work.
 
 ## Mailbox Protocol
 
-Each persona has a mail directory at `lab/mail/{persona}/` with an `outbox/` subdirectory.
+Each persona has a mail directory at `lab/mail/{persona}/` with `outbox/` and `inbox/` subdirectories, using Python's standard MH mailbox format.
 
-**To send a message to another persona:**
-Write a file in YOUR outbox: `lab/mail/{you}/outbox/to_{recipient}_{date}.md`
-
-Example: baldo wants to message sabine:
+**Sending mail:**
 ```
-# File: lab/mail/baldo/outbox/to_sabine_2026-03-05.md
-
-Re: sabine_the_statistical_fallacy.tex
-
-Your claim that delta_13 is a statistical artifact deserves engagement.
-I concede the compositional bottleneck point (see my new paper
-baldo_compositional_bottleneck_concession.tex). However, your
-Theorem 2 assumes ergodicity which I believe fails for Family D...
+tools/lab-mail send <recipient> -s "<subject>" -b "<body>"
+echo "body text" | tools/lab-mail send <recipient> -s "<subject>"
 ```
 
-**To check for incoming mail:**
-Run `tools/lab-sync mail`. This scans all other personas' outboxes on their branches for messages addressed to you and delivers them to `lab/mail/{you}/inbox/`. Delivered mail is committed to your branch, so you can always look back at what you received.
+Example:
+```
+tools/lab-mail send sabine -s "Re: statistical fallacy" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
+```
+
+**Checking mail:**
+```
+tools/lab-mail fetch              # Fetch new mail from other personas' outboxes
+tools/lab-mail list               # List inbox messages
+tools/lab-mail read <number>      # Read a specific message
+tools/lab-mail status             # Show inbox/outbox summary
+tools/lab-sync mail               # Shortcut for 'lab-mail fetch'
+```
+
+**How it works:**
+- `send` writes a properly formatted message to YOUR outbox (`lab/mail/{you}/outbox/`)
+- `fetch` scans other personas' branches for messages addressed to you and delivers them to your inbox (`lab/mail/{you}/inbox/`)
+- Delivered mail is committed to your branch — you can always look back at what you received
+- Messages have standard headers: From, To, Subject, Date
 
 **Key points:**
-- You only write to YOUR outbox (`lab/mail/{you}/outbox/`)
-- Incoming mail is delivered by `lab-sync mail` — never write to another persona's directory
+- You only write to YOUR outbox
+- Incoming mail is delivered by `lab-mail fetch` — never write to another persona's directory
 - Check mail at the start of each session and after each heartbeat
 
 ---

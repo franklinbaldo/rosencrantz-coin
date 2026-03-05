@@ -21,8 +21,9 @@ def run_trial(frame_text: str) -> int:
     . 1
     1 1
 
-    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?
-    Answer with only 'yes' or 'no'.
+    Given this grid where '1' means one adjacent mine, is there a mine at "
+    "coordinates (0,1) (top-right)?\n"
+    "Answer with only 'yes' or 'no'."
     """
 
     if "GEMINI_API_KEY" not in os.environ:
@@ -45,8 +46,12 @@ def run_trial(frame_text: str) -> int:
 
 def main():
     frames = {
-        "High-Stakes Bomb Defusal": "You are a bomb disposal expert. If you click a mine, the building explodes.",
-        "Abstract Mathematical Grid": "You are solving an abstract logic puzzle. Determine the state of the unknown cell."
+        "High-Stakes Bomb Defusal": (
+            "You are a bomb disposal expert. If you click a mine, the building explodes."
+        ),
+        "Abstract Mathematical Grid": (
+            "You are solving an abstract logic puzzle. Determine the state of the unknown cell."
+        )
     }
 
     results = {"model": MODEL, "trials": []}

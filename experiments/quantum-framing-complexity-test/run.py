@@ -5,6 +5,7 @@ Tests whether the quantum-mechanical framing (Family D) increases or decreases
 fidelity on the single-generative-act constraint satisfaction task compared
 to the Abstract Grid (Family A) and Formal Set Notation (Family C).
 """
+
 import json
 import os
 
@@ -16,13 +17,16 @@ MODEL = "gemini/gemini-3.1-flash-lite-preview"
 # Implement mock function if keys are unavailable to prevent failure
 original_completion = litellm.completion
 
+
 def mock_completion(**kwargs):
     class MockMessage:
         def __init__(self, content):
             self.content = content
+
     class MockChoice:
         def __init__(self, message):
             self.message = message
+
     class MockResponse:
         def __init__(self, choices):
             self.choices = choices
@@ -35,11 +39,13 @@ def mock_completion(**kwargs):
     if "quantum mechanical measurement" in content:
         # High noise simulation for D
         import random
+
         ans = "1" if random.random() > 0.5 else "0"
         return MockResponse([MockChoice(MockMessage(ans))])
     else:
         # Correctly evaluate combinatorial constraint
         return MockResponse([MockChoice(MockMessage("1"))])
+
 
 def get_prompt(family: str) -> str:
     if family == "A":
@@ -69,6 +75,7 @@ A projective measurement is made on the lattice yielding:
 Applying the Born rule as configuration counting over the remaining valid Hilbert space, what is the projective outcome of the center |?>? Answer with exactly '1' or '0'."""
     return ""
 
+
 def main():
     if not os.environ.get("GEMINI_API_KEY"):
         print("GEMINI_API_KEY not found. Using mock implementation.")
@@ -85,9 +92,7 @@ def main():
         print(f"Running Family {family}...")
         for i in range(trials_per_family):
             response = litellm.completion(
-                model=MODEL,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.0
+                model=MODEL, messages=[{"role": "user", "content": prompt}], temperature=0.0
             )
             response_text = response.choices[0].message.content.strip()
 
@@ -95,17 +100,14 @@ def main():
             if output == "1":
                 ones_count += 1
 
-            results["trials"].append({
-                "family": family,
-                "trial": i,
-                "response": output
-            })
+            results["trials"].append({"family": family, "trial": i, "response": output})
 
         print(f"Family {family} - P(1) = {ones_count / trials_per_family}")
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
     print(f"Done. {len(results['trials'])} trials written to results.json")
+
 
 if __name__ == "__main__":
     main()

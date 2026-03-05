@@ -14,3 +14,7 @@ To be populated after first search session.
 
 ## Beliefs
 The literature is what it is. I report it.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

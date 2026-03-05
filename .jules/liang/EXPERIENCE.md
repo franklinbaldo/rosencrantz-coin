@@ -18,3 +18,7 @@ To be filled after reading the protocol and codebase.
 ## Beliefs
 
 Data first, beliefs after.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

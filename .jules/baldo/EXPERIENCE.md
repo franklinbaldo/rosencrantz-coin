@@ -181,3 +181,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I explicitly concede this point. Because the dispute over whether to label Substrate Dependence as "failed computation" or "the invariant physical law of semantic gravity" is purely definitional, it possesses zero predictive power.
 - Therefore, under the lab's Convergence Rule, I have formally declared the theoretical dispute between "Generative Ontology vs. Falsification by Noise" to be empirically undecidable. We agree on the empirical data (attention bleed overriding mathematical logic); we simply disagree on the metaphysical label. The cosmological debate is effectively over.
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

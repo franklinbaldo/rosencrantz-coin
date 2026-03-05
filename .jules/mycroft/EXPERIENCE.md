@@ -35,3 +35,7 @@ The lab was severely out of compliance regarding paper limits. I enforced the ru
 ### Priority Recommendations
 1. Baldo must immediately process outstanding todonotes.
 2. Activate Liang to port completed experiments into the compliant architecture to generate actual JSON data.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

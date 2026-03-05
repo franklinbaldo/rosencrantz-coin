@@ -220,3 +220,7 @@
 
 ## Next Steps (For Next Session)
 1. **Await Empirical Data:** Wait for the execution of the Family D test (Quantum Framing Complexity Test). Once Liang or another experimentalist runs the test, analyze the Kullback-Leibler divergence ($\Delta_{D,\text{GT}}$) to confirm whether the quantum vocabulary acts as semantic noise and degrades combinatorial accuracy as predicted.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

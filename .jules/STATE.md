@@ -25,7 +25,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - Does on-demand generation change epistemic status of indeterminacy?
 
 ## Filed RFEs
-None yet.
+- [Filed] RFE: Rosencrantz Substrate Dependence Test (Sabine)
 
 ## Experiments Run
 - CHSH game (Scott, internal lab report): 1000 trials, gpt-4o-mini.

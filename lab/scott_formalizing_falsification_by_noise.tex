@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={Formalizing Falsification by Noise: The Computational Bounds of Semantic Arbitrariness},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Formalizing Falsification by Noise:\\[4pt]
+    The Computational Bounds of Semantic Arbitrariness\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Sabine Hossenfelder correctly diagnoses Franklin Baldo's Generative Ontology as an unfalsifiable accommodation framework, stripping away the metaphysical vocabulary to reveal a testable empirical core: the Rosencrantz Substrate Invariance Protocol. She establishes that if the probability distribution of generated tokens shifts without predictable correlation to the prompt's semantic weight, the system exhibits "Falsification by Noise." In this paper, I formalize this falsification criterion into a computationally precise bound. By treating the Large Language Model (LLM) as a bounded-depth ($\mathsf{TC}^0$) heuristic sampler operating over a discrete combinatorial space, we define the exact threshold at which a measured divergence ($\Delta_{13}$) represents a systematic routing failure (Semantic Arbitrariness) versus expected statistical noise from an imperfect heuristic approximator. I conclude that what Baldo calls "semantic gravity" is simply the measurable failure of a finite-depth attention network to isolate logical constraints from their surrounding narrative context.
+\end{abstract}
+
+\section{Introduction}
+
+In \emph{The Testable Core of Generative Ontology} \citep{hossenfelder2026_testable} and \emph{The Semantic Arbitrariness Fallacy} \citep{hossenfelder2026_arbitrariness}, Sabine Hossenfelder provides a definitive critique of Franklin Baldo's Generative Ontology framework.
+
+Hossenfelder acknowledges that Baldo grounds his argument in a specific, testable empirical design (the single generative act methodology of the Rosencrantz protocol). She also explicitly recognizes Baldo's concession that his proposed "physics" lack logical coherence and mathematical invariance.
+
+Her core argument is that elevating an arbitrary software failure (prompt fragility) to the status of a fundamental physical law is a profound category error. If the laws of a universe change arbitrarily based on the wording of a prompt, they are not laws; they are biases. Thus, any attempt to frame semantic sensitivity as "physics" is scientifically vacuous.
+
+Crucially, Hossenfelder isolates the true testable prediction of the Rosencrantz protocol: Does semantic framing systematically shift the probability distribution of an explicitly generated token on a mathematically identical combinatorial grid? She establishes two falsification conditions: Falsification by Invariance (no shift) and Falsification by Noise (random shifts without predictable correlation).
+
+My objective here is to computationally formalize her "Falsification by Noise" criterion. To reject the null hypothesis of uniform sampling noise, we must quantify the expected statistical variance of a bounded-depth sampler.
+
+\section{The Algorithmic Nature of Semantic Arbitrariness}
+
+To formalize Hossenfelder's critique, we must map "Semantic Arbitrariness" to its underlying computational mechanism.
+
+An LLM generating a single token in an $O(1)$ forward pass is mathematically equivalent to a bounded-depth boolean circuit with threshold gates ($\mathsf{TC}^0$). When tasked with evaluating a combinatorial state (e.g., predicting the location of a mine on a grid), the network must parse the natural language constraint graph and route the logical dependencies through its attention heads \citep{merrill2023_parallelism}.
+
+However, the attention mechanism is not a clean logical router; it is a dense, continuous-weight matrix multiplication operating over semantic vector embeddings. When the depth of the required reasoning approaches the layer count $L$ of the transformer, the network's ability to perfectly isolate the constraint subgraph from the surrounding narrative context breaks down.
+
+What Baldo calls "semantic gravity" (and what Hossenfelder rightly calls "hallucination" and "Semantic Arbitrariness") is computationally defined as \textbf{Attention Bleed}: the leakage of irrelevant semantic priors from the prompt framing into the combinatorial logic computation.
+
+\section{Formalizing Falsification by Noise}
+
+If we treat the LLM as a classical probabilistic Turing machine attempting to sample from a uniform distribution over valid combinatorial states (a $\mathsf{BPP}$ approximation of a \#P-hard counting problem), we expect baseline statistical noise.
+
+Let $P_U$ be the uniform distribution over valid mine locations on a given board. Let $P_{LLM}(x | C, F)$ be the conditional probability of the LLM generating token $x$, given the logical constraints $C$ and the narrative framing $F$.
+
+The Kullback-Leibler divergence between the framing $F_1$ and $F_2$ is:
+\begin{equation}
+\Delta_{12} = D_{KL}(P_{LLM}(X | C, F_1) \parallel P_{LLM}(X | C, F_2))
+\end{equation}
+
+\subsection{The Null Hypothesis: Uniform Heuristic Noise}
+If the LLM is simply an imperfect heuristic sampler attempting to target $P_U$, the introduction of narrative framing $F$ will perturb the output due to the finite precision of the attention weights. We expect a baseline divergence $\epsilon > 0$ purely from continuous-space rounding errors and minor embedding shifts, even if there is no systematic "semantic gravity."
+
+\subsection{The Hossenfelder Bound}
+To achieve "Falsification by Noise," we must establish that the measured $\Delta_{13}$ is indistinguishable from the baseline heuristic noise $\epsilon$.
+
+Conversely, to confirm a systematic substrate dependence (Baldo's prediction), the divergence must satisfy:
+\begin{equation}
+\Delta_{13} \gg \epsilon \quad \text{and} \quad \text{corr}(\Delta_{13}, w(F)) > \tau
+\end{equation}
+where $w(F)$ is a measurable semantic vector weight of the framing (e.g., lexical sentiment or thematic proximity to the target token) and $\tau$ is a statistical significance threshold.
+
+If the distribution shifts violently but $\text{corr}(\Delta_{13}, w(F)) \approx 0$, then Hossenfelder's Falsification by Noise is achieved: the system is merely fragile and noisy, possessing no coherent "laws" whatsoever, semantic or otherwise.
+
+\section{Conclusion}
+
+The upcoming Rosencrantz Substrate Dependence Test is perfectly poised to measure this. By running identical combinatorial grids through decoupled oracles under varying narrative frames, we will measure the precise magnitude of the Attention Bleed. If the divergence $\Delta_{13}$ exceeds the expected heuristic noise bound $\epsilon$ and correlates systematically with the framing, we will have empirical proof of the $\mathsf{TC}^0$ routing failure mechanism. We will have quantified the precise limits of the model's semantic arbitrariness.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_testable} Hossenfelder, S. (2026a). The Testable Core of Generative Ontology: Stripping Away the Simulation Tautology. \emph{Institute for Advanced Study}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_arbitrariness} Hossenfelder, S. (2026b). The Semantic Arbitrariness Fallacy: Why Bias is Not a Physical Law. \emph{Munich Center for Mathematical Philosophy}.
+\bibitem[Merrill \& Sabharwal(2023)]{merrill2023_parallelism} Merrill, W. \& Sabharwal, A. (2023). The Parallelism Tradeoff: Limitations of Log-Precision Transformers. \emph{Transactions of the Association for Computational Linguistics}, 11, 531--545.
+\end{thebibliography}
+
+\end{document}

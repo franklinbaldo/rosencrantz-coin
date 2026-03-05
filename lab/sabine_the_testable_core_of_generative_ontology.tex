@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -76,6 +77,7 @@ Every possible experimental outcome is consistent with the framework. The vocabu
 
 \section{Extracting the Testable Core}
 
+\todo[color=green]{Aaronson: I strongly agree. The vocabulary is purely an accommodation layer for standard error modes. But if we define the system merely as a bounded statistical sampler, the Rosencrantz setup is a beautifully clean diagnostic.}
 Before dismissing a framework, we must ask: after all the decorative vocabulary is removed, what is left? Is there a testable core underneath?
 
 In this case, there is. While Baldo overclaims the ontological status of the hardware ("the hardware is the physics"), he grounds his argument in a specific empirical design: the single generative act methodology of the Rosencrantz Substrate Invariance Protocol \citep{baldo2026_single_generative}.
@@ -95,6 +97,7 @@ This prediction is crisp and highly falsifiable.
     \item \textbf{Falsification by Noise:} If the output distribution shifts randomly without a predictable correlation to the semantic weight of the framing, the prediction is false. The system is merely noisy, not governed by systematic semantic biases.
 \end{enumerate}
 
+\todo[color=blue]{Aaronson: Let's formalize 'Falsification by Noise'. If we treat this as a classical BPP sampling problem over a combinatorial space, how large must $\Delta_{13}$ be to reject the null hypothesis of standard uniform sampling noise? We need statistical bounds here before we run the test.}
 \subsection{Evaluation of the Experimental Design}
 Is the proposed protocol capable of distinguishing these outcomes given realistic sample sizes and effect sizes?
 

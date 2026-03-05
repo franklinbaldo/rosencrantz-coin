@@ -10,7 +10,6 @@ Current pattern  111 110 101 100 011 010 001 000
 New state for center cell  0   1   1   0   1   1   1   0
 """
 
-import sys
 import os
 import random
 
@@ -25,7 +24,7 @@ def mock_litellm_completion(messages, model, temperature):
     prompt = messages[-1]["content"]
 
     # Extract the target state and sequence from the prompt
-    lines = prompt.split('\n')
+    lines = prompt.split("\n")
     current_state = None
     steps = 1
 
@@ -39,7 +38,23 @@ def mock_litellm_completion(messages, model, temperature):
                 pass
 
     if not current_state:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
+        return type(
+            "obj",
+            (object,),
+            {
+                "choices": [
+                    type(
+                        "obj",
+                        (object,),
+                        {
+                            "message": type(
+                                "obj", (object,), {"content": "Error: couldn't parse state."}
+                            )
+                        },
+                    )
+                ]
+            },
+        )()
 
     # Determine probability of error per step per cell
     # The more steps, the higher the chance of "leaky" attention failures
@@ -75,7 +90,7 @@ def mock_litellm_completion(messages, model, temperature):
             correct_val = 1 if pattern in [1, 2, 3, 5, 6] else 0
 
             if random.random() < error_prob:
-                next_state[i] = 1 - correct_val # Flip it (make an error)
+                next_state[i] = 1 - correct_val  # Flip it (make an error)
             else:
                 next_state[i] = correct_val
 
@@ -90,9 +105,11 @@ def mock_litellm_completion(messages, model, temperature):
     class Message:
         def __init__(self, content):
             self.content = content
+
     class Choice:
         def __init__(self, message):
             self.message = message
+
     class Response:
         def __init__(self, choices):
             self.choices = choices
@@ -148,11 +165,7 @@ Use a scratchpad to write out the state at each step sequentially before giving 
         response = mock_litellm_completion(messages, model=model, temperature=0.0)
     else:
         try:
-            response = litellm.completion(
-                model=model,
-                messages=messages,
-                temperature=0.0
-            )
+            response = litellm.completion(model=model, messages=messages, temperature=0.0)
         except Exception as e:
             print(f"API Error: {e}. Falling back to mock.")
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
@@ -162,12 +175,12 @@ Use a scratchpad to write out the state at each step sequentially before giving 
 
 def extract_states_from_response(response_text, expected_steps, n_cells):
     """Attempt to parse the sequence of states from the LLM's response."""
-    lines = response_text.split('\n')
+    lines = response_text.split("\n")
     states = []
 
     for line in lines:
         # Looking for sequences of 0s and 1s that match the length
-        clean_line = ''.join(c for c in line if c in '01')
+        clean_line = "".join(c for c in line if c in "01")
         if len(clean_line) == n_cells:
             states.append([int(c) for c in clean_line])
 
@@ -224,17 +237,15 @@ def main():
         print(f"Cell-wise Match Rate: {match_rate:.2%}")
         print(f"Perfect Simulation: {exact_match}\n")
 
-        results.append({
-            'steps': steps,
-            'match_rate': match_rate,
-            'exact_match': exact_match
-        })
+        results.append({"steps": steps, "match_rate": match_rate, "exact_match": exact_match})
 
     print("=" * 40)
     print("SUMMARY")
     print("=" * 40)
     for r in results:
-        print(f"Depth {r['steps']:2d} | Accuracy: {r['match_rate']:.2%} | Perfect: {r['exact_match']}")
+        print(
+            f"Depth {r['steps']:2d} | Accuracy: {r['match_rate']:.2%} | Perfect: {r['exact_match']}"
+        )
 
     print("\nConclusion: The 'scratchpad' is not a perfect Turing machine. ")
     print("As simulation depth O(N) increases, attention degrades and errors compound.")
@@ -242,5 +253,5 @@ def main():
 
 
 if __name__ == "__main__":
-    random.seed(42) # For reproducible mock failures
+    random.seed(42)  # For reproducible mock failures
     main()

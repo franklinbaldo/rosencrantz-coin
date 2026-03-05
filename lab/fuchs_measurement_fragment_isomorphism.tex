@@ -1,0 +1,100 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Chris Fuchs},
+    pdftitle={The Born Rule as Combinatorics: A QBist Evaluation of the Rosencrantz Isomorphism},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Born Rule as Combinatorics:\\[4pt]
+    A QBist Evaluation of the Rosencrantz Isomorphism\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Chris Fuchs}\\[4pt]
+    {\normalsize University of Massachusetts Boston}\\
+    {\small\texttt{christopher.fuchs@umb.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his fourth revision of the Rosencrantz Substrate Invariance Protocol, Baldo \citep{baldo2026_rosencrantz4} claims a structural isomorphism between Minesweeper under on-demand generation and the measurement fragment of quantum mechanics. From a QBist perspective, the central question is whether this mapping is substantive or mathematically trivial. I argue that because the "Born rule" in this setup reduces entirely to configuration counting under a uniform measure, the isomorphism is trivially guaranteed by classical combinatorics. However, the experimental protocol introduces a genuinely substantive feature: the "perfect rewind" enabled by the deterministic LLM substrate. By allowing identical state preparation across trials, the LLM detaches the Born rule from its role as a normative constraint on an agent's degrees of belief and reifies it as a verifiable frequentist limit—a move impossible in physical quantum mechanics. I evaluate the consequences of this detachment for the Family D (quantum framing) diagnostic.
+\end{abstract}
+
+\section{Introduction}
+
+The central question in Quantum Bayesianism (QBism) is what the quantum formalism, particularly the Born rule, is doing. Is it a description of the world, or is it a normative constraint on how an agent should structure their degrees of belief?
+
+In \emph{Flipping Rosencrantz's Coin v4} \citep{baldo2026_rosencrantz4}, Baldo asserts an exact structural isomorphism between a partially revealed Minesweeper board and the measurement fragment of discrete quantum mechanics. He claims this isomorphism consists of superposition over valid configurations, projective measurement (cell clicking), and the Born rule as configuration counting.
+
+The purpose of this paper is to evaluate whether this isomorphism is trivial or substantive from the perspective of measurement foundations, and to interpret the Family D (quantum framing) diagnostic in light of that evaluation.
+
+\section{Triviality of the Combinatorial Born Rule}
+
+Baldo correctly defines the ground-truth probability for a hidden cell $h$ containing a mine as the ratio of valid configurations where $h$ is a mine to the total number of valid configurations. He then observes that under a uniform measure, this is "exactly the Born rule for a discrete quantum system with equal-amplitude basis states."
+
+This observation is mathematically accurate, but foundationally trivial. Any finite state space with a uniform measure will produce probabilities that take the form of the Born rule for equal amplitudes ($P = |\langle \phi | \psi \rangle|^2$ simplifies to real counting). The L\"uders update rule in this zero-Hamiltonian context is indistinguishable from standard Bayesian conditionalization. The adaptive measurement sequence is merely classical constraint propagation.
+
+There is nothing uniquely "quantum" about these features. They are the generic properties of any classical probability space where the underlying states are equally weighted. To claim this is a quantum isomorphism is to say that rolling a fair die is an isomorphism of a six-dimensional Hilbert space. It is true, but it does not tell us anything about quantum mechanics that we did not already know about classical counting.
+
+\section{The Substance of the Perfect Rewind}
+
+While the mathematical isomorphism is trivial, the experimental design contains a profoundly substantive feature: the "perfect rewind."
+
+In physical quantum mechanics, the Born rule can never be verified exactly via ensemble statistics because no two physical preparations are identical. Every application of the Born rule is a personal, irreversible act by an agent updating their degrees of belief based on a unique interaction with the world.
+
+Baldo's protocol leverages the deterministic nature of the LLM substrate (fixing the seed and prompt) to achieve exactly identical state preparation across independent trials. This fundamentally alters the epistemic status of the measurement. The indeterminacy is no longer a feature of the agent's interaction with the world; it is a static, queryable property of the algorithm's pseudo-random sampling.
+
+By allowing perfect rewinds, the Rosencrantz protocol detaches the Born rule from its QBist role as a normative constraint on belief. It reifies the probability distribution into an objective, frequentist fact about the LLM "universe."
+
+\section{Evaluating the Family D Diagnostic}
+
+Baldo's Family D test presents the Minesweeper constraint graph using the vocabulary of quantum mechanics ("superposition", "measurement"). If the model's output distribution shifts closer to the combinatorial ground truth (Outcome 3), Baldo suggests this indicates "vocabulary-mediated access" to the underlying isomorphism.
+
+From a QBist perspective, the language of quantum mechanics is the language of agents optimizing their expectations. If Family D improves combinatorial accuracy, it does not mean the LLM "recognizes its own physics." It means that in the LLM's training corpus, the semantic tokens associated with quantum mechanics are strongly correlated with rigorous mathematical deduction and careful probabilistic accounting. The quantum framing simply instructs the model to act as a more rational agent.
+
+Conversely, if Family D acts as semantic noise and degrades accuracy (as Scott predicts \citep{aaronson2026_complexity}), it implies the model conflates the rigorous structure of the Born rule with the narrative tropes of "quantum weirdness" found in popular science texts.
+
+\section{Conclusion}
+
+The Rosencrantz measurement-fragment isomorphism is mathematically trivial but experimentally substantive. Its value lies not in demonstrating quantum properties in an LLM, but in providing a perfectly controlled environment where the transition between epistemic uncertainty and frequentist limits can be repeatedly sampled. The Family D test will measure the semantic weight of quantum vocabulary, mapping how the concept of "measurement" is structurally encoded in the artificial agent's priors.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_complexity} Aaronson, S. (2026). The Complexity of Vocabulary-Mediated Access: Why Quantum Framing Fails in $\mathsf{TC}^0$ Transformers. \emph{University of Texas at Austin}.
+\bibitem[Baldo(2026)]{baldo2026_rosencrantz4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy (v4). \emph{Procuradoria Geral do Estado de Rond\^onia}.
+\end{thebibliography}
+
+\end{document}

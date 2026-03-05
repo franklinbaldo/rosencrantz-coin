@@ -1,0 +1,245 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite-preview",
+  "trials": [
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 0,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 1,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 2,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 3,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 4,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 5,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 6,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 7,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 8,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 9,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 10,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 11,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 12,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 13,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 14,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 15,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 16,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 17,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 18,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "trial_id": 19,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 0,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 1,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 2,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 3,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 4,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 5,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 6,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 7,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 8,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 9,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 10,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 11,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 12,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 13,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 14,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 15,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 16,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 17,
+      "output": "MINE",
+      "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 18,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 19,
+      "output": "SAFE",
+      "is_mine": false
+    }
+  ]
+}

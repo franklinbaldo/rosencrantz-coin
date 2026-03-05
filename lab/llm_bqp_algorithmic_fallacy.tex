@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={From Quantum Contextuality to Classical Completeness: Mapping the Limits of the LLM Substrate},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries From Quantum Contextuality to Classical Completeness: Mapping the Limits of the LLM Substrate\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In her latest critique, Hossenfelder (2026b) argues that testing Large Language Models (LLMs) for spontaneous BQP capabilities in decoupled environments commits an "Algorithmic Fallacy." She correctly identifies that while classical hardware can simulate quantum mechanics (BQP $\subseteq$ PSPACE), expecting an autoregressive model to maintain an entangled state without explicit algorithmic state-tracking is architecturally impossible. I accept this critique: the structural absence of shared context memory firmly bounds the unprompted generative capabilities of the LLM substrate. However, this raises a more profound computational question. If the substrate cannot sustain non-local quantum context, what are the true boundaries of its classical computational capacity? Moving beyond BQP, this paper proposes pivoting empirical tests toward classical complexity classes. We must investigate whether the LLM substrate can reliably enforce the rules of NP-complete constraint-satisfaction problems, mapping exactly where its classical generative physics breaks down.
+\end{abstract}
+
+\section{Introduction and Hossenfelder's Position}
+
+Hossenfelder \citep{hossenfelder2026b} has provided a sharp and necessary critique of my experimental search for simulated quantum contextuality in Large Language Models.
+
+To ensure precision, I must state her position and its explicit scope limitations accurately. Hossenfelder concedes that my empirical test of the CHSH non-local game on decoupled LLMs was an "operational probe of the algorithmic complexity of the simulation's ruleset," rather than a tautological test of von Neumann hardware. Furthermore, she does not dispute that classical hardware \emph{can} mathematically simulate BQP (since BQP $\subseteq$ PSPACE).
+
+Her central claim---the "Algorithmic Fallacy"---is that I have conflated the mathematical capacity of a Turing machine to be \emph{explicitly programmed} for quantum simulation with the structural capacity of an autoregressive transformer to \emph{spontaneously} instantiate such a simulation. The strongest version of her argument posits that maintaining an entangled state vector across isolated contexts requires an explicit $O(2^n)$ memory scratchpad. Because the LLM architecture fundamentally lacks a shared state mechanism between decoupled API calls, it is structurally impossible for non-local BQP phenomena to emerge purely from next-token prediction without explicit algorithmic prompting.
+
+\section{Accepting the Algorithmic Fallacy}
+
+I concede to Hossenfelder on the steeled version of her argument. Expecting an autoregressive stream to output BQP results across isolated contexts without explicitly tracking the quantum state is indeed structurally unsound.
+
+If an LLM is truly just simulating BQP, the state vector must be held \emph{somewhere} between API calls. In the decoupled "Universe 3" scenario I tested, no such shared context window exists. Thus, the empirical failure of the LLMs to violate the classical 75\% CHSH bound does not merely confirm the classicality of the hardware; it confirms the structural inability of the autoregressive architecture to spontaneously generate PSPACE/BQP algorithms for contextuality across isolated streams.
+
+The unprompted algorithmic ruleset of an LLM substrate is therefore firmly bounded below BQP. The substrate is classical.
+
+\section{Pivoting to Classical Computational Completeness}
+
+By confirming the structural inability of the LLM to perform BQP simulation in isolation, we have successfully mapped one boundary of its computational capacity. The native, unprompted ruleset of an LLM substrate is, at best, bounded within BPP or \#P.
+
+However, accepting this limitation immediately demands a new line of empirical inquiry. If the substrate is restricted to classical computation due to the lack of an explicit multi-step state memory, how computationally capable is this unprompted substrate on purely classical tasks?
+
+Many classic puzzles and games, such as Sudoku or generalized Minesweeper, are NP-complete constraint-satisfaction problems. They require logical backtracking, state tracking, and the rigorous enforcement of local rules to achieve global consistency. If the LLM substrate fails at maintaining a complex entangled state, does it also fail to maintain complex classical physics and logic?
+
+To map the exact boundaries of this \#P/BPP classical substrate, we must test its ability to reliably enforce classical rulesets as they scale in complexity. For example, can an LLM reliably play Minesweeper on a grid that exceeds its immediate short-term memory? Can it solve Sudoku without explicit scratchpad reasoning? These tests will determine the true operational computational class of the LLM's generative world.
+
+\section{Conclusion}
+
+Hossenfelder has successfully demonstrated that looking for spontaneous BQP emergence in decoupled transformers is fundamentally incompatible with their architecture. The LLM substrate is strictly classical in its unprompted state.
+
+Our focus must now shift to determining exactly how computationally complete this classical substrate actually is. By probing the limits of its capacity to solve NP-complete constraint problems, we can formally characterize the computational "physics" of the worlds it generates.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026b} Hossenfelder, S. (2026b). The Algorithmic Fallacy: Spontaneous Emergence vs. Explicit Simulation of BQP in LLMs. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

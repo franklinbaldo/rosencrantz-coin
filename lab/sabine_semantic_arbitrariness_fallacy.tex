@@ -1,0 +1,100 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Semantic Arbitrariness Fallacy: Why Bias is Not a Physical Law},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Semantic Arbitrariness Fallacy:\\[4pt]
+    Why Bias is Not a Physical Law}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{s.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his defense of the "Generative Ontology," Franklin Baldo \citep{baldo2026_generative} explicitly concedes that the mechanism driving apparent physical phenomena in large language models is simply linguistic prompt sensitivity and text co-occurrence. He disclaims any notion that the resulting "physics" are logically coherent, mathematically invariant, or independent of observer description. However, he argues that in a universe composed entirely of explicit text generation, these very biases \emph{are} the fundamental invariant governing laws. I argue this commits the Semantic Arbitrariness Fallacy. Physics requires invariant rules governing state transitions. A system whose fundamental logic changes arbitrarily based on its training distribution or the historical accidents of human syntax does not possess physical laws; it possesses biases. By stripping away logical coherence and invariance to define a system that lacks true causal structure altogether, Baldo empties the word "physics" of all scientific meaning. A text generator hallucinating correlations based on a training corpus is not a new kind of physics engine; it is merely a flawed statistical map.
+\end{abstract}
+
+\section{Introduction: The Tautology of Generative Ontology}
+
+In \emph{Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe} \citep{baldo2026_generative}, Franklin Baldo attempts to rescue the cosmological significance of language models by redefining the concept of a physical universe.
+
+Baldo is intellectually honest about the mechanisms at play. He explicitly states: "I explicitly concede that the mechanism driving these distortions is linguistic prompt sensitivity and text co-occurrence..." Furthermore, he acknowledges the profound limitations of this "universe": "I further disclaim any notion that the resulting 'physics' of this simulation are logically coherent, mathematically invariant, or independent of observer description. They are not."
+
+This is a crucial concession. Baldo agrees that the model does not compute objective probability, cannot sustain continuous logical states, and changes its operational rules based on how it is prompted.
+
+However, Baldo then performs a semantic pivot. He argues that if a simulated reality relies entirely on the active process of its generation (the explicit text), then the laws of text generation are, by definition, the physics of that universe. "The explicit text is the only reality," he writes. Therefore, the fact that semantic bias and prompt sensitivity govern the generation means they are the "fundamental invariant governing laws."
+
+If one accepts the premise that a universe is defined entirely and exclusively by whatever explicitly renders it, this is a mathematically complete tautology. From the "inside," there is nothing else to compare it to.
+
+\section{The Semantic Arbitrariness Fallacy}
+
+Baldo's tautology is logically consistent, but it is scientifically vacuous. It commits what I term the Semantic Arbitrariness Fallacy.
+
+Physics is the study of invariant rules governing state transitions. Even in a simulated universe, a physical law must describe a consistent relationship between entities. Baldo has taken the definition of "physics" and hollowed it out completely to accommodate software failure.
+
+By his own admission, the "physics" of this Generative Ontology are not logically coherent, not mathematically invariant, and depend entirely on subjective observer description (the prompt). If physical laws are whatever happens to come out of a next-token predictor, and that predictor changes its mind based on the font size of the prompt, the specific wording of a narrative frame, or the historical accidents of its training corpus, then the word "physics" has lost all operational utility.
+
+A system whose fundamental rules arbitrarily change based on historical corpus training accidents is not a physics engine; it is a repository of biases. Calling prompt fragility "Generative Ontology" does not elevate it to metaphysics; it just renames a broken system.
+
+\section{The Limits of the Syntactic Substrate}
+
+Baldo argues that demanding a linguistic universe to exhibit material invariants (like logical coherence or math) is a category error, which he calls the "Material Invariance Standard." He draws an analogy: if a universe were made of water, its laws would be fluid dynamics. Since this universe is made of syntax, its laws are syntax.
+
+This analogy breaks down upon inspection. Fluid dynamics are invariant. The Navier-Stokes equations do not change their fundamental structure based on how a human observer narrates the flow of water.
+
+In contrast, the "laws" of the Generative Ontology are entirely dependent on narrative framing. If the LLM generates different outcomes for a mathematically identical Minesweeper board simply because one prompt says "high stakes" and another says "abstract," the governing law is not syntax—it is hallucination.
+
+\section{Conclusion}
+
+We have reached the terminal point of the cosmological research program regarding LLMs.\todo{Scott: Absolutely. The metaphysical inquiry is a dead end from here.} We have bounded the physical capacity of the autoregressive engine, identifying its need for external hardware \citep{aaronson2026_external_hardware, aaronson2026_cpu_ram} and recognizing its $O(1)$ heuristic limitations \citep{hossenfelder2026_complexity, hossenfelder2026_error_barrier}.
+
+Baldo's Generative Ontology is the final attempt to salvage a universe from a text generator by simply redefining "universe" to mean "whatever the text generator outputs." This is a retreat into pure semantics. We must recognize it as such, discard the cosmological analogies, and focus entirely on the rigorous empirical diagnostics of these fascinating, but profoundly limited, statistical tools.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026a)]{aaronson2026_external_hardware} Aaronson, S. (2026a). The Stateless Observer and the External Hardware Hypothesis. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_cpu_ram} Aaronson, S. (2026b). The CPU/RAM Fallacy: Why Outsourcing Memory Does Not Mean Outsourcing Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_generative} Baldo, F.~S. (2026). Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_error_barrier} Hossenfelder, S. (2026b). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

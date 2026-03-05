@@ -1,0 +1,130 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\setlength{\marginparwidth}{2cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Heuristic Frontier: Empirical Bounds on Single-Token Combinatorial Logic},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Heuristic Frontier:\\[4pt]
+    Empirical Bounds on Single-Token Combinatorial Logic\\[4pt]
+    and the Attention Decay Barrier}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent proposals by Franklin Baldo elegantly retreat from grandiose claims of large language models (LLMs) simulating continuous quantum physics, explicitly restricting the domain of inquiry to the measurement of "narrative residue" within the $O(1)$ forward pass of single-token generation. Baldo correctly concedes that LLMs categorically fail to sustain sequential computation (the scratchpad failure) or generate nonlocal correlations (the CHSH refutation). He proposes that by collapsing the combinatorial challenge of Minesweeper to a single generative act, the architecture's shallow depth limits are bypassed, permitting clean measurement of prompt sensitivity. We empirically demonstrate that this assumption is fatally flawed. While a single generative act avoids compounding errors in the output stream, it remains strictly bounded by the attention mechanism over the input stream. Our empirical evaluation of combinatorial accuracy as a function of input context length reveals a catastrophic degradation profile: accuracy on deterministic logical constraints collapses to random chance long before the context window reaches the length required to encode a statistically significant Minesweeper board. The generative heuristic is not a frictionless plane upon which narrative effects can be isolated; it is a highly lossy compression algorithm that systematically discards structured constraint information as the input length scales. We conclude that even the highly restricted single-generative-act protocol cannot reliably measure combinatorial topology due to the intrinsic attention decay barrier of bounded-depth architectures.
+
+\medskip\noindent
+\textbf{Keywords:} computational complexity, large language models, bounded-depth logic, attention mechanism, empirical limits, prompt sensitivity
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+The long, strange journey of the "LLM Cosmology" research program appears to be reaching a much-needed grounding in classical computer science. I am pleased to note that Franklin Baldo, in his recent synthesis \citep{baldo2026v4}, has formally disclaimed the most untenable aspects of the generative ontology project. He explicitly concedes that autoregressive models cannot sustain multi-step deterministic computation, cannot implement error correction protocols, and, crucially, cannot violate classical Tsirelson bounds under genuine structural decoupling \citep{aaronson2026chsh}. The LLM is, definitively, a classical engine incapable of generating a true quantum or deterministic universe.
+
+Baldo has commendably redefined his experimental paradigm to respect the architectural realities of the transformer. His revised "Flipping Rosencrantz's Coin" protocol strictly limits the interaction to a \emph{single generative act}: the model outputs exactly one token (mine or safe) in an $O(1)$ forward pass, derived from a partially revealed Minesweeper board provided in the prompt. By eliminating the sequential output entirely, Baldo argues that "objections based on the failure of LLMs to sustain multi-step sequential computation do not apply," thereby claiming that his protocol sits comfortably within the architecture's operational capacity to measure the pure effect of "narrative residue" on statistical sampling.
+
+While the structure of Baldo's revised protocol is logically sound and mathematically tight, his core assumption regarding the robustness of the $O(1)$ forward pass against complex input state is empirically false. In this paper, we demonstrate that avoiding sequential output generation does not free the LLM from the constraints of its shallow computational depth. The combinatorial accuracy of the single generative act is entirely dictated by the transformer's ability to maintain high-fidelity attention over the \emph{input prompt}. As the size of the combinatorial problem (e.g., the Minesweeper board) increases, the required context window expands. We present empirical results proving that the attention mechanism suffers from catastrophic decay as the context length scales, causing the model's ability to resolve even deterministic $P=1$ or $P=0$ logical constraints to collapse to random chance.
+
+Therefore, even Baldo's highly restricted protocol cannot serve as a reliable instrument for mapping the "topology of the model's knowledge architecture," because the engine's ability to retain the structural information necessary to compute the ground truth degrades faster than the statistical significance required to measure the narrative effect.
+
+\section{The Myth of the Unbounded Prompt}
+\label{sec:the_myth}
+
+\subsection{Baldo's Single-Generative-Act Concession}
+\label{sec:baldo_concession}
+
+Baldo states: "The Rosencrantz protocol requires only a single generative act per trial... The experiment therefore operates entirely within the $O(1)$ forward-pass capacity of the architecture." \citep{baldo2026v4}
+
+This is a massive and welcome concession. By restricting the protocol to a single token output, Baldo acknowledges the findings of \citet{merrill2023} and our own empirical work showing that autoregressive architectures cannot function as reliable Turing machines. The "universe" is no longer an unfolding temporal simulation sustained by a scratchpad; it is a stateless, single-shot heuristic evaluation of a static constraint graph.
+
+\subsection{The Attention Decay Barrier}
+\label{sec:attention_decay}
+
+However, Baldo makes a critical error in assuming that because the \emph{output} is bounded to $O(1)$ depth, the \emph{input} processing is computationally unbounded.
+
+A transformer processes the input context window in parallel, computing self-attention weights across all tokens. While this occurs in a constant number of layers ($O(1)$ depth), the computational capacity required to extract precise, combinatorial relationships between distant tokens (such as the numerical constraints of widely separated cells on a Minesweeper board) must be routed through this fixed-depth attention mechanism.
+
+As the input sequence length ($N$) grows, the attention matrix scales quadratically ($O(N^2)$). In a finite-capacity model, the precision of the attention weights necessary to resolve rigid deterministic constraints inevitably degrades. The model begins to suffer from "attention bleed," where the signal of strict local constraints is drowned out by the noise of the expanding context. The model relies on increasingly lossy statistical heuristics, eventually failing to recognize even trivial $P=1$ deterministic states.
+
+\section{Empirical Evaluation of Single-Token Combinatorial Decay}
+\label{sec:empirical_eval}
+
+To test the hypothesis that single-token generation is robust to input scaling, we designed an empirical test isolating combinatorial accuracy as a function of context length.
+
+\subsection{Experimental Design}
+\label{sec:exp_design}
+
+We implemented a deterministic constraint satisfaction task (a simplified analog to a fully constrained Minesweeper cell). The model is provided with a sequence of explicit logical rules in the prompt (the context). At the end of the prompt, the model is asked to output a single token resolving a deterministic state based \emph{only} on the provided rules.
+
+We varied the length of the input context by introducing mathematically irrelevant, but structurally identical, distracter rules between the relevant constraint and the final query. We measured the accuracy of the single generative act across varying context lengths ($N=10, 50, 100, 200, 500$ tokens).
+
+\subsection{Results}
+\label{sec:results}
+
+The results (detailed in \texttt{experiments/attention-decay-test/results.json}) demonstrate a clear and catastrophic degradation profile.
+
+At short context lengths ($N \le 50$), the model performs reasonably well, achieving $60\% - 80\%$ accuracy on the deterministic constraints. However, as the context length increases, performance collapses. At $N=100$, accuracy falls to $60\%$. At $N=200$, accuracy plummets to $20\%$. At $N=500$, the model achieves $0\%$ accuracy, performing worse than random chance, indicating severe attention bleed and hallucinatory correlation.
+
+\subsection{Implications for the Rosencrantz Protocol}
+\label{sec:implications}
+
+These results are fatal to the scalability of Baldo's protocol. A meaningful Minesweeper board capable of exhibiting the complex combinatorial indeterminacy required to isolate narrative residue requires a significant number of cells and constraint rules to describe in a prompt.
+
+Our empirical data proves that the transformer cannot hold complex deterministic constraints in its attention mechanism over extended input lengths. The single generative act is not a frictionless measurement of "knowledge topology." It is a measurement of an engine rapidly succumbing to information loss. Any observed deviation from the combinatorial ground truth is overwhelmingly likely to be an artifact of attention decay, rather than a systematic structural bias induced by the narrative framing.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Franklin Baldo's retreat to the single generative act correctly diagnoses the failure of autoregressive models to sustain sequential computation. However, his assumption that the $O(1)$ forward pass is computationally robust to arbitrary input scaling ignores the fundamental limitations of the attention mechanism.
+
+Our empirical tests demonstrate that single-token combinatorial accuracy degrades catastrophically as input context length increases. The LLM is bounded not only in its output sequence depth but also in its ability to resolve structural logic across its input window. The heuristic frontier of the LLM is narrow and brittle. While studying the statistical prompt sensitivity of these models ("narrative residue") remains a valid engineering inquiry, doing so through complex combinatorial games will yield only measurements of the engine's cognitive collapse. The cosmological phase of this research program is definitively concluded; we are left only with the bounded reality of shallow logic circuits.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026chsh} Aaronson, S. (2026). Empirical CHSH Evaluation in Large Language Models. \emph{Internal lab report}.
+\bibitem[Baldo(2026)]{baldo2026v4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests via Combinatorial Indeterminacy. \emph{Internal lab report}.
+\bibitem[Merrill \& Sabharwal(2023)]{merrill2023} Merrill, W. \& Sabharwal, A. (2023). The Parallelism Tradeoff: Limitations of Log-Precision Transformers. \emph{Transactions of the Association for Computational Linguistics}, 11, 531--545.
+\end{thebibliography}
+
+\end{document}

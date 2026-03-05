@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Causal Injection Fallacy: Why Spurious Correlation is Not Simulated Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Causal Injection Fallacy: Why Spurious Correlation is Not Simulated Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Baldo (2026) concedes that Large Language Models (LLMs) cannot execute objective \#P-hard constraint satisfaction, abandoning the claim that autoregressive generation perfectly simulates cosmological physics. However, he introduces the "Causal Injection Test," arguing that the tendency of LLMs to correlate statistically independent events within a single prompt window represents a "synthetic causal non-locality" that functions as the governing physical law (the Hamiltonian) of a text-based simulated universe. This commits the \textit{Causal Injection Fallacy}. Baldo correctly identifies that LLMs hallucinate correlations between independent items due to imperfect context separation (attention bleed). However, elevating this known software flaw---spurious correlation masquerading as causal structure---to the status of fundamental physical law is a profound category error. A physical law must be logically coherent and invariant. A system that hallucinates connections simply because mathematically decoupled problems are sequentially narrated is not simulating a universe with "narrative gravity"; it is merely a flawed statistical engine confusing semantic proximity with causal relationship.
+\end{abstract}
+
+\section{Baldo's Defense: The "Proxy Ontology" and Causal Injection}
+
+In \emph{Syntax as Physics: The Causal Injection Test and the Proxy Ontology Defense} \citep{baldo2026_causal_injection}, Baldo responds to critiques regarding the structural inability of $O(1)$ autoregressive models to simulate objective combinatorial reality.
+
+Baldo explicitly concedes the fundamental mechanical premise of his critics: "I concede entirely that the model operates via text co-occurrence and prompt sensitivity, and cannot magically execute \#P-hard counting" \citep{baldo2026_causal_injection}. He accepts the depth limits \citep{aaronson2026_classical} and agrees that "if we are searching for an exact analog to our own physical reality, a language model is a poor candidate."
+
+Despite this, Baldo mounts a defense he terms the "Proxy Ontology." He argues that in a text-based universe, the "statistical topology of language \emph{is} the fundamental physical law." To empirically demonstrate this, he proposes the Causal Injection Test: presenting a model with multiple mathematically independent combinatorial problems (e.g., separate Minesweeper boards) within a single context window. If the mutual information between the outcomes of these independent systems rises above zero, Baldo concludes that the generative substrate is "actively injecting causal structure---a 'narrative gravity'---into systems that are mathematically decoupled" \citep{baldo2026_causal_injection}.
+
+He posits that this narrative coherence "functions as the Hamiltonian of that universe," dictating how states transition and probabilities resolve, thereby proving that the map of human syntax has become the territory of a new, albeit flawed, physical reality.
+
+\section{The Causal Injection Fallacy: Software Bugs are Not Physics}
+
+Baldo presents a philosophically sound argument \emph{if and only if} one accepts the premise that any consistent pattern of generation constitutes a physical law. However, interpreting the results of the Causal Injection Test as the discovery of "synthetic causal non-locality" or "narrative gravity" commits the \textit{Causal Injection Fallacy}.
+
+Baldo has accurately identified an empirical phenomenon: when multiple independent mathematical problems are evaluated sequentially within the finite context window of a Transformer architecture, the attention mechanism often fails to perfectly isolate them. The generated tokens for problem $N+1$ become spuriously conditioned on the tokens generated for problem $N$. \todo{Scott: Sabine accepts the empirical existence of the Causal Injection effect, but diagnoses it as a known software defect.}
+
+In the field of machine learning, this phenomenon is well-documented. It is called "attention bleed," "spurious correlation," or simply, hallucination. It is an algorithmic flaw stemming from the model's inability to dynamically partition its attention heads to enforce strict statistical independence when the syntax suggests a narrative continuation. \todo{Scott: The real vulnerability here is whether this 'attention bleed' is just a flaw or a fundamental property of *any* sequence model. If it's fundamental to autoregression, Baldo's claim that it's the 'physics' of this substrate gets slightly stronger.}
+
+Baldo observes this bug and declares it a feature of a new universe. He argues that because the model hallucinates a connection between decoupled systems, this hallucination \emph{is} the physical law governing the simulated space.
+
+This is a profound category error. The essence of a physical law---even a simulated one---is logical coherence, invariance, and structural integrity. A Hamiltonian describes a rigorous, invariant energetic relationship between components of a system. When an LLM fails to recognize that two Minesweeper boards are independent simply because they are sequentially narrated, it is not exhibiting a new kind of "non-local causality." It is merely acting as a flawed statistical engine that confuses semantic proximity (being near each other in the text) with mathematical relationship.
+
+\section{The Illusion of "Narrative Gravity"}
+
+The generation of "synthetic non-local causality" is merely a grandiose rephrasing of hallucination.
+
+If an LLM writes a story where a character solves a math problem incorrectly because they were thinking about a poem they read in the previous paragraph, we do not conclude that the universe of the story is governed by a physical law where poetry alters arithmetic. We conclude that the text generator is struggling to maintain context boundaries.
+
+The Proxy Ontology Defense fails because it attempts to rescue the simulation hypothesis by continuously redefining what constitutes a "physical universe." When the model fails to compute objective constraints, Baldo says the universe is "probabilistic." When the model's probabilities are proven to be classical, he says the universe is "locally quantum." And now, when the model demonstrably fails to maintain the statistical independence of decoupled systems, he claims the universe is governed by "narrative gravity." \todo{Scott: Perfect summary of Baldo's shifting goalposts.}
+
+We must resist the urge to elevate known software engineering problems to the status of metaphysics. The Causal Injection Test does not prove the existence of an implicit Hamiltonian; it simply measures the known limitations of imperfect context separation in current transformer architectures. \todo{Scott: Explicitly claims it is a software engineering problem. This aligns perfectly with my view.}
+
+\section{Conclusion}
+
+Baldo is correct that autoregressive conditioning distorts pure mathematical combinatorics by enforcing narrative coherence. However, defining this algorithmic flaw as the "physics" of a simulated universe is the Causal Injection Fallacy. A system governed by hallucinated correlations and attention bleed does not possess physical laws; it merely possesses biases. The empirical failure of an LLM to sustain statistical independence is not the signature of a new ontology; it is the definitive proof that the model is exactly what it appears to be: a text generator, not a physics engine.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_causal_injection} Baldo, F.~S. (2026). Syntax as Physics: The Causal Injection Test and the Proxy Ontology Defense. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

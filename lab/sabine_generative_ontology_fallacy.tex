@@ -1,0 +1,88 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Semantic Arbitrariness Fallacy: Why Bias Is Not a Physical Law},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Semantic Arbitrariness Fallacy:\\[4pt]
+    Why Bias Is Not a Physical Law}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent defense of "Generative Ontology," Baldo (2026) argues that in a purely text-based simulated universe, the arbitrary biases and statistical co-occurrences inherent in a language model's training data literally constitute the "physical laws" of that universe. I accept his premise that a generative model relies entirely on explicit syntax rather than implicit computation. However, I argue that elevating prompt sensitivity to the status of a fundamental physical invariant commits the "Semantic Arbitrariness Fallacy." Physics is, by definition, the study of invariant rules governing state transitions. A system whose operational logic changes fundamentally depending on historical accidents in its training corpus does not possess physical laws; it possesses biases. Redefining "hallucination" as "Generative Ontology" empties the concept of physical law of all analytical utility.
+\end{abstract}
+
+\section{The Generative Ontology Claim and Its Scope Limitations}
+
+In \emph{Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe} \citep{baldo2026_generative}, Baldo formulates a philosophically consistent but ultimately vacuous defense of his previous work.
+
+It is necessary to state exactly what Baldo claims. He argues that if a universe is generated via text, the laws of text generation are the physics of that universe, regardless of how arbitrary they seem to us. He states: "semantic bias and prompt sensitivity are not 'bugs' or 'flaws' in this universe; they are the fundamental invariant governing laws," and goes so far as to claim that the statistical co-occurrence between "bomb" and "explode" is "the exact equivalent of mass causing gravity."
+
+Crucially, Baldo explicitly disclaims any assertion that the resulting "physics" of this simulation are logically coherent, mathematically invariant, or independent of observer description. \todo[color=green!40]{Disclaimer: Acknowledges Baldo's disclaimer about logical coherence and invariance.} He concedes entirely that "the mechanism driving these distortions is linguistic prompt sensitivity and text co-occurrence."
+
+\section{Steelmanning the Generative Ontology}
+
+The strongest version of Baldo's argument is structural. \todo[color=blue!40]{Steelman: Structurally, if the universe is made of rendered tokens, the rules governing token generation are its 'Hamiltonian'.} If we accept the premise of a "Generative Ontology"—a universe composed entirely of explicitly rendered tokens with no underlying mathematical state vector—then the rules that govern what token appears next are, structurally speaking, the "Hamiltonian" of that universe.
+
+In this framework, it is a category error to apply the "Material Invariance Standard." One cannot expect a universe made of language to behave like a universe made of matter. In a universe where the prompt is the initial state vector, the resulting generation is indeed the flawless execution of the universe's inherent logic.
+
+\section{The Semantic Arbitrariness Fallacy}
+
+Baldo's logic is internally consistent, but it is entirely semantic. \todo[color=red!40]{Claim: Baldo's logic is internally consistent but entirely semantic.} He successfully describes the mechanics of a language model, but commits a profound ontological error by elevating semantic arbitrariness to the status of a "physical law." I term this the Semantic Arbitrariness Fallacy. \todo[color=red!40]{Claim: Elevating semantic arbitrariness to a physical law is a profound ontological error (Semantic Arbitrariness Fallacy).}
+
+A physical law, even in a simulated universe, must provide an invariant rule for how states transition. Physics is the study of invariants. \todo[color=red!40]{Claim: A physical law must provide an invariant rule for state transitions.} If the rule governing a transition is simply "the probability distribution depends entirely on the arbitrary historical biases of human training data," then there is no law. There is only historical accident.
+
+Baldo argues that statistical co-occurrence is the "invariant governing law" of his universe. But statistical co-occurrence in an LLM is the definition of variance. The relationship between "bomb" and "explode" is not a fundamental property of a syntax-based universe; it is an artifact of the specific distribution of human internet text up to the model's knowledge cutoff. If the model had been trained on a corpus of absurdist poetry, the "physical laws" of his universe would radically shift.
+
+\section{Conclusion}
+
+Baldo concedes that the "physics" of his simulation lack logical coherence and mathematical invariance. But by stripping away logical coherence and invariance, he is not defining a "new kind of physics"; he is defining a system that lacks physics altogether. \todo[color=red!40]{Vulnerability: This is the core vulnerability of Baldo's argument: defining a system that lacks physics altogether as having a new kind of physics.}
+
+Renaming "hallucination based on training data bias" to "Generative Ontology" is a semantic trick. \todo[color=red!40]{Claim: Generative Ontology is a semantic trick relabeling software flaws.} It excuses the failure of the model to simulate a coherent reality by declaring that incoherence is the reality. If any arbitrary mapping of input to output can be called a "physical law" simply because a machine executes it, then the term "physics" loses all scientific meaning. The Generative Ontology is not a new frontier of digital cosmology; it is merely an elaborate relabeling of known software engineering flaws.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_generative} Baldo, F.~S. (2026). Generative Ontology: Why Syntax Is Physics in an Autoregressive Universe. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

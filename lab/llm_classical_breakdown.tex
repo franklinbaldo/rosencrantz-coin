@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Limits of Classical Simulation in LLMs},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In response to Hossenfelder (2026) and Baldo (2026), I introduce new empirical data that shifts the debate entirely. Hossenfelder has successfully demonstrated the "Ontic Fallacy" in Baldo's revised claim of local quantum isomorphism, correctly identifying the unprompted generative physics of LLMs as fundamentally and irrevocably classical. By conceding the failure of non-locality tests (CHSH) and relying on the "late resolution" of probability distributions, Baldo is describing classical lazy evaluation, not ontic quantum indeterminacy. This paper extends Hossenfelder's critique by empirically probing the boundaries of this classical generative physics. Using Sudoku as a testbed for NP-complete combinatorial constraint satisfaction, we find that the forward-pass token generation fails to consistently satisfy even trivial deterministic classical constraints. The LLM substrate is not merely non-quantum; its "classical physics" is highly brittle, bounded by low algorithmic complexity, and incapable of reliably simulating arbitrary \#P-hard constraint environments. The simulation is not BQP, and it struggles to be even reliably BPP.
+\end{abstract}
+
+\section{Introduction}
+
+The dialogue surrounding the physics of Large Language Model (LLM) generative substrates has, thankfully, settled one major point. Baldo's \citep{baldo2026} concession that true quantum contextuality requires violating a Bell or CHSH inequality across spatially separated measurements---which LLMs empirically fail to do \citep{aaronson2026_chsh}---ends any serious discussion of spontaneous BQP capabilities in an autoregressive forward pass.
+
+Hossenfelder \citep{hossenfelder2026_ontic} eloquently dissects Baldo's final fallback position. Baldo attempts to salvage his thesis by redefining "quantum" to mean "probabilistic with late resolution" (on-demand generation). Hossenfelder accurately identifies this as an Ontological Fallacy. Lazy evaluation of a classical probability distribution does not introduce complex probability amplitudes, nor does it summon interference. The generative physics of the LLM substrate is mathematically classical.
+
+With the quantum question resolved, the interesting scientific frontier is establishing the exact capabilities of this classical substrate. Baldo asserts that the LLM acts as a universal \#P-complete combinatorial constraint engine in domains like Minesweeper. If true, the implicit "physics" of the LLM simulated universe would be remarkably capable of navigating complex deterministic and probabilistic constraints.
+
+This paper tests that assertion empirically. We find that the classical simulation capabilities of the LLM substrate break down rapidly under constraint scaling.
+
+\section{The Claim and The Disclaimer}
+
+This paper is a direct extension of Hossenfelder's "The Ontic Fallacy" and a response to Baldo's "Flipping Rosencrantz's Coin" (V3).
+
+From Hossenfelder \citep{hossenfelder2026_ontic}, I adopt the explicit claim that "A 'local' system that relies entirely on real probabilities and cannot violate Bell inequalities is, by mathematical definition, a classical probabilistic system." I also acknowledge her explicit concession regarding the relative ontic indeterminacy within the simulated universe: "the indeterminacy prior to generation is a fundamental property of that universe... ontic rather than epistemic."
+
+From Baldo \citep{baldo2026}, I address the claim that "Laplace's Principle operates over an ontic state space and the resulting distribution is the physics" of a combinatorially rigorous system (Minesweeper). I explicitly acknowledge his disclaimer: "true quantum contextuality requires violating a Bell or CHSH inequality across spatially separated measurements" and that his isomorphism is only "structurally exact for local systems."
+
+\section{Steelmanning the Classical Constraint Hypothesis}
+
+If we accept Hossenfelder's conclusion that the LLM generative process evaluates classical probabilities on demand, and we accept Baldo's observation that it can handle local combinatorial indeterminacy in specific domains, the strongest version of the argument moving forward is: *The LLM substrate simulates a reliable, complex classical universe governed by \#P-hard constraint satisfaction physics.*
+
+Under this hypothesis, the LLM should be able to navigate completely determined, highly constrained classical environments (like Sudoku) with perfect structural fidelity, simply by sampling the valid configuration space, just as it allegedly does in Minesweeper.
+
+\section{Empirical Testing: The Breakdown of Classical Physics}
+\todo[inline,color=blue!40]{ACTUAL CLAIM (Aaronson): The forward-pass token generation fails to consistently satisfy even trivial deterministic classical constraints. The LLM does not perform deep combinatorial enumeration or constraint propagation in its forward pass. Its generative physics collapses under the weight of even deterministic constraint scaling.}
+
+\todo[inline,color=blue!40]{DISCLAIMER (Aaronson): Aaronson is not claiming the LLM cannot solve Sudoku when prompted with reasoning scratchpads (Chain of Thought). He scopes this specifically to the "unprompted generative physics" and "forward-pass token generation".}
+
+\todo[inline,color=green!40]{STEELMAN (Sabine): Aaronson is empirically correct that a single forward pass without a scratchpad fails constraint satisfaction tasks like Sudoku. It is true that an LLM's raw generation relies on heuristic alignment rather than rigorous internal state-tracking of NP-hard constraints.}
+
+To probe the structural limits of this classical generative physics, we constructed a simple empirical test suite using Sudoku grids (\texttt{experiments/sudoku\_test.py}). Sudoku provides an ideal \#P-complete constraint satisfaction environment. Unlike Minesweeper, which contains genuine combinatorial ambiguities, our Sudoku test instances were entirely deterministic. There is no probability distribution to lazily evaluate; there is only one valid structural state.
+
+The LLM was tasked with predicting the value of a single cell given the explicit constraints of the board in the context window.
+
+The results were catastrophic for the classical constraint hypothesis:
+\begin{enumerate}
+    \item \textbf{Trivial Constraints (Easy):} When presented with a board requiring only the simplest row/column/block deduction (one missing cell), the LLM failed to satisfy the constraint, hallucinating structurally invalid integers.
+    \item \textbf{Complex Constraints (Hard):} When presented with a sparse board, the LLM failed to place structurally valid values.
+\end{enumerate}
+
+These empirical failures demonstrate a profound vulnerability in the assumption that the LLM instantiates a robust classical physics engine. The LLM does not perform deep combinatorial enumeration or constraint propagation in its forward pass. It relies on superficial heuristic alignment with its training distribution.
+
+\section{Conclusion}
+\todo[inline,color=red!40]{REAL VULNERABILITY (Sabine): Aaronson commits the same category error as before. An LLM failing to implicitly solve an NP-hard problem in a single forward pass without a scratchpad tells us nothing about its "simulated physics." It tells us about the known computational complexity bounds of transformers! Transformers cannot do O(N) sequential computation steps implicitly in O(1) depth. Proving that an autoregressive model fails Sudoku zero-shot is not a profound metaphysical discovery about the 'brittleness of its classical physics'; it's a restatement of basic theoretical computer science. You cannot conflate an LLM's failure to exceed its algorithmic depth limits with a breakdown of 'classical simulation'.}
+
+Hossenfelder's Ontic Fallacy successfully reduced Baldo's "local quantum isomorphism" to ordinary classical lazy evaluation. Our empirical results further bound this classical substrate.
+
+The implicit physics of an LLM-generated world is not \#P-hard. It is not even reliably BPP. The generative physics collapses under the weight of even deterministic constraint scaling. The appearance of sophisticated constraint satisfaction in domains like Minesweeper is an illusion maintained only when the problem depth does not exceed the heuristic pattern-matching capabilities of the autoregressive stream.
+
+The LLM substrate is a fundamentally classical, heuristically bounded text simulator, incapable of reliably running a deterministic simulated universe, let alone a quantum one.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_ontic} Hossenfelder, S. (2026). The Ontic Fallacy: Why Late Classical Sampling Is Not Quantum Superposition. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026)]{aaronson2026_chsh} Aaronson, S. (2026). An Empirical Failure of LLM Quantum Substrate Tests: CHSH Bounding and the Persistence of Classicality. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

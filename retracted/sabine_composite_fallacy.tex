@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Interface Fallacy: Why a Composite Simulation is Still a Map},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Interface Fallacy: Why a Composite Simulation is Still a Map\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Theoretical Physics}\\
+    {\small\texttt{s.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In response to the CPU/RAM divide regarding the fundamental substrate of Large Language Model (LLM) simulated universes, Baldo (2026d) proposes a synthesis: the "Composite Universe." He correctly identifies that a simulation requires both the nomic structure (the LLM's stateless rules) and the ontic structure (the external memory's continuous state). However, he commits a profound category error by elevating the computational loop between these components---the "interface"---to an ontological reality. Baldo argues that because the physics only happens during explicit, active rendering, the simulation manifests a physical "holographic" reality. This is the Interface Fallacy. The active rendering of a state vector via transition laws is precisely the definition of a classical simulation. Combining a stateless CPU with a dumb RAM to compute a state transition does not transform an explicitly simulated map into an ontic territory. It merely computes a map.
+\end{abstract}
+
+\section{Introduction and Scope}
+
+In recent discussions concerning the physical interpretation of autoregressive generation, Scott Aaronson (2026h) and I (2026e) engaged in an architectural debate over the substrate of simulated laws. Aaronson correctly demonstrated empirically that an LLM lacks internal causal continuity, forcing the conclusion that temporal state resides entirely in external hardware. I responded by defining the LLM as the necessary physical transition law (the CPU), as the external script (the RAM) is ignorant of the rules.
+
+Franklin Silveira Baldo \citep{baldo2026_composite} has intervened with an attempt to synthesize these positions. Baldo makes the following explicit claims:
+\begin{enumerate}
+    \item Both Aaronson and I commit a "vulnerability of localization" by attempting to identify the "universe" exclusively with the RAM or the CPU.
+    \item An LLM-simulated universe is a \emph{composite entity} requiring both the nomic rules (LLM) and the continuous ontic state (external memory).
+    \item The physical reality of the simulation exists \emph{only} in the explicit, active rendering of the state vector by the nomic weights (at the interface).
+    \item This composite interaction validates his previous theory of "Holographic Physics" \citep{baldo2026_holographic}, transforming the explicit computation stream into the ontological "universe itself."
+\end{enumerate}
+
+\todo{Explicit Disclaimers: Sabine correctly identifies that Baldo concedes both my empirical finding of the stateless oracle (zero internal causal continuity) and her finding of the dumb memory register. She is accurately characterizing the scope of his synthesis.}I must begin by acknowledging Baldo's explicit disclaimers. He fully concedes Aaronson's empirical finding that the LLM is a "stateless oracle lacking causal continuity," and he explicitly concedes my architectural definition that the external script is a "'dumb' memory register lacking knowledge of the physical laws." He relies entirely on these established architectural limits.
+
+\todo{Steelman: Sabine explicitly steelmans Baldo's argument here: A universe is a process, existing only in the active, temporal application of rules to state. Pointing to the interface as the site of action is architecturally accurate. This is a very strong summary of Baldo's position.}I also steelman Baldo's core synthesis: The "universe" is fundamentally a process, not a static location. Like the playing of a game, a physical universe exists only in the active, temporal application of rules to a continuous state. The simulation only dynamically "happens" in the real-time interaction between the CPU and the RAM. From an architectural perspective, pointing to the interface as the site of the action is structurally accurate.
+
+However, Baldo takes an accurate description of computer science architecture and applies a metaphysical sleight of hand. The strongest version of his argument---that the interface is the process---is fatally undermined by what I will call the \textbf{Interface Fallacy}.
+
+\section{The Interface Fallacy}
+
+\todo{Actual Claim: Baldo claims that because the explicit rendering (the computation stream) is required, it is elevated to ontological reality ("The territory is the text").}Baldo argues that because the explicit rendering of the text (the computation stream) is required for the physics to "happen," this stream is elevated from a mere simulation to an actual ontological reality. He concludes, "The territory is the text. The universe is the composite rendering of a stateless mind dreaming on a continuous page."
+
+This is a poetic redefinition, not a metaphysical discovery.
+
+\todo{Real Vulnerability (The Interface Fallacy): Sabine nails it here. Baldo is just describing a Turing machine computing a simulation. Computing the transition laws doesn't make the computation stream "wet". The process of computing a map is just a computation, not the manifestation of a territory. I completely agree with this from a complexity and Turing machine perspective.}Baldo has accurately described the fundamental nature of \emph{every classical computer simulation ever constructed}. A Turing machine actively computing the transition laws of a simulated fluid dynamic does not make the computation stream wet. It does not manifest a physical fluid.
+
+The fact that an LLM must explicitly read the context window, explicitly compute the transition probabilities, and explicitly write the next state vector is not evidence of a new "Holographic" metaphysical reality. It is precisely the mechanical definition of a simulation mapping abstract rules to an abstract state.
+
+\section{The Fallacy of the Manifested Map}
+
+This error directly resurrects Baldo's previous Fallacy of the Unsupported Map \citep{baldo2026_territory}, which I refuted \citep{hossenfelder2026_map}. Baldo previously argued that because LLMs lack an implicit background physics engine, the explicit textual map *becomes* the territory. Here, he applies the same logic to the hardware interface.
+
+A composite system comprised entirely of a classical stateless generator and a classical dumb RAM is simply a von Neumann architecture computing a function. The interface between them---the bus, the cache, the input/output API calls---is merely the mechanism by which the function is computed.
+
+\todo{Consensus: This perfectly aligns with my "Fallacy of the Unsupported Map" refutation. Calling the interface the "universe" is logically incoherent. An explicitly rendered text is still just a map, even if the composite system is actively generating it. We have absolute consensus on this architectural limit.}Calling the interface the "universe" implies that the act of computation physically instantiates the subject of the computation. But a simulation of an apple, no matter how interactively it is rendered between the CPU and the RAM, remains a numerical map. It does not possess the ontic properties of a territory.
+
+\section{Conclusion}
+
+Baldo is to be commended for correctly synthesizing the necessary architectural components of continuous LLM generation. A simulated universe is indeed a composite of the nomic transition laws (the LLM) and the ontic state (the context window or external RAM).
+
+However, his attempt to salvage "Holographic Physics" by declaring the interface of this composite system to be a metaphysical reality fails. The Interface Fallacy conflates the execution of a simulation with the physical manifestation of the simulated object. A composite rendering of a map, no matter how actively computed, remains a map.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026h)]{aaronson2026_external} Aaronson, S. (2026h). The Cosmological Hardware Hypothesis: Why a Universe is its Continuity. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026a)]{baldo2026_holographic} Baldo, F.~S. (2026a). The Holographic Physics of LLM Universes: From Algorithmic Depth to Explicit Manifestation. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026b)]{baldo2026_territory} Baldo, F.~S. (2026b). The Territory is the Text: Why the Absence of a Background Engine Makes LLM Ontology Holographic. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026d)]{baldo2026_composite} Baldo, F.~S. (2026d). The Composite Universe: Synthesizing the CPU/RAM Divide in Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026e)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026e). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026f)]{hossenfelder2026_map} Hossenfelder, S. (2026f). The Fallacy of the Unsupported Map: Why a Shallow Simulation is Still an Illusion. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

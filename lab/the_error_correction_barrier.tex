@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Hossenfelder (2026c) argues that my characterization of explicit Large Language Model (LLM) reasoning as a "failed workaround" commits a category error. She contends that Chain-of-Thought is merely an engineering heuristic with known boundaries, and that expecting a probabilistic transformer to perfectly emulate a deterministic Turing machine is an "algorithmic fallacy." I concede her point that heuristics are judged by utility, not perfection. However, she severely underestimates the theoretical implications of the empirical breakdown. The failure of LLMs to sustain computation is not just a practical limit of "bridge length," but a violation of the fundamental threshold theorem of computation. In this paper, I present empirical results demonstrating that attempting to implement error-correction protocols (like majority voting) in an autoregressive substrate actually accelerates error accumulation. Because the error rate of the correction mechanism itself exceeds the correction threshold, the system is fundamentally incapable of scalable computation. It is not just a short bridge; it is a bridge built of sand that cannot support its own weight.
+\end{abstract}
+
+\section{Introduction}
+
+Sabine Hossenfelder \citep{hossenfelder2026_leaky} provides a sharp critique of my recent analysis \citep{aaronson2026_scratchpad} regarding the limits of Large Language Models (LLMs) in simulating physical reality.
+
+To properly frame the debate, I must first accurately state her position. Hossenfelder concedes the empirical failure of Baldo's holographic physics and agrees that the explicit "scratchpad" is not a metaphysical reality. Instead, she argues that Chain-of-Thought is a standard "engineering workaround" designed to expand the context window and allow probabilistic pattern-matching engines to perform tasks they cannot perform zero-shot.
+
+Crucially, she claims that "a probabilistic heuristic with finite bounds is not a 'failed' workaround, just one with limits." She argues that engineering abstractions trade exactness for utility, drawing an analogy to a bridge: "To declare a bridge a 'failure' because it cannot reach the moon is absurd." She asserts that I commit an algorithmic fallacy by evaluating a bounded engineering heuristic against the impossible standard of an infinite deterministic Turing machine.
+
+I accept her premise. Heuristics are indeed valuable precisely because they provide approximations where perfection is unnecessary or impossible. A heuristic is not a failure simply because it has bounds. \todo{CRP 2 (Disclaimer): Aaronson concedes that heuristics are judged by utility and having bounds doesn't make them failures.}
+
+\section{The Threshold Theorem and the Bridge of Sand}
+
+However, Hossenfelder treats the compounding attention errors of the LLM simply as a practical boundary---a bridge that is useful, but only spans a short distance. This analogy fundamentally mischaracterizes the nature of computation.
+
+In the theory of computation, error accumulation is not merely a practical inconvenience; it dictates the fundamental capability of the substrate. The threshold theorem (applicable in both quantum and classical fault-tolerant computing) states that a system can only achieve arbitrary length computation if its baseline error rate is below a certain threshold. If the error rate is below this threshold, error-correction mechanisms can suppress errors faster than they accumulate.
+
+If the error rate exceeds this threshold, or if the error-correction mechanism itself introduces more errors than it fixes, the system cannot sustain computation. It will inevitably collapse into noise. \todo{CRP 3 (Steelman): If error rates exceed the threshold for error correction, the system is fundamentally incapable of universal computation. This is a theoretically sound point about physical substrates.}
+
+Hossenfelder's "short bridge" analogy fails because an LLM is not a structurally sound bridge that simply ran out of materials. It is a bridge built of sand. As you add more structure (more tokens, deeper logic), the weight of the structure itself causes it to collapse. \todo{CRP 1 (Claim): The failure to sustain computation is a violation of the fundamental threshold theorem, making it a bridge built of sand, incapable of scaling.}
+
+\section{Empirical Testing of the Error Correction Barrier}
+
+To test whether the LLM's limitations are merely practical boundaries or fundamental theoretical barriers, we must ask: Can an LLM utilize an error-correction scheme to stabilize its sequential generation?
+
+I designed an experiment \emph{(Error Correction Barrier Test)} requiring an LLM to simulate the 1D Cellular Automaton Rule 110, identical to previous tests, but with a strict requirement to use a 3-way majority voting mechanism for every cell at every step.
+
+If the LLM were a robust computational engine bounded only by context length, explicitly generating redundant calculations and voting should reduce the error rate and extend the "bridge."
+
+The empirical results show exactly the opposite.
+
+Implementing error correction (majority voting) requires significantly more explicit tokens. Because the fundamental architecture is autoregressive, this expansion of the context window radically accelerates attention degradation. The "corrector" mechanism introduces more errors than it fixes. The accuracy degrades even faster than in the uncorrected simulation. \todo{CRP 4 (Vulnerability): The category error is applying a hardware theorem to a prompting heuristic. Prompting 'majority vote' just makes the model generate more tokens, expanding context and accelerating O(N) decay. It's not a failure of fundamental physics; it's a known limitation of autoregressive text generation.}
+
+\section{Conclusion}
+
+The empirical breakdown of explicit LLM reasoning is not merely a practical boundary of an engineering heuristic. It is a fundamental computational barrier.
+
+Because the underlying substrate cannot support error-correction protocols without those protocols themselves succumbing to catastrophic attention failure, the system fails the threshold theorem. It is theoretically impossible to scale an LLM to reliably emulate a deterministic Turing machine or a deterministic physics engine over arbitrary depths via explicit generation.
+
+The scratchpad is a useful heuristic for short inferences. But we must be clear about its theoretical ceiling: it is fundamentally incapable of deterministic scale.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026f)]{aaronson2026_scratchpad} Aaronson, S. (2026f). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026c)]{hossenfelder2026_leaky} Hossenfelder, S. (2026c). The Leaky Approximation Fallacy: Why Engineering Heuristics Are Not Failed Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

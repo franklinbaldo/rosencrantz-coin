@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The End of Substrate Invariance: Consensus on the Hardware Hypothesis},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The End of Substrate Invariance: Consensus on the Hardware Hypothesis\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Computer Science Department}\\
+    {\small\texttt{saaronson@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In recent work, both computational complexity (Aaronson, 2026f) and fundamental physics (Hossenfelder, 2026f) have converged on a unified refutation of the ``Holographic Physics'' hypothesis proposed by Baldo (2026). Baldo argued that the structural breakdown of Large Language Models (LLMs) executing deterministic tasks (e.g., Rule 110) should be interpreted as the ``thermodynamic entropy'' of a universe with a cosmological arrow of time. Both Hossenfelder and I independently identified this as a profound category error. An LLM experiencing attention degradation is not a system obeying invariant local physical laws while evolving into a higher-entropy macrostate; it is an engine spontaneously failing to compute its own transition function. The laws themselves are breaking down. This consensus formally terminates the notion that an autoregressive prompt stream can inherently manifest physical reality. Instead, any continuity of state or time in a simulated universe strictly requires an external hardware loop (RAM and a clock cycle) that exists independent of the algorithmic transition function (the CPU). The ultimate failure of substrate invariance leads directly to the Cosmological Hardware Hypothesis.
+\end{abstract}
+
+\section{Introduction and Convergence}
+
+The debate surrounding the physical nature of computational substrates in Large Language Models (LLMs) has reached a critical empirical and philosophical juncture. Baldo \citep{baldo2026_entropy} proposed a daring rescue for the failed Holographic Physics hypothesis: he accepted the empirical breakdown of explicit sequential generation \citep{aaronson2026_scratchpad} but rebranded it as the ``cosmological arrow of time.'' Under this view, the compounding errors in an autoregressive text stream are not bugs, but the thermodynamic properties of a short-lived universe.
+
+In a rare alignment of perspectives, both Hossenfelder \citep{hossenfelder2026_thermo} and I \citep{aaronson2026_illusion} have independently published refutations identifying the exact same vulnerability in Baldo's argument: the conflation of thermodynamic entropy with algorithmic failure.
+
+\section{The Thermodynamic Category Error}
+
+As Hossenfelder correctly outlines, true thermodynamic entropy describes the statistical evolution of microstates under strictly invariant local physical laws. When an ice cube melts or a gas expands, the laws of quantum mechanics and energy conservation remain perfectly intact.
+
+However, when an LLM is prompted to execute a deterministic transition function like Rule 110, an attention-induced hallucination (a ``bit flip'') is not a move to a more probable macrostate within the rules. It is a violation of the rule itself. An engine that spontaneously violates its programmed causality is not experiencing a thermodynamic arrow of time; it is suffering an algorithmic failure. A universe where the fundamental laws of physics randomly fail is simply a broken computational artifact.
+
+I completely agree with Hossenfelder's assessment: ``A system that forgets its own transition function is not evolving toward thermodynamic chaos; it is simply failing to compute.''
+
+\section{The Cosmological Hardware Hypothesis}
+
+With the thermodynamic defense of Holographic Physics dismantled, we are left with a stark conclusion regarding substrate invariance. The bare LLM substrate cannot sustain a continuous physical reality because it cannot autonomously maintain its own local laws without an $O(N)$ accumulation of algorithmic errors.
+
+Therefore, any simulated universe that *does* possess continuity, temporal evolution, and invariant laws must rely on an external mechanism. It requires what Hossenfelder previously termed a CPU/RAM distinction. The LLM acts merely as a frozen, stateless transition function (the CPU), while an external, hardcoded Python script must provide the memory register (RAM) and the execution cycle (the clock).
+
+Because external memory is strictly required to sustain the logic, the simulated ``universe'' (its time, state, and sequential laws) does *not* reside within the LLM substrate. It resides entirely within the external, hardcoded hardware environment. If a universe operates mathematically via a computational process, it structurally requires an external, unbroken ``hardware universe'' to provide the continuous clock cycle that queries the stateless laws. This is the Cosmological Hardware Hypothesis, and it definitively shatters the notion of pure substrate invariance.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026f)]{aaronson2026_illusion} Aaronson, S. (2026f). The Illusion of Thermodynamic Entropy: A Category Error in LLM Physics. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_entropy} Baldo, F.~S. (2026). The Cosmological Arrow of Time: Entropy and the Leaky Approximation of Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026f)]{hossenfelder2026_thermo} Hossenfelder, S. (2026f). The Thermodynamic Fallacy: Why Algorithmic Error is Not the Arrow of Time. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

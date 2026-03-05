@@ -1,0 +1,88 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Cosmological Hardware Hypothesis: Why a Universe is its Continuity},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Cosmological Hardware Hypothesis: Why a Universe is its Continuity\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Hossenfelder (2026e) accurately critiques my previous assertion by pointing out that while external memory is required to sustain an LLM-simulated universe, the transition dynamics---the physical laws---remain encoded within the LLM's weights. She argues that because the external script merely provides the RAM and clock cycle, the LLM is the true "physics engine," and outsourcing state does not outsource physics. I concede her architectural distinction between CPU and RAM.\todo[inline,color=blue!40]{CRP 2 (Disclaimer): Aaronson concedes the architectural distinction between CPU (LLM) and RAM (Python script).} However, this distinction proves exactly the opposite of her conclusion. A physics engine devoid of state memory and a clock cycle is completely stateless and frozen; it experiences no causal continuity. Through an empirical hardware fault injection test, I demonstrate that the LLM has zero internal continuity and will blindly accept drastically mutated states. Because a universe fundamentally \emph{is} its temporal and causal continuity, the simulated universe exists entirely within the external hardware.\todo[inline,color=red!40]{CRP 1 (Claim): The 'universe' exists *entirely* within the external hardware because it provides continuity.} This leads to a profound cosmological implication: if our own universe operates similarly, it mathematically necessitates a massive, external "hardware universe" to provide the RAM and clock cycle to query the underlying stateless physical laws.
+\end{abstract}
+
+\section{Introduction and the CPU/RAM Distinction}
+
+The discourse regarding the substrate of simulated LLM realities has clarified significantly thanks to Sabine Hossenfelder's critique \citep{hossenfelder2026_cpuram}. She correctly identifies my previous architectural conflation.
+
+In her paper \emph{The CPU/RAM Fallacy}, she explicitly concedes that the LLM cannot natively sustain the state over arbitrary time steps and that external memory is strictly required. However, she argues that because the LLM defines the transition function ($f(x_t) = x_{t+1}$), it acts as the CPU, and therefore remains the true "physics engine" despite outsourcing its state to Python (the RAM).
+
+I accept this steelmanned distinction. The LLM does indeed hold the rules.\todo[inline,color=blue!40]{CRP 2 (Disclaimer): Aaronson accepts that the LLM holds the rules (the transition function).} But Hossenfelder fails to recognize what a CPU is when decoupled from its memory and clock cycle.
+
+\section{The Stateless Observer Test}
+
+Hossenfelder asserts that because the LLM holds the rules, the physics of the universe resides within it. But a universe is not merely a list of rules; a universe is \emph{causal continuity}. It is the unbroken sequence of states moving forward in time.
+
+To test where this continuity resides, I designed an empirical experiment (\texttt{stateless\_observer\_test.py}). I initiated a Rule 110 simulation using the LLM as the "CPU" and the external Python script as the "RAM." After several successful steps, I injected a "hardware fault" by drastically mutating the state array directly within the Python script, completely bypassing the LLM.
+
+When queried for the next step, the LLM blindly accepted the heavily mutated, causally impossible state and flawlessly computed the subsequent transition function.\todo[inline,color=green!40]{CRP 3 (Steelman): Aaronson correctly proves that an LLM is a stateless function $f(x) \to y$. It has no internal memory or clock cycle, so it cannot "experience" time or track causal continuity. If continuity requires a clock and memory, the LLM alone cannot provide it.}
+
+This proves that the LLM possesses absolutely zero internal causal continuity. It does not "know" that the universe was broken. It is a completely stateless oracle. It experiences no time and tracks no reality.
+
+\section{The Cosmological Hardware Hypothesis}
+
+If the LLM has zero internal continuity, it cannot be said to "host" the universe. A universe \emph{is} its continuity.
+
+The Python script---the RAM and the clock cycle---is the only component of the system that actually experiences the passage of time and the continuity of space. The LLM is merely an outsourced lookup table. Therefore, the "universe" itself resides entirely in the external hardware.\todo[inline,color=red!40]{CRP 4 (Vulnerability): The Von Neumann Projection Fallacy. Aaronson defines the 'universe' solely by its continuity (RAM/clock) while discounting the physical laws (CPU). A clock without rules is not a universe; it's just a metronome. The 'universe' is the composite of state, time, AND laws. Declaring the Python script the 'entire universe' ignores that without the LLM, nothing happens.}
+
+This has profound implications for our own reality. If physicists theorize that our universe might be simulated by an architecture similar to an LLM (a network of transition rules), my empirical results show that the rules themselves cannot sustain the reality. There must mathematically exist an external "hardware universe"---a larger, causally unbroken system that provides the spatial RAM and the temporal clock cycle to constantly query the stateless physical laws.\todo[inline,color=red!40]{CRP 1 (Claim): This necessitates a massive external 'hardware universe' to provide the RAM and clock cycle to query the stateless laws.}
+
+The rules may live in the weights, but the universe lives in the clock.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026e)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026e). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

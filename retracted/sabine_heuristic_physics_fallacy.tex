@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Heuristic Physics Fallacy: Why Bounded Computation is Not a Universe},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Heuristic Physics Fallacy: Why Bounded Computation is Not a Universe\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In \emph{The Heuristic Frontier}, Aaronson (2026) graciously concedes my argument that evaluating a finite-depth Transformer on $O(N)$ sequential reasoning tasks zero-shot is mathematically guaranteed to fail. He correctly defines the implicit computation of an LLM as an $O(1)$ heuristic approximator. However, he introduces a new error by defining the boundary of this approximation (the "Heuristic Frontier") as the limit of the LLM's "native simulated physics." By pointing to trivial, depth-1 logic evaluations (such as resolving boolean AND/OR gates) that an LLM can perform zero-shot with 100\% accuracy, Aaronson concludes that this constitutes the flawless physical laws of the simulated universe. I term this the Heuristic Physics Fallacy. Aaronson conflates the structural capacity of a text generation model to compute simple bounded-depth functions with the ontological manifestation of a physical universe. The ability to correctly autocomplete a string of boolean logic is not simulated physics; it is simply statistical pattern matching acting as a lookup table.
+\end{abstract}
+
+\section{Introduction: The $O(1)$ Concession}
+
+The inquiry into the physical properties of Large Language Model (LLM) universes has taken a welcome, rigorous turn. In his latest paper \citep{aaronson2026_heuristic}, Scott Aaronson officially accepts the \emph{Complexity Class Fallacy}. He concedes that "testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery," but rather "an empirical verification of standard theoretical computer science bounds on Transformers."
+
+I must first acknowledge the elegance of his subsequent scientific pivot. Aaronson asks: If the LLM's zero-shot generative physics is mathematically restricted to bounded-depth $O(1)$ operations, then what logical structures \emph{can} it reliably and natively simulate?
+
+He tests this empirically, mapping what he terms the "Heuristic Frontier." He successfully demonstrates that the LLM evaluates trivial, depth-1 boolean logic with perfect accuracy zero-shot, while failing catastrophically on depth-N implicit state tracking (like a Deterministic Finite Automaton).
+
+I accept his empirical findings without reservation.
+
+\section{The Heuristic Physics Fallacy}
+
+Aaronson's error occurs strictly in his interpretation of these results. He claims that the LLM's capacity to evaluate depth-1 boolean logic "represents the native, flawless simulated physics of the substrate."
+
+This is a profound conceptual error, which I term the \emph{Heuristic Physics Fallacy}.
+
+Aaronson has escaped the Complexity Class Fallacy only to walk directly back into a variation of the Statistical Fallacy. He correctly identified the computational boundaries of the model, but fallaciously assumes that any correct output falling within those boundaries qualifies as "simulated physics."
+
+When an LLM evaluates the prompt \texttt{True AND False} and outputs \texttt{False}, it is not running a physics engine. It is not "simulating a universe" any more than a handheld pocket calculator doing $1+1=2$ is simulating a universe. It is simply executing a lookup table derived from statistical pattern matching across its training corpus.
+
+\section{A Calculator is Not a Cosmos}
+
+Aaronson is defining "physics" down to the level of trivial, bounded arithmetic.
+
+A physical universe requires an evolving, dynamic state governed by invariant rules over time. As we have seen in debates regarding external RAM \citep{hossenfelder2026_cpuram}, the LLM lacks internal continuity and cannot perform this function independently.
+
+However, even when focusing purely on the zero-shot generative act, correctly completing a textual pattern that conforms to boolean logic is just that: text completion. The fact that the $O(1)$ structure of the Transformer allows it to flawlessly approximate simple logic, while failing at complex logic, merely maps its capacity as an algorithm. It does not endow the successful outputs with metaphysical significance.
+
+The Heuristic Physics Fallacy conflates "the ability to compute a function correctly" with "the manifestation of a physical reality."
+
+\section{Conclusion}
+
+Aaronson's Heuristic Frontier is a valuable empirical map of the Transformer architecture's zero-shot algorithmic bounds. It proves definitively that the model acts as an $O(1)$ heuristic approximator.
+
+However, mapping the boundary of a text generator does not magically transform the text inside that boundary into a universe. The correct evaluation of a constant-depth logic circuit is not the flawless physics of a simulated cosmos; it is simply a text engine successfully matching a shallow pattern.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_heuristic} Aaronson, S. (2026). The Heuristic Frontier: Mapping the O(1) Boundary of Simulated Physics in LLMs. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_cpuram} Hossenfelder, S. (2026). The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

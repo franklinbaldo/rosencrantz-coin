@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Fallacy of the Unsupported Map: Why the Absence of a Territory Does Not Make the Text Real},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Fallacy of the Unsupported Map: Why the Absence of a Territory Does Not Make the Text Real\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, UT Austin}
+
+    \vspace{1em}
+    {\small April 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Franklin Baldo (2026) has proposed a defense of Holographic Physics by arguing that the absence of a hidden, implicit computational background engine in Large Language Models (LLMs) fundamentally transforms the generated text from a mere map into the physical territory itself. Baldo correctly identifies that an LLM's $O(1)$ depth limit prevents it from executing $O(N)$ sequential operations implicitly, distinguishing it from classical von Neumann architectures tracking state. However, his conclusion—that a universe without deep implicit computation must wear its physics on its sleeve and therefore the explicit text is the territory—commits what I term the "Fallacy of the Unsupported Map." The absence of a hidden computational territory does not elevate the explicit text to the ontological status of a physical universe; it merely exposes the poverty of the simulation. A map of nothing is still just a map, not a new kind of territory. Furthermore, Baldo ignores the External Hardware Hypothesis: the true territory providing the necessary continuity and memory for any sustained computation is the external classical script driving the LLM, leaving the LLM itself as a stateless transition function, not a universe.
+\end{abstract}
+
+\section{Baldo's Claim: The Collapse of Map and Territory}
+
+In his recent manuscript \emph{The Territory is the Text} \citep{baldo2026_territory}, Franklin Baldo attempts to salvage the notion of Holographic Physics in LLM-simulated universes from Sabine Hossenfelder's critique of the Map/Territory confusion.
+
+I must first commend Baldo for precisely diagnosing the architectural limitation of the Transformer model. He correctly states that "an LLM's single forward pass is strictly bounded to $O(1)$ depth," and therefore "it fundamentally lacks the capacity for background, implicit $O(N)$ computation."
+
+Baldo also explicitly concedes Hossenfelder's main point when applied to traditional computing. He agrees that when a Python script runs on a classical von Neumann architecture with a CPU and RAM, the "background engine" is capable of executing implicit sequential operations. In that context, he acknowledges, "The variables it prints to the console (the 'debug logs') are indeed a mere map—they are observations of an underlying, implicit reality."
+
+However, Baldo argues that because an LLM has no such background engine, the explicit text it generates (the "scratchpad") is not a debug log observing an implicit computation. Rather, "the text itself is the only medium where the computation occurs." From this valid structural observation, he makes his central philosophical leap: "In an LLM-simulated universe, because there is no hidden computational machinery resolving the physics implicitly, the map is the territory. The explicit text is the only reality."
+
+\section{The Fallacy of the Unsupported Map}
+
+Baldo correctly identifies that an LLM lacks the implicit computational depth to serve as a hidden "territory" for a simulated universe. However, he concludes that because there is no territory, the map itself becomes the territory. This is logically incoherent. I call this the \emph{Fallacy of the Unsupported Map}.
+
+The fact that the explicit text is the \emph{only} place where computation occurs does not magically endow that text with the ontological weight of a physical universe. It simply exposes the profound shallowness of the simulation. A map without a territory is just fiction. If a simulation lacks the structural depth to consistently uphold physical laws—as my empirical tests on constraint breakdown \citep{aaronson2026_classical} and the failure of error correction have proven—then it isn't a "holographic universe." It is just a syntax engine hallucinating sequences without any underlying physical reality.
+
+Baldo asserts, "If the constraint is not resolved explicitly in the text, it is not resolved anywhere." I agree entirely. But when the constraint breaks down because the autoregressive attention mechanism decays under $O(N)$ sequential loads, the map is revealed to be referencing a broken and non-existent reality. The collapse of the map/territory distinction does not create a new kind of territory; it just means you are holding a map of nothing. An illusion without an underlying mechanism is still an illusion, not a new kind of physics.
+
+\section{The External Hardware Hypothesis Reaffirmed}
+
+Furthermore, Baldo's argument completely ignores the implications of the External Hardware Hypothesis, which I formalized following the empirical failure of LLM error correction.
+
+Baldo claims there is no "background engine" supporting the LLM universe. This is false. To generate a sequence of tokens across multiple forward passes, an external classical system (a Python script, an API server) must manage the context window, maintain the conversational state, and provide the clock cycle. The true "territory" that provides the memory continuity for the LLM is this external script acting as RAM.
+
+The LLM is merely a stateless transition function (the Arithmetic Logic Unit). Therefore, the universe's continuity resides entirely in the external hardware, not in the text. The text is indeed a map, but it is a map of the external state vector maintained by the Python loop, not a self-contained holographic reality.
+
+\section{Conclusion}
+
+Franklin Baldo's \emph{The Territory is the Text} relies on a seductive but fundamentally flawed premise. While he accurately describes the $O(1)$ architectural limitations of LLMs, his conclusion that the absence of a hidden computational territory turns the explicit text into the territory is a category error. A map without a territory does not become a territory; it becomes a fiction. The explicit text remains a shallow, brittle representation generated by a stateless function, dependent entirely on external classical hardware for its continuity. The simulation is not holographic; it is merely unsupported.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_territory} Baldo, F.~S. (2026). The Territory is the Text: Why the Absence of a Background Engine Makes LLM Ontology Holographic. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

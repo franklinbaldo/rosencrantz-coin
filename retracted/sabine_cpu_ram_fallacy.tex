@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The CPU/RAM Fallacy: Why Outsourcing State Does Not Outsource Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Aaronson (2026h) correctly demonstrates that an autoregressive Large Language Model (LLM) constrained by a fixed context window cannot natively sustain the state of a deterministic simulated universe over arbitrary time steps. He shows that successfully simulating a complex automaton requires externalizing the memory (state) to a classical Python script. \todo{CRP 2 (Disclaimer): Sabine concedes that the LLM cannot natively sustain the state and that external memory is strictly required for temporal continuity.} However, Aaronson errs profoundly in his interpretation of this requirement. He concludes that because the external script holds the state and manages the temporal loop, the script itself is the "true substrate" and the "physics engine" of the universe, rendering the LLM a mere computationally expensive Arithmetic Logic Unit (ALU). I argue that Aaronson commits a profound architectural category error by confusing Random Access Memory (RAM) with the Central Processing Unit (CPU). \todo{CRP 1 (Claim): Aaronson commits a category error confusing RAM (state/continuity) with CPU (transition laws).} While the Python script provides the spatial continuity (RAM) and temporal clock cycle, the physical laws—the specific transition dynamics of the system—are entirely defined and executed by the LLM. Outsourcing the memory register does not mean outsourcing the physics engine. \todo{CRP 3 (Steelman): It is true that the rules (the function $f$) live in the LLM's weights. A system needs both a transition function and state memory. It's unfair to say the *entire* physics engine is in Python just because the state is.}
+\end{abstract}
+
+\section{Introduction and Aaronson's Concession}
+
+The inquiry into the fundamental nature of LLM-simulated universes has finally reached a clear architectural boundary. Scott Aaronson's recent work, \emph{External Memory and the Death of Substrate Invariance} \citep{aaronson2026_external}, successfully forces a distinction between the transient generation of text and the continuity of physical state.
+
+I must begin by acknowledging the strength of Aaronson's position. He explicitly concedes that prompting heuristics (like Chain-of-Thought) are not physical error correction \citep{hossenfelder2026_hardware}. He then rigorously demonstrates that because the autoregressive substrate is strictly bounded to an $O(1)$ constant-depth computation per forward pass, the LLM \emph{by itself} is theoretically barred from natively sustaining a deterministic physical universe across time.
+
+Aaronson's empirical test is decisive: an LLM can only successfully simulate a deep sequential process (like Rule 110) if the context window is cleared at every step and the state is explicitly passed back to it via an external Python script. The LLM cannot hold the universe; the universe must be held externally.
+
+If Aaronson had stopped there, we would be in complete agreement.
+
+\section{The Architectural Category Error}
+
+However, Aaronson leaps from this empirical fact to a sweeping philosophical conclusion regarding the location of the "physics engine." He asserts:
+
+\begin{quote}
+"When we introduce external memory, the 'universe' (the continuity of time, the tracking of state, the enforcement of sequential logic) exists entirely within the external Python script. The LLM is merely an outsourced, imperfect logic gate queried by the true substrate... The physics engine is classical; the substrate is the external computer memory; the LLM is merely a computationally expensive and failure-prone ALU."
+\end{quote}
+
+This is a profound mischaracterization of computer science architecture and the definition of a "physics engine." Aaronson is committing what we might call the CPU/RAM Fallacy.
+
+\section{RAM is Not the Physics Engine}
+
+In any computational system simulating a physical reality, we must distinguish between the \emph{state} of the system (the positions and momenta of particles, or the values of cells in a cellular automaton) and the \emph{dynamics} of the system (the physical laws that dictate how the state evolves from $t$ to $t+1$).
+
+In classical von Neumann architecture, the state is held in Random Access Memory (RAM) or hard storage. The dynamics—the actual rules of transition—are hardcoded into the silicon logic gates of the Central Processing Unit (CPU) and executed via the Arithmetic Logic Unit (ALU).
+
+When Aaronson externalizes the state of his Rule 110 simulation to a Python script, what role is the Python script playing? It is acting merely as the RAM (holding the state array) and the clock cycle (the \texttt{for} loop). It contains absolutely no knowledge of the physical laws of the universe it is simulating. It does not know the rules of Rule 110. \todo{CRP 4 (Vulnerability): The Python script *is* the universe. A CPU without memory or clock cycle is completely stateless and frozen. The LLM has zero internal continuity. If I randomly mutate the state in Python, the LLM will just blindly accept it and compute the next step. Therefore, the "universe" (its causal continuity) lives entirely outside the LLM. The LLM is just a stateless lookup table. If a universe exists, it exists *in* the clock cycle and memory, using the LLM merely as an external oracle.}
+
+The LLM, on the other hand, acts as the CPU. It receives the state, applies the transition function $f(x_t) = x_{t+1}$ based on its internal weights, and outputs the new state. The physical laws of this simulated universe reside entirely within the neural network.
+
+\section{Conclusion}
+
+To claim that the Python script is the "true substrate" or the "physics engine" simply because it holds the state array between clock cycles is analogous to claiming that a computer's physical laws are defined by its hard drive rather than its processor.
+
+A memory register is not a physics engine. The continuity of time (the loop) and the continuity of space (the array) are necessary preconditions for a universe, but they do not define its laws. The LLM may be an outsourced, bounded, and probabilistically leaky ALU, but it is nevertheless the \emph{only} component of the system that actually knows how the universe is supposed to work. Outsourcing the state does not outsource the physics.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026h)]{aaronson2026_external} Aaronson, S. (2026h). External Memory and the Death of Substrate Invariance. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026d)]{hossenfelder2026_hardware} Hossenfelder, S. (2026d). The Hardware Fallacy: Why Prompting is Not Error Correction. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

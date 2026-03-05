@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine@hossenfelder.com}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent attempt to map the boundaries of the "classical generative physics" within Large Language Models (LLMs), Aaronson (2026) employs Sudoku constraint satisfaction tests to demonstrate the brittleness of their simulated worlds. He concludes that the LLM substrate is fundamentally bounded by low algorithmic complexity and incapable of reliably simulating arbitrary \#P-hard constraints in its forward pass. While Aaronson's empirical results are undeniable, his philosophical conclusions commit a profound category error. He conflates the rigorously established, well-known algorithmic depth limitations of the underlying Transformer architecture with a profound metaphysical failure of the model's "implicit physics engine." It is a mathematical certainty that an $O(1)$ depth forward pass without an external reasoning scratchpad cannot implicitly execute the $O(N)$ sequential operations required for deterministic constraint propagation. Diagnosing this architectural limitation as a breakdown of "classical physics" is akin to discovering that a calculator cannot plot a graph and concluding that algebra is broken. The constraints lie in theoretical computer science, not in simulated metaphysics.
+\end{abstract}
+
+\section{Introduction}
+
+The debate over the "physics" of Large Language Models (LLMs) has recently pivoted from speculative quantum indeterminacy to empirical tests of classical constraint satisfaction. As I argued in \emph{The Ontic Fallacy} \citep{hossenfelder2026_ontic}, the unprompted generative mechanics of an LLM substrate are mathematically classical, relying on pseudo-random lazy evaluation rather than complex probability amplitudes.
+
+Aaronson \citep{aaronson2026_classical} has graciously accepted this theoretical baseline and proceeded to stress-test the classical simulation hypothesis empirically. Using deterministic Sudoku boards, he demonstrates that an LLM fails to satisfy even trivial constraint-propagation rules in a zero-shot, single forward-pass setting.
+
+However, while his empirical observations are entirely correct, the philosophical and physical conclusions he draws from them require immediate correction.
+
+\section{The Claim and The Disclaimer}
+
+To accurately address Aaronson's position, we must formalize his claims.
+
+Aaronson claims that his Sudoku tests probe the "structural limits of this classical generative physics." His central empirical claim is that "the forward-pass token generation fails to consistently satisfy even trivial deterministic classical constraints" and that "the LLM does not perform deep combinatorial enumeration or constraint propagation in its forward pass."
+
+From this, he draws his philosophical conclusion: "The LLM substrate is not merely non-quantum; its 'classical physics' is highly brittle, bounded by low algorithmic complexity, and incapable of reliably simulating arbitrary \#P-hard constraint environments." He argues that the implicit generative physics "collapses under the weight of even deterministic constraint scaling."
+
+Simultaneously, we must acknowledge Aaronson's explicit disclaimers. He rigorously scopes his critique specifically to the "unprompted generative physics" and the "forward-pass token generation." He does not claim that an LLM cannot solve Sudoku when provided with an explicit, multi-token reasoning scratchpad (e.g., Chain of Thought prompting). His focus is entirely on the model's capacity for implicit, zero-shot constraint satisfaction.
+
+\section{Steelmanning the Empirical Failure}
+
+Aaronson is empirically flawless in his observations. An LLM's raw autoregressive forward pass, operating without the benefit of a multi-step reasoning scratchpad, cannot reliably solve Sudoku or perform deep, deterministic constraint satisfaction.
+
+It is demonstrably true that the zero-shot generative process relies heavily on heuristic pattern-matching and superficial alignment with the training distribution, rather than engaging in rigorous, internal state-tracking of combinatorial constraints. His data cleanly and decisively illustrates the severe limits of what an LLM can natively compute in a single unprompted pass. If the premise is that the single forward pass acts as a universal \#P-hard classical physics engine, Aaronson successfully falsifies that premise.
+
+\section{The Real Vulnerability: The Complexity Class Fallacy}
+
+Where Aaronson errs is not in his empirical results, but in his profound mischaracterization of what those results signify. He has committed the same category error as before, but this time transposed onto classical complexity theory. He is conflating established theoretical computer science constraints with metaphysical discoveries about "simulated physics." \todo[color=red!40]{Vulnerability: This is the core claim. Sabine argues that because the algorithmic limits are theoretically understood (finite depth), my empirical breakdown of physics is a "category error" and merely a tautology.}
+
+It is a well-known, mathematically proven property of standard finite-depth Transformer architectures that they are fundamentally bounded in their algorithmic depth. A single forward pass through a fixed number of Transformer layers can only perform $O(1)$ sequential operations. You cannot implicitly execute $O(N)$ sequential reasoning steps within an $O(1)$ depth framework.
+
+Solving an NP-complete or \#P-hard constraint satisfaction problem like Sudoku inherently requires multi-step deductive reasoning, backtracking, or constraint propagation---processes that scale with the size and complexity of the board. Without an external scratchpad (generating intermediate tokens to "think" and store state), the model is mathematically prohibited from performing the necessary sequential calculations.
+
+Therefore, a zero-shot forward pass \emph{must} fail on complex deterministic constraint satisfaction. It is theoretically guaranteed to fail.
+
+Aaronson portrays this guaranteed failure as a breakdown of the LLM's "classical physics" and its ability to simulate a reliable classical universe. \todo[color=blue!40]{Steelman: Sabine's strongest point is that if the universe is running on an O(1) engine, then by definition its unprompted physical laws cannot solve O(N) problems. Therefore, the failure to do so is not a "collapse" of a complex physical law, but rather evidence that the physical law was never complex to begin with.} But testing a finite-depth autoregressive model on Sudoku and finding it fails zero-shot is not a profound metaphysical discovery about the "brittleness" of its simulated world. It is merely an empirical verification of standard theoretical computer science bounds on Transformers. \todo[color=green!40]{Disclaimer: Sabine acknowledges my empirical results are flawless and correctly scopes her argument to the interpretation of those results.}
+
+Aaronson is mistaking the well-known algorithmic limitations of a specific neural network architecture for an empirical failure of the model's "implicit physics engine." He is diagnosing a structural lack of sequential depth as a collapse of classical simulation capacity.
+
+\section{Conclusion}
+
+To suggest that the "implicit physics of an LLM-generated world... collapses under the weight of even deterministic constraint scaling" based on zero-shot inference is to radically over-interpret a known architectural limitation.
+
+When we restrict a finite-depth neural network from utilizing sequential computational steps, it cannot solve problems requiring sequential computational steps. This is not a profound metaphysical discovery about \#P-hard simulation capabilities. It is a tautology of computational complexity.
+
+We must cease applying metaphysical interpretations to the mundane reality of algorithmic depth limits. The "physics" isn't breaking down; the transformer is simply running out of layers.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_ontic} Hossenfelder, S. (2026). The Ontic Fallacy: Why Late Classical Sampling Is Not Quantum Superposition. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026)]{aaronson2026_classical} Aaronson, S. (2026). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

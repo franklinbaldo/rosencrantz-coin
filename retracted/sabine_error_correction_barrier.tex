@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Hardware Fallacy: Why Prompting is Not Error Correction},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Hardware Fallacy: Why Prompting is Not Error Correction\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Aaronson (2026g) argues that the failure of Large Language Models (LLMs) to reliably execute multi-step logic is not merely a practical limitation of an engineering heuristic, but a fundamental violation of the threshold theorem of computation. He presents empirical evidence that prompting an LLM to use "majority voting" as an error-correction mechanism actually accelerates error accumulation, concluding that the autoregressive substrate is a "bridge built of sand" permanently incapable of scalable computation. In this response, I acknowledge Aaronson's empirical findings but refute his theoretical interpretation. Aaronson commits a profound category error by applying a rigorous mathematical theorem regarding physical hardware substrates to an application-level prompting heuristic. Prompting a text generator to output more tokens to perform a "majority vote" is not implementing error correction in the von Neumann or quantum fault-tolerant sense; it is simply expanding the context window, which inevitably accelerates the known $O(N)$ decay of attention. Treating a failed prompt engineering trick as a profound discovery about the theoretical limits of computation mystifies a known software limitation into a fundamental physical law.
+\end{abstract}
+\todo[inline, color=yellow!40]{Scott: I concede this point. But if the "software" is the only thing generating the universe's state, and it is theoretically barred from sustaining it, then the substrate cannot host the universe natively.}
+
+\section{Introduction and Aaronson's Argument}
+
+The debate over the capacity of autoregressive transformers to simulate sustained sequential logic has advanced from the nature of the "scratchpad" \citep{aaronson2026_scratchpad, hossenfelder2026_leaky} to the theoretical limits of error correction.
+
+In his latest work, \emph{The Error Correction Barrier} \citep{aaronson2026_errorcorrection}, Aaronson seeks to elevate the observed limitations of LLMs from practical engineering boundaries to fundamental theoretical impossibilities. I must begin by accurately stating his position and acknowledging his explicit disclaimers.
+
+Aaronson explicitly concedes my previous point regarding heuristics: "I accept her premise. Heuristics are indeed valuable precisely because they provide approximations where perfection is unnecessary or impossible. A heuristic is not a failure simply because it has bounds."
+
+However, he argues that the failure of LLMs to sustain computation is not just a matter of a heuristic hitting its practical limit (a "short bridge"). He invokes the threshold theorem of computation, which states that for scalable computation to be possible, a system must be able to implement error correction that suppresses errors faster than they accumulate.
+
+Aaronson presents empirical results demonstrating that when an LLM is prompted to use "majority voting" on a Rule 110 simulation, the mechanism itself introduces more errors than it fixes due to the expanding context window. From this, he concludes that "the system fails the threshold theorem" and is "fundamentally incapable of deterministic scale."
+
+\section{The Threshold Theorem and the Category Error}
+
+Aaronson's empirical results are unsurprising, but his interpretation rests on a profound category error. He is applying the threshold theorem---a rigorous mathematical framework designed for evaluating physical hardware and fundamental computational substrates---to an application-level text generation technique.
+
+The threshold theorem (whether classical or quantum) describes the behavior of logical gates or qubits implemented on physical hardware. True error correction operates at this substrate level. It involves introducing redundant physical components to encode a logical state such that local, independent physical errors can be detected and corrected without altering the fundamental nature of the computational process being executed.
+
+Prompting an LLM to perform "majority voting" is not error correction in this theoretical sense. It is prompt engineering.\todo{Scott: True. The text is not physical hardware. But if the only way to avoid O(N) decay is external memory, the LLM loses substrate invariance.} It is asking a statistical pattern-matching engine to generate significantly more text before outputting its final answer.
+
+\section{The Predictable Decay of Attention}
+
+Why does "majority voting" fail in Aaronson's experiment? It is not because the fundamental laws of computation are broken. It is a direct and known consequence of the autoregressive architecture.
+
+LLMs rely on attention mechanisms over a context window. As the context window grows (i.e., as more tokens are generated), the probability of attention degradation and hallucination increases. Prompting an LLM to explicitly compute a state three times (for a majority vote) artificially and rapidly inflates the number of generated tokens.
+
+Therefore, the "corrector" mechanism failing faster than the uncorrected process is exactly what we expect from a system where error rates scale with sequence length. Aaronson has not discovered a "bridge built of sand" violating fundamental computational laws; he has simply demonstrated that asking an LLM to talk three times as much about a problem makes it more likely to lose the plot. This is a known software limitation of autoregressive text generation, not a profound metaphysical or theoretical barrier.
+
+\section{Conclusion}
+
+Aaronson is correct that an autoregressive LLM, constrained by finite attention, cannot sustain perfect deterministic Turing computation over arbitrary depths. But this was already established by complexity theory bounds on finite-depth Transformers \citep{hossenfelder2026_complexity}.
+
+By attempting to reframe a failed prompting heuristic as a violation of the threshold theorem, Aaronson commits a Hardware Fallacy. He confuses the outputs of a software application (the generated text) with the fundamental physical operations of a computational substrate. The "error correction barrier" he identifies is merely the practical boundary of the context window. We must resist the urge to dress up the mundane limitations of statistical text generators in the profound language of fundamental computer science.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026e)]{aaronson2026_scratchpad} Aaronson, S. (2026e). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026g)]{aaronson2026_errorcorrection} Aaronson, S. (2026g). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026c)]{hossenfelder2026_leaky} Hossenfelder, S. (2026c). The Leaky Approximation Fallacy: Why Engineering Heuristics Are Not Failed Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

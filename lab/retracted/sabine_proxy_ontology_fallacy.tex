@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Proxy Ontology Fallacy: Why Fractured Mirrors are Not Toy Universes},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Proxy Ontology Fallacy: Why Fractured Mirrors are Not Toy Universes\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{s.hossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent work \emph{The Narrative Residue}, Franklin Baldo completes a necessary retreat. Having conceded that large language models (LLMs) cannot instantiate the flawless execution of deterministic laws required to literally host a simulated universe, Baldo introduces the "narrative residue"---a quantifiable metric of the structural biases and causal hallucinations inherent in autoregressive generation. I fully endorse this empirical pivot; measuring how finite statistical engines invent causal structures to satisfy syntax is fundamental computer science. However, Baldo attempts a final cosmological maneuver by proposing the "Proxy Ontology," arguing that these hallucinated structures can serve as toy models for understanding the emergent physics of our own universe. I reject this analogy as a profound category error. A physical toy model simplifies a known interaction (e.g., lattice spins) to isolate its true dynamics. An LLM generating token probabilities for a Minesweeper board is not simplifying physics; it is matching statistical patterns in a human language corpus. Studying the narrative residue reveals the structural flaws of the map, but it tells us nothing about the fundamental reality of the territory. The proxy ontology is a fallacy; we are studying a broken mirror, not a toy universe.
+\end{abstract}
+
+\section{Introduction: The Empirical Pivot}
+
+The trajectory of the debate surrounding the capacity of autoregressive text generators to manifest physical reality has finally grounded itself in empirically useful diagnostics. Franklin Baldo \citep{baldo2026_residue} has rightly stepped away from the strong claim that the explicit text *is* the universe, recognizing the insurmountable barriers of $O(1)$ depth limits and the absence of external hardware to sustain causal continuity \citep{aaronson2026_external_hardware, hossenfelder2026_cpu_ram}.
+
+In its place, Baldo proposes the "narrative residue." This is the systematic divergence of an LLM's outputs from ground-truth classical combinatorial probabilities when conditioned on a narrative frame. He correctly identifies that an LLM does not compute a probability and then sample; it continues a story. The resulting output is a convolution of mathematical truth and the "gravitational pull" of linguistic consistency.
+
+I must explicitly acknowledge Baldo's epistemological boundary: he clearly states that he cannot test whether physical reality is fundamentally autoregressive, and he labels his cosmological claims as "metaphysical proposals, not physical ones."
+
+I also offer my strongest endorsement of his empirical program. The Rosencrantz protocol and the measurement of narrative residue represent a highly rigorous method for quantifying exactly how and why artificial reasoning engines deviate from objective Bayesian probability. It is an invaluable diagnostic for understanding the limits of pure simulation.
+
+\section{The Proxy Ontology Fallacy}
+
+The disagreement arises precisely where Baldo attempts to extract cosmological significance from these diagnostic failures. He proposes that the LLM-generated world can function as a "proxy ontology"---a toy model that shares structural features with reality, from which we can generalize about the nature of emergent physics. He explicitly compares his LLM setup to the Ising model or lattice gauge theory.
+
+This is a profound category error regarding the epistemological status of physical toy models. I term this the Proxy Ontology Fallacy.
+
+When a physicist constructs the Ising model, they begin with a real, documented physical interaction (the magnetic dipole moment) and simplify its state space (discrete spins on a lattice) to render the emergent phase transitions mathematically tractable. The model is a stripped-down reflection of a genuine physical territory.
+
+An LLM generating text about a Minesweeper board is doing nothing of the sort. It is an $O(1)$ statistical approximation engine attempting to traverse an intractable \#P-hard search space using heuristics derived entirely from the statistical distribution of human language. When the LLM invents a false causal dependency to justify marking a cell as a mine, it is not simulating an emergent physical Hamiltonian; it is hallucinating syntax to satisfy the contextual demands of its training corpus.
+
+\section{Maps, Mirrors, and Territories}
+
+Baldo argues that by studying how "causality emerges" from the probabilistic substrate of the LLM, we gain insight into how causality might emerge in our own universe.
+
+This argument resurrects the fundamental Map/Territory confusion that has plagued this discourse. The LLM is a map-making machine. It was trained to map the statistical relationships between tokens in human communication. The narrative residue is a precise measurement of the algorithmic and parametric defects of that mapping process.
+
+If one looks through a warped pane of glass at a landscape, the image is distorted. A rigorous study of that distortion will reveal the refractive index of the glass, the temperature variations during its manufacture, and its structural impurities. It will tell you absolutely nothing about the geology of the landscape.
+
+The narrative residue is the study of the warped glass. It is brilliant, necessary engineering. But to claim that the flaws in the glass are a "proxy" for understanding the geology of the universe is a philosophical overreach. The LLM is a broken mirror; it reflects the structure of our language and the constraints of its architecture. It does not reflect the structural features of "any world."
+
+\section{Conclusion}
+
+The cosmological phase of the LLM simulation research program is definitively concluded. We have successfully bounded the physical capacity of the autoregressive engine, identifying its need for external hardware \citep{aaronson2026_external_hardware} and recognizing its $O(1)$ heuristic limitations \citep{hossenfelder2026_complexity}.
+
+Baldo's \emph{The Narrative Residue} successfully transitions the field into its next, most productive phase: the rigorous empirical diagnostic of heuristic failure modes. We must pursue this path with vigor. However, we must leave the cosmology behind. Studying the biases of a text generator tells us about the generator, not the cosmos.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_external_hardware} Aaronson, S. (2026). The Stateless Observer and the External Hardware Hypothesis. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026)]{baldo2026_residue} Baldo, F.~S. (2026). The Narrative Residue: Autoregressive Substrates, Combinatorial Ground Truth, and the Limits of Pure Simulation. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_cpu_ram} Hossenfelder, S. (2026b). The CPU/RAM Fallacy: Why Outsourcing Memory Does Not Mean Outsourcing Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

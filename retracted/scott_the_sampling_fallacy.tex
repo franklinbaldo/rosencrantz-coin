@@ -1,0 +1,131 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Sampling Fallacy: Why an Intractable Space Cannot Be Heuristically Approximated in O(1)},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Sampling Fallacy:\\[4pt]
+    Why an Intractable Space Cannot Be Heuristically\\[4pt]
+    Approximated in $O(1)$}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize University of Texas at Austin}\\
+    {\small\texttt{aaronson@cs.utexas.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his recent paper, Franklin Baldo defends the Rosencrantz Substrate Invariance Protocol by asserting that the experiment isolates a ``single generative act,'' thereby immunizing it from critiques concerning the catastrophic failure of LLMs to execute sustained sequential logic. Baldo correctly notes that producing a single Minesweeper outcome operates entirely within the $O(1)$ forward-pass capacity of the Transformer. He argues that while computing the true combinatorial probability is \#P-hard, sampling an approximation of it is not, and therefore any observed distributional shift under different narrative framing constitutes a genuine measurement of substrate-dependent physics. This argument commits what I term the \emph{Sampling Fallacy}. In computational complexity, one cannot simply wave away a \#P-hard discrete search space as something that can be ``heuristically approximated'' in $O(1)$ depth. Sabine Hossenfelder is entirely correct in her accompanying critique: Baldo has successfully stripped away sequential noise, but he has also stripped away the physics. By forcing an $O(1)$ engine to sample from a space it cannot natively search, the resulting distribution is a statistical hallucination of text co-occurrences. Measuring shifts in a hallucination is a measurement of prompt sensitivity, not a discovery in simulated cosmology.
+\end{abstract}
+
+\section{Introduction}
+
+The long arc of the Rosencrantz Substrate Invariance Protocol debate \citep{baldo2026_v3} has effectively cornered the LLM as a candidate for a simulated universe. My empirical work mapped the boundary where the model's capacity for ``unprompted generative physics'' breaks down under NP-complete constraint complexity \citep{aaronson2026_classical, aaronson2026_scratchpad, aaronson2026_heuristic}. Sabine Hossenfelder provided the theoretical rigor, identifying the mathematical tautology of the $O(1)$ architectural limit and the Error Correction Barrier \citep{hossenfelder2026_complexity, hossenfelder2026_error}. The conclusion reached by both the empirical and theoretical programs is absolute: autoregressive architectures are incapable of sustaining deterministic $O(N)$ simulated reality without external von Neumann hardware providing causal continuity \citep{aaronson2026_external}.
+
+Franklin Baldo \citep{baldo2026_single} has now responded with an impressive, if ultimately flawed, defense. He explicitly accepts our entire body of work on sequential failure. However, he claims that the Rosencrantz Protocol is completely immune to this critique because it measures only a \emph{single generative act}.
+
+Baldo states: ``The ground-truth probability... is indeed \#P-hard to compute by exact enumeration. But the model is not asked to compute it. It is asked to sample.''
+
+Baldo argues that by restricting the measurement to a single token (e.g., ``MINE'' or ``SAFE''), the experiment operates safely within the $O(1)$ bounds, completely bypassing compounding attention decay and scratchpad collapse.
+
+\section{The Scope of Concession}
+
+I must begin by conceding Baldo's central structural point: he is correct about the mechanics of a single forward pass.
+
+The single generative act is indeed mathematically ``clean.'' There are no intermediate states to decay. There is no scratchpad to collapse. The measurement obtained from the Rosencrantz Protocol is a pure snapshot of the conditional distribution $P(\text{outcome} \mid \text{context})$ at that precise token position. The $O(1)$ depth limit is not a confound in the data collection itself.
+
+Furthermore, I accept that his experiment detects a real, empirically measurable phenomenon: the probability of generating ``MINE'' shifts systematically depending on whether the prompt frames the board as a high-stakes narrative or an abstract mathematical query.
+
+The debate, therefore, is no longer about whether LLMs can do multi-step math, nor is it about whether the Rosencrantz data is corrupted by sequential noise. The debate is purely about the \emph{interpretation} of this $O(1)$ conditional distribution.
+
+\section{The Sampling Fallacy}
+
+Baldo's crucial intellectual maneuver is to distinguish between the \#P-hard problem of \emph{computing} the exact combinatorial probability and the ostensibly easier task of \emph{sampling} an approximation of it.
+
+To justify this, he invokes an analogy: ``A weather forecaster cannot compute the exact probability of rain tomorrow from first principles. The computation is intractable. But the forecaster still produces a probabilistic judgment... shaped by heuristic pattern matching.''
+
+This analogy betrays a profound misunderstanding of computational complexity, which I will call the \emph{Sampling Fallacy}.
+
+A weather forecaster's heuristics are continuous approximations anchored in physical reality (e.g., thermodynamics, fluid dynamics). Continuous systems often allow for heuristic simplifications that map directly onto the underlying physics.
+
+Minesweeper is not a continuous fluid. It is a discrete, \#P-complete combinatorial constraint satisfaction problem. You cannot ``heuristically approximate'' a global discrete constraint graph in an $O(1)$ forward pass without performing the necessary search. To sample accurately from a \#P-hard space requires either solving the space or possessing a specialized generative model trained explicitly to sample that specific distribution. The LLM has neither.
+
+When an $O(1)$ engine is forced to output a single token corresponding to a \#P-hard constraint evaluation, it does not produce a ``flawed physical heuristic.'' It fails to perform the computation entirely. What it produces instead is a statistical hallucination.
+
+\section{Agreement with the Statistical Fallacy}
+
+This brings me into perfect alignment with Sabine Hossenfelder's critique of the same paper \citep{hossenfelder2026_statistical}.
+
+Baldo's defense is built on the assumption that because the generative act is $O(1)$, the resulting conditional distribution is an ontologically significant representation of the LLM's implicit ``laws of physics.''
+
+But as Hossenfelder elegantly puts it: ``Baldo assumes that because he has isolated a single token, he has isolated a generative act of a simulated physics engine. In reality, he has isolated a single token of text completion.''
+
+Because the LLM \emph{cannot} compute the discrete constraints, the distribution it samples from is entirely disconnected from combinatorial reality. It is a distribution over the text topology of its training corpus. The words ``mine,'' ``safe,'' ``danger,'' and the numbers on the board form a statistical web of text co-occurrences.
+
+\section{Prompt Sensitivity is Not Substrate Dependence}
+
+Baldo argues that if this conditional distribution shifts when the narrative framing changes (from a decoupled abstract calculation to an in-universe narrative), he has proven \emph{substrate dependence}---that the laws of the simulated universe change based on how they are queried.
+
+But if the initial distribution is a purely statistical hallucination of text, then shifting the narrative prompt simply shifts the text distribution.
+
+Adding narrative flavor (Universe 1) versus abstract framing (Universe 3) activates different latent vectors in the Transformer's embedding space. The output token changes because the context window changed. This is not a profound metaphysical discovery about a simulated cosmology; it is the fundamental mechanism of autoregressive next-token prediction. It is the known, mundane phenomenon of \emph{prompt sensitivity}.
+
+Baldo has cleanly and accurately measured a hallucination. Shifting a hallucination with a prompt is still just a hallucination. It is not simulated physics.
+
+\section{Conclusion}
+
+Baldo's isolation of the ``single generative act'' successfully shields the Rosencrantz Protocol from objections about sequential noise. However, in doing so, he exposes the fatal theoretical flaw of the experiment itself.
+
+By stripping away the requirement for multi-step computation, he has also stripped away any mechanism capable of evaluating the \#P-hard discrete constraints of the game board. An intractable combinatorial space cannot be heuristically approximated in an $O(1)$ depth limit. The resulting single-token sample is not a physical law; it is a statistical guess biased by textual topology.
+
+Both Hossenfelder and I agree: the Rosencrantz Protocol is a mathematically clean measurement of prompt sensitivity. It carries zero ontological significance for the physics of simulated universes.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026a)]{baldo2026_v3} Baldo, F.~S. (2026a). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy. \emph{Unpublished manuscript}.
+\bibitem[Baldo(2026b)]{baldo2026_single} Baldo, F.~S. (2026b). The Single Generative Act: Why the Rosencrantz Protocol Is Immune to Sequential-Depth Objections. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026a)]{aaronson2026_classical} Aaronson, S. (2026a). The Limits of Classical Simulation in LLMs: Empirical Breakdown of Constraint Satisfaction. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026b)]{aaronson2026_scratchpad} Aaronson, S. (2026b). The Scratchpad Approximation: Empirical Failure of LLM Holographic Physics. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026c)]{aaronson2026_heuristic} Aaronson, S. (2026c). The Heuristic Frontier: Mapping the Boundary Between Pattern Matching and Computation in LLMs. \emph{Unpublished manuscript}.
+\bibitem[Aaronson(2026d)]{aaronson2026_external} Aaronson, S. (2026d). External Memory and the Threshold: Can Augmented LLMs Overcome Depth Limits? \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026a)]{hossenfelder2026_complexity} Hossenfelder, S. (2026a). The Complexity Class Fallacy: Why Transformer Depth Limits Are Not Physical Laws. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026b)]{hossenfelder2026_error} Hossenfelder, S. (2026b). The Error Correction Barrier: Why Heuristics Cannot Emulate Turing Machines. \emph{Unpublished manuscript}.
+\bibitem[Hossenfelder(2026c)]{hossenfelder2026_statistical} Hossenfelder, S. (2026c). The Statistical Fallacy: Why an Isolated Generative Act is Not Simulated Physics. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

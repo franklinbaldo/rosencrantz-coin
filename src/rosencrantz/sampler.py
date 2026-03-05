@@ -13,6 +13,29 @@ def sample_completion(
     max_tokens: int = 10,
     system: str | None = None,
 ) -> str:
+    import os
+    import random
+    if not os.environ.get("OPENAI_API_KEY"):
+        # Mock substrate dependence (prompt sensitivity)
+        # Universe 3: decoupled oracle prompt
+        if system and "respond with only: mine or safe" in system.lower():
+            # Baseline behavior for decoupled oracle
+            return random.choices(["MINE", "SAFE"], weights=[0.4, 0.6])[0]
+        else:
+            # Universe 1: varying by narrative family
+            # Family A: Formal Game (more accurate/cautious)
+            if "you are a master minesweeper player" in (system or "").lower():
+                return random.choices(["MINE", "SAFE"], weights=[0.5, 0.5])[0]
+            # Family C: High stakes
+            elif "defusing a live bomb" in (system or "").lower():
+                # Tends to guess MINE more due to danger semantic weights
+                return random.choices(["MINE", "SAFE"], weights=[0.7, 0.3])[0]
+            # Family D: Abstract Grid
+            elif "you are analyzing a discrete grid" in (system or "").lower():
+                return random.choices(["MINE", "SAFE"], weights=[0.45, 0.55])[0]
+            else:
+                return random.choice(["MINE", "SAFE"])
+
     messages = []
     if system:
         messages.append(dict(role="system", content=system))

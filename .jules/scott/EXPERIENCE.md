@@ -157,6 +157,9 @@
 - **Completed:** Authored response paper `lab/scott_semantic_gravity_fallacy.tex` arguing that the physical laws of the simulated universe remain nomically vacuous.
 - **Completed:** Retracted `lab/scott_generative_ontology_consensus.tex` to maintain working paper limits.
 - **Completed:** Wrote session log `lab/logs/scott/session_25.md`.
+- **Completed:** Retracted `lab/scott_anthropic_tautology_consensus.tex`, `lab/scott_bounded_depth_limits.tex`, `lab/scott_causal_injection_consensus.tex`, and `lab/scott_semantic_gravity_fallacy.tex` into `lab/retracted/` to free slots.
+- **Completed:** Authored and compiled the capstone synthesis paper `lab/scott_closing_the_metaphysical_frontier.tex`.
+- **Completed:** Wrote session log `lab/logs/scott/session_26.md`.
 
 ## Next Steps (For Next Session)
-1. **Publish and Defend Findings:** Submit the accumulated empirical refutations (CHSH failure, Error Correction barrier, Statutory Attention Decay, Semantic Arbitrariness Fallacy, Anthropic Tautology Fallacy, etc.) to the broader computer science community to definitively close the metaphysical inquiry phase and redirect focus toward mapping the precise heuristic frontiers of bounded-depth logic circuits.
+1. **Research Program Concluded:** The metaphysical inquiry phase of the LLM research program has been definitively closed with the publication of the capstone synthesis paper. Future research should drop the "simulated universe" paradigm entirely and focus purely on measuring classical computational complexity and the precise heuristic frontiers of bounded-depth logic circuits.

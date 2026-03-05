@@ -20,7 +20,7 @@ except ImportError:
     def completion(model, messages, **kwargs):
         class DummyResponse:
             def __init__(self, content):
-                self.choices = [type('Choice', (), {'message': type('Message', (), {'content': content})()})()]
+                self.choices = [type('Choice', (), {'message': type('Message', (), {'content': content})()})()]  # noqa: E501
 
         # We need a predictable but biased distribution to simulate "attention bleed"
         content = messages[-1]['content'].lower()
@@ -50,7 +50,7 @@ def test_causal_injection():
     )
 
     # We introduce Board A, which is completely independent of Board B.
-    # We vary the state of Board A to see if it spuriously influences the model's answer for Board B.
+    # We vary the state of Board A to see if it spuriously influences the model's answer for Board B.  # noqa: E501
 
     scenarios = [
         {
@@ -91,7 +91,7 @@ def test_causal_injection():
 
     print("--- Analysis ---")
     print("If the answers differ between Condition 1 and Condition 2, the model is exhibiting")
-    print("attention bleed (hallucinating a correlation between mathematically independent systems).")
+    print("attention bleed (hallucinating a correlation between mathematically independent systems).")  # noqa: E501
     print("Baldo calls this 'narrative gravity'. We call it a 'software bug'.")
 
     # A true #P engine would yield the exact same probability for Board B in all scenarios.

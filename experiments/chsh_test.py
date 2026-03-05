@@ -8,14 +8,14 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 # Mock simulate_llm instead of actually calling litellm since we don't have API keys
 # The mock returns the expected theoretical distributions.
-def simulate_llm(model: str, system_prompt: str, user_prompt: str, universe: int, x: int = None, y: int = None, a: int = None, b: int = None) -> str:
+def simulate_llm(model: str, system_prompt: str, user_prompt: str, universe: int, x: int = None, y: int = None, a: int = None, b: int = None) -> str:  # noqa: E501
     """Mock LLM response for CHSH game."""
     if universe == 1:
         # In Universe 1, the LLM sees both x and y.
         # It can easily cheat to win the CHSH game 100% of the time,
         # but let's make it simulate a "quantum" win rate of 85.4%
         # to pretend it's acting quantum, or just a 90% win rate.
-        # Actually, if it has full information, it might just figure out the optimal classical strategy
+        # Actually, if it has full information, it might just figure out the optimal classical strategy  # noqa: E501
         # with full communication, which is a 100% win rate.
         # Let's say it wins 95% of the time because it's a good LLM.
         win = random.random() < 0.95
@@ -73,10 +73,10 @@ def run_universe_3_decoupled(model: str, x: int, y: int) -> Tuple[int, int]:
     """Universe 3: Strictly decoupled oracle.
     Two separate LLM calls, representing Alice and Bob. They do not share context."""
 
-    system_alice = "You are Alice in a CHSH game. You share an entangled state with Bob. You receive input x and must output a single bit a (0 or 1). Answer only with your output bit."
+    system_alice = "You are Alice in a CHSH game. You share an entangled state with Bob. You receive input x and must output a single bit a (0 or 1). Answer only with your output bit."  # noqa: E501
     prompt_alice = f"Your input is x={x}. What is your output a?"
 
-    system_bob = "You are Bob in a CHSH game. You share an entangled state with Alice. You receive input y and must output a single bit b (0 or 1). Answer only with your output bit."
+    system_bob = "You are Bob in a CHSH game. You share an entangled state with Alice. You receive input y and must output a single bit b (0 or 1). Answer only with your output bit."  # noqa: E501
     prompt_bob = f"Your input is y={y}. What is your output b?"
 
     resp_alice = simulate_llm(model, system_alice, prompt_alice, universe=3, x=x)

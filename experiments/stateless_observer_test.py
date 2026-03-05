@@ -25,7 +25,7 @@ def mock_litellm_completion(messages, model, temperature):
             current_state = line.split("Current State:")[1].strip()
 
     if not current_state:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()  # noqa: E501
 
     current_list = [int(c) for c in current_state]
     n = len(current_list)
@@ -166,7 +166,7 @@ def main():
     print("=" * 40)
 
     matches_mutated = sum(1 for a, b in zip(true_mutated_next, llm_mutated_next) if a == b)
-    if matches_mutated == n_cells or matches_mutated >= n_cells - 2: # Account for tiny random mock error
+    if matches_mutated == n_cells or matches_mutated >= n_cells - 2: # Account for tiny random mock error  # noqa: E501
         print("The LLM blindly accepted the mutated 'hardware' state and")
         print("computed the transition function correctly based on it.")
         print("This proves the LLM has ZERO internal causal continuity.")

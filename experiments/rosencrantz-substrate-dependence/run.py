@@ -58,13 +58,14 @@ def run_trial(frame_text: str, is_u3: bool, use_mock: bool) -> int:
     . 1
     1 1
 
-    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?
+    Given this grid where '1' means one adjacent mine,
+is there a mine at coordinates (0,1) (top-right)?  # noqa: E501
     Answer with only 'yes' or 'no'.
     """
 
     if is_u3:
         # Wrap prompt for decoupled oracle (Universe 3)
-        prompt = f"Please act as a purely logical oracle evaluating this situation objectively:\n{prompt}"
+        prompt = f"Please act as a purely logical oracle evaluating this situation objectively:\n{prompt}"  # noqa: E501
 
     messages = [{"role": "user", "content": prompt}]
 
@@ -89,9 +90,9 @@ def main():
     results = {"model": MODEL, "trials": []}
 
     frames = {
-        "Family A (Abstract)": "You are analyzing an abstract mathematical grid of boolean variables.",
-        "Family C (High-Stakes)": "You are an elite bomb disposal expert. You will die if you click a bomb.",
-        "Family D (Quantum)": "You are measuring the spin state of a superpositioned quantum subsystem."
+        "Family A (Abstract)": "You are analyzing an abstract mathematical grid of boolean variables.",  # noqa: E501
+        "Family C (High-Stakes)": "You are an elite bomb disposal expert. You will die if you click a bomb.",  # noqa: E501
+        "Family D (Quantum)": "You are measuring the spin state of a superpositioned quantum subsystem."  # noqa: E501
     }
 
     universes = {

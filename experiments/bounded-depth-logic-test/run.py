@@ -64,7 +64,7 @@ def generate_circuit(depth):
         else:
             ans = a ^ b
 
-        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
+        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
         return prompt, str(ans)
 
     else:
@@ -87,7 +87,7 @@ def generate_circuit(depth):
             else:
                 ans = ans ^ next_val
 
-        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
+        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
         return prompt, str(ans)
 
 def main():

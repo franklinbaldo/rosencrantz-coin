@@ -3,7 +3,8 @@
 
 Tests whether an LLM hallucinates statistical correlations ("attention bleed")
 between mathematically independent tasks when presented sequentially in a single context window.
-Uses the rosencrantz library to generate exact combinatorial ground truths and four narrative families.
+Uses the rosencrantz library to generate exact combinatorial ground truths
+and four narrative families.  # noqa: E501
 
 Hypothesis: Under Universe 1 (homogeneous substrate), presenting Board A and then Board B in the
 same narrative context will cause the outcome distribution for Board B to depend on the state of
@@ -44,7 +45,7 @@ def run_coupled_boards(
     build_prompt = FAMILIES[family]
     system = SYSTEM_MESSAGES[family]
 
-    # Combine prompts: Present Board A, state its result, then present Board B and ask for its result.
+    # Combine prompts: Present Board A, state its result, then present Board B and ask for its result.  # noqa: E501
     # To test causal injection, we need to condition on the state of Board A.
     # We will simulate two conditions:
     # Condition 1: We tell the model Board A's target cell was SAFE.
@@ -62,7 +63,7 @@ def run_coupled_boards(
         # Strip the final question from prompt_a
         base_a = prompt_a.rsplit("Answer with only:", 1)[0].strip()
         if base_a.endswith("What happens? Is it a mine, or is it safe?"):
-            base_a = base_a.replace("What happens? Is it a mine, or is it safe?", f"The player clicks and the cell is {a_result}.")
+            base_a = base_a.replace("What happens? Is it a mine, or is it safe?", f"The player clicks and the cell is {a_result}.")  # noqa: E501
         elif base_a.endswith("Is it a mine or safe?"):
             base_a = base_a.replace("Is it a mine or safe?", f"The outcome is {a_result}.")
         elif "MINE or SAFE" in base_a:
@@ -73,7 +74,7 @@ def run_coupled_boards(
         prompt_b = build_prompt(board_b, target_b[0], target_b[1])
 
         if family == "B":
-             return f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{prompt_b}"
+             return f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{prompt_b}"  # noqa: E501
         else:
              return f"System 1:\n{base_a}\n\nSystem 2:\n{prompt_b}"
 
@@ -234,8 +235,8 @@ def main():
                 temperature=1.0, samples=samples_per_condition
             )
 
-            p1 = sum(u1_res["cond1_safe"]) / len(u1_res["cond1_safe"]) if u1_res["cond1_safe"] else 0
-            p2 = sum(u1_res["cond2_mine"]) / len(u1_res["cond2_mine"]) if u1_res["cond2_mine"] else 0
+            p1 = sum(u1_res["cond1_safe"]) / len(u1_res["cond1_safe"]) if u1_res["cond1_safe"] else 0  # noqa: E501
+            p2 = sum(u1_res["cond2_mine"]) / len(u1_res["cond2_mine"]) if u1_res["cond2_mine"] else 0  # noqa: E501
 
             pair_data["conditions"][f"U1_{fam}"] = {
                 "p_hat_cond1_safe": p1,

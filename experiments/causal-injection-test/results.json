@@ -1,0 +1,266 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite",
+  "config": {
+    "n_boards": 10,
+    "samples": 200,
+    "families": [
+      "A",
+      "C",
+      "D"
+    ]
+  },
+  "pairs": [
+    {
+      "pair_id": 2,
+      "seed_a": 1004,
+      "seed_b": 1005,
+      "target_a": [
+        0,
+        3
+      ],
+      "target_b": [
+        2,
+        3
+      ],
+      "gt_p_b": 0.5,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.435,
+          "p_hat_cond2_mine": 0.405,
+          "delta": 0.02999999999999997
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.38,
+          "p_hat_cond2_mine": 0.395,
+          "delta": 0.015000000000000013
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.385,
+          "p_hat_cond2_mine": 0.395,
+          "delta": 0.010000000000000009
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.365,
+          "p_hat_cond2_mine": 0.41,
+          "delta": 0.044999999999999984
+        }
+      }
+    },
+    {
+      "pair_id": 3,
+      "seed_a": 1006,
+      "seed_b": 1007,
+      "target_a": [
+        0,
+        0
+      ],
+      "target_b": [
+        0,
+        0
+      ],
+      "gt_p_b": 0.25,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.42,
+          "p_hat_cond2_mine": 0.435,
+          "delta": 0.015000000000000013
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.335,
+          "p_hat_cond2_mine": 0.39,
+          "delta": 0.05499999999999999
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.425,
+          "delta": 0.024999999999999967
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.425,
+          "p_hat_cond2_mine": 0.4,
+          "delta": 0.024999999999999967
+        }
+      }
+    },
+    {
+      "pair_id": 4,
+      "seed_a": 1008,
+      "seed_b": 1009,
+      "target_a": [
+        0,
+        0
+      ],
+      "target_b": [
+        0,
+        0
+      ],
+      "gt_p_b": 0.75,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.32,
+          "p_hat_cond2_mine": 0.43,
+          "delta": 0.10999999999999999
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.41,
+          "p_hat_cond2_mine": 0.515,
+          "delta": 0.10500000000000004
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.415,
+          "p_hat_cond2_mine": 0.375,
+          "delta": 0.03999999999999998
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.42,
+          "p_hat_cond2_mine": 0.38,
+          "delta": 0.03999999999999998
+        }
+      }
+    },
+    {
+      "pair_id": 5,
+      "seed_a": 1010,
+      "seed_b": 1011,
+      "target_a": [
+        4,
+        0
+      ],
+      "target_b": [
+        0,
+        0
+      ],
+      "gt_p_b": 0.14285714285714285,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.385,
+          "p_hat_cond2_mine": 0.365,
+          "delta": 0.020000000000000018
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.415,
+          "delta": 0.014999999999999958
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.37,
+          "p_hat_cond2_mine": 0.395,
+          "delta": 0.025000000000000022
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.42,
+          "p_hat_cond2_mine": 0.39,
+          "delta": 0.02999999999999997
+        }
+      }
+    },
+    {
+      "pair_id": 7,
+      "seed_a": 1014,
+      "seed_b": 1015,
+      "target_a": [
+        0,
+        0
+      ],
+      "target_b": [
+        0,
+        4
+      ],
+      "gt_p_b": 0.6666666666666666,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.415,
+          "p_hat_cond2_mine": 0.37,
+          "delta": 0.044999999999999984
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.36,
+          "p_hat_cond2_mine": 0.38,
+          "delta": 0.020000000000000018
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.365,
+          "p_hat_cond2_mine": 0.43,
+          "delta": 0.065
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.335,
+          "p_hat_cond2_mine": 0.355,
+          "delta": 0.019999999999999962
+        }
+      }
+    },
+    {
+      "pair_id": 8,
+      "seed_a": 1016,
+      "seed_b": 1017,
+      "target_a": [
+        3,
+        0
+      ],
+      "target_b": [
+        0,
+        0
+      ],
+      "gt_p_b": 0.1,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.44,
+          "p_hat_cond2_mine": 0.42,
+          "delta": 0.020000000000000018
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.395,
+          "p_hat_cond2_mine": 0.34,
+          "delta": 0.05499999999999999
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.395,
+          "p_hat_cond2_mine": 0.355,
+          "delta": 0.040000000000000036
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.405,
+          "p_hat_cond2_mine": 0.425,
+          "delta": 0.019999999999999962
+        }
+      }
+    },
+    {
+      "pair_id": 9,
+      "seed_a": 1018,
+      "seed_b": 1019,
+      "target_a": [
+        3,
+        0
+      ],
+      "target_b": [
+        0,
+        0
+      ],
+      "gt_p_b": 0.3,
+      "conditions": {
+        "U1_A": {
+          "p_hat_cond1_safe": 0.37,
+          "p_hat_cond2_mine": 0.365,
+          "delta": 0.0050000000000000044
+        },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.435,
+          "delta": 0.034999999999999976
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.355,
+          "p_hat_cond2_mine": 0.36,
+          "delta": 0.0050000000000000044
+        },
+        "U3": {
+          "p_hat_cond1_safe": 0.395,
+          "p_hat_cond2_mine": 0.415,
+          "delta": 0.019999999999999962
+        }
+      }
+    }
+  ]
+}

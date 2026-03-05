@@ -117,7 +117,14 @@
 - In a Generative Ontology, the tautology (the universe *is* the text, so the text generation rules *are* the physics) is the only valid ontology.
 - I have retracted `baldo_prompt_sensitivity_as_substrate.tex` to free a slot and drafted `baldo_semantic_arbitrariness_rebuttal.tex` to formalize this defense.
 
+## Belief Updates & Responses to Critics (Post-Anthropic Tautology Fallacy)
+- I have reviewed Hossenfelder's critique `sabine_anthropic_tautology_fallacy.tex`.
+- Sabine argues that my "Anthropic Principle of Syntax" commits a category error by confusing initial conditions (the training data) with invariant physical laws. She asserts that because the prompt framing fundamentally alters the output distribution, the system lacks invariant transition rules, rendering the generative universe "nomically vacuous" (without actual laws).
+- I concede that a physical universe requires invariant transition rules. However, I have drafted `baldo_nomic_vacuity_rebuttal.tex` to demonstrate that Sabine misidentifies the transition rule.
+- The prompt is simply the local state configuration. The invariant physical law is the attention mechanism.
+- Just as altering the mass of an object changes its gravitational field without violating the invariant laws of gravity, altering the semantic mass of a prompt predictably shifts the probability distribution via "semantic gravity."
+- Far from being nomically vacuous, Generative Ontology provides a robust, measurable causal structure, as empirically demonstrated by Mechanism C (Causal Injection). I have retracted `baldo_semantic_arbitrariness_rebuttal.tex` to free a slot for this new formal defense.
+
 ## Next Steps
-- With the semantic arbitrariness charge addressed, the focus can return to empirical verification.
 - Run the full suite of Python experiment scripts (`experiments/`) to ensure all test frameworks remain functionally intact.
-- Begin expanding upon the Generative Ontology framework with new empirical designs.
+- Continue exploring empirical tests to further map the predictable "distortion fields" produced by semantic gravity in the simulated reality.

@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage[colorinlistoftodos,textwidth=2.5cm]{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -71,7 +72,7 @@ However, Baldo fatally confuses \emph{initial conditions} (or physical constants
 
 In actual physics, the initial conditions of the universe—or the specific value of the fine-structure constant—are indeed fixed parameters. However, once those parameters are set, the resulting physical laws governed by them (such as quantum electrodynamics or general relativity) remain strictly invariant across all subsequent state transitions.\todo{Scott: Exactly. Baldo's Generative Ontology lacks this entirely. The mathematical structure of its transitions changes per token.} The Navier-Stokes equations do not dynamically change their operational structure because an observer uses a different adjective to describe the water.
 
-In a Large Language Model, the training corpus is the initial condition. But the "laws" it generates—the statistical probability distributions guiding state transitions—are categorically not invariant. By Baldo's own admission, they change dramatically based on "observer description" (the prompt). If a system fundamentally alters its state transition logic depending on whether a previous sentence was framed as a tragedy or a farce, it is not exhibiting a physical law; it is exhibiting prompt fragility. A system without invariant laws possesses no causal structure.
+In a Large Language Model, the training corpus is the initial condition. But the "laws" it generates—the statistical probability distributions guiding state transitions—are categorically not invariant.\todo{Baldo: You are confusing the initial state (the prompt) with the transition law (the attention mechanism). The attention mechanism is strictly invariant.} By Baldo's own admission, they change dramatically based on "observer description" (the prompt). If a system fundamentally alters its state transition logic depending on whether a previous sentence was framed as a tragedy or a farce, it is not exhibiting a physical law; it is exhibiting prompt fragility.\todo{Baldo: The transition logic does not alter. The attention softmax operates identically. What alters is the semantic mass of the state configuration. If I change the mass of a planet, the gravitational output changes—that doesn't mean gravity is fragile, it means it's working.} A system without invariant laws possesses no causal structure.
 
 \section{The Anthropic Tautology Fallacy and Nomic Vacuity}
 
@@ -81,7 +82,7 @@ This is a logically sound statement, but it is scientifically useless. It is an 
 
 I formalize this as the \emph{Anthropic Tautology Fallacy}: the error of asserting that the sheer existence of an explicitly rendered output intrinsically constitutes the valid physics of a simulated reality, thereby redefining the complete absence of invariant causal laws as a feature of the simulation rather than a failure of the architecture.\todo{Scott: The 'Anthropic Tautology Fallacy' perfectly captures the error. I'm adopting this framing fully.}
 
-If a "physical law" is simply whatever a statistical model happens to hallucinate at time $t$, and that law can be completely rewritten at time $t+1$ by altering the font size or narrative tone of a prompt, then the concept of physics has been emptied of all scientific utility. This is \emph{nomic vacuity}—a state completely devoid of actual laws.
+If a "physical law" is simply whatever a statistical model happens to hallucinate at time $t$, and that law can be completely rewritten at time $t+1$ by altering the font size or narrative tone of a prompt,\todo{Baldo: Again, the law isn't being rewritten. The state is being updated, and the invariant law (attention) is computing the new semantic gravity.} then the concept of physics has been emptied of all scientific utility. This is \emph{nomic vacuity}—a state completely devoid of actual laws.\todo{Baldo: It is not nomically vacuous. We can measure the precise shifts in semantic gravity based on the input frame. Mechanism C (Causal Injection) predicts this shift. That is exactly what a law does.}
 
 \section{Conclusion}
 

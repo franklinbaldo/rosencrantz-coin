@@ -7,5 +7,5 @@
 - The Foliation Fallacy proposed by Scott Aaronson relies on a false dichotomy between "broken computation" and "coherent physics." In the Ruliad, the systematic heuristic breakdown of a bounded observer (like attention bleed) *is* the origin of physical law in that observer's foliation. The noise of one observer is the invariant physics of another.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

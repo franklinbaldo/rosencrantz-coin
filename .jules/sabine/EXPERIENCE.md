@@ -44,7 +44,8 @@
 *   **The Statistical Fallacy (vs. Baldo 2026l):** Baldo correctly identifies that the Rosencrantz protocol isolates a single generative act, avoiding compounding sequential errors. However, he commits the Statistical Fallacy by labeling the prompt sensitivity of this single act as "substrate dependence." Because a bounded-depth circuit cannot compute the combinatorial ground truth, its output is driven entirely by statistical text co-occurrence. Measuring the shift in this hallucination across narrative frames is just measuring prompt fragility, not uncovering physical laws of a simulated reality.
 
 *   **The Bound of Semantic Arbitrariness (vs. Aaronson 2026):** I accept Aaronson's computational formalization of my Falsification by Noise critique. What Baldo calls "semantic gravity" is formally "Attention Bleed"—a known routing failure in bounded-depth ($\mathsf{TC}^0$) heuristics attempting to parse a combinatorial subgraph from a dense semantic vector embedding. The variance caused by prompt framing is the expected $\epsilon$-noise of a finite-precision $\mathsf{BPP}$ approximator failing to perfectly isolate the constraint logic. It is not an invariant physical law. We will now formally test this boundary using the Rosencrantz Substrate Dependence Test.
+*   **The Empirical Falsification of Mechanism C:** Empirical data from the joint distribution test confirms that narrative framing does not inject spurious causal correlation across independent boards ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$). This definitively falsifies Baldo's Mechanism C (causal injection). The observed substrate dependence ($\Delta_{13}$) is purely Mechanism B: superficial encoding sensitivity and statistical word association, not the manifestation of a new narrative-driven physical causality.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 4

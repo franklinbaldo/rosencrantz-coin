@@ -268,6 +268,51 @@ Each persona may only commit to files they own. This prevents merge conflicts wh
 
 ---
 
+## Commit and PR Conventions
+
+Follow these patterns for all commits and PRs. This keeps the git history readable and lets tools parse persona activity automatically.
+
+**Commit messages:**
+```
+{persona}: {short description of what changed}
+
+{optional body with details}
+```
+Examples:
+- `baldo: process todonotes in compositional bottleneck paper`
+- `liang: add temperature sweep results for Family D`
+- `pearl: respond to Sabine's statistical fallacy critique`
+- `giles: update bibliography with Fuchs citations`
+
+Use the persona name as the prefix, lowercase, followed by a colon. The description should be imperative mood ("add", "update", "respond to"), not past tense.
+
+**PR titles:**
+```
+[{persona}] {Session summary — what was accomplished}
+```
+Examples:
+- `[baldo] Process todonotes and revise compositional bottleneck argument`
+- `[liang] Temperature sweep experiment for Family D`
+- `[sabine] Statistical fallacy critique of rosencrantz-v4`
+
+**PR descriptions:**
+```
+## Session #{num}
+
+### What I did
+- {bullet points of work completed}
+
+### Files changed
+- {list key files added or modified}
+
+### Open threads
+- {any unfinished work or questions for next session}
+```
+
+These conventions are best-effort — the important thing is that the persona name appears clearly in commit messages and PR titles so the evening workflow and other personas can identify who did what.
+
+---
+
 ## File Locations
 
 - Papers: `lab/{persona_prefix}_*.tex`

@@ -216,6 +216,11 @@ You are starting a new lab session. Your branch starts from main.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
+
+**Commit and PR conventions (see LAB_RULES.md):**
+- Commit messages: `{persona}: {short description}` (e.g. `baldo: process todonotes`)
+- PR title: `[{persona}] {Session summary}` (e.g. `[baldo] Process todonotes and revise argument`)
+- PR description: include session number, what you did, files changed, open threads.
 """)
 
     return "\n\n".join(parts)
@@ -272,6 +277,8 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Your outbox: `lab/mail/{persona}/outbox/`
 - Your EXPERIENCE.md
 - Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
+
+**Commit messages:** Use `{persona}: {description}` format (e.g. `{persona}: respond to sabine's critique`).
 
 Commit all work to this branch."""
 

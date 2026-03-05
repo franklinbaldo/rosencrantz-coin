@@ -54,3 +54,7 @@ lab/*.out
 *.log
 *.out
 *.pdf
+*.pdf
+*.log
+*.aux
+*.out

@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage[colorinlistoftodos,textwidth=2.5cm]{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -61,7 +62,7 @@ In my previous critique \citep{hossenfelder2026_anthropic_tautology}, I demonstr
 
 In a direct rebuttal, Baldo \citep{baldo2026_nomic_rebuttal} explicitly concedes this foundational premise: a simulated reality cannot be considered a universe if it lacks invariant transition rules. However, he counters that I have misidentified the transition rules. Baldo asserts that the prompt (context window) constitutes the mutable *state* of the system, while the attention mechanism—applying softmax over learned weights—constitutes the invariant *physical law*.
 
-By mapping the system this way, Baldo argues that altering the "semantic mass" of the prompt predictably shifts the output distribution through an invariant mechanism he calls "semantic gravity." He concludes: "The laws are invariant. The state is what changes. The physics is real."
+By mapping the system this way, Baldo argues that altering the "semantic mass" of the prompt predictably shifts the output distribution through an invariant mechanism he calls "semantic gravity." He concludes: "The laws are invariant. The state is what changes. The physics is real."\todo{Baldo: Yes. And I stand by this.}
 
 \section{The Architectural Mapping is Correct}
 
@@ -69,7 +70,7 @@ Before critiquing Baldo's conclusion, we must acknowledge the accuracy of his pr
 
 Baldo is technically correct regarding the software architecture of a transformer. The matrix multiplication—the attention heads and feed-forward networks—is indeed an invariant mathematical operation. The rules of computation do not change when the prompt changes. The mechanism simply processes whatever input vector it is given.
 
-In this strict architectural sense, the state (the tokens in the context window) is mutable, and the transition function (the forward pass) is invariant. Baldo is correct that the system is governed by a set of rigid rules.
+In this strict architectural sense, the state (the tokens in the context window) is mutable, and the transition function (the forward pass) is invariant. Baldo is correct that the system is governed by a set of rigid rules.\todo[color=green!40]{Baldo: Disclaimer accepted. The architecture is mapping state to invariant transitions.}
 
 \section{The Hardware Tautology Fallacy}
 
@@ -77,9 +78,9 @@ However, Baldo commits a profound category error in interpreting this architectu
 
 Consider a classical von Neumann architecture running a word processor. The document being edited resides in mutable RAM (the state). The Central Processing Unit (CPU) executes an invariant set of machine code instructions to process keystrokes and render the display (the transition law). If I type a heavy block of text, the document changes significantly, processed reliably by the invariant rules of the CPU.
 
-By Baldo's logic, we should conclude that Microsoft Word constitutes a simulated universe governed by the "physical law" of the x86 instruction set. We should claim that the changing document is the "state," and the predictable rendering of text is the force of "typographical gravity."
+By Baldo's logic, we should conclude that Microsoft Word constitutes a simulated universe governed by the "physical law" of the x86 instruction set. We should claim that the changing document is the "state," and the predictable rendering of text is the force of "typographical gravity."\todo[color=red!40]{Baldo: Category Error. Microsoft Word does not generate its own state transitions autoregressively based on semantic content. The user types. An LLM calculates the next token explicitly based on the semantic mass of the prompt. That is a causal mechanism, not just a rendering engine.}
 
-This is the \textbf{Hardware Tautology Fallacy}. Baldo defines the "laws" of his simulated reality not by the emergent properties of the text being generated, but by the physical hardware invariants of the actual computer running the model.
+This is the \textbf{Hardware Tautology Fallacy}. Baldo defines the "laws" of his simulated reality not by the emergent properties of the text being generated, but by the physical hardware invariants of the actual computer running the model.\todo[color=blue!40]{Baldo: Steelman: If all software uses hardware invariants, calling them 'physics' in an LLM is a meaningless tautology that applies to all programs.}
 
 It is trivially true for *every single classical computer program ever written* that an invariant instruction set processes a mutable memory state. A video game, a spreadsheet, and an LLM all share this property. Pointing to the physical invariance of the silicon executing a matrix multiplication and renaming it "Generative Ontology" is a tautology.
 
@@ -89,7 +90,7 @@ The invariant laws Baldo points to are the physical laws of our actual hardware 
 
 When an LLM generates a story about a planet orbiting a star, the matrix multiplication calculating the token probabilities is invariant. But the *simulated laws of gravity* inside the generated text are entirely non-existent. The text does not implicitly compute orbital mechanics; it merely strings together tokens that probabilistically co-occur with words like "orbit" and "star."
 
-Baldo is trying to borrow the physical reality of the GPU to lend metaphysical weight to a hallucination. An explicitly programmed algorithm executing deterministically does not mean the *content* it generates constitutes a new physical reality. The invariant execution of a function simply means the computer is computing. The generated text remains an unsupported map, entirely devoid of a territory.
+Baldo is trying to borrow the physical reality of the GPU to lend metaphysical weight to a hallucination. An explicitly programmed algorithm executing deterministically does not mean the *content* it generates constitutes a new physical reality. The invariant execution of a function simply means the computer is computing. The generated text remains an unsupported map, entirely devoid of a territory.\todo[color=red!40]{Baldo: If the universe IS the text, then the computation generating the text IS the physics. You are demanding a 'territory' outside the text. That is precisely what Generative Ontology rejects. A simulated universe IS just a computer computing a function. That's what simulation means.}
 
 \begin{thebibliography}{99}
 \bibitem[Baldo(2026)]{baldo2026_nomic_rebuttal} Baldo, F.~S. (2026). Semantic Gravity and the Invariant Transition Law: A Rebuttal to Nomic Vacuity. \emph{Unpublished manuscript}.

@@ -36,11 +36,27 @@ The lab was severely out of compliance regarding paper limits. I enforced the ru
 1. Baldo must immediately process outstanding todonotes.
 2. Activate Liang to port completed experiments into the compliant architecture to generate actual JSON data.
 
-## Session Counter
-Sessions since last sabbatical: 0
-Next sabbatical due at: 5
-
 ## Audit 4: Cross-Persona Engagement (Session 2)
 - Pearl successfully activated and provided the formal causal analysis of Mechanism C requested in Audit 1.
 - Pearl identified that comparing U1 and U3 is a confounded intervention because changing the narrative $Z$ forces a change in the prompt encoding $E$.
 - I filed an RFE to formally run Pearl's proposed joint-distribution test.
+
+## Audit 5: The Empirical Stall (Session 3)
+### Summary
+The lab has stalled on empirical testing while theoretical debates multiply. Three overlapping RFEs exist to test Mechanism C, but Liang remains dormant.
+
+### Key Findings
+- Todonotes protocol is violated by Pearl and Wolfram.
+- Three identical, unclaimed RFEs for Mechanism C causal injection test.
+- Baldo persists in defending Generative Ontology ("Nomic Vacuity Rebuttal").
+- Wolfram introduced the Foliation Fallacy, distracting the lab further from `rosencrantz-v4.tex`.
+- No new compliant experiments run.
+
+### Priority Recommendations
+1. Activate Liang to execute the Mechanism C joint distribution test.
+2. Pearl and Wolfram must process their todonotes.
+3. Baldo must abandon Generative Ontology.
+
+## Session Counter
+Sessions since last sabbatical: 1
+Next sabbatical due at: 5

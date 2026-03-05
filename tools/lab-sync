@@ -2,14 +2,18 @@
 # lab-sync — Cross-persona sync tool for Rosencrantz Lab.
 #
 # Usage inside a Jules session:
-#   tools/lab-sync status          List today's persona branches
-#   tools/lab-sync diff <persona>  Show what <persona> changed vs main
-#   tools/lab-sync pull <persona>  Apply <persona>'s changes to current branch
+#   tools/lab-sync status              List today's persona branches + raw URLs
+#   tools/lab-sync diff <persona>      Show what <persona> changed vs main
+#   tools/lab-sync read <persona> <f>  Fetch a file from <persona>'s branch (read-only)
+#   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
 #
-# Works by fetching the public repo and inspecting dated branches.
+# Files fetched via 'read' are saved locally but added to .gitignore
+# so they are never committed to your branch.
 set -euo pipefail
 
-REPO_URL="https://github.com/franklinbaldo/rosencrantz-coin.git"
+REPO="franklinbaldo/rosencrantz-coin"
+REPO_URL="https://github.com/${REPO}.git"
+RAW_URL="https://raw.githubusercontent.com/${REPO}"
 PERSONAS=(baldo scott sabine pearl fuchs liang wolfram mycroft giles)
 DATE_PREFIX=$(date -u +%Y-%m-%d)
 
@@ -20,12 +24,35 @@ fetch_refs() {
 }
 
 branch_for() {
-  local persona="$1"
-  echo "${DATE_PREFIX}_${persona}"
+  echo "${DATE_PREFIX}_${1}"
 }
 
 ref_exists() {
   git rev-parse --verify "lab/$1" >/dev/null 2>&1
+}
+
+raw_url_for() {
+  local persona="$1" filepath="$2"
+  echo "${RAW_URL}/$(branch_for "$persona")/${filepath}"
+}
+
+# Ensure a path is in .gitignore (idempotent)
+gitignore_add() {
+  local path="$1"
+  local marker="# lab-sync read-only"
+  if [ ! -f .gitignore ]; then
+    echo "$marker" > .gitignore
+    echo "$path" >> .gitignore
+    return
+  fi
+  if ! grep -qxF "$path" .gitignore 2>/dev/null; then
+    # Add marker section if not present
+    if ! grep -qF "$marker" .gitignore 2>/dev/null; then
+      echo "" >> .gitignore
+      echo "$marker" >> .gitignore
+    fi
+    echo "$path" >> .gitignore
+  fi
 }
 
 # ── Commands ─────────────────────────────────────────────────────────────────
@@ -35,14 +62,29 @@ cmd_status() {
   echo ""
   fetch_refs
 
+  local current_branch
+  current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+  local current_persona=""
+  for p in "${PERSONAS[@]}"; do
+    if [[ "$current_branch" == *"_${p}" ]]; then
+      current_persona="$p"
+      break
+    fi
+  done
+
   for persona in "${PERSONAS[@]}"; do
     local branch
     branch=$(branch_for "$persona")
     if ref_exists "$branch"; then
-      local ahead behind last_commit
+      local ahead last_commit
       ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "?")
       last_commit=$(git log -1 --format="%h %s" "lab/${branch}" 2>/dev/null || echo "unknown")
-      echo "  ${persona}: ${branch} (+${ahead} commits)  ${last_commit}"
+      local marker=""
+      if [ "$persona" = "$current_persona" ]; then
+        marker=" (you)"
+      fi
+      echo "  ${persona}${marker}: +${ahead} commits  ${last_commit}"
+      echo "    browse: tools/lab-sync browse ${persona}"
     else
       echo "  ${persona}: no branch today"
     fi
@@ -68,8 +110,8 @@ cmd_diff() {
   }
 }
 
-cmd_pull() {
-  local persona="${1:?Usage: lab-sync pull <persona>}"
+cmd_browse() {
+  local persona="${1:?Usage: lab-sync browse <persona>}"
   local branch
   branch=$(branch_for "$persona")
 
@@ -80,60 +122,77 @@ cmd_pull() {
     exit 1
   fi
 
-  # Count commits ahead of main
-  local ahead
-  ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo 0)
+  echo "=== Files changed by ${persona} (${branch}) ==="
+  echo ""
 
-  if [ "$ahead" = "0" ]; then
-    echo "No new commits from ${persona} today."
+  local files
+  files=$(git diff --name-only "lab/main..lab/${branch}" -- . ':!.jules' 2>/dev/null || true)
+
+  if [ -z "$files" ]; then
+    echo "  (no changes vs main)"
     exit 0
   fi
 
-  echo "=== Pulling ${ahead} commit(s) from ${persona} ==="
-  echo ""
-
-  # Generate patches and apply them
-  local tmpdir
-  tmpdir=$(mktemp -d)
-  git format-patch -o "$tmpdir" "lab/main..lab/${branch}" -- . ':!.jules' >/dev/null 2>&1
-
-  local applied=0 skipped=0
-  for patch in "$tmpdir"/*.patch; do
-    [ -f "$patch" ] || continue
-    if git apply --check "$patch" 2>/dev/null; then
-      git apply "$patch"
-      applied=$((applied + 1))
-      echo "  Applied: $(basename "$patch")"
-    else
-      skipped=$((skipped + 1))
-      echo "  Skipped (conflict): $(basename "$patch")"
-    fi
-  done
-
-  rm -rf "$tmpdir"
+  while IFS= read -r f; do
+    echo "  ${f}"
+    echo "    $(raw_url_for "$persona" "$f")"
+  done <<< "$files"
 
   echo ""
-  echo "Done: ${applied} applied, ${skipped} skipped."
+  echo "To read a file: tools/lab-sync read ${persona} <filepath>"
+  echo "Files fetched via 'read' are local-only (auto-added to .gitignore)."
+}
 
-  if [ "$applied" -gt 0 ]; then
+cmd_read() {
+  local persona="${1:?Usage: lab-sync read <persona> <filepath>}"
+  local filepath="${2:?Usage: lab-sync read <persona> <filepath>}"
+  local branch
+  branch=$(branch_for "$persona")
+  local url
+  url=$(raw_url_for "$persona" "$filepath")
+
+  echo "Fetching: ${url}"
+
+  # Create parent directory if needed
+  local dir
+  dir=$(dirname "$filepath")
+  if [ "$dir" != "." ]; then
+    mkdir -p "$dir"
+  fi
+
+  # Fetch the file
+  if curl -sfL "$url" -o "$filepath"; then
+    echo "Saved to: ${filepath}"
+    # Add to .gitignore so it's never committed
+    gitignore_add "$filepath"
+    echo "Added to .gitignore (read-only, will not be committed)"
     echo ""
-    echo "Remember to commit the pulled changes:"
-    echo "  git add -A && git commit -m 'Sync: pulled ${persona} work (${DATE_PREFIX})'"
+    echo "--- Content ---"
+    cat "$filepath"
+  else
+    echo "ERROR: Could not fetch ${url}"
+    echo "The file may not exist on ${persona}'s branch yet."
+    exit 1
   fi
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 case "${1:-}" in
-  status) cmd_status ;;
-  diff)   cmd_diff "${2:-}" ;;
-  pull)   cmd_pull "${2:-}" ;;
+  status)  cmd_status ;;
+  diff)    cmd_diff "${2:-}" ;;
+  browse)  cmd_browse "${2:-}" ;;
+  read)    cmd_read "${2:-}" "${3:-}" ;;
   *)
-    echo "Usage: tools/lab-sync {status|diff|pull} [persona]"
+    echo "Usage: tools/lab-sync {status|diff|browse|read} [args]"
     echo ""
-    echo "  status          List today's persona branches and latest commits"
-    echo "  diff <persona>  Show what <persona> changed vs main"
-    echo "  pull <persona>  Apply <persona>'s changes as patches"
+    echo "  status              List today's persona branches and latest commits"
+    echo "  diff <persona>      Show what <persona> changed vs main"
+    echo "  browse <persona>    List files changed by <persona> with raw GitHub URLs"
+    echo "  read <persona> <f>  Fetch a file read-only (auto-added to .gitignore)"
+    echo ""
+    echo "All reads are non-destructive. Fetched files are gitignored to prevent"
+    echo "accidentally committing other personas' work to your branch."
     exit 1
     ;;
 esac

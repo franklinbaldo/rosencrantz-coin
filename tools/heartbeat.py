@@ -99,17 +99,28 @@ def assemble_prompt(persona):
 
 You are starting a new lab session on branch `{branch}`.
 
-**FIRST:** Run `tools/lab-sync status` to see what other personas are working on today.
-Pull any relevant work with `tools/lab-sync pull <persona>`.
+**Follow the session structure from LAB_RULES.md:**
+1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
+2. Check your mailbox: `ls lab/mail/{persona}/`
+3. Check `lab/rfes/` for experiment requests relevant to you
+4. Check your papers for unprocessed todonotes
+5. Choose a session mode from your SOUL.md
+6. Do your work — commit to this branch
+7. Write a session log in `lab/logs/{persona}/`
+8. Update your EXPERIENCE.md
 
-**THEN:** Follow the session structure from LAB_RULES.md:
-1. Read `.jules/STATE.md` (lab state)
-2. Check `lab/rfes/` for experiment requests relevant to you
-3. Check your papers for unprocessed todonotes
-4. Choose a session mode from your SOUL.md
-5. Do your work — commit to this branch
-6. Write a session log in `lab/logs/{persona}/`
-7. Update EXPERIENCE.md and STATE.md as needed
+**File ownership — only commit to files you own:**
+- Your papers: `lab/{persona}_*.tex`
+- Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
+- Your RFEs: `lab/rfes/{persona}/`
+- Outgoing mail: `lab/mail/<recipient>/from_{persona}_*.md`
+- Your experience: `.jules/{persona}/EXPERIENCE.md`
+- Do NOT modify `.jules/STATE.md` — it is updated by the evening workflow.
+
+**Reading other personas' work:**
+- `tools/lab-sync status` — see today's branches
+- `tools/lab-sync browse <persona>` — list their changed files with raw GitHub URLs
+- `tools/lab-sync read <persona> <file>` — fetch a file read-only (auto-gitignored)
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
@@ -231,20 +242,26 @@ def list_todays_sessions():
 
 def send_heartbeat(session_id, persona):
     """Send a continuation message to a session (works on active AND completed)."""
-    prompt = f"""Your first session round is complete. This is a continuation round.
+    prompt = f"""This is a continuation round. Other personas have been working in parallel.
 
-Other personas have been working in parallel on their branches today.
-Run `tools/lab-sync status` to see what they produced, then
-`tools/lab-sync diff <persona>` to read their changes.
+1. **Check your mailbox:** `cat lab/mail/{persona}/from_*` — respond to any messages.
+2. **Browse other personas' work:** `tools/lab-sync status` then `tools/lab-sync browse <persona>`.
+3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
 
-**Your task for this round:** Pick ONE piece of new work from another
-persona and engage with it — write a response paper, add todonotes to
-their paper, or file an RFE in `lab/rfes/` if their work suggests an
-experiment. Cross-persona engagement is the most valuable thing you
-can do in a continuation round.
+**Your task:** Pick ONE piece of new work from another persona and engage:
+- Write a response paper, or add todonotes to their paper
+- Send them a message: write to `lab/mail/<their_name>/from_{persona}_{today()}.md`
+- File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 
-Commit all work to this branch. Update your EXPERIENCE.md if you form
-new beliefs. Write a brief continuation log in `lab/logs/{persona}/`."""
+**Ownership rules — only commit to files you own:**
+- Your papers: `lab/{persona}_*.tex`
+- Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
+- Your RFEs: `lab/rfes/{persona}/`
+- Outgoing mail: `lab/mail/<recipient>/from_{persona}_*.md`
+- Your EXPERIENCE.md
+- Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
+
+Commit all work to this branch."""
 
     resp = requests.post(
         f"{JULES_API}/sessions/{session_id}:sendMessage",

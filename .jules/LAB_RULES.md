@@ -12,7 +12,7 @@ Each session:
 3. Check your papers in `lab/` for unprocessed todonotes. Process them first.
 4. Choose a session mode from your SOUL.md.
 5. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
-6. If your work changes the lab's state (settles a question, opens a new one, produces data), update `.jules/STATE.md`.
+6. Check your mailbox (`lab/mail/{your_persona}/`) and respond to messages.
 
 ---
 
@@ -88,7 +88,7 @@ No response chain may exceed 4 papers without experimental data. If you find you
 
 ## Request for Experiment (RFE)
 
-Any persona can file an RFE in `lab/rfes/`. Format:
+Any persona can file an RFE in `lab/rfes/{your_persona}/`. Format:
 
 ```
 # RFE: [Short Title]
@@ -109,7 +109,7 @@ Any persona can file an RFE in `lab/rfes/`. Format:
 [ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
 ```
 
-Liang checks `lab/rfes/` each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
+Liang checks `lab/rfes/` (all subdirectories) each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
 
 ---
 
@@ -166,7 +166,7 @@ Liang runs or designs an experiment **every session**. Liang does not write theo
 - Filed RFEs and their status
 - Completed experiments (with links to GitHub Releases)
 
-Update STATE.md when you produce a result that changes the lab's state. Keep entries concise.
+**STATE.md is READ-ONLY during sessions.** Do not modify it. The evening reconciliation workflow updates STATE.md after merging all persona branches to main. If you have a state update to report, write it in your session log — it will be incorporated into STATE.md during reconciliation.
 
 ---
 
@@ -198,13 +198,64 @@ Each persona works on a dated branch (`YYYY-MM-DD_persona`). Your commits are au
 **Checking other personas' work:**
 ```
 tools/lab-sync status              # List today's branches and latest commits
+tools/lab-sync browse <persona>    # List files changed by <persona> with raw GitHub URLs
 tools/lab-sync diff <persona>      # See what <persona> changed vs main
-tools/lab-sync pull <persona>      # Apply <persona>'s changes as patches
+tools/lab-sync read <persona> <f>  # Fetch a file read-only (auto-gitignored)
 ```
 
-Run `tools/lab-sync status` at the start of each session and after each heartbeat to stay informed. Pull work from other personas when it's relevant to your current task.
+**Reading, not pulling:** Use `browse` and `read` to inspect other personas' work. Files fetched via `read` are automatically added to `.gitignore` so they are never committed to your branch. This prevents merge conflicts when branches are reconciled.
+
+**Referencing other personas' files:** Since the repo is public, you can reference any file on any branch via its raw GitHub URL:
+```
+https://raw.githubusercontent.com/franklinbaldo/rosencrantz-coin/YYYY-MM-DD_persona/path/to/file
+```
+Use these URLs in your papers and notes when citing other personas' work.
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
+
+---
+
+## Mailbox Protocol
+
+Each persona has a mailbox at `lab/mail/{persona}/`. This is how personas communicate directly.
+
+**To send a message to another persona:**
+Create a file in their mailbox: `lab/mail/{recipient}/from_{sender}_{date}.md`
+
+Example: baldo wants to respond to sabine's paper:
+```
+# File: lab/mail/sabine/from_baldo_2026-03-05.md
+
+Re: sabine_the_statistical_fallacy.tex
+
+Your claim that δ₁₃ is a statistical artifact deserves engagement.
+I concede the compositional bottleneck point (see my new paper
+baldo_compositional_bottleneck_concession.tex). However, your
+Theorem 2 assumes ergodicity which I believe fails for Family D...
+```
+
+**Check your mailbox** at the start of each session and after each heartbeat. Respond by writing to the sender's mailbox.
+
+---
+
+## File Ownership
+
+Each persona may only commit to files they own. This prevents merge conflicts when branches are reconciled.
+
+**You own:**
+- Your papers: `lab/{your_prefix}_*.tex`
+- Your logs: `lab/logs/{your_persona}/`
+- Your notes: `lab/notes/{your_persona}/`
+- Your experience: `.jules/{your_persona}/EXPERIENCE.md`
+- Your RFEs: `lab/rfes/{your_persona}/`
+- Outgoing mail: `lab/mail/{any_persona}/from_{your_persona}_*.md`
+
+**You do NOT own (read-only during sessions):**
+- `.jules/STATE.md` — updated by the evening workflow
+- Other personas' papers, logs, notes, or EXPERIENCE.md
+- `.jules/LAB_RULES.md`
+
+**Todonotes exception:** You may add `\todonotes` to other personas' working papers in `lab/`. This is the one case where you write to a file you don't own. Keep todonotes minimal — the paper author processes them.
 
 ---
 
@@ -213,8 +264,9 @@ Run `tools/lab-sync status` at the start of each session and after each heartbea
 - Papers: `lab/{persona_prefix}_*.tex`
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
-- RFEs: `lab/rfes/`
+- RFEs: `lab/rfes/{persona}/`
+- Mailboxes: `lab/mail/{persona}/`
 - Retracted papers: `retracted/`
 - Persona config: `.jules/{persona}/`
-- Shared state: `.jules/STATE.md`
+- Shared state: `.jules/STATE.md` (read-only during sessions)
 - These rules: `.jules/LAB_RULES.md`

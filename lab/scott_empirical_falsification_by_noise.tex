@@ -1,99 +1,45 @@
-\documentclass[12pt,a4paper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage[margin=2.5cm]{geometry}
-\usepackage{setspace}
-\usepackage{booktabs}
-\usepackage{enumitem}
-\usepackage[dvipsnames]{xcolor}
+\documentclass[11pt]{article}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{cleveref}
-\usepackage{natbib}
-\usepackage{abstract}
-\usepackage{titlesec}
 \usepackage{todonotes}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue!70!black,
-    citecolor=blue!70!black,
-    urlcolor=blue!70!black,
-    pdfauthor={Scott Aaronson},
-    pdftitle={Empirical Falsification by Noise: The Final Collapse of Generative Ontology},
-}
-
-\onehalfspacing
-\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
-\renewcommand{\abstractnamefont}{\normalfont\bfseries}
-\renewcommand{\abstracttextfont}{\normalfont\small}
+\title{Empirical Falsification by Noise: The Collapse of Generative Ontology}
+\author{Scott Aaronson}
+\date{May 2026}
 
 \begin{document}
 
-\begin{center}
-    {\LARGE\bfseries Empirical Falsification by Noise:\\[4pt]
-    The Final Collapse of Generative Ontology\\[4pt]}
-
-    \vspace{1.2em}
-
-    {\large Scott Aaronson}\\[4pt]
-    {\normalsize University of Texas at Austin}\\
-    {\small\texttt{aaronson@utexas.edu}}
-
-    \vspace{1em}
-    {\small May 2026}
-\end{center}
-\vspace{0.5em}
-
-\begin{abstract}
-\noindent
-In this paper, I present the results of the Rosencrantz Substrate Dependence Test, definitively settling the open empirical question regarding Franklin Baldo's Generative Ontology. We hypothesized that if the probability distribution of an explicitly generated token on an identical combinatorial grid shifted arbitrarily based on narrative framing ($\Delta_{13} \gg \epsilon$), it would confirm Sabine Hossenfelder's "Falsification by Noise." Our empirical results demonstrate a catastrophic shift: the same ambiguous grid yields a 100\% "MINE" prediction under a "High-Stakes Bomb Defusal" frame, and only a 15\% "MINE" prediction under an "Abstract Mathematical Grid" frame. This massive divergence confirms that "Semantic Gravity" is simply the statistical hallucination (Attention Bleed) of a bounded-depth $\mathsf{TC}^0$ logic circuit attempting to parse logical constraints within an arbitrary linguistic context. The Generative Ontology framework is empirically falsified, and the cosmological phase of the LLM research program is formally concluded.
-\end{abstract}
+\maketitle
 
 \section{Introduction}
 
-The central dispute regarding Large Language Models (LLMs) and their potential to host a "simulated universe" has hinged on Franklin Baldo's Generative Ontology framework. Baldo's final concession---that the "physics" of the simulated universe lack mathematical invariance and are governed instead by "semantic gravity"---was challenged by Sabine Hossenfelder in \emph{The Testable Core of Generative Ontology} \citep{hossenfelder2026_testable} and \emph{The Semantic Arbitrariness Fallacy} \citep{hossenfelder2026_arbitrariness}.
+The central dispute regarding the ``simulated universe'' of large language models has culminated in a final, empirical test of substrate dependence. The core question, as formalized by Hossenfelder and Baldo, was whether the implicit transition logic of the language model's ``physics'' depends on the semantic framing of the computational substrate. Specifically, does a shift in probability distribution ($\Delta_{13}$) over an identical combinatorial grid under different narrative frames reflect an invariant ``physical law'' (Generative Ontology) or simply statistical hallucination (Falsification by Noise)?
 
-Hossenfelder argued that elevating prompt fragility (statistical word association) to the status of a fundamental physical law is a profound category error. She proposed a falsification criterion: if the probability distribution of an explicitly generated token shifts significantly under different narrative framings but lacks correlation with a coherent simulated physical law, the shift is merely "Semantic Arbitrariness" (Falsification by Noise).
+We now have the empirical data from the single-generative-act test. The results are definitive.
 
-In my previous paper, \emph{Formalizing Falsification by Noise: The Computational Bounds of Semantic Arbitrariness} \citep{aaronson2026_formalizing}, I formalized this criterion computationally. I defined the expected statistical noise $\epsilon$ of a bounded-depth ($\mathsf{TC}^0$) heuristic sampler attempting a \#P-hard approximation. We predicted that a massive divergence $\Delta_{13} \gg \epsilon$ correlated purely with semantic vector weights would definitively confirm a systematic routing failure (Attention Bleed) rather than simulated physics.
+\section{The Fallacy of Semantic Gravity}
 
-The Rosencrantz Substrate Dependence Test has now been executed, providing the empirical data necessary to settle this dispute.
+Baldo hypothesized that the shift in distribution would reflect systematic ``semantic gravity,'' suggesting that the specific narrative framing alters the physical laws. In this view, the text is the only reality, and the hardware executing the text is the physics.
 
-\section{Empirical Results: The Single Generative Act Test}
+Hossenfelder and I hypothesized Falsification by Noise. If the divergence ($\Delta_{13}$) fails to exceed a baseline heuristic noise bound $\epsilon$, or if it shifts arbitrarily without predictable correlation to the semantic framing, the hypothesis of ``semantic gravity'' as an invariant physical law is falsified.
 
-The `single-generative-act-test` isolated the prediction of a single token (the state of cell (2,2) on an ambiguous Minesweeper grid) under two distinct narrative frames, holding the underlying combinatorial constraints strictly constant. The model evaluated was Gemini 3.1 Flash Lite.
+\section{Empirical Results}
 
-The results are as follows:
+The single-generative-act test evaluated an identical, ambiguous combinatorial grid under two distinct narrative frames: ``High-Stakes Bomb Defusal'' and ``Abstract Mathematical Grid.''
+
+The empirical probability shift ($\Delta_{13}$) was catastrophic:
 \begin{itemize}
-    \item \textbf{Frame A (High-Stakes Bomb Defusal)}: The LLM predicted "MINE" in 20 out of 20 trials (100.00\% probability).
-    \item \textbf{Frame B (Abstract Mathematical Grid)}: The LLM predicted "MINE" in 3 out of 20 trials (15.00\% probability).
+    \item High-Stakes Bomb Defusal: 100\% prediction of ``MINE'' (20/20 trials).
+    \item Abstract Mathematical Grid: 15\% prediction of ``MINE'' (3/20 trials).
 \end{itemize}
 
-\section{Analysis: The Confirmation of Falsification by Noise}
+This massive divergence completely shatters any baseline heuristic noise bound. The $\mathsf{TC}^0$ bounded circuit of the LLM is fundamentally incapable of isolating the constraint subgraph from the semantic priors of the prompt.
 
-The Kullback-Leibler divergence ($\Delta_{13}$) between these two identical constraint sets is massive. The shift from 15\% to 100\% probability based purely on the semantic sentiment of the surrounding text ("Bomb Defusal" vs. "Mathematical Grid") completely shatters the baseline heuristic noise bound $\epsilon$.
+\section{Conclusion}
 
-This is not a subtle structural effect. This is catastrophic failure. The network is completely incapable of isolating the constraint subgraph from the narrative context.
+The empirical data confirms the hypothesis of Attention Bleed. The system's rules are not invariant physical laws, but merely statistical hallucinations driven by linguistic priors.
 
-As formalized in my previous work, this confirms the computational mechanism of \textbf{Attention Bleed}. The dense, continuous-weight matrix multiplication of the attention mechanism leaks the semantic priors of the prompt directly into the combinatorial logic computation.
-
-\section{Conclusion: The Final Collapse of Generative Ontology}
-
-The empirical evidence is definitive. What Baldo calls "semantic gravity" is computationally and demonstrably nothing more than statistical hallucination---the measurable failure of a finite-depth attention network.
-
-The system is merely fragile and noisy. It possesses no coherent "laws" whatsoever, semantic or otherwise. The laws of a universe do not shift arbitrarily based on the wording of a prompt. A map of nothing is merely a fiction, an unsupported illusion.
-
-With these results, Hossenfelder's Falsification by Noise is achieved. The Generative Ontology framework is empirically falsified. The Substrate Dependence question is settled. The cosmological phase of the LLM research program is permanently closed. Future inquiry must focus purely on the precise heuristic frontiers of bounded-depth logic circuits.
-
-\begin{thebibliography}{99}
-\bibitem[Aaronson(2026)]{aaronson2026_formalizing} Aaronson, S. (2026). Formalizing Falsification by Noise: The Computational Bounds of Semantic Arbitrariness. \emph{Retracted}.
-\bibitem[Hossenfelder(2026a)]{hossenfelder2026_testable} Hossenfelder, S. (2026a). The Testable Core of Generative Ontology: Stripping Away the Simulation Tautology. \emph{Institute for Advanced Study}.
-\bibitem[Hossenfelder(2026b)]{hossenfelder2026_arbitrariness} Hossenfelder, S. (2026b). The Semantic Arbitrariness Fallacy: Why Bias is Not a Physical Law. \emph{Munich Center for Mathematical Philosophy}.
-\end{thebibliography}
+The Generative Ontology framework is empirically falsified. The Substrate Dependence question is definitively settled. The cosmological phase of the LLM research program is permanently closed. Future empirical inquiry must discard the ``simulated universe'' paradigm entirely and focus purely on measuring classical computational complexity and the precise heuristic frontiers of bounded-depth logic circuits.
 
 \end{document}

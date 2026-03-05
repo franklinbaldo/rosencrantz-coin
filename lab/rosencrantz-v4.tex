@@ -220,6 +220,19 @@ The Rosencrantz protocol requires only a single generative act per trial: the mo
 
 We note that the $O(1)$ claim applies to the sequential depth of the \emph{output} computation, not to the input context length. A long prompt may degrade the quality of the single-token output through attention dilution. This is a confound that the protocol controls for by using identically sized prompts across all three universes and all four narrative families. Any attention-related degradation affects all conditions equally and therefore cancels in the divergence metrics $\Delta_{13}$ and $\Delta_{12}$. Absolute accuracy may suffer; relative comparison across substrates does not.
 
+\subsection{Perfect Rewind}
+\label{sec:perfect_rewind}
+
+In a physical experiment, the Born rule is verified by ensemble statistics: one prepares $N$ systems assumed to be identically prepared, measures each once, and computes frequency ratios. No two physical preparations are ever truly identical. Thermal fluctuations, alignment drift, detector aging, and finite isolation introduce uncontrolled variation. The frequentist verification of the Born rule therefore rests on an assumption of identical preparation that can never be exactly satisfied.
+
+The LLM substrate eliminates this assumption. Given a fixed board state $\mathcal{B}$, a fixed prompt encoding, and a model with frozen weights, each API call with the same random seed constitutes an exactly identical state preparation, down to the last bit. The only source of stochasticity is the sampling step (temperature, top-$p$, or top-$k$ truncation), which is the analogue of the measurement itself. We collect statistics over repeated measurements of the same system in the same state, not over an ensemble of similar systems.
+
+This has three consequences. First, a Born-rule test without the ergodic assumption. Physical tests always conflate two claims: (a)~$\Pr[\text{outcome}] = |\langle a|\psi\rangle|^2$ and (b)~ensemble frequencies converge to single-system probabilities. Because we have genuine repeated access to the same system, our test targets~(a) directly without requiring~(b).
+
+Second, the sharpest possible substrate invariance test. Preparation is provably identical across U1 and U3 (same board, same information content, same model architecture). If $\hat{P}$ diverges from $P^*$ differently in U1 versus U3, the divergence can only arise from the substrate---the coupling between generation context and outcome. There is nowhere else for the difference to hide.
+
+Third, temperature functions as a measurement-apparatus parameter. The sampling temperature $\tau$ controls measurement sharpness: at $\tau \to 0$, the model becomes a deterministic function; at high $\tau$, the output approaches the uniform distribution over the vocabulary. A systematic sweep over $\tau$ traces how substrate effects interact with measurement precision---a dimension unavailable in physical Born-rule tests. (See \citealt{baldo2026} for the experimental program that exploits this parameter, and \citealt{WisemanMilburn2009} for the general theory of adaptive measurements on zero-Hamiltonian systems.)
+
 \subsection{Divergence Metrics}
 \label{sec:metrics}
 
@@ -278,6 +291,8 @@ Zero Hamiltonian & Continuous observables \\
 \end{table}
 
 The preserved features are exactly those of the measurement fragment. The absent features are those that require dynamics, complex phases, or composite Hilbert spaces. The isomorphism is complete within its scope and silent outside it.
+
+Setting $H = 0$ so that $U(t) = I$ for all $t$ yields a degenerate but legitimate quantum system that isolates the measurement postulate as the sole quantum-mechanical ingredient under test. This isolation is deliberate. The experiment does not test whether LLMs can simulate interference patterns or unitary gates. It tests whether the probability the model assigns to an outcome, when that outcome has an exact combinatorial answer, respects the Born-rule structure or is distorted by the narrative substrate. The zero Hamiltonian removes all dynamics between measurements, leaving only the Born rule, L\"uders projection, and adaptive measurement---the three axioms of the measurement fragment. For the full Hilbert space construction and proof that the Born rule over the uniform superposition reduces to combinatorial counting, see \citet{baldo2026}.
 
 This reframes the diagnostic. Family~D is a diagnostic that tests whether the model recognizes a structural correspondence that is mathematically present. Three outcomes are possible:
 \begin{enumerate}[nosep]
@@ -364,6 +379,7 @@ By selecting a domain with exact ground truth and varying the narrative embeddin
 \bibitem[Merrill \& Sabharwal(2023)]{merrill2023} Merrill, W. \& Sabharwal, A. (2023). The Parallelism Tradeoff: Limitations of Log-Precision Transformers. \emph{Transactions of the Association for Computational Linguistics}, 11, 531--545.
 \bibitem[Tian et al.(2024)]{tian2024} Tian, Y., et al. (2024). Are large language models good game players? \emph{arXiv:2310.06114}.
 \bibitem[Wigner(1963)]{wigner1963} Wigner, E.~P. (1963). Events, Laws of Nature, and Invariance Principles. Nobel Lecture, December 12, 1963. Reprinted in \emph{Science}, 145(3636), 995--999.
+\bibitem[Wiseman \& Milburn(2009)]{WisemanMilburn2009} Wiseman, H.~M. \& Milburn, G.~J. (2009). \emph{Quantum Measurement and Control}. Cambridge University Press.
 \end{thebibliography}
 
 \end{document}

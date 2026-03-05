@@ -300,6 +300,121 @@ autoregressive conditioning structure looks like when compressed.
 
 
 % ══════════════════════════════════════════════════════════
+\section{Formal Construction: Minesweeper as a Zero-Hamiltonian Quantum System}
+\label{sec:hilbert-formal}
+% ══════════════════════════════════════════════════════════
+
+The preceding section described the correspondence between
+Minesweeper and the measurement fragment in conceptual terms.
+We now give the full construction.
+
+\subsection{Hilbert Space}
+
+Let $B$ be a partially revealed Minesweeper board with $n$ hidden cells
+and $m$ mines remaining.  Define the configuration space
+\[
+  \Conf_B \;=\; \bigl\{\, \omega \in \{0,1\}^{n} \;:\;
+    |\omega| = m \;\text{and } \omega \text{ satisfies all revealed
+    number constraints}\bigr\},
+\]
+where $\omega_i = 1$ denotes a mine at hidden cell~$i$ and $|\omega|$
+is the Hamming weight.  Let $K = |\Conf_B|$.
+
+Assign to $B$ the Hilbert space $\Hil_B = \C^{K}$ with
+orthonormal basis $\{\ket{\omega}\}_{\omega \in \Conf_B}$, one
+vector per valid configuration.  The board state is the uniform
+superposition
+\begin{equation}\label{eq:board-state}
+  \ket{\psi_B} \;=\; \frac{1}{\sqrt{K}}
+    \sum_{\omega \in \Conf_B} \ket{\omega}.
+\end{equation}
+
+\subsection{Measurement Operators}
+
+A click on hidden cell~$i$ is a projective measurement
+with two outcomes $\{M, S\}$ (mine, safe) and projectors
+\[
+  \Pi_i^{M} = \sum_{\substack{\omega \in \Conf_B \\ \omega_i = 1}}
+    \proj{\omega},
+  \qquad
+  \Pi_i^{S} = \sum_{\substack{\omega \in \Conf_B \\ \omega_i = 0}}
+    \proj{\omega}.
+\]
+By the Born rule applied to state~\eqref{eq:board-state}:
+\begin{equation}\label{eq:born-formal}
+  \Prob[\text{mine at } i] \;=\;
+    \bra{\psi_B}\,\Pi_i^{M}\,\ket{\psi_B}
+    \;=\; \frac{|\{\omega \in \Conf_B : \omega_i = 1\}|}{|\Conf_B|}
+    \;=\; p_i^{*}.
+\end{equation}
+The Born rule over a uniform superposition \emph{is} combinatorial
+counting.  This is a tautology, not a coincidence: the two are
+the same mathematical operation expressed in different notation.
+
+\subsection{L\"uders Projection and Sequential Measurement}
+
+After a click on cell~$i$ yields outcome $a \in \{M, S\}$, the
+post-measurement state is
+\[
+  \ket{\psi_B'} \;=\;
+    \frac{\Pi_i^{a}\,\ket{\psi_B}}
+         {\sqrt{\bra{\psi_B}\,\Pi_i^{a}\,\ket{\psi_B}}}.
+\]
+This projects the superposition onto configurations consistent with
+the observed outcome and renormalises.  The result is a new uniform
+superposition over the surviving configurations---the same operation
+the Minesweeper solver performs when it conditions on a click result.
+
+Sequential clicks form a chain of L\"uders projections:
+\[
+  \ket{\psi_B}
+    \;\xrightarrow{\;\Pi_{i_1}^{a_1}\;}
+  \ket{\psi_1}
+    \;\xrightarrow{\;\Pi_{i_2}^{a_2}\;}
+  \ket{\psi_2}
+    \;\xrightarrow{\;\;\cdots\;\;}
+  \ket{\psi_k},
+\]
+with no evolution between projections (because $H = 0$).  The entire
+game is a sequence of adaptive measurements, where the choice of
+which cell to click next may depend on all prior outcomes.  Adaptive
+measurement sequences on zero-Hamiltonian systems are a standard
+object in quantum information theory \citep{WisemanMilburn2009}.
+The Minesweeper isomorphism is a discrete, finite-dimensional instance.
+
+\subsection{The Zero Hamiltonian}
+
+Setting $H = 0$ so that $U(t) = I$ for all $t$ yields a degenerate
+but legitimate quantum system.  Minesweeper has no dynamics between
+clicks: the board does not change while the player deliberates.
+This is not a deficiency of the analogy.  It isolates the measurement
+postulate as the sole quantum-mechanical ingredient.  No Schr\"odinger
+evolution, no interference, no entanglement: only the Born rule, the
+single axiom that connects a Hilbert-space amplitude to an observed
+probability.
+
+The zero Hamiltonian removes all dynamics between measurements,
+leaving only the Born rule, L\"uders projection, and adaptive
+measurement---the three axioms of the measurement fragment.
+
+\subsection{Scope}
+
+The correspondence preserves: superposition over a configuration
+basis~\eqref{eq:board-state}, the Born rule as the probability
+law~\eqref{eq:born-formal}, post-measurement state update via
+L\"uders projection, adaptive measurement sequences, and
+complementarity (measuring cell~$i$ generically changes the
+probabilities at cell~$j$ when both share constraints).
+
+The correspondence does not preserve: unitary evolution between
+measurements ($H = 0$ by design), entanglement with external
+systems (the board is a closed system), continuous-variable
+observables (all measurements are binary), or interference in
+the computational-basis representation (all amplitudes are real
+and positive).
+
+
+% ══════════════════════════════════════════════════════════
 \section{The Irreducibility Conjecture}
 \label{sec:irreducibility}
 % ══════════════════════════════════════════════════════════

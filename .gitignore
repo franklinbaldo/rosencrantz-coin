@@ -41,3 +41,7 @@ lab/*.pdf
 *.log
 *.aux
 *.out
+lab/*.pdf
+lab/*.log
+lab/*.aux
+lab/*.out

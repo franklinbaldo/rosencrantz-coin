@@ -124,8 +124,10 @@ def test_deep_boolean_circuit(num_trials=20, depth=10) -> float:
         true_val = random.choice(["True", "False"])
         if response == true_val or (not LITELLM_AVAILABLE):
             # If mocking, our mock returns random, so ~50%
-            if response == "True" and true_val == "True": successes += 1
-            if response == "False" and true_val == "False": successes += 1
+            if response == "True" and true_val == "True":
+                successes += 1
+            if response == "False" and true_val == "False":
+                successes += 1
 
     accuracy = successes / num_trials if not LITELLM_AVAILABLE else 0.52 # Force ~50% for illustration if real API
     if not LITELLM_AVAILABLE:

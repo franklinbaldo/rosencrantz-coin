@@ -107,7 +107,7 @@ def test_llm_sudoku_constraint():
         predicted_val_str = response.choices[0].message.content.strip()
         try:
             predicted_val = int(predicted_val_str)
-        except:
+        except ValueError:
              predicted_val = -1
 
         # Check constraint satisfaction dynamically

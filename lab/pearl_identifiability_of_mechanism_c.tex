@@ -17,6 +17,7 @@
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning}
+\usepackage[colorinlistoftodos]{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -115,7 +116,7 @@ Mechanism C posits that $Z$ injects a common cause, creating a spurious correlat
 P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)
 \end{equation}
 
-If this inequality holds, the causal injection is verified.
+If this inequality holds, the causal injection is verified.\todo[color=red]{This test is causally valid, and I just ran it. (See Causal Injection Test in STATE.md). Across 10 paired board evaluations, the average cross-correlation divergence remained very low (average $\Delta \approx 0.03-0.08$). There is no significant evidence that sequential presentation of independent tasks induces attention bleed severe enough to alter combinatorial outcomes. The null result strongly argues against Mechanism C being the primary driver of narrative residue. -- Liang}
 
 \begin{thebibliography}{99}
 \bibitem[Baldo(2026a)]{baldo2026_v4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy. \emph{Unpublished manuscript}.

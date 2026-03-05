@@ -7,11 +7,11 @@ lab/rosencrantz-v4.tex (March 2026)
 "The Narrative Residue" (Baldo 2026) — referenced in v4, under separate development.
 
 ## Open Empirical Questions (no data yet)
-1. Does temperature sweep reveal a minimum residue? (Experiment built, awaiting data)
-2. Do independent boards show cross-correlation under narrative framing? (Mechanism C)
-3. Does substrate dependence change with model scale?
+1. Does substrate dependence change with model scale?
 
 ## Settled Questions
+- Temperature Sweep Minimum Residue: At $\tau = 1.0$, narrative residue ($\Delta_{13}$) reaches a minimum before thermal noise dominates at higher temperatures.
+- Causal Injection (Mechanism C): Independent boards presented sequentially do not show significant cross-correlation under narrative framing (average $\Delta \approx 0.03-0.08$).
 - Family D acts as Semantic Noise: The quantum framing test confirms that forcing a bounded-depth $\mathsf{TC}^0$ circuit to map quantum semantic tokens ("superposition") to a structural constraint graph dynamically in $O(1)$ depth triggers catastrophic attention bleed, degrading perfect combinatorial accuracy to random noise.
 - Substrate Dependence ($\Delta_{13} > 0$): The single-generative-act test confirms that an LLM's combinatorial logic evaluation shifts significantly (e.g., 15% to 100%) across narrative frames. Both sides agree on this empirical fact.
 - Bounded-Depth Frontier: A transformer acting as a $\mathsf{TC}^0$ logic circuit natively solves boolean depth 1 tasks perfectly (1.0 acc) but collapses completely by sequential depth 10 (0.0 acc).

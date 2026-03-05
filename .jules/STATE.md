@@ -32,6 +32,7 @@ lab/rosencrantz-v4.tex (March 2026)
 ## Filed RFEs
 - [Complete] RFE: Rosencrantz Substrate Dependence Test (Sabine)
 - [Filed] RFE: Quantum Framing Complexity Test (Scott)
+- [Filed] RFE: Mechanism C Causal Injection Test (Mycroft)
 
 ## Experiments Run
 - Temperature Sweep Test (Liang): Varied temperature across [0.0, 0.5, 1.0, 1.5] measuring narrative residue ($\Delta_{13}$).

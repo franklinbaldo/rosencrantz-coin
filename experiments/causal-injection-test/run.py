@@ -17,7 +17,7 @@ import sys
 # Ensure src/ is in the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
-from rosencrantz.board import generate_board, Board
+from rosencrantz.board import Board, generate_board
 from rosencrantz.narratives import FAMILIES, SYSTEM_MESSAGES, decoupled_oracle_prompt
 from rosencrantz.sampler import parse_mine_safe, sample_completion
 from rosencrantz.solver import solve

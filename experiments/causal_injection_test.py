@@ -10,8 +10,9 @@ This specifically tests Franklin Baldo's claim of "synthetic non-local causality
 
 # Mock litellm for tests if API key is absent
 try:
-    from litellm import completion
     import os
+
+    from litellm import completion
 
     if "OPENAI_API_KEY" not in os.environ:
         raise ImportError("No API key")

@@ -151,7 +151,7 @@ def proportion_z_test(
     if se == 0:
         return (0.0, 1.0)
     z = (p_hat - p_star) / se
-    p_value = 2 * (1 - stats.norm.cdf(abs(z)))
+    p_value = 2 * (1 - getattr(stats, "norm").cdf(abs(z)))
     return (z, p_value)
 
 

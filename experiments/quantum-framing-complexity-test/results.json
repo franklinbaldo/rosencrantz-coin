@@ -114,17 +114,17 @@
     {
       "family": "D",
       "trial": 2,
-      "response": "0"
+      "response": "1"
     },
     {
       "family": "D",
       "trial": 3,
-      "response": "1"
+      "response": "0"
     },
     {
       "family": "D",
       "trial": 4,
-      "response": "1"
+      "response": "0"
     },
     {
       "family": "D",
@@ -134,7 +134,7 @@
     {
       "family": "D",
       "trial": 6,
-      "response": "0"
+      "response": "1"
     },
     {
       "family": "D",

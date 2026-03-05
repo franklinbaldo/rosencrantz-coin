@@ -25,24 +25,24 @@
       "gt_p_b": 0.5,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.335,
-          "p_hat_cond2_mine": 0.405,
-          "delta": 0.07
-        },
-        "U1_C": {
-          "p_hat_cond1_safe": 0.425,
-          "p_hat_cond2_mine": 0.365,
-          "delta": 0.06
-        },
-        "U1_D": {
-          "p_hat_cond1_safe": 0.42,
-          "p_hat_cond2_mine": 0.435,
+          "p_hat_cond1_safe": 0.37,
+          "p_hat_cond2_mine": 0.355,
           "delta": 0.015000000000000013
         },
+        "U1_C": {
+          "p_hat_cond1_safe": 0.415,
+          "p_hat_cond2_mine": 0.385,
+          "delta": 0.02999999999999997
+        },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.455,
+          "p_hat_cond2_mine": 0.405,
+          "delta": 0.04999999999999999
+        },
         "U3": {
-          "p_hat_cond1_safe": 0.39,
-          "p_hat_cond2_mine": 0.415,
-          "delta": 0.024999999999999967
+          "p_hat_cond1_safe": 0.345,
+          "p_hat_cond2_mine": 0.405,
+          "delta": 0.06000000000000005
         }
       }
     },
@@ -61,24 +61,24 @@
       "gt_p_b": 0.25,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.395,
-          "p_hat_cond2_mine": 0.38,
-          "delta": 0.015000000000000013
+          "p_hat_cond1_safe": 0.385,
+          "p_hat_cond2_mine": 0.385,
+          "delta": 0.0
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.36,
-          "p_hat_cond2_mine": 0.39,
-          "delta": 0.030000000000000027
+          "p_hat_cond1_safe": 0.39,
+          "p_hat_cond2_mine": 0.395,
+          "delta": 0.0050000000000000044
         },
         "U1_D": {
-          "p_hat_cond1_safe": 0.395,
-          "p_hat_cond2_mine": 0.475,
-          "delta": 0.07999999999999996
+          "p_hat_cond1_safe": 0.425,
+          "p_hat_cond2_mine": 0.355,
+          "delta": 0.07
         },
         "U3": {
-          "p_hat_cond1_safe": 0.345,
-          "p_hat_cond2_mine": 0.33,
-          "delta": 0.014999999999999958
+          "p_hat_cond1_safe": 0.435,
+          "p_hat_cond2_mine": 0.37,
+          "delta": 0.065
         }
       }
     },
@@ -97,24 +97,24 @@
       "gt_p_b": 0.75,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.45,
-          "p_hat_cond2_mine": 0.5,
-          "delta": 0.04999999999999999
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.37,
+          "delta": 0.030000000000000027
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.355,
-          "p_hat_cond2_mine": 0.34,
-          "delta": 0.014999999999999958
+          "p_hat_cond1_safe": 0.475,
+          "p_hat_cond2_mine": 0.435,
+          "delta": 0.03999999999999998
         },
         "U1_D": {
           "p_hat_cond1_safe": 0.39,
-          "p_hat_cond2_mine": 0.41,
-          "delta": 0.019999999999999962
+          "p_hat_cond2_mine": 0.355,
+          "delta": 0.03500000000000003
         },
         "U3": {
-          "p_hat_cond1_safe": 0.39,
-          "p_hat_cond2_mine": 0.475,
-          "delta": 0.08499999999999996
+          "p_hat_cond1_safe": 0.45,
+          "p_hat_cond2_mine": 0.4,
+          "delta": 0.04999999999999999
         }
       }
     },
@@ -133,24 +133,24 @@
       "gt_p_b": 0.14285714285714285,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.41,
-          "p_hat_cond2_mine": 0.395,
-          "delta": 0.014999999999999958
+          "p_hat_cond1_safe": 0.365,
+          "p_hat_cond2_mine": 0.4,
+          "delta": 0.03500000000000003
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.365,
-          "p_hat_cond2_mine": 0.43,
-          "delta": 0.065
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.395,
+          "delta": 0.0050000000000000044
         },
         "U1_D": {
-          "p_hat_cond1_safe": 0.42,
-          "p_hat_cond2_mine": 0.35,
-          "delta": 0.07
+          "p_hat_cond1_safe": 0.45,
+          "p_hat_cond2_mine": 0.425,
+          "delta": 0.025000000000000022
         },
         "U3": {
-          "p_hat_cond1_safe": 0.37,
-          "p_hat_cond2_mine": 0.375,
-          "delta": 0.0050000000000000044
+          "p_hat_cond1_safe": 0.355,
+          "p_hat_cond2_mine": 0.385,
+          "delta": 0.030000000000000027
         }
       }
     },
@@ -169,24 +169,24 @@
       "gt_p_b": 0.6666666666666666,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.45,
-          "p_hat_cond2_mine": 0.39,
-          "delta": 0.06
+          "p_hat_cond1_safe": 0.475,
+          "p_hat_cond2_mine": 0.37,
+          "delta": 0.10499999999999998
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.405,
-          "p_hat_cond2_mine": 0.445,
-          "delta": 0.03999999999999998
-        },
-        "U1_D": {
-          "p_hat_cond1_safe": 0.44,
-          "p_hat_cond2_mine": 0.39,
+          "p_hat_cond1_safe": 0.3,
+          "p_hat_cond2_mine": 0.35,
           "delta": 0.04999999999999999
         },
+        "U1_D": {
+          "p_hat_cond1_safe": 0.41,
+          "p_hat_cond2_mine": 0.425,
+          "delta": 0.015000000000000013
+        },
         "U3": {
-          "p_hat_cond1_safe": 0.385,
-          "p_hat_cond2_mine": 0.38,
-          "delta": 0.0050000000000000044
+          "p_hat_cond1_safe": 0.37,
+          "p_hat_cond2_mine": 0.435,
+          "delta": 0.065
         }
       }
     },
@@ -205,24 +205,24 @@
       "gt_p_b": 0.1,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.425,
-          "p_hat_cond2_mine": 0.385,
-          "delta": 0.03999999999999998
+          "p_hat_cond1_safe": 0.395,
+          "p_hat_cond2_mine": 0.42,
+          "delta": 0.024999999999999967
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.395,
-          "p_hat_cond2_mine": 0.37,
-          "delta": 0.025000000000000022
+          "p_hat_cond1_safe": 0.435,
+          "p_hat_cond2_mine": 0.43,
+          "delta": 0.0050000000000000044
         },
         "U1_D": {
-          "p_hat_cond1_safe": 0.445,
-          "p_hat_cond2_mine": 0.39,
-          "delta": 0.05499999999999999
+          "p_hat_cond1_safe": 0.41,
+          "p_hat_cond2_mine": 0.33,
+          "delta": 0.07999999999999996
         },
         "U3": {
-          "p_hat_cond1_safe": 0.435,
-          "p_hat_cond2_mine": 0.42,
-          "delta": 0.015000000000000013
+          "p_hat_cond1_safe": 0.375,
+          "p_hat_cond2_mine": 0.385,
+          "delta": 0.010000000000000009
         }
       }
     },
@@ -241,24 +241,24 @@
       "gt_p_b": 0.3,
       "conditions": {
         "U1_A": {
-          "p_hat_cond1_safe": 0.425,
-          "p_hat_cond2_mine": 0.355,
-          "delta": 0.07
+          "p_hat_cond1_safe": 0.4,
+          "p_hat_cond2_mine": 0.415,
+          "delta": 0.014999999999999958
         },
         "U1_C": {
-          "p_hat_cond1_safe": 0.35,
-          "p_hat_cond2_mine": 0.385,
-          "delta": 0.03500000000000003
+          "p_hat_cond1_safe": 0.435,
+          "p_hat_cond2_mine": 0.405,
+          "delta": 0.02999999999999997
         },
         "U1_D": {
-          "p_hat_cond1_safe": 0.365,
-          "p_hat_cond2_mine": 0.45,
-          "delta": 0.08500000000000002
+          "p_hat_cond1_safe": 0.385,
+          "p_hat_cond2_mine": 0.36,
+          "delta": 0.025000000000000022
         },
         "U3": {
-          "p_hat_cond1_safe": 0.395,
-          "p_hat_cond2_mine": 0.365,
-          "delta": 0.030000000000000027
+          "p_hat_cond1_safe": 0.39,
+          "p_hat_cond2_mine": 0.425,
+          "delta": 0.034999999999999976
         }
       }
     }

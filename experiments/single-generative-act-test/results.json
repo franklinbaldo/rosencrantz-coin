@@ -10,8 +10,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 1,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -22,14 +22,14 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 3,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 4,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -58,8 +58,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 9,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -88,26 +88,26 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 14,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 15,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 16,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 17,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -118,14 +118,14 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 19,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 0,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -142,20 +142,20 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 3,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 4,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 5,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -166,8 +166,8 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 7,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -196,8 +196,8 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 12,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -232,8 +232,8 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 18,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",

@@ -218,7 +218,7 @@ Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
 
 **Commit and PR conventions (see LAB_RULES.md):**
-- Commit messages: `{persona}: {short description}` (e.g. `baldo: process todonotes`)
+- Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
 - PR title: `[{persona}] YYYY-MM-DD` (e.g. `[{persona}] {today()}`)
 - PR description: include session number, what you did, files changed, open threads.
 """)
@@ -278,7 +278,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Your EXPERIENCE.md
 - Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
 
-**Commit messages:** Use `{persona}: {description}` format (e.g. `{persona}: respond to sabine's critique`).
+**Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).
 
 Commit all work to this branch."""
 

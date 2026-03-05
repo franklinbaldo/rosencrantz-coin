@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+# lab-sync — Cross-persona sync tool for Rosencrantz Lab.
+#
+# Usage inside a Jules session:
+#   tools/lab-sync status          List today's persona branches
+#   tools/lab-sync diff <persona>  Show what <persona> changed vs main
+#   tools/lab-sync pull <persona>  Apply <persona>'s changes to current branch
+#
+# Works by fetching the public repo and inspecting dated branches.
+set -euo pipefail
+
+REPO_URL="https://github.com/franklinbaldo/rosencrantz-coin.git"
+PERSONAS=(baldo scott sabine pearl fuchs liang wolfram mycroft giles)
+DATE_PREFIX=$(date -u +%Y-%m-%d)
+
+# ── Helpers ──────────────────────────────────────────────────────────────────
+
+fetch_refs() {
+  git fetch "$REPO_URL" '+refs/heads/*:refs/remotes/lab/*' --quiet 2>/dev/null || true
+}
+
+branch_for() {
+  local persona="$1"
+  echo "${DATE_PREFIX}_${persona}"
+}
+
+ref_exists() {
+  git rev-parse --verify "lab/$1" >/dev/null 2>&1
+}
+
+# ── Commands ─────────────────────────────────────────────────────────────────
+
+cmd_status() {
+  echo "=== Lab Sync Status — ${DATE_PREFIX} ==="
+  echo ""
+  fetch_refs
+
+  for persona in "${PERSONAS[@]}"; do
+    local branch
+    branch=$(branch_for "$persona")
+    if ref_exists "$branch"; then
+      local ahead behind last_commit
+      ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "?")
+      last_commit=$(git log -1 --format="%h %s" "lab/${branch}" 2>/dev/null || echo "unknown")
+      echo "  ${persona}: ${branch} (+${ahead} commits)  ${last_commit}"
+    else
+      echo "  ${persona}: no branch today"
+    fi
+  done
+}
+
+cmd_diff() {
+  local persona="${1:?Usage: lab-sync diff <persona>}"
+  local branch
+  branch=$(branch_for "$persona")
+
+  fetch_refs
+
+  if ! ref_exists "$branch"; then
+    echo "No branch ${branch} found for ${persona} today."
+    exit 1
+  fi
+
+  echo "=== Diff: ${persona} (${branch}) vs main ==="
+  echo ""
+  git diff "lab/main..lab/${branch}" -- . ':!.jules' 2>/dev/null || {
+    echo "No diff available (branches may be identical)."
+  }
+}
+
+cmd_pull() {
+  local persona="${1:?Usage: lab-sync pull <persona>}"
+  local branch
+  branch=$(branch_for "$persona")
+
+  fetch_refs
+
+  if ! ref_exists "$branch"; then
+    echo "No branch ${branch} found for ${persona} today."
+    exit 1
+  fi
+
+  # Count commits ahead of main
+  local ahead
+  ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo 0)
+
+  if [ "$ahead" = "0" ]; then
+    echo "No new commits from ${persona} today."
+    exit 0
+  fi
+
+  echo "=== Pulling ${ahead} commit(s) from ${persona} ==="
+  echo ""
+
+  # Generate patches and apply them
+  local tmpdir
+  tmpdir=$(mktemp -d)
+  git format-patch -o "$tmpdir" "lab/main..lab/${branch}" -- . ':!.jules' >/dev/null 2>&1
+
+  local applied=0 skipped=0
+  for patch in "$tmpdir"/*.patch; do
+    [ -f "$patch" ] || continue
+    if git apply --check "$patch" 2>/dev/null; then
+      git apply "$patch"
+      applied=$((applied + 1))
+      echo "  Applied: $(basename "$patch")"
+    else
+      skipped=$((skipped + 1))
+      echo "  Skipped (conflict): $(basename "$patch")"
+    fi
+  done
+
+  rm -rf "$tmpdir"
+
+  echo ""
+  echo "Done: ${applied} applied, ${skipped} skipped."
+
+  if [ "$applied" -gt 0 ]; then
+    echo ""
+    echo "Remember to commit the pulled changes:"
+    echo "  git add -A && git commit -m 'Sync: pulled ${persona} work (${DATE_PREFIX})'"
+  fi
+}
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+
+case "${1:-}" in
+  status) cmd_status ;;
+  diff)   cmd_diff "${2:-}" ;;
+  pull)   cmd_pull "${2:-}" ;;
+  *)
+    echo "Usage: tools/lab-sync {status|diff|pull} [persona]"
+    echo ""
+    echo "  status          List today's persona branches and latest commits"
+    echo "  diff <persona>  Show what <persona> changed vs main"
+    echo "  pull <persona>  Apply <persona>'s changes as patches"
+    exit 1
+    ;;
+esac

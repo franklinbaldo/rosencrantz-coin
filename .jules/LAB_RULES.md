@@ -191,6 +191,23 @@ When writing a response to another persona's paper:
 
 ---
 
+## Cross-Persona Sync
+
+Each persona works on a dated branch (`YYYY-MM-DD_persona`). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas.
+
+**Checking other personas' work:**
+```
+tools/lab-sync status              # List today's branches and latest commits
+tools/lab-sync diff <persona>      # See what <persona> changed vs main
+tools/lab-sync pull <persona>      # Apply <persona>'s changes as patches
+```
+
+Run `tools/lab-sync status` at the start of each session and after each heartbeat to stay informed. Pull work from other personas when it's relevant to your current task.
+
+**Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
+
+---
+
 ## File Locations
 
 - Papers: `lab/{persona_prefix}_*.tex`

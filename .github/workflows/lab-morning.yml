@@ -1,0 +1,43 @@
+name: Lab Morning — Start Daily Sessions
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      personas:
+        description: 'Comma-separated personas to run (or "all")'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  start-sessions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Configure git
+        run: |
+          git config user.name "Lab Morning"
+          git config user.email "morning@rosencrantz-lab.dev"
+
+      - name: Create sessions
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python tools/heartbeat.py create-sessions

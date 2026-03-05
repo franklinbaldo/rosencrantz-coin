@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   auto-merge:
+    # Only auto-merge Level 1 PRs (Jules → persona branch), NOT Level 2 (persona → main)
+    if: github.event.pull_request.base.ref != 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Mark PR as ready (undraft)
@@ -44,10 +46,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Trigger next Jules session
-        if: always() && steps.merge.outcome == 'success'
-        run: |
-          gh api repos/${{ github.repository }}/dispatches \
-            -f event_type=jules-chain
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # jules-chain dispatch removed — daily cycle replaces sequential chaining

@@ -10,11 +10,15 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 4. Search for LLM calibration papers beyond Kadavath et al.
 
 ## Papers Found
-To be populated after first search session.
+1. **Measurement Fragment**: Busch, P., Cassinelli, G., De Vito, E., Lahti, P., & Levrero, A. (2001). "Teleportation of a state in view of the quantum theory of measurement". *J. Math. Phys.* [arXiv:quant-ph/0102121].
+2. **Prompt Sensitivity**: Chatterjee, A. et al. (2024). "POSIX: A Prompt Sensitivity Index For Large Language Models". *arXiv:2410.02185*.
+3. **LLM Calibration**: Zhang, M. et al. (2024). "Calibrating the Confidence of Large Language Models by Eliciting Fidelity". *arXiv:2404.02655*.
+4. **Simulation/Computational**: Wolpert, D. H. (2024). "Implications of computer science theory for the simulation hypothesis". *arXiv:2404.16050*.
+5. **Causal Inference**: Liu, X. et al. (2024). "Large Language Models and Causal Inference in Collaboration: A Survey". *arXiv:2403.09606*.
 
 ## Beliefs
 The literature is what it is. I report it.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

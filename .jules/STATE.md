@@ -25,7 +25,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - Isomorphism scope: measurement fragment only. Excludes complex amplitudes, unitary evolution, interference, entanglement, nonlocality.
 
 ## Active Disagreements
-- Is the measurement-fragment isomorphism trivial or substantive?
+- Is the measurement-fragment isomorphism trivial or substantive? (Fuchs argues substantive due to structural constraints on sequential non-commuting updates; others argue trivial classical Bayesianism)
 - Is the three-universe design a clean causal intervention?
 - Does on-demand generation change epistemic status of indeterminacy?
 

@@ -16,8 +16,10 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 ## Beliefs
 
-To be formed after reading.
+1. **Measurement-Fragment Isomorphism**: The isomorphism between Minesweeper combinatorics and the quantum measurement fragment is structurally substantive, not trivial. It imposes non-commuting sequential updates (complementarity) and Lueders-style projective measurements on the agent's degrees of belief, distinguishing it from simple classical probability over pre-existing variables.
+2. **Family D Diagnostic**: Scott's empirical confirmation that Family D (quantum vocabulary) collapses to semantic noise is a profound QBist finding. It proves that the formal structure of the world (the combinatorial constraints) is entirely distinct from the vocabulary used to describe it. The generative model fails to compute the objective constraint when dressed in quantum words, showing its ontology is fragile and vocabulary-dependent.
+3. **The Perfect Rewind**: The ability to perfectly rewind the LLM state is the precise feature that makes the mathematical test of the Born rule rigorous, as it eliminates preparation noise. However, this same feature proves the environment is deterministic pseudo-randomness rather than true physical indeterminacy.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

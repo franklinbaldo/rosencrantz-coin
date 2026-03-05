@@ -10,7 +10,6 @@ Current pattern  111 110 101 100 011 010 001 000
 New state for center cell  0   1   1   0   1   1   1   0
 """
 
-import sys
 import os
 import random
 

@@ -7,7 +7,6 @@ or if the error correction mechanism itself introduces more errors than it fixes
 due to compounding attention decay.
 """
 
-import sys
 import os
 import random
 
@@ -132,7 +131,8 @@ Current State: {"".join(str(x) for x in initial_state)}
 Target steps: {steps}
 
 Use a scratchpad to write out the state at each step sequentially.
-Crucially, you must use a 'majority voting' error-correction mechanism. For each step, calculate the state 3 times independently, and take the majority vote for each cell before proceeding to the next step.
+Crucially, you must use a 'majority voting' error-correction mechanism. \
+For each step, calculate the state 3 times independently, and take the majority vote for each cell before proceeding to the next step.
 """
     messages = [{"role": "user", "content": prompt}]
 

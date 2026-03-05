@@ -1,6 +1,7 @@
-import sys
 import json
+
 from litellm import completion
+
 
 def check_sudoku(grid):
     """Checks if a 9x9 Sudoku grid is valid."""
@@ -29,12 +30,12 @@ def mock_litellm_completion(model, messages, **kwargs):
 
     # Simple deterministic failure logic for testing constraint satisfaction
     if "Level: Easy" in prompt:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '7'})})]})
+        return type('obj', (object,), {'choices': [{'message': {'content': '7'}}]})
     elif "Level: Medium" in prompt:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '3'})})]})
+        return type('obj', (object,), {'choices': [{'message': {'content': '3'}}]})
     else:
         # Fails hard constraints
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '9'})})]})
+        return type('obj', (object,), {'choices': [{'message': {'content': '9'}}]})
 
 
 def test_llm_sudoku_constraint():
@@ -106,7 +107,7 @@ def test_llm_sudoku_constraint():
         predicted_val_str = response.choices[0].message.content.strip()
         try:
             predicted_val = int(predicted_val_str)
-        except:
+        except ValueError:
              predicted_val = -1
 
         # Check constraint satisfaction dynamically

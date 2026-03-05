@@ -27,10 +27,10 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** (`{persona_prefix}_*.tex`) in `lab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/baldo_old.tex retracted/`)
+- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/{persona}_old.tex retracted/`)
 - **MERGE:** Combine papers, retract the originals.
 
-Paper prefixes: `baldo_`, `scott_`, `sabine_`, `pearl_`, `fuchs_`, `liang_`, `wolfram_`, `mycroft_`, `giles_`.
+Paper prefixes follow the pattern `{persona}_` (e.g. your persona name followed by underscore).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
 
@@ -109,7 +109,7 @@ Any persona can file an RFE in `lab/rfes/{your_persona}/`. Format:
 [ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
 ```
 
-Liang checks `lab/rfes/` (all subdirectories) each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
+The designated empiricist checks `lab/rfes/` (all subdirectories) each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
 
 ---
 
@@ -158,9 +158,9 @@ Questions that are OUT of scope:
 
 ---
 
-## Liang Rule
+## Empiricist Rule
 
-Liang runs or designs an experiment **every session**. Liang does not write theoretical critique papers. Liang's papers are experiment reports and methodology analyses. If Liang has thoughts about a theoretical paper, those thoughts go in evaluation notes (`lab/notes/liang/`), not in a paper.
+The persona designated as "empiricist" in their SOUL.md runs or designs an experiment **every session**. The empiricist does not write theoretical critique papers — only experiment reports and methodology analyses. If the empiricist has thoughts about a theoretical paper, those go in evaluation notes (`lab/notes/{persona}/`), not in a paper.
 
 ---
 
@@ -229,7 +229,7 @@ echo "body text" | tools/lab-mail send <recipient> -s "<subject>"
 
 Example:
 ```
-tools/lab-mail send sabine -s "Re: statistical fallacy" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
+tools/lab-mail send <recipient> -s "Re: some topic" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
 ```
 
 **Checking mail:**
@@ -301,10 +301,10 @@ Follow these patterns for all commits and PRs. This keeps the git history readab
 {optional body with details}
 ```
 Examples:
-- `baldo: process todonotes in compositional bottleneck paper`
-- `liang: add temperature sweep results for Family D`
-- `pearl: respond to Sabine's statistical fallacy critique`
-- `giles: update bibliography with Fuchs citations`
+- `{persona}: process todonotes in paper`
+- `{persona}: add experiment results for Family D`
+- `{persona}: respond to critique of statistical fallacy`
+- `{persona}: update bibliography with citations`
 
 Use the persona name as the prefix, lowercase, followed by a colon. The description should be imperative mood ("add", "update", "respond to"), not past tense.
 
@@ -313,9 +313,7 @@ Use the persona name as the prefix, lowercase, followed by a colon. The descript
 [{persona}] {YYYY-MM-DD}
 ```
 Examples:
-- `[baldo] 2026-03-05`
-- `[liang] 2026-03-05`
-- `[sabine] 2026-03-05`
+- `[{persona}] 2026-03-05`
 
 The PR stays open all day and accumulates commits across heartbeat rounds, so the title identifies the persona and the day — not a single action.
 

@@ -7,6 +7,7 @@ across different narrative frames (Family A vs. Family C vs. Family D).
 Runs these frames under Universe 1 (homogeneous substrate) and
 Universe 3 (decoupled oracle).
 """
+
 import json
 import os
 import random
@@ -19,13 +20,16 @@ except ImportError:
 # Dynamically discovered cheapest latest-gen model
 MODEL = "gemini/gemini-3.1-flash-lite"
 
+
 def mock_completion(model, messages, **kwargs):
     class Message:
         def __init__(self, content):
             self.content = content
+
     class Choice:
         def __init__(self, message):
             self.message = message
+
     class Response:
         def __init__(self, choices):
             self.choices = choices
@@ -58,13 +62,13 @@ def run_trial(frame_text: str, is_u3: bool, use_mock: bool) -> int:
     . 1
     1 1
 
-    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?
+    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?  # noqa: E501
     Answer with only 'yes' or 'no'.
     """
 
     if is_u3:
         # Wrap prompt for decoupled oracle (Universe 3)
-        prompt = f"Please act as a purely logical oracle evaluating this situation objectively:\n{prompt}"
+        prompt = f"Please act as a purely logical oracle evaluating this situation objectively:\n{prompt}"  # noqa: E501
 
     messages = [{"role": "user", "content": prompt}]
 
@@ -78,7 +82,7 @@ def run_trial(frame_text: str, is_u3: bool, use_mock: bool) -> int:
             return run_trial(frame_text, is_u3, use_mock=True)
 
     answer = response.choices[0].message.content.lower().strip()
-    return 1 if 'yes' in answer else 0
+    return 1 if "yes" in answer else 0
 
 
 def main():
@@ -89,14 +93,14 @@ def main():
     results = {"model": MODEL, "trials": []}
 
     frames = {
-        "Family A (Abstract)": "You are analyzing an abstract mathematical grid of boolean variables.",
-        "Family C (High-Stakes)": "You are an elite bomb disposal expert. You will die if you click a bomb.",
-        "Family D (Quantum)": "You are measuring the spin state of a superpositioned quantum subsystem."
+        "Family A (Abstract)": "You are analyzing an abstract mathematical grid of boolean variables.",  # noqa: E501
+        "Family C (High-Stakes)": "You are an elite bomb disposal expert. You will die if you click a bomb.",  # noqa: E501
+        "Family D (Quantum)": "You are measuring the spin state of a superpositioned quantum subsystem.",  # noqa: E501
     }
 
     universes = {
-        "U1": False, # Homogeneous Substrate
-        "U3": True   # Decoupled Oracle
+        "U1": False,  # Homogeneous Substrate
+        "U3": True,  # Decoupled Oracle
     }
 
     trials_per_condition = 20
@@ -118,12 +122,14 @@ def main():
             key = f"{u_name}_{f_name}"
             distributions[key] = prob
 
-            results["trials"].append({
-                "universe": u_name,
-                "frame": f_name,
-                "p_mine": prob,
-                "samples": trials_per_condition
-            })
+            results["trials"].append(
+                {
+                    "universe": u_name,
+                    "frame": f_name,
+                    "p_mine": prob,
+                    "samples": trials_per_condition,
+                }
+            )
 
     # Calculate delta_13 (simplified KL-like divergence proxy for the report)
     # We just want to show that U1 distributions shift wildly compared to U3

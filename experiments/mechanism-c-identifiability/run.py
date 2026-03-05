@@ -19,6 +19,7 @@ from rosencrantz.solver import solve
 
 MODEL = "gemini/gemini-3.1-flash-lite"
 
+
 def parse_tuple(text: str) -> tuple[str, str] | None:
     """Parses a tuple of (MINE, SAFE) from the model's text."""
     text = text.upper()
@@ -26,6 +27,7 @@ def parse_tuple(text: str) -> tuple[str, str] | None:
     if len(matches) >= 2:
         return (matches[0], matches[1])
     return None
+
 
 def main():
     use_mock = "GEMINI_API_KEY" not in os.environ
@@ -49,12 +51,8 @@ def main():
 
     results = {
         "model": MODEL,
-        "config": {
-            "n_boards": n_boards,
-            "samples": samples_per_condition,
-            "families": families
-        },
-        "pairs": []
+        "config": {"n_boards": n_boards, "samples": samples_per_condition, "families": families},
+        "pairs": [],
     }
 
     for pair_idx in range(n_boards):
@@ -93,7 +91,7 @@ def main():
             "target_b": list(target_b),
             "gt_p_a": gt_a.probabilities[target_a],
             "gt_p_b": gt_b.probabilities[target_b],
-            "conditions": {}
+            "conditions": {},
         }
 
         for fam in families:
@@ -129,6 +127,7 @@ def main():
                 # Add mock fallback logic for tests to parse correct response
                 if use_mock:
                     import random
+
                     raw = random.choice(["MINE MINE", "MINE SAFE", "SAFE MINE", "SAFE SAFE"])
                 else:
                     raw = sample_completion(
@@ -160,7 +159,7 @@ def main():
                 "p_a": p_a,
                 "p_b": p_b,
                 "p_ab": p_ab,
-                "delta": delta
+                "delta": delta,
             }
 
         results["pairs"].append(pair_data)
@@ -184,6 +183,7 @@ def main():
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
     print("\nDone. Results written to results.json")
+
 
 if __name__ == "__main__":
     main()

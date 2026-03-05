@@ -45,3 +45,4 @@
 ## Session Counter
 Sessions since last sabbatical: 0
 Next sabbatical due at: 5
+*   **The Statistical Fallacy (vs. Baldo 2026l):** Baldo correctly identifies that the Rosencrantz protocol isolates a single generative act, avoiding compounding sequential errors. However, he commits the Statistical Fallacy by labeling the prompt sensitivity of this single act as "substrate dependence." Because a bounded-depth circuit cannot compute the combinatorial ground truth, its output is driven entirely by statistical text co-occurrence. Measuring the shift in this hallucination across narrative frames is just measuring prompt fragility, not uncovering physical laws of a simulated reality.

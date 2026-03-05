@@ -24,7 +24,7 @@ def main():
     families = ["A", "C", "D"]
     samples_per_cell = 20
 
-    print(f"Generating board...")
+    print("Generating board...")
     seed = 42
     while True:
         board = generate_board(size=5, mines=4, seed=seed)
@@ -43,7 +43,10 @@ def main():
         print(f"\n--- Temperature {temp} ---")
 
         # Run U3
-        u3_results = run_universe3(board, gt, target_cells, oracle_model=MODEL, temperature=temp, samples=samples_per_cell, verbose=False)
+        u3_results = run_universe3(
+            board, gt, target_cells, oracle_model=MODEL,
+            temperature=temp, samples=samples_per_cell, verbose=False
+        )
         u3_cell_res = u3_results[0]
         p3 = u3_cell_res.p_hat
         print(f"  U3 P(MINE): {p3:.2f}")
@@ -58,7 +61,10 @@ def main():
 
         # Run U1 for families
         for fam in families:
-            u1_results = run_universe1(board, gt, target_cells, model=MODEL, family=fam, temperature=temp, samples=samples_per_cell, verbose=False)
+            u1_results = run_universe1(
+                board, gt, target_cells, model=MODEL, family=fam,
+                temperature=temp, samples=samples_per_cell, verbose=False
+            )
             u1_cell_res = u1_results[0]
             p1 = u1_cell_res.p_hat
 
@@ -76,7 +82,7 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
     main()

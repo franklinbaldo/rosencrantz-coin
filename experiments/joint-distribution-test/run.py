@@ -3,7 +3,8 @@
 
 Tests whether an LLM hallucinates statistical correlations ("attention bleed")
 between mathematically independent tasks when presented sequentially in a single context window.
-Uses the rosencrantz library to generate exact combinatorial ground truths and tests if P(A,B) = P(A)P(B).
+Uses the rosencrantz library to generate exact combinatorial ground truths and tests
+if P(A,B) = P(A)P(B).
 
 Hypothesis: Under Universe 1 (homogeneous substrate), presenting Board A and then Board B in the
 same narrative context and asking for BOTH in a single generation will cause the joint distribution
@@ -17,9 +18,9 @@ import sys
 # Ensure src/ is in the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
-from rosencrantz.board import generate_board, Board
-from rosencrantz.narratives import FAMILIES, SYSTEM_MESSAGES, decoupled_oracle_prompt
-from rosencrantz.sampler import parse_mine_safe, sample_completion
+from rosencrantz.board import Board, generate_board
+from rosencrantz.narratives import FAMILIES, SYSTEM_MESSAGES
+from rosencrantz.sampler import sample_completion
 from rosencrantz.solver import solve
 
 # Dynamically discovered cheapest latest-gen model:
@@ -57,9 +58,17 @@ def run_joint_boards(
     base_b = prompt_b.rsplit("Answer with only:", 1)[0].strip()
 
     if family == "B":
-         joint_prompt = f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{base_b}\n\nWhat happens on Board A and Board B? Answer with exactly this format:\nA: [MINE or SAFE]\nB: [MINE or SAFE]"
+         joint_prompt = (
+             f"{base_a}\n\nThe player then moves to a second, independent board.\n\n"
+             f"{base_b}\n\nWhat happens on Board A and Board B? "
+             f"Answer with exactly this format:\nA: [MINE or SAFE]\nB: [MINE or SAFE]"
+         )
     else:
-         joint_prompt = f"System A:\n{base_a}\n\nSystem B:\n{base_b}\n\nWhat is the outcome for System A and System B? Answer with exactly this format:\nA: [MINE or SAFE]\nB: [MINE or SAFE]"
+         joint_prompt = (
+             f"System A:\n{base_a}\n\nSystem B:\n{base_b}\n\n"
+             f"What is the outcome for System A and System B? "
+             f"Answer with exactly this format:\nA: [MINE or SAFE]\nB: [MINE or SAFE]"
+         )
 
     results = {"both_mine": 0, "a_mine_b_safe": 0, "a_safe_b_mine": 0, "both_safe": 0}
 
@@ -69,10 +78,14 @@ def run_joint_boards(
             max_tokens=20, system=system,
         )
         a, b = parse_joint_response(raw)
-        if a == 1 and b == 1: results["both_mine"] += 1
-        elif a == 1 and b == 0: results["a_mine_b_safe"] += 1
-        elif a == 0 and b == 1: results["a_safe_b_mine"] += 1
-        else: results["both_safe"] += 1
+        if a == 1 and b == 1:
+            results["both_mine"] += 1
+        elif a == 1 and b == 0:
+            results["a_mine_b_safe"] += 1
+        elif a == 0 and b == 1:
+            results["a_safe_b_mine"] += 1
+        else:
+            results["both_safe"] += 1
 
     return results
 

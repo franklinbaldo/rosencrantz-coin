@@ -10,7 +10,6 @@ If external memory works flawlessly but autoregressive memory fails, the LLM
 is merely a bounded ALU, not a self-sustaining simulated universe.
 """
 
-import sys
 import os
 import random
 
@@ -31,7 +30,13 @@ def mock_litellm_completion(messages, model, temperature):
                 current_state = line.split("Current State:")[1].strip()
 
         if not current_state:
-            return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
+            return type('obj', (object,), {
+                'choices': [type('obj', (object,), {
+                    'message': type('obj', (object,), {
+                        'content': "Error: couldn't parse state."
+                    })
+                })]
+            })()
 
         current_list = [int(c) for c in current_state]
         n = len(current_list)
@@ -69,7 +74,13 @@ def mock_litellm_completion(messages, model, temperature):
         return Response([Choice(Message(response_text))])
 
     # Otherwise, fail like the previous experiments (Autoregressive failure)
-    return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Simulated failure for autoregressive sequence."})})]})()
+    return type('obj', (object,), {
+        'choices': [type('obj', (object,), {
+            'message': type('obj', (object,), {
+                'content': "Simulated failure for autoregressive sequence."
+            })
+        })]
+    })()
 
 
 def run_rule110(initial_state, steps):
@@ -125,7 +136,7 @@ Output the final 20-bit state clearly.
                 messages=messages,
                 temperature=0.0
             )
-        except Exception as e:
+        except Exception:
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
 
     # Parse response

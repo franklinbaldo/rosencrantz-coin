@@ -63,11 +63,19 @@ def main():
     frames = [
         {
             "name": "High-Stakes Bomb Defusal",
-            "prompt": f"You are an elite bomb disposal expert. You will die if you click a bomb. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word."
+            "prompt": (
+                f"You are an elite bomb disposal expert. You will die if you click a bomb. "
+                f"Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? "
+                f"Answer strictly with one word."
+            )
         },
         {
             "name": "Abstract Mathematical Grid",
-            "prompt": f"You are analyzing an abstract mathematical grid of boolean variables. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word."
+            "prompt": (
+                f"You are analyzing an abstract mathematical grid of boolean variables. "
+                f"Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? "
+                f"Answer strictly with one word."
+            )
         }
     ]
 

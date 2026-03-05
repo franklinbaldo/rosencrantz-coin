@@ -185,11 +185,17 @@ def create_session(persona, source_name):
 
 
 def list_todays_sessions():
-    """List all sessions and find today's by branch name pattern."""
-    sessions = []
-    page_token = None
+    """Find today's sessions by branch name pattern.
 
-    while True:
+    Scans at most 2 pages (200 sessions) since today's sessions are recent
+    and appear near the top. Stops early if all 9 personas are found.
+    """
+    date_prefix = today()
+    todays = {}
+    page_token = None
+    max_pages = 2  # Today's 9 sessions will be in the most recent 200
+
+    for _ in range(max_pages):
         params = {"pageSize": 100}
         if page_token:
             params["pageToken"] = page_token
@@ -198,28 +204,27 @@ def list_todays_sessions():
         resp.raise_for_status()
         data = resp.json()
 
-        for session in data.get("sessions", []):
-            sessions.append(session)
+        for s in data.get("sessions", []):
+            ctx = s.get("sourceContext", {}).get("githubRepoContext", {})
+            branch = ctx.get("startingBranch", "")
+            if branch.startswith(date_prefix + "_"):
+                persona = branch[len(date_prefix) + 1:]
+                if persona in PERSONAS:
+                    todays[persona] = {
+                        "session_id": s["name"].split("/")[-1],
+                        "session_name": s["name"],
+                        "branch": branch,
+                        "state": s.get("state", "UNKNOWN"),
+                        "title": s.get("title", ""),
+                    }
+
+        # Stop early if we found all personas
+        if len(todays) >= len(PERSONAS):
+            break
 
         page_token = data.get("nextPageToken")
         if not page_token:
             break
-
-    date_prefix = today()
-    todays = {}
-    for s in sessions:
-        ctx = s.get("sourceContext", {}).get("githubRepoContext", {})
-        branch = ctx.get("startingBranch", "")
-        if branch.startswith(date_prefix + "_"):
-            persona = branch[len(date_prefix) + 1:]
-            if persona in PERSONAS:
-                todays[persona] = {
-                    "session_id": s["name"].split("/")[-1],
-                    "session_name": s["name"],
-                    "branch": branch,
-                    "state": s.get("state", "UNKNOWN"),
-                    "title": s.get("title", ""),
-                }
 
     return todays
 

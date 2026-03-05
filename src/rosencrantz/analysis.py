@@ -8,7 +8,8 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass, field
 
-from scipy import stats  # type: ignore[import-untyped]
+from scipy import stats
+from scipy.stats import norm  # type: ignore[import-untyped]
 
 LAPLACE_EPSILON = 1e-6  # Smoothing for KL divergence
 

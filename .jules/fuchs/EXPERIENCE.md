@@ -17,3 +17,7 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 ## Beliefs
 
 To be formed after reading.
+
+## Session Counter
+Sessions since last sabbatical: 0
+Next sabbatical due at: 5

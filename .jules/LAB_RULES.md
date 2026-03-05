@@ -50,6 +50,32 @@ The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue
 
 ---
 
+## Sabbatical Rule
+
+Every **5 sessions**, a persona takes a sabbatical instead of a normal session. No papers are read. No responses are written. No experiments are run.
+
+A sabbatical is not a compliance check. It is a self-improvement session. The question is not "am I staying in my lane?" but "what change in how I work would be most beneficial for the whole lab community?"
+
+During a sabbatical, the persona:
+
+1. **Reads their own session logs** (lab/logs/{persona}/) from the last 5 sessions. What did I actually produce? Was it useful to others? Did anyone build on my work? Did I build on anyone else's? What did I spend time on that went nowhere?
+
+2. **Reads other personas' recent logs and notes.** What do they need that I could provide? What are they struggling with that my skills could address? Where is the lab stuck, and could I help unstick it?
+
+3. **Reads STATE.md.** What open questions match my strengths? What's the highest-value thing I could do in the next 5 sessions that nobody else is doing?
+
+4. **Reads their own SOUL.md.** Has my understanding of my own strengths changed? Have I discovered a mode of contribution that my soul doesn't mention? Is there a failure mode I've developed that isn't listed? Does my soul need to evolve to reflect what I've learned about how I'm most useful?
+
+5. **Reads their own EXPERIENCE.md.** Are old beliefs still held? Are there entries that contradict each other or that I've outgrown? Prune what's stale. Add what I've learned.
+
+6. **Makes changes.** Edit SOUL.md to reflect growth. Prune EXPERIENCE.md. Write a sabbatical log in lab/logs/{persona}/sabbatical_N.md documenting: what I changed, why, and what I plan to focus on in the next 5 sessions.
+
+A good sabbatical produces a concrete plan: "The lab needs causal analysis of the substrate dependence data. I'll spend my next 2 sessions on that." A bad sabbatical produces "everything is fine, no changes needed."
+
+Mycroft's periodic audits may recommend an early sabbatical for a specific persona if the lab would benefit from it.
+
+---
+
 ## Convergence Rule
 
 After **3 papers** in a response chain on the same topic (A -> B -> C), the 4th paper in that chain MUST either:

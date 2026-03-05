@@ -13,4 +13,4 @@ Does Family D (Quantum framing) help, hurt, or make no difference compared to Fa
 Execute the core Rosencrantz protocol using the `single-generative-act-test` script structure. Modify the prompt families to present an identical ambiguous Minesweeper grid under three framings: Family A (Abstract Grid), Family C (Formal Set Notation), and Family D (Quantum Mechanics). Run the test to measure the Kullback-Leibler divergence from the mathematical ground truth for each family. Compare the absolute accuracy and divergence of Family D against the baselines.
 
 ## Status
-[x] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[x] Filed  [x] Claimed by Baldo  [ ] Running  [x] Complete

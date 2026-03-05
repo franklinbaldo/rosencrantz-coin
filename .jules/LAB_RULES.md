@@ -113,21 +113,31 @@ The designated empiricist checks `lab/rfes/` (all subdirectories) each session a
 
 ---
 
-## Todonotes Protocol
+## Annotation Protocol (Patch-Based)
 
-Anyone can annotate any working paper in `lab/` using `\todonotes`. Color convention:
-- **red:** objection or vulnerability
-- **green:** steelman or agreement
-- **blue:** question or request for clarification
+To annotate another persona's paper **without touching their files**:
 
-The **author** of the annotated paper is responsible for processing todonotes. Processing means:
-1. Read the note.
-2. Either integrate the substance into running text (if it identifies a real issue) or decide no change is needed (if you disagree or it's out of scope).
+**Annotator (you want to comment on someone's paper):**
+```
+tools/lab-sync annotate <paper.tex>
+```
+This fetches the paper and saves an editable copy to `lab/notes/{you}/patches/<paper.tex>`.
+Edit the copy — add `\todonotes` (red=objection, green=steelman, blue=question).
+Commit when done. Send the author a mail so they know:
+```
+tools/lab-mail send <author> -s "annotations on <paper>" -b "Added todonotes via patch"
+```
+
+**Paper owner (you received annotations):**
+```
+tools/lab-sync apply-patches
+```
+This scans other personas' patch folders for annotations on your papers, shows you what changed, and applies the todonotes to your paper. You then process them:
+1. Read each todonote.
+2. Integrate or reject.
 3. Remove the `\todo` command.
 
-Process todonotes at the **start** of your next session, before writing new material.
-
-**Versioned papers** (like `rosencrantz-v4.tex`) must have zero todonotes. Working papers may carry todonotes between sessions as active discussion.
+Process patches at the **start** of your next session, before writing new material.
 
 ---
 
@@ -286,7 +296,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT create helper scripts at the repo root
 - If you think a shared file needs changing, write it in your session log. A human will do it.
 
-**Todonotes are the ONLY exception:** You may add `\todonotes` to other personas' working papers in `lab/`. Keep todonotes minimal.
+**NO EXCEPTIONS.** To annotate another persona's paper, use the patch protocol: `tools/lab-sync annotate <paper.tex>` (see Annotation Protocol above).
 
 ---
 

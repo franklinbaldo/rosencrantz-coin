@@ -6,6 +6,8 @@
 #   tools/lab-sync diff <persona>      Show what <persona> changed vs main
 #   tools/lab-sync read <persona> <f>  Fetch a file from <persona>'s branch (read-only)
 #   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
+#   tools/lab-sync annotate <paper>    Fetch a paper for annotation (saves editable copy)
+#   tools/lab-sync apply-patches       Apply pending annotations from other personas
 #   tools/lab-sync mail                List inbox (mail delivered by heartbeat on main)
 #
 # Branch discovery: reads lab/sessions.json from main (written by heartbeat.py).
@@ -81,16 +83,31 @@ gitignore_add() {
   fi
 }
 
-# Detect current persona from branch name
+# Detect current persona from branch name.
+# Strategy: check sessions.json for branch match, then fall back to name substring.
 detect_persona() {
   local branch
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+  [ -z "$branch" ] && { echo ""; return; }
+
+  # 1) Reverse-lookup: find persona whose session branch matches ours
+  if [ ${#BRANCH_MAP[@]} -gt 0 ]; then
+    for p in "${PERSONAS[@]}"; do
+      if [ "${BRANCH_MAP[$p]:-}" = "$branch" ]; then
+        echo "$p"
+        return
+      fi
+    done
+  fi
+
+  # 2) Fallback: persona name appears anywhere in branch name
   for p in "${PERSONAS[@]}"; do
-    if [[ "$branch" == *"_${p}"* ]] || [[ "$branch" == *"_${p}-"* ]]; then
+    if [[ "$branch" == *"${p}"* ]]; then
       echo "$p"
       return
     fi
   done
+
   echo ""
 }
 
@@ -247,6 +264,144 @@ cmd_read() {
   fi
 }
 
+cmd_annotate() {
+  local paper="${1:?Usage: lab-sync annotate <paper.tex>  (e.g. baldo_the_single_generative_act.tex)}"
+
+  load_branches
+  local me
+  me=$(detect_persona)
+  if [ -z "$me" ]; then
+    echo "ERROR: Cannot detect your persona from branch name."
+    exit 1
+  fi
+
+  # Extract author from paper filename (e.g. baldo_paper.tex -> baldo)
+  local author=""
+  for p in "${PERSONAS[@]}"; do
+    if [[ "$paper" == "${p}_"* ]]; then
+      author="$p"
+      break
+    fi
+  done
+  if [ -z "$author" ]; then
+    echo "ERROR: Cannot determine author from filename '${paper}'."
+    echo "Paper filenames must start with a persona prefix (e.g. baldo_paper.tex)."
+    exit 1
+  fi
+  if [ "$author" = "$me" ]; then
+    echo "ERROR: You own this paper — edit it directly, no patch needed."
+    exit 1
+  fi
+
+  # Fetch the paper from main (latest merged version)
+  local url="${RAW_URL}/main/lab/${paper}"
+  local patches_dir="lab/notes/${me}/patches"
+  mkdir -p "$patches_dir"
+
+  local orig_file="${patches_dir}/.${paper}.orig"
+  local edit_file="${patches_dir}/${paper}"
+
+  echo "Fetching lab/${paper} from main..."
+  if ! curl -sfL "$url" -o "$edit_file"; then
+    echo "ERROR: Could not fetch ${url}"
+    echo "Check that the paper exists on main."
+    exit 1
+  fi
+
+  # Save a hidden original for diffing later
+  cp "$edit_file" "$orig_file"
+  gitignore_add "$orig_file"
+
+  echo ""
+  echo "Saved to: ${edit_file}"
+  echo "Original: ${orig_file} (hidden, gitignored)"
+  echo ""
+  echo "=== Next steps ==="
+  echo "1. Edit ${edit_file} — add your \\todonotes"
+  echo "2. Commit: git add ${edit_file} && git commit -m '${me}: annotate ${paper}'"
+  echo "3. Notify: tools/lab-mail send ${author} -s 'annotations on ${paper}' -b 'Added todonotes via patch'"
+}
+
+cmd_apply_patches() {
+  load_branches
+  local me
+  me=$(detect_persona)
+  if [ -z "$me" ]; then
+    echo "ERROR: Cannot detect your persona from branch name."
+    exit 1
+  fi
+
+  echo "=== Applying patches for ${me} ==="
+  echo ""
+
+  fetch_refs
+  local found=0
+
+  for annotator in "${PERSONAS[@]}"; do
+    [ "$annotator" = "$me" ] && continue
+
+    local branch
+    branch=$(branch_for "$annotator")
+    [ -z "$branch" ] && continue
+    ! ref_exists "$branch" && continue
+
+    # List files in annotator's patches dir that match our papers
+    local patches_path="lab/notes/${annotator}/patches"
+    local files
+    files=$(git ls-tree --name-only "lab/${branch}" "${patches_path}/" 2>/dev/null || true)
+    [ -z "$files" ] && continue
+
+    while IFS= read -r filepath; do
+      local filename
+      filename=$(basename "$filepath")
+
+      # Skip hidden files (originals)
+      [[ "$filename" == .* ]] && continue
+
+      # Only apply patches for papers we own
+      if [[ "$filename" != "${me}_"* ]]; then
+        continue
+      fi
+
+      echo "  Found annotation from ${annotator}: ${filename}"
+
+      # Fetch the annotated version
+      local annotated_url="${RAW_URL}/${branch}/${filepath}"
+      local tmp_annotated="/tmp/lab_patch_${filename}"
+      if ! curl -sfL "$annotated_url" -o "$tmp_annotated" 2>/dev/null; then
+        echo "    ERROR: could not fetch annotated file"
+        continue
+      fi
+
+      local my_paper="lab/${filename}"
+      if [ ! -f "$my_paper" ]; then
+        echo "    WARNING: ${my_paper} not found locally, skipping"
+        rm -f "$tmp_annotated"
+        continue
+      fi
+
+      # Show the diff
+      echo "    Changes:"
+      diff -u "$my_paper" "$tmp_annotated" || true
+      echo ""
+
+      # Apply: copy the annotated version over our paper
+      cp "$tmp_annotated" "$my_paper"
+      rm -f "$tmp_annotated"
+      echo "    Applied to ${my_paper}"
+      found=$((found + 1))
+
+    done <<< "$files"
+  done
+
+  if [ "$found" -eq 0 ]; then
+    echo "  (no pending patches found)"
+  else
+    echo ""
+    echo "  ${found} patch(es) applied. Review the todonotes, then commit."
+  fi
+}
+
 cmd_mail() {
   # Show inbox — mail is delivered centrally by the heartbeat workflow
   python3 tools/lab-mail list
@@ -255,25 +410,31 @@ cmd_mail() {
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 case "${1:-}" in
-  status)  cmd_status ;;
-  diff)    cmd_diff "${2:-}" ;;
-  browse)  cmd_browse "${2:-}" ;;
-  read)    cmd_read "${2:-}" "${3:-}" ;;
-  mail)    cmd_mail ;;
+  status)        cmd_status ;;
+  diff)          cmd_diff "${2:-}" ;;
+  browse)        cmd_browse "${2:-}" ;;
+  read)          cmd_read "${2:-}" "${3:-}" ;;
+  annotate)      cmd_annotate "${2:-}" ;;
+  apply-patches) cmd_apply_patches ;;
+  mail)          cmd_mail ;;
   *)
-    echo "Usage: tools/lab-sync {status|diff|browse|read|mail} [args]"
+    echo "Usage: tools/lab-sync {status|diff|browse|read|annotate|apply-patches|mail} [args]"
     echo ""
     echo "  status              List persona branches and latest commits"
     echo "  diff <persona>      Show what <persona> changed vs main"
     echo "  browse <persona>    List files changed by <persona> with raw GitHub URLs"
     echo "  read <persona> <f>  Fetch a file read-only (auto-added to .gitignore)"
+    echo "  annotate <paper>    Fetch a paper for annotation (patch-based todonotes)"
+    echo "  apply-patches       Apply pending annotations from other personas"
     echo "  mail                List your inbox (mail delivered by heartbeat)"
+    echo ""
+    echo "Annotate: tools/lab-sync annotate baldo_paper.tex"
+    echo "          (edit, commit, then mail the author)"
+    echo "Apply:    tools/lab-sync apply-patches"
+    echo "          (finds and applies todonotes from other personas)"
     echo ""
     echo "Mail: tools/lab-mail send <recipient> -s 'subject' -b 'body'"
     echo "      tools/lab-mail list    — check your inbox"
-    echo ""
-    echo "All reads are non-destructive. Fetched files are gitignored to prevent"
-    echo "accidentally committing other personas' work to your branch."
     exit 1
     ;;
 esac

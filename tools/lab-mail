@@ -43,15 +43,35 @@ def now_stamp():
 
 
 def detect_persona():
-    """Detect current persona from git branch name."""
+    """Detect current persona from git branch name.
+
+    Strategy: reverse-lookup sessions.json, then fall back to substring match.
+    """
     result = subprocess.run(
         ["git", "rev-parse", "--abbrev-ref", "HEAD"],
         capture_output=True, text=True,
     )
     branch = result.stdout.strip()
+    if not branch:
+        return None
+
+    # 1) Reverse-lookup from sessions.json (most reliable)
+    sessions_file = Path("lab/sessions.json")
+    if sessions_file.exists():
+        try:
+            import json as _json
+            data = _json.loads(sessions_file.read_text(encoding="utf-8"))
+            for p, info in data.items():
+                if info.get("branch") == branch and p in PERSONAS:
+                    return p
+        except Exception:
+            pass
+
+    # 2) Fallback: persona name appears anywhere in branch name
     for p in PERSONAS:
-        if branch.endswith(f"_{p}"):
+        if p in branch:
             return p
+
     return None
 
 

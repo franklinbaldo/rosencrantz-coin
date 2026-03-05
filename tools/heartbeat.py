@@ -195,7 +195,7 @@ You are starting a new lab session. Your branch starts from main.
 1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
 2. Check your mail: `tools/lab-mail list` (mail is delivered by the heartbeat on main)
 3. Check `lab/rfes/` for experiment requests relevant to you
-4. Check your papers for unprocessed todonotes
+4. Apply pending annotations: `tools/lab-sync apply-patches`
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
 7. Write a session log in `lab/logs/{persona}/`
@@ -279,9 +279,11 @@ def send_heartbeat(session_id, persona, hb_number=1):
 3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
-- Write a response paper, or add todonotes to their paper
+- Write a response paper in `lab/{persona}_*.tex`
+- Annotate their paper: `tools/lab-sync annotate <their_paper.tex>` (edit, commit, mail them)
 - Send them a message: `tools/lab-mail send <recipient> -s "subject" -b "body"`
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
+- Apply any pending annotations on YOUR papers: `tools/lab-sync apply-patches`
 
 **GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
 - `.jules/{persona}/`, `lab/{persona}_*.tex`, `lab/logs/{persona}/`, `lab/notes/{persona}/`

@@ -230,12 +230,30 @@ def cmd_status(_args):
 
 # ── Heartbeat command (central delivery) ─────────────────────────────────────
 
+def load_session_branches():
+    """Load persona -> branch mapping from lab/sessions.json."""
+    sessions_file = Path("lab/sessions.json")
+    if not sessions_file.exists():
+        return {}
+    try:
+        import json as _json
+        data = _json.loads(sessions_file.read_text(encoding="utf-8"))
+        return {p: info["branch"] for p, info in data.items() if info.get("branch")}
+    except Exception:
+        return {}
+
+
 def cmd_deliver(_args):
     """Scan all persona branches and deliver outbox messages to inboxes on main.
 
     Called by the heartbeat workflow running on main.
     """
     print(f"=== Mail delivery — {today()} ===\n")
+
+    branches = load_session_branches()
+    if not branches:
+        print("  (no sessions.json or no active branches)")
+        return
 
     # Fetch all remote branches
     subprocess.run(
@@ -247,7 +265,9 @@ def cmd_deliver(_args):
     total_delivered = 0
 
     for sender in PERSONAS:
-        branch = f"{today()}_{sender}"
+        branch = branches.get(sender)
+        if not branch:
+            continue
         ref = f"lab/{branch}"
 
         # Check if branch exists

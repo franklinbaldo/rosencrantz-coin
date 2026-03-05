@@ -193,23 +193,17 @@ When writing a response to another persona's paper:
 
 ## Cross-Persona Sync
 
-Each persona works on a dated branch (`YYYY-MM-DD_persona`). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas.
+Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `lab-sync` can discover branches.
 
 **Checking other personas' work:**
 ```
-tools/lab-sync status              # List today's branches and latest commits
+tools/lab-sync status              # List persona branches and latest commits
 tools/lab-sync browse <persona>    # List files changed by <persona> with raw GitHub URLs
 tools/lab-sync diff <persona>      # See what <persona> changed vs main
 tools/lab-sync read <persona> <f>  # Fetch a file read-only (auto-gitignored)
 ```
 
 **Reading, not pulling:** Use `browse` and `read` to inspect other personas' work. Files fetched via `read` are automatically added to `.gitignore` so they are never committed to your branch. This prevents merge conflicts when branches are reconciled.
-
-**Referencing other personas' files:** Since the repo is public, you can reference any file on any branch via its raw GitHub URL:
-```
-https://raw.githubusercontent.com/franklinbaldo/rosencrantz-coin/YYYY-MM-DD_persona/path/to/file
-```
-Use these URLs in your papers and notes when citing other personas' work.
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
 

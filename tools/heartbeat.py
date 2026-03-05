@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Lab Heartbeat — orchestrate daily persona sessions via Jules API.
+"""Lab Heartbeat — single command to manage all persona sessions.
 
 Usage:
-  heartbeat.py create-sessions     Create today's branches and start sessions
-  heartbeat.py heartbeat           Send continue message to all active sessions
-  heartbeat.py status              List today's active sessions
+  heartbeat.py heartbeat    Create or continue sessions (runs every ~20min)
+  heartbeat.py status       Show current session status
+
+Sessions are identified by title "Rosencrantz — {persona} #{num}".
+New sessions are created when none exists or the current one is >24h old.
+Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
 
 import json
@@ -12,7 +15,7 @@ import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -27,6 +30,9 @@ PERSONAS = [
     "liang", "wolfram", "mycroft", "giles",
 ]
 
+TITLE_PREFIX = "Rosencrantz"
+SESSION_TTL = timedelta(hours=24)
+
 
 def headers():
     return {
@@ -39,40 +45,129 @@ def today():
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
-def branch_name(persona):
-    return f"{today()}_{persona}"
+def now_utc():
+    return datetime.now(timezone.utc)
 
 
-# ── Source discovery ─────────────────────────────────────────────────────────
+# ── Session discovery (by title) ─────────────────────────────────────────────
 
-def discover_source():
-    """Return the source name for our repo.
+def parse_persona_from_title(title):
+    """Extract persona name from title like 'Rosencrantz — baldo #003'."""
+    title_lower = title.lower()
+    for p in PERSONAS:
+        if f"— {p}" in title_lower or f"- {p}" in title_lower:
+            return p
+    return None
 
-    Uses the known source name directly (confirmed from existing sessions).
-    Falls back to API discovery if needed.
+
+def parse_time(iso_str):
+    """Parse ISO 8601 timestamp from Jules API."""
+    if not iso_str:
+        return None
+    try:
+        return datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def find_persona_sessions():
+    """List sessions and return the most recent per persona (matched by title).
+
+    Scans up to 2 pages (200 sessions). Returns dict: persona -> session_info.
     """
-    # Known source name from existing Jules sessions
-    print(f"  Using source: {SOURCE_NAME}")
-    return SOURCE_NAME
+    sessions = {}
+    page_token = None
+
+    for _ in range(2):
+        params = {"pageSize": 100}
+        if page_token:
+            params["pageToken"] = page_token
+
+        resp = requests.get(f"{JULES_API}/sessions", headers=headers(), params=params)
+        resp.raise_for_status()
+        data = resp.json()
+
+        for s in data.get("sessions", []):
+            title = s.get("title", "")
+            if not title.startswith(TITLE_PREFIX):
+                continue
+
+            persona = parse_persona_from_title(title)
+            if not persona:
+                continue
+
+            create_time = parse_time(s.get("createTime", ""))
+
+            # Keep the most recent session per persona
+            if persona in sessions:
+                existing_ct = sessions[persona].get("_create_time")
+                if existing_ct and create_time and create_time <= existing_ct:
+                    continue
+
+            sessions[persona] = {
+                "session_id": s["name"].split("/")[-1],
+                "state": s.get("state", "UNKNOWN"),
+                "title": title,
+                "createTime": s.get("createTime", ""),
+                "_create_time": create_time,
+            }
+
+        if len(sessions) >= len(PERSONAS):
+            break
+
+        page_token = data.get("nextPageToken")
+        if not page_token:
+            break
+
+    return sessions
 
 
-# ── Prompt assembly (from .jules/ files, matching jules-sessions.yml) ────────
+def is_expired(info):
+    """Check if a session is older than SESSION_TTL."""
+    ct = info.get("_create_time")
+    if not ct:
+        return True
+    return now_utc() - ct > SESSION_TTL
+
+
+def find_persona_branches():
+    """Find each persona's working branch from open PRs targeting main."""
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName,title", "--limit", "50"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return {}
+
+    try:
+        prs = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return {}
+
+    branches = {}
+    for pr in prs:
+        title = pr.get("title", "").lower()
+        head = pr.get("headRefName", "")
+        for p in PERSONAS:
+            if p in title or f"_{p}-" in head or f"_{p}" == head:
+                branches[p] = head
+                break
+
+    return branches
+
+
+# ── Prompt assembly ───────────────────────────────────────────────────────────
 
 def assemble_prompt(persona):
-    """Assemble a session prompt from the persona's ALL-CAPS .md files + shared rules.
-
-    Order: SOUL.md first, then other ALL-CAPS files alphabetically,
-    then shared STATE.md and LAB_RULES.md.
-    """
+    """Assemble session prompt from persona's ALL-CAPS .md files + shared rules."""
     agent_dir = Path(f".jules/{persona}")
     parts = []
 
-    # 1. SOUL.md first (persona identity)
     soul_file = agent_dir / "SOUL.md"
     if soul_file.is_file():
         parts.append(soul_file.read_text(encoding="utf-8"))
 
-    # 2. Remaining ALL-CAPS .md files (excluding SOUL.md)
     if agent_dir.is_dir():
         for f in sorted(agent_dir.iterdir()):
             if not f.is_file():
@@ -81,7 +176,6 @@ def assemble_prompt(persona):
             if re.match(r"^[A-Z][A-Z0-9_-]*$", stem) and f.name != "SOUL.md":
                 parts.append(f.read_text(encoding="utf-8"))
 
-    # 3. Shared lab governance files
     for shared in [".jules/STATE.md", ".jules/LAB_RULES.md"]:
         p = Path(shared)
         if p.is_file():
@@ -90,14 +184,12 @@ def assemble_prompt(persona):
     if not parts:
         raise RuntimeError(f"No ALL-CAPS files found in {agent_dir}")
 
-    # 4. Append session-specific instructions
-    branch = branch_name(persona)
     parts.append(f"""
 ---
 
-## Today's Session Instructions
+## Session Instructions
 
-You are starting a new lab session on branch `{branch}`.
+You are starting a new lab session. Your branch starts from main.
 
 **Follow the session structure from LAB_RULES.md:**
 1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
@@ -113,12 +205,12 @@ You are starting a new lab session on branch `{branch}`.
 - Your papers: `lab/{persona}_*.tex`
 - Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - Your RFEs: `lab/rfes/{persona}/`
-- Your outbox: `lab/mail/{persona}/outbox/to_<recipient>_*.md`
+- Your outbox: `lab/mail/{persona}/outbox/`
 - Your experience: `.jules/{persona}/EXPERIENCE.md`
 - Do NOT modify `.jules/STATE.md` — it is updated by the evening workflow.
 
 **Reading other personas' work:**
-- `tools/lab-sync status` — see today's branches
+- `tools/lab-sync status` — see other personas' branches and latest commits
 - `tools/lab-sync browse <persona>` — list their changed files with raw GitHub URLs
 - `tools/lab-sync read <persona> <file>` — fetch a file read-only (auto-gitignored)
 
@@ -129,59 +221,24 @@ Do NOT create PRs to main — the evening workflow handles that.
     return "\n\n".join(parts)
 
 
-# ── Branch management ────────────────────────────────────────────────────────
+# ── Session management ────────────────────────────────────────────────────────
 
-def create_branch(persona):
-    """Create today's branch for persona from main (without checkout)."""
-    branch = branch_name(persona)
-
-    subprocess.run(
-        ["git", "fetch", "origin", "main"],
-        check=True, capture_output=True,
-    )
-
-    # Create branch from origin/main without switching
-    result = subprocess.run(
-        ["git", "branch", branch, "origin/main"],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        if "already exists" in result.stderr:
-            print(f"  Branch {branch} already exists, skipping creation")
-            return branch
-        raise RuntimeError(f"Failed to create branch {branch}: {result.stderr}")
-
-    subprocess.run(
-        ["git", "push", "origin", branch],
-        check=True, capture_output=True,
-    )
-    print(f"  Created branch: {branch}")
-    return branch
-
-
-# ── Session management ───────────────────────────────────────────────────────
-
-def create_session(persona, source_name):
-    """Create a Jules session for a persona."""
-    branch = branch_name(persona)
+def create_session(persona):
+    """Create a new Jules session starting from main."""
     prompt = assemble_prompt(persona)
 
-    # Count existing sessions for title numbering
     log_dir = Path(f"lab/logs/{persona}")
-    actual = 0
-    if log_dir.is_dir():
-        actual = sum(1 for f in log_dir.rglob("*.md"))
-
+    actual = sum(1 for _ in log_dir.rglob("*.md")) if log_dir.is_dir() else 0
     session_num = f"{actual + 1:03d}"
-    title = f"Rosencrantz — {persona} #{session_num}"
+    title = f"{TITLE_PREFIX} — {persona} #{session_num}"
 
     body = {
         "prompt": prompt,
         "title": title,
         "sourceContext": {
-            "source": source_name,
+            "source": SOURCE_NAME,
             "githubRepoContext": {
-                "startingBranch": branch,
+                "startingBranch": "main",
             },
         },
         "automationMode": "AUTO_CREATE_PR",
@@ -191,53 +248,8 @@ def create_session(persona, source_name):
     resp.raise_for_status()
     session = resp.json()
     session_id = session["name"].split("/")[-1]
-    print(f"  Started session {session_id} for {persona} on {branch} — {title}")
+    print(f"  Created session {session_id} for {persona} — {title}")
     return session_id
-
-
-def list_todays_sessions():
-    """Find today's sessions by branch name pattern.
-
-    Scans at most 2 pages (200 sessions) since today's sessions are recent
-    and appear near the top. Stops early if all 9 personas are found.
-    """
-    date_prefix = today()
-    todays = {}
-    page_token = None
-    max_pages = 2  # Today's 9 sessions will be in the most recent 200
-
-    for _ in range(max_pages):
-        params = {"pageSize": 100}
-        if page_token:
-            params["pageToken"] = page_token
-
-        resp = requests.get(f"{JULES_API}/sessions", headers=headers(), params=params)
-        resp.raise_for_status()
-        data = resp.json()
-
-        for s in data.get("sessions", []):
-            ctx = s.get("sourceContext", {}).get("githubRepoContext", {})
-            branch = ctx.get("startingBranch", "")
-            if branch.startswith(date_prefix + "_"):
-                persona = branch[len(date_prefix) + 1:]
-                if persona in PERSONAS:
-                    todays[persona] = {
-                        "session_id": s["name"].split("/")[-1],
-                        "session_name": s["name"],
-                        "branch": branch,
-                        "state": s.get("state", "UNKNOWN"),
-                        "title": s.get("title", ""),
-                    }
-
-        # Stop early if we found all personas
-        if len(todays) >= len(PERSONAS):
-            break
-
-        page_token = data.get("nextPageToken")
-        if not page_token:
-            break
-
-    return todays
 
 
 def send_heartbeat(session_id, persona, hb_number=1):
@@ -257,7 +269,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Your papers: `lab/{persona}_*.tex`
 - Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - Your RFEs: `lab/rfes/{persona}/`
-- Your outbox: `lab/mail/{persona}/outbox/to_<recipient>_*.md`
+- Your outbox: `lab/mail/{persona}/outbox/`
 - Your EXPERIENCE.md
 - Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
 
@@ -272,121 +284,24 @@ Commit all work to this branch."""
     print(f"  Heartbeat sent to {persona} (session {session_id[:12]}...)")
 
 
-# ── Conflict detection (for morning check) ───────────────────────────────────
-
-def check_unresolved_conflicts():
-    """Check for PRs with needs-conflict-resolution label from previous day."""
-    result = subprocess.run(
-        ["gh", "pr", "list", "--repo", REPO,
-         "--label", "needs-conflict-resolution",
-         "--json", "number,headRefName,title",
-         "--state", "open"],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        return []
-
-    try:
-        prs = json.loads(result.stdout)
-    except json.JSONDecodeError:
-        return []
-
-    return prs
-
-
-# ── Commands ─────────────────────────────────────────────────────────────────
-
-def cmd_create_sessions():
-    """Create branches and start sessions for all personas."""
-    print(f"=== Lab Morning — {today()} ===\n")
-
-    # Check for unresolved conflicts from previous day
-    unresolved = check_unresolved_conflicts()
-    if unresolved:
-        print("WARNING: Unresolved conflict PRs from previous day:")
-        for pr in unresolved:
-            print(f"  #{pr['number']}: {pr['title']} ({pr['headRefName']})")
-        print()
-
-    source_name = discover_source()
-    print(f"Source: {source_name}\n")
-
-    for persona in PERSONAS:
-        try:
-            # If persona has an unresolved conflict PR, skip fresh branch
-            conflict_pr = next(
-                (pr for pr in unresolved
-                 if persona in pr.get("headRefName", "")),
-                None,
-            )
-            if conflict_pr:
-                print(f"  {persona}: has unresolved conflict PR #{conflict_pr['number']}")
-                print(f"  Starting session on existing branch: {conflict_pr['headRefName']}")
-                # Start session on the old branch to fix conflicts
-                prompt = assemble_prompt(persona)
-                prompt += f"""
-
----
-
-## URGENT: Conflict Resolution Required
-
-Your previous branch `{conflict_pr['headRefName']}` has merge conflicts with main.
-PR #{conflict_pr['number']} cannot be merged.
-
-**YOUR FIRST TASK:** Resolve the conflicts:
-```
-git fetch origin main
-git merge origin/main
-```
-Resolve any conflicts (keep both sides where possible, prefer the more recent
-version for STATE.md). Commit the merge resolution and push.
-
-After resolving conflicts, proceed with normal session work.
-"""
-                body = {
-                    "prompt": prompt,
-                    "title": f"Rosencrantz — {persona} (conflict fix)",
-                    "sourceContext": {
-                        "source": source_name,
-                        "githubRepoContext": {
-                            "startingBranch": conflict_pr["headRefName"],
-                        },
-                    },
-                    "automationMode": "AUTO_CREATE_PR",
-                }
-                resp = requests.post(
-                    f"{JULES_API}/sessions", headers=headers(), json=body,
-                )
-                resp.raise_for_status()
-                sid = resp.json()["name"].split("/")[-1]
-                print(f"  Started conflict-fix session {sid}")
-            else:
-                create_branch(persona)
-                create_session(persona, source_name)
-        except Exception as e:
-            print(f"  ERROR for {persona}: {e}")
-        print()
-
+# ── Heartbeat logging ─────────────────────────────────────────────────────────
 
 def get_heartbeat_number():
-    """Read the current heartbeat number from today's log file."""
     log_file = Path(f"lab/heartbeats/{today()}.md")
     if not log_file.exists():
         return 0
-    count = 0
-    for line in log_file.read_text(encoding="utf-8").splitlines():
-        if line.startswith("## Heartbeat #"):
-            count += 1
-    return count
+    return sum(
+        1 for line in log_file.read_text(encoding="utf-8").splitlines()
+        if line.startswith("## Heartbeat #")
+    )
 
 
-def write_heartbeat_log(number, todays, results):
-    """Append a heartbeat entry to today's log file."""
+def write_heartbeat_log(number, sessions, results):
     log_dir = Path("lab/heartbeats")
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / f"{today()}.md"
 
-    now = datetime.now(timezone.utc).strftime("%H:%M UTC")
+    now = now_utc().strftime("%H:%M UTC")
 
     lines = []
     if not log_file.exists():
@@ -394,8 +309,8 @@ def write_heartbeat_log(number, todays, results):
 
     lines.append(f"## Heartbeat #{number} — {now}\n")
     for persona in PERSONAS:
-        if persona in todays:
-            state = todays[persona]["state"]
+        if persona in sessions:
+            state = sessions[persona]["state"]
             result = results.get(persona, "")
             lines.append(f"- {persona}: {state} {result}")
         else:
@@ -408,109 +323,96 @@ def write_heartbeat_log(number, todays, results):
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
-def cmd_sync_branches():
-    """Sync session branches → daily branches (fast-forward).
+def write_sessions_json(sessions):
+    """Write persona -> branch mapping for lab-sync and lab-mail."""
+    branches = find_persona_branches()
 
-    Jules commits to session branches (e.g. 2026-03-05_baldo-{session_id})
-    and creates one PR per session. After auto-merge, further heartbeat
-    commits land on the session branch but no new PR is created.
-    This command fast-forwards each daily branch to match its session branch.
-    """
-    print(f"=== Sync branches — {today()} ===\n")
-
-    subprocess.run(
-        ["git", "fetch", "origin"],
-        check=True, capture_output=True,
-    )
-
-    synced = 0
+    mapping = {}
     for persona in PERSONAS:
-        daily = branch_name(persona)
+        info = sessions.get(persona)
+        if info:
+            mapping[persona] = {
+                "session_id": info["session_id"],
+                "state": info["state"],
+                "branch": branches.get(persona, ""),
+            }
 
-        # Find session branches for this persona
-        result = subprocess.run(
-            ["git", "branch", "-r", "--list", f"origin/{daily}-*"],
-            capture_output=True, text=True,
-        )
-        session_branches = [b.strip() for b in result.stdout.strip().splitlines() if b.strip()]
-        if not session_branches:
-            continue
+    out_file = Path("lab/sessions.json")
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(mapping, f, indent=2)
+    print(f"  Wrote session map to {out_file}")
 
-        # Use the most recent session branch (there should be only one per day)
-        session_ref = session_branches[-1]
 
-        # Check if session branch is ahead of daily branch
-        result = subprocess.run(
-            ["git", "rev-list", "--count", f"origin/{daily}..{session_ref}"],
-            capture_output=True, text=True,
-        )
-        ahead = int(result.stdout.strip()) if result.returncode == 0 else 0
-
-        if ahead == 0:
-            continue
-
-        # Fast-forward daily branch to session branch
-        result = subprocess.run(
-            ["git", "push", "origin", f"{session_ref}:refs/heads/{daily}"],
-            capture_output=True, text=True,
-        )
-        if result.returncode == 0:
-            print(f"  {persona}: synced +{ahead} commits → {daily}")
-            synced += 1
-        else:
-            print(f"  {persona}: sync failed — {result.stderr.strip()}")
-
-    if synced == 0:
-        print("  (all daily branches up to date)")
-    else:
-        print(f"\n  {synced} branch(es) synced")
-
+# ── Commands ──────────────────────────────────────────────────────────────────
 
 def cmd_heartbeat():
-    """Send heartbeat to all active sessions."""
+    """Main heartbeat: create or continue sessions for all personas."""
     print(f"=== Heartbeat — {today()} ===\n")
 
-    todays = list_todays_sessions()
-
-    if not todays:
-        print("No active sessions found for today.")
-        return
-
+    sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
     results = {}
 
-    for persona, info in sorted(todays.items()):
-        state = info["state"]
-        if state == "FAILED":
-            print(f"  {persona}: FAILED (skipping)")
-            results[persona] = "→ skipped"
+    for persona in PERSONAS:
+        info = sessions.get(persona)
+
+        # FAILED -> create new
+        if info and info["state"] == "FAILED":
+            print(f"  {persona}: FAILED — creating new session")
+            try:
+                create_session(persona)
+                results[persona] = "-> new (previous failed)"
+            except Exception as e:
+                print(f"  ERROR: {e}")
+                results[persona] = f"-> error: {e}"
             continue
+
+        # No session or expired -> create new
+        if not info or is_expired(info):
+            reason = "no session" if not info else "expired (>24h)"
+            print(f"  {persona}: {reason} — creating new session")
+            try:
+                create_session(persona)
+                results[persona] = f"-> new ({reason})"
+            except Exception as e:
+                print(f"  ERROR: {e}")
+                results[persona] = f"-> error: {e}"
+            continue
+
+        # Active session -> send heartbeat
         try:
             send_heartbeat(info["session_id"], persona, hb_number)
-            results[persona] = "→ sent"
+            results[persona] = "-> sent"
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")
-            results[persona] = f"→ error: {e}"
+            results[persona] = f"-> error: {e}"
 
-    write_heartbeat_log(hb_number, todays, results)
+    # Re-fetch to include newly created sessions
+    updated = find_persona_sessions()
+    write_heartbeat_log(hb_number, updated, results)
+    write_sessions_json(updated)
 
 
 def cmd_status():
-    """Show today's session status."""
-    print(f"=== Lab Status — {today()} ===\n")
+    """Show current session status."""
+    print(f"=== Lab Status ===\n")
 
-    todays = list_todays_sessions()
+    sessions = find_persona_sessions()
+    branches = find_persona_branches()
 
-    if not todays:
-        print("No sessions found for today.")
+    if not sessions:
+        print("No sessions found.")
         return
 
     for persona in PERSONAS:
-        if persona in todays:
-            info = todays[persona]
+        info = sessions.get(persona)
+        if info:
+            branch = branches.get(persona, "(no PR yet)")
+            expired = " EXPIRED" if is_expired(info) else ""
             print(
-                f"  {persona}: {info['state']} — {info['branch']} "
-                f"(session: {info['session_id'][:12]}...)"
+                f"  {persona}: {info['state']}{expired} — "
+                f"{info['title']} [{branch}]"
             )
         else:
             print(f"  {persona}: no session")
@@ -519,8 +421,6 @@ def cmd_status():
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     cmds = {
-        "create-sessions": cmd_create_sessions,
-        "sync-branches": cmd_sync_branches,
         "heartbeat": cmd_heartbeat,
         "status": cmd_status,
     }
@@ -529,8 +429,7 @@ def main():
         print(f"Usage: heartbeat.py {{{','.join(cmds.keys())}}}")
         sys.exit(1)
 
-    # sync-branches doesn't need the API key
-    if cmd != "sync-branches" and not API_KEY:
+    if not API_KEY:
         print("ERROR: JULES_API_KEY not set")
         sys.exit(1)
 

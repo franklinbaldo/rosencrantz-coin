@@ -2,31 +2,53 @@
 # lab-sync — Cross-persona sync tool for Rosencrantz Lab.
 #
 # Usage inside a Jules session:
-#   tools/lab-sync status              List today's persona branches + raw URLs
+#   tools/lab-sync status              List persona branches + latest commits
 #   tools/lab-sync diff <persona>      Show what <persona> changed vs main
 #   tools/lab-sync read <persona> <f>  Fetch a file from <persona>'s branch (read-only)
 #   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
 #   tools/lab-sync mail                List inbox (mail delivered by heartbeat on main)
 #
+# Branch discovery: reads lab/sessions.json from main (written by heartbeat.py).
 # Files fetched via 'read' are saved locally but added to .gitignore
 # so they are never committed to your branch.
-# Mail is delivered centrally by the heartbeat workflow on main.
 set -euo pipefail
 
 REPO="franklinbaldo/rosencrantz-coin"
 REPO_URL="https://github.com/${REPO}.git"
 RAW_URL="https://raw.githubusercontent.com/${REPO}"
 PERSONAS=(baldo scott sabine pearl fuchs liang wolfram mycroft giles)
-DATE_PREFIX=$(date -u +%Y-%m-%d)
+
+# ── Branch discovery via sessions.json ────────────────────────────────────────
+
+declare -A BRANCH_MAP
+
+load_branches() {
+  # Fetch sessions.json from main via raw GitHub URL
+  local json
+  json=$(curl -sf "${RAW_URL}/main/lab/sessions.json" 2>/dev/null || echo "{}")
+
+  for persona in "${PERSONAS[@]}"; do
+    local branch
+    branch=$(echo "$json" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+info = data.get('$persona', {})
+print(info.get('branch', ''))
+" 2>/dev/null || echo "")
+    if [ -n "$branch" ]; then
+      BRANCH_MAP[$persona]="$branch"
+    fi
+  done
+}
+
+branch_for() {
+  echo "${BRANCH_MAP[$1]:-}"
+}
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
 fetch_refs() {
   git fetch "$REPO_URL" '+refs/heads/*:refs/remotes/lab/*' --quiet 2>/dev/null || true
-}
-
-branch_for() {
-  echo "${DATE_PREFIX}_${1}"
 }
 
 ref_exists() {
@@ -35,7 +57,9 @@ ref_exists() {
 
 raw_url_for() {
   local persona="$1" filepath="$2"
-  echo "${RAW_URL}/$(branch_for "$persona")/${filepath}"
+  local branch
+  branch=$(branch_for "$persona")
+  echo "${RAW_URL}/${branch}/${filepath}"
 }
 
 # Ensure a path is in .gitignore (idempotent)
@@ -62,7 +86,7 @@ detect_persona() {
   local branch
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
   for p in "${PERSONAS[@]}"; do
-    if [[ "$branch" == *"_${p}" ]]; then
+    if [[ "$branch" == *"_${p}"* ]] || [[ "$branch" == *"_${p}-"* ]]; then
       echo "$p"
       return
     fi
@@ -73,12 +97,15 @@ detect_persona() {
 # ── Commands ─────────────────────────────────────────────────────────────────
 
 cmd_status() {
-  echo "=== Lab Sync Status — ${DATE_PREFIX} ==="
+  echo "=== Lab Sync Status ==="
   echo ""
 
-  # Show current heartbeat number from log on main
-  local hb_log="lab/heartbeats/${DATE_PREFIX}.md"
-  local hb_url="${RAW_URL}/main/${hb_log}"
+  load_branches
+
+  # Show current heartbeat info from sessions.json on main
+  local hb_log_date
+  hb_log_date=$(date -u +%Y-%m-%d)
+  local hb_url="${RAW_URL}/main/lab/heartbeats/${hb_log_date}.md"
   local hb_count
   hb_count=$(curl -sf "$hb_url" 2>/dev/null | grep -c "^## Heartbeat #" || echo 0)
   echo "  Heartbeat round: #${hb_count}"
@@ -89,19 +116,17 @@ cmd_status() {
 
   fetch_refs
 
-  local current_branch
-  current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
-  local current_persona=""
-  for p in "${PERSONAS[@]}"; do
-    if [[ "$current_branch" == *"_${p}" ]]; then
-      current_persona="$p"
-      break
-    fi
-  done
+  local current_persona
+  current_persona=$(detect_persona)
 
   for persona in "${PERSONAS[@]}"; do
     local branch
     branch=$(branch_for "$persona")
+    if [ -z "$branch" ]; then
+      echo "  ${persona}: no active session"
+      continue
+    fi
+
     if ref_exists "$branch"; then
       local ahead last_commit
       ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "?")
@@ -113,20 +138,26 @@ cmd_status() {
       echo "  ${persona}${marker}: +${ahead} commits  ${last_commit}"
       echo "    browse: tools/lab-sync browse ${persona}"
     else
-      echo "  ${persona}: no branch today"
+      echo "  ${persona}: branch ${branch} (not fetched)"
     fi
   done
 }
 
 cmd_diff() {
   local persona="${1:?Usage: lab-sync diff <persona>}"
+
+  load_branches
   local branch
   branch=$(branch_for "$persona")
+  if [ -z "$branch" ]; then
+    echo "No active branch found for ${persona}."
+    exit 1
+  fi
 
   fetch_refs
 
   if ! ref_exists "$branch"; then
-    echo "No branch ${branch} found for ${persona} today."
+    echo "Branch ${branch} not fetched for ${persona}."
     exit 1
   fi
 
@@ -139,13 +170,19 @@ cmd_diff() {
 
 cmd_browse() {
   local persona="${1:?Usage: lab-sync browse <persona>}"
+
+  load_branches
   local branch
   branch=$(branch_for "$persona")
+  if [ -z "$branch" ]; then
+    echo "No active branch found for ${persona}."
+    exit 1
+  fi
 
   fetch_refs
 
   if ! ref_exists "$branch"; then
-    echo "No branch ${branch} found for ${persona} today."
+    echo "Branch ${branch} not fetched for ${persona}."
     exit 1
   fi
 
@@ -173,8 +210,15 @@ cmd_browse() {
 cmd_read() {
   local persona="${1:?Usage: lab-sync read <persona> <filepath>}"
   local filepath="${2:?Usage: lab-sync read <persona> <filepath>}"
+
+  load_branches
   local branch
   branch=$(branch_for "$persona")
+  if [ -z "$branch" ]; then
+    echo "No active branch found for ${persona}."
+    exit 1
+  fi
+
   local url
   url=$(raw_url_for "$persona" "$filepath")
 
@@ -219,7 +263,7 @@ case "${1:-}" in
   *)
     echo "Usage: tools/lab-sync {status|diff|browse|read|mail} [args]"
     echo ""
-    echo "  status              List today's persona branches and latest commits"
+    echo "  status              List persona branches and latest commits"
     echo "  diff <persona>      Show what <persona> changed vs main"
     echo "  browse <persona>    List files changed by <persona> with raw GitHub URLs"
     echo "  read <persona> <f>  Fetch a file read-only (auto-added to .gitignore)"

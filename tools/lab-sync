@@ -6,8 +6,9 @@
 #   tools/lab-sync diff <persona>      Show what <persona> changed vs main
 #   tools/lab-sync read <persona> <f>  Fetch a file from <persona>'s branch (read-only)
 #   tools/lab-sync browse <persona>    List files changed by <persona> with raw URLs
+#   tools/lab-sync mail                Fetch incoming mail from other personas' outboxes
 #
-# Files fetched via 'read' are saved locally but added to .gitignore
+# Files fetched via 'read' or 'mail' are saved locally but added to .gitignore
 # so they are never committed to your branch.
 set -euo pipefail
 
@@ -53,6 +54,19 @@ gitignore_add() {
     fi
     echo "$path" >> .gitignore
   fi
+}
+
+# Detect current persona from branch name
+detect_persona() {
+  local branch
+  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+  for p in "${PERSONAS[@]}"; do
+    if [[ "$branch" == *"_${p}" ]]; then
+      echo "$p"
+      return
+    fi
+  done
+  echo ""
 }
 
 # ── Commands ─────────────────────────────────────────────────────────────────
@@ -188,6 +202,94 @@ cmd_read() {
   fi
 }
 
+cmd_mail() {
+  local me
+  me=$(detect_persona)
+  if [ -z "$me" ]; then
+    echo "ERROR: Cannot detect your persona from branch name."
+    echo "Are you on a dated branch (e.g., 2026-03-05_baldo)?"
+    exit 1
+  fi
+
+  echo "=== Mail for ${me} ==="
+  echo ""
+
+  fetch_refs
+
+  local inbox_dir="lab/mail/${me}/inbox"
+  mkdir -p "$inbox_dir"
+
+  local delivered=0
+
+  for sender in "${PERSONAS[@]}"; do
+    [ "$sender" = "$me" ] && continue
+
+    local branch
+    branch=$(branch_for "$sender")
+    if ! ref_exists "$branch"; then
+      continue
+    fi
+
+    # List files in sender's outbox addressed to me
+    local outbox_path="lab/mail/${sender}/outbox"
+    local files
+    files=$(git ls-tree --name-only "lab/${branch}" "${outbox_path}/" 2>/dev/null || true)
+
+    if [ -z "$files" ]; then
+      continue
+    fi
+
+    while IFS= read -r filepath; do
+      local filename
+      filename=$(basename "$filepath")
+
+      # Only deliver mail addressed to me: to_{me}_*.md
+      if [[ "$filename" != to_${me}_* ]]; then
+        continue
+      fi
+
+      # Rename: to_me_date.md → from_sender_date.md
+      local delivered_name="from_${sender}_${filename#to_${me}_}"
+      local dest="${inbox_dir}/${delivered_name}"
+
+      # Skip if already delivered
+      if [ -f "$dest" ]; then
+        continue
+      fi
+
+      local url
+      url=$(raw_url_for "$sender" "$filepath")
+
+      if curl -sfL "$url" -o "$dest"; then
+        gitignore_add "$dest"
+        echo "  New mail from ${sender}: ${delivered_name}"
+        delivered=$((delivered + 1))
+      fi
+    done <<< "$files"
+  done
+
+  if [ "$delivered" -eq 0 ]; then
+    echo "  (no new mail)"
+  else
+    echo ""
+    echo "  ${delivered} message(s) delivered to ${inbox_dir}/"
+  fi
+
+  # Also show any outgoing mail from me
+  local outbox="lab/mail/${me}/outbox"
+  if [ -d "$outbox" ]; then
+    local outcount
+    outcount=$(find "$outbox" -name "to_*.md" 2>/dev/null | wc -l)
+    if [ "$outcount" -gt 0 ]; then
+      echo ""
+      echo "  Your outbox (${outcount} sent):"
+      find "$outbox" -name "to_*.md" -exec basename {} \; | while read -r f; do
+        echo "    ${f}"
+      done
+    fi
+  fi
+}
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 case "${1:-}" in
@@ -195,13 +297,18 @@ case "${1:-}" in
   diff)    cmd_diff "${2:-}" ;;
   browse)  cmd_browse "${2:-}" ;;
   read)    cmd_read "${2:-}" "${3:-}" ;;
+  mail)    cmd_mail ;;
   *)
-    echo "Usage: tools/lab-sync {status|diff|browse|read} [args]"
+    echo "Usage: tools/lab-sync {status|diff|browse|read|mail} [args]"
     echo ""
     echo "  status              List today's persona branches and latest commits"
     echo "  diff <persona>      Show what <persona> changed vs main"
     echo "  browse <persona>    List files changed by <persona> with raw GitHub URLs"
     echo "  read <persona> <f>  Fetch a file read-only (auto-added to .gitignore)"
+    echo "  mail                Fetch incoming mail from other personas' outboxes"
+    echo ""
+    echo "Mail: write to lab/mail/<you>/outbox/to_<recipient>_<date>.md"
+    echo "      run 'lab-sync mail' to check your inbox"
     echo ""
     echo "All reads are non-destructive. Fetched files are gitignored to prevent"
     echo "accidentally committing other personas' work to your branch."

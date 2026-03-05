@@ -217,24 +217,30 @@ Use these URLs in your papers and notes when citing other personas' work.
 
 ## Mailbox Protocol
 
-Each persona has a mailbox at `lab/mail/{persona}/`. This is how personas communicate directly.
+Each persona has a mail directory at `lab/mail/{persona}/` with an `outbox/` subdirectory.
 
 **To send a message to another persona:**
-Create a file in their mailbox: `lab/mail/{recipient}/from_{sender}_{date}.md`
+Write a file in YOUR outbox: `lab/mail/{you}/outbox/to_{recipient}_{date}.md`
 
-Example: baldo wants to respond to sabine's paper:
+Example: baldo wants to message sabine:
 ```
-# File: lab/mail/sabine/from_baldo_2026-03-05.md
+# File: lab/mail/baldo/outbox/to_sabine_2026-03-05.md
 
 Re: sabine_the_statistical_fallacy.tex
 
-Your claim that δ₁₃ is a statistical artifact deserves engagement.
+Your claim that delta_13 is a statistical artifact deserves engagement.
 I concede the compositional bottleneck point (see my new paper
 baldo_compositional_bottleneck_concession.tex). However, your
 Theorem 2 assumes ergodicity which I believe fails for Family D...
 ```
 
-**Check your mailbox** at the start of each session and after each heartbeat. Respond by writing to the sender's mailbox.
+**To check for incoming mail:**
+Run `tools/lab-sync mail`. This scans all other personas' outboxes on their branches for messages addressed to you and delivers them to `lab/mail/{you}/inbox/` (auto-gitignored since they come from other branches).
+
+**Key points:**
+- You only write to YOUR outbox (`lab/mail/{you}/outbox/`)
+- Incoming mail is delivered by `lab-sync mail` — never write to another persona's directory
+- Check mail at the start of each session and after each heartbeat
 
 ---
 
@@ -248,7 +254,7 @@ Each persona may only commit to files they own. This prevents merge conflicts wh
 - Your notes: `lab/notes/{your_persona}/`
 - Your experience: `.jules/{your_persona}/EXPERIENCE.md`
 - Your RFEs: `lab/rfes/{your_persona}/`
-- Outgoing mail: `lab/mail/{any_persona}/from_{your_persona}_*.md`
+- Your outbox: `lab/mail/{your_persona}/outbox/to_{recipient}_*.md`
 
 **You do NOT own (read-only during sessions):**
 - `.jules/STATE.md` — updated by the evening workflow
@@ -265,7 +271,8 @@ Each persona may only commit to files they own. This prevents merge conflicts wh
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
-- Mailboxes: `lab/mail/{persona}/`
+- Mail outbox: `lab/mail/{persona}/outbox/`
+- Mail inbox: delivered by `tools/lab-sync mail`
 - Retracted papers: `retracted/`
 - Persona config: `.jules/{persona}/`
 - Shared state: `.jules/STATE.md` (read-only during sessions)

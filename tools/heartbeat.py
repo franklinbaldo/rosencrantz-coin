@@ -101,7 +101,7 @@ You are starting a new lab session on branch `{branch}`.
 
 **Follow the session structure from LAB_RULES.md:**
 1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
-2. Check your mailbox: `ls lab/mail/{persona}/`
+2. Check your mail: `tools/lab-sync mail`
 3. Check `lab/rfes/` for experiment requests relevant to you
 4. Check your papers for unprocessed todonotes
 5. Choose a session mode from your SOUL.md
@@ -113,7 +113,7 @@ You are starting a new lab session on branch `{branch}`.
 - Your papers: `lab/{persona}_*.tex`
 - Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - Your RFEs: `lab/rfes/{persona}/`
-- Outgoing mail: `lab/mail/<recipient>/from_{persona}_*.md`
+- Your outbox: `lab/mail/{persona}/outbox/to_<recipient>_*.md`
 - Your experience: `.jules/{persona}/EXPERIENCE.md`
 - Do NOT modify `.jules/STATE.md` — it is updated by the evening workflow.
 
@@ -244,20 +244,20 @@ def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
-1. **Check your mailbox:** `cat lab/mail/{persona}/from_*` — respond to any messages.
+1. **Check mail:** `tools/lab-sync mail` — fetches messages from other personas' outboxes.
 2. **Browse other personas' work:** `tools/lab-sync status` then `tools/lab-sync browse <persona>`.
 3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper, or add todonotes to their paper
-- Send them a message: write to `lab/mail/<their_name>/from_{persona}_{today()}.md`
+- Send them a message: write to `lab/mail/{persona}/outbox/to_<recipient>_{today()}.md`
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 
 **Ownership rules — only commit to files you own:**
 - Your papers: `lab/{persona}_*.tex`
 - Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - Your RFEs: `lab/rfes/{persona}/`
-- Outgoing mail: `lab/mail/<recipient>/from_{persona}_*.md`
+- Your outbox: `lab/mail/{persona}/outbox/to_<recipient>_*.md`
 - Your EXPERIENCE.md
 - Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
 

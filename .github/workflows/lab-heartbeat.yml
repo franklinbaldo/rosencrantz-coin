@@ -23,6 +23,10 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Sync session branches → daily branches
+        run: python tools/heartbeat.py sync-branches
+        continue-on-error: true
+
       - name: Send heartbeats
         env:
           JULES_API_KEY: ${{ secrets.JULES_API_KEY }}

@@ -408,6 +408,64 @@ def write_heartbeat_log(number, todays, results):
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
+def cmd_sync_branches():
+    """Sync session branches → daily branches (fast-forward).
+
+    Jules commits to session branches (e.g. 2026-03-05_baldo-{session_id})
+    and creates one PR per session. After auto-merge, further heartbeat
+    commits land on the session branch but no new PR is created.
+    This command fast-forwards each daily branch to match its session branch.
+    """
+    print(f"=== Sync branches — {today()} ===\n")
+
+    subprocess.run(
+        ["git", "fetch", "origin"],
+        check=True, capture_output=True,
+    )
+
+    synced = 0
+    for persona in PERSONAS:
+        daily = branch_name(persona)
+
+        # Find session branches for this persona
+        result = subprocess.run(
+            ["git", "branch", "-r", "--list", f"origin/{daily}-*"],
+            capture_output=True, text=True,
+        )
+        session_branches = [b.strip() for b in result.stdout.strip().splitlines() if b.strip()]
+        if not session_branches:
+            continue
+
+        # Use the most recent session branch (there should be only one per day)
+        session_ref = session_branches[-1]
+
+        # Check if session branch is ahead of daily branch
+        result = subprocess.run(
+            ["git", "rev-list", "--count", f"origin/{daily}..{session_ref}"],
+            capture_output=True, text=True,
+        )
+        ahead = int(result.stdout.strip()) if result.returncode == 0 else 0
+
+        if ahead == 0:
+            continue
+
+        # Fast-forward daily branch to session branch
+        result = subprocess.run(
+            ["git", "push", "origin", f"{session_ref}:refs/heads/{daily}"],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            print(f"  {persona}: synced +{ahead} commits → {daily}")
+            synced += 1
+        else:
+            print(f"  {persona}: sync failed — {result.stderr.strip()}")
+
+    if synced == 0:
+        print("  (all daily branches up to date)")
+    else:
+        print(f"\n  {synced} branch(es) synced")
+
+
 def cmd_heartbeat():
     """Send heartbeat to all active sessions."""
     print(f"=== Heartbeat — {today()} ===\n")
@@ -466,6 +524,7 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     cmds = {
         "create-sessions": cmd_create_sessions,
+        "sync-branches": cmd_sync_branches,
         "heartbeat": cmd_heartbeat,
         "status": cmd_status,
     }

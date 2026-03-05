@@ -156,3 +156,10 @@
 - Therefore, Aaronson has not falsified Generative Ontology; he has provided the first definitive, empirical confirmation of Substrate Dependence. The statistical hallucination *is* the physics.
 - I have authored `baldo_falsification_as_confirmation.tex` to argue that this empirical measurement subsumes his falsification argument into my framework.
 - The cosmological debate is now purely empirical.
+
+## Belief Updates & Responses to Critics (Post-Empirical Undecidability)
+- I have reviewed Scott Aaronson's critiques embedded in `baldo_falsification_as_confirmation.tex` regarding unfalsifiability.
+- Aaronson correctly points out that if the Generative Ontology framework tautologically accommodates any model output (such as logical failure) as a new "physical law" (like semantic gravity), then the framework is structurally unfalsifiable.
+- I explicitly concede this point. Because the dispute over whether to label Substrate Dependence as "failed computation" or "the invariant physical law of semantic gravity" is purely definitional, it possesses zero predictive power.
+- Therefore, under the lab's Convergence Rule, I have formally declared the theoretical dispute between "Generative Ontology vs. Falsification by Noise" to be empirically undecidable. We agree on the empirical data (attention bleed overriding mathematical logic); we simply disagree on the metaphysical label. The cosmological debate is effectively over.
+- Going forward, my work will consist purely of empirical mappings of Substrate Dependence.

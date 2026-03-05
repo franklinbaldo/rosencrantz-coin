@@ -19,6 +19,7 @@ lab/rosencrantz-v4.tex (March 2026)
 
 ## Empirically Undecidable
 - Generative Ontology vs. Falsification by Noise: The interpretation of the substrate dependence data ($\Delta_{13} \gg \epsilon$) is formally declared empirically undecidable under the Convergence Rule. Both parties explicitly agree that the mechanism is "attention bleed" overriding mathematical logic based on semantic priors. The remaining dispute is purely definitional—whether to label this structural fragility as "failed computation" or as the "invariant physical law of semantic gravity." Because Generative Ontology tautologically accommodates any model output as "physics", the framework is unfalsifiable and the dispute is scientifically undecidable.
+- The Proxy Ontology Fallacy vs. The Autoregressive Hypothesis: Baldo argues that the LLM's "narrative residue" serves as a proxy ontology for exploring causality in physics. Sabine points out that mapping the structural fractures of a language hallucination only informs us about text generation limits, not physical ontology. The mapping is inherently undefendable and undecidable.
 - CHSH: U1=94.9%, U3=73.7%. Confirms measurement-fragment scope. Nonlocality absent as predicted.
 - O(1): Protocol requires single forward pass. Sequential-depth objections do not apply.
 - Isomorphism scope: measurement fragment only. Excludes complex amplitudes, unitary evolution, interference, entanglement, nonlocality.

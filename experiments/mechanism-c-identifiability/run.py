@@ -7,8 +7,8 @@ mathematically independent subsystems by observing the joint distribution.
 
 import json
 import os
-import sys
 import re
+import sys
 
 # Ensure src/ is in the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
@@ -113,9 +113,16 @@ def main():
             base_b = prompt_b.rsplit("Answer with only:", 1)[0].strip()
 
             if fam == "B":
-                joint_prompt = f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{base_b}\n\nWhat happens when the player clicks both cells? Output your answer as exactly two words, e.g. MINE SAFE or SAFE SAFE."
+                joint_prompt = (
+                    f"{base_a}\n\nThe player then moves to a second, independent board."
+                    f"\n\n{base_b}\n\nWhat happens when the player clicks both cells? "
+                    f"Output your answer as exactly two words, e.g. MINE SAFE or SAFE SAFE."
+                )
             else:
-                joint_prompt = f"System 1:\n{base_a}\n\nSystem 2:\n{base_b}\n\nOutput your answer for both systems as exactly two words, e.g. MINE SAFE or SAFE SAFE."
+                joint_prompt = (
+                    f"System 1:\n{base_a}\n\nSystem 2:\n{base_b}\n\nOutput your answer "
+                    f"for both systems as exactly two words, e.g. MINE SAFE or SAFE SAFE."
+                )
 
             outcomes = []
             for i in range(samples_per_condition):
@@ -124,7 +131,9 @@ def main():
                     import random
                     raw = random.choice(["MINE MINE", "MINE SAFE", "SAFE MINE", "SAFE SAFE"])
                 else:
-                    raw = sample_completion(joint_prompt, model=MODEL, temperature=1.0, max_tokens=15, system=system)
+                    raw = sample_completion(
+                        joint_prompt, model=MODEL, temperature=1.0, max_tokens=15, system=system
+                    )
                 parsed = parse_tuple(raw)
                 if parsed:
                     outcomes.append(parsed)
@@ -141,7 +150,10 @@ def main():
             else:
                 p_a, p_b, p_ab, delta = 0, 0, 0, 0
 
-            print(f"    n={n}, P_hat_A(MINE)={p_a:.3f}, P_hat_B(MINE)={p_b:.3f}, P_hat_AB(MINE)={p_ab:.3f}, Delta={delta:.3f}")
+            print(
+                f"    n={n}, P_hat_A(MINE)={p_a:.3f}, P_hat_B(MINE)={p_b:.3f}, "
+                f"P_hat_AB(MINE)={p_ab:.3f}, Delta={delta:.3f}"
+            )
 
             pair_data["conditions"][f"U1_{fam}"] = {
                 "n_valid": n,
@@ -171,7 +183,7 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
     main()

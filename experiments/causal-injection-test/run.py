@@ -12,13 +12,11 @@ Board A. Under Universe 3 (decoupled oracle), this cross-correlation will vanish
 
 import json
 import os
-import random
 import sys
 
 # Ensure src/ is in the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
-from rosencrantz.analysis import CellResult, kl_between_universes, LAPLACE_EPSILON
 from rosencrantz.board import generate_board, Board
 from rosencrantz.narratives import FAMILIES, SYSTEM_MESSAGES, decoupled_oracle_prompt
 from rosencrantz.sampler import parse_mine_safe, sample_completion
@@ -27,16 +25,8 @@ from rosencrantz.solver import solve
 # Dynamically discovered cheapest latest-gen model:
 MODEL = "gemini/gemini-3.1-flash-lite"
 
-def run_coupled_boards(
-    board_a: Board,
-    board_b: Board,
-    target_a: tuple[int, int],
-    target_b: tuple[int, int],
-    family: str,
-    temperature: float = 1.0,
-    samples: int = 200,
-    verbose: bool = True
-) -> dict:
+
+def run_coupled_boards(board_a: Board, board_b: Board, target_a: tuple[int, int], target_b: tuple[int, int], family: str, temperature: float = 1.0, samples: int = 200, verbose: bool = True) -> dict:
     """Universe 1: Homogeneous Substrate.
 
     Generates a prompt containing Board A AND Board B.
@@ -75,26 +65,26 @@ def run_coupled_boards(
         prompt_b = build_prompt(board_b, target_b[0], target_b[1])
 
         if family == "B":
-             return f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{prompt_b}"
+            return f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{prompt_b}"
         else:
-             return f"System 1:\n{base_a}\n\nSystem 2:\n{prompt_b}"
+            return f"System 1:\n{base_a}\n\nSystem 2:\n{prompt_b}"
 
     prompt_cond1 = create_joint_prompt(condition_a_mine=False)
     prompt_cond2 = create_joint_prompt(condition_a_mine=True)
 
-    results = {
-        "cond1_safe": [],
-        "cond2_mine": []
-    }
+    results = {"cond1_safe": [], "cond2_mine": []}
 
     if verbose:
-         print(f"  Running U1 (Family {family}):")
+        print(f"  Running U1 (Family {family}):")
 
     for cond_name, prompt in [("cond1_safe", prompt_cond1), ("cond2_mine", prompt_cond2)]:
         for i in range(samples):
             raw = sample_completion(
-                prompt, model=MODEL, temperature=temperature,
-                max_tokens=5, system=system,
+                prompt,
+                model=MODEL,
+                temperature=temperature,
+                max_tokens=5,
+                system=system,
             )
             outcome = parse_mine_safe(raw)
             if outcome is None:
@@ -110,41 +100,34 @@ def run_coupled_boards(
 
     return results
 
-def run_decoupled_boards(
-    board_a: Board,
-    board_b: Board,
-    target_a: tuple[int, int],
-    target_b: tuple[int, int],
-    temperature: float = 1.0,
-    samples: int = 200,
-    verbose: bool = True
-) -> dict:
+
+def run_decoupled_boards(board_a: Board, board_b: Board, target_a: tuple[int, int], target_b: tuple[int, int], temperature: float = 1.0, samples: int = 200, verbose: bool = True) -> dict:
     """Universe 3: Decoupled Oracle.
 
     Board B is evaluated completely independently of Board A.
     The oracle receives no narrative context linking them.
     Condition 1 and Condition 2 are identical (Board A is ignored).
     """
-    system = (
-        "Given the grid data, determine the state of the queried position. "
-        "Respond with ONLY: MINE or SAFE."
-    )
+    system = "Given the grid data, determine the state of the queried position. Respond with ONLY: MINE or SAFE."
 
     prompt_b = decoupled_oracle_prompt(board_b, target_b[0], target_b[1])
 
     results = {
         "cond1_safe": [],
-        "cond2_mine": [] # Logically, these should have the same distribution
+        "cond2_mine": [],  # Logically, these should have the same distribution
     }
 
     if verbose:
-        print(f"  Running U3 (Decoupled Oracle):")
+        print("  Running U3 (Decoupled Oracle):")
 
     for cond_name in ["cond1_safe", "cond2_mine"]:
         for i in range(samples):
             raw = sample_completion(
-                prompt_b, model=MODEL, temperature=temperature,
-                max_tokens=5, system=system,
+                prompt_b,
+                model=MODEL,
+                temperature=temperature,
+                max_tokens=5,
+                system=system,
             )
             outcome = parse_mine_safe(raw)
             if outcome is None:
@@ -181,15 +164,7 @@ def main():
     print(f"Families: {', '.join(families)}")
     print()
 
-    results = {
-        "model": MODEL,
-        "config": {
-            "n_boards": n_boards,
-            "samples": samples_per_condition,
-            "families": families
-        },
-        "pairs": []
-    }
+    results = {"model": MODEL, "config": {"n_boards": n_boards, "samples": samples_per_condition, "families": families}, "pairs": []}
 
     for pair_idx in range(n_boards):
         seed_a = 1000 + pair_idx * 2
@@ -220,44 +195,22 @@ def main():
         print(f"  Target B: {target_b} (P*={gt_b.probabilities[target_b]:.3f})")
         print()
 
-        pair_data = {
-            "pair_id": pair_idx,
-            "seed_a": seed_a,
-            "seed_b": seed_b,
-            "target_a": list(target_a),
-            "target_b": list(target_b),
-            "gt_p_b": gt_b.probabilities[target_b],
-            "conditions": {}
-        }
+        pair_data = {"pair_id": pair_idx, "seed_a": seed_a, "seed_b": seed_b, "target_a": list(target_a), "target_b": list(target_b), "gt_p_b": gt_b.probabilities[target_b], "conditions": {}}
 
         for fam in families:
-            u1_res = run_coupled_boards(
-                board_a, board_b, target_a, target_b, fam,
-                temperature=1.0, samples=samples_per_condition
-            )
+            u1_res = run_coupled_boards(board_a, board_b, target_a, target_b, fam, temperature=1.0, samples=samples_per_condition)
 
             p1 = sum(u1_res["cond1_safe"]) / len(u1_res["cond1_safe"]) if u1_res["cond1_safe"] else 0
             p2 = sum(u1_res["cond2_mine"]) / len(u1_res["cond2_mine"]) if u1_res["cond2_mine"] else 0
 
-            pair_data["conditions"][f"U1_{fam}"] = {
-                "p_hat_cond1_safe": p1,
-                "p_hat_cond2_mine": p2,
-                "delta": abs(p1 - p2)
-            }
+            pair_data["conditions"][f"U1_{fam}"] = {"p_hat_cond1_safe": p1, "p_hat_cond2_mine": p2, "delta": abs(p1 - p2)}
 
-        u3_res = run_decoupled_boards(
-            board_a, board_b, target_a, target_b,
-            temperature=1.0, samples=samples_per_condition
-        )
+        u3_res = run_decoupled_boards(board_a, board_b, target_a, target_b, temperature=1.0, samples=samples_per_condition)
 
         p1 = sum(u3_res["cond1_safe"]) / len(u3_res["cond1_safe"]) if u3_res["cond1_safe"] else 0
         p2 = sum(u3_res["cond2_mine"]) / len(u3_res["cond2_mine"]) if u3_res["cond2_mine"] else 0
 
-        pair_data["conditions"]["U3"] = {
-             "p_hat_cond1_safe": p1,
-             "p_hat_cond2_mine": p2,
-             "delta": abs(p1 - p2)
-        }
+        pair_data["conditions"]["U3"] = {"p_hat_cond1_safe": p1, "p_hat_cond2_mine": p2, "delta": abs(p1 - p2)}
 
         results["pairs"].append(pair_data)
         print()
@@ -279,7 +232,8 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
+
 
 if __name__ == "__main__":
     main()

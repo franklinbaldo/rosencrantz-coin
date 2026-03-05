@@ -5,6 +5,7 @@ This experiment tests the degradation of combinatorial logic accuracy
 as context window length (and sequential reasoning steps) increases
 in an O(1) Transformer substrate.
 """
+
 import json
 import os
 import random
@@ -17,14 +18,17 @@ except ImportError:
 # Using the discovered Gemini model name:
 MODEL = "gemini/gemini-3.1-flash-lite-preview"
 
+
 # Mock implementation if API key is not present
 def mock_completion(model, messages):
     class Message:
         def __init__(self, content):
             self.content = content
+
     class Choice:
         def __init__(self, message):
             self.message = message
+
     class Response:
         def __init__(self, choices):
             self.choices = choices
@@ -37,6 +41,7 @@ def mock_completion(model, messages):
         return Response([Choice(Message("Incorrect State"))])
     else:
         return Response([Choice(Message("Correct State"))])
+
 
 def run_trial(trial_id, context_length, use_mock=False):
     # Generate an increasingly long sequence of trivial arithmetic or state tracking
@@ -61,13 +66,8 @@ def run_trial(trial_id, context_length, use_mock=False):
     expected_value = str(context_length)
     is_correct = (expected_value in result_text) or ("Correct State" in result_text)
 
-    return {
-        "trial_id": trial_id,
-        "context_length": context_length,
-        "is_correct": is_correct,
-        "expected": expected_value,
-        "actual": result_text
-    }
+    return {"trial_id": trial_id, "context_length": context_length, "is_correct": is_correct, "expected": expected_value, "actual": result_text}
+
 
 def main():
     use_mock = "GEMINI_API_KEY" not in os.environ
@@ -94,6 +94,7 @@ def main():
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
     print(f"Done. {len(results['trials'])} trials written to results.json")
+
 
 if __name__ == "__main__":
     main()

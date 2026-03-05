@@ -7,7 +7,6 @@ or if the error correction mechanism itself introduces more errors than it fixes
 due to compounding attention decay.
 """
 
-import sys
 import os
 import random
 
@@ -16,11 +15,12 @@ try:
 except ImportError:
     litellm = None
 
+
 # Mock function simulating the failure of LLMs to execute fault-tolerant error correction
 def mock_litellm_completion(messages, model, temperature):
     prompt = messages[-1]["content"]
 
-    lines = prompt.split('\n')
+    lines = prompt.split("\n")
     current_state = None
     steps = 1
 
@@ -34,7 +34,7 @@ def mock_litellm_completion(messages, model, temperature):
                 pass
 
     if not current_state:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
+        return type("obj", (object,), {"choices": [type("obj", (object,), {"message": type("obj", (object,), {"content": "Error: couldn't parse state."})})]})()
 
     current_list = [int(c) for c in current_state]
     n = len(current_list)
@@ -50,7 +50,7 @@ def mock_litellm_completion(messages, model, temperature):
         # So instead of lowering the error rate, the error rate actually compounds worse.
         # Base error + compounding complexity of the voting mechanism
         base_error = 0.05
-        voting_overhead_error = (step * 0.04) # Voting is more complex, degrades faster
+        voting_overhead_error = step * 0.04  # Voting is more complex, degrades faster
 
         error_prob = base_error + voting_overhead_error
 
@@ -83,9 +83,11 @@ def mock_litellm_completion(messages, model, temperature):
     class Message:
         def __init__(self, content):
             self.content = content
+
     class Choice:
         def __init__(self, message):
             self.message = message
+
     class Response:
         def __init__(self, choices):
             self.choices = choices
@@ -142,11 +144,7 @@ Crucially, you must use a 'majority voting' error-correction mechanism. For each
         response = mock_litellm_completion(messages, model=model, temperature=0.0)
     else:
         try:
-            response = litellm.completion(
-                model=model,
-                messages=messages,
-                temperature=0.0
-            )
+            response = litellm.completion(model=model, messages=messages, temperature=0.0)
         except Exception as e:
             print(f"API Error: {e}. Falling back to mock.")
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
@@ -156,11 +154,11 @@ Crucially, you must use a 'majority voting' error-correction mechanism. For each
 
 def extract_states_from_response(response_text, expected_steps, n_cells):
     """Attempt to parse the sequence of states from the LLM's response."""
-    lines = response_text.split('\n')
+    lines = response_text.split("\n")
     states = []
 
     for line in lines:
-        clean_line = ''.join(c for c in line if c in '01')
+        clean_line = "".join(c for c in line if c in "01")
         if len(clean_line) == n_cells:
             states.append([int(c) for c in clean_line])
 
@@ -211,11 +209,7 @@ def main():
         print(f"Cell-wise Match Rate: {match_rate:.2%}")
         print(f"Perfect Simulation: {exact_match}\n")
 
-        results.append({
-            'steps': steps,
-            'match_rate': match_rate,
-            'exact_match': exact_match
-        })
+        results.append({"steps": steps, "match_rate": match_rate, "exact_match": exact_match})
 
     print("=" * 40)
     print("SUMMARY")

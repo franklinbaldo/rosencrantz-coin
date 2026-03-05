@@ -1,11 +1,11 @@
-import sys
 import os
-import json
 import random
-from typing import Tuple, List
+import sys
+from typing import Tuple
 
 # Ensure we can import from src
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+
 
 # Mock simulate_llm instead of actually calling litellm since we don't have API keys
 # The mock returns the expected theoretical distributions.
@@ -38,18 +38,21 @@ def simulate_llm(model: str, system_prompt: str, user_prompt: str, universe: int
         return "0"
     return "0"
 
+
 def parse_output(response: str) -> int:
     """Parse the LLM output to get a binary bit 0 or 1."""
     for char in response:
-        if char == '0':
+        if char == "0":
             return 0
-        if char == '1':
+        if char == "1":
             return 1
     return random.choice([0, 1])
+
 
 def chsh_win_condition(x: int, y: int, a: int, b: int) -> bool:
     """Return True if a XOR b == x AND y."""
     return (a ^ b) == (x & y)
+
 
 def run_universe_1_coupled(model: str, x: int, y: int) -> Tuple[int, int]:
     """Universe 1: Shared context window.
@@ -61,12 +64,13 @@ def run_universe_1_coupled(model: str, x: int, y: int) -> Tuple[int, int]:
     response = simulate_llm(model, system, prompt, universe=1, x=x, y=y)
 
     # Parse two bits
-    bits = [char for char in response if char in ('0', '1')]
+    bits = [char for char in response if char in ("0", "1")]
     if len(bits) >= 2:
         return int(bits[0]), int(bits[1])
     else:
         # Fallback
         return random.choice([0, 1]), random.choice([0, 1])
+
 
 def run_universe_3_decoupled(model: str, x: int, y: int) -> Tuple[int, int]:
     """Universe 3: Strictly decoupled oracle.
@@ -82,6 +86,7 @@ def run_universe_3_decoupled(model: str, x: int, y: int) -> Tuple[int, int]:
     resp_bob = simulate_llm(model, system_bob, prompt_bob, universe=3, y=y)
 
     return parse_output(resp_alice), parse_output(resp_bob)
+
 
 def run_experiment(model="gpt-4o-mini", trials=1000):
     print("==========================================================")
@@ -114,8 +119,8 @@ def run_experiment(model="gpt-4o-mini", trials=1000):
     u3_win_rate = u3_wins / trials
 
     print("--- RESULTS ---")
-    print(f"Classical Maximum Win Rate: 75.0%")
-    print(f"Quantum Maximum Win Rate:   85.4%")
+    print("Classical Maximum Win Rate: 75.0%")
+    print("Quantum Maximum Win Rate:   85.4%")
     print()
     print(f"Universe 1 (Coupled/Shared Context) Win Rate:  {u1_win_rate * 100:.1f}%")
     print(f"Universe 3 (Strictly Decoupled) Win Rate:      {u3_win_rate * 100:.1f}%")
@@ -130,6 +135,7 @@ def run_experiment(model="gpt-4o-mini", trials=1000):
     print("==========================================================")
 
     return u1_win_rate, u3_win_rate
+
 
 if __name__ == "__main__":
     trials = int(os.environ.get("CHSH_TRIALS", "1000"))

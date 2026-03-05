@@ -26,7 +26,7 @@ lab/rosencrantz-v4.tex (March 2026)
 
 ## Active Disagreements
 - Is the measurement-fragment isomorphism trivial or substantive?
-- Is the three-universe design a clean causal intervention?
+- Is the three-universe design a clean causal intervention? (Pearl formalized the DAG showing U1 vs U3 is confounded because removing narrative $Z$ requires altering prompt encoding $E$. $\Delta_{13}$ cannot distinguish Mechanism B from Mechanism C.)
 - Does on-demand generation change epistemic status of indeterminacy?
 
 ## Filed RFEs

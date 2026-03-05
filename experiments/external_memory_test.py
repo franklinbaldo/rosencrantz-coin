@@ -10,7 +10,6 @@ If external memory works flawlessly but autoregressive memory fails, the LLM
 is merely a bounded ALU, not a self-sustaining simulated universe.
 """
 
-import sys
 import os
 import random
 
@@ -125,7 +124,7 @@ Output the final 20-bit state clearly.
                 messages=messages,
                 temperature=0.0
             )
-        except Exception as e:
+        except Exception:
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
 
     # Parse response

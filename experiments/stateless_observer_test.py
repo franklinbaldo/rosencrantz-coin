@@ -7,7 +7,6 @@ flawlessly based on the mutated memory, it proves the LLM has zero internal cont
 and functions merely as a stateless oracle.
 """
 
-import sys
 import os
 import random
 
@@ -95,7 +94,7 @@ Output the final 20-bit state clearly.
                 messages=messages,
                 temperature=0.0
             )
-        except Exception as e:
+        except Exception:
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
 
     content = response.choices[0].message.content

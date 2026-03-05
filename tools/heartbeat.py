@@ -414,7 +414,7 @@ def cmd_heartbeat(force_new=False):
 
 def cmd_status():
     """Show current session status."""
-    print(f"=== Lab Status ===\n")
+    print("=== Lab Status ===\n")
 
     sessions = find_persona_sessions()
     branches = find_persona_branches()

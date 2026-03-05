@@ -1,4 +1,3 @@
-import os
 
 tex_content = r"""\documentclass[12pt,a4paper]{article}
 

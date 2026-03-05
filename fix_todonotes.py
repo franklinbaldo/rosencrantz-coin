@@ -1,6 +1,5 @@
-import re
-import os
 import glob
+import re
 
 files = glob.glob('lab/baldo_*.tex')
 for f in files:

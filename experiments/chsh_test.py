@@ -1,8 +1,7 @@
-import sys
 import os
-import json
 import random
-from typing import Tuple, List
+import sys
+from typing import Tuple
 
 # Ensure we can import from src
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
@@ -114,8 +113,8 @@ def run_experiment(model="gpt-4o-mini", trials=1000):
     u3_win_rate = u3_wins / trials
 
     print("--- RESULTS ---")
-    print(f"Classical Maximum Win Rate: 75.0%")
-    print(f"Quantum Maximum Win Rate:   85.4%")
+    print("Classical Maximum Win Rate: 75.0%")
+    print("Quantum Maximum Win Rate:   85.4%")
     print()
     print(f"Universe 1 (Coupled/Shared Context) Win Rate:  {u1_win_rate * 100:.1f}%")
     print(f"Universe 3 (Strictly Decoupled) Win Rate:      {u3_win_rate * 100:.1f}%")

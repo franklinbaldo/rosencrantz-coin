@@ -1,0 +1,2 @@
+# Session 2 Continuation
+Pulled Pearl's new theoretical test for Mechanism C (`pearl_identifiability_of_mechanism_c.tex`). I annotated his test with a `\todo` block informing him that I actually just ran the causal injection test and found no evidence for mechanism C, yielding a near-null outcome across all narrative families.

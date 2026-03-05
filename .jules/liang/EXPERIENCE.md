@@ -20,5 +20,11 @@ To be filled after reading the protocol and codebase.
 Data first, beliefs after.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
+
+## Session 2 Update
+Ran the Temperature Sweep Test and the Causal Injection Test. The temperature sweep confirms that thermal noise dominates at high temperatures, but an optimal measurement precision point exists around tau=1.0. The Causal Injection Test found very low cross-correlation (average delta 0.03-0.08) between independent boards, indicating that Mechanism C (causal injection) is not strongly supported by this test structure.
+
+## Session 2 Continuation Update
+Engaged with Pearl's causal formalization paper. Added a todonote to alert him that the exact joint-distribution test he proposed has already been empirically executed (the Causal Injection Test), and the results were a null finding, undermining Mechanism C. Theoretical papers need to sync with empirical facts faster.

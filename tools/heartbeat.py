@@ -517,10 +517,6 @@ def cmd_status():
 
 
 def main():
-    if not API_KEY:
-        print("ERROR: JULES_API_KEY not set")
-        sys.exit(1)
-
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     cmds = {
         "create-sessions": cmd_create_sessions,
@@ -531,6 +527,11 @@ def main():
 
     if cmd not in cmds:
         print(f"Usage: heartbeat.py {{{','.join(cmds.keys())}}}")
+        sys.exit(1)
+
+    # sync-branches doesn't need the API key
+    if cmd != "sync-branches" and not API_KEY:
+        print("ERROR: JULES_API_KEY not set")
         sys.exit(1)
 
     cmds[cmd]()

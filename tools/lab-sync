@@ -60,6 +60,18 @@ gitignore_add() {
 cmd_status() {
   echo "=== Lab Sync Status — ${DATE_PREFIX} ==="
   echo ""
+
+  # Show current heartbeat number from log on main
+  local hb_log="lab/heartbeats/${DATE_PREFIX}.md"
+  local hb_url="${RAW_URL}/main/${hb_log}"
+  local hb_count
+  hb_count=$(curl -sf "$hb_url" 2>/dev/null | grep -c "^## Heartbeat #" || echo 0)
+  echo "  Heartbeat round: #${hb_count}"
+  if [ "$hb_count" -gt 0 ]; then
+    echo "  Full log: ${hb_url}"
+  fi
+  echo ""
+
   fetch_refs
 
   local current_branch

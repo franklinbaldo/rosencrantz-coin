@@ -240,9 +240,9 @@ def list_todays_sessions():
     return todays
 
 
-def send_heartbeat(session_id, persona):
+def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
-    prompt = f"""This is a continuation round. Other personas have been working in parallel.
+    prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
 1. **Check your mailbox:** `cat lab/mail/{persona}/from_*` — respond to any messages.
 2. **Browse other personas' work:** `tools/lab-sync status` then `tools/lab-sync browse <persona>`.
@@ -368,6 +368,46 @@ After resolving conflicts, proceed with normal session work.
         print()
 
 
+def get_heartbeat_number():
+    """Read the current heartbeat number from today's log file."""
+    log_file = Path(f"lab/heartbeats/{today()}.md")
+    if not log_file.exists():
+        return 0
+    count = 0
+    for line in log_file.read_text(encoding="utf-8").splitlines():
+        if line.startswith("## Heartbeat #"):
+            count += 1
+    return count
+
+
+def write_heartbeat_log(number, todays, results):
+    """Append a heartbeat entry to today's log file."""
+    log_dir = Path("lab/heartbeats")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / f"{today()}.md"
+
+    now = datetime.now(timezone.utc).strftime("%H:%M UTC")
+
+    lines = []
+    if not log_file.exists():
+        lines.append(f"# Heartbeat Log — {today()}\n")
+
+    lines.append(f"## Heartbeat #{number} — {now}\n")
+    for persona in PERSONAS:
+        if persona in todays:
+            state = todays[persona]["state"]
+            result = results.get(persona, "")
+            lines.append(f"- {persona}: {state} {result}")
+        else:
+            lines.append(f"- {persona}: no session")
+    lines.append("")
+
+    with open(log_file, "a", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+    print(f"\n  Logged heartbeat #{number} to {log_file}")
+
+
 def cmd_heartbeat():
     """Send heartbeat to all active sessions."""
     print(f"=== Heartbeat — {today()} ===\n")
@@ -378,15 +418,23 @@ def cmd_heartbeat():
         print("No active sessions found for today.")
         return
 
+    hb_number = get_heartbeat_number() + 1
+    results = {}
+
     for persona, info in sorted(todays.items()):
         state = info["state"]
         if state == "FAILED":
             print(f"  {persona}: FAILED (skipping)")
+            results[persona] = "→ skipped"
             continue
         try:
-            send_heartbeat(info["session_id"], persona)
+            send_heartbeat(info["session_id"], persona, hb_number)
+            results[persona] = "→ sent"
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")
+            results[persona] = f"→ error: {e}"
+
+    write_heartbeat_log(hb_number, todays, results)
 
 
 def cmd_status():

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   heartbeat:
@@ -30,3 +30,15 @@ jobs:
           python tools/heartbeat.py status
           echo ""
           python tools/heartbeat.py heartbeat
+
+      - name: Commit heartbeat log
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lab/heartbeats/
+          if git diff --cached --quiet; then
+            echo "No heartbeat log changes to commit"
+          else
+            git commit -m "heartbeat: log round $(date -u +%Y-%m-%d) $(date -u +%H:%M) UTC"
+            git push
+          fi

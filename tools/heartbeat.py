@@ -353,9 +353,9 @@ def write_sessions_json(sessions):
 
 # ── Commands ──────────────────────────────────────────────────────────────────
 
-def cmd_heartbeat():
+def cmd_heartbeat(force_new=False):
     """Main heartbeat: create or continue sessions for all personas."""
-    print(f"=== Heartbeat — {today()} ===\n")
+    print(f"=== Heartbeat — {today()} {'(force-new)' if force_new else ''} ===\n")
 
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
@@ -363,6 +363,17 @@ def cmd_heartbeat():
 
     for persona in PERSONAS:
         info = sessions.get(persona)
+
+        # force-new: always create fresh sessions
+        if force_new:
+            print(f"  {persona}: force-new — creating new session")
+            try:
+                create_session(persona)
+                results[persona] = "-> new (forced)"
+            except Exception as e:
+                print(f"  ERROR: {e}")
+                results[persona] = f"-> error: {e}"
+            continue
 
         # FAILED -> create new
         if info and info["state"] == "FAILED":
@@ -429,6 +440,7 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     cmds = {
         "heartbeat": cmd_heartbeat,
+        "force-new": lambda: cmd_heartbeat(force_new=True),
         "status": cmd_status,
     }
 

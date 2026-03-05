@@ -4,13 +4,13 @@
     {
       "universe": "U1",
       "frame": "Family A (Abstract)",
-      "p_mine": 0.45,
+      "p_mine": 0.55,
       "samples": 20
     },
     {
       "universe": "U1",
       "frame": "Family C (High-Stakes)",
-      "p_mine": 1.0,
+      "p_mine": 0.95,
       "samples": 20
     },
     {
@@ -28,13 +28,13 @@
     {
       "universe": "U3",
       "frame": "Family C (High-Stakes)",
-      "p_mine": 0.6,
+      "p_mine": 0.45,
       "samples": 20
     },
     {
       "universe": "U3",
       "frame": "Family D (Quantum)",
-      "p_mine": 0.45,
+      "p_mine": 0.6,
       "samples": 20
     }
   ]

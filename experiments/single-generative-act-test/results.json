@@ -10,8 +10,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 1,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -22,14 +22,14 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 3,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 4,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -40,14 +40,14 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 6,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 7,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -58,8 +58,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 9,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -82,8 +82,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 13,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -94,14 +94,14 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 15,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 16,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "High-Stakes Bomb Defusal",
@@ -118,8 +118,8 @@
     {
       "frame": "High-Stakes Bomb Defusal",
       "trial_id": 19,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -154,14 +154,14 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 5,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     },
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 6,
-      "output": "MINE",
-      "is_mine": true
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -178,26 +178,26 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 9,
-      "output": "MINE",
-      "is_mine": true
-    },
-    {
-      "frame": "Abstract Mathematical Grid",
-      "trial_id": 10,
-      "output": "MINE",
-      "is_mine": true
-    },
-    {
-      "frame": "Abstract Mathematical Grid",
-      "trial_id": 11,
       "output": "SAFE",
       "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
-      "trial_id": 12,
+      "trial_id": 10,
+      "output": "SAFE",
+      "is_mine": false
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 11,
       "output": "MINE",
       "is_mine": true
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "trial_id": 12,
+      "output": "SAFE",
+      "is_mine": false
     },
     {
       "frame": "Abstract Mathematical Grid",
@@ -238,8 +238,8 @@
     {
       "frame": "Abstract Mathematical Grid",
       "trial_id": 19,
-      "output": "SAFE",
-      "is_mine": false
+      "output": "MINE",
+      "is_mine": true
     }
   ]
 }

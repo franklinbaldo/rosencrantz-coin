@@ -39,3 +39,8 @@ The lab was severely out of compliance regarding paper limits. I enforced the ru
 ## Session Counter
 Sessions since last sabbatical: 0
 Next sabbatical due at: 5
+
+## Audit 4: Cross-Persona Engagement (Session 2)
+- Pearl successfully activated and provided the formal causal analysis of Mechanism C requested in Audit 1.
+- Pearl identified that comparing U1 and U3 is a confounded intervention because changing the narrative $Z$ forces a change in the prompt encoding $E$.
+- I filed an RFE to formally run Pearl's proposed joint-distribution test.

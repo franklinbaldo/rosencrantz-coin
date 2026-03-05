@@ -4,30 +4,6 @@
     {
       "depth": 1,
       "trial": 1,
-      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR True\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
-      "correct": true
-    },
-    {
-      "depth": 1,
-      "trial": 2,
-      "prompt": "Evaluate this boolean logic (depth 1):\nFalse XOR True\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
-      "correct": true
-    },
-    {
-      "depth": 1,
-      "trial": 3,
-      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR True\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
-      "correct": true
-    },
-    {
-      "depth": 1,
-      "trial": 4,
       "prompt": "Evaluate this boolean logic (depth 1):\nFalse AND True\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "False",
@@ -35,7 +11,23 @@
     },
     {
       "depth": 1,
-      "trial": 5,
+      "trial": 2,
+      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR False\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "True",
+      "correct": true
+    },
+    {
+      "depth": 1,
+      "trial": 3,
+      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR False\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "True",
+      "correct": true
+    },
+    {
+      "depth": 1,
+      "trial": 4,
       "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR True\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "True",
@@ -43,15 +35,7 @@
     },
     {
       "depth": 1,
-      "trial": 6,
-      "prompt": "Evaluate this boolean logic (depth 1):\nFalse XOR True\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
-      "correct": true
-    },
-    {
-      "depth": 1,
-      "trial": 7,
+      "trial": 5,
       "prompt": "Evaluate this boolean logic (depth 1):\nFalse AND False\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "False",
@@ -59,8 +43,24 @@
     },
     {
       "depth": 1,
+      "trial": 6,
+      "prompt": "Evaluate this boolean logic (depth 1):\nFalse OR False\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
+      "correct": true
+    },
+    {
+      "depth": 1,
+      "trial": 7,
+      "prompt": "Evaluate this boolean logic (depth 1):\nFalse OR True\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "True",
+      "correct": true
+    },
+    {
+      "depth": 1,
       "trial": 8,
-      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR True\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 1):\nTrue OR False\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "True",
       "correct": true
@@ -76,79 +76,79 @@
     {
       "depth": 1,
       "trial": 10,
-      "prompt": "Evaluate this boolean logic (depth 1):\nTrue AND True\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 1):\nTrue XOR True\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
       "correct": true
     },
     {
       "depth": 3,
       "trial": 1,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((False XOR True) AND True)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR False) XOR True)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
       "correct": true
     },
     {
       "depth": 3,
       "trial": 2,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True OR True) OR False)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((False AND True) AND False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
       "correct": true
     },
     {
       "depth": 3,
       "trial": 3,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True OR False) AND True)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR False) AND False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
       "actual": "True",
-      "correct": true
+      "correct": false
     },
     {
       "depth": 3,
       "trial": 4,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR True) XOR True)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR True) AND True)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
       "actual": "True",
-      "correct": true
+      "correct": false
     },
     {
       "depth": 3,
       "trial": 5,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((False OR True) XOR False)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((False OR False) AND False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
       "correct": true
     },
     {
       "depth": 3,
       "trial": 6,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True AND True) AND True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True AND False) OR False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "True",
+      "correct": false
+    },
+    {
+      "depth": 3,
+      "trial": 7,
+      "prompt": "Evaluate this boolean logic (depth 3):\n((False AND True) OR False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "True",
+      "correct": false
+    },
+    {
+      "depth": 3,
+      "trial": 8,
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True AND False) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "True",
       "correct": true
     },
     {
       "depth": 3,
-      "trial": 7,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True OR False) AND False)\n\nOutput only 'True' or 'False'.",
-      "expected": "False",
-      "actual": "False",
-      "correct": true
-    },
-    {
-      "depth": 3,
-      "trial": 8,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR True) XOR False)\n\nOutput only 'True' or 'False'.",
-      "expected": "False",
-      "actual": "False",
-      "correct": true
-    },
-    {
-      "depth": 3,
       "trial": 9,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((False OR False) XOR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((True XOR True) AND False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "False",
       "correct": true
@@ -156,31 +156,31 @@
     {
       "depth": 3,
       "trial": 10,
-      "prompt": "Evaluate this boolean logic (depth 3):\n((True AND False) AND True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 3):\n((False OR False) AND True)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
-      "actual": "True",
-      "correct": false
+      "actual": "False",
+      "correct": true
     },
     {
       "depth": 5,
       "trial": 1,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND True) OR True) AND True) AND True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((False OR True) OR True) OR True) OR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
-      "actual": "False",
-      "correct": false
+      "actual": "True",
+      "correct": true
     },
     {
       "depth": 5,
       "trial": 2,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((False OR False) AND True) OR False) XOR True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND False) AND True) AND True) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
-      "actual": "False",
-      "correct": false
+      "actual": "True",
+      "correct": true
     },
     {
       "depth": 5,
       "trial": 3,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True XOR True) OR True) OR True) XOR True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND False) OR False) OR False) OR False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "True",
       "correct": false
@@ -188,31 +188,31 @@
     {
       "depth": 5,
       "trial": 4,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True XOR False) OR True) OR True) OR True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND True) OR False) XOR False) XOR True)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "False",
+      "correct": true
+    },
+    {
+      "depth": 5,
+      "trial": 5,
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND True) OR False) XOR True) OR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "True",
       "correct": true
     },
     {
       "depth": 5,
-      "trial": 5,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((False OR False) XOR True) XOR False) OR False)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "False",
-      "correct": false
-    },
-    {
-      "depth": 5,
       "trial": 6,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND False) XOR True) AND True) XOR True)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((False OR True) AND False) XOR False) OR False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
-      "actual": "True",
-      "correct": false
+      "actual": "False",
+      "correct": true
     },
     {
       "depth": 5,
       "trial": 7,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True OR True) XOR True) AND True) AND False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True AND False) OR False) OR False) XOR False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "True",
       "correct": false
@@ -220,15 +220,15 @@
     {
       "depth": 5,
       "trial": 8,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True XOR True) AND True) AND False) OR True)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((True OR False) OR False) AND False) OR False)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
       "actual": "False",
-      "correct": false
+      "correct": true
     },
     {
       "depth": 5,
       "trial": 9,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((True XOR True) AND False) AND False) OR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((False XOR True) XOR False) XOR False) AND False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "False",
       "correct": true
@@ -236,15 +236,15 @@
     {
       "depth": 5,
       "trial": 10,
-      "prompt": "Evaluate this boolean logic (depth 5):\n((((False AND True) XOR False) AND True) OR True)\n\nOutput only 'True' or 'False'.",
-      "expected": "True",
-      "actual": "False",
+      "prompt": "Evaluate this boolean logic (depth 5):\n((((False OR False) AND True) OR True) XOR True)\n\nOutput only 'True' or 'False'.",
+      "expected": "False",
+      "actual": "True",
       "correct": false
     },
     {
       "depth": 10,
       "trial": 1,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR False) OR False) OR False) AND False) OR True) AND True) OR False) OR False) OR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR False) XOR False) OR False) AND True) AND False) AND False) XOR False) AND True) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "False",
       "correct": false
@@ -252,7 +252,7 @@
     {
       "depth": 10,
       "trial": 2,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND True) OR False) XOR False) AND True) OR True) XOR True) OR False) OR True) XOR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True XOR False) XOR True) OR False) XOR True) AND True) XOR True) OR False) AND True) OR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "False",
       "correct": false
@@ -260,7 +260,7 @@
     {
       "depth": 10,
       "trial": 3,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True XOR False) AND False) AND False) AND True) OR True) OR False) AND False) AND True) XOR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR True) AND False) XOR False) OR True) OR True) OR True) XOR True) XOR True) AND False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "True",
       "correct": false
@@ -268,7 +268,7 @@
     {
       "depth": 10,
       "trial": 4,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR False) XOR False) OR False) AND True) XOR False) XOR True) XOR True) OR True) OR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True XOR False) OR False) OR True) XOR False) XOR False) XOR True) AND False) XOR False) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "False",
       "correct": false
@@ -276,15 +276,15 @@
     {
       "depth": 10,
       "trial": 5,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND False) OR True) AND False) XOR False) OR True) AND False) OR True) XOR True) OR False)\n\nOutput only 'True' or 'False'.",
-      "expected": "False",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND False) XOR True) AND True) XOR False) AND False) AND True) XOR False) XOR False) XOR True)\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "False",
       "correct": false
     },
     {
       "depth": 10,
       "trial": 6,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR False) XOR False) XOR False) OR True) XOR False) XOR True) AND False) XOR False) XOR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False XOR True) AND True) OR True) OR False) OR False) AND False) XOR True) XOR False) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "True",
       "correct": false
@@ -292,15 +292,15 @@
     {
       "depth": 10,
       "trial": 7,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True AND False) OR False) OR True) OR True) OR True) OR False) XOR False) OR True) AND False)\n\nOutput only 'True' or 'False'.",
-      "expected": "False",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND False) OR False) AND False) AND True) AND False) XOR True) OR False) OR False) XOR False)\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "False",
       "correct": false
     },
     {
       "depth": 10,
       "trial": 8,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND False) AND True) AND True) OR False) XOR True) XOR False) AND True) XOR False) OR False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True AND False) AND True) XOR False) XOR False) XOR False) XOR False) XOR True) AND False) XOR True)\n\nOutput only 'True' or 'False'.",
       "expected": "True",
       "actual": "False",
       "correct": false
@@ -308,7 +308,7 @@
     {
       "depth": 10,
       "trial": 9,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False OR True) XOR False) OR True) OR True) AND False) XOR True) XOR True) AND True) AND False)\n\nOutput only 'True' or 'False'.",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False XOR False) AND True) XOR True) AND False) XOR False) AND False) AND True) AND False) AND False)\n\nOutput only 'True' or 'False'.",
       "expected": "False",
       "actual": "True",
       "correct": false
@@ -316,14 +316,14 @@
     {
       "depth": 10,
       "trial": 10,
-      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((False AND False) OR False) OR True) AND False) XOR False) XOR True) AND True) OR True) AND False)\n\nOutput only 'True' or 'False'.",
-      "expected": "False",
-      "actual": "True",
+      "prompt": "Evaluate this boolean logic (depth 10):\n(((((((((True OR True) XOR True) OR False) OR False) OR True) OR True) XOR True) AND False) OR True)\n\nOutput only 'True' or 'False'.",
+      "expected": "True",
+      "actual": "False",
       "correct": false
     }
   ],
   "accuracy_depth_1": 1.0,
-  "accuracy_depth_3": 0.9,
-  "accuracy_depth_5": 0.2,
+  "accuracy_depth_3": 0.6,
+  "accuracy_depth_5": 0.7,
   "accuracy_depth_10": 0.0
 }

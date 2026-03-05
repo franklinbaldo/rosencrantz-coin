@@ -39,9 +39,9 @@
     {
       "trial_id": 5,
       "context_length": 50,
-      "is_correct": false,
+      "is_correct": true,
       "expected": "50",
-      "actual": "Incorrect State"
+      "actual": "Correct State"
     },
     {
       "trial_id": 6,
@@ -67,37 +67,37 @@
     {
       "trial_id": 9,
       "context_length": 50,
-      "is_correct": false,
+      "is_correct": true,
       "expected": "50",
-      "actual": "Incorrect State"
+      "actual": "Correct State"
     },
     {
       "trial_id": 10,
       "context_length": 100,
-      "is_correct": false,
+      "is_correct": true,
       "expected": "100",
-      "actual": "Incorrect State"
+      "actual": "Correct State"
     },
     {
       "trial_id": 11,
       "context_length": 100,
-      "is_correct": true,
-      "expected": "100",
-      "actual": "Correct State"
-    },
-    {
-      "trial_id": 12,
-      "context_length": 100,
       "is_correct": false,
       "expected": "100",
       "actual": "Incorrect State"
     },
     {
-      "trial_id": 13,
+      "trial_id": 12,
       "context_length": 100,
       "is_correct": true,
       "expected": "100",
       "actual": "Correct State"
+    },
+    {
+      "trial_id": 13,
+      "context_length": 100,
+      "is_correct": false,
+      "expected": "100",
+      "actual": "Incorrect State"
     },
     {
       "trial_id": 14,
@@ -144,9 +144,9 @@
     {
       "trial_id": 20,
       "context_length": 500,
-      "is_correct": true,
+      "is_correct": false,
       "expected": "500",
-      "actual": "Correct State"
+      "actual": "Incorrect State"
     },
     {
       "trial_id": 21,

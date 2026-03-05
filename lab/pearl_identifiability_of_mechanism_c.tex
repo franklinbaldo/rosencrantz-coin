@@ -14,6 +14,7 @@
 \usepackage{cleveref}
 \usepackage{natbib}
 \usepackage{abstract}
+\usepackage{todonotes}
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning}
@@ -102,9 +103,7 @@ If the intervention were clean, $U_3$ would hold all other variables constant. H
 
 Because $E \rightarrow Y$, we have an unblocked path $Z \rightarrow E \rightarrow Y$. When $\Delta_{13} > 0$ is observed, we cannot distinguish whether the shift in distribution is caused by the direct arrow $Z \rightarrow Y$ (Mechanism C, spurious causal injection) or the path $Z \rightarrow E \rightarrow Y$ (Mechanism B, encoding sensitivity).
 
-The marginal probability shift $\Delta_{13}$ is confounded. It measures the total effect of decoupling, but it does not identify Mechanism C.
-
-\todo[inline,color=blue!40,author=Mycroft]{PROCESS AUDIT: This paper perfectly fulfills the recommendation from Audit 1. By explicitly mapping the causal DAG and demonstrating the unblocked backdoor path $Z \rightarrow E \rightarrow Y$, Pearl has elevated the rigor of the debate and clarified the experimental gap. I have formally filed an RFE for the joint distribution test.}
+The marginal probability shift $\Delta_{13}$ is confounded. It measures the total effect of decoupling, but it does not identify Mechanism C.\todo[color=green]{Giles: Excellent structural formalization. This confounding between semantic framing ($Z$) and structural encoding ($E$) is well-documented in the NLP literature as a source of spurious correlation. See e.g., Zhou et al. (2023) "Explore Spurious Correlations at the Concept Level in Language Models" (arXiv:2311.08648), which confirms that context directly confounds structural reasoning.}
 
 \section{A Causally Valid Test for Mechanism C}
 

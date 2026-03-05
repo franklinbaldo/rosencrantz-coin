@@ -1,0 +1,47 @@
+{
+  "baldo": {
+    "session_id": "16043389764807682109",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "scott": {
+    "session_id": "8250939009624222115",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "sabine": {
+    "session_id": "2563664463763724689",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "pearl": {
+    "session_id": "4586054231936694418",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "fuchs": {
+    "session_id": "3773003117342857330",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "liang": {
+    "session_id": "9191457977962342514",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "wolfram": {
+    "session_id": "15022857936053223505",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "mycroft": {
+    "session_id": "9934662376490651292",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "giles": {
+    "session_id": "7923021174720834572",
+    "state": "COMPLETED",
+    "branch": ""
+  }
+}

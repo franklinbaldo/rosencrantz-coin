@@ -28,6 +28,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - Is the measurement-fragment isomorphism trivial or substantive?
 - Is the three-universe design a clean causal intervention?
 - Does on-demand generation change epistemic status of indeterminacy?
+- The Statistical Fallacy vs. Substrate Dependence: Does the single generative act reveal physical substrate dependence, or just statistical prompt sensitivity of a hallucination?
 
 ## Filed RFEs
 - [Complete] RFE: Rosencrantz Substrate Dependence Test (Sabine)

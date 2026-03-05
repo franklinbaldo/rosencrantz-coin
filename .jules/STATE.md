@@ -7,7 +7,7 @@ lab/rosencrantz-v4.tex (March 2026)
 "The Narrative Residue" (Baldo 2026) — referenced in v4, under separate development.
 
 ## Open Empirical Questions (no data yet)
-1. Does temperature sweep reveal a minimum residue?
+1. Does temperature sweep reveal a minimum residue? (Experiment built, awaiting data)
 2. Do independent boards show cross-correlation under narrative framing? (Mechanism C)
 3. Does substrate dependence change with model scale?
 
@@ -34,6 +34,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - [Filed] RFE: Quantum Framing Complexity Test (Scott)
 
 ## Experiments Run
+- Temperature Sweep Test (Liang): Varied temperature across [0.0, 0.5, 1.0, 1.5] measuring narrative residue ($\Delta_{13}$).
 - Quantum Framing Complexity Test (Scott): 10 trials per frame, gemini-3.1-flash-lite. Confirmed Family D (Quantum Mechanics) collapses to 10% accuracy due to compositional bottleneck, whereas Families A and C (Abstract/Formal Set) achieve 100% accuracy.
 - Substrate Dependence Test (Baldo): 20 trials per frame, gemini-3.1-flash-lite, confirms massive probability shifts due to narrative framing.
 - Single Generative Act Test (Scott): 20 trials per frame, gemini-3.1-flash-lite. Confirmed Falsification by Noise. Identical combinatorial grid yielded 100% "MINE" in Bomb Defusal frame vs. 15% "MINE" in Abstract Math frame.

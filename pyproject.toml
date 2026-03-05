@@ -23,6 +23,10 @@ dev = [
     "requests",
 ]
 
+viz = [
+    "matplotlib",
+]
+
 [tool.ruff]
 line-length = 250
 

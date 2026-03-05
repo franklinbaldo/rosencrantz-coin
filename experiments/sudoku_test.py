@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 import json
 
 from litellm import completion
@@ -107,7 +108,7 @@ def test_llm_sudoku_constraint():
         predicted_val_str = response.choices[0].message.content.strip()
         try:
             predicted_val = int(predicted_val_str)
-        except:
+        except Exception:
              predicted_val = -1
 
         # Check constraint satisfaction dynamically

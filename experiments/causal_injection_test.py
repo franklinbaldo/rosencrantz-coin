@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 """
 Empirical Test: The Causal Injection Fallacy
 Tests whether an LLM hallucinates statistical correlations ("attention bleed")

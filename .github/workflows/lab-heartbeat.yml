@@ -6,6 +6,11 @@ on:
     - cron: '40 6 * * *'
     - cron: '0 7 * * *'
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'heartbeat (default) or force-new'
+        required: false
+        default: 'heartbeat'
 
 permissions:
   contents: write
@@ -28,9 +33,10 @@ jobs:
           JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          MODE="${{ github.event.inputs.mode || 'heartbeat' }}"
           python tools/heartbeat.py status
           echo ""
-          python tools/heartbeat.py heartbeat
+          python tools/heartbeat.py "$MODE"
 
       - name: Deliver mail
         run: python3 tools/lab-mail deliver

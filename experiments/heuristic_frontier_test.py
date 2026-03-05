@@ -1,10 +1,6 @@
-import os
-import json
 import logging
+import os
 import random
-import time
-from typing import Dict, List, Tuple
-from collections import defaultdict
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -126,10 +122,12 @@ def test_deep_boolean_circuit(num_trials=20, depth=10) -> float:
 
         # Simulate random guessing for deep logic
         true_val = random.choice(["True", "False"])
-        if response == true_val or (LITELLM_AVAILABLE == False):
+        if response == true_val or (not LITELLM_AVAILABLE):
             # If mocking, our mock returns random, so ~50%
-            if response == "True" and true_val == "True": successes += 1
-            if response == "False" and true_val == "False": successes += 1
+            if response == "True" and true_val == "True":
+                successes += 1
+            if response == "False" and true_val == "False":
+                successes += 1
 
     accuracy = successes / num_trials if not LITELLM_AVAILABLE else 0.52 # Force ~50% for illustration if real API
     if not LITELLM_AVAILABLE:

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Permutation Tracking Test.
+r"""Permutation Tracking Test.
 
 This experiment tests the hypothesis that LLMs fail catastrophically
 at state-tracking tasks that require $O(N)$ depth, such as tracking
-permutations (e.g., swapping items in cups). Because a $\mathsf{TC}^0$
+permutations (e.g., swapping items in cups). Because a $\mathsf{{TC}}^0$
 fixed-depth transformer cannot natively track sequential state changes
 beyond its bounded depth, accuracy should collapse as the number of
 sequential swaps increases.

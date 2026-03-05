@@ -24,7 +24,7 @@ def main():
     families = ["A", "C", "D"]
     samples_per_cell = 20
 
-    print(f"Generating board...")
+    print("Generating board...")
     seed = 42
     while True:
         board = generate_board(size=5, mines=4, seed=seed)
@@ -76,7 +76,7 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
     main()

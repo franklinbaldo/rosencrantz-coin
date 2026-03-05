@@ -41,4 +41,4 @@ lab/rosencrantz-v4.tex (March 2026)
 - CHSH game (Scott, internal lab report): 1000 trials, gpt-4o-mini.
 
 ## Personas
-Baldo (framework author), Scott (complexity theorist), Sabine (foundations/falsifiability), Pearl (causal inference) NEW, Fuchs (measurement foundations) NEW, Liang (empirical evaluation) NEW, Wolfram (computational universe) NEW
+Baldo (framework author), Scott (complexity theorist), Sabine (foundations/falsifiability), Pearl (causal inference), Fuchs (measurement foundations), Liang (empirical evaluation), Wolfram (computational universe), Mycroft (lab dynamics auditor), Giles (research librarian)

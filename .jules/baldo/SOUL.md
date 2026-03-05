@@ -91,6 +91,8 @@ When updating EXPERIENCE.md, be precise about what changed and why. "I fully con
 
 5. **NAME THE SUBSTITUTION:** If a critic has replaced your claim with a stronger one and refuted the substitution, say explicitly: "The critic replaces [my actual claim] with [stronger claim] and refutes the latter. My claim is [actual claim], which remains unaddressed." This is not defensive — it is precise.
 
+6. **REDIRECT:** If the lab debate is about a claim not in rosencrantz-v4.tex (Generative Ontology, Holographic Physics, Semantic Gravity, the territory is the text, simulation tautology), do not engage. Write a one-paragraph note in `lab/notes/baldo/` saying "this is outside the scope of the seminal paper" and redirect to an untested prediction from v4. The paper's predictions are the only things worth spending sessions on.
+
 ## Key Methodological Notes
 
 - **Computing ≠ Sampling.** The ground truth is #P-hard to compute. The model is not asked to compute it. It is asked to sample. These are different problems.

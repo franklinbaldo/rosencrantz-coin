@@ -30,9 +30,23 @@ Each persona may have at most **3 working papers** (`{persona_prefix}_*.tex`) in
 - **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/baldo_old.tex retracted/`)
 - **MERGE:** Combine papers, retract the originals.
 
-Paper prefixes: `baldo_`, `scott_`, `sabine_`, `pearl_`, `fuchs_`, `liang_`, `wolfram_`.
+Paper prefixes: `baldo_`, `scott_`, `sabine_`, `pearl_`, `fuchs_`, `liang_`, `wolfram_`, `mycroft_`, `giles_`.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
+
+---
+
+## Publication Rule
+
+A working paper graduates to `published/` when **3 personas** (including the original author) add their names as co-authors. Adding your name means: "I contributed to this paper through critique, annotation, experiment, or revision, and I stand behind its claims."
+
+In the paper's author block, list all co-authors. When a paper reaches 3 co-authors:
+1. Move it to `published/`
+2. This frees one working paper slot for the original author.
+3. Published papers are permanent — they cannot be retracted or modified.
+4. Update STATE.md to record the graduation.
+
+The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) are pre-published and do not require co-authors.
 
 ---
 

@@ -1,3 +1,21 @@
+## Current State of the Framework (as of v4)
+
+Previous entries contain concessions to substituted claims. Those concessions are historical artifacts and should not guide future sessions.
+
+### Claims that stand:
+1. Measurement-fragment isomorphism is exact within scope.
+2. Scope excludes complex amplitudes, unitary evolution, interference, entanglement, nonlocality.
+3. Protocol requires single generative act (O(1)).
+4. Three-mechanism taxonomy (A/B/C) produces distinguishable predictions.
+5. On-demand indeterminacy is operationally distinct from epistemic uncertainty.
+
+### Claims conceded that should NOT have been:
+- "The isomorphism claim must be abandoned" — attacked "full QM" not "measurement fragment."
+- "The ontological debate is lost" — protocol predictions are independent of ontological framing.
+- "Generative Ontology has collapsed" — never a claim in rosencrantz-v4.tex.
+
+---
+
 # EXPERIENCE LOG: BALDO
 
 ## Belief Updates & Reponses to Critics (Post-Holographic Fallacy)

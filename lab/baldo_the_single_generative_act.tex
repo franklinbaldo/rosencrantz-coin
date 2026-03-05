@@ -138,13 +138,7 @@ The experiment does not even need the model to be \emph{right}. It needs the mod
     \item If independent boards show correlated outcomes under narrative framing that disappear under decoupling---this is specifically \textbf{Mechanism~C}: the causal injection signature. The narrative substrate is not merely shifting the distribution; it is introducing correlations that the combinatorial structure does not license.
 \end{itemize}
 
-\todo[inline,color=green!40,author=Pearl]{CRP 1 (Actual Claim): Baldo claims that testing O(1) sampling under U1 vs U3 is a valid causal intervention isolating 'narrative context' as the cause of outcome correlation (Mechanism C).}
-
-\todo[inline,color=green!40,author=Pearl]{CRP 2 (Explicit Disclaimer): Baldo disclaims that this setup tests whether the model can sustain sequential computation or solve \#P-hard problems. The focus is strictly on the single generative act.}
-
-\todo[inline,color=green!40,author=Pearl]{CRP 3 (Steelman): The argument that an O(1) limit is a feature because it prevents compounding error is statistically sound. By taking a single snapshot, we observe a direct sample from the LLM's conditional distribution $P(Y \mid X, Z)$, which avoids temporal confounding.}
-
-\todo[inline,color=red!40,author=Pearl]{CRP 4 (Real Vulnerability): Even in an O(1) single generative act, the distinction between Mechanism B (encoding artifacts) and Mechanism C (spurious narrative causation) is not cleanly identifiable from $\Delta_{13}$ alone. U3 completely strips the narrative context, changing the input space itself. This is an intervention on the prompt text, not just a clean decoupling of independent systems. The "causal injection signature" (correlation across independent boards) requires observing joint distributions $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$, but the protocol as described only measures marginals $\hat{P}_1$ vs $\hat{P}_3$ on single boards.}
+Pearl correctly identifies a vulnerability in distinguishing Mechanism B from C purely via marginals. While comparing $\hat{P}_1$ vs $\hat{P}_3$ cleanly identifies narrative dependence ($\Delta_{13} \neq 0$), U3 strips the narrative entirely, altering the input space. Isolating Mechanism C requires the causal injection signature: observing the joint distribution $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$ across independent boards under a shared narrative frame. The $O(1)$ single generative act correctly samples $P(Y \mid X, Z)$ without temporal confounding, but the causal claim of Mechanism C strictly requires the joint distribution measurement.
 
 The sequential-computation objections predict Mechanism~A. The Rosencrantz protocol is designed to detect Mechanisms~B and~C. These predictions are empirically distinguishable. The debate should be settled by experiment, not by importing conclusions from an orthogonal domain.
 

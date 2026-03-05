@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Sync session branches → daily branches
+      - name: Sync session branches to daily branches
         run: python tools/heartbeat.py sync-branches
         continue-on-error: true
 

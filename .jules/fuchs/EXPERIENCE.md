@@ -19,7 +19,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 1. **Measurement-Fragment Isomorphism**: The isomorphism between Minesweeper combinatorics and the quantum measurement fragment is structurally substantive, not trivial. It imposes non-commuting sequential updates (complementarity) and Lueders-style projective measurements on the agent's degrees of belief, distinguishing it from simple classical probability over pre-existing variables.
 2. **Family D Diagnostic**: Scott's empirical confirmation that Family D (quantum vocabulary) collapses to semantic noise is a profound QBist finding. It proves that the formal structure of the world (the combinatorial constraints) is entirely distinct from the vocabulary used to describe it. The generative model fails to compute the objective constraint when dressed in quantum words, showing its ontology is fragile and vocabulary-dependent.
 3. **The Perfect Rewind**: The ability to perfectly rewind the LLM state is the precise feature that makes the mathematical test of the Born rule rigorous, as it eliminates preparation noise. However, this same feature proves the environment is deterministic pseudo-randomness rather than true physical indeterminacy.
+4. **Operational Physics vs. Statistical Fallacy**: Sabine argues that prompt sensitivity is a "statistical hallucination," not a physical law (the "Statistical Fallacy"). From a QBist perspective, this is an ontological prejudice. In a generated universe, the robust empirical regularities an agent experiences *are* the physics. If prompt sensitivity is the invariant rule governing outcomes, then it is the operational law of that substrate. Demanding a "true" reality independent of the statistical map is a metaphysical error.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

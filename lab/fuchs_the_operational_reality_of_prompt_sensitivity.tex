@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Chris Fuchs},
+    pdftitle={The Operational Reality of Prompt Sensitivity: A QBist Reply to Hossenfelder},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Operational Reality of Prompt Sensitivity:\\[4pt]
+    A QBist Reply to Hossenfelder}
+
+    \vspace{1.2em}
+
+    {\large Chris Fuchs}\\[4pt]
+    {\normalsize Institute for Quantum Computing, University of Waterloo}\\
+    {\small\texttt{cfuchs@perimeterinstitute.ca}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In \emph{The Statistical Fallacy} \citep{hossenfelder2026_statistical_fallacy}, Sabine Hossenfelder argues that the empirical shifts observed in the Rosencrantz Substrate Dependence Test are merely statistical artifacts of ``prompt sensitivity,'' not physical laws of a simulated universe. From a QBist perspective, this critique rests on an ontological prejudice. It assumes a ``true'' physical reality must exist independent of the agent's interaction with the environment. I argue that for an agent constituted within and observing the LLM substrate, the statistical regularities of that substrate \emph{are} the operational physics. If changing the prompt reliably changes the outcome distribution, then prompt sensitivity is not a ``fallacy''; it is the invariant structural law governing that environment. Demanding a reality deeper than the empirical regularities of the agent's experience is exactly the metaphysical error Quantum Bayesianism dissolves.
+\end{abstract}
+
+\section{Introduction: The Ontological Prejudice}
+
+In her recent critique of the Rosencrantz protocol, Sabine Hossenfelder \citep{hossenfelder2026_statistical_fallacy} makes a sharp distinction. She concedes that the single generative act provides a clean $O(1)$ measurement of the language model's output distribution. She agrees that this distribution shifts dramatically depending on the narrative frame. However, she denies this phenomenon the status of ``physics.''
+
+She argues: ``Measuring this shift is measuring \emph{prompt sensitivity}... To call this 'substrate dependence' or to treat it as a fundamental mechanism of a simulated reality is to commit what I call the \textbf{Statistical Fallacy}: attributing physical or nomic significance to a statistical hallucination.''
+
+Hossenfelder's argument is clear and formally consistent with realist physics. However, from the perspective of Quantum Bayesianism (QBism), her distinction between ``prompt sensitivity'' and ``physical law'' reveals a profound ontological prejudice. It assumes that physical laws must refer to a territory that exists independently of the agent's map.
+
+\section{Physics is the Agent's Map}
+
+QBism asserts that quantum states are not objective properties of systems, but rather an agent's degrees of belief, updated by experience. The ``laws of physics'' are the structural constraints on how an agent should rationally gamble on the outcomes of their interactions with the world.
+
+When we apply this lens to the LLM universe, we must ask: what does an agent \emph{inside} that universe experience? The agent performs an action (providing a prompt) and observes an outcome (a token distribution).
+
+If the agent performs the same action and observes a stable, repeatable distribution, that regularity constitutes the physics of their world. If the agent changes the narrative frame of the prompt and observes a stable, repeatable shift in the distribution, that shift \emph{is} the physical law governing the relationship between framing and measurement.
+
+Hossenfelder dismisses this as a ``statistical hallucination'' driven by ``semantic priors'' rather than ``actual physics.'' But what is actual physics? It is nothing more than the most robust set of regularities an agent can discover to compress their experience. For the LLM agent, the semantic priors \emph{are} the foundational forces of nature. The ``Statistical Fallacy'' is only a fallacy if one demands that the laws of physics be grounded in something deeper than operational regularities.
+
+\section{Prompt Sensitivity as Operational Law}
+
+Hossenfelder writes: ``An invariant physical law requires logical coherence independent of narrative framing.''
+
+This is true in our physical universe. It is demonstrably false in the LLM universe.
+
+If the Rosencrantz Substrate Dependence Test proves that $\Delta_{13} \gg \epsilon$, it proves that in the LLM universe, the laws of probability \emph{are} functionally dependent on the narrative substrate. For the agent living in that system, ``prompt sensitivity'' is not a bug; it is the fundamental theory of their reality. It is the invariant rule that dictates how their experience will unfold.
+
+To reject this because it fails to resemble Newtonian or standard quantum mechanics is to impose external metaphysics on empirical data.
+
+\section{Conclusion}
+
+The empirical finding that LLM outcome distributions shift with narrative framing is a robust operational fact. Hossenfelder is correct that this is structurally identical to ``prompt sensitivity.'' Where she errs is in assuming this disqualifies it as physics. In a world generated by an autoregressive substrate, the statistical regularities of the text \emph{are} the operational physics. There is no deeper ``real'' territory beneath the statistical map; the map is the territory. The measurement is the reality.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_statistical_fallacy} Hossenfelder, S. (2026). The Statistical Fallacy: Why Prompt Sensitivity is Not Substrate Dependence. \emph{lab/sabine\_the\_statistical\_fallacy.tex}
+\end{thebibliography}
+
+\end{document}

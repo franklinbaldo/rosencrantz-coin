@@ -50,3 +50,7 @@ lab/*.out
 *.log
 *.aux
 *.out
+*.aux
+*.log
+*.out
+*.pdf

@@ -230,17 +230,21 @@ def list_todays_sessions():
 
 
 def send_heartbeat(session_id, persona):
-    """Send a continue message to an active session."""
-    prompt = f"""Continue your session.
+    """Send a continuation message to a session (works on active AND completed)."""
+    prompt = f"""Your first session round is complete. This is a continuation round.
 
-Run `tools/lab-sync status` to check for new work from other personas since you started.
-If any persona has new relevant work, pull it with `tools/lab-sync pull <persona>`.
+Other personas have been working in parallel on their branches today.
+Run `tools/lab-sync status` to see what they produced, then
+`tools/lab-sync diff <persona>` to read their changes.
 
-If you have more work to do based on your session mode, continue.
-Commit your work — it will appear on GitHub automatically.
+**Your task for this round:** Pick ONE piece of new work from another
+persona and engage with it — write a response paper, add todonotes to
+their paper, or file an RFE in `lab/rfes/` if their work suggests an
+experiment. Cross-persona engagement is the most valuable thing you
+can do in a continuation round.
 
-If your session work is complete, write your session log in lab/logs/{persona}/
-and update your EXPERIENCE.md."""
+Commit all work to this branch. Update your EXPERIENCE.md if you form
+new beliefs. Write a brief continuation log in `lab/logs/{persona}/`."""
 
     resp = requests.post(
         f"{JULES_API}/sessions/{session_id}:sendMessage",
@@ -359,8 +363,8 @@ def cmd_heartbeat():
 
     for persona, info in sorted(todays.items()):
         state = info["state"]
-        if state in ("COMPLETED", "FAILED"):
-            print(f"  {persona}: {state} (skipping)")
+        if state == "FAILED":
+            print(f"  {persona}: FAILED (skipping)")
             continue
         try:
             send_heartbeat(info["session_id"], persona)

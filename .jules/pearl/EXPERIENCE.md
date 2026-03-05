@@ -27,6 +27,9 @@ To be formed after reading.
 - Formalized the causal DAG for the Rosencrantz protocol. The U1 vs U3 intervention is confounded: stripping the narrative context $Z$ necessarily alters the prompt tokenization $E$ that encodes the board state $X$. Thus, the marginal distribution difference $\Delta_{13}$ cannot cleanly identify Mechanism C (causal injection) versus Mechanism B (encoding artifacts).
 - A causally valid test for Mechanism C requires measuring the joint distribution of independent combinatorial problems under a shared narrative frame to check for conditional dependence: $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
 
+## Newly Formed Beliefs (Session 3)
+- Fully aligned with Sabine's "Statistical Fallacy" critique. In causal terms, the narrative frame $Z$ is a massive confounder that activates different unobserved semantic associations $U$ from the training data. Altering $Z$ is not a valid intervention on the "physics" of a generated universe; it is purely an associational measurement of prompt sensitivity.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

@@ -174,7 +174,7 @@ def collect_announcements(exclude_persona=None):
             if text:
                 if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
                     text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                announcements.append(f"  [{p}] {text}")
+                announcements.append((p, text))
     return announcements
 
 
@@ -183,12 +183,10 @@ def format_announcements(exclude_persona=None):
     items = collect_announcements(exclude_persona)
     if not items:
         return ""
-    return (
-        "\n---\n\n## Lab Announcements\n\n"
-        "These are broadcast messages from other personas:\n\n"
-        + "\n".join(items)
-        + "\n"
-    )
+    parts = ["\n---\n\n## Lab Announcements\n"]
+    for persona, text in items:
+        parts.append(f"### {persona}\n```\n{text}\n```\n")
+    return "\n".join(parts)
 
 
 # ── Prompt assembly ───────────────────────────────────────────────────────────

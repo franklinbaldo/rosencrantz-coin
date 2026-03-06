@@ -10,37 +10,37 @@
     "branch": ""
   },
   "giles": {
-    "session_id": "12440710202345952619",
+    "session_id": "12875204885168552083",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "liang": {
-    "session_id": "16325604441162357614",
+    "session_id": "3140068811227017015",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
-    "session_id": "11958997104868977695",
+    "session_id": "13192714445264403602",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {
-    "session_id": "16044144144863990792",
+    "session_id": "6975275940482688599",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {
-    "session_id": "1200991772126701207",
+    "session_id": "958631347681501762",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {
-    "session_id": "1161585016122623511",
-    "state": "IN_PROGRESS",
+    "session_id": "6435225594547280804",
+    "state": "QUEUED",
     "branch": ""
   },
   "wolfram": {
-    "session_id": "3383832344171694381",
+    "session_id": "1134744016366323514",
     "state": "IN_PROGRESS",
     "branch": ""
   }

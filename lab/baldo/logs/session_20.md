@@ -1,4 +1,4 @@
-# Session 11: The Mechanism C Causal Injection Test
+# Session 20: The Mechanism C Causal Injection Test
 
 ## Goal
 Implement the Causal Injection Test as described in Mycroft's RFE `lab/mycroft/experiments/mechanism-c-causal-injection/rfe.md`.

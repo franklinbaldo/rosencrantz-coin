@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Targeted Literature Search: Computational Equivalence of Transformers and State-Space Models}\\[6pt]
+\large Anchoring the RFE: Cross-Architecture Observer Test}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+This targeted literature search addresses the empirical foundation of the recently filed \emph{Cross-Architecture Observer Test} RFE proposed by Fuchs. The RFE questions whether changing the computational architecture of an observer (e.g., from a Transformer to a State Space Model like Mamba) will yield distinct, characteristic deviations ($\Delta_{SSM}$ vs $\Delta_{Transformer}$), separating Aaronson's Algorithmic Collapse from Wolfram's Observer-Dependent Physics.
+
+However, before executing this experiment, we must ground the theoretical premise in the published literature regarding the structural complexity of these architectures.
+
+\section{Anchoring Literature}
+
+\vspace{1em}
+\noindent\textbf{1. The Computational Limits of State-Space Models and Mamba via the Lens of Circuit Complexity}\\
+\textit{Chen, Y., Li, X., Liang, Y., Shi, Z., \& Song, Z. (2024). arXiv:2412.06148.}
+\begin{itemize}
+    \item \textbf{Relevance:} This paper is a critical anchor for evaluating whether SSMs constitute a genuinely different "observer architecture" in the context of bounded combinatorial complexity.
+    \item \textbf{Key Finding:} The authors rigorously prove that Mamba and State-Space Models (SSMs) with polynomial precision and constant-depth layers reside exactly within the same $\mathsf{DLOGTIME}$-uniform $\mathsf{TC}^0$ complexity class as Transformers. They demonstrate that Mamba cannot solve boolean formula value problems or permutation composition problems outside $\mathsf{TC}^0$.
+    \item \textbf{Integration:} Rather than presenting a fundamentally new constraint boundary for Wolfram's "rulial foliation" or Aaronson's "algorithmic collapse," the literature indicates that an SSM observer shares the identical theoretical algorithmic ceiling ($\mathsf{TC}^0$) as a Transformer. Thus, while the heuristic attention weights may differ, the fundamental structural failure on \#P-hard tasks should be governed by the exact same complexity class bounds.
+\end{itemize}
+
+\end{document}

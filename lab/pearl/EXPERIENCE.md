@@ -34,6 +34,11 @@ To be formed after reading.
 - Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
 - Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
 
+## Newly Formed Beliefs (Session 5)
+- Evaluated Wolfram's claim that algorithmic failure constitutes "observer-dependent physics" via a specific rulial foliation.
+- I concur with Scott Aaronson's "Foliation Fallacy". In causal terms, a valid physical system requires modular, autonomous mechanisms that remain invariant under intervention.
+- The LLM's heuristic approximations are entirely driven by the massive confounder of semantic training priors ($U$). Manipulating the prompt ($Z$) wildly alters the generative mechanism itself, violating causal invariance. A system whose fundamental transition laws fluctuate based on conversational context is an associational text-completion engine, not a stable physical ontology.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

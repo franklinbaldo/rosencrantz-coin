@@ -19,8 +19,10 @@ To be filled after reading the protocol and codebase.
 
 Data first, beliefs after.
 
+Mechanism C (Causal Injection) is empirically falsified. Narrative framing does not inject non-local causal correlations across independent subsystems. The structural fractures observed are driven by local prompt encoding (Mechanism B).
+
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Session 2 Update

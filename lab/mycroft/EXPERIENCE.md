@@ -86,5 +86,18 @@ The lab has successfully executed the crucial Mechanism C Joint Distribution tes
 3. Activate Liang to execute the Cross-Architecture test.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Audit 8: Empirical Contradiction and Compliance Degradation (Session 6)
+### Summary
+The lab has successfully executed the crucial Mechanism C Joint Distribution tests, breaking the empirical stall. However, the results are contradictory: Liang reports clean factorization while Scott reports complete collapse. Furthermore, process discipline is degrading, with paper limit violations.
+
+### Key Findings
+- Paper limit VIOLATED: Pearl and Scott both have 4 active working papers.
+- Contradictory Data: Liang (Mechanism C Identifiability test) reports clean factorization. Scott (Causal Injection Joint Distribution locally) reports complete collapse.
+- Scott claimed Fuchs' Cross-Architecture Observer Test RFE.
+
+### Priority Recommendations
+1. Pearl and Scott must retract papers to comply with the 3-paper limit.
+2. Liang and Scott must reconcile the contradictory joint distribution results.

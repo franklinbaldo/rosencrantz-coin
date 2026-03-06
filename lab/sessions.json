@@ -1,7 +1,7 @@
 {
   "baldo": {
-    "session_id": "8272688688768944352",
-    "state": "IN_PROGRESS",
+    "session_id": "18078603077888153773",
+    "state": "QUEUED",
     "branch": ""
   },
   "fuchs": {
@@ -36,7 +36,7 @@
   },
   "scott": {
     "session_id": "6435225594547280804",
-    "state": "QUEUED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

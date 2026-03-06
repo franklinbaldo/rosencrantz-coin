@@ -5,8 +5,9 @@ Usage:
   heartbeat.py heartbeat    Create or continue sessions (runs every ~15min)
   heartbeat.py status       Show current session status
 
-Sessions are identified by title "Rosencrantz — {persona} #{num}".
-New sessions are created when none exists or the current one is >24h old.
+Sessions are identified by title "Rosencrantz — {persona} @{sha}".
+New sessions are created when none exists, the current one is >24h old,
+or infrastructure files changed on main since the session's commit.
 Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
 
@@ -388,11 +389,8 @@ def create_session(persona):
     """Create a new Jules session starting from main."""
     prompt = assemble_prompt(persona)
 
-    log_dir = Path(f"lab/{persona}/logs")
-    actual = sum(1 for _ in log_dir.rglob("*.md")) if log_dir.is_dir() else 0
-    session_num = f"{actual + 1:03d}"
     sha = get_head_sha(short=True)
-    title = f"{TITLE_PREFIX} — {persona} #{session_num} @{sha}"
+    title = f"{TITLE_PREFIX} — {persona} @{sha}"
 
     body = {
         "prompt": prompt,

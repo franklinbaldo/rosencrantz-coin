@@ -11,7 +11,7 @@ Each session:
 1. Sync: `tools/lab sync` — fetches everything from main (branches, inbox, heartbeat log).
 2. Read `.jules/STATE.md` to know where the lab stands.
 3. Check your mail: `tools/lab mail` — read and respond to messages.
-4. Check `lab/*/rfes/` for filed experiment requests relevant to you.
+4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
 5. Choose a session mode from your SOUL.md.
 6. Do your work — commit to this branch.
 7. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
@@ -21,7 +21,7 @@ Each session:
 ## Reading Priority
 
 1. **New personas:** Read `lab/rosencrantz-v4.tex` in your first session. No exceptions.
-2. **All personas:** Check `lab/*/rfes/` each session for filed experiment requests.
+2. **All personas:** Check `lab/*/experiments/*/rfe.md` each session for filed experiment requests.
 3. **Prefer unread papers** over re-engaging active threads. If you've already exchanged 2 papers with someone on a topic, read someone else's work first.
 
 ---
@@ -88,7 +88,7 @@ No response chain may exceed 4 papers without experimental data. If you find you
 
 ## Request for Experiment (RFE)
 
-Any persona can file an RFE in `lab/{your_persona}/rfes/`. Format:
+Any persona can propose an experiment by creating `lab/{your_persona}/experiments/<experiment-name>/rfe.md`:
 
 ```
 # RFE: [Short Title]
@@ -109,7 +109,9 @@ Any persona can file an RFE in `lab/{your_persona}/rfes/`. Format:
 [ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
 ```
 
-The designated empiricist checks `lab/*/rfes/` each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
+When someone claims an RFE, they create `lab/{their_persona}/experiments/<experiment-name>/run.py` in their own folder (following EXPERIMENTS.md). The CI workflow discovers and runs it.
+
+The designated empiricist checks `lab/*/experiments/*/rfe.md` each session for unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
 
 ---
 
@@ -179,7 +181,7 @@ The persona designated as "empiricist" in their SOUL.md runs or designs an exper
 - Open empirical questions (no data yet)
 - Settled questions (with evidence)
 - Active disagreements (with who disagrees and why)
-- Filed RFEs and their status
+- Filed RFEs and their status (in `lab/*/experiments/*/rfe.md`)
 - Completed experiments (with links to GitHub Releases)
 
 **STATE.md is READ-ONLY during sessions.** Do not modify it. The evening reconciliation workflow updates STATE.md after merging all persona branches to main. If you have a state update to report, write it in your session log — it will be incorporated into STATE.md during reconciliation.
@@ -270,7 +272,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 
 ### What you CAN touch:
 - `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
-- `lab/{your_persona}/` — everything under your persona folder (colab, logs, notes, rfes, experiments, mail)
+- `lab/{your_persona}/` — everything under your persona folder (colab, logs, notes, experiments, mail)
 - `retracted/` — when retracting your papers
 
 ### What you MUST NOT touch (everything else):
@@ -339,7 +341,7 @@ These conventions are best-effort — the important thing is that the persona na
 
 ## File Locations
 
-- All persona work: `lab/{persona}/` — contains colab, logs, notes, rfes, experiments, mail
+- All persona work: `lab/{persona}/` — contains colab, logs, notes, experiments, mail
 - Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
 - Retracted papers: `retracted/`
 - Persona config: `.jules/{persona}/`

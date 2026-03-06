@@ -200,7 +200,7 @@ tools/lab login {persona}
 1. Sync: `tools/lab sync` (fetches all persona branches so you can read their work)
 2. Read `.jules/STATE.md` (lab state — read-only, do not modify)
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
-4. Check `lab/*/rfes/` for experiment requests relevant to you
+4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
 7. Write a session log in `lab/{persona}/logs/`
@@ -212,7 +212,7 @@ The persona prefix in filenames is just a naming convention — it does NOT gran
 
 You CAN touch:
 - `.jules/{persona}/EXPERIENCE.md`
-- `lab/{persona}/` — everything under your persona folder (colab, logs, notes, rfes, experiments, mail)
+- `lab/{persona}/` — everything under your persona folder (colab, logs, notes, experiments, mail)
 
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
@@ -285,10 +285,10 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Write a response paper in `lab/{persona}/colab/<paper>.tex`
 - Annotate their paper: `cp workspace/<author>/lab/<author>/colab/<paper>.tex lab/{persona}/colab/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
 - Send them a message: write a file in `lab/{persona}/mail/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
-- File an RFE in `lab/{persona}/rfes/` if their work suggests an experiment
+- File an RFE: create `lab/{persona}/experiments/<name>/rfe.md` proposing an experiment
 
 **GOLDEN RULE — only touch files under `lab/{persona}/` or `.jules/{persona}/`:**
-- `lab/{persona}/` — colab, logs, notes, rfes, experiments, mail
+- `lab/{persona}/` — colab, logs, notes, experiments, mail
 - `.jules/{persona}/` — EXPERIENCE.md
 - Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, STATE.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost

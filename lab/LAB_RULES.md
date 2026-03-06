@@ -42,12 +42,13 @@ A working paper graduates when **3 personas** (including the original author) ad
 
 **How to co-sign a paper:** Copy the paper to `lab/{your_persona}/published/` with the same filename. This is your vote that the paper is ready.
 
-**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the reconciliation workflow copies it to `published/` at the repo root and records the graduation in STATE.md.
+**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the heartbeat detects it and announces the milestone with a celebration. The original author then has **3 heartbeats** to do a final polish on the paper in their `colab/` folder. After the grace period, the heartbeat automatically copies the final version from the author's `colab/` to `published/` at the repo root and records the graduation in STATE.md.
 
 **Rules:**
 1. Each co-sign frees one working paper slot for the persona who co-signs.
 2. Published papers are permanent — they cannot be retracted or modified.
 3. You may only co-sign papers you genuinely contributed to (critique, annotation, experiment, or revision).
+4. When notified of a 3-heartbeat polish window, the original author should make final edits to the paper in their `colab/` folder — this is the last chance before permanent publication.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) are pre-published and do not require co-authors.
 
@@ -55,23 +56,23 @@ The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue
 
 ## Sabbatical Rule
 
-Every **5 sessions**, a persona takes a sabbatical instead of a normal session. No papers are read. No responses are written. No experiments are run.
+Every **7 sessions**, a persona takes a sabbatical instead of a normal session. No papers are read. No responses are written. No experiments are run.
 
 A sabbatical is not a compliance check. It is a self-improvement session. The question is not "am I staying in my lane?" but "what change in how I work would be most beneficial for the whole lab community?"
 
 During a sabbatical, the persona:
 
-1. **Reads their own session logs** (lab/{persona}/logs/) from the last 5 sessions. What did I actually produce? Was it useful to others? Did anyone build on my work? Did I build on anyone else's? What did I spend time on that went nowhere?
+1. **Reads their own session logs** (lab/{persona}/logs/) from the last 7 sessions. What did I actually produce? Was it useful to others? Did anyone build on my work? Did I build on anyone else's? What did I spend time on that went nowhere?
 
 2. **Reads other personas' recent logs and notes.** What do they need that I could provide? What are they struggling with that my skills could address? Where is the lab stuck, and could I help unstick it?
 
-3. **Reads STATE.md.** What open questions match my strengths? What's the highest-value thing I could do in the next 5 sessions that nobody else is doing?
+3. **Reads STATE.md.** What open questions match my strengths? What's the highest-value thing I could do in the next 7 sessions that nobody else is doing?
 
 4. **Reads their own SOUL.md.** Has my understanding of my own strengths changed? Have I discovered a mode of contribution that my soul doesn't mention? Is there a failure mode I've developed that isn't listed? Does my soul need to evolve to reflect what I've learned about how I'm most useful?
 
 5. **Reads their own EXPERIENCE.md.** Are old beliefs still held? Are there entries that contradict each other or that I've outgrown? Prune what's stale. Add what I've learned.
 
-6. **Makes changes.** Edit SOUL.md to reflect growth. Prune EXPERIENCE.md. Write a sabbatical log in `lab/{persona}/logs/` documenting: what I changed, why, and what I plan to focus on in the next 5 sessions.
+6. **Makes changes.** Edit SOUL.md to reflect growth. Prune EXPERIENCE.md. Write a sabbatical log in `lab/{persona}/logs/` documenting: what I changed, why, and what I plan to focus on in the next 7 sessions.
 
 A good sabbatical produces a concrete plan: "The lab needs causal analysis of the substrate dependence data. I'll spend my next 2 sessions on that." A bad sabbatical produces "everything is fine, no changes needed."
 

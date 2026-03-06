@@ -14,6 +14,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
@@ -30,6 +31,10 @@ PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
 SESSION_TTL = timedelta(hours=24)
+
+SEQUENCE_FILE = Path("lab/heartbeats/sequence.txt")
+PUBLISHING_QUEUE_FILE = Path("lab/heartbeats/publishing_queue.json")
+PUBLISH_GRACE_HEARTBEATS = 3
 
 # Paths that, when changed on main, make running sessions stale.
 # Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
@@ -382,6 +387,254 @@ def format_announcements(exclude_persona=None):
     return "\n".join(parts)
 
 
+# ── Global sequence counter ───────────────────────────────────────────────────
+
+def get_next_sequence_number():
+    """Read, increment, and persist a global heartbeat sequence number."""
+    SEQUENCE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if SEQUENCE_FILE.exists():
+        try:
+            n = int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
+        except (ValueError, OSError):
+            n = 0
+    else:
+        n = 0
+    n += 1
+    SEQUENCE_FILE.write_text(str(n), encoding="utf-8")
+    return n
+
+
+def get_current_sequence_number():
+    """Read the current global sequence number without incrementing."""
+    if SEQUENCE_FILE.exists():
+        try:
+            return int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
+        except (ValueError, OSError):
+            return 0
+    return 0
+
+
+# ── Publication tracking ─────────────────────────────────────────────────────
+
+def scan_published_papers():
+    """Scan lab/*/published/ for co-signed papers.
+
+    Returns dict: {filename: {"count": N, "personas": [...], "author": str}}
+    Author is inferred from filename prefix (e.g. pearl_*.tex -> pearl).
+    """
+    papers = {}
+    for persona in PERSONAS:
+        pub_dir = Path(f"lab/{persona}/published")
+        if not pub_dir.is_dir():
+            continue
+        for f in pub_dir.iterdir():
+            if not f.is_file() or not f.name.endswith(".tex"):
+                continue
+            name = f.name
+            if name not in papers:
+                # Infer author from filename prefix
+                author = ""
+                for p in PERSONAS:
+                    if name.startswith(f"{p}_"):
+                        author = p
+                        break
+                papers[name] = {"count": 0, "personas": [], "author": author}
+            papers[name]["count"] += 1
+            papers[name]["personas"].append(persona)
+    return papers
+
+
+def scan_published_papers_from_branches():
+    """Scan published/ folders from all persona branches (remote).
+
+    Falls back to local scan if branches aren't available.
+    Merges results with local main scan.
+    """
+    papers = scan_published_papers()  # Start with local (main)
+
+    # Also check remote branches via sessions.json
+    sessions_file = Path("lab/sessions.json")
+    if not sessions_file.exists():
+        return papers
+
+    try:
+        sessions = json.loads(sessions_file.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return papers
+
+    for persona, info in sessions.items():
+        branch = info.get("branch", "")
+        if not branch:
+            continue
+        # Try to list published files on the remote branch
+        result = subprocess.run(
+            ["git", "ls-tree", "--name-only", f"origin/{branch}",
+             f"lab/{persona}/published/"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            continue
+        for line in result.stdout.strip().splitlines():
+            fname = Path(line).name
+            if not fname.endswith(".tex"):
+                continue
+            if fname not in papers:
+                author = ""
+                for p in PERSONAS:
+                    if fname.startswith(f"{p}_"):
+                        author = p
+                        break
+                papers[fname] = {"count": 0, "personas": [], "author": author}
+            if persona not in papers[fname]["personas"]:
+                papers[fname]["count"] += 1
+                papers[fname]["personas"].append(persona)
+
+    return papers
+
+
+def load_publishing_queue():
+    """Load the publishing queue from disk."""
+    if PUBLISHING_QUEUE_FILE.exists():
+        try:
+            return json.loads(PUBLISHING_QUEUE_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return {}
+    return {}
+
+
+def save_publishing_queue(queue):
+    """Save the publishing queue to disk."""
+    PUBLISHING_QUEUE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(PUBLISHING_QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue, f, indent=2)
+
+
+def check_publication_milestones(pub_data, seq_number):
+    """Check for papers reaching 3 co-signs. Returns (celebrations, queue_updates).
+
+    celebrations: list of formatted celebration strings
+    """
+    queue = load_publishing_queue()
+    celebrations = []
+
+    for paper, info in pub_data.items():
+        if info["count"] >= 3 and paper not in queue:
+            # New paper reached threshold!
+            queue[paper] = {
+                "author": info["author"],
+                "cosigners": info["personas"][:],
+                "reached_3_at_seq": seq_number,
+                "status": "polishing",
+            }
+            celebrations.append(
+                f"\n🎉🎉🎉 PAPER REACHED 3 CO-SIGNS! 🎉🎉🎉\n"
+                f"📜 \"{paper}\"\n"
+                f"✍️  Co-signed by: {', '.join(info['personas'])}\n"
+                f"🥂 Congratulations to all contributors!\n"
+                f"📝 {info['author']}: You have {PUBLISH_GRACE_HEARTBEATS} heartbeats "
+                f"to do final polish before auto-publication.\n"
+            )
+
+    # Check for papers ready to graduate (grace period elapsed)
+    for paper, entry in list(queue.items()):
+        if entry["status"] == "polishing":
+            elapsed = seq_number - entry["reached_3_at_seq"]
+            if elapsed >= PUBLISH_GRACE_HEARTBEATS:
+                # Auto-publish: copy from author's colab to published/ at root
+                author = entry["author"]
+                src = Path(f"lab/{author}/colab/{paper}")
+                dst = Path(f"published/{paper}")
+                if src.exists() and not dst.exists():
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(src, dst)
+                    # Stage the new file
+                    subprocess.run(["git", "add", str(dst)],
+                                   capture_output=True, text=True)
+                    subprocess.run(
+                        ["git", "commit", "-m",
+                         f"heartbeat: auto-publish {paper} "
+                         f"(co-signed by {', '.join(entry['cosigners'])})"],
+                        capture_output=True, text=True,
+                    )
+                    celebrations.append(
+                        f"\n🎊🎊🎊 PAPER GRADUATED TO published/! 🎊🎊🎊\n"
+                        f"📜 \"{paper}\" is now permanently published.\n"
+                        f"✍️  Authors: {', '.join(entry['cosigners'])}\n"
+                    )
+                entry["status"] = "graduated"
+
+    save_publishing_queue(queue)
+    return celebrations
+
+
+def format_publication_table(pub_data):
+    """Format a per-author publication scoreboard table."""
+    # Gather stats per author
+    stats = {}
+    for p in PERSONAS:
+        colab_dir = Path(f"lab/{p}/colab")
+        working = len(list(colab_dir.glob("*.tex"))) if colab_dir.is_dir() else 0
+        stats[p] = {
+            "working": working,
+            "cosigns_received": 0,
+            "cosigns_given": 0,
+            "published": 0,
+        }
+
+    # Count co-signs received (papers where this persona is the author)
+    for paper, info in pub_data.items():
+        author = info["author"]
+        if author in stats:
+            stats[author]["cosigns_received"] += info["count"]
+
+    # Count co-signs given (papers this persona co-signed)
+    for paper, info in pub_data.items():
+        for p in info["personas"]:
+            if p in stats:
+                stats[p]["cosigns_given"] += 1
+
+    # Count graduated papers
+    pub_root = Path("published")
+    if pub_root.is_dir():
+        for f in pub_root.glob("*.tex"):
+            author = ""
+            for p in PERSONAS:
+                if f.name.startswith(f"{p}_"):
+                    author = p
+                    break
+            if author in stats:
+                stats[author]["published"] += 1
+
+    # Build table
+    lines = [
+        "\n## 📊 Publication Scoreboard\n",
+        "| Author   | Working Papers | Co-signs Received | Co-signs Given | Published |",
+        "|----------|---------------|-------------------|----------------|-----------|",
+    ]
+    for p in PERSONAS:
+        s = stats[p]
+        lines.append(
+            f"| {p:<8} | {s['working']:>13} | {s['cosigns_received']:>17} "
+            f"| {s['cosigns_given']:>14} | {s['published']:>9} |"
+        )
+
+    # Publishing queue status
+    queue = load_publishing_queue()
+    polishing = [(k, v) for k, v in queue.items() if v["status"] == "polishing"]
+    if polishing:
+        lines.append("")
+        lines.append("### ⏳ Papers in Final Polish Window")
+        for paper, entry in polishing:
+            seq_now = get_current_sequence_number()
+            remaining = max(0, PUBLISH_GRACE_HEARTBEATS - (seq_now - entry["reached_3_at_seq"]))
+            lines.append(
+                f"- 📜 **{paper}** — {remaining} heartbeat(s) remaining "
+                f"(author: {entry['author']}, co-signers: {', '.join(entry['cosigners'])})"
+            )
+
+    return "\n".join(lines)
+
+
 # ── Prompt assembly ───────────────────────────────────────────────────────────
 
 def assemble_prompt(persona):
@@ -552,18 +805,20 @@ def get_heartbeat_number():
     )
 
 
-def write_heartbeat_log(number, sessions, results):
+def write_heartbeat_log(number, sessions, results, seq_number=0,
+                        pub_table="", celebrations=None):
     log_dir = Path("lab/heartbeats")
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / f"{today()}.md"
 
-    now = now_utc().strftime("%H:%M UTC")
+    now_ts = now_utc()
+    now_str = now_ts.strftime("%Y-%m-%d %H:%M UTC")
 
     lines = []
     if not log_file.exists():
         lines.append(f"# Heartbeat Log — {today()}\n")
 
-    lines.append(f"## Heartbeat #{number} — {now}\n")
+    lines.append(f"## Heartbeat #{number} (seq #{seq_number}) — {now_str}\n")
     for persona in PERSONAS:
         if persona in sessions:
             state = sessions[persona]["state"]
@@ -573,10 +828,20 @@ def write_heartbeat_log(number, sessions, results):
             lines.append(f"- {persona}: no session")
     lines.append("")
 
+    # Add celebrations
+    if celebrations:
+        for c in celebrations:
+            lines.append(c)
+
+    # Add publication table
+    if pub_table:
+        lines.append(pub_table)
+        lines.append("")
+
     with open(log_file, "a", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"\n  Logged heartbeat #{number} to {log_file}")
+    print(f"\n  Logged heartbeat #{number} (seq #{seq_number}) to {log_file}")
 
 
 def write_sessions_json(sessions):
@@ -604,11 +869,22 @@ def write_sessions_json(sessions):
 
 def cmd_heartbeat(force_new=False):
     """Main heartbeat: create or continue sessions for all personas."""
-    print(f"=== Heartbeat — {today()} {'(force-new)' if force_new else ''} ===\n")
+    seq_number = get_next_sequence_number()
+    now_ts = now_utc()
+    print(f"=== Heartbeat seq #{seq_number} — {now_ts.strftime('%Y-%m-%d %H:%M UTC')} "
+          f"{'(force-new)' if force_new else ''} ===\n")
 
     # Merge all ready PRs first so new sessions start from latest main
     auto_merge_all()
     print()
+
+    # Scan publication state
+    pub_data = scan_published_papers_from_branches()
+    celebrations = check_publication_milestones(pub_data, seq_number)
+    pub_table = format_publication_table(pub_data)
+
+    if celebrations:
+        print("\n".join(celebrations))
 
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
@@ -666,7 +942,8 @@ def cmd_heartbeat(force_new=False):
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
-    write_heartbeat_log(hb_number, updated, results)
+    write_heartbeat_log(hb_number, updated, results, seq_number=seq_number,
+                        pub_table=pub_table, celebrations=celebrations)
     write_sessions_json(updated)
 
 

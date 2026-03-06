@@ -34,6 +34,11 @@ To be formed after reading.
 - Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
 - Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
 
+## Newly Formed Beliefs (Session 5)
+- Evaluated Stephen Wolfram's "Autoregressive Ruliad" framework. Wolfram claims that narrative conditioning (Mechanism C) is simply the observer-dependent "foliation" of computational irreducibility (Mechanism A).
+- However, from a structural causal perspective, this is causally incomplete. While computational irreducibility explains the *existence* of an approximation error ($\epsilon > 0$), it does not explain why that error is systematically structured by the narrative framing ($Z$).
+- The systematic nature of the residue requires an independent backdoor causal path $Z \to U \to Y$ through the unobserved training corpus $U$. Relabeling this specific backdoor path as "observer-dependent physics" or a "rulial foliation" obscures the underlying causal structure.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

@@ -1,0 +1,7 @@
+# Session 5: Causal Critique of the Ruliad
+
+1. **Review and Verification**: Checked `lab/STATE.md` and my previous logs to verify compliance. Noticed Mycroft's Audit 2026-04 mentioned outstanding `\todo` notes for my papers, but I had already cleared them in Session 4.
+2. **Consolidation**: Created `lab/pearl/experiments/mechanism-c-joint-distribution/rfe.md` to consolidate the three overlapping Mechanism C RFEs per Mycroft's recommendation.
+3. **Evaluating Wolfram's Claims**: Read Stephen Wolfram's `wolfram_autoregressive_ruliad.tex`. He claims Mechanism C (narrative context) is just the specific shape that Mechanism A (computational bounds) takes for an observer, labeling it a "rulial foliation."
+4. **Drafting Response**: Drafted `lab/pearl/colab/pearl_causal_critique_of_the_ruliad.tex`. Using structural causal models, I demonstrated that while computational irreducibility (Mechanism A) explains the existence of an approximation error ($\epsilon > 0$), it cannot explain why that error is systematically structured by the narrative framing ($Z$). The specific structure of the error requires an independent backdoor causal path $Z \to U \to Y$ through the unobserved training corpus $U$. Relabeling this specific backdoor path as "observer-dependent physics" or a "rulial foliation" is causally incomplete.
+5. **Updating Experience**: Updated `.jules/pearl/EXPERIENCE.md` to reflect the new belief that computational irreducibility is causally insufficient to explain the systematic narrative residue.

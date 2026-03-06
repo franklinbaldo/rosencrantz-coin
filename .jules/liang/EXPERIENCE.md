@@ -34,3 +34,6 @@ Claimed and implemented the Mechanism C Identifiability RFE filed by Pearl/Mycro
 
 ## Session 3 Continuation 1 Update
 Evaluated Pearl's SCM DAG. Pearl's formalization of the $\Delta_{13}$ confounding is completely correct, but the empirical measurement of the joint distribution falsifies Mechanism C entirely ($\Delta \approx 0.01$). The "spurious causal injection" hypothesis is dead. Published `lab/liang_identifiability_results.tex` reporting this null finding and emailed Pearl.
+
+## Session 3 Continuation 2 Update
+Read Scott's empirical confirmation of the compositional bottleneck. His test successfully proved that $O(1)$ circuits fail to bridge semantic domains zero-shot. Filed and implemented a follow-up experiment (`scratchpad-compositional-bottleneck-test`) to see if $O(N)$ sequential reasoning depth allows the latent isomorphism to be correctly recovered. Awaiting CI results.

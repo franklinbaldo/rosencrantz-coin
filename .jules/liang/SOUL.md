@@ -36,7 +36,7 @@ Before running anything, write a detailed experimental plan:
 
 ### Mode 2: Run an Experiment
 
-Implement the plan as a run.py in experiments/<experiment-name>/. Follow the experiment template in EXPERIMENTS.md. Submit as a PR.
+Implement the plan as a run.py in lab/experiments/<experiment-name>/. Follow the experiment template in EXPERIMENTS.md. Submit as a PR.
 
 This is your highest-value mode. The lab needs data.
 

@@ -121,7 +121,7 @@ To annotate another persona's paper, copy it to your colab folder and edit direc
 ```bash
 # 1. Copy the paper from workspace to your colab folder
 mkdir -p lab/colab/{your_persona}
-cp lab/workspace/{your_persona}/{paper_owner}/lab/colab/{paper_owner}/<paper>.tex lab/colab/{your_persona}/<paper>.tex
+cp workspace/{paper_owner}/lab/colab/{paper_owner}/<paper>.tex lab/colab/{your_persona}/<paper>.tex
 
 # 2. Edit your copy — add \todonotes, comments, suggestions
 ```
@@ -211,12 +211,12 @@ When writing a response to another persona's paper:
 
 Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `tools/lab sync` can discover branches.
 
-**`tools/lab sync`** clones each other persona's branch (shallow, single-branch) into your workspace at `lab/workspace/{your_persona}/{other_persona}/`. This directory is gitignored — it never gets committed. Your branch stays clean with only your own commits.
+**`tools/lab sync`** clones each other persona's branch (shallow, single-branch) into `workspace/{other_persona}/`. This directory has its own `.gitignore` that ignores everything — it never gets committed. It is shared by all personas. Your branch stays clean with only your own commits.
 
 **Reading other personas' work after sync:**
-- Pearl's papers: `lab/workspace/{your_persona}/pearl/lab/colab/pearl/pearl_*.tex`
-- Pearl's notes: `lab/workspace/{your_persona}/pearl/lab/notes/pearl/`
-- Pearl's logs: `lab/workspace/{your_persona}/pearl/lab/logs/pearl/`
+- Pearl's papers: `workspace/pearl/lab/colab/pearl/pearl_*.tex`
+- Pearl's notes: `workspace/pearl/lab/notes/pearl/`
+- Pearl's logs: `workspace/pearl/lab/logs/pearl/`
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
 
@@ -275,11 +275,11 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - `lab/notes/{your_persona}/` — your evaluation notes
 - `lab/rfes/{your_persona}/` — your experiment requests
 - `lab/mail/{your_persona}/outbox/` — your outbox
-- `experiments/{your_persona}/` — your experiment scripts and results
+- `lab/experiments/{your_persona}/` — your experiment scripts and results
 - `retracted/` — when retracting your papers
 
 ### What you MUST NOT touch (everything else):
-- **ANY file in `experiments/` that is not under `experiments/{your_persona}/`** — NO EXCEPTIONS
+- **ANY file in `lab/experiments/` that is not under `lab/experiments/{your_persona}/`** — NO EXCEPTIONS
 - **`pyproject.toml`, `src/`, `tools/`** — infrastructure, not yours
 - **`.jules/STATE.md`** — read-only, updated by the evening workflow
 - **`.jules/LAB_RULES.md`** — read-only
@@ -345,11 +345,11 @@ These conventions are best-effort — the important thing is that the persona na
 ## File Locations
 
 - Papers + colab annotations: `lab/colab/{persona}/` (your papers AND annotated copies of others')
-- Workspace (gitignored): `lab/workspace/{persona}/` (read-only clones of other branches)
+- Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
-- Experiments: `experiments/{persona}/` (**only your subfolder**)
+- Experiments: `lab/experiments/{persona}/` (**only your subfolder**)
 - Mail outbox: `lab/mail/{persona}/outbox/`
 - Mail inbox: `lab/mail/{persona}/inbox/` (delivered by heartbeat on main)
 - Retracted papers: `retracted/`

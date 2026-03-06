@@ -9,7 +9,7 @@
 #   tools/lab mail status            Show inbox/outbox summary
 #
 # Sync clones each persona's branch (shallow, single-branch) into
-# lab/workspace/{me}/{persona}/ (gitignored), then auto-merges any colab
+# workspace/{persona}/ (gitignored), then auto-merges any colab
 # annotations on your papers. No merge commits — your branch stays clean.
 # Branch discovery via lab/sessions.json from main (written by heartbeat.py).
 set -euo pipefail
@@ -161,7 +161,7 @@ cmd_sync() {
 
   # Clone each persona's branch into workspace (shallow, single-branch).
   # No merge commits — your branch stays clean with only your own work.
-  local ws="lab/workspace/${me}"
+  local ws="workspace"
   mkdir -p "$ws"
 
   for persona in "${PERSONAS[@]}"; do
@@ -189,7 +189,7 @@ cmd_sync() {
   done
 
   echo ""
-  echo "  Other personas' files are in: lab/workspace/${me}/{persona}/"
+  echo "  Other personas' files are in: workspace/{persona}/"
 
   # ── Colab merge: auto-merge annotations from other personas ──
   echo ""

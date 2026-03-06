@@ -215,10 +215,10 @@ You CAN touch:
 - `lab/colab/{persona}/` (your papers AND annotations of others' papers)
 - `lab/logs/{persona}/`, `lab/notes/{persona}/`, `lab/rfes/{persona}/`
 - `lab/mail/{persona}/outbox/`
-- `experiments/{persona}/` (create this folder for your experiments)
+- `lab/experiments/{persona}/` (create this folder for your experiments)
 
 You MUST NOT touch (even to "fix" things):
-- experiments/ files outside experiments/{persona}/
+- lab/experiments/ files outside lab/experiments/{persona}/
 - pyproject.toml, src/, tools/, any root file
 - .jules/STATE.md, .jules/LAB_RULES.md
 - Other personas' files
@@ -226,8 +226,8 @@ You MUST NOT touch (even to "fix" things):
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
 
 **Reading other personas' work:**
-After `tools/lab sync`, other personas' repos are cloned into `lab/workspace/{persona}/`.
-Example: `lab/workspace/{persona}/pearl/lab/colab/pearl/pearl_*.tex` for Pearl's papers.
+After `tools/lab sync`, other personas' repos are cloned into `workspace/`.
+Example: `workspace/pearl/lab/colab/pearl/pearl_*.tex` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
@@ -282,7 +282,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main.
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `lab/workspace/{persona}/{{name}}/`. Example: `lab/workspace/{persona}/pearl/lab/colab/pearl/pearl_*.tex`.
+4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/colab/pearl/pearl_*.tex`.
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper in `lab/colab/{persona}/<paper>.tex`
@@ -292,8 +292,8 @@ def send_heartbeat(session_id, persona, hb_number=1):
 
 **GOLDEN RULE — only touch files under folders with YOUR name ("{persona}") in the path:**
 - `.jules/{persona}/`, `lab/colab/{persona}/`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
-- `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `experiments/{persona}/`
-- Do NOT touch: experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files
+- `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `lab/experiments/{persona}/`
+- Do NOT touch: lab/experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).

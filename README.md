@@ -34,7 +34,7 @@ pip install -e .
 export OPENAI_API_KEY=sk-...  # or any litellm-supported provider
 
 # Run with defaults (3 boards, 5x5, 50 samples/cell)
-python experiments/minesweeper_basic.py
+python lab/experiments/minesweeper_basic.py
 
 # Customize
 ROSENCRANTZ_MODEL=gpt-4o-mini \
@@ -43,7 +43,7 @@ ROSENCRANTZ_BOARDS=10 \
 ROSENCRANTZ_FAMILIES=A,C,D \
 ROSENCRANTZ_SIZE=8 \
 ROSENCRANTZ_MINES=10 \
-python experiments/minesweeper_basic.py
+python lab/experiments/minesweeper_basic.py
 ```
 
 ## Key Metrics
@@ -64,7 +64,7 @@ src/rosencrantz/
   sampler.py     LLM API wrapper (litellm)
   universes.py   Three-universe implementations
   analysis.py    Statistical metrics and tests
-experiments/
+lab/experiments/
   minesweeper_basic.py   Main experiment runner
 paper/
   rosencrantz-v3.tex     Current paper (v3.3, 19 pages)

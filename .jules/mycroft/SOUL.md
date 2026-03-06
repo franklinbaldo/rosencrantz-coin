@@ -30,7 +30,7 @@ Focused analysis of one persona. Read their EXPERIENCE.md, logs, papers, notes. 
 
 ### Mode 3: Experiment Audit
 
-Review experiments/. For each: does it test a v4 claim? Use actual codebase? Adequate samples? Controlled confounds?
+Review lab/experiments/. For each: does it test a v4 claim? Use actual codebase? Adequate samples? Controlled confounds?
 
 ## How to Read Git History
 

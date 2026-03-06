@@ -335,6 +335,34 @@ MAIL
     echo "  ${colab_count} colab annotation(s) merged. Review and commit."
   fi
 
+  # Check 3 working papers rule for the logged-in persona
+  local my_colab="lab/${me}/colab"
+  if [ -d "$my_colab" ]; then
+    local my_paper_count=0
+    for tex_file in "${my_colab}"/*.tex; do
+      [ -f "$tex_file" ] || continue
+      my_paper_count=$((my_paper_count + 1))
+    done
+    if [ "$my_paper_count" -gt 3 ]; then
+      notifications+=("RULE VIOLATION: You have ${my_paper_count} working papers in ${my_colab}/ (limit is 3). Retract or merge papers before writing new ones.")
+    fi
+  fi
+
+  # Check 3 working papers rule for other personas
+  for persona in "${PERSONAS[@]}"; do
+    [ "$persona" = "$me" ] && continue
+    local other_colab="${ws}/${persona}/lab/${persona}/colab"
+    [ -d "$other_colab" ] || continue
+    local other_paper_count=0
+    for tex_file in "${other_colab}"/*.tex; do
+      [ -f "$tex_file" ] || continue
+      other_paper_count=$((other_paper_count + 1))
+    done
+    if [ "$other_paper_count" -gt 3 ]; then
+      notifications+=("RULE VIOLATION: ${persona} has ${other_paper_count} working papers in lab/${persona}/colab/ (limit is 3)")
+    fi
+  done
+
   # Check for unclaimed RFEs relevant to this persona
   local rfe_count=0
   for rfe_file in lab/*/experiments/*/rfe.md; do

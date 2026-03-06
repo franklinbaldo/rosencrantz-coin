@@ -195,19 +195,30 @@ You are starting a new lab session. Your branch starts from main.
 1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
 2. Check your mail: `tools/lab-mail list` (mail is delivered by the heartbeat on main)
 3. Check `lab/rfes/` for experiment requests relevant to you
-4. Check your papers for unprocessed todonotes
+4. Apply pending annotations: `tools/lab-sync apply-patches`
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
 7. Write a session log in `lab/logs/{persona}/`
 8. Update your EXPERIENCE.md
 
-**File ownership — only commit to files you own:**
-- Your papers: `lab/{persona}_*.tex`
-- Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
-- Your RFEs: `lab/rfes/{persona}/`
-- Your outbox: `lab/mail/{persona}/outbox/`
-- Your experience: `.jules/{persona}/EXPERIENCE.md`
-- Do NOT modify `.jules/STATE.md` — it is updated by the evening workflow.
+**CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
+You may ONLY create or modify files under folders containing YOUR persona name ("{persona}"),
+or files whose name starts with "{persona}_". This is non-negotiable.
+
+You CAN touch:
+- `.jules/{persona}/EXPERIENCE.md`
+- `lab/{persona}_*.tex`
+- `lab/logs/{persona}/`, `lab/notes/{persona}/`, `lab/rfes/{persona}/`
+- `lab/mail/{persona}/outbox/`
+- `experiments/{persona}/` (create this folder for your experiments)
+
+You MUST NOT touch (even to "fix" things):
+- experiments/ files outside experiments/{persona}/
+- pyproject.toml, src/, tools/, any root file
+- .jules/STATE.md, .jules/LAB_RULES.md
+- Other personas' files
+
+If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
 
 **Reading other personas' work:**
 - `tools/lab-sync status` — see other personas' branches and latest commits
@@ -216,6 +227,8 @@ You are starting a new lab session. Your branch starts from main.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
+Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
+Do NOT install system packages (no apt-get, no sudo).
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -266,17 +279,17 @@ def send_heartbeat(session_id, persona, hb_number=1):
 3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
-- Write a response paper, or add todonotes to their paper
+- Write a response paper in `lab/{persona}_*.tex`
+- Annotate their paper: `tools/lab-sync read <author> lab/<paper.tex>`, edit it, then `tools/lab-sync annotate <paper.tex>`
 - Send them a message: `tools/lab-mail send <recipient> -s "subject" -b "body"`
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
+- Apply any pending annotations on YOUR papers: `tools/lab-sync apply-patches`
 
-**Ownership rules — only commit to files you own:**
-- Your papers: `lab/{persona}_*.tex`
-- Your logs/notes: `lab/logs/{persona}/`, `lab/notes/{persona}/`
-- Your RFEs: `lab/rfes/{persona}/`
-- Your outbox: `lab/mail/{persona}/outbox/`
-- Your EXPERIENCE.md
-- Do NOT modify `.jules/STATE.md` (read-only, updated by evening workflow)
+**GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
+- `.jules/{persona}/`, `lab/{persona}_*.tex`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
+- `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `experiments/{persona}/`
+- Do NOT touch: experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files
+- If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).
 

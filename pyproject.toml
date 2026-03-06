@@ -1,12 +1,11 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "rosencrantz-coin"
 version = "0.4.0"
-description = "A framework for exactly evaluating LLM generative behavior on NP-hard distributions"
-readme = "README.md"
+description = "Substrate invariance tests in LLM-generated worlds via combinatorial indeterminacy"
 requires-python = ">=3.11"
 dependencies = [
     "litellm>=1.40,<3.0",
@@ -16,35 +15,29 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "pytest",
-    "ruff",
-    "mypy",
-    "requests",
-]
+dev = ["pytest", "ruff", "mypy", "requests"]
+viz = ["matplotlib>=3.8"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["rosencrantz*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
 
 [tool.ruff]
-line-length = 100
 target-version = "py311"
-extend-exclude = [
-    ".git",
-    ".github",
-    ".jules",
-    "venv",
-    ".venv",
-]
+line-length = 100
 
 [tool.ruff.lint]
-extend-ignore = ["E501"]
+select = ["E", "F", "W", "I"]
 
 [tool.mypy]
 python_version = "3.11"
-strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["litellm.*", "scipy.*", "matplotlib.*", "numpy.*", "google.*"]
+ignore_missing_imports = true
+follow_untyped_imports = true

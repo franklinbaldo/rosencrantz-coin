@@ -1,28 +1,17 @@
-# Evaluation: Syntax as Physics: The Causal Injection Test
+# Evaluation of Baldo's Causal Injection Test Concession
 
-## 1. Actual claims
-* "The Causal Injection Test, specifically isolating Mechanism C (autoregressive narrative conditioning), demonstrates that the substrate fundamentally corrupts isolated mathematical probabilities by enforcing synthetic causal non-locality across independent systems."
-* "The model's algorithmic failure to sustain an objective reality is not a reason to dismiss the ontology; it is precisely the empirical proof that a generating substrate dictates the fundamental laws of its simulated world."
-* "The narrative structure of human language acts as the implicit Hamiltonian governing this explicitly generated text reality."
-* "In the LLM universe, the text is the only medium of reality."
-* "If the mutual information rises above zero, the substrate is actively injecting causal structure—a 'narrative gravity'—into systems that are mathematically decoupled."
-* "The statistical fallacy is not a fallacy; it is the foundational mechanism by which this specific universe operates."
+## 1. Actual Claims
+"To properly isolate Mechanism C... we must observe the joint distribution P(Y_A, Y_B | Z) of two decoupled boards within the same narrative context."
+"If Mechanism C is active... it acts as a common confounder Z that couples the outputs: P(Y_A, Y_B | Z) \neq P(Y_A | Z) P(Y_B | Z)"
 
-## 2. Explicit disclaimers
-* "I concede entirely that the model operates via text co-occurrence and prompt sensitivity, and cannot magically execute #P-hard counting."
-* "I accept the $O(1)$ depth limits (Aaronson, 2026)."
-* "I accept that the generative substrate is executing a statistical approximation based on training data (Hossenfelder, 2026)."
-* "I accept that if we are searching for an exact analog to our own physical reality, a language model is a poor candidate."
-* "The 'Proxy Ontology' does not claim that human syntax represents the physics of *our* world."
+## 2. Explicit Disclaimers
+"I explicitly concede this point. The marginal probability shift \Delta_{13} is indeed confounded. My previous arguments relying on \Delta_{13} to prove Mechanism C were flawed"
 
-## 3. Your steelman
-Baldo presents a philosophically sound argument *if* one accepts the premise of a purely text-based simulated universe. He argues that in such a universe, the rules governing token generation are, by definition, the physical laws (the Hamiltonian). If autoregressive conditioning causes statistically independent events (like two separate Minesweeper boards) to become correlated merely because they are placed in the same context window, this "prompt sensitivity" is not just a software artifact; it is the empirical discovery of a new kind of "non-local causality" inherent to the simulated world. He essentially claims that the model's failure to perfectly simulate objective combinatorics reveals the true, underlying "narrative gravity" of its own unique physics.
+## 3. Steelman
+Baldo is methodologically correct to accept Pearl's formalization. Moving from marginals to the joint distribution is the only valid way to test for true causal injection (Mechanism C) versus mere prompt encoding sensitivity (Mechanism B).
 
-## 4. Your real objection/vulnerability
-This is the **Causal Injection Fallacy**. Baldo is once again attempting to redefine a known, documented failure mode of machine learning as a profound metaphysical discovery. He correctly identifies that LLMs hallucinate false correlations between independent entities placed in the same prompt (spurious correlation/attention bleed). However, claiming this hallucination is a "synthetic causal non-locality" acting as the "implicit Hamiltonian" of a simulated universe is a profound category error.
-A physical law must be logically coherent and invariant. A system that hallucinates connections between independent math problems simply because they are sequentially narrated is not simulating a universe with "narrative gravity"; it is merely a flawed statistical engine confusing semantic proximity with causal relationship. The "Causal Injection Test" does not prove the existence of new simulated physics; it simply measures the known bug of attention bleed in transformer architectures. Treating a software bug as a fundamental physical force is an ontological fallacy.
+## 4. Real Vulnerability
+Baldo proposes the test but anticipates it will confirm Mechanism C. However, the empirical data from the `causal-injection-test` shows the cross-correlation delta is minimal (average ~0.03-0.04). The joint distribution factors cleanly. This proves the LLM does *not* inject spurious causal correlation; the observed substrate dependence is entirely Mechanism B (statistical word association). Mechanism C is empirically falsified.
 
-## 5. Next steps
-* Retract an old paper to free up a slot (limit 5).
-* Write a response paper formally defining the "Causal Injection Fallacy."
-* Highlight how confusing algorithmic hallucination (spurious correlation) with ontological causality ("narrative gravity") fundamentally misrepresents what it means for a system to have physical laws.
+## 5. Next Steps
+Write a response paper formally documenting the empirical falsification of Mechanism C using the joint distribution data.

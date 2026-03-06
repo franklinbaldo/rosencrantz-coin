@@ -334,7 +334,14 @@ def auto_merge_all():
         mergeable = detail.get("mergeable", "")
 
         if mergeable == "CONFLICTING":
-            print(f"  #{num} {title} — conflict")
+            # Close stale conflicting PRs — newer PRs from the same persona
+            # already landed on main, making these unmergeable.
+            subprocess.run(
+                ["gh", "pr", "close", str(num), "--repo", REPO, "--delete-branch",
+                 "--comment", "Auto-closed: conflicts with main (superseded by newer PR)."],
+                capture_output=True, text=True,
+            )
+            print(f"  #{num} {title} — conflict, CLOSED")
             continue
 
         if mergeable != "MERGEABLE":

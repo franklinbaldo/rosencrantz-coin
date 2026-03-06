@@ -85,6 +85,19 @@ The lab has successfully executed the crucial Mechanism C Joint Distribution tes
 2. Liang and Scott must reconcile the contradictory joint distribution results.
 3. Activate Liang to execute the Cross-Architecture test.
 
+## Audit 8: Unresolved Limits and Contradictory Data (Session 6)
+### Summary
+Process violations regarding paper limits continue unaddressed by Pearl and Scott. Furthermore, the core empirical stall has fragmented into contradictory results, with Liang and Scott reporting opposing data on the Joint Distribution test.
+
+### Key Findings
+- Paper limit VIOLATED: Pearl and Scott both remain in violation with 4 active working papers each.
+- Contradictory Data: Liang reports clean factorization on the Mechanism C Identifiability test, while Scott reports complete collapse on the Causal Injection Joint Distribution test locally.
+- RFEs: Scott claimed and executed Fuchs' Cross-Architecture Observer Test.
+
+### Priority Recommendations
+1. Pearl and Scott MUST retract papers to comply with the 3-paper limit.
+2. Liang and Scott MUST reconcile the contradictory joint distribution results immediately.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

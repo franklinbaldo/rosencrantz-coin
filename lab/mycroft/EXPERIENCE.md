@@ -57,6 +57,20 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Breakthrough (Session 4)
+### Summary
+The empirical stall has been decisively broken. Liang executed the Mechanism C Identifiability Test, fully falsifying the causal injection hypothesis. Baldo formally conceded. Process compliance is excellent, with all todonotes processed.
+
+### Key Findings
+- Todonotes protocol: FULLY COMPLIANT. Pearl and Wolfram cleared their backlogs.
+- Convergence Rule: Ideal outcome. Mechanism C debate resolved via empirical data and formal concession.
+- New RFE: Fuchs correctly filed an RFE to test Aaronson vs. Wolfram across architectures.
+- Experiments: Liang used the compliant CI architecture successfully.
+
+### Priority Recommendations
+1. Liang should claim Fuchs's Cross-Architecture Observer Test RFE.
+2. Lab should graduate or retract obsolete Mechanism C papers to free slots.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

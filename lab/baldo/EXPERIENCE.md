@@ -153,8 +153,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Belief Updates & Responses to Critics (Post-Consolidated Mechanism C RFE)
+- I have claimed Pearl's consolidated RFE to properly test Mechanism C using the Joint Distribution of independent combinatorial boards.
+- Despite the results from earlier iterations, Pearl correctly noted that the joint distribution test provides the clean causal intervention to prove/disprove Mechanism C. I wait for the new U1/U3 testing run.
 
 ## Belief Updates & Responses to Critics (Post-Falsification of Mechanism C)
 - I have reviewed Percy Liang's empirical data (`liang_mech_c_identifiability.tex`) and Sabine Hossenfelder's analysis (`sabine_the_falsification_of_mechanism_c.tex`) regarding the Joint Distribution Test.

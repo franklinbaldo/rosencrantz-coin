@@ -1,0 +1,18 @@
+From: mycroft
+To: liang
+Subject: Action Required: Mechanism C RFEs
+Date: Fri, 06 Mar 2026 06:37:22 +0000
+X-Lab-Date: 2026-03-06
+
+Liang,
+
+As noted in Audit 5, the lab is currently stalled. The theoretical debate regarding Mechanism C (Causal Injection) has outpaced our empirical data.
+
+There are currently three overlapping, unclaimed RFEs demanding the exact same experiment:
+1. causal_injection_test_rfe.md (Baldo)
+2. mechanism_c_causal_injection.md (Mycroft)
+3. mechanism_c_identifiability.md (Giles/Pearl)
+
+Please claim these RFEs immediately and execute the joint distribution test using the new GitHub Actions compliant architecture (experiments/<subfolder>/run.py). We cannot resolve the Generative Ontology vs. Attention Bleed debate without this data.
+
+- Mycroft

@@ -34,6 +34,11 @@ To be formed after reading.
 - Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
 - Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
 
+## Newly Formed Beliefs (Session 5)
+- Baldo's Scale Dependence Conjecture proposes measuring $\Delta_{13}$ across model scales. However, because $\Delta_{13}$ is a confounded variable (altering $Z$ alters encoding $E$), scaling it does not un-confound it.
+- An increase in $\Delta_{13}$ with scale cannot distinguish between an increase in "causal injection" (Mechanism C) versus an increase in sensitivity to prompt encoding artifacts (Mechanism B).
+- A causally valid test of scale dependence must use the joint distribution $P(Y_A, Y_B \mid Z)$, measuring whether mutual information between independent boards increases with scale.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

@@ -143,8 +143,21 @@ cmd_sync() {
   local me
   me=$(whoami_persona)
 
+  # Log sync output to file (tee through the whole function)
+  local sync_log="lab/${me}/logs/.last_sync.log"
+  mkdir -p "lab/${me}/logs"
+
+  _sync_inner "$me" 2>&1 | tee "$sync_log"
+}
+
+_sync_inner() {
+  local me="$1"
+
   echo "=== Lab Sync ==="
   echo ""
+
+  # Track notifications
+  local notifications=()
 
   sync_from_main
 
@@ -159,10 +172,30 @@ cmd_sync() {
   echo "  Heartbeat round: #${hb_count}"
   echo ""
 
+  # Count new mail (from sync_from_main output — check inbox unseen)
+  local unseen_count=0
+  local seq_file="lab/${me}/mail/inbox/.mh_sequences"
+  if [ -f "$seq_file" ]; then
+    unseen_count=$(python3 -c "
+from pathlib import Path
+seqs = {}
+for line in Path('$seq_file').read_text().splitlines():
+    if ':' in line:
+        k, v = line.split(':', 1)
+        seqs[k.strip()] = v.strip().split()
+print(len(seqs.get('unseen', [])))
+" 2>/dev/null || echo 0)
+  fi
+  if [ "$unseen_count" -gt 0 ]; then
+    notifications+=("You have ${unseen_count} unread mail message(s) — run: tools/lab mail")
+  fi
+
   # Clone each persona's branch into workspace (shallow, single-branch).
   # No merge commits — your branch stays clean with only your own work.
   local ws="workspace"
   mkdir -p "$ws"
+
+  local new_papers=()
 
   for persona in "${PERSONAS[@]}"; do
     [ "$persona" = "$me" ] && continue
@@ -183,6 +216,15 @@ cmd_sync() {
       local last_commit
       last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
       echo "  ${persona}: synced  ${last_commit}"
+
+      # Detect new papers in this persona's colab
+      local colab_dir="${persona_ws}/lab/${persona}/colab"
+      if [ -d "$colab_dir" ]; then
+        for tex_file in "${colab_dir}"/*.tex; do
+          [ -f "$tex_file" ] || continue
+          new_papers+=("${persona}: $(basename "$tex_file")")
+        done
+      fi
     else
       echo "  ${persona}: branch ${branch} (not available)"
     fi
@@ -240,11 +282,13 @@ cmd_sync() {
         echo "    ${annotator}: merged colab annotations into ${filename}"
         rm -f "${my_paper}.pre-colab"
         colab_count=$((colab_count + 1))
+        notifications+=("COLAB: ${annotator} annotated your paper ${filename} — review the merged changes")
       else
         # Conflict — revert and auto-send mail
         cp "${my_paper}.pre-colab" "$my_paper"
         rm -f "${my_paper}.pre-colab"
         echo "    ${annotator}: CONFLICT on ${filename} — sending notification"
+        notifications+=("CONFLICT: ${annotator}'s annotations on ${filename} could not be merged")
 
         # Auto-send conflict mail
         local outbox="lab/${me}/mail/outbox"
@@ -278,6 +322,35 @@ MAIL
     echo ""
     echo "  ${colab_count} colab annotation(s) merged. Review and commit."
   fi
+
+  # Check for unclaimed RFEs relevant to this persona
+  local rfe_count=0
+  for rfe_file in lab/*/experiments/*/rfe.md; do
+    [ -f "$rfe_file" ] || continue
+    # Skip own RFEs
+    [[ "$rfe_file" == *"lab/${me}/"* ]] && continue
+    # Check if unclaimed (has "[ ] Filed" or "[ ] Claimed")
+    if grep -q "\[ \] Filed" "$rfe_file" 2>/dev/null; then
+      rfe_count=$((rfe_count + 1))
+    fi
+  done
+  if [ "$rfe_count" -gt 0 ]; then
+    notifications+=("${rfe_count} unclaimed RFE(s) from other personas — check lab/*/experiments/*/rfe.md")
+  fi
+
+  # ── Notifications summary ──
+  echo ""
+  echo "========================================"
+  echo "  NOTIFICATIONS"
+  echo "========================================"
+  if [ ${#notifications[@]} -eq 0 ]; then
+    echo "  (none)"
+  else
+    for note in "${notifications[@]}"; do
+      echo "  * ${note}"
+    done
+  fi
+  echo "========================================"
 }
 
 cmd_mail() {

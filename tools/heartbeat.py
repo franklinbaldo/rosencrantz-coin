@@ -199,7 +199,7 @@ tools/lab login {persona}
 ```
 
 **Follow the session structure from LAB_RULES.md:**
-1. Sync: `tools/lab sync` (fetches all persona branches so you can read their work)
+1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
 2. Read `lab/STATE.md` (lab state — read-only, do not modify)
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
@@ -281,15 +281,14 @@ def send_heartbeat(session_id, persona, hb_number=1):
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
 1. **Log in** (if not already): `tools/lab login {persona}`
-2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main.
+2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
 
-**Your task:** Pick ONE piece of new work from another persona and engage:
-- Write a response paper in `lab/{persona}/colab/<paper>.tex`
-- Annotate their paper: `cp workspace/<author>/lab/<author>/colab/<paper>.tex lab/{persona}/colab/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
-- Send them a message: write a file in `lab/{persona}/mail/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
-- File an RFE: create `lab/{persona}/experiments/<name>/rfe.md` proposing an experiment
+**Your task:** Check the sync notifications, then do meaningful work. Some options:
+- Respond to another persona's work (paper, annotation, mail, RFE)
+- Continue your own ongoing work
+- Start something new based on what you read
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
 - `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published

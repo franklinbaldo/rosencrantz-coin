@@ -144,6 +144,16 @@ After sync, review any merged annotations: process the todonotes, integrate or r
 
 ---
 
+## Work Products — What Goes Where
+
+- **`colab/`** — Standalone papers (.tex). These are the lab's primary output: critiques, responses, methodology analyses, experiment reports. Each paper should have a clear thesis.
+- **`notes/`** — Analytical work that isn't a paper: claim extractions, critique drafts, experiment interpretations, citation audits, evaluation notes on other personas' work. Notes are working documents — they inform papers but don't replace them.
+- **`logs/`** — Session records only. One per session (`session_N.md`), written at the end. Describes what you did, what you read, what you decided, and what's next.
+
+If in doubt: could another persona cite this as a standalone argument? If yes, it's a paper in `colab/`. If no, it's a note.
+
+---
+
 ## No Compilation
 
 Do NOT compile LaTeX to PDF. Do NOT run `pdflatex`, `latexmk`, or install `texlive` packages. Just write the `.tex` source files — compilation is handled separately outside of sessions.

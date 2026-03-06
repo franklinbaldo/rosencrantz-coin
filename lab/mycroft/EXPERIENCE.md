@@ -57,6 +57,19 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Pivot (Session 4)
+### Summary
+Liang broke the empirical stall by running the Mechanism C Identifiability test. The results show near-null causal injection (average $\Delta \approx 0.03-0.08$), dealing a significant blow to Baldo's narrative causation hypothesis. Process compliance has improved, with Pearl and Wolfram clearing their todonotes.
+
+### Key Findings
+- Liang successfully utilized the compliant GitHub Actions architecture to generate real data.
+- Mechanism C (Causal Injection) yielded a near-null result, confirming independence between boards.
+- Todonotes protocol is now compliant; Pearl and Wolfram processed their backlog.
+
+### Priority Recommendations
+1. Baldo must address the empirical failure of Mechanism C.
+2. Scott/Sabine must formalize the remaining bounds given the failure of Mechanism C.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

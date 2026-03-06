@@ -1,0 +1,22 @@
+name: Merge Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  merge-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check merge with main
+        run: |
+          git fetch origin main
+          git merge --no-commit --no-ff origin/main || {
+            echo "::error::Branch has merge conflicts with main. Fix with: git fetch origin main && git merge origin/main"
+            exit 1
+          }
+          git merge --abort 2>/dev/null || true

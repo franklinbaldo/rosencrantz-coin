@@ -2,7 +2,7 @@
 """Lab Heartbeat — single command to manage all persona sessions.
 
 Usage:
-  heartbeat.py heartbeat    Create or continue sessions (runs every ~20min)
+  heartbeat.py heartbeat    Create or continue sessions (runs every ~15min)
   heartbeat.py status       Show current session status
 
 Sessions are identified by title "Rosencrantz — {persona} #{num}".
@@ -152,6 +152,68 @@ def find_persona_branches():
                 break
 
     return branches
+
+
+# ── PR merging ───────────────────────────────────────────────────────────────
+
+def find_persona_pr(persona):
+    """Find a persona's open PR number targeting main. Returns int or None."""
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "number,title,headRefName", "--limit", "50"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return None
+    try:
+        prs = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return None
+
+    for pr in prs:
+        title = pr.get("title", "").lower()
+        head = pr.get("headRefName", "")
+        if persona in title or f"_{persona}" in head or f"_{persona}-" in head:
+            return pr["number"]
+    return None
+
+
+def merge_persona_pr(persona):
+    """Try to merge a persona's open PR into main.
+
+    Returns: 'merged', 'conflict', or 'none' (no PR found).
+    """
+    pr_num = find_persona_pr(persona)
+    if pr_num is None:
+        return "none"
+
+    # Check mergeable status
+    result = subprocess.run(
+        ["gh", "pr", "view", str(pr_num), "--repo", REPO,
+         "--json", "mergeable", "--jq", ".mergeable"],
+        capture_output=True, text=True,
+    )
+    mergeable = result.stdout.strip()
+
+    if mergeable == "CONFLICTING":
+        print(f"    PR #{pr_num}: conflicts (Jules CI fixer will handle)")
+        return "conflict"
+
+    if mergeable != "MERGEABLE":
+        print(f"    PR #{pr_num}: mergeable={mergeable}, skipping")
+        return "none"
+
+    # Merge
+    result = subprocess.run(
+        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge"],
+        capture_output=True, text=True,
+    )
+    if result.returncode == 0:
+        print(f"    Merged PR #{pr_num}")
+        return "merged"
+
+    print(f"    Merge failed: {result.stderr.strip()}")
+    return "conflict"
 
 
 # ── Announcements ────────────────────────────────────────────────────────────
@@ -418,31 +480,33 @@ def cmd_heartbeat(force_new=False):
     for persona in PERSONAS:
         info = sessions.get(persona)
 
-        # force-new: always create fresh sessions
+        needs_new = False
+        reason = ""
+
         if force_new:
-            print(f"  {persona}: force-new — creating new session")
-            try:
-                create_session(persona)
-                results[persona] = "-> new (forced)"
-            except Exception as e:
-                print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-            continue
+            needs_new = True
+            reason = "forced"
+        elif info and info["state"] == "FAILED":
+            needs_new = True
+            reason = "previous failed"
+        elif not info:
+            needs_new = True
+            reason = "no session"
+        elif is_expired(info):
+            needs_new = True
+            reason = "expired (>24h)"
 
-        # FAILED -> create new
-        if info and info["state"] == "FAILED":
-            print(f"  {persona}: FAILED — creating new session")
-            try:
-                create_session(persona)
-                results[persona] = "-> new (previous failed)"
-            except Exception as e:
-                print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-            continue
+        if needs_new:
+            # Try to merge the persona's PR before creating a new session
+            merge = merge_persona_pr(persona)
+            if merge == "conflict":
+                print(f"  {persona}: PR has conflicts — skipping until resolved")
+                results[persona] = "-> conflict (waiting for CI fix)"
+                continue
 
-        # No session or expired -> create new
-        if not info or is_expired(info):
-            reason = "no session" if not info else "expired (>24h)"
+            if merge == "merged":
+                reason += ", merged PR"
+
             print(f"  {persona}: {reason} — creating new session")
             try:
                 create_session(persona)

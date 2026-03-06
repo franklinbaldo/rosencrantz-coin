@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   reconcile:
+    # Disabled: heartbeat now merges PRs when sessions expire
+    if: false
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,7 +33,7 @@ jobs:
       - name: Merge persona PRs
         id: merge-prs
         run: |
-          PERSONAS="baldo scott sabine pearl fuchs liang wolfram mycroft giles"
+          PERSONAS=$(ls -d lab/*/SOUL.md 2>/dev/null | sed 's|lab/||;s|/SOUL.md||' | sort | tr '\n' ' ')
           CONFLICTED=""
 
           # Get all open PRs targeting main
@@ -87,8 +89,9 @@ jobs:
           API = "https://jules.googleapis.com/v1alpha"
           KEY = os.environ["JULES_API_KEY"]
           HEADERS = {"x-goog-api-key": KEY, "Content-Type": "application/json"}
-          PERSONAS = ["baldo", "scott", "sabine", "pearl", "fuchs",
-                      "liang", "wolfram", "mycroft", "giles"]
+          PERSONAS = sorted(
+              p.parent.name for p in __import__('pathlib').Path("lab").glob("*/SOUL.md")
+          )
 
           # Load session map
           sessions = {}

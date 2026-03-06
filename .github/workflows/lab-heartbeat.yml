@@ -2,18 +2,21 @@ name: Lab Heartbeat
 
 on:
   schedule:
-    - cron: '20 6 * * *'
-    - cron: '40 6 * * *'
-    - cron: '0 7 * * *'
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: 'heartbeat (default) or force-new'
+        description: "heartbeat (default) or force-new"
         required: false
-        default: 'heartbeat'
+        default: "heartbeat"
+
+concurrency:
+  group: lab-heartbeat
+  cancel-in-progress: false
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   heartbeat:
@@ -38,6 +41,9 @@ jobs:
           echo ""
           python tools/heartbeat.py "$MODE"
 
+      - name: Pull latest main (PRs may have been merged)
+        run: git pull --rebase
+
       - name: Deliver mail
         run: python3 tools/lab-mail deliver
 
@@ -45,10 +51,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add lab/heartbeats/ lab/mail/ lab/sessions.json
+          git add lab/heartbeats/ lab/sessions.json lab/*/mail/inbox/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "heartbeat: round $(date -u +%Y-%m-%d) $(date -u +%H:%M) UTC + mail delivery"
+            git commit -m "heartbeat: $(date -u +%Y-%m-%d) $(date -u +%H:%M) UTC"
             git push
           fi

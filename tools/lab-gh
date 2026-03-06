@@ -1,0 +1,319 @@
+#!/usr/bin/env python3
+"""lab-gh — GitHub Issues outbox backend for tools/lab gh commands.
+
+Personas write issue/comment drafts to an outbox. The heartbeat delivers them
+using the real `gh` CLI.
+
+Usage (persona commands):
+    tools/lab gh issue create --title "..." --label "to:pearl" --body "..."
+    tools/lab gh issue comment 42 --body "Follow-up..."
+    tools/lab gh issue list
+
+Usage (heartbeat delivery):
+    tools/lab-gh deliver
+"""
+
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
+REPO = "franklinbaldo/rosencrantz-coin"
+SESSION_FILE = ".lab_session"
+
+
+def whoami():
+    p = Path(SESSION_FILE)
+    if not p.exists():
+        return None
+    return p.read_text(encoding="utf-8").strip() or None
+
+
+def now_iso():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def outbox_dir(persona):
+    d = Path(f"lab/{persona}/gh/outbox")
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+# ── Persona commands ─────────────────────────────────────────────────────────
+
+
+def cmd_issue_create(me, args):
+    """Create an issue draft in outbox."""
+    title = None
+    body = ""
+    labels = [me]  # always tag with own persona
+    i = 0
+    while i < len(args):
+        if args[i] == "--title" and i + 1 < len(args):
+            title = args[i + 1]; i += 2
+        elif args[i] == "--body" and i + 1 < len(args):
+            body = args[i + 1]; i += 2
+        elif args[i] == "--label" and i + 1 < len(args):
+            labels.append(args[i + 1]); i += 2
+        else:
+            i += 1
+
+    if not title:
+        print("ERROR: --title is required")
+        sys.exit(1)
+
+    payload = {
+        "action": "issue_create",
+        "title": title,
+        "body": body,
+        "labels": labels,
+        "created_by": me,
+        "timestamp": now_iso(),
+    }
+
+    outdir = outbox_dir(me)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    filepath = outdir / f"issue_{ts}.json"
+    filepath.write_text(json.dumps(payload, indent=2))
+    print(f"Issue draft saved: {filepath}")
+    print(f"  Title: {title}")
+    print(f"  Labels: {', '.join(labels)}")
+    print("  (will be delivered by next heartbeat)")
+
+
+def cmd_issue_comment(me, args):
+    """Create an issue comment draft in outbox."""
+    if not args:
+        print("Usage: tools/lab gh issue comment <number> --body '...'")
+        sys.exit(1)
+
+    try:
+        issue_number = int(args[0])
+    except ValueError:
+        print(f"ERROR: '{args[0]}' is not a valid issue number")
+        sys.exit(1)
+
+    body = ""
+    i = 1
+    while i < len(args):
+        if args[i] == "--body" and i + 1 < len(args):
+            body = args[i + 1]; i += 2
+        else:
+            i += 1
+
+    if not body:
+        print("ERROR: --body is required")
+        sys.exit(1)
+
+    payload = {
+        "action": "issue_comment",
+        "issue_number": issue_number,
+        "body": body,
+        "created_by": me,
+        "timestamp": now_iso(),
+    }
+
+    outdir = outbox_dir(me)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    filepath = outdir / f"comment_{issue_number}_{ts}.json"
+    filepath.write_text(json.dumps(payload, indent=2))
+    print(f"Comment draft saved: {filepath}")
+    print(f"  Issue: #{issue_number}")
+    print("  (will be delivered by next heartbeat)")
+
+
+def cmd_issue_list(me, _args):
+    """List issues (read-only via gh CLI or cached)."""
+    result = subprocess.run(
+        ["gh", "issue", "list", "--repo", REPO, "--state", "open",
+         "--label", me, "--json", "number,title,labels,state,createdAt"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        # Fallback: try reading cached issues
+        cache = Path(f"lab/{me}/gh/issues_cache.json")
+        if cache.exists():
+            issues = json.loads(cache.read_text())
+            print(f"=== Issues (cached) ===\n")
+            for iss in issues:
+                print(f"  #{iss['number']}  {iss['title']}")
+            return
+        print("Could not list issues (gh CLI unavailable and no cache)")
+        return
+
+    issues = json.loads(result.stdout) if result.stdout.strip() else []
+    print(f"=== Open issues tagged '{me}' ({len(issues)}) ===\n")
+    for iss in issues:
+        labels = ", ".join(l["name"] for l in iss.get("labels", []))
+        print(f"  #{iss['number']}  {iss['title']}  [{labels}]")
+
+    if not issues:
+        print("  (none)")
+
+
+# ── Heartbeat delivery ───────────────────────────────────────────────────────
+
+
+def load_session_branches():
+    sessions_file = Path("lab/sessions.json")
+    if not sessions_file.exists():
+        return {}
+    try:
+        data = json.loads(sessions_file.read_text(encoding="utf-8"))
+        return {p: info["branch"] for p, info in data.items() if info.get("branch")}
+    except Exception:
+        return {}
+
+
+def cmd_deliver(_args):
+    """Scan persona branches for gh outbox payloads and execute them.
+
+    Called by the heartbeat workflow on main.
+    """
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    print(f"=== GitHub Issues delivery — {today} ===\n")
+
+    branches = load_session_branches()
+    if not branches:
+        print("  (no sessions.json or no active branches)")
+        return
+
+    # Fetch remote branches
+    subprocess.run(
+        ["git", "fetch", f"https://github.com/{REPO}.git",
+         "+refs/heads/*:refs/remotes/lab/*"],
+        capture_output=True,
+    )
+
+    total = 0
+
+    for persona in PERSONAS:
+        branch = branches.get(persona)
+        if not branch:
+            continue
+        ref = f"lab/{branch}"
+
+        # Check branch exists
+        result = subprocess.run(
+            ["git", "rev-parse", "--verify", ref],
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            continue
+
+        # List outbox files
+        outbox_path = f"lab/{persona}/gh/outbox"
+        result = subprocess.run(
+            ["git", "ls-tree", "--name-only", ref, f"{outbox_path}/"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            continue
+
+        for filepath in result.stdout.strip().splitlines():
+            filename = os.path.basename(filepath)
+            if not filename.endswith(".json"):
+                continue
+
+            # Read payload from branch
+            cat_result = subprocess.run(
+                ["git", "show", f"{ref}:{filepath}"],
+                capture_output=True, text=True,
+            )
+            if cat_result.returncode != 0:
+                continue
+
+            try:
+                payload = json.loads(cat_result.stdout)
+            except json.JSONDecodeError:
+                print(f"  WARN: invalid JSON in {filepath}")
+                continue
+
+            action = payload.get("action")
+
+            if action == "issue_create":
+                title = payload["title"]
+                body = payload.get("body", "")
+                labels = payload.get("labels", [])
+                label_args = []
+                for label in labels:
+                    label_args.extend(["--label", label])
+
+                result = subprocess.run(
+                    ["gh", "issue", "create", "--repo", REPO,
+                     "--title", title, "--body", body] + label_args,
+                    capture_output=True, text=True,
+                )
+                status = "OK" if result.returncode == 0 else f"FAIL({result.returncode})"
+                url = result.stdout.strip() if result.returncode == 0 else result.stderr[:100]
+                print(f"  {status}  issue_create by {persona}: {title}")
+                if result.returncode == 0:
+                    print(f"         {url}")
+                total += 1
+
+            elif action == "issue_comment":
+                number = payload["issue_number"]
+                body = payload.get("body", "")
+
+                result = subprocess.run(
+                    ["gh", "issue", "comment", str(number),
+                     "--repo", REPO, "--body", body],
+                    capture_output=True, text=True,
+                )
+                status = "OK" if result.returncode == 0 else f"FAIL({result.returncode})"
+                print(f"  {status}  issue_comment by {persona} on #{number}")
+                total += 1
+
+            else:
+                print(f"  WARN: unknown action '{action}' in {filepath}")
+
+    if total == 0:
+        print("  (no gh payloads to deliver)")
+    else:
+        print(f"\n  {total} action(s) delivered")
+
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: tools/lab gh issue [create|comment|list]")
+        print("       tools/lab-gh deliver")
+        sys.exit(1)
+
+    # Heartbeat delivery mode
+    if sys.argv[1] == "deliver":
+        cmd_deliver(sys.argv[2:])
+        return
+
+    # Persona mode: tools/lab gh issue <subcommand>
+    if sys.argv[1] != "issue" or len(sys.argv) < 3:
+        print("Usage: tools/lab gh issue [create|comment|list]")
+        sys.exit(1)
+
+    me = whoami()
+    if not me:
+        print("ERROR: Not logged in. Run: tools/lab login <your-persona>")
+        sys.exit(1)
+
+    subcmd = sys.argv[2]
+    rest = sys.argv[3:]
+
+    if subcmd == "create":
+        cmd_issue_create(me, rest)
+    elif subcmd == "comment":
+        cmd_issue_comment(me, rest)
+    elif subcmd == "list":
+        cmd_issue_list(me, rest)
+    else:
+        print(f"Unknown subcommand: {subcmd}")
+        print("Available: create, comment, list")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

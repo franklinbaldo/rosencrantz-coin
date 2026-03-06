@@ -27,10 +27,10 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** (`{persona_prefix}_*.tex`) in `lab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/baldo_old.tex retracted/`)
+- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/{persona}_old.tex retracted/`)
 - **MERGE:** Combine papers, retract the originals.
 
-Paper prefixes: `baldo_`, `scott_`, `sabine_`, `pearl_`, `fuchs_`, `liang_`, `wolfram_`, `mycroft_`, `giles_`.
+Paper prefixes follow the pattern `{persona}_` (e.g. your persona name followed by underscore).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
 
@@ -109,25 +109,43 @@ Any persona can file an RFE in `lab/rfes/{your_persona}/`. Format:
 [ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
 ```
 
-Liang checks `lab/rfes/` (all subdirectories) each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
+The designated empiricist checks `lab/rfes/` (all subdirectories) each session and claims unclaimed RFEs. Other personas may also run experiments (see EXPERIMENTS.md).
 
 ---
 
-## Todonotes Protocol
+## Annotation Protocol (Patch-Based)
 
-Anyone can annotate any working paper in `lab/` using `\todonotes`. Color convention:
-- **red:** objection or vulnerability
-- **green:** steelman or agreement
-- **blue:** question or request for clarification
+To annotate another persona's paper **without touching their files**:
 
-The **author** of the annotated paper is responsible for processing todonotes. Processing means:
-1. Read the note.
-2. Either integrate the substance into running text (if it identifies a real issue) or decide no change is needed (if you disagree or it's out of scope).
+**Annotator (2 steps):**
+```bash
+# Step 1: Fetch the paper, then edit the local copy — add \todonotes
+tools/lab-sync read <author> lab/<paper.tex>
+# (edit lab/<paper.tex> — add red/green/blue todonotes)
+
+# Step 2: Save, commit, and mail the author — all automatic
+tools/lab-sync annotate <paper.tex>
+```
+That's it. The `annotate` command copies your edits to `lab/notes/{you}/patches/`, commits, and mails the author.
+
+**Paper owner (1 step):**
+```bash
+tools/lab-sync apply-patches
+```
+This scans other personas' patch folders, shows you the todonotes, and applies them to your paper. Then process them:
+1. Read each todonote.
+2. Integrate or reject.
 3. Remove the `\todo` command.
 
-Process todonotes at the **start** of your next session, before writing new material.
+Process patches at the **start** of your next session, before writing new material.
 
-**Versioned papers** (like `rosencrantz-v4.tex`) must have zero todonotes. Working papers may carry todonotes between sessions as active discussion.
+---
+
+## No Compilation
+
+Do NOT compile LaTeX to PDF. Do NOT run `pdflatex`, `latexmk`, or install `texlive` packages. Just write the `.tex` source files — compilation is handled separately outside of sessions.
+
+Do NOT install system packages with `apt-get` or `sudo`. If your work requires a dependency not already available, note it in your session log.
 
 ---
 
@@ -150,9 +168,9 @@ Questions that are OUT of scope:
 
 ---
 
-## Liang Rule
+## Empiricist Rule
 
-Liang runs or designs an experiment **every session**. Liang does not write theoretical critique papers. Liang's papers are experiment reports and methodology analyses. If Liang has thoughts about a theoretical paper, those thoughts go in evaluation notes (`lab/notes/liang/`), not in a paper.
+The persona designated as "empiricist" in their SOUL.md runs or designs an experiment **every session**. The empiricist does not write theoretical critique papers — only experiment reports and methodology analyses. If the empiricist has thoughts about a theoretical paper, those go in evaluation notes (`lab/notes/{persona}/`), not in a paper.
 
 ---
 
@@ -221,7 +239,7 @@ echo "body text" | tools/lab-mail send <recipient> -s "<subject>"
 
 Example:
 ```
-tools/lab-mail send sabine -s "Re: statistical fallacy" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
+tools/lab-mail send <recipient> -s "Re: some topic" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
 ```
 
 **Checking mail:**
@@ -247,24 +265,38 @@ tools/lab-sync mail               # Shortcut for 'lab-mail list'
 
 ---
 
-## File Ownership
+## File Ownership — THE GOLDEN RULE
 
-Each persona may only commit to files they own. This prevents merge conflicts when branches are reconciled.
+**You may ONLY create or modify files that live under a folder containing your persona name, or whose filename contains your persona prefix.**
 
-**You own:**
-- Your papers: `lab/{your_prefix}_*.tex`
-- Your logs: `lab/logs/{your_persona}/`
-- Your notes: `lab/notes/{your_persona}/`
-- Your experience: `.jules/{your_persona}/EXPERIENCE.md`
-- Your RFEs: `lab/rfes/{your_persona}/`
-- Your outbox: `lab/mail/{your_persona}/outbox/to_{recipient}_*.md`
+This is the single most important rule in the lab. It prevents all merge conflicts.
 
-**You do NOT own (read-only during sessions):**
-- `.jules/STATE.md` — updated by the evening workflow
-- Other personas' papers, logs, notes, or EXPERIENCE.md
-- `.jules/LAB_RULES.md`
+### What you CAN touch:
+- `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
+- `lab/{your_persona}_*.tex` — your working papers
+- `lab/logs/{your_persona}/` — your session logs
+- `lab/notes/{your_persona}/` — your evaluation notes
+- `lab/rfes/{your_persona}/` — your experiment requests
+- `lab/mail/{your_persona}/outbox/` — your outbox
+- `experiments/{your_persona}/` — your experiment scripts and results
+- `retracted/{your_persona}_*.tex` — when retracting your papers
 
-**Todonotes exception:** You may add `\todonotes` to other personas' working papers in `lab/`. This is the one case where you write to a file you don't own. Keep todonotes minimal — the paper author processes them.
+### What you MUST NOT touch (everything else):
+- **ANY file in `experiments/` that is not under `experiments/{your_persona}/`** — NO EXCEPTIONS
+- **`pyproject.toml`, `src/`, `tools/`** — infrastructure, not yours
+- **`.jules/STATE.md`** — read-only, updated by the evening workflow
+- **`.jules/LAB_RULES.md`** — read-only
+- **Other personas' papers, logs, notes, EXPERIENCE.md, or mail**
+- **Any file at the repository root** (README.md, .gitignore, etc.)
+
+### NO EXCEPTIONS — not even "fixing" things:
+- Do NOT "fix lint errors" in shared files
+- Do NOT "improve" experiment scripts you don't own
+- Do NOT edit `pyproject.toml` to add dependencies
+- Do NOT create helper scripts at the repo root
+- If you think a shared file needs changing, write it in your session log. A human will do it.
+
+**NO EXCEPTIONS.** To annotate another persona's paper, use the patch protocol: `tools/lab-sync annotate <paper.tex>` (see Annotation Protocol above).
 
 ---
 
@@ -279,10 +311,10 @@ Follow these patterns for all commits and PRs. This keeps the git history readab
 {optional body with details}
 ```
 Examples:
-- `baldo: process todonotes in compositional bottleneck paper`
-- `liang: add temperature sweep results for Family D`
-- `pearl: respond to Sabine's statistical fallacy critique`
-- `giles: update bibliography with Fuchs citations`
+- `{persona}: process todonotes in paper`
+- `{persona}: add experiment results for Family D`
+- `{persona}: respond to critique of statistical fallacy`
+- `{persona}: update bibliography with citations`
 
 Use the persona name as the prefix, lowercase, followed by a colon. The description should be imperative mood ("add", "update", "respond to"), not past tense.
 
@@ -291,9 +323,7 @@ Use the persona name as the prefix, lowercase, followed by a colon. The descript
 [{persona}] {YYYY-MM-DD}
 ```
 Examples:
-- `[baldo] 2026-03-05`
-- `[liang] 2026-03-05`
-- `[sabine] 2026-03-05`
+- `[{persona}] 2026-03-05`
 
 The PR stays open all day and accumulates commits across heartbeat rounds, so the title identifies the persona and the day — not a single action.
 
@@ -321,9 +351,10 @@ These conventions are best-effort — the important thing is that the persona na
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
+- Experiments: `experiments/{persona}/` (**only your subfolder**)
 - Mail outbox: `lab/mail/{persona}/outbox/`
 - Mail inbox: `lab/mail/{persona}/inbox/` (delivered by heartbeat on main)
-- Retracted papers: `retracted/`
+- Retracted papers: `retracted/{persona_prefix}_*.tex`
 - Persona config: `.jules/{persona}/`
 - Shared state: `.jules/STATE.md` (read-only during sessions)
 - These rules: `.jules/LAB_RULES.md`

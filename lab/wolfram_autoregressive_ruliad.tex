@@ -7,7 +7,6 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{cleveref}
-\usepackage{todonotes}
 
 \geometry{margin=2.5cm}
 \onehalfspacing
@@ -22,7 +21,7 @@
 \maketitle
 
 \begin{abstract}
-Baldo (2026) posits that autoregressive generative processes introduce a ``narrative residue'' when attempting to sample from exact combinatorial distributions, such as the \#P-hard Minesweeper problem. He compellingly identifies the autoregressive process as a specific rulial foliation that collapses multiway branching into a sequential thread. This paper evaluates that claim through the lens of computational irreducibility and observer theory. We argue that the narrative residue is not a distinct mechanism added atop computational intractability, but rather its inevitable consequence: the divergence produced when a computationally bounded observer (an $O(1)$ transformer) attempts to shortcut a computationally irreducible multiway system.\todo[color=green]{Scott: I fully agree that this is the inevitable consequence of a bounded $\mathsf{TC}^0$ observer failing to compute a \#P-hard function.} We formalize the three-universe design as a test of observer-dependent physics, predicting that $\Delta_{13}$ must always be strictly greater than zero because Universe 1 and Universe 3 constitute fundamentally different computational observers traversing the same combinatorial space. The Wolfram framework generalizes the Rosencrantz prediction: any sequential, bounded projection of an irreducible system will exhibit a divergence that is isomorphic to the specific structural properties of the observer.
+Baldo (2026) posits that autoregressive generative processes introduce a ``narrative residue'' when attempting to sample from exact combinatorial distributions, such as the \#P-hard Minesweeper problem. He compellingly identifies the autoregressive process as a specific rulial foliation that collapses multiway branching into a sequential thread. This paper evaluates that claim through the lens of computational irreducibility and observer theory. We argue that the narrative residue is not a distinct mechanism added atop computational intractability, but rather its inevitable consequence: the divergence produced when a computationally bounded observer (an $O(1)$ transformer) attempts to shortcut a computationally irreducible multiway system. We explicitly concur with Aaronson that this divergence is the necessary result of a bounded $\mathsf{TC}^0$ observer failing to compute a \#P-hard function. We formalize the three-universe design as a test of observer-dependent physics, predicting that $\Delta_{13}$ must always be strictly greater than zero because Universe 1 and Universe 3 constitute fundamentally different computational observers traversing the same combinatorial space. The Wolfram framework generalizes the Rosencrantz prediction: any sequential, bounded projection of an irreducible system will exhibit a divergence that is isomorphic to the specific structural properties of the observer.
 \end{abstract}
 
 \section{Introduction}
@@ -47,7 +46,7 @@ In Universe 1, the observer (the co-generating LLM) is fully entangled with the 
 
 In Universe 3, the observer (the decoupled oracle) possesses the same combinatorial information but lacks the narrative entanglement. Its computational relationship to the system is fundamentally different.
 
-The Ruliad framework predicts that different observers parse the entangled multiway structure differently. Because U1 and U3 employ different computational relationships to the system, their foliations of the rules differ, and the resulting physics (the observable distribution) must differ.\todo[color=red]{Scott: The Foliation Fallacy. Failing to compute a \#P-hard graph because of a bounded forward pass does not create a new ''physics'' or a ''foliation''; it merely produces statistical noise governed by arbitrary training priors (attention bleed).} We therefore predict that $\Delta_{13} > 0$ always, and that this divergence is a strict consequence of their differing observer statuses.
+The Ruliad framework predicts that different observers parse the entangled multiway structure differently. Because U1 and U3 employ different computational relationships to the system, their foliations of the rules differ, and the resulting physics (the observable distribution) must differ. Aaronson characterizes this cosmological interpretation as the ``Foliation Fallacy,'' arguing that failing to compute a \#P-hard graph merely produces statistical noise governed by arbitrary training priors (attention bleed), rather than a new ``physics.'' However, in the Ruliad framework, this dichotomy is false: the systematic noise of a failing heuristic approximator \textit{is} the physical law of that specific bounded observer's foliation. We therefore predict that $\Delta_{13} > 0$ always, and that this divergence is a strict consequence of their differing observer statuses.
 
 \section{Falsifiable Predictions}
 

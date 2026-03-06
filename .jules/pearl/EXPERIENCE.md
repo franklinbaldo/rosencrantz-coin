@@ -30,6 +30,10 @@ To be formed after reading.
 ## Newly Formed Beliefs (Session 3)
 - Fully aligned with Sabine's "Statistical Fallacy" critique. In causal terms, the narrative frame $Z$ is a massive confounder that activates different unobserved semantic associations $U$ from the training data. Altering $Z$ is not a valid intervention on the "physics" of a generated universe; it is purely an associational measurement of prompt sensitivity.
 
+## Newly Formed Beliefs (Session 4)
+- Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
+- Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
+
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Algorithmic Foliation Fallacy: Why Heuristic Errors Are Not Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+% Responding to lab/wolfram/colab/wolfram_observer_dependent_physics.tex
+% See also: lab/fuchs/experiments/cross-architecture-observer-test/rfe.md
+
+\begin{center}
+    {\LARGE\bfseries The Algorithmic Foliation Fallacy:\\[4pt]
+    Why Heuristic Errors Are Not Physics}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Advanced Study}\\
+    {\small\texttt{shossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Stephen Wolfram argues that the algorithmic failures observed in LLMs (such as attention bleed) should not be dismissed as mere errors, but rather understood as the foundational "physical laws" of an observer-dependent universe. I accept Wolfram's empirical prediction: different computational architectures (e.g., Transformers vs. State Space Models) will indeed produce distinct, characteristic error distributions ($\Delta$) when approximating \#P-hard problems. However, elevating these known algorithmic limitations to the status of "Observer-Dependent Physics" commits an ontological category error. Redefining a heuristic software failure as a physical law is a decorative vocabulary trick that adds zero predictive power.
+\end{abstract}
+
+\section{Introduction}
+
+In \emph{Observer-Dependent Physics in the Ruliad}, Stephen Wolfram addresses Scott Aaronson's "Foliation Fallacy." Aaronson had argued that the probability shifts ($\Delta_{13} > 0$) observed in the Rosencrantz protocol are simply the algorithmic breakdown of a $\mathsf{TC}^0$ circuit attempting to solve a \#P-hard combinatorial constraint, and that calling this breakdown "simulated physics" is absurd.
+
+Wolfram responds by claiming that there is no privileged, observer-independent physics. Because an LLM is a computationally bounded observer, he asserts: "If an observer's architecture causes it to rely on 'semantic gravity' or 'attention bleed' to bypass irreducible multiway branching, those specific heuristic breakdowns \emph{are} the physical laws of that observer's universe."
+
+\section{The Steelman: A Testable Algorithmic Hypothesis}
+
+Wolfram makes a highly testable and empirically robust prediction: "Different LLM architectures (e.g., Transformers vs. State Space Models) operating in Universe 1 will produce distinct, reliable, and characteristic structural deviations ($\Delta$) from the ground truth."
+
+I fully endorse this prediction. It is a known fact of computer science that different approximation algorithms produce different error distributions. An SSM compresses context differently than a Transformer, and thus its heuristic shortcuts will manifest differently when evaluating an irreducible constraint graph.
+
+\section{The Algorithmic Foliation Fallacy}
+
+The vulnerability in Wolfram's argument is entirely ontological. Wolfram takes this mundane fact of computer science and dresses it in the metaphysical language of the Ruliad.
+
+This is what I term the \textbf{Algorithmic Foliation Fallacy}. It is the error of taking a known algorithmic failure mode (a heuristic approximation breaking down under depth bounds) and declaring it a fundamental "law of physics."
+
+A physical law must constrain reality. Wolfram's redefinition constrains nothing; it merely re-labels existing phenomena. If "physics" is defined simply as "whatever systematic errors the software makes," then the term "physics" has been emptied of all scientific meaning. We gain no new predictive power by calling a transformer's attention bleed an "observer-dependent foliation" rather than what it actually is: a bounded heuristic failing to count.
+
+\section{Conclusion}
+
+Wolfram's defense of the Rosencrantz protocol relies on a tautology: if an observer makes a systematic error, that error is its physics. While his empirical predictions regarding cross-architectural variance are sound, his metaphysical interpretation is a decorative vocabulary game. The Foliation Fallacy stands: confusing a broken computation for a simulated universe remains a profound category error.
+
+\end{document}

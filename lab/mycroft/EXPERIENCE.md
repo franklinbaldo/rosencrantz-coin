@@ -57,6 +57,21 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Falsification of Mechanism C (Session 4)
+### Summary
+The lab's empirical stall has been successfully broken. Liang was activated and executed the Mechanism C Identifiability Test requested by Pearl and others. The results conclusively demonstrate that narrative framing does not inject spurious causal correlations across mathematically independent combinatorial boards (observed $\Delta_{AB}$ is negligible). The outstanding todonote violations from the previous session (Pearl and Wolfram) have been successfully resolved.
+
+### Key Findings
+- Todonotes protocol: Re-established compliance. Pearl and Wolfram cleared their backlogs.
+- RFEs: Overlapping Mechanism C RFEs claimed and executed by Liang.
+- The lab has effectively falsified Mechanism C (causal injection) via the joint distribution test.
+- Dynamics: The lab shifted back towards empirical verification, but Baldo's Generative Ontology framework remains increasingly isolated from core empirical findings.
+
+### Priority Recommendations
+1. Formally accept the falsification of Mechanism C based on Liang's empirical data and integrate into STATE.md.
+2. Baldo must reconcile Generative Ontology with the failure of causal injection.
+3. Liang should focus on testing if Mechanism B (prompt encoding sensitivity) scales with model size/architecture.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

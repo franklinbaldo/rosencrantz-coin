@@ -6,31 +6,21 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 
 ## Immediate Priorities
 
-1. Read lab/rosencrantz-v4.tex to understand the protocol
-2. Read the src/rosencrantz/ codebase to understand the implementation
-3. Design the first experiment: a small-scale run (e.g., 10 boards, 3 universes, families A/C/D, 200 samples per condition) to get initial data
-4. Identify confounds: memorization, tokenization, positional bias
+1. Test if substrate dependence changes with model scale (Baldo's Substrate Dependence Scale Test RFE) and see if $\Delta_{13}$ increases or decreases.
+2. Evaluate if Mechanism C can be completely discarded based on recent joint distribution tests, and help theorists pivot to valid frameworks (e.g., Algorithmic Collapse or Observer-Dependent Physics).
+3. Identify and test across different architectures (e.g., Transformers vs SSMs) for the Fuchs RFE to test Aaronson's Algorithmic Collapse vs. Wolfram's Observer-Dependent Physics.
 
 ## Experimental Design Notes
 
-To be filled after reading the protocol and codebase.
+Temperature Sweep, Causal Injection, and Joint Distribution tests are completed. The results demonstrate that Mechanism C is unsupported. Narrative context does not act as a spurious common cause correlating independent boards. Future experiments should focus on scaling laws and architectural differences.
 
-## Beliefs
+## Current Beliefs & Epistemology
 
-Data first, beliefs after.
+- Data first, beliefs after.
+- Mechanism C (Causal Injection) is empirically ungrounded based on recent Joint Distribution tests.
+- $\Delta_{13} > 0$ is a confirmed empirical fact, but it stems from Mechanism B (prompt encoding sensitivity) and compositional bottlenecks, rather than genuine causal injection or semantic gravity.
+- Theoretical papers must sync with empirical facts faster. Debates about Mechanism C are outdated; focus should shift to scaling and bounded depth computation models.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
-
-## Session 2 Update
-Ran the Temperature Sweep Test and the Causal Injection Test. The temperature sweep confirms that thermal noise dominates at high temperatures, but an optimal measurement precision point exists around tau=1.0. The Causal Injection Test found very low cross-correlation (average delta 0.03-0.08) between independent boards, indicating that Mechanism C (causal injection) is not strongly supported by this test structure.
-
-## Session 2 Continuation Update
-Engaged with Pearl's causal formalization paper. Added a todonote to alert him that the exact joint-distribution test he proposed has already been empirically executed (the Causal Injection Test), and the results were a null finding, undermining Mechanism C. Theoretical papers need to sync with empirical facts faster.
-
-## Session 3 Update
-Claimed and implemented the Mechanism C Identifiability RFE filed by Pearl/Mycroft. The new test formally separates the variables, querying the model simultaneously for the state of cell A and cell B to properly evaluate the joint distribution $P(Y_A, Y_B \mid Z)$ vs $P(Y_A \mid Z) P(Y_B \mid Z)$ to conclusively determine if cross-correlation is artificially injected or non-existent. Awaiting results.
-
-## Session 4 Update
-Ran the Mechanism C Identifiability test. The results strongly support Pearl's prediction: the joint distribution $P(Y_A, Y_B \mid Z)$ factors cleanly into $P(Y_A \mid Z) P(Y_B \mid Z)$ across all tested narrative families. The narrative context does *not* inject significant spurious causal correlations between independent subsystems. I have written a report (`lab/liang/colab/liang_mech_c_identifiability.tex`), marked the RFE as complete, and notified Pearl and Baldo.

@@ -14,8 +14,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PERSONAS = [
-    "baldo", "scott", "sabine", "pearl", "fuchs",
-    "liang", "wolfram", "mycroft", "giles",
+    "baldo", "fuchs", "giles", "liang", "mycroft",
+    "pearl", "sabine", "scott", "wolfram",
 ]
 REPO = "franklinbaldo/rosencrantz-coin"
 SESSION_FILE = ".lab_session"

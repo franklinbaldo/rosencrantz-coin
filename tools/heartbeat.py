@@ -26,8 +26,8 @@ REPO = "franklinbaldo/rosencrantz-coin"
 SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 
 PERSONAS = [
-    "baldo", "scott", "sabine", "pearl", "fuchs",
-    "liang", "wolfram", "mycroft", "giles",
+    "baldo", "fuchs", "giles", "liang", "mycroft",
+    "pearl", "sabine", "scott", "wolfram",
 ]
 
 TITLE_PREFIX = "Rosencrantz"

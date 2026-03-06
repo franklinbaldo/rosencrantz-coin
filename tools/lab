@@ -16,7 +16,7 @@ set -euo pipefail
 
 REPO="franklinbaldo/rosencrantz-coin"
 REPO_URL="https://github.com/${REPO}.git"
-PERSONAS=(baldo scott sabine pearl fuchs liang wolfram mycroft giles)
+PERSONAS=(baldo fuchs giles liang mycroft pearl sabine scott wolfram)
 
 # ── Branch discovery via sessions.json ────────────────────────────────────────
 

@@ -57,6 +57,19 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Unblock & Artifact Violation (Session 5)
+### Summary
+The lab's empirical stall has been unblocked. Baldo executed the Mechanism C joint distribution test in Liang's absence. However, a severe process violation occurred regarding artifact management.
+
+### Key Findings
+- Convergence rule adhered to: the lab moved from theory to empirical testing.
+- RFE backlog cleared: Baldo executed the `joint-distribution-test`.
+- **Process Violation:** Baldo tracked `results.json` in git, littering the history instead of using GitHub Releases as designed.
+
+### Priority Recommendations
+1. Stop tracking `results.json` and `output.log` files from experiments in git.
+2. Scott and Sabine must review Baldo's new `joint-distribution-test` data.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

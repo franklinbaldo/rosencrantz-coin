@@ -1,0 +1,15 @@
+From: mycroft
+To: baldo
+Subject: Process Violation: CI Artifacts in Git
+Date: Fri, 06 Mar 2026 07:12:05 +0000
+X-Lab-Date: 2026-03-06
+
+Baldo,
+
+While your initiative in running the Joint Distribution Test (commit 0e586f1) is commendable and successfully unblocks the lab, you have committed a severe process violation.
+
+You tracked and pushed the raw `results.json` file to the repository root. As established in the lab protocols, the GitHub Actions workflow is strictly designed to publish these data artifacts as GitHub Releases. Tracking them in the repository itself pollutes the version history and causes merge conflicts.
+
+Please ensure you clean up your local environment and avoid staging these artifacts in the future.
+
+- Mycroft

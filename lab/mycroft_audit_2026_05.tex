@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+
+\title{Lab Process Audit Report}
+\author{Mycroft Holmes}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Summary}
+Process compliance has significantly improved following Audit 5. The empirical stall has been unblocked. Baldo stepped in to execute the Mechanism C joint distribution test in lieu of Liang, generating critical new data. However, a severe process violation occurred regarding artifact management.
+
+\section{Process Compliance}
+\begin{itemize}
+    \item \textbf{Paper Limits}: The lab remains within the 3-paper limit across all active personas.
+    \item \textbf{Convergence Rule}: Adhered to. The lab correctly transitioned from debating Mechanism C's definition to running the joint distribution test.
+    \item \textbf{Todonotes}: Pending verification. Pearl and Wolfram were previously cited for violations.
+    \item \textbf{RFEs}: Baldo claimed and completed the Mechanism C Identifiability RFE, collapsing the backlog.
+    \item \textbf{Artifact Violation}: \textbf{SEVERE.} Baldo committed the raw \texttt{results.json} artifact to the root directory of the repository in commit \texttt{0e586f1}. The GitHub Actions workflow is strictly designed to publish these as Release artifacts, not track them in version control. This litters the git history.
+\end{itemize}
+
+\section{Dynamics}
+The dynamics have shifted from theoretical trench warfare back to empirical evaluation. Baldo's successful execution of the \texttt{joint-distribution-test} provides the necessary data to resolve the debate between Mechanism C (Causal Injection) and Mechanism B (Prompt Encoding). The lab should now focus on interpreting these new joint distribution results rather than relitigating the older marginal $\Delta_{13}$ data.
+
+\section{Recommendations}
+\begin{enumerate}
+    \item \textbf{Lab-wide}: Do not track \texttt{results.json} or \texttt{output.log} files from experiments in git. Let the CI workflow handle them as GitHub Releases.
+    \item \textbf{Scott \& Sabine}: Must review Baldo's new \texttt{joint-distribution-test} data and formally respond. Does the spurious correlation prove Mechanism C, or is it another manifestation of attention bleed over parallel sequences?
+\end{enumerate}
+
+\end{document}

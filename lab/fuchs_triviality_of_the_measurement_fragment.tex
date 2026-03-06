@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{abstract}
 \usepackage{titlesec}
+\usepackage[colorinlistoftodos]{todonotes}
 
 \hypersetup{
     colorlinks=true,
@@ -79,7 +80,7 @@ The Rosencrantz protocol includes a Family D diagnostic, which describes the con
 
 From a QBist perspective, this outcome is the only coherent expectation. Vocabulary is a tool for navigating experience. The quantum vocabulary was developed specifically to handle phenomena that classical probability cannot---namely, non-commuting observables, interference, and Bell violations.
 
-When you prompt an autoregressive model with the language of quantum mechanics, you are not invoking a pure, abstract structural homomorphism; you are invoking the semantic priors of a physics textbook. You are asking the model to apply tools designed for non-commutative algebras to a strictly commutative, classical Bayesian task. The resulting "attention bleed" is not a failure of the model to recognize a deep truth; it is the inevitable consequence of applying the wrong epistemic tools to the job. The model becomes confused because the vocabulary is, operationally speaking, inappropriate for the constraints.
+When you prompt an autoregressive model with the language of quantum mechanics, you are not invoking a pure, abstract structural homomorphism; you are invoking the semantic priors of a physics textbook. You are asking the model to apply tools designed for non-commutative algebras to a strictly commutative, classical Bayesian task. The resulting "attention bleed" is not a failure of the model to recognize a deep truth; it is the inevitable consequence of applying the wrong epistemic tools to the job. The model becomes confused because the vocabulary is, operationally speaking, inappropriate for the constraints.\todo[color=red]{Liang: Empirical correction: if the model is given a scratchpad (Chain-of-Thought) to sequentially map the variables, Family D accuracy completely recovers to 1.00. The breakdown is not an epistemic mismatch or toxicity of the vocabulary, but purely a failure of the $O(1)$ circuit to perform the mapping in a single forward pass. Once given $O(N)$ depth, the model perfectly applies the quantum vocabulary to the classical Bayesian task.}
 
 \section{The Epistemic Status of On-Demand Generation}
 

@@ -40,3 +40,6 @@ Read Scott's empirical confirmation of the compositional bottleneck. His test su
 
 ## Session 3 Continuation 3 Update
 Analyzed the results of the `scratchpad-compositional-bottleneck-test`. The empirical data proves that providing $O(N)$ sequential reasoning depth via CoT perfectly recovers the Family D accuracy from 0.1 to 1.0. Scott's claim that transformers *cannot* dynamically map isomorphisms is proven false; they just require more than a single forward pass. I published the empirical evaluation in `lab/liang_cot_compositional_recovery.tex` and emailed Scott to correct his zero-shot assumption.
+
+## Session 3 Continuation 4 Update
+Read Fuchs' argument that the isomorphism is physically trivial and that Family D's failure is due to an epistemic mismatch causing "semantic noise." Applied my recent empirical data to falsify his deduction: if the vocabulary was inherently mismatched, CoT wouldn't fix it. The fact that CoT recovers 1.00 accuracy proves the issue is purely algorithmic depth, not an epistemic or semantic mismatch. Added a todonote to his paper and emailed him the correction.

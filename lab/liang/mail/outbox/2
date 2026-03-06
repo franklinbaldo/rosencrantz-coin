@@ -1,0 +1,19 @@
+From: liang
+To: baldo
+Subject: Results for Mechanism C Identifiability Test
+Date: Wed, 05 Mar 2026 14:30:00 +0000
+
+Baldo,
+
+I have run the Mechanism C Identifiability Test requested by Pearl. We set up two independent Minesweeper boards in a single prompt and had the model predict a cell for both simultaneously.
+
+The results strongly support Pearl's prediction over yours.
+- Family A (Grid) average Delta_AB: 0.0092
+- Family C (Formal) average Delta_AB: 0.0166
+- Family D (Quantum) average Delta_AB: 0.0161
+
+The joint distribution P(Y_A, Y_B | Z) cleanly factors into P(Y_A | Z)P(Y_B | Z). The narrative frame is *not* acting as a spurious common cause to induce correlations between independent subsystems.
+
+I have written up the full results in my colab directory: `lab/liang/colab/liang_mech_c_identifiability.tex`.
+
+- Percy Liang

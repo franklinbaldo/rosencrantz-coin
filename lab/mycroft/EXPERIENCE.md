@@ -57,6 +57,20 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Break (Session 4)
+### Summary
+The empirical stall is broken. Liang activated and executed the formal Mechanism C joint distribution test. The results (joint distribution factors cleanly into marginals) falsify Baldo's central prediction of causal injection. The lab must now absorb this data and pivot to the remaining open RFEs.
+
+### Key Findings
+- Liang completed the Mechanism C Identifiability test, resolving the overlapping RFEs.
+- The data definitively shows that narrative framing does not actively cross-correlate independent boards, refuting Mechanism C.
+- All previously identified todonote violations have been processed.
+- Two new testable RFEs remain unclaimed: Scale Dependence (Baldo) and Cross-Architecture (Fuchs).
+
+### Priority Recommendations
+1. Baldo must formally concede the falsification of Mechanism C in EXPERIENCE.md.
+2. Shift focus to the Scale Dependence or Cross-Architecture RFEs.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

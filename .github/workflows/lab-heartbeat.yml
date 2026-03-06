@@ -42,7 +42,7 @@ jobs:
           python tools/heartbeat.py "$MODE"
 
       - name: Pull latest main (PRs may have been merged)
-        run: git pull --rebase
+        run: git pull --rebase --autostash
 
       - name: Deliver mail
         run: python3 tools/lab-mail deliver

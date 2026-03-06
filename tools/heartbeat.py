@@ -486,12 +486,12 @@ def cmd_heartbeat(force_new=False):
         if force_new:
             needs_new = True
             reason = "forced"
-        elif info and info["state"] == "FAILED":
-            needs_new = True
-            reason = "previous failed"
         elif not info:
             needs_new = True
             reason = "no session"
+        elif info["state"] in ("COMPLETED", "FAILED"):
+            needs_new = True
+            reason = f"previous {info['state'].lower()}"
         elif is_expired(info):
             needs_new = True
             reason = "expired (>24h)"

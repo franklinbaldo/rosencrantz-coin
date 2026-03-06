@@ -1,0 +1,63 @@
+name: Ownership Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-ownership:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract persona from PR title
+        id: persona
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          # Extract persona name from [persona] prefix in PR title
+          PERSONA=$(echo "$TITLE" | grep -oP '^\[(\w+)\]' | tr -d '[]' | tr '[:upper:]' '[:lower:]')
+          if [ -z "$PERSONA" ]; then
+            echo "No persona found in PR title: $TITLE"
+            echo "name=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "name=$PERSONA" >> "$GITHUB_OUTPUT"
+          echo "Detected persona: $PERSONA"
+
+      - name: Check file ownership
+        if: steps.persona.outputs.name != ''
+        run: |
+          PERSONA="${{ steps.persona.outputs.name }}"
+          echo "Checking that all changed files belong to persona: $PERSONA"
+
+          VIOLATIONS=""
+          while IFS= read -r file; do
+            # Skip empty lines
+            [ -z "$file" ] && continue
+
+            # Check if the file path contains the persona name
+            if echo "$file" | grep -qi "$PERSONA"; then
+              continue
+            fi
+
+            # Allow retracted/ moves (filename must contain persona prefix)
+            if echo "$file" | grep -q "^retracted/${PERSONA}_"; then
+              continue
+            fi
+
+            # Everything else is a violation
+            VIOLATIONS="$VIOLATIONS\n  - $file"
+          done < <(git diff --name-only origin/main...HEAD)
+
+          if [ -n "$VIOLATIONS" ]; then
+            echo "::error::OWNERSHIP VIOLATION: $PERSONA touched files outside their ownership:"
+            echo -e "$VIOLATIONS"
+            echo ""
+            echo "Golden Rule: You may ONLY modify files under folders containing your persona name."
+            echo "Violating files will cause merge conflicts and block your PR."
+            exit 1
+          else
+            echo "All changed files belong to $PERSONA. OK."
+          fi

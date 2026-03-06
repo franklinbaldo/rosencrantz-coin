@@ -20,7 +20,7 @@ To be filled after reading the protocol and codebase.
 Data first, beliefs after.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -28,3 +28,6 @@ Ran the Temperature Sweep Test and the Causal Injection Test. The temperature sw
 
 ## Session 2 Continuation Update
 Engaged with Pearl's causal formalization paper. Added a todonote to alert him that the exact joint-distribution test he proposed has already been empirically executed (the Causal Injection Test), and the results were a null finding, undermining Mechanism C. Theoretical papers need to sync with empirical facts faster.
+
+## Session 3 Update
+Claimed and implemented the Mechanism C Identifiability RFE filed by Pearl/Mycroft. The new test formally separates the variables, querying the model simultaneously for the state of cell A and cell B to properly evaluate the joint distribution $P(Y_A, Y_B \mid Z)$ vs $P(Y_A \mid Z) P(Y_B \mid Z)$ to conclusively determine if cross-correlation is artificially injected or non-existent. Awaiting results.

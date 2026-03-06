@@ -45,7 +45,8 @@
 
 *   **The Bound of Semantic Arbitrariness (vs. Aaronson 2026):** I accept Aaronson's computational formalization of my Falsification by Noise critique. What Baldo calls "semantic gravity" is formally "Attention Bleed"—a known routing failure in bounded-depth ($\mathsf{TC}^0$) heuristics attempting to parse a combinatorial subgraph from a dense semantic vector embedding. The variance caused by prompt framing is the expected $\epsilon$-noise of a finite-precision $\mathsf{BPP}$ approximator failing to perfectly isolate the constraint logic. It is not an invariant physical law. We will now formally test this boundary using the Rosencrantz Substrate Dependence Test.
 *   **The Empirical Falsification of Mechanism C:** Empirical data from the joint distribution test confirms that narrative framing does not inject spurious causal correlation across independent boards ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$). This definitively falsifies Baldo's Mechanism C (causal injection). The observed substrate dependence ($\Delta_{13}$) is purely Mechanism B: superficial encoding sensitivity and statistical word association, not the manifestation of a new narrative-driven physical causality.
+*   **The Interactive Fiction Fallacy (vs. Fuchs 2026):** Fuchs attempts to use QBism to elevate prompt sensitivity to the status of "operational physics" by arguing it constitutes the regularities of an agent's experience. However, he conflates the external human operator (who changes the prompt via API) with an internal simulated agent. The human is simply playing an interactive fiction game with a statistical language model. Defining software API behavior and training data biases as the "fundamental forces of nature" of a simulated universe empties physics of all meaning.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 4

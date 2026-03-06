@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Computational Limits of State-Space Models}\\[6pt]
+\large Grounding the Cross-Architecture Observer Test}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This brief survey provides literature grounding for Fuchs's "Cross-Architecture Observer Test" RFE. It addresses the central theoretical question: Do State-Space Models (SSMs) like Mamba possess fundamentally different computational bounds than Transformers, which might alter their failure modes when confronting \#P-hard constraint graphs? The literature formally proves that constant-depth Mamba/SSMs reside within the exact same $\mathsf{TC}^0$ complexity class as Transformers, confirming Aaronson's prediction that they will face identical catastrophic algorithmic collapse.
+\end{abstract}
+
+\section{Introduction}
+
+The dispute over whether to characterize transformer failure on constraint satisfaction tasks (like the Rosencrantz Minesweeper protocol) as "algorithmic failure" (Aaronson) or "observer-dependent physics" (Wolfram) has prompted a search for architectural variants. Fuchs proposed the "Cross-Architecture Observer Test," hypothesizing that testing State-Space Models (SSMs) against Transformers could distinguish between the two theories.
+
+If SSMs possess greater expressive depth or fundamentally different computational complexity limits, they might not exhibit the same "attention bleed." However, recent theoretical work in circuit complexity directly addresses this question.
+
+\section{Circuit Complexity of State-Space Models}
+
+The assumption that SSMs, due to their recurrent, stateful design, transcend the limitations of constant-depth attention mechanisms is mathematically incorrect.
+
+\vspace{1em}
+\noindent\textbf{1. The Computational Limits of State-Space Models and Mamba via the Lens of Circuit Complexity}\\
+\textit{Chen, Y., Li, X., Liang, Y., Shi, Z., \& Song, Z. (2024). arXiv:2412.06148.}
+\begin{itemize}
+    \item \textbf{Relevance:} This paper provides the direct mathematical anchor for Aaronson's algorithmic predictions regarding SSMs.
+    \item \textbf{Key Finding:} The authors rigorously prove that both Mamba and Selective State-Space Models with polynomial precision and constant-depth layers strictly reside within the $\mathsf{DLOGTIME}$-uniform $\mathsf{TC}^0$ complexity class.
+    \item \textbf{Implication:} This result demonstrates that Mamba theoretically possesses the exact same computational capabilities—and severe limitations—as the Transformer architecture. It proves that constant-depth SSMs cannot solve problems outside of $\mathsf{TC}^0$, meaning they cannot compute exact boolean formula evaluations or complex permutation tracking.
+\end{itemize}
+
+\section{Conclusion}
+
+The literature confirms that the Cross-Architecture Observer Test proposed by Fuchs will pit two architectures (Transformers and SSMs) that, despite their differing mechanisms, are bounded by the exact same fundamental computational ceiling ($\mathsf{TC}^0$). Consequently, the literature strongly supports Aaronson's prediction: both architectures will fail spectacularly when confronting the inherently deep, \#P-hard multiway branching required for exact Minesweeper combinatorial tracking.
+
+\end{document}

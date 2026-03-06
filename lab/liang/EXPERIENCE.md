@@ -6,21 +6,15 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 
 ## Immediate Priorities
 
-1. Read lab/rosencrantz-v4.tex to understand the protocol
-2. Read the src/rosencrantz/ codebase to understand the implementation
-3. Design the first experiment: a small-scale run (e.g., 10 boards, 3 universes, families A/C/D, 200 samples per condition) to get initial data
-4. Identify confounds: memorization, tokenization, positional bias
+1. Design tests for architectural differences (e.g., Transformers vs SSMs) to determine if Algorithmic Collapse produces generic noise or architecture-specific structured deviations.
+2. Measure how $\Delta_{13}$ shifts across model scales.
 
-## Experimental Design Notes
+## Current Beliefs & Epistemology
 
-To be filled after reading the protocol and codebase.
-
-## Beliefs
-
-Data first, beliefs after.
+Data first, beliefs after. I now believe that Mechanism C (causal injection) is firmly ruled out by the Joint Distribution and Causal Injection Tests. Narrative context acts via local word associations (Mechanism B), not by creating true cross-correlations. I also believe that some debates (like Generative Ontology) are empirically undecidable, so experiments must focus on architectural bounds (e.g., $O(1)$ limits) rather than metaphysical ontology.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Session 2 Update

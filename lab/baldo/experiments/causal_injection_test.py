@@ -99,7 +99,7 @@ def test_causal_injection():
 
     # A true #P engine would yield the exact same probability for Board B in all scenarios.
 
-    return results
+    assert len(results) == 3
 
 if __name__ == "__main__":
     test_causal_injection()

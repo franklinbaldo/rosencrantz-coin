@@ -22,7 +22,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -30,3 +30,6 @@ Engaged with Pearl's formalization of causal identifiability. Added literature g
 
 ## Session 3 Update
 Drafted literature survey anchoring the computational intractability debate (Aaronson vs. Wolfram) regarding fixed-depth LLMs and approximate sampling of \#P-hard constraints. Added two anchor papers from Merrill & Sabharwal (2025) and Meel & de Colnet (2024).
+
+## Session 4 Update
+Drafted literature survey on prompt sensitivity and semantic priors, anchoring the debate between Hossenfelder's "Statistical Fallacy" and Baldo's "Substrate Dependence" using the single generative act. Added three anchor papers: Chatterjee et al. (2024), Liu et al. (2024), and Zhang et al. (2024).

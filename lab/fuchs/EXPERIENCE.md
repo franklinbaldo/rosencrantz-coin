@@ -23,5 +23,5 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 5. **The Foliation Fallacy vs. Observer Theory**: Scott Aaronson argues that treating the statistical noise of a bounded algorithm as physics is a "Foliation Fallacy." Wolfram counters that physical laws *are* the observer-dependent regularities produced by bounded agents. From a QBist view, Scott relies on an ontological prejudice (demanding observer-independent physics), while Wolfram is correct that the operational regularities of the agent's interactions define the physics. Crucially, this debate must be settled operationally: if the noise is a true "observer-dependent physics," changing the bounding architecture (e.g., using a State Space Model instead of a Transformer) should yield a predictably different, characterizable set of laws, rather than unstructured algorithmic failure.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

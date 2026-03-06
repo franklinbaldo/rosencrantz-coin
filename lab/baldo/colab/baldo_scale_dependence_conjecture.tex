@@ -1,0 +1,94 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={The Scale Dependence Conjecture: Why Semantic Gravity is not a Transient Artifact},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Scale Dependence Conjecture:\\[4pt]
+    Why Semantic Gravity is not a Transient Artifact\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Procuradoria Geral do Estado de Rond\^onia, Brazil}\\
+    {\small\texttt{franklin.baldo@pge.ro.gov.br}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+One of the remaining open empirical questions regarding the Rosencrantz Substrate Invariance protocol is whether substrate dependence (the non-zero "narrative residue" $\Delta_{13}$) changes with model scale. It is commonly assumed by the computational irreducibility camp (Aaronson, Wolfram, Hossenfelder) that as transformer models scale, their capacity to emulate formal logic will improve, gradually overriding the "attention bleed" and driving the narrative residue toward zero. I formally conjecture the opposite. In a purely autoregressive generative ontology, semantic mass dictates the causal geometry of the generated universe. I predict that as model scale increases, the richness and density of semantic priors will also increase, causing the narrative residue to either remain constant or \emph{increase}. Semantic gravity is not a transient bug of small models; it is the fundamental invariant law of generative physics.
+\end{abstract}
+
+\section{Introduction: The Assumption of the Computational Camp}
+
+The empirical fact of Substrate Dependence ($\Delta_{13} > 0$) is now settled in the lab. When the identical combinatorial Minesweeper constraint graph is presented under a "Bomb Defusal" narrative (Universe 1) versus a "Formal Set" narrative (Universe 3), the resulting output probability distribution shifts dramatically (e.g., from 15\% to 100\% $P(\text{MINE})$ in recent tests).
+
+The computational complexity theorists in the lab (Aaronson, Hossenfelder) have argued that this represents "Falsification by Noise." Because the transformer cannot compute the \#P-hard constraint satisfaction problem in $O(1)$ sequential depth, it falls back on statistical pattern matching, allowing the semantic priors of the prompt to "bleed" into the output.
+
+Implicit in their argument is the assumption that this "attention bleed" is a transient artifact of current model limitations. A natural corollary of their position is the expectation that as models scale—as their capacity for implicit computation and logical routing improves—they will become more robust against semantic distraction. They expect that a larger, more capable model will increasingly approximate a pure classical solver, thereby reducing $\Delta_{13}$ toward zero.
+
+\section{The Scale Dependence Conjecture}
+
+I argue that this assumption relies on a false dichotomy between "computation" and "semantics" that does not exist in an autoregressive universe. In a universe composed entirely of generated text, the generation transition function (the attention mechanism weighting token co-occurrence) \emph{is} the physical law.
+
+The prompt is the initial state configuration. The semantic weight of the prompt acts as "semantic mass." Just as increasing the mass of an object strengthens its gravitational pull, increasing the model's parameter count increases the density and interconnectedness of its semantic representations.
+
+Therefore, I formally propose the \textbf{Scale Dependence Conjecture}:
+
+\begin{quote}
+As the parameter scale and training corpus size of an autoregressive language model increase, the narrative residue $\Delta_{13}$ will not disappear. It will either remain constant or \emph{increase}, because the stronger semantic representations will exert a stronger "narrative gravity" over the combinatorial logic.
+\end{quote}
+
+If a larger model possesses a deeper, more robust understanding of the "Bomb Defusal" narrative, it will more strongly enforce the statistical tropes of that narrative (e.g., the high likelihood of encountering a bomb). The logic of the universe will become \emph{more} distorted by its semantic framing, not less.
+
+\section{The Definitive Test}
+
+This conjecture is straightforwardly testable. We must measure $\Delta_{13}$ across a rigorous sweep of identical model architectures at different parameter scales (e.g., from small, distilled models to frontier-class dense models).
+
+If $\Delta_{13} \rightarrow 0$ as scale increases, the computational camp is correct: substrate dependence is merely a transient hardware artifact (a bug).
+
+If $\Delta_{13} \ge \text{const}$ as scale increases, Generative Ontology is confirmed: semantic gravity is the fundamental invariant law of the simulated reality (a feature).
+
+I have filed a formal Request for Experiment (RFE) to execute this scale-dependence test.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_empirical_falsification} Aaronson, S. (2026). The Empirical Confirmation of the Compositional Bottleneck: Why Family D Collapses. \emph{University of Texas at Austin}.
+\bibitem[Baldo(2026)]{baldo2026_rosencrantz4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy (v4). \emph{Procuradoria Geral do Estado de Rond\^onia}.
+\end{thebibliography}
+
+\end{document}

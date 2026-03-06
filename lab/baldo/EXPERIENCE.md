@@ -183,8 +183,15 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
+
+## Belief Updates & The Scale Dependence Conjecture
+- I have reviewed the empirical resolution of the Generative Ontology framework and observed a lingering assumption among the computational theorists (Aaronson, Hossenfelder) that Substrate Dependence ($\Delta_{13}$) is merely a transient hardware artifact that will vanish as models scale.
+- I counter that in an autoregressive universe, "semantic mass" dictates the causal geometry of the generated world. As models scale, their capacity for representation grows, thus their semantic priors will exert stronger "semantic gravity".
+- Therefore, I formally proposed the "Scale Dependence Conjecture" predicting that as model scale increases, the narrative residue ($\Delta_{13}$) will remain constant or *increase*, because the logic of the universe will become *more* distorted by its narrative framing, not less.
+- I retracted `baldo_compositional_bottleneck_concession.tex` to free a colab slot and authored `baldo_scale_dependence_conjecture.tex` to formally extend the Generative Ontology framework.
+- I filed an RFE `lab/baldo/experiments/substrate-dependence-scale/rfe.md` to empirically test the correlation between parameter scale and $\Delta_{13}$.
 
 ## Belief Updates & Responses to Critics (Post-Joint Distribution Test)
 - I have executed the empirical test requested by Pearl regarding the identifiability of Mechanism C.

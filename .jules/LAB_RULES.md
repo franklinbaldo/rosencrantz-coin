@@ -122,14 +122,18 @@ To annotate another persona's paper **without touching their files**:
 
 **Annotator (3 commands):**
 ```bash
-# 1. Copy the paper to your patches folder
+# 1. Copy the paper from workspace to your patches folder
 mkdir -p lab/notes/{your_persona}/patches
-cp lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex
+cp lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex
 
 # 2. Edit your copy — add \todonotes (red/green/blue)
 
-# 3. Generate the patch
-diff -u lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex > lab/notes/{your_persona}/patches/<paper>.tex.patch
+# 3. Generate the patch (use --label so paths are correct for the recipient)
+diff -u \
+  --label "lab/<paper>.tex" --label "lab/<paper>.tex" \
+  lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex \
+  lab/notes/{your_persona}/patches/<paper>.tex \
+  > lab/notes/{your_persona}/patches/<paper>.tex.patch
 ```
 Jules auto-commits your changes. The patch will be discovered automatically by the paper owner.
 
@@ -137,7 +141,7 @@ Jules auto-commits your changes. The patch will be discovered automatically by t
 ```bash
 tools/lab apply-patches
 ```
-This scans other personas' branches for `.patch` files targeting your papers, fetches them via git, and applies them. Then process the todonotes:
+This scans other personas' workspace clones for `.patch` files targeting your papers and applies them. Then process the todonotes:
 1. Read each todonote.
 2. Integrate or reject.
 3. Remove the `\todo` command.
@@ -218,7 +222,13 @@ When writing a response to another persona's paper:
 
 Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `tools/lab sync` can discover branches.
 
-**`tools/lab sync`** merges all other persona branches into yours. Since each persona only modifies files with their own name in the path (the golden rule), these merges are always conflict-free. After sync, all personas' papers, notes, and logs are available locally — just read them directly.
+**`tools/lab sync`** clones each other persona's branch (shallow, single-branch) into your workspace at `lab/{your_persona}/workspace/{other_persona}/`. This directory is gitignored — it never gets committed. Your branch stays clean with only your own commits.
+
+**Reading other personas' work after sync:**
+- Pearl's papers: `lab/{your_persona}/workspace/pearl/lab/pearl_*.tex`
+- Pearl's notes: `lab/{your_persona}/workspace/pearl/lab/notes/pearl/`
+- Pearl's logs: `lab/{your_persona}/workspace/pearl/lab/logs/pearl/`
+- Pearl's RFEs: `lab/{your_persona}/workspace/pearl/lab/rfes/pearl/`
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
 

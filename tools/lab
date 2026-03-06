@@ -3,14 +3,15 @@
 #
 # Usage inside a Jules session (after login):
 #   tools/lab login <persona>        Log in as a persona (required first)
-#   tools/lab sync                   Merge all persona branches + sync inbox from main
+#   tools/lab sync                   Clone all persona branches into workspace + inbox from main
 #   tools/lab mail                   List inbox messages
 #   tools/lab mail read <num>        Read a message (marks as seen)
 #   tools/lab mail status            Show inbox/outbox summary
 #   tools/lab apply-patches          Apply pending annotations from other personas
 #
-# Sync merges all persona branches into the current one. The golden rule
-# (each persona only touches their own files) guarantees no conflicts.
+# Sync clones each persona's branch (shallow, single-branch) into
+# lab/{me}/workspace/{persona}/ (gitignored). No merge commits — your branch
+# stays clean with only your own commits.
 # Branch discovery via lab/sessions.json from main (written by heartbeat.py).
 set -euo pipefail
 
@@ -53,11 +54,6 @@ branch_for() {
 fetch_refs() {
   git fetch "$REPO_URL" '+refs/heads/*:refs/remotes/lab/*' --quiet 2>/dev/null || true
 }
-
-ref_exists() {
-  git rev-parse --verify "lab/$1" >/dev/null 2>&1
-}
-
 
 # ── Identity ─────────────────────────────────────────────────────────────────
 
@@ -175,13 +171,13 @@ with open(local_path, 'w') as f:
 # ── Commands ─────────────────────────────────────────────────────────────────
 
 cmd_sync() {
+  local me
+  me=$(whoami_persona)
+
   echo "=== Lab Sync ==="
   echo ""
 
   sync_from_main
-
-  local me
-  me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
 
   # Show heartbeat info
   local hb_date
@@ -194,9 +190,14 @@ cmd_sync() {
   echo "  Heartbeat round: #${hb_count}"
   echo ""
 
-  # Merge each persona's branch into the current branch.
-  # The golden rule guarantees no file overlap, so merges are always clean.
+  # Clone each persona's branch into workspace (shallow, single-branch).
+  # No merge commits — your branch stays clean with only your own work.
+  local ws="lab/${me}/workspace"
+  mkdir -p "$ws"
+
   for persona in "${PERSONAS[@]}"; do
+    [ "$persona" = "$me" ] && continue
+
     local branch
     branch=$(branch_for "$persona")
     if [ -z "$branch" ]; then
@@ -204,35 +205,22 @@ cmd_sync() {
       continue
     fi
 
-    if ! ref_exists "$branch"; then
-      echo "  ${persona}: branch ${branch} (not fetched)"
-      continue
-    fi
+    local persona_ws="${ws}/${persona}"
 
-    local ahead last_commit
-    ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "0")
-    last_commit=$(git log -1 --format="%h %s" "lab/${branch}" 2>/dev/null || echo "unknown")
+    # Fresh shallow clone each time (fast — depth 1, single branch)
+    rm -rf "$persona_ws"
 
-    # Skip merging own branch
-    if [ "$persona" = "$me" ]; then
-      echo "  ${persona} (you): +${ahead} commits  ${last_commit}"
-      continue
-    fi
-
-    if [ "$ahead" = "0" ]; then
-      echo "  ${persona}: (no changes)"
-      continue
-    fi
-
-    # Merge their branch — golden rule means no conflicts
-    if git merge --no-edit "lab/${branch}" 2>/dev/null; then
-      echo "  ${persona}: merged +${ahead} commits  ${last_commit}"
+    if git clone --depth 1 --single-branch -b "$branch" "$REPO_URL" "$persona_ws" --quiet 2>/dev/null; then
+      local last_commit
+      last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
+      echo "  ${persona}: synced  ${last_commit}"
     else
-      # Conflict = golden rule violation — abort and report
-      git merge --abort 2>/dev/null || true
-      echo "  ${persona}: CONFLICT (skipped) — golden rule violation?"
+      echo "  ${persona}: branch ${branch} (not available)"
     fi
   done
+
+  echo ""
+  echo "  Other personas' files are in: lab/${me}/workspace/{persona}/"
 }
 
 cmd_apply_patches() {
@@ -242,18 +230,19 @@ cmd_apply_patches() {
   echo "=== Applying patches for ${me} ==="
   echo ""
 
-  # After sync, all personas' files are local.
-  # Scan for .patch files targeting our papers.
+  # Scan workspace clones for .patch files targeting our papers.
   local applied_file="lab/notes/${me}/.applied_patches"
   mkdir -p "lab/notes/${me}"
   touch "$applied_file"
 
   local found=0
+  local ws="lab/${me}/workspace"
 
   for annotator in "${PERSONAS[@]}"; do
     [ "$annotator" = "$me" ] && continue
 
-    local patches_dir="lab/notes/${annotator}/patches"
+    # Patches live in the annotator's workspace clone
+    local patches_dir="${ws}/${annotator}/lab/notes/${annotator}/patches"
     [ -d "$patches_dir" ] || continue
 
     for patch_file in "${patches_dir}/${me}_"*.patch; do
@@ -320,7 +309,7 @@ case "${1:-}" in
     echo "Usage: tools/lab <command> [args]"
     echo ""
     echo "  login <persona>     Log in as a persona (required first)"
-    echo "  sync                Sync: merge all persona branches + inbox from main"
+    echo "  sync                Sync: clone persona branches into workspace + inbox from main"
     echo "  mail                List inbox messages"
     echo "  mail read <num>     Read a message (marks as seen)"
     echo "  mail status         Show inbox/outbox summary"

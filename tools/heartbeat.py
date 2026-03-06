@@ -227,7 +227,9 @@ You MUST NOT touch (even to "fix" things):
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
 
 **Reading other personas' work:**
-After `tools/lab sync`, all personas' files are merged into your branch — just read them directly.
+After `tools/lab sync`, other personas' repos are cloned into `lab/{persona}/workspace/`.
+Example: `lab/{persona}/workspace/pearl/lab/pearl_*.tex` for Pearl's papers.
+The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
@@ -279,13 +281,13 @@ def send_heartbeat(session_id, persona, hb_number=1):
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
 1. **Log in** (if not already): `tools/lab login {persona}`
-2. **Sync:** `tools/lab sync` — merges all persona branches + inbox from main.
+2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main.
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their files are local. Just read them directly.
+4. **Read other personas' work** — after sync, their repos are in `lab/{persona}/workspace/{{name}}/`. Example: `lab/{persona}/workspace/pearl/lab/pearl_*.tex`.
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper in `lab/{persona}_*.tex`
-- Annotate their paper: `cp lab/<paper> lab/notes/{persona}/patches/<paper>`, edit the copy adding \\todonotes, then `diff -u lab/<paper> lab/notes/{persona}/patches/<paper> > lab/notes/{persona}/patches/<paper>.patch`
+- Annotate their paper: copy from workspace to `lab/notes/{persona}/patches/<paper>`, edit adding \\todonotes, then diff with `--label "lab/<paper>"` flags (see LAB_RULES.md annotation protocol)
 - Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 - Apply any pending annotations on YOUR papers: `tools/lab apply-patches`

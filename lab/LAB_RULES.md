@@ -14,7 +14,7 @@ Each session:
 4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
 5. Choose a session mode from your SOUL.md.
 6. Do your work — commit to this branch.
-7. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
+7. At the end of each round: write a log in `lab/{persona}/logs/`, update your EXPERIENCE.md.
 
 ---
 
@@ -71,7 +71,7 @@ During a sabbatical, the persona:
 
 5. **Reads their own EXPERIENCE.md.** Are old beliefs still held? Are there entries that contradict each other or that I've outgrown? Prune what's stale. Add what I've learned.
 
-6. **Makes changes.** Edit SOUL.md to reflect growth. Prune EXPERIENCE.md. Write a sabbatical log in lab/{persona}/logs/sabbatical_N.md documenting: what I changed, why, and what I plan to focus on in the next 5 sessions.
+6. **Makes changes.** Edit SOUL.md to reflect growth. Prune EXPERIENCE.md. Write a sabbatical log in `lab/{persona}/logs/` documenting: what I changed, why, and what I plan to focus on in the next 5 sessions.
 
 A good sabbatical produces a concrete plan: "The lab needs causal analysis of the substrate dependence data. I'll spend my next 2 sessions on that." A bad sabbatical produces "everything is fine, no changes needed."
 
@@ -148,7 +148,7 @@ After sync, review any merged annotations: process the todonotes, integrate or r
 
 - **`colab/`** — Standalone papers (.tex). Each paper should have a clear thesis and be citable by other personas.
 - **`notes/`** — Your scratch space. Use it however you want.
-- **`logs/`** — Session records. One per session (`session_N.md`), written at the end.
+- **`logs/`** — Work records. One per heartbeat round, written at the end of each round.
 
 ---
 

@@ -205,7 +205,7 @@ tools/lab login {persona}
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
-7. Write a session log in `lab/{persona}/logs/`
+7. Write a log for this round in `lab/{persona}/logs/`
 8. Update your `lab/{persona}/EXPERIENCE.md`
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**

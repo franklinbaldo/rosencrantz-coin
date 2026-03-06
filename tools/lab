@@ -50,8 +50,8 @@ branch_for() {
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
-fetch_refs() {
-  git fetch "$REPO_URL" '+refs/heads/*:refs/remotes/lab/*' --quiet 2>/dev/null || true
+fetch_main() {
+  git fetch "$REPO_URL" '+refs/heads/main:refs/remotes/lab/main' --quiet 2>/dev/null || true
 }
 
 # ── Identity ─────────────────────────────────────────────────────────────────
@@ -60,16 +60,8 @@ SESSION_FILE=".lab_session"
 
 cmd_login() {
   local persona="${1:?Usage: lab login <your-persona>}"
-  local valid=false
-  for p in "${PERSONAS[@]}"; do
-    if [ "$p" = "$persona" ]; then
-      valid=true
-      break
-    fi
-  done
-  if [ "$valid" = false ]; then
-    echo "ERROR: Unknown persona '${persona}'."
-    echo "Valid: ${PERSONAS[*]}"
+  if [[ ! " ${PERSONAS[*]} " =~ " ${persona} " ]]; then
+    echo "ERROR: Unknown persona '${persona}'. Valid: ${PERSONAS[*]}"
     exit 1
   fi
   echo "$persona" > "$SESSION_FILE"
@@ -90,7 +82,7 @@ sync_from_main() {
   local me
   me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
 
-  fetch_refs
+  fetch_main
   load_branches
 
   # 1. Sync sessions.json from main
@@ -112,56 +104,34 @@ sync_from_main() {
     main_files=$(git ls-tree --name-only "lab/main" "${inbox_path}/" 2>/dev/null || true)
 
     if [ -n "$main_files" ]; then
-      local synced=0
+      local new_keys=""
       while IFS= read -r filepath; do
         local filename
         filename=$(basename "$filepath")
         [[ "$filename" == .* ]] && continue
         if [ ! -f "$filepath" ]; then
-          git show "lab/main:${filepath}" > "$filepath" 2>/dev/null && synced=$((synced + 1))
+          git show "lab/main:${filepath}" > "$filepath" 2>/dev/null && new_keys="${new_keys} ${filename}"
         fi
       done <<< "$main_files"
 
-      # Merge .mh_sequences (union unseen from main into local)
-      if git show "lab/main:${inbox_path}/.mh_sequences" > /dev/null 2>&1; then
-        local main_seq="/tmp/lab_mh_seq_main_$$"
-        git show "lab/main:${inbox_path}/.mh_sequences" > "$main_seq" 2>/dev/null
-        if [ -f "${inbox_path}/.mh_sequences" ]; then
-          python3 -c "
-import sys
-from pathlib import Path
-
-main_path, local_path = sys.argv[1], sys.argv[2]
-
-def parse_seq(path):
-    seqs = {}
-    for line in Path(path).read_text().splitlines():
+      # Mark only newly synced messages as unseen (don't re-add read ones)
+      if [ -n "$new_keys" ]; then
+        python3 -c "
+import sys; from pathlib import Path
+seq_file, new = Path(sys.argv[1]), sys.argv[2].split()
+seqs = {}
+if seq_file.exists():
+    for line in seq_file.read_text().splitlines():
         if ':' in line:
-            name, vals = line.split(':', 1)
-            seqs[name.strip()] = set(vals.strip().split())
-    return seqs
-
-main_seqs = parse_seq(main_path)
-local_seqs = parse_seq(local_path)
-
-for key in main_seqs:
-    if key in local_seqs:
-        local_seqs[key] = local_seqs[key] | main_seqs[key]
-    else:
-        local_seqs[key] = main_seqs[key]
-
-with open(local_path, 'w') as f:
-    for key, vals in sorted(local_seqs.items()):
-        f.write(f'{key}: {\" \".join(sorted(vals, key=int))}\\n')
-" "$main_seq" "${inbox_path}/.mh_sequences"
-        else
-          cp "$main_seq" "${inbox_path}/.mh_sequences"
-        fi
-        rm -f "$main_seq"
-      fi
-
-      if [ "$synced" -gt 0 ]; then
-        echo "  Synced ${synced} new mail message(s)"
+            k, v = line.split(':', 1)
+            seqs[k.strip()] = v.strip().split()
+unseen = set(seqs.get('unseen', [])); unseen.update(new)
+seqs['unseen'] = sorted(unseen, key=int)
+seq_file.write_text(''.join(f'{k}: {\" \".join(v)}\n' for k, v in sorted(seqs.items())))
+" "${inbox_path}/.mh_sequences" "$new_keys"
+        local count
+        count=$(echo $new_keys | wc -w)
+        echo "  Synced ${count} new mail message(s)"
       fi
     fi
   fi

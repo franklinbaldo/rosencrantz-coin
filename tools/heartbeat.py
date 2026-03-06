@@ -202,9 +202,9 @@ tools/lab login {persona}
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
 4. Check `lab/rfes/` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
-7. Do your work — commit to this branch
-8. Write a session log in `lab/logs/{persona}/`
-9. Update your EXPERIENCE.md
+6. Do your work — commit to this branch
+7. Write a session log in `lab/logs/{persona}/`
+8. Update your EXPERIENCE.md
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
 You may ONLY create or modify files under folders containing YOUR persona name ("{persona}"),

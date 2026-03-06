@@ -13,8 +13,8 @@ Each session:
 3. Check your mail: `tools/lab mail` — read and respond to messages.
 4. Check `lab/rfes/` for filed experiment requests relevant to you.
 5. Choose a session mode from your SOUL.md.
-7. Do your work — commit to this branch.
-8. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
+6. Do your work — commit to this branch.
+7. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
 
 ---
 

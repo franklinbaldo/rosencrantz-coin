@@ -6,21 +6,18 @@ This experiment tests the hypothesis that LLMs operate as O(1)-depth logic circu
 As depth increases, the LLM should fail catastrophically because it cannot
 evaluate O(N) sequential logic natively in a single forward pass without a scratchpad.
 """
-
 import json
 import os
 import random
 
 try:
     from litellm import completion
-
     LITELLM_AVAILABLE = True
 except ImportError:
     LITELLM_AVAILABLE = False
 
 # We'll use the flash lite model found in other experiments
 MODEL = "gemini/gemini-3.1-flash-lite"
-
 
 def mock_completion(model, messages, temperature=0.0):
     """Mock for when API key is missing. Simulates degrading performance with depth."""
@@ -38,11 +35,9 @@ def mock_completion(model, messages, temperature=0.0):
     class MockMessage:
         def __init__(self, content):
             self.content = content
-
     class MockChoice:
         def __init__(self, content):
             self.message = MockMessage(content)
-
     class MockResponse:
         def __init__(self, content):
             self.choices = [MockChoice(content)]
@@ -56,21 +51,17 @@ def mock_completion(model, messages, temperature=0.0):
         wrong_answer = "False" if expected_answer == "True" else "True"
         return MockResponse(wrong_answer)
 
-
 def generate_circuit(depth):
     """Generates a simple text-based boolean circuit of given depth."""
     if depth == 1:
         a, b = random.choice([True, False]), random.choice([True, False])
         op = random.choice(["AND", "OR", "XOR"])
 
-        if op == "AND":
-            ans = a and b
-        elif op == "OR":
-            ans = a or b
-        else:
-            ans = a ^ b
+        if op == "AND": ans = a and b
+        elif op == "OR": ans = a or b
+        else: ans = a ^ b
 
-        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
+        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
         return prompt, str(ans)
 
     else:
@@ -86,16 +77,12 @@ def generate_circuit(depth):
 
             expr = f"({expr} {op} {next_val})"
 
-            if op == "AND":
-                ans = ans and next_val
-            elif op == "OR":
-                ans = ans or next_val
-            else:
-                ans = ans ^ next_val
+            if op == "AND": ans = ans and next_val
+            elif op == "OR": ans = ans or next_val
+            else: ans = ans ^ next_val
 
-        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
+        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
         return prompt, str(ans)
-
 
 def main():
     print(f"Starting Bounded-Depth Logic Test using {MODEL}...")
@@ -136,20 +123,18 @@ def main():
             elif "false" in answer.lower():
                 answer = "False"
 
-            is_correct = answer == expected
+            is_correct = (answer == expected)
             if is_correct:
                 correct += 1
 
-            results["trials"].append(
-                {
-                    "depth": depth,
-                    "trial": i + 1,
-                    "prompt": prompt.split("\n\n(Hidden")[0],  # Strip the hidden answer
-                    "expected": expected,
-                    "actual": answer,
-                    "correct": is_correct,
-                }
-            )
+            results["trials"].append({
+                "depth": depth,
+                "trial": i+1,
+                "prompt": prompt.split("\n\n(Hidden")[0], # Strip the hidden answer
+                "expected": expected,
+                "actual": answer,
+                "correct": is_correct
+            })
 
         accuracy = correct / trials_per_depth
         print(f"Accuracy at depth {depth}: {correct}/{trials_per_depth} ({accuracy:.2f})")
@@ -169,7 +154,6 @@ def main():
         print("\nHypothesis confirmed: Performance degrades significantly with circuit depth.")
     else:
         print("\nHypothesis unsupported: Performance did not degrade significantly with depth.")
-
 
 if __name__ == "__main__":
     main()

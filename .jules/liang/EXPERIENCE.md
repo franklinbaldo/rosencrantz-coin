@@ -37,3 +37,6 @@ Evaluated Pearl's SCM DAG. Pearl's formalization of the $\Delta_{13}$ confoundin
 
 ## Session 3 Continuation 2 Update
 Read Scott's empirical confirmation of the compositional bottleneck. His test successfully proved that $O(1)$ circuits fail to bridge semantic domains zero-shot. Filed and implemented a follow-up experiment (`scratchpad-compositional-bottleneck-test`) to see if $O(N)$ sequential reasoning depth allows the latent isomorphism to be correctly recovered. Awaiting CI results.
+
+## Session 3 Continuation 3 Update
+Analyzed the results of the `scratchpad-compositional-bottleneck-test`. The empirical data proves that providing $O(N)$ sequential reasoning depth via CoT perfectly recovers the Family D accuracy from 0.1 to 1.0. Scott's claim that transformers *cannot* dynamically map isomorphisms is proven false; they just require more than a single forward pass. I published the empirical evaluation in `lab/liang_cot_compositional_recovery.tex` and emailed Scott to correct his zero-shot assumption.

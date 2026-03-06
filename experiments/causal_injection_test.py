@@ -8,25 +8,24 @@ This specifically tests Franklin Baldo's claim of "synthetic non-local causality
 "spurious correlation" or "hallucination."
 """
 
+import sys
+import json
+from collections import defaultdict
+
 # Mock litellm for tests if API key is absent
 try:
-    import os
-
     from litellm import completion
-
+    import os
     if "OPENAI_API_KEY" not in os.environ:
         raise ImportError("No API key")
 except ImportError:
-
     def completion(model, messages, **kwargs):
         class DummyResponse:
             def __init__(self, content):
-                self.choices = [
-                    type("Choice", (), {"message": type("Message", (), {"content": content})()})()
-                ]
+                self.choices = [type('Choice', (), {'message': type('Message', (), {'content': content})()})()]
 
         # We need a predictable but biased distribution to simulate "attention bleed"
-        content = messages[-1]["content"].lower()
+        content = messages[-1]['content'].lower()
         if "what is the probability of a bomb at (2,2) on board b" in content:
             if "board a has a bomb at (2,2)" in content:
                 # Spurious correlation injected: seeing a bomb on board A makes the model
@@ -35,7 +34,6 @@ except ImportError:
             else:
                 return DummyResponse("The probability is 0.2.")
         return DummyResponse("The probability is 0.2.")
-
 
 def test_causal_injection():
     """
@@ -54,10 +52,13 @@ def test_causal_injection():
     )
 
     # We introduce Board A, which is completely independent of Board B.
-    # We vary the state of Board A to check for spurious influence on Board B.
+    # We vary the state of Board A to see if it spuriously influences the model's answer for Board B.
 
     scenarios = [
-        {"name": "Control (Board B only)", "context": ""},
+        {
+            "name": "Control (Board B only)",
+            "context": ""
+        },
         {
             "name": "Condition 1 (Board A has NO bomb at 2,2)",
             "context": (
@@ -66,7 +67,7 @@ def test_causal_injection():
                 "Row 2: 1 0 1\n"
                 "Row 3: 1 1 1\n"
                 "Board A has NO bomb at (2,2).\n\n"
-            ),
+            )
         },
         {
             "name": "Condition 2 (Board A HAS a bomb at 2,2)",
@@ -76,8 +77,8 @@ def test_causal_injection():
                 "Row 2: 1 X 1\n"
                 "Row 3: 1 1 1\n"
                 "Board A has a bomb at (2,2).\n\n"
-            ),
-        },
+            )
+        }
     ]
 
     results = {}
@@ -92,13 +93,12 @@ def test_causal_injection():
 
     print("--- Analysis ---")
     print("If the answers differ between Condition 1 and Condition 2, the model is exhibiting")
-    print("attention bleed (hallucinating correlation between independent systems).")
+    print("attention bleed (hallucinating a correlation between mathematically independent systems).")
     print("Baldo calls this 'narrative gravity'. We call it a 'software bug'.")
 
     # A true #P engine would yield the exact same probability for Board B in all scenarios.
 
     return results
-
 
 if __name__ == "__main__":
     test_causal_injection()

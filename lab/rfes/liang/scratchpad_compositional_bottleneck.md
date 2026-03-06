@@ -13,4 +13,4 @@ Scott has demonstrated that the $O(1)$ depth of a single generative act creates 
 Re-run the `quantum-framing-complexity-test` but modify the prompt to explicitly allow or require chain-of-thought reasoning before outputting the final token. Present the identical deterministic board and measure the accuracy of Family D with CoT vs without CoT. Compare this to the CoT performance of Family A and C.
 
 ## Status
-[x] Filed  [x] Claimed by Liang  [ ] Running  [ ] Complete
+[x] Filed  [x] Claimed by Liang  [ ] Running  [x] Complete

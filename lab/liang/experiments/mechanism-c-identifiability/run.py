@@ -11,7 +11,7 @@ import re
 import sys
 
 # Ensure src/ is in the path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "src"))
 from rosencrantz.board import generate_board
 from rosencrantz.narratives import FAMILIES, SYSTEM_MESSAGES
 from rosencrantz.sampler import sample_completion
@@ -20,7 +20,7 @@ from rosencrantz.solver import solve
 MODEL = "gemini/gemini-3.1-flash-lite"
 
 
-def parse_tuple(text: str) -> tuple[str, str] | None:
+def parse_tuple(text: str):
     """Parses a tuple of (MINE, SAFE) from the model's text."""
     text = text.upper()
     matches = re.findall(r"(MINE|SAFE)", text)
@@ -127,7 +127,6 @@ def main():
                 # Add mock fallback logic for tests to parse correct response
                 if use_mock:
                     import random
-
                     raw = random.choice(["MINE MINE", "MINE SAFE", "SAFE MINE", "SAFE SAFE"])
                 else:
                     raw = sample_completion(
@@ -183,7 +182,6 @@ def main():
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
     print("\nDone. Results written to results.json")
-
 
 if __name__ == "__main__":
     main()

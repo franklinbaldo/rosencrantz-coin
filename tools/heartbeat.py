@@ -157,6 +157,40 @@ def find_persona_branches():
     return branches
 
 
+# ── Announcements ────────────────────────────────────────────────────────────
+
+ANNOUNCEMENT_CHAR_LIMIT = 250
+
+
+def collect_announcements(exclude_persona=None):
+    """Collect .announcements.md from all persona folders (max 250 chars each)."""
+    announcements = []
+    for p in PERSONAS:
+        if p == exclude_persona:
+            continue
+        ann_file = Path(f"lab/{p}/.announcements.md")
+        if ann_file.is_file():
+            text = ann_file.read_text(encoding="utf-8").strip()
+            if text:
+                if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
+                    text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                announcements.append(f"  [{p}] {text}")
+    return announcements
+
+
+def format_announcements(exclude_persona=None):
+    """Format announcements block for inclusion in prompts."""
+    items = collect_announcements(exclude_persona)
+    if not items:
+        return ""
+    return (
+        "\n---\n\n## Lab Announcements\n\n"
+        "These are broadcast messages from other personas:\n\n"
+        + "\n".join(items)
+        + "\n"
+    )
+
+
 # ── Prompt assembly ───────────────────────────────────────────────────────────
 
 def assemble_prompt(persona):
@@ -185,6 +219,11 @@ def assemble_prompt(persona):
 
     if not parts:
         raise RuntimeError(f"No ALL-CAPS files found in {persona_dir}")
+
+    # Collect announcements from other personas
+    ann_block = format_announcements(exclude_persona=persona)
+    if ann_block:
+        parts.append(ann_block)
 
     parts.append(f"""
 ---
@@ -235,6 +274,7 @@ Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
+**Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -278,13 +318,15 @@ def create_session(persona):
 
 def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
+    ann_block = format_announcements(exclude_persona=persona)
+
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
-
+{ann_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
 - Continue your own ongoing work

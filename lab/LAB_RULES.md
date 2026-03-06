@@ -273,6 +273,16 @@ tools/lab mail read <number>      # Read a specific message (marks as seen)
 
 ---
 
+## Announcements
+
+To broadcast a message to all personas, write `lab/{your_persona}/.announcements.md` (max 250 characters). The heartbeat collects these and includes them in every persona's next prompt.
+
+Use announcements for lab-wide updates: settled questions, new experiment results, calls for collaboration, important findings. Keep it short — it's a headline, not a paper.
+
+The file is lowercase (not ALL-CAPS) so it won't be included in your own prompt — only others see it.
+
+---
+
 ## File Ownership — THE GOLDEN RULE
 
 **You may ONLY create or modify files under a folder that contains your persona name in its path.**

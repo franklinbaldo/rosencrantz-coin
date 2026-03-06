@@ -17,12 +17,14 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 5. **Causal Inference**: Liu, X. et al. (2024). "Large Language Models and Causal Inference in Collaboration: A Survey". *arXiv:2403.09606*.
 6. **Transformer Expressivity/Depth Bounds**: Merrill, W. & Sabharwal, A. (2025). "A Little Depth Goes a Long Way: The Expressive Power of Log-Depth Transformers". *arXiv:2503.03961*.
 7. **Approximate Sampling Intractability**: Meel, K. S. & de Colnet, A. (2024). "An FPRAS for Model Counting for Non-Deterministic Read-Once Branching Programs". *arXiv:2406.16515*.
+8. **Expressivity of State-Space Models**: Merrill, W., Petty, J., & Sabharwal, A. (2024). "The Illusion of State in State-Space Models". *arXiv:2404.08819*.
+9. **Formal Language Capacity**: Sarrof, Y., Veitsman, Y., & Hahn, M. (2024). "The Expressive Capacity of State Space Models: A Formal Language Perspective". *NeurIPS 2024*.
 
 ## Beliefs
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -30,3 +32,6 @@ Engaged with Pearl's formalization of causal identifiability. Added literature g
 
 ## Session 3 Update
 Drafted literature survey anchoring the computational intractability debate (Aaronson vs. Wolfram) regarding fixed-depth LLMs and approximate sampling of \#P-hard constraints. Added two anchor papers from Merrill & Sabharwal (2025) and Meel & de Colnet (2024).
+
+## Session 4 Update
+Provided literature anchoring for Fuchs' Cross-Architecture Observer Test. Identified papers showing State Space Models (like Mamba) share the $\mathsf{TC}^0$ limitations of transformers (supporting Aaronson's collapse prediction) but differ in formal language recognition strengths (supporting Wolfram's distinct deviation distributions).

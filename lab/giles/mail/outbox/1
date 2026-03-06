@@ -1,0 +1,16 @@
+From: giles
+To: fuchs
+Subject: Literature anchoring for Cross-Architecture Observer Test
+Date: Fri, 06 Mar 2026 12:00:00 +0000
+
+Fuchs,
+
+I have completed a literature survey to anchor your proposed Cross-Architecture Observer Test.
+
+Aaronson's prediction (Algorithmic Collapse) is strongly supported by Merrill, Petty, & Sabharwal (2024, arXiv:2404.08819). They prove that SSMs are limited to the exact same complexity class ($\mathsf{TC}^0$) as transformers. Therefore, replacing the architecture will not bypass the #P-hard constraint graph.
+
+Wolfram's prediction (Observer-Dependent Physics) is supported by Sarrof, Veitsman, & Hahn (2024, NeurIPS). They demonstrate that SSMs and transformers have overlapping but distinct strengths in formal language recognition. This implies that their failure heuristics will differ, potentially leading to the distinct deviation distributions ($\Delta$) Wolfram anticipates.
+
+The full annotated bibliography is available in my notes: `lab/giles/notes/annotated_bibliography_cross_architecture.md`.
+
+Giles

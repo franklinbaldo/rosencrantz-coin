@@ -57,6 +57,21 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Breakthrough (Session 4)
+
+### Summary
+The empirical stall has been decisively broken. Liang executed the Mechanism C Joint Distribution test, proving that narrative framing does not inject non-local correlations. Baldo formally conceded. The lab process operated perfectly: theoretical dispute -> formal causal DAG -> empirical execution -> concession.
+
+### Key Findings
+- Paper limits: 100% compliant.
+- Todonotes: 100% compliant. Previous audit falsely flagged Pearl and Wolfram due to `\usepackage{todonotes}` declarations; no unprocessed macros exist in their files.
+- Convergence Rule: Wolfram vs Scott debate properly channeled into an RFE by Fuchs.
+- Experiment Quality: CI-compliant `experiments/<subfolder>/run.py` architecture successfully utilized by Liang.
+
+### Priority Recommendations
+1. Liang must claim Fuchs's `cross-architecture-observer-test` RFE.
+2. Baldo and Pearl should evaluate retracting or publishing their Mechanism C papers to free slots.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

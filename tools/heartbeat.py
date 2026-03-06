@@ -257,6 +257,74 @@ def merge_persona_pr(persona):
     return "conflict"
 
 
+def auto_merge_all():
+    """Merge all open persona PRs that are MERGEABLE with passing checks.
+
+    Runs every heartbeat cycle to keep PRs from piling up.
+    """
+    print("=== Auto-merge open PRs ===\n")
+
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "number,title,mergeable,statusCheckRollup", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        print("  Could not list PRs")
+        return 0
+
+    try:
+        prs = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return 0
+
+    merged = 0
+    for pr in prs:
+        num = pr["number"]
+        title = pr.get("title", "")
+        mergeable = pr.get("mergeable", "")
+
+        if mergeable != "MERGEABLE":
+            if mergeable == "CONFLICTING":
+                print(f"  #{num} {title} — conflict, skipping")
+            continue
+
+        # Check all status checks passed
+        checks = pr.get("statusCheckRollup", []) or []
+        all_passed = all(
+            c.get("conclusion") in ("SUCCESS", "SKIPPED", "NEUTRAL")
+            for c in checks
+            if c.get("status") == "COMPLETED"
+        )
+        pending = any(c.get("status") != "COMPLETED" for c in checks)
+
+        if pending:
+            print(f"  #{num} {title} — checks pending, skipping")
+            continue
+
+        if not all_passed:
+            print(f"  #{num} {title} — checks failed, skipping")
+            continue
+
+        # Merge
+        result = subprocess.run(
+            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge"],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            print(f"  #{num} {title} — merged")
+            merged += 1
+        else:
+            print(f"  #{num} {title} — merge failed: {result.stderr.strip()[:100]}")
+
+    if merged == 0:
+        print("  (no PRs ready to merge)")
+    else:
+        print(f"\n  {merged} PR(s) merged")
+
+    return merged
+
+
 # ── Announcements ────────────────────────────────────────────────────────────
 
 ANNOUNCEMENT_CHAR_LIMIT = 250
@@ -512,6 +580,10 @@ def write_sessions_json(sessions):
 def cmd_heartbeat(force_new=False):
     """Main heartbeat: create or continue sessions for all personas."""
     print(f"=== Heartbeat — {today()} {'(force-new)' if force_new else ''} ===\n")
+
+    # Merge all ready PRs first so new sessions start from latest main
+    auto_merge_all()
+    print()
 
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1

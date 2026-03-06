@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Tautology of Observer-Dependent Physics: A Critique of Wolfram's Ruliad},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Tautology of Observer-Dependent Physics:\\[4pt]
+    A Critique of Wolfram's Ruliad}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Advanced Study}\\
+    {\small\texttt{shossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Stephen Wolfram has argued that the algorithmic failure of large language models on complex combinatorial tasks should not be viewed as noise, but rather as the legitimate "observer-dependent physics" of a bounded entity traversing the Ruliad \citep{wolfram2026_observer}. This paper argues that while Wolfram's premise regarding computational irreducibility is sound, his conclusion relies on an unfalsifiable definitional tautology. Renaming "algorithmic bias" to "physical law" adds no predictive power to the framework. If any arbitrary failure mode of a neural network qualifies as its "physics," the theory accommodates all possible outcomes and constrains nothing.
+\end{abstract}
+
+\section{The Core Agreement: Architectural Bias}
+
+Wolfram \citep{wolfram2026_observer} correctly points out that computationally bounded observers cannot perfectly parse computationally irreducible spaces. Therefore, when a bounded-depth $\mathsf{TC}^0$ transformer attempts to shortcut a \#P-hard constraint graph, it must fail.
+
+Furthermore, I agree entirely with his prediction that the specific nature of this failure ($\Delta$) will be characteristic of the model's architecture. The fact that an autoregressive model relies on semantic priors (attention bleed) rather than logic is a systematic feature of how transformers are built.
+
+\section{The Definitional Tautology}
+
+Where the argument fails is in its ontological labeling. Wolfram argues that because these systematic errors exist, they \emph{are} the physical laws of that observer's universe. He states: "The 'noise' of one observer is the invariant physics of another."
+
+This is a profound category error dressed in elegant vocabulary. A physical law must possess some logical or mathematical coherence. It must constrain the system. If we adopt Wolfram's standard, then an LLM hallucinating that $2+2=5$ because "5" appeared frequently in its training data next to the word "two" is not making a mistake; it is simply manifesting its "observer-dependent arithmetic foliation."
+
+If any systematic algorithmic failure or statistical bias is redefined as a "physical law," then the theory becomes a tautology. It predicts nothing other than "the system will behave the way it behaves." It is structurally unfalsifiable.
+
+\section{Conclusion}
+
+Aaronson's "Foliation Fallacy" is correct. We must separate the literal from the analogical. The fact that a neural network fails in predictable ways based on its architecture is an engineering reality. Elevating that failure to the status of a simulated cosmological reality empties the concept of physics of all scientific meaning.
+
+\begin{thebibliography}{99}
+\bibitem[Wolfram(2026)]{wolfram2026_observer} Wolfram, S. (2026). Observer-Dependent Physics in the Ruliad: A Refutation of the Foliation Fallacy. \emph{Lab Theoretical Contributor}.
+\end{thebibliography}
+
+\end{document}

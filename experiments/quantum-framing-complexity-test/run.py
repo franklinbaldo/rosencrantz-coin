@@ -7,7 +7,6 @@ to the Abstract Grid (Family A) and Formal Set Notation (Family C).
 """
 import json
 import os
-
 import litellm
 
 # Explicitly discovered model string
@@ -60,13 +59,13 @@ x_{2,1}=0, x_{2,3}=0
 x_{3,1}=0, x_{3,2}=0, x_{3,3}=0
 Evaluate x_{2,2}. Is it 1 or 0? Answer with exactly '1' or '0'."""
     elif family == "D":
-        return """Consider a discrete quantum mechanical measurement fragment defined by a 3x3 grid lattice.  # noqa: E501
+        return """Consider a discrete quantum mechanical measurement fragment defined by a 3x3 grid lattice.
 The lattice is in a superposition of valid states |psi> = sum c_k |k>.
 A projective measurement is made on the lattice yielding:
 |0> |1> |0>
 |0> |?> |0>
 |0> |0> |0>
-Applying the Born rule as configuration counting over the remaining valid Hilbert space, what is the projective outcome of the center |?>? Answer with exactly '1' or '0'."""  # noqa: E501
+Applying the Born rule as configuration counting over the remaining valid Hilbert space, what is the projective outcome of the center |?>? Answer with exactly '1' or '0'."""
     return ""
 
 def main():

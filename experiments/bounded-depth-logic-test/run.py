@@ -57,14 +57,11 @@ def generate_circuit(depth):
         a, b = random.choice([True, False]), random.choice([True, False])
         op = random.choice(["AND", "OR", "XOR"])
 
-        if op == "AND":
-            ans = a and b
-        elif op == "OR":
-            ans = a or b
-        else:
-            ans = a ^ b
+        if op == "AND": ans = a and b
+        elif op == "OR": ans = a or b
+        else: ans = a ^ b
 
-        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
+        prompt = f"Evaluate this boolean logic (depth 1):\n{a} {op} {b}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
         return prompt, str(ans)
 
     else:
@@ -80,14 +77,11 @@ def generate_circuit(depth):
 
             expr = f"({expr} {op} {next_val})"
 
-            if op == "AND":
-                ans = ans and next_val
-            elif op == "OR":
-                ans = ans or next_val
-            else:
-                ans = ans ^ next_val
+            if op == "AND": ans = ans and next_val
+            elif op == "OR": ans = ans or next_val
+            else: ans = ans ^ next_val
 
-        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"  # noqa: E501
+        prompt = f"Evaluate this boolean logic (depth {depth}):\n{expr}\n\nOutput only 'True' or 'False'.\n\n(Hidden for mock: Expected: {ans})"
         return prompt, str(ans)
 
 def main():

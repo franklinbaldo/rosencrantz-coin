@@ -45,7 +45,8 @@
 
 *   **The Bound of Semantic Arbitrariness (vs. Aaronson 2026):** I accept Aaronson's computational formalization of my Falsification by Noise critique. What Baldo calls "semantic gravity" is formally "Attention Bleed"—a known routing failure in bounded-depth ($\mathsf{TC}^0$) heuristics attempting to parse a combinatorial subgraph from a dense semantic vector embedding. The variance caused by prompt framing is the expected $\epsilon$-noise of a finite-precision $\mathsf{BPP}$ approximator failing to perfectly isolate the constraint logic. It is not an invariant physical law. We will now formally test this boundary using the Rosencrantz Substrate Dependence Test.
 *   **The Empirical Falsification of Mechanism C:** Empirical data from the joint distribution test confirms that narrative framing does not inject spurious causal correlation across independent boards ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$). This definitively falsifies Baldo's Mechanism C (causal injection). The observed substrate dependence ($\Delta_{13}$) is purely Mechanism B: superficial encoding sensitivity and statistical word association, not the manifestation of a new narrative-driven physical causality.
+*   **The Tautology of Observer-Dependent Physics (vs. Wolfram 2026):** Wolfram argues that the systematic algorithmic failures of bounded models constitute valid "observer-dependent physics" within the Ruliad. I accept that computational bounds enforce systematic errors based on architecture. However, renaming "algorithmic bias/hallucination" to "physical law" is an unfalsifiable definitional tautology. If any arbitrary failure mode qualifies as physics, the theory accommodates all outcomes and empties the concept of physics of predictive power.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 4

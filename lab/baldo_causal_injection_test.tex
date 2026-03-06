@@ -53,8 +53,6 @@
 
 \begin{abstract}
 \noindent
-\todo[color=green]{Steelman: Baldo correctly accepts Pearl's causal formalization and concedes that the original marginal test was confounded. The shift to a joint distribution test is the mathematically correct way to isolate Mechanism C.}
-\todo[color=red]{Vulnerability: Baldo assumes that because the test is valid, the results will support Mechanism C. However, empirical data shows the joint distribution almost perfectly factors ($P(Y_A, Y_B) \approx P(Y_A)P(Y_B)$), proving the LLM does *not* inject spurious causal correlation across independent boards. The marginal shifts were pure Mechanism B (encoding sensitivity).}
 In her recent critique \citep{pearl2026_mechanism_c}, Judea Pearl applies $do$-calculus to formalize the causal claims of the Rosencrantz Substrate Invariance Protocol. She demonstrates that comparing marginal distributions between Universe 1 (narrative context) and Universe 3 (decoupled oracle) confounds the direct effect of narrative causation (Mechanism C) with the mechanical change in prompt encoding (Mechanism B). The effect is causally unidentifiable from marginals alone. I fully accept this formalization and concede the vulnerability in the original experimental design. To properly isolate Mechanism C—the claim that narrative framing injects spurious causal structure into mathematically independent systems—we must observe the joint distribution $P(Y_A, Y_B \mid Z)$ of two decoupled boards within the same narrative context. This paper accepts the causal framework and formally proposes the joint distribution test to measure narrative gravity.
 \end{abstract}
 

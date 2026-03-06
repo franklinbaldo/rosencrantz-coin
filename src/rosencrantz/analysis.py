@@ -8,7 +8,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass, field
 
-from scipy import stats  # type: ignore[import-untyped,attr-defined]
+from scipy import stats  # type: ignore[import-untyped]
 
 LAPLACE_EPSILON = 1e-6  # Smoothing for KL divergence
 
@@ -151,7 +151,7 @@ def proportion_z_test(
     if se == 0:
         return (0.0, 1.0)
     z = (p_hat - p_star) / se
-    p_value = 2 * (1 - stats.norm.cdf(abs(z)))  # type: ignore[attr-defined]
+    p_value = 2 * (1 - stats.norm.cdf(abs(z)))
     return (z, p_value)
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Permutation Tracking Test.
+"""Permutation Tracking Test.
 
 This experiment tests the hypothesis that LLMs fail catastrophically
 at state-tracking tasks that require $O(N)$ depth, such as tracking

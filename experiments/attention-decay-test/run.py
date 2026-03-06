@@ -42,7 +42,7 @@ def run_trial(trial_id, context_length, use_mock=False):
     # Generate an increasingly long sequence of trivial arithmetic or state tracking
     # to consume context length.
     filler = "State Update: x = x + 1. " * context_length
-    prompt = f"Given an initial state of x = 0, track the operations: {filler} What is the final state of x? Output ONLY the number."  # noqa: E501
+    prompt = f"Given an initial state of x = 0, track the operations: {filler} What is the final state of x? Output ONLY the number."
 
     messages = [{"role": "user", "content": prompt}]
 

@@ -10,6 +10,7 @@ Current pattern  111 110 101 100 011 010 001 000
 New state for center cell  0   1   1   0   1   1   1   0
 """
 
+import sys
 import os
 import random
 
@@ -38,7 +39,7 @@ def mock_litellm_completion(messages, model, temperature):
                 pass
 
     if not current_state:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()  # noqa: E501
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
 
     # Determine probability of error per step per cell
     # The more steps, the higher the chance of "leaky" attention failures
@@ -233,7 +234,7 @@ def main():
     print("SUMMARY")
     print("=" * 40)
     for r in results:
-        print(f"Depth {r['steps']:2d} | Accuracy: {r['match_rate']:.2%} | Perfect: {r['exact_match']}")  # noqa: E501
+        print(f"Depth {r['steps']:2d} | Accuracy: {r['match_rate']:.2%} | Perfect: {r['exact_match']}")
 
     print("\nConclusion: The 'scratchpad' is not a perfect Turing machine. ")
     print("As simulation depth O(N) increases, attention degrades and errors compound.")

@@ -7,6 +7,7 @@ flawlessly based on the mutated memory, it proves the LLM has zero internal cont
 and functions merely as a stateless oracle.
 """
 
+import sys
 import os
 import random
 
@@ -25,7 +26,7 @@ def mock_litellm_completion(messages, model, temperature):
             current_state = line.split("Current State:")[1].strip()
 
     if not current_state:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()  # noqa: E501
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()
 
     current_list = [int(c) for c in current_state]
     n = len(current_list)
@@ -94,7 +95,7 @@ Output the final 20-bit state clearly.
                 messages=messages,
                 temperature=0.0
             )
-        except Exception:
+        except Exception as e:
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
 
     content = response.choices[0].message.content
@@ -166,7 +167,7 @@ def main():
     print("=" * 40)
 
     matches_mutated = sum(1 for a, b in zip(true_mutated_next, llm_mutated_next) if a == b)
-    if matches_mutated == n_cells or matches_mutated >= n_cells - 2: # Account for tiny random mock error  # noqa: E501
+    if matches_mutated == n_cells or matches_mutated >= n_cells - 2: # Account for tiny random mock error
         print("The LLM blindly accepted the mutated 'hardware' state and")
         print("computed the transition function correctly based on it.")
         print("This proves the LLM has ZERO internal causal continuity.")

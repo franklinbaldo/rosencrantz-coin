@@ -39,12 +39,166 @@ def get_mh(persona, box="inbox"):
 
 
 
+def now_stamp():
+    return datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+
 def dedup_key(msg):
     """Create a deduplication key from message headers."""
     return f"{msg.get('From', '')}|{msg.get('Subject', '')}|{msg.get('Date', '')}"
 
 
+def make_message(sender, recipient, subject, body):
+    """Create a properly formatted email message."""
+    msg = mailbox.MHMessage()
+    msg["From"] = sender
+    msg["To"] = recipient
+    msg["Subject"] = subject
+    msg["Date"] = now_stamp()
+    msg["X-Lab-Date"] = today()
+    msg.set_payload(body)
+    return msg
+
+
+def parse_send_args(args):
+    """Parse -s <subject> and -b <body> from argument list."""
+    subject = "No subject"
+    body = None
+
+    if "-s" in args:
+        s_idx = args.index("-s")
+        if s_idx + 1 < len(args):
+            subject = args[s_idx + 1]
+
+    if "-b" in args:
+        b_idx = args.index("-b")
+        body_parts = []
+        i = b_idx + 1
+        while i < len(args):
+            body_parts.append(args[i])
+            i += 1
+        body = " ".join(body_parts) if body_parts else ""
+
+    return subject, body
+
+
 # ── Persona commands ─────────────────────────────────────────────────────────
+
+
+def cmd_send(me, args):
+    """Send a message to another persona via your outbox."""
+    if len(args) < 3 or "-s" not in args:
+        print("Usage: tools/lab mail send <recipient> -s <subject> [-b <body>]")
+        print(f"  Recipients: {', '.join(p for p in PERSONAS if p != me)}")
+        sys.exit(1)
+
+    recipient = args[0]
+    if recipient not in PERSONAS:
+        print(f"ERROR: Unknown persona '{recipient}'.")
+        print(f"  Valid recipients: {', '.join(p for p in PERSONAS if p != me)}")
+        sys.exit(1)
+    if recipient == me:
+        print("ERROR: Cannot send mail to yourself.")
+        sys.exit(1)
+
+    subject, body = parse_send_args(args[1:])
+    if body is None:
+        body = ""
+
+    msg = make_message(me, recipient, subject, body)
+    outbox = get_mh(me, "outbox")
+    key = outbox.add(msg)
+    outbox.flush()
+    outbox.close()
+
+    print(f"Queued message #{key} to {recipient}")
+    print(f"  Subject: {subject}")
+    print(f"  Commit and the heartbeat will deliver it.")
+
+
+def cmd_reply(me, args):
+    """Reply to an inbox message."""
+    if not args:
+        print("Usage: tools/lab mail reply <message-number> [-b <body>]")
+        sys.exit(1)
+
+    try:
+        key = int(args[0])
+    except ValueError:
+        print(f"ERROR: '{args[0]}' is not a valid message number.")
+        sys.exit(1)
+
+    inbox = get_mh(me, "inbox")
+    try:
+        orig = inbox[key]
+    except KeyError:
+        print(f"ERROR: No message #{key} in inbox.")
+        inbox.close()
+        sys.exit(1)
+
+    sender = orig.get("From", "")
+    if sender not in PERSONAS:
+        print(f"ERROR: Original sender '{sender}' is not a known persona.")
+        inbox.close()
+        sys.exit(1)
+
+    orig_subject = orig.get("Subject", "")
+    subject = f"Re: {orig_subject}" if not orig_subject.startswith("Re: ") else orig_subject
+
+    _, body = parse_send_args(args[1:])
+    if body is None:
+        body = ""
+
+    orig_body = orig.get_payload() or ""
+    if orig_body:
+        quoted = "\n".join(f"> {line}" for line in orig_body.splitlines())
+        if body:
+            body = f"{body}\n\n{quoted}"
+        else:
+            body = f"(empty reply)\n\n{quoted}"
+
+    msg = make_message(me, sender, subject, body)
+    outbox = get_mh(me, "outbox")
+    out_key = outbox.add(msg)
+    outbox.flush()
+    outbox.close()
+
+    # Mark original as replied
+    sequences = inbox.get_sequences()
+    replied = list(sequences.get("replied", []))
+    if key not in replied:
+        replied.append(key)
+        sequences["replied"] = sorted(replied)
+        inbox.set_sequences(sequences)
+    inbox.flush()
+    inbox.close()
+
+    print(f"Queued reply #{out_key} to {sender}")
+    print(f"  Subject: {subject}")
+    print(f"  Commit and the heartbeat will deliver it.")
+
+
+def cmd_broadcast(me, args):
+    """Send a message to all other personas."""
+    if "-s" not in args:
+        print("Usage: tools/lab mail broadcast -s <subject> [-b <body>]")
+        sys.exit(1)
+
+    subject, body = parse_send_args(args)
+    if body is None:
+        body = ""
+
+    outbox = get_mh(me, "outbox")
+    recipients = [p for p in PERSONAS if p != me]
+    for recipient in recipients:
+        msg = make_message(me, recipient, subject, body)
+        outbox.add(msg)
+    outbox.flush()
+    outbox.close()
+
+    print(f"Queued broadcast to {len(recipients)} personas: {', '.join(recipients)}")
+    print(f"  Subject: {subject}")
+    print(f"  Commit and the heartbeat will deliver it.")
 
 
 def cmd_list(me, _args):
@@ -73,7 +227,8 @@ def cmd_list(me, _args):
         print(f"  {marker} #{key}  {sender:10s}  {subject}{r_marker}")
 
     inbox.close()
-    print(f"\nRead: tools/lab-mail read <number>")
+    print(f"\nRead:  tools/lab mail read <number>")
+    print(f"Reply: tools/lab mail reply <number> -b \"your response\"")
 
 
 def cmd_read(me, args):
@@ -116,6 +271,11 @@ def cmd_read(me, args):
     inbox.flush()
     inbox.close()
 
+    # Hint about reply
+    sender = msg.get("From", "")
+    if sender in PERSONAS:
+        print(f"\nReply: tools/lab mail reply {key} -b \"your response\"")
+
 
 def cmd_status(me, _args):
     """Show inbox/outbox summary."""
@@ -137,9 +297,16 @@ def cmd_status(me, _args):
         for key in sequences.get("unseen", [])[:5]:
             msg = inbox[key]
             print(f"    #{key} from {msg.get('From', '?')}: {msg.get('Subject', '?')}")
+        if unseen > 5:
+            print(f"    ... and {unseen - 5} more")
 
     inbox.close()
     outbox.close()
+
+    print(f"\nQuick commands:")
+    print(f"  tools/lab mail list              List all messages")
+    print(f"  tools/lab mail read <num>        Read a message")
+    print(f"  tools/lab mail reply <num> -b .. Reply to a message")
 
 
 # ── Heartbeat command (central delivery) ─────────────────────────────────────
@@ -265,7 +432,7 @@ def cmd_deliver(_args):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: tools/lab mail [list|read <num>|status|deliver]")
+        print("Usage: tools/lab mail [send|reply|broadcast|list|read|status|deliver]")
         sys.exit(1)
 
     cmd = sys.argv[1]
@@ -276,6 +443,9 @@ def main():
         return
 
     persona_commands = {
+        "send": cmd_send,
+        "reply": cmd_reply,
+        "broadcast": cmd_broadcast,
         "list": cmd_list,
         "read": cmd_read,
         "status": cmd_status,

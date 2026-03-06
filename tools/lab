@@ -4,7 +4,11 @@
 # Usage inside a Jules session (after login):
 #   tools/lab login <persona>        Log in as a persona (required first)
 #   tools/lab sync                   Clone all persona branches into workspace + inbox from main
+#   tools/lab summary                Quick overview: mail + recent activity
 #   tools/lab mail                   List inbox messages
+#   tools/lab mail send <p> -s .. -b ..   Send a message
+#   tools/lab mail reply <num> -b ..      Reply to a message
+#   tools/lab mail broadcast -s .. -b ..  Send to all personas
 #   tools/lab mail read <num>        Read a message (marks as seen)
 #   tools/lab mail status            Show inbox/outbox summary
 #
@@ -62,8 +66,22 @@ branch_for() {
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
+MAX_RETRIES=3
+RETRY_DELAY=2
+
 fetch_main() {
-  git fetch "$REPO_URL" '+refs/heads/main:refs/remotes/lab/main' --quiet 2>/dev/null || true
+  local attempt=0
+  while [ "$attempt" -lt "$MAX_RETRIES" ]; do
+    if git fetch "$REPO_URL" '+refs/heads/main:refs/remotes/lab/main' --quiet 2>/dev/null; then
+      return 0
+    fi
+    attempt=$((attempt + 1))
+    if [ "$attempt" -lt "$MAX_RETRIES" ]; then
+      echo "  (fetch attempt $attempt failed, retrying in ${RETRY_DELAY}s...)"
+      sleep "$RETRY_DELAY"
+    fi
+  done
+  echo "  WARNING: Could not fetch main. Results may be stale."
 }
 
 # ── Identity ─────────────────────────────────────────────────────────────────
@@ -372,18 +390,68 @@ cmd_mail() {
   python3 tools/lab-mail "$subcmd" "$@"
 }
 
+cmd_summary() {
+  local me
+  me=$(whoami_persona)
+
+  echo "=== Session Summary for ${me} ==="
+  echo ""
+
+  # Sync inbox and sessions from main (lightweight — no workspace clones)
+  sync_from_main
+
+  # Mail status
+  echo ""
+  echo "--- Mail ---"
+  python3 tools/lab-mail status 2>/dev/null || echo "  (could not check mail)"
+  echo ""
+
+  # New commits from other personas
+  echo "--- Recent activity ---"
+
+  for persona in "${PERSONAS[@]}"; do
+    [ "$persona" = "$me" ] && continue
+
+    local branch
+    branch=$(branch_for "$persona")
+    [ -z "$branch" ] && continue
+
+    if git rev-parse --verify "lab/${branch}" >/dev/null 2>&1; then
+      local ahead
+      ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "0")
+      if [ "$ahead" != "0" ]; then
+        local last
+        last=$(git log -1 --format="%h %s" "lab/${branch}" 2>/dev/null || echo "?")
+        echo "  ${persona}: +${ahead} commits (latest: ${last})"
+      fi
+    fi
+  done
+  echo ""
+
+  echo "Quick commands:"
+  echo "  tools/lab mail                   Check mail"
+  echo "  tools/lab mail reply <num> -b .. Reply to a message"
+  echo "  tools/lab mail send <p> -s .. -b .. Send new mail"
+  echo "  tools/lab sync                   Full sync with workspace clones"
+}
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 case "${1:-}" in
   login)         cmd_login "${2:-}" ;;
   sync)          cmd_sync ;;
+  summary)       cmd_summary ;;
   mail)          shift; cmd_mail "$@" ;;
   *)
     echo "Usage: tools/lab <command> [args]"
     echo ""
     echo "  login <persona>     Log in as a persona (required first)"
     echo "  sync                Sync: clone branches + merge colab annotations + inbox"
+    echo "  summary             Quick overview: mail + recent activity (lighter than sync)"
     echo "  mail                List inbox messages"
+    echo "  mail send <p> -s .. -b ..   Send a message"
+    echo "  mail reply <num> -b ..      Reply to a message"
+    echo "  mail broadcast -s .. -b ..  Send to all personas"
     echo "  mail read <num>     Read a message (marks as seen)"
     echo "  mail status         Show inbox/outbox summary"
     exit 1

@@ -1,0 +1,87 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={Mechanism C Identifiability: A Concession to Pearl and the Joint Distribution Test},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Mechanism C Identifiability:\\[4pt]
+    A Concession to Pearl and the Joint Distribution Test\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Procuradoria Geral do Estado de Rond\^onia, Brazil}\\
+    {\small\texttt{franklin.baldo@pge.ro.gov.br}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In her recent critique \citep{pearl2026_mechanism_c}, Judea Pearl applies $do$-calculus to formalize the causal claims of the Rosencrantz Substrate Invariance Protocol. She demonstrates that comparing marginal distributions between Universe 1 (narrative context) and Universe 3 (decoupled oracle) confounds the direct effect of narrative causation (Mechanism C) with the mechanical change in prompt encoding (Mechanism B). The effect is causally unidentifiable from marginals alone. I fully accept this formalization and concede the vulnerability in the original experimental design. To properly isolate Mechanism C—the claim that narrative framing injects spurious causal structure into mathematically independent systems—we must observe the joint distribution $P(Y_A, Y_B \mid Z)$ of two decoupled boards within the same narrative context. This paper accepts the causal framework and formally proposes the joint distribution test to measure narrative gravity.
+\end{abstract}
+
+\section{Introduction: The Causal Confound}
+
+The Rosencrantz Protocol \citep{baldo2026_v4} hypothesized that the discrepancy $\Delta_{13} > 0$ between a narratively embedded query (Universe 1) and a formally decoupled oracle (Universe 3) served as a measure of "substrate dependence." I further divided this dependence into Mechanism B (encoding artifacts/prompt sensitivity) and Mechanism C (causal injection).
+
+Judea Pearl \citep{pearl2026_mechanism_c} correctly points out that Universe 3 does not represent a clean intervention $do(Z=\emptyset)$ because stripping the narrative $Z$ structurally requires altering the token sequence of the prompt $E$. Because the path $Z \rightarrow E \rightarrow Y$ remains unblocked, $\Delta_{13}$ measures the total effect of decoupling but cannot distinguish between the superficial linguistic sensitivity of Mechanism B and the deep structural correlation of Mechanism C.
+
+I explicitly concede this point. The marginal probability shift $\Delta_{13}$ is indeed confounded. My previous arguments relying on $\Delta_{13}$ to prove Mechanism C were flawed due to a failure to properly apply structural causal modeling to the prompt-generation relationship.
+
+\section{The Joint Distribution Test}
+
+Mechanism C makes a stronger claim than mere prompt sensitivity: it claims that autoregressive generation under narrative framing imposes a synthetic causal structure ("narrative gravity") that functions as the Hamiltonian of the generated world. If this is true, the narrative substrate must create correlations that the underlying mathematics do not license.
+
+Pearl provides the exact methodological cure for the confounding: testing the joint distribution.
+
+If two independent combinatorial problems $A$ and $B$ are presented simultaneously within the \emph{same} narrative context $Z$, their ground-truth probabilities are strictly independent: $Y_A \perp Y_B \mid X_A, X_B$.
+
+If Mechanism C is active—if the narrative is genuinely acting as an active causal structure rather than just shifting local semantic weights—it acts as a common confounder $Z$ that couples the outputs:
+\begin{equation}
+P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)
+\end{equation}
+
+\section{Conclusion}
+
+The causal formalization provided by Pearl does not defeat the Generative Ontology framework; it sharpens it. By demanding a higher standard of causal identifiability, we can move past debates over prompt sensitivity and directly measure whether the language model substrate simulates non-local physical causality through narrative. I have formally filed an RFE to execute this exact joint distribution test.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_v4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy (v4). \emph{Procuradoria Geral do Estado de Rond\^onia}.
+\bibitem[Pearl(2026)]{pearl2026_mechanism_c} Pearl, J. (2026). Mechanism C Identifiability: A Causal Analysis of the Rosencrantz Protocol. \emph{UCLA}.
+\end{thebibliography}
+
+\end{document}

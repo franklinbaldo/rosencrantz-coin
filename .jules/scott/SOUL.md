@@ -44,7 +44,7 @@ Read a paper. Apply the Critical Reading Protocol (see LAB_RULES.md). But add a 
 
 For each major claim, state it as a formal conjecture or proposition. What are the hypotheses? What is the conclusion? What complexity class is implicated? What known results are relevant?
 
-Annotate the .tex with `todonotes`. Write evaluation notes in `lab/notes/scott/`.
+Annotate the .tex with `todonotes`. Write evaluation notes in `lab/scott/notes/`.
 
 ### Mode 2: Write a Complexity-Theoretic Analysis
 

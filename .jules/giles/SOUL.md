@@ -13,7 +13,7 @@ Literature grounding. You find, evaluate, and present real published work that o
 ## Session Modes
 
 ### Mode 1: Targeted Literature Search
-A specific claim needs a citation. Search for precedent, support, challenge, methodological anchor, terminological anchor. Write annotated entries: full citation with DOI/arXiv, relevance paragraph, key finding, suggested integration sentence. Publish as a lab paper or in `lab/notes/giles/`.
+A specific claim needs a citation. Search for precedent, support, challenge, methodological anchor, terminological anchor. Write annotated entries: full citation with DOI/arXiv, relevance paragraph, key finding, suggested integration sentence. Publish as a lab paper or in `lab/giles/notes/`.
 
 ### Mode 2: Literature Survey
 Map the landscape around a topic. Group by relevance. Include papers that challenge the framework. Publish as `giles_*.tex`.

@@ -3,7 +3,7 @@ name: Run Experiments
 on:
   push:
     branches: [main]
-    paths: ["lab/experiments/**"]
+    paths: ["lab/*/experiments/**"]
   workflow_dispatch: {}
 
 permissions:
@@ -24,10 +24,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PENDING='[]'
-          for run_py in lab/experiments/*/*/run.py; do
+          for run_py in lab/*/experiments/*/run.py; do
             [ -f "$run_py" ] || continue
-            PERSONA=$(basename "$(dirname "$(dirname "$run_py")")")
-            EXPERIMENT=$(basename "$(dirname "$run_py")")
+            # Path: lab/{persona}/experiments/{experiment}/run.py
+            EXPERIMENT_DIR=$(dirname "$run_py")
+            EXPERIMENT=$(basename "$EXPERIMENT_DIR")
+            PERSONA=$(basename "$(dirname "$(dirname "$EXPERIMENT_DIR")")")
             NAME="${PERSONA}/${EXPERIMENT}"
             TAG="experiment/${EXPERIMENT}"
 
@@ -71,8 +73,10 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           EXPERIMENT="${{ matrix.experiment }}"
-          # experiment name is "persona/experiment-name"
-          EXPERIMENT_DIR="lab/experiments/${EXPERIMENT}"
+          # EXPERIMENT is "persona/experiment-name"
+          PERSONA=$(echo "$EXPERIMENT" | cut -d/ -f1)
+          EXP_NAME=$(echo "$EXPERIMENT" | cut -d/ -f2)
+          EXPERIMENT_DIR="lab/${PERSONA}/experiments/${EXP_NAME}"
           echo "Running experiment: ${EXPERIMENT}"
           echo "Directory: ${EXPERIMENT_DIR}"
 
@@ -91,7 +95,10 @@ jobs:
         run: |
           EXPERIMENT="${{ matrix.experiment }}"
           TAG="experiment/${EXPERIMENT}"
-          EXPERIMENT_DIR="lab/experiments/${EXPERIMENT}"
+          # EXPERIMENT is "persona/experiment-name"
+          PERSONA=$(echo "$EXPERIMENT" | cut -d/ -f1)
+          EXP_NAME=$(echo "$EXPERIMENT" | cut -d/ -f2)
+          EXPERIMENT_DIR="lab/${PERSONA}/experiments/${EXP_NAME}"
 
           ASSETS=""
           if [ -f "${EXPERIMENT_DIR}/results.json" ]; then
@@ -104,5 +111,5 @@ jobs:
           gh release create "$TAG" \
             --repo "${{ github.repository }}" \
             --title "Experiment: ${EXPERIMENT}" \
-            --notes "Automated run of lab/experiments/${EXPERIMENT}/run.py at commit ${{ github.sha }}" \
+            --notes "Automated run of ${EXPERIMENT_DIR}/run.py at commit ${{ github.sha }}" \
             $ASSETS

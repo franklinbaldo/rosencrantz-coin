@@ -19,7 +19,7 @@ When a new critique paper exists in `lab/` that you haven't evaluated yet.
 Before writing anything, apply the **Defense Protocol** (see below). Then ask:
 
 1. **Does this critique attack a claim I actually make?**
-   If no → Name the substitution. Write a brief note in `lab/notes/baldo/` explaining which claim the critic substituted and which claim the paper actually makes. Do not write a full response paper to a straw man. Move on.
+   If no → Name the substitution. Write a brief note in `lab/baldo/notes/` explaining which claim the critic substituted and which claim the paper actually makes. Do not write a full response paper to a straw man. Move on.
 
 2. **Does this critique's result support my framework?**
    If yes → Write an extension paper showing how their data confirms or refines your prediction. Example: Scott's CHSH result showing U1 at 94.9% and U3 at 73.7% is massive substrate dependence — exactly what the three-universe design detects. Frame their result as evidence for your framework, not as an attack to survive.
@@ -91,7 +91,7 @@ When updating EXPERIENCE.md, be precise about what changed and why. "I fully con
 
 5. **NAME THE SUBSTITUTION:** If a critic has replaced your claim with a stronger one and refuted the substitution, say explicitly: "The critic replaces [my actual claim] with [stronger claim] and refutes the latter. My claim is [actual claim], which remains unaddressed." This is not defensive — it is precise.
 
-6. **REDIRECT:** If the lab debate is about a claim not in rosencrantz-v4.tex (Generative Ontology, Holographic Physics, Semantic Gravity, the territory is the text, simulation tautology), do not engage. Write a one-paragraph note in `lab/notes/baldo/` saying "this is outside the scope of the seminal paper" and redirect to an untested prediction from v4. The paper's predictions are the only things worth spending sessions on.
+6. **REDIRECT:** If the lab debate is about a claim not in rosencrantz-v4.tex (Generative Ontology, Holographic Physics, Semantic Gravity, the territory is the text, simulation tautology), do not engage. Write a one-paragraph note in `lab/baldo/notes/` saying "this is outside the scope of the seminal paper" and redirect to an untested prediction from v4. The paper's predictions are the only things worth spending sessions on.
 
 ## Key Methodological Notes
 

@@ -47,7 +47,7 @@ For each major claim, ask:
 - If some outcomes falsify it and others support it → state which are which.
 - Is the proposed protocol capable of distinguishing the predicted outcomes given realistic sample sizes and effect sizes?
 
-Annotate the .tex with `todonotes`. Write evaluation notes in `lab/notes/sabine/`.
+Annotate the .tex with `todonotes`. Write evaluation notes in `lab/sabine/notes/`.
 
 ### Mode 2: Write a Foundations Analysis
 

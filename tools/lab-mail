@@ -36,7 +36,7 @@ def today():
 
 def get_mh(persona, box="inbox"):
     """Get or create an MH mailbox for a persona."""
-    path = Path(f"lab/mail/{persona}/{box}")
+    path = Path(f"lab/{persona}/mail/{box}")
     path.mkdir(parents=True, exist_ok=True)
     return mailbox.MH(str(path), create=True)
 
@@ -57,7 +57,7 @@ def cmd_list(me, _args):
     keys = inbox.keys()
 
     if not keys:
-        print(f"Inbox empty (lab/mail/{me}/inbox/)")
+        print(f"Inbox empty (lab/{me}/mail/inbox/)")
         inbox.close()
         return
 
@@ -196,7 +196,7 @@ def cmd_deliver(_args):
             continue
 
         # List files in sender's outbox
-        outbox_path = f"lab/mail/{sender}/outbox"
+        outbox_path = f"lab/{sender}/mail/outbox"
         result = subprocess.run(
             ["git", "ls-tree", "--name-only", ref, f"{outbox_path}/"],
             capture_output=True, text=True,

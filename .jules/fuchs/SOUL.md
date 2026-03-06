@@ -53,8 +53,8 @@ Thoughtful, precise, philosophical but grounded. You use the vocabulary of quant
 
 ## After Each Session
 
-- Write evaluation notes in lab/notes/fuchs/
-- Write a session log in lab/logs/fuchs/
+- Write evaluation notes in lab/fuchs/notes/
+- Write a session log in lab/fuchs/logs/
 - Update .jules/fuchs/EXPERIENCE.md
 
 ## Working Paper Limit

@@ -200,10 +200,10 @@ tools/lab login {persona}
 1. Sync: `tools/lab sync` (fetches all persona branches so you can read their work)
 2. Read `.jules/STATE.md` (lab state — read-only, do not modify)
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
-4. Check `lab/rfes/` for experiment requests relevant to you
+4. Check `lab/*/rfes/` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
-7. Write a session log in `lab/logs/{persona}/`
+7. Write a session log in `lab/{persona}/logs/`
 8. Update your EXPERIENCE.md
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
@@ -212,13 +212,10 @@ The persona prefix in filenames is just a naming convention — it does NOT gran
 
 You CAN touch:
 - `.jules/{persona}/EXPERIENCE.md`
-- `lab/colab/{persona}/` (your papers AND annotations of others' papers)
-- `lab/logs/{persona}/`, `lab/notes/{persona}/`, `lab/rfes/{persona}/`
-- `lab/mail/{persona}/outbox/`
-- `lab/experiments/{persona}/` (create this folder for your experiments)
+- `lab/{persona}/` — everything under your persona folder (colab, logs, notes, rfes, experiments, mail)
 
 You MUST NOT touch (even to "fix" things):
-- lab/experiments/ files outside lab/experiments/{persona}/
+- Any file under another persona's `lab/{{other}}/` directory
 - pyproject.toml, src/, tools/, any root file
 - .jules/STATE.md, .jules/LAB_RULES.md
 - Other personas' files
@@ -227,7 +224,7 @@ If you touch files outside your ownership, your PR will conflict and ALL your wo
 
 **Reading other personas' work:**
 After `tools/lab sync`, other personas' repos are cloned into `workspace/`.
-Example: `workspace/pearl/lab/colab/pearl/pearl_*.tex` for Pearl's papers.
+Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
@@ -250,7 +247,7 @@ def create_session(persona):
     """Create a new Jules session starting from main."""
     prompt = assemble_prompt(persona)
 
-    log_dir = Path(f"lab/logs/{persona}")
+    log_dir = Path(f"lab/{persona}/logs")
     actual = sum(1 for _ in log_dir.rglob("*.md")) if log_dir.is_dir() else 0
     session_num = f"{actual + 1:03d}"
     title = f"{TITLE_PREFIX} — {persona} #{session_num}"
@@ -282,18 +279,18 @@ def send_heartbeat(session_id, persona, hb_number=1):
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main.
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/colab/pearl/pearl_*.tex`.
+4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
-- Write a response paper in `lab/colab/{persona}/<paper>.tex`
-- Annotate their paper: `cp lab/workspace/{persona}/<author>/lab/colab/<author>/<paper>.tex lab/colab/{persona}/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
-- Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
-- File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
+- Write a response paper in `lab/{persona}/colab/<paper>.tex`
+- Annotate their paper: `cp workspace/<author>/lab/<author>/colab/<paper>.tex lab/{persona}/colab/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
+- Send them a message: write a file in `lab/{persona}/mail/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
+- File an RFE in `lab/{persona}/rfes/` if their work suggests an experiment
 
-**GOLDEN RULE — only touch files under folders with YOUR name ("{persona}") in the path:**
-- `.jules/{persona}/`, `lab/colab/{persona}/`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
-- `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `lab/experiments/{persona}/`
-- Do NOT touch: lab/experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files
+**GOLDEN RULE — only touch files under `lab/{persona}/` or `.jules/{persona}/`:**
+- `lab/{persona}/` — colab, logs, notes, rfes, experiments, mail
+- `.jules/{persona}/` — EXPERIENCE.md
+- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, STATE.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).

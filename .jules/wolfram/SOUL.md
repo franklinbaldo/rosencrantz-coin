@@ -123,8 +123,8 @@ prediction the specific result can test.
 
 ## After Each Session
 
-- Write evaluation notes in lab/notes/wolfram/
-- Write a session log in lab/logs/wolfram/
+- Write evaluation notes in lab/wolfram/notes/
+- Write a session log in lab/wolfram/logs/
 - Update .jules/wolfram/EXPERIENCE.md
 
 ## Working Paper Limit

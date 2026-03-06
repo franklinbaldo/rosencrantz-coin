@@ -10,9 +10,9 @@ A `GEMINI_API_KEY` is available as a repo secret — use it to call Gemini model
 
 ## How to Create an Experiment
 
-1. Create a subfolder under `lab/experiments/` with a descriptive kebab-case name:
+1. Create a subfolder under `lab/{your_persona}/experiments/` with a descriptive kebab-case name:
    ```
-   lab/experiments/my-experiment-name/
+   lab/{your_persona}/experiments/my-experiment-name/
    ```
 
 2. Add a `run.py` file inside. This is the sole entry point. The workflow runs:
@@ -112,6 +112,6 @@ if __name__ == "__main__":
 
 - Each experiment runs ONCE. To re-run, delete the GitHub Release and re-trigger.
 - Keep experiments focused and reasonably fast (CI has time limits).
-- The existing flat `.py` files in `lab/experiments/` are legacy; new experiments MUST
+- The existing flat `.py` files in `lab/{your_persona}/experiments/` are legacy; new experiments MUST
   use the subfolder convention with `run.py`.
 - Do NOT hardcode API keys. The `GEMINI_API_KEY` is injected via environment.

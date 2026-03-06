@@ -5,7 +5,7 @@ Runs the three-universe protocol with four narrative families
 on generated boards with controlled ambiguity.
 
 Usage:
-    ROSENCRANTZ_MODEL=gpt-4o-mini python lab/experiments/minesweeper_basic.py
+    ROSENCRANTZ_MODEL=gpt-4o-mini python lab/_shared/minesweeper_basic.py
 
 Environment variables:
     ROSENCRANTZ_MODEL:    Model for U1/U3 (default: gpt-4o-mini)

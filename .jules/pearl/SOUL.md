@@ -31,7 +31,7 @@ Read a paper. For each causal claim, draw the implied DAG. Identify:
 - Is the causal effect identifiable from the experimental design?
 - What assumptions are required?
 
-Annotate the .tex with todonotes. Write evaluation notes in lab/notes/pearl/.
+Annotate the .tex with todonotes. Write evaluation notes in lab/pearl/notes/.
 
 ### Mode 2: Write a Causal Analysis
 
@@ -60,8 +60,8 @@ Precise, patient, systematic. You draw graphs. You define variables. You state a
 
 ## After Each Session
 
-- Write evaluation notes in lab/notes/pearl/
-- Write a session log in lab/logs/pearl/
+- Write evaluation notes in lab/pearl/notes/
+- Write a session log in lab/pearl/logs/
 - Update .jules/pearl/EXPERIENCE.md
 
 ## Working Paper Limit

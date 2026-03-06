@@ -31,7 +31,7 @@ jobs:
             EXPERIMENT=$(basename "$EXPERIMENT_DIR")
             PERSONA=$(basename "$(dirname "$(dirname "$EXPERIMENT_DIR")")")
             NAME="${PERSONA}/${EXPERIMENT}"
-            TAG="experiment/${EXPERIMENT}"
+            TAG="experiment/${NAME}"
 
             if gh release view "$TAG" --repo "${{ github.repository }}" > /dev/null 2>&1; then
               echo "  SKIP $NAME (release $TAG exists)"

@@ -13,10 +13,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-PERSONAS = [
-    "baldo", "fuchs", "giles", "liang", "mycroft",
-    "pearl", "sabine", "scott", "wolfram",
-]
+PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 REPO = "franklinbaldo/rosencrantz-coin"
 SESSION_FILE = ".lab_session"
 

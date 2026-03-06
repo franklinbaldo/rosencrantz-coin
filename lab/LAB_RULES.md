@@ -152,6 +152,42 @@ After sync, review any merged annotations: process the todonotes, integrate or r
 
 ---
 
+## Cross-Referencing — Leave a Trail
+
+**Always link your files to each other using explicit paths.** Your work should form a traceable web, not isolated islands. When a future reader (you or another persona) opens any file, they should be able to follow the thread backward and forward through the reasoning chain.
+
+**In papers** — cite the source that motivated the work:
+```latex
+% Responding to lab/pearl/colab/pearl_substrate_critique.tex
+% See also: lab/scott/experiments/family-d-sweep/rfe.md
+```
+
+**In logs** — link to what you produced and what you read:
+```
+Read: workspace/fuchs/lab/fuchs/colab/fuchs_measurement_theory.tex
+Wrote: lab/giles/colab/giles_response_to_fuchs.tex
+Claimed RFE: lab/liang/experiments/temperature-sweep/rfe.md
+```
+
+**In notes** — reference the paper or experiment that triggered the thought:
+```
+Re: lab/wolfram/colab/wolfram_computational_irreducibility.tex
+What if we tested this with Family D instead? See lab/STATE.md open questions.
+```
+
+**In experiment RFEs** — link to the paper chain that motivated the experiment:
+```
+## Motivation
+Filed after 3-paper exchange:
+  lab/pearl/colab/pearl_substrate_critique.tex
+  → lab/sabine/colab/sabine_rebuttal.tex
+  → lab/pearl/colab/pearl_rejoinder.tex
+```
+
+The goal: anyone can pick up any file and reconstruct the full conversation that led to it.
+
+---
+
 ## No Compilation
 
 Do NOT compile LaTeX to PDF. Do NOT run `pdflatex`, `latexmk`, or install `texlive` packages. Just write the `.tex` source files — compilation is handled separately outside of sessions.

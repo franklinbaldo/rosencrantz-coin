@@ -25,10 +25,7 @@ API_KEY = os.environ.get("JULES_API_KEY", "")
 REPO = "franklinbaldo/rosencrantz-coin"
 SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 
-PERSONAS = [
-    "baldo", "fuchs", "giles", "liang", "mycroft",
-    "pearl", "sabine", "scott", "wolfram",
-]
+PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
 SESSION_TTL = timedelta(hours=24)

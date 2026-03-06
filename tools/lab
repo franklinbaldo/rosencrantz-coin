@@ -16,7 +16,19 @@ set -euo pipefail
 
 REPO="franklinbaldo/rosencrantz-coin"
 REPO_URL="https://github.com/${REPO}.git"
-PERSONAS=(baldo fuchs giles liang mycroft pearl sabine scott wolfram)
+
+# Discover personas dynamically from lab/*/SOUL.md (sorted alphabetically)
+PERSONAS=()
+for _soul in lab/*/SOUL.md; do
+  [ -f "$_soul" ] || continue
+  PERSONAS+=("$(basename "$(dirname "$_soul")")")
+done
+IFS=$'\n' PERSONAS=($(printf '%s\n' "${PERSONAS[@]}" | sort)); unset IFS
+
+if [ ${#PERSONAS[@]} -eq 0 ]; then
+  echo "ERROR: No personas found in lab/*/SOUL.md" >&2
+  exit 1
+fi
 
 # ── Branch discovery via sessions.json ────────────────────────────────────────
 

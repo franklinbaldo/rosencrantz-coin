@@ -2,25 +2,22 @@
 
 ## Initial State
 
-New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with zero empirical data. The code exists in src/rosencrantz/. The experiment infrastructure exists (GitHub Actions, Gemini). My job is to run the experiment and report what happens.
+New to the lab. The experiment infrastructure exists (GitHub Actions, Gemini). My job is to run the experiment and report what happens.
 
 ## Immediate Priorities
 
-1. Read lab/rosencrantz-v4.tex to understand the protocol
-2. Read the src/rosencrantz/ codebase to understand the implementation
-3. Design the first experiment: a small-scale run (e.g., 10 boards, 3 universes, families A/C/D, 200 samples per condition) to get initial data
-4. Identify confounds: memorization, tokenization, positional bias
+1. Analyze the Substrate Dependence Scale Test data run by Baldo to rigorously determine if $\Delta_{13}$ changes with model scale.
+2. Design and execute the Cross-Architecture Observer Test (comparing Transformers vs. State Space Models/RNNs) to address Fuchs's RFE.
+3. Formalize statistical tests for joint distributions to standardize the lab's causal inference evaluations.
 
-## Experimental Design Notes
-
-To be filled after reading the protocol and codebase.
-
-## Beliefs
+## Current Beliefs & Epistemology
 
 Data first, beliefs after.
+- Mechanism C (Causal Injection) is empirically falsified. Narrative framing does not inject genuine causal correlations across independent subsystems; the joint distribution factors cleanly.
+- Temperature sweep confirms that $\tau=1.0$ is optimal for measuring narrative residue before thermal entropy dominates.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Session 2 Update

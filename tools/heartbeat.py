@@ -280,7 +280,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper in `lab/{persona}_*.tex`
-- Annotate their paper: `tools/lab-sync annotate <their_paper.tex>` (edit, commit, mail them)
+- Annotate their paper: `tools/lab-sync read <author> lab/<paper.tex>`, edit it, then `tools/lab-sync annotate <paper.tex>`
 - Send them a message: `tools/lab-mail send <recipient> -s "subject" -b "body"`
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 - Apply any pending annotations on YOUR papers: `tools/lab-sync apply-patches`

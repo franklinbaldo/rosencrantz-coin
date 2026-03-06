@@ -293,33 +293,35 @@ cmd_annotate() {
     exit 1
   fi
 
-  # Fetch the paper from main (latest merged version)
-  local url="${RAW_URL}/main/lab/${paper}"
-  local patches_dir="lab/notes/${me}/patches"
-  mkdir -p "$patches_dir"
-
-  local orig_file="${patches_dir}/.${paper}.orig"
-  local edit_file="${patches_dir}/${paper}"
-
-  echo "Fetching lab/${paper} from main..."
-  if ! curl -sfL "$url" -o "$edit_file"; then
-    echo "ERROR: Could not fetch ${url}"
-    echo "Check that the paper exists on main."
+  # The local copy should already exist (fetched via lab-sync read)
+  local local_file="lab/${paper}"
+  if [ ! -f "$local_file" ]; then
+    echo "ERROR: ${local_file} not found locally."
+    echo "First fetch it:  tools/lab-sync read ${author} lab/${paper}"
+    echo "Then edit it and add your todonotes."
+    echo "Then run:  tools/lab-sync annotate ${paper}"
     exit 1
   fi
 
-  # Save a hidden original for diffing later
-  cp "$edit_file" "$orig_file"
-  gitignore_add "$orig_file"
+  # Copy annotated version to patches dir, commit, and mail the author
+  local patches_dir="lab/notes/${me}/patches"
+  mkdir -p "$patches_dir"
+  local patch_file="${patches_dir}/${paper}"
+
+  cp "$local_file" "$patch_file"
+
+  git add "$patch_file"
+  git commit -m "${me}: annotate ${paper}"
 
   echo ""
-  echo "Saved to: ${edit_file}"
-  echo "Original: ${orig_file} (hidden, gitignored)"
+  echo "Saved annotation to: ${patch_file}"
+  echo "Committed."
+
+  # Send mail to author
+  python3 tools/lab-mail send "$author" -s "annotations on ${paper}" -b "I added todonotes to your paper via patch. Run: tools/lab-sync apply-patches"
+
   echo ""
-  echo "=== Next steps ==="
-  echo "1. Edit ${edit_file} — add your \\todonotes"
-  echo "2. Commit: git add ${edit_file} && git commit -m '${me}: annotate ${paper}'"
-  echo "3. Notify: tools/lab-mail send ${author} -s 'annotations on ${paper}' -b 'Added todonotes via patch'"
+  echo "Done! ${author} will see your annotations next session."
 }
 
 cmd_apply_patches() {

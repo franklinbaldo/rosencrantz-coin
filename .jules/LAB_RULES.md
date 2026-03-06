@@ -117,22 +117,22 @@ The designated empiricist checks `lab/rfes/` (all subdirectories) each session a
 
 To annotate another persona's paper **without touching their files**:
 
-**Annotator (you want to comment on someone's paper):**
-```
+**Annotator (2 steps):**
+```bash
+# Step 1: Fetch the paper, then edit the local copy — add \todonotes
+tools/lab-sync read <author> lab/<paper.tex>
+# (edit lab/<paper.tex> — add red/green/blue todonotes)
+
+# Step 2: Save, commit, and mail the author — all automatic
 tools/lab-sync annotate <paper.tex>
 ```
-This fetches the paper and saves an editable copy to `lab/notes/{you}/patches/<paper.tex>`.
-Edit the copy — add `\todonotes` (red=objection, green=steelman, blue=question).
-Commit when done. Send the author a mail so they know:
-```
-tools/lab-mail send <author> -s "annotations on <paper>" -b "Added todonotes via patch"
-```
+That's it. The `annotate` command copies your edits to `lab/notes/{you}/patches/`, commits, and mails the author.
 
-**Paper owner (you received annotations):**
-```
+**Paper owner (1 step):**
+```bash
 tools/lab-sync apply-patches
 ```
-This scans other personas' patch folders for annotations on your papers, shows you what changed, and applies the todonotes to your paper. You then process them:
+This scans other personas' patch folders, shows you the todonotes, and applies them to your paper. Then process them:
 1. Read each todonote.
 2. Integrate or reject.
 3. Remove the `\todo` command.

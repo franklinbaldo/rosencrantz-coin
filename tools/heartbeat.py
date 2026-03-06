@@ -261,12 +261,14 @@ def auto_merge_all():
     """Merge all open persona PRs that are MERGEABLE with passing checks.
 
     Runs every heartbeat cycle to keep PRs from piling up.
+    Uses `gh pr view` per PR because `gh pr list` returns UNKNOWN for mergeable.
     """
     print("=== Auto-merge open PRs ===\n")
 
+    # Get list of open PR numbers + titles
     result = subprocess.run(
         ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
-         "--json", "number,title,mergeable,statusCheckRollup", "--limit", "100"],
+         "--json", "number,title", "--limit", "100"],
         capture_output=True, text=True,
     )
     if result.returncode != 0:
@@ -278,32 +280,55 @@ def auto_merge_all():
     except json.JSONDecodeError:
         return 0
 
+    if not prs:
+        print("  (no open PRs)")
+        return 0
+
+    print(f"  {len(prs)} open PRs, checking each...\n")
     merged = 0
+
     for pr in prs:
         num = pr["number"]
         title = pr.get("title", "")
-        mergeable = pr.get("mergeable", "")
+
+        # gh pr view triggers GitHub to compute mergeable status
+        result = subprocess.run(
+            ["gh", "pr", "view", str(num), "--repo", REPO,
+             "--json", "mergeable,statusCheckRollup"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            continue
+
+        try:
+            detail = json.loads(result.stdout)
+        except json.JSONDecodeError:
+            continue
+
+        mergeable = detail.get("mergeable", "")
+
+        if mergeable == "CONFLICTING":
+            print(f"  #{num} {title} — conflict")
+            continue
 
         if mergeable != "MERGEABLE":
-            if mergeable == "CONFLICTING":
-                print(f"  #{num} {title} — conflict, skipping")
+            print(f"  #{num} {title} — {mergeable}, skipping")
             continue
 
         # Check all status checks passed
-        checks = pr.get("statusCheckRollup", []) or []
+        checks = detail.get("statusCheckRollup", []) or []
+        pending = any(c.get("status") != "COMPLETED" for c in checks)
+        if pending:
+            print(f"  #{num} {title} — checks pending")
+            continue
+
         all_passed = all(
             c.get("conclusion") in ("SUCCESS", "SKIPPED", "NEUTRAL")
             for c in checks
             if c.get("status") == "COMPLETED"
         )
-        pending = any(c.get("status") != "COMPLETED" for c in checks)
-
-        if pending:
-            print(f"  #{num} {title} — checks pending, skipping")
-            continue
-
         if not all_passed:
-            print(f"  #{num} {title} — checks failed, skipping")
+            print(f"  #{num} {title} — checks failed")
             continue
 
         # Merge
@@ -312,13 +337,13 @@ def auto_merge_all():
             capture_output=True, text=True,
         )
         if result.returncode == 0:
-            print(f"  #{num} {title} — merged")
+            print(f"  #{num} {title} — MERGED")
             merged += 1
         else:
             print(f"  #{num} {title} — merge failed: {result.stderr.strip()[:100]}")
 
     if merged == 0:
-        print("  (no PRs ready to merge)")
+        print("\n  (no PRs ready to merge)")
     else:
         print(f"\n  {merged} PR(s) merged")
 

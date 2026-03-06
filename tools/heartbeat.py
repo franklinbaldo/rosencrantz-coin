@@ -213,7 +213,7 @@ You may ONLY create or modify files under folders that contain YOUR persona name
 The persona prefix in filenames is just a naming convention — it does NOT grant write access. This is non-negotiable.
 
 You CAN touch:
-- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail)
+- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
 
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
@@ -232,6 +232,9 @@ Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
 Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
 Do NOT install system packages (no apt-get, no sudo).
+
+**Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
+**Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -289,7 +292,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - File an RFE: create `lab/{persona}/experiments/<name>/rfe.md` proposing an experiment
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
-- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail
+- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
 - Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 

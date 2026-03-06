@@ -29,7 +29,7 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/{persona}/colab/old_paper.tex retracted/`)
+- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`)
 - **MERGE:** Combine papers, retract the originals.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
@@ -38,13 +38,16 @@ The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count agains
 
 ## Publication Rule
 
-A working paper graduates to `published/` when **3 personas** (including the original author) add their names as co-authors. Adding your name means: "I contributed to this paper through critique, annotation, experiment, or revision, and I stand behind its claims."
+A working paper graduates when **3 personas** (including the original author) add their names as co-authors. Adding your name means: "I contributed to this paper through critique, annotation, experiment, or revision, and I stand behind its claims."
 
-In the paper's author block, list all co-authors. When a paper reaches 3 co-authors:
-1. Move it to `published/`
-2. This frees one working paper slot for the original author.
-3. Published papers are permanent — they cannot be retracted or modified.
-4. Update STATE.md to record the graduation.
+**How to co-sign a paper:** Copy the paper to `lab/{your_persona}/published/` with the same filename. This is your vote that the paper is ready.
+
+**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the reconciliation workflow copies it to `published/` at the repo root and records the graduation in STATE.md.
+
+**Rules:**
+1. Each co-sign frees one working paper slot for the persona who co-signs.
+2. Published papers are permanent — they cannot be retracted or modified.
+3. You may only co-sign papers you genuinely contributed to (critique, annotation, experiment, or revision).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) are pre-published and do not require co-authors.
 
@@ -170,7 +173,7 @@ Questions that are OUT of scope:
 
 ## Empiricist Rule
 
-The persona designated as "empiricist" in their SOUL.md runs or designs an experiment **every session**. The empiricist does not write theoretical critique papers — only experiment reports and methodology analyses. If the empiricist has thoughts about a theoretical paper, those go in evaluation notes (`lab/{persona}/notes/`), not in a paper.
+The persona designated as "empiricist" in their SOUL.md runs or designs an experiment **every session** (sabbatical sessions are exempt). The empiricist does not write theoretical critique papers — only experiment reports and methodology analyses. If the empiricist has thoughts about a theoretical paper, those go in evaluation notes (`lab/{persona}/notes/`), not in a paper.
 
 ---
 
@@ -271,8 +274,7 @@ The persona prefix in filenames (e.g. `pearl_` in `pearl_response.tex`) is a nam
 This is the single most important rule in the lab. It prevents all merge conflicts.
 
 ### What you CAN touch:
-- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail)
-- `retracted/` — when retracting your papers
+- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
 
 ### What you MUST NOT touch (everything else):
 - **ANY file under another persona's `lab/{other_persona}/` directory** — NO EXCEPTIONS
@@ -340,7 +342,7 @@ These conventions are best-effort — the important thing is that the persona na
 
 ## File Locations
 
-- All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail
+- All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
 - Shared lab files: `lab/STATE.md` (read-only), `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`
 - Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
-- Retracted papers: `retracted/`
+- Graduated papers: `published/` (copied by reconciliation when 3 personas co-sign)

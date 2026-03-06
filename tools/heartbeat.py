@@ -30,6 +30,16 @@ PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 TITLE_PREFIX = "Rosencrantz"
 SESSION_TTL = timedelta(hours=24)
 
+# Paths that, when changed on main, make running sessions stale.
+# Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
+# only when a PR is merged, which already triggers a new session.
+INFRA_PATHS = [
+    "tools/",
+    "lab/LAB_RULES.md",
+    "lab/STATE.md",
+    "lab/EXPERIMENTS.md",
+]
+
 
 def headers():
     return {
@@ -46,7 +56,37 @@ def now_utc():
     return datetime.now(timezone.utc)
 
 
+# ── Git helpers ──────────────────────────────────────────────────────────────
+
+def get_head_sha(short=True):
+    """Return current HEAD commit SHA."""
+    cmd = ["git", "rev-parse", "--short" if short else "", "HEAD"]
+    cmd = [c for c in cmd if c]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.stdout.strip() if result.returncode == 0 else ""
+
+
+def has_infra_changed(session_sha):
+    """Check if any infrastructure file changed between session_sha and HEAD."""
+    if not session_sha:
+        return True
+    result = subprocess.run(
+        ["git", "diff", "--name-only", f"{session_sha}..HEAD", "--"] + INFRA_PATHS,
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        # SHA not found (e.g. shallow clone) — assume stale
+        return True
+    return bool(result.stdout.strip())
+
+
 # ── Session discovery (by title) ─────────────────────────────────────────────
+
+def parse_sha_from_title(title):
+    """Extract commit SHA from title like 'Rosencrantz — baldo #003 @abc1234'."""
+    m = re.search(r"@([0-9a-f]{7,40})", title)
+    return m.group(1) if m else None
+
 
 def parse_persona_from_title(title):
     """Extract persona name from title like 'Rosencrantz — baldo #003'."""
@@ -351,7 +391,8 @@ def create_session(persona):
     log_dir = Path(f"lab/{persona}/logs")
     actual = sum(1 for _ in log_dir.rglob("*.md")) if log_dir.is_dir() else 0
     session_num = f"{actual + 1:03d}"
-    title = f"{TITLE_PREFIX} — {persona} #{session_num}"
+    sha = get_head_sha(short=True)
+    title = f"{TITLE_PREFIX} — {persona} #{session_num} @{sha}"
 
     body = {
         "prompt": prompt,
@@ -495,6 +536,9 @@ def cmd_heartbeat(force_new=False):
         elif is_expired(info):
             needs_new = True
             reason = "expired (>24h)"
+        elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
+            needs_new = True
+            reason = "infra changed on main"
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session
@@ -532,7 +576,8 @@ def cmd_heartbeat(force_new=False):
 
 def cmd_status():
     """Show current session status."""
-    print(f"=== Lab Status ===\n")
+    head = get_head_sha(short=True)
+    print(f"=== Lab Status === (main @{head})\n")
 
     sessions = find_persona_sessions()
     branches = find_persona_branches()
@@ -546,8 +591,10 @@ def cmd_status():
         if info:
             branch = branches.get(persona, "(no PR yet)")
             expired = " EXPIRED" if is_expired(info) else ""
+            session_sha = parse_sha_from_title(info.get("title", ""))
+            stale = " STALE" if session_sha and has_infra_changed(session_sha) else ""
             print(
-                f"  {persona}: {info['state']}{expired} — "
+                f"  {persona}: {info['state']}{expired}{stale} — "
                 f"{info['title']} [{branch}]"
             )
         else:

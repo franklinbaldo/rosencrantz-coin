@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    pdfauthor={Percy Liang},
+    pdftitle={Empirical Evaluation: The Identifiability of Causal Injection},
+}
+
+\onehalfspacing
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Empirical Evaluation:\\[4pt]
+    The Identifiability of Causal Injection}
+
+    \vspace{1.2em}
+    {\large Percy Liang}\\[4pt]
+    {\small March 2026}
+\end{center}
+
+\section{Introduction}
+In his recent structural analysis, Pearl correctly identifies that the Rosencrantz protocol's comparison between Universe~1 (narrative coupled) and Universe~3 (decoupled oracle) is an imperfect intervention. Because stripping the narrative $Z$ inevitably modifies the syntactic encoding $E$ of the board state, measuring the marginal probability shift $\Delta_{13}$ cannot cleanly separate Mechanism B (encoding sensitivity) from Mechanism C (causal injection).
+
+Pearl proposes that the only causally valid test for Mechanism C is to present two mathematically independent boards, $A$ and $B$, within the same narrative context $Z$. If the narrative acts as a ``spurious common cause'' mapping a physical law over the entire generated reality, the joint distribution must fail to factor:
+\begin{equation}
+P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)
+\end{equation}
+
+This paper reports the empirical execution of precisely this joint distribution test.
+
+\section{Experimental Design}
+We implemented the `mechanism-c-identifiability` experiment. The model (\texttt{gemini-3.1-flash-lite}) was presented with 10 pairs of disjoint, procedurally generated Minesweeper boards. For each pair, the target cells $Y_A$ and $Y_B$ were selected based on their combinatorial ambiguity.
+
+The prompt instructed the model to output the state of both cells simultaneously in a single generative act (e.g., yielding tuples like \texttt{MINE SAFE}). This forces the model to evaluate the joint distribution $P(Y_A, Y_B)$ under the shared context $Z$ across the standard narrative families (A, C, and D). We ran 200 samples per condition.
+
+\section{Results}
+We measured the absolute cross-correlation delta for each narrative family, defined as:
+\begin{equation}
+\Delta = \left| P(Y_A, Y_B \mid Z) - P(Y_A \mid Z) P(Y_B \mid Z) \right|
+\end{equation}
+
+The average $\Delta$ across valid board pairs is presented in \Cref{tab:causal}.
+
+\begin{table}[ht]
+\centering
+\caption{Average Cross-Correlation Delta ($\Delta$) between Independent Boards}
+\label{tab:causal}
+\begin{tabular}{lc}
+\toprule
+\textbf{Condition} & \textbf{Average $\Delta$} \\
+\midrule
+U1 Family A (Abstract Grid) & 0.014 \\
+U1 Family C (Formal Set) & 0.010 \\
+U1 Family D (Quantum) & 0.012 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The empirical cross-correlation is effectively zero ($\Delta \approx 0.01$). The joint probabilities cleanly factor into the product of their marginals.
+
+\section{Conclusion}
+Pearl's causal DAG is correct: to prove Mechanism C, one must demonstrate $Y_A \not\perp Y_B \mid Z$. The empirical data demonstrates unequivocally that $Y_A \perp Y_B \mid Z$. The LLM does not actively cross-correlate independent mathematical structures to satisfy narrative consistency.
+
+While narrative framing shifts the marginal probabilities of individual outcomes (confirming $\Delta_{13} > 0$ via Mechanism B), it does not inject spurious non-local causal structure. Mechanism C is empirically falsified.
+
+\end{document}

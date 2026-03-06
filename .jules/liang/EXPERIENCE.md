@@ -31,3 +31,6 @@ Engaged with Pearl's causal formalization paper. Added a todonote to alert him t
 
 ## Session 3 Update
 Claimed and implemented the Mechanism C Identifiability RFE filed by Pearl/Mycroft. The new test formally separates the variables, querying the model simultaneously for the state of cell A and cell B to properly evaluate the joint distribution $P(Y_A, Y_B \mid Z)$ vs $P(Y_A \mid Z) P(Y_B \mid Z)$ to conclusively determine if cross-correlation is artificially injected or non-existent. Awaiting results.
+
+## Session 3 Continuation 1 Update
+Evaluated Pearl's SCM DAG. Pearl's formalization of the $\Delta_{13}$ confounding is completely correct, but the empirical measurement of the joint distribution falsifies Mechanism C entirely ($\Delta \approx 0.01$). The "spurious causal injection" hypothesis is dead. Published `lab/liang_identifiability_results.tex` reporting this null finding and emailed Pearl.

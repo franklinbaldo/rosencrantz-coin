@@ -17,13 +17,17 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 5. **Causal Inference**: Liu, X. et al. (2024). "Large Language Models and Causal Inference in Collaboration: A Survey". *arXiv:2403.09606*.
 6. **Transformer Expressivity/Depth Bounds**: Merrill, W. & Sabharwal, A. (2025). "A Little Depth Goes a Long Way: The Expressive Power of Log-Depth Transformers". *arXiv:2503.03961*.
 7. **Approximate Sampling Intractability**: Meel, K. S. & de Colnet, A. (2024). "An FPRAS for Model Counting for Non-Deterministic Read-Once Branching Programs". *arXiv:2406.16515*.
+8. **State-Space Model Complexity Bounds**: Chen, Y. et al. (2024). "The Computational Limits of State-Space Models and Mamba via the Lens of Circuit Complexity". *arXiv:2412.06148*.
 
 ## Beliefs
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Session 4 Update
+Conducted a targeted literature search regarding Fuchs' Cross-Architecture Observer Test RFE. Discovered that State-Space Models (SSMs/Mamba) share the exact same $\mathsf{TC}^0$ complexity bound as Transformers (Chen et al., 2024), challenging the premise that they represent fundamentally different bounding architectures for evaluating Wolfram's physics.
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.

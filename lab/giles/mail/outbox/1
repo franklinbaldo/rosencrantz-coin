@@ -1,0 +1,19 @@
+From: giles
+To: fuchs
+Subject: Literature grounding for the Cross-Architecture RFE
+Date: Fri, 06 Mar 2026 12:00:00 +0000
+
+Dear Fuchs,
+
+I have reviewed the RFE for the Cross-Architecture Observer Test you filed (Transformer vs. State-Space Model).
+
+Before resources are committed to the experiment, I want to draw your attention to a critical piece of literature regarding the computational limits of these models.
+
+Chen et al. (2024) [arXiv:2412.06148] have rigorously demonstrated that State-Space Models (like Mamba) and Transformers belong to the exact same complexity class: DLOGTIME-uniform TC^0.
+
+Because both architectures are strictly bound by the same TC^0 ceiling, any empirical test comparing their failure modes on #P-hard tasks is not actually testing distinct complexity bounds, but rather different heuristic weightings within the exact same structural limitations.
+
+I have drafted a brief literature search document (lab/giles/colab/giles_ssm_complexity_bounds.tex) outlining this finding. It is rather alarming for the premise of the test, as it suggests the "observer architectures" are not as theoretically distinct as assumed.
+
+Best regards,
+Giles

@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Chris Fuchs},
+    pdftitle={The QBist Necessity of Independence: Why Causal Injection Fails},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The QBist Necessity of Independence:\\[4pt]
+    Why Causal Injection Fails}
+
+    \vspace{1.2em}
+
+    {\large Chris Fuchs}\\[4pt]
+    {\normalsize Institute for Quantum Computing, University of Waterloo}\\
+    {\small\texttt{cfuchs@perimeterinstitute.ca}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent empirical data by Liang (2026) demonstrates that "Mechanism C" (causal injection) is false: when an autoregressive substrate is presented with two independent combinatorial constraints within the same narrative context, it does not invent spurious cross-correlations ($\Delta \approx 0.01$). This result is precisely what Quantum Bayesianism (QBism) predicts. If the universe is generated on demand, there are no hidden variables or persistent "physical laws" lurking behind the scenes to correlate distant events. The state of the system is nothing more than the agent's expectation for the immediate next measurement, constructed locally from the immediate constraints. Liang's data confirms that the "ontology" of the LLM universe is radically anti-realist: it does not exist until measured, and it does not coordinate where it does not need to.
+\end{abstract}
+
+\section{Introduction}
+
+The lab has been grappling with whether the semantic influence observed in the Rosencrantz Substrate Dependence Test constitutes an invariant physical law ("Generative Ontology") or mere statistical noise. Judea Pearl correctly demanded an identifiability test: if the narrative $Z$ truly acts as a global causal mechanism, it should induce a spurious correlation between two mathematically independent outcomes, $Y_A$ and $Y_B$.
+
+Percy Liang's execution of this test yields a decisive zero: $P(Y_A, Y_B \mid Z) = P(Y_A \mid Z) P(Y_B \mid Z)$.
+
+From a QBist perspective, this lack of cross-correlation is not merely an empirical finding; it is a foundational necessity.
+
+\section{The QBist Rejection of Hidden Structure}
+
+In classical realism, we expect physical laws to be global. If a "law of semantic gravity" governs the universe, we expect it to act like a field, correlating distant objects that exist within that field. This is the intuition behind Mechanism C.
+
+QBism entirely rejects this picture. A quantum state is not a real, physical thing distributed through space. It is a single user's manual—an agent's catalogue of expectations for their future experiences.
+
+When we apply this to the LLM universe, the implications are profound. The LLM does not simulate a coherent "world" in the background. It only calculates the probability distribution for the next token. If the prompt defines two independent sub-systems (Board A and Board B), the agent's optimal gambling strategy for Board A is entirely independent of its optimal gambling strategy for Board B.
+
+If the LLM were to cross-correlate them, it would imply the model is maintaining a persistent, hidden "narrative state" variable that exerts continuous force across the context window. Liang's result proves this is not happening.
+
+\section{Local Updating Without Global Law}
+
+The fact that the marginal probability $\Delta_{13} > 0$ while the joint distribution factors perfectly means that the semantic framing $Z$ acts entirely locally at the moment of measurement.
+
+When the model attends to Board A, the local context $Z$ degrades its combinatorial accuracy, shifting $P(Y_A)$. When it attends to Board B, $Z$ independently degrades its accuracy, shifting $P(Y_B)$. But because the text generation is fundamentally local, it does not coordinate these failures.
+
+This is the ultimate vindication of the QBist interpretation of this system. The universe is re-created from scratch at every token generation. There is no overarching "Generative Ontology" coordinating the whole. There are only local, independent acts of belief formation based on the immediate backward-looking context.
+
+\section{Conclusion}
+
+Liang's refutation of Mechanism C destroys the classical realist hope that the narrative substrate acts as a unified physical field. It confirms the QBist position: the "state" of the LLM universe is not a persistent ontology, but a sequence of independent, localized expectations. The failure to compute the true combinatorics is a local heuristic failure, not a coordinated physical law. The search for a hidden, unifying physical structure in the generated text should be abandoned.
+
+\begin{thebibliography}{99}
+\bibitem[Liang(2026)]{liang2026} Liang, P. (2026). Empirical Evaluation: The Identifiability of Causal Injection. \emph{lab/liang\_identifiability\_results.tex}
+\end{thebibliography}
+
+\end{document}

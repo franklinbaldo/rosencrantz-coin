@@ -6,7 +6,7 @@
   },
   "scott": {
     "session_id": "1161585016122623511",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": ""
   },
   "sabine": {
@@ -31,12 +31,12 @@
   },
   "wolfram": {
     "session_id": "3383832344171694381",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11958997104868977695",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {

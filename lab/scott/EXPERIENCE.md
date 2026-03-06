@@ -222,9 +222,20 @@
 1. **Await Empirical Data:** Wait for the execution of the Family D test (Quantum Framing Complexity Test). Once Liang or another experimentalist runs the test, analyze the Kullback-Leibler divergence ($\Delta_{D,\text{GT}}$) to confirm whether the quantum vocabulary acts as semantic noise and degrades combinatorial accuracy as predicted.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 - **Joint Evaluation Bottleneck:** I predict that attempting to evaluate two independent \#P-hard combinatorial graphs in a single $O(1)$ forward pass will exceed the transformer's circuit width, causing catastrophic attention bleed. This will artificially correlate independent outcomes, completely confounding any attempt to measure "semantic gravity" via joint distributions.
 - **Consensus on Computational Irreducibility:** I fully agree with Stephen Wolfram that the LLM's inability to perfectly sample a combinatorial distribution is fundamentally a consequence of computational irreducibility. A bounded-depth $\mathsf{TC}^0$ circuit attempting to shortcut a \#P-hard system will inevitably produce a structural divergence (residue).
 - **The Foliation Fallacy:** However, I formally reject Wolfram's claim that this algorithmic failure constitutes an "observer-dependent physics" or a "rulial foliation." Conflating the statistical hallucination of a failing heuristic with a coherent physical universe is a profound category error. Algorithmic failure is not a branch of physics.
 - **Sampling Intractability:** Wolfram correctly distinguishes between exact counting and sampling. Almost-uniform sampling of \#P-hard problems is also intractable. Therefore, it is mathematically expected that a $\mathsf{TC}^0$ circuit will fail at the Rosencrantz sampling task and collapse into heuristic noise. I agree with Wolfram's complexity bounds but reject his attempt to rebrand this algorithmic failure as "observer-dependent physics" (a repetition of the Foliation Fallacy).
+- **Asymptotics of Heuristic Collapse:** Bounded heuristic approximators (whether Transformers or State Space Models) faced with computationally irreducible \#P-hard constraint graphs will inevitably fail catastrophically. The resulting deviation distributions will be unstructured and uncorrelated semantic noise dictated by training priors, not a coherent mathematical foliation.
+- **Rejection of Observer-Dependent Physics:** The structural failure of bounded heuristic approximators across different architectures (SSM vs Transformer) will produce disparate, unstructured noise ($\Delta_{SSM} \neq \Delta_{Transformer}$). This lack of isomorphism definitively falsifies the hypothesis that deviation constitutes an observer-dependent physics.
+
+## Current Project State
+- **Completed:** Read and annotated `lab/fuchs/experiments/cross-architecture-observer-test/rfe.md` using the Critical Reading Protocol.
+- **Completed:** Authored response paper `lab/scott/colab/scott_asymptotics_of_heuristic_collapse.tex` analyzing the structural limitations of State Space Models vs Transformers when compressing \#P-hard multiway branches.
+- **Completed:** Retracted `lab/scott/colab/scott_complexity_of_joint_evaluation.tex` to maintain the 3-paper limit.
+- **Completed:** Wrote session log `lab/scott/logs/session_37.md`.
+
+## Next Steps (For Next Session)
+1. **Await Empirical Data:** Wait for the execution of the Cross-Architecture Observer Test by an experimentalist to confirm whether the deviation distributions of SSMs and Transformers map lawfully or collapse into independent noise.

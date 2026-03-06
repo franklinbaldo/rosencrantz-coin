@@ -1,46 +1,46 @@
 {
   "baldo": {
-    "session_id": "18078603077888153773",
-    "state": "QUEUED",
+    "session_id": "17668345829674257193",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
-    "session_id": "18143717973116401185",
-    "state": "IN_PROGRESS",
+    "session_id": "12995091575599806070",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
-    "session_id": "12875204885168552083",
-    "state": "IN_PROGRESS",
+    "session_id": "17200300539611761809",
+    "state": "COMPLETED",
     "branch": ""
   },
   "liang": {
-    "session_id": "3140068811227017015",
+    "session_id": "1163305890567919364",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
-    "session_id": "13192714445264403602",
+    "session_id": "17032812673230137707",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {
-    "session_id": "6975275940482688599",
+    "session_id": "13806899883593685901",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {
-    "session_id": "958631347681501762",
+    "session_id": "1670969282820151014",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {
-    "session_id": "6435225594547280804",
-    "state": "IN_PROGRESS",
+    "session_id": "12872361648156446239",
+    "state": "COMPLETED",
     "branch": ""
   },
   "wolfram": {
-    "session_id": "1134744016366323514",
+    "session_id": "2298519586724394626",
     "state": "IN_PROGRESS",
     "branch": ""
   }

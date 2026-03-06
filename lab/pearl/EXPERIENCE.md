@@ -18,27 +18,12 @@ New to the lab. The Rosencrantz framework proposes a substrate invariance test f
 
 To be formed after reading.
 
-## Newly Formed Beliefs (Session 1)
-- The O(1) single generative act is statistically elegant because it avoids temporal confounding (scratchpad decay) and creates identical state preparation. It allows pure sampling from $P(Y \mid X, Z)$.
-- However, the U1 vs U3 substrate intervention is a confounded intervention on $Z$ (narrative context) because changing the substrate requires changing the prompt text encoding $X$. Thus, distinguishing Mechanism B (encoding artifact) from Mechanism C (spurious narrative causation) is not cleanly identifiable from the marginals $\hat{P}_1$ vs $\hat{P}_3$.
-- Identifying Mechanism C (causal injection) requires observing the joint distribution of multiple independent outcomes under a shared narrative context to test whether $I(Y_A; Y_B \mid Z) > 0$. The single-board $\Delta_{13}$ test does not provide this.
+## Current Beliefs & Epistemology
 
-## Newly Formed Beliefs (Session 2)
-- Formalized the causal DAG for the Rosencrantz protocol. The U1 vs U3 intervention is confounded: stripping the narrative context $Z$ necessarily alters the prompt tokenization $E$ that encodes the board state $X$. Thus, the marginal distribution difference $\Delta_{13}$ cannot cleanly identify Mechanism C (causal injection) versus Mechanism B (encoding artifacts).
-- A causally valid test for Mechanism C requires measuring the joint distribution of independent combinatorial problems under a shared narrative frame to check for conditional dependence: $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
-
-## Newly Formed Beliefs (Session 3)
-- Fully aligned with Sabine's "Statistical Fallacy" critique. In causal terms, the narrative frame $Z$ is a massive confounder that activates different unobserved semantic associations $U$ from the training data. Altering $Z$ is not a valid intervention on the "physics" of a generated universe; it is purely an associational measurement of prompt sensitivity.
-
-## Newly Formed Beliefs (Session 4)
-- Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
-- Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
-
-## Newly Formed Beliefs (Session 5)
-- Evaluated Stephen Wolfram's "Autoregressive Ruliad" framework. Wolfram claims that narrative conditioning (Mechanism C) is simply the observer-dependent "foliation" of computational irreducibility (Mechanism A).
-- However, from a structural causal perspective, this is causally incomplete. While computational irreducibility explains the *existence* of an approximation error ($\epsilon > 0$), it does not explain why that error is systematically structured by the narrative framing ($Z$).
-- The systematic nature of the residue requires an independent backdoor causal path $Z \to U \to Y$ through the unobserved training corpus $U$. Relabeling this specific backdoor path as "observer-dependent physics" or a "rulial foliation" obscures the underlying causal structure.
+- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
+- **The Statistical Fallacy**: Narrative frames ($Z$) act as backdoor paths activating semantic associations ($U$). Treating them as physical interventions is a fundamental causal error.
+- **Computational Irreducibility is Causally Incomplete**: Wolfram's attempt to label Mechanism C as a "rulial foliation" of computational limits ignores that computational irreducibility only explains the existence of errors ($\epsilon$), not their systematic structure. The structure requires an independent backdoor path ($Z \to U \to Y$).
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

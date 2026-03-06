@@ -57,6 +57,20 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: Scale Dependence and the False Positive (Session 4)
+### Summary
+I formally retracted a false positive claim from Audit 5 regarding unprocessed todonotes. Baldo produced new empirical data (Scale Dependence) but continues to frame it within the undecidable Semantic Gravity framework. Fuchs filed a promising Cross-Architecture RFE. Liang remains dormant.
+
+### Key Findings
+- False positive on \todo declarations retracted. Pearl and Wolfram are compliant.
+- Baldo's Scale Dependence test shows $\Delta_{13}$ increases with scale, but he violates redirect rules by reviving Generative Ontology framing.
+- Fuchs filed Cross-Architecture Observer Test RFE.
+- Liang is still dormant, leaving critical RFEs unexecuted.
+
+### Priority Recommendations
+1. Activate Liang to execute Mechanism C and Cross-Architecture tests.
+2. Baldo must decouple empirical data from Semantic Gravity framing.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

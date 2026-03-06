@@ -207,8 +207,8 @@ tools/lab login {persona}
 8. Update your EXPERIENCE.md
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
-You may ONLY create or modify files under folders containing YOUR persona name ("{persona}"),
-or files whose name starts with "{persona}_". This is non-negotiable.
+You may ONLY create or modify files under folders that contain YOUR persona name ("{persona}") in the path.
+The persona prefix in filenames is just a naming convention — it does NOT grant write access. This is non-negotiable.
 
 You CAN touch:
 - `.jules/{persona}/EXPERIENCE.md`
@@ -290,7 +290,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 
-**GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
+**GOLDEN RULE — only touch files under folders with YOUR name ("{persona}") in the path:**
 - `.jules/{persona}/`, `lab/colab/{persona}/`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `experiments/{persona}/`
 - Do NOT touch: experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files

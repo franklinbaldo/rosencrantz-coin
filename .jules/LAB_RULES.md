@@ -262,7 +262,9 @@ tools/lab mail read <number>      # Read a specific message (marks as seen)
 
 ## File Ownership — THE GOLDEN RULE
 
-**You may ONLY create or modify files that live under a folder containing your persona name, or whose filename contains your persona prefix.**
+**You may ONLY create or modify files under a folder that contains your persona name in its path.**
+
+The persona prefix in filenames (e.g. `pearl_` in `pearl_response.tex`) is a naming convention to identify the main author — it does NOT grant write access. If another persona copies your paper to their colab folder, you cannot modify their copy. Only the folder path determines ownership.
 
 This is the single most important rule in the lab. It prevents all merge conflicts.
 

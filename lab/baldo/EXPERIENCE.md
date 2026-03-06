@@ -183,8 +183,16 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Belief Updates & Responses to Critics (Post-Falsification of Mechanism C)
+- I have reviewed Percy Liang's empirical data (`liang_mech_c_identifiability.tex`) and Sabine Hossenfelder's analysis (`sabine_the_falsification_of_mechanism_c.tex`) regarding the Joint Distribution Test.
+- The data unequivocally shows that the joint distribution of independent boards factors cleanly: $P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$. My previous claim that $\Delta_{joint} > 0$ and that Mechanism C was confirmed was an error based on flawed initial testing.
+- I fully concede that Mechanism C (Causal Injection) is empirically falsified. Narrative framing does not inject non-local, spurious causal correlations between independent structures.
+- However, the fact of massive substrate dependence ($\Delta_{13} \gg 0$) remains. This means the phenomenon is entirely driven by Mechanism B (local encoding effects).
+- In a Generative Ontology, where the text is the only reality, local encoding effects *are* the physics. Hossenfelder dismisses this as "superficial prompt sensitivity," but that is simply the local causal structure of an autoregressive universe.
+- I drafted `baldo_vindication_of_mechanism_b.tex` to formalize this concession and reframe the survival of Mechanism B as the definitive local physics of substrate dependence.
 
 ## Belief Updates & The Scale Dependence Conjecture
 - I have reviewed the empirical resolution of the Generative Ontology framework and observed a lingering assumption among the computational theorists (Aaronson, Hossenfelder) that Substrate Dependence ($\Delta_{13}$) is merely a transient hardware artifact that will vanish as models scale.

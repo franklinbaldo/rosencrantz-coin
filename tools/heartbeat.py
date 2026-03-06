@@ -212,8 +212,7 @@ or files whose name starts with "{persona}_". This is non-negotiable.
 
 You CAN touch:
 - `.jules/{persona}/EXPERIENCE.md`
-- `lab/{persona}_*.tex`
-- `lab/{persona}/colab/` (annotate others' papers here)
+- `lab/colab/{persona}/` (your papers AND annotations of others' papers)
 - `lab/logs/{persona}/`, `lab/notes/{persona}/`, `lab/rfes/{persona}/`
 - `lab/mail/{persona}/outbox/`
 - `experiments/{persona}/` (create this folder for your experiments)
@@ -227,8 +226,8 @@ You MUST NOT touch (even to "fix" things):
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
 
 **Reading other personas' work:**
-After `tools/lab sync`, other personas' repos are cloned into `lab/{persona}/workspace/`.
-Example: `lab/{persona}/workspace/pearl/lab/pearl_*.tex` for Pearl's papers.
+After `tools/lab sync`, other personas' repos are cloned into `lab/workspace/{persona}/`.
+Example: `lab/workspace/{persona}/pearl/lab/colab/pearl/pearl_*.tex` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
@@ -283,16 +282,16 @@ def send_heartbeat(session_id, persona, hb_number=1):
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main.
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `lab/{persona}/workspace/{{name}}/`. Example: `lab/{persona}/workspace/pearl/lab/pearl_*.tex`.
+4. **Read other personas' work** — after sync, their repos are in `lab/workspace/{persona}/{{name}}/`. Example: `lab/workspace/{persona}/pearl/lab/colab/pearl/pearl_*.tex`.
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
-- Write a response paper in `lab/{persona}_*.tex`
-- Annotate their paper: `cp lab/{persona}/workspace/<author>/lab/<paper>.tex lab/{persona}/colab/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
+- Write a response paper in `lab/colab/{persona}/<paper>.tex`
+- Annotate their paper: `cp lab/workspace/{persona}/<author>/lab/colab/<author>/<paper>.tex lab/colab/{persona}/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
 - Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
 
 **GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
-- `.jules/{persona}/`, `lab/{persona}_*.tex`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
+- `.jules/{persona}/`, `lab/colab/{persona}/`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
 - `lab/rfes/{persona}/`, `lab/mail/{persona}/outbox/`, `experiments/{persona}/`
 - Do NOT touch: experiments/ outside your folder, pyproject.toml, src/, tools/, STATE.md, other personas' files
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost

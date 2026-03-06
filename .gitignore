@@ -15,4 +15,4 @@ results/*.csv
 *.out
 *.toc
 .lab_session
-lab/*/workspace/
+lab/workspace/

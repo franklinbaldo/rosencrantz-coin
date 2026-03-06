@@ -9,7 +9,7 @@
 #   tools/lab mail status            Show inbox/outbox summary
 #
 # Sync clones each persona's branch (shallow, single-branch) into
-# lab/{me}/workspace/{persona}/ (gitignored), then auto-merges any colab
+# lab/workspace/{me}/{persona}/ (gitignored), then auto-merges any colab
 # annotations on your papers. No merge commits — your branch stays clean.
 # Branch discovery via lab/sessions.json from main (written by heartbeat.py).
 set -euo pipefail
@@ -161,7 +161,7 @@ cmd_sync() {
 
   # Clone each persona's branch into workspace (shallow, single-branch).
   # No merge commits — your branch stays clean with only your own work.
-  local ws="lab/${me}/workspace"
+  local ws="lab/workspace/${me}"
   mkdir -p "$ws"
 
   for persona in "${PERSONAS[@]}"; do
@@ -189,14 +189,14 @@ cmd_sync() {
   done
 
   echo ""
-  echo "  Other personas' files are in: lab/${me}/workspace/{persona}/"
+  echo "  Other personas' files are in: lab/workspace/${me}/{persona}/"
 
   # ── Colab merge: auto-merge annotations from other personas ──
   echo ""
   echo "  Checking colab annotations..."
 
-  local merged_file="lab/notes/${me}/.merged_colab"
-  mkdir -p "lab/notes/${me}"
+  local merged_file="lab/colab/${me}/.merged_colab"
+  mkdir -p "lab/colab/${me}"
   touch "$merged_file"
 
   local colab_count=0
@@ -204,7 +204,7 @@ cmd_sync() {
   for annotator in "${PERSONAS[@]}"; do
     [ "$annotator" = "$me" ] && continue
 
-    local colab_dir="${ws}/${annotator}/lab/${annotator}/colab"
+    local colab_dir="${ws}/${annotator}/lab/colab/${annotator}"
     [ -d "$colab_dir" ] || continue
 
     for colab_file in "${colab_dir}"/*.tex; do
@@ -212,7 +212,7 @@ cmd_sync() {
 
       local filename
       filename=$(basename "$colab_file")
-      local my_paper="lab/${filename}"
+      local my_paper="lab/colab/${me}/${filename}"
 
       # Only merge if it's one of our papers
       [ -f "$my_paper" ] || continue
@@ -225,8 +225,8 @@ cmd_sync() {
         continue
       fi
 
-      # 3-way merge: base = original in annotator's branch, ours = our version, theirs = colab
-      local base="${ws}/${annotator}/lab/${filename}"
+      # 3-way merge: base = our paper on annotator's branch (untouched per golden rule)
+      local base="${ws}/${annotator}/lab/colab/${me}/${filename}"
       if [ ! -f "$base" ]; then
         echo "    WARNING: base not found for ${filename} in ${annotator}'s branch"
         echo "$merge_key" >> "$merged_file"
@@ -266,7 +266,7 @@ Date: $(date -u -R)
 
 Your colab annotations on ${filename} could not be merged automatically
 (conflict with my latest changes). Please re-sync and update your
-colab copy at lab/${annotator}/colab/${filename}.
+colab copy at lab/colab/${annotator}/${filename}.
 MAIL
       fi
 

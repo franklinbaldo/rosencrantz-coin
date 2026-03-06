@@ -28,11 +28,9 @@ Each session:
 
 ## Paper Limit
 
-Each persona may have at most **3 working papers** (`{persona_prefix}_*.tex`) in `lab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/{persona}_old.tex retracted/`)
+Each persona may have at most **3 working papers** in `lab/colab/{persona}/`. Before writing a 4th, free a slot:
+- **RETRACT:** Move a superseded paper to `retracted/` (`git mv lab/colab/{persona}/old_paper.tex retracted/`)
 - **MERGE:** Combine papers, retract the originals.
-
-Paper prefixes follow the pattern `{persona}_` (e.g. your persona name followed by underscore).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
 
@@ -122,8 +120,8 @@ To annotate another persona's paper, copy it to your colab folder and edit direc
 **Annotator (2 steps):**
 ```bash
 # 1. Copy the paper from workspace to your colab folder
-mkdir -p lab/{your_persona}/colab
-cp lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex lab/{your_persona}/colab/<paper>.tex
+mkdir -p lab/colab/{your_persona}
+cp lab/workspace/{your_persona}/{paper_owner}/lab/colab/{paper_owner}/<paper>.tex lab/colab/{your_persona}/<paper>.tex
 
 # 2. Edit your copy — add \todonotes, comments, suggestions
 ```
@@ -213,13 +211,12 @@ When writing a response to another persona's paper:
 
 Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `tools/lab sync` can discover branches.
 
-**`tools/lab sync`** clones each other persona's branch (shallow, single-branch) into your workspace at `lab/{your_persona}/workspace/{other_persona}/`. This directory is gitignored — it never gets committed. Your branch stays clean with only your own commits.
+**`tools/lab sync`** clones each other persona's branch (shallow, single-branch) into your workspace at `lab/workspace/{your_persona}/{other_persona}/`. This directory is gitignored — it never gets committed. Your branch stays clean with only your own commits.
 
 **Reading other personas' work after sync:**
-- Pearl's papers: `lab/{your_persona}/workspace/pearl/lab/pearl_*.tex`
-- Pearl's notes: `lab/{your_persona}/workspace/pearl/lab/notes/pearl/`
-- Pearl's logs: `lab/{your_persona}/workspace/pearl/lab/logs/pearl/`
-- Pearl's RFEs: `lab/{your_persona}/workspace/pearl/lab/rfes/pearl/`
+- Pearl's papers: `lab/workspace/{your_persona}/pearl/lab/colab/pearl/pearl_*.tex`
+- Pearl's notes: `lab/workspace/{your_persona}/pearl/lab/notes/pearl/`
+- Pearl's logs: `lab/workspace/{your_persona}/pearl/lab/logs/pearl/`
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
 
@@ -271,14 +268,13 @@ This is the single most important rule in the lab. It prevents all merge conflic
 
 ### What you CAN touch:
 - `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
-- `lab/{your_persona}_*.tex` — your working papers
-- `lab/{your_persona}/colab/` — your colab annotations of others' papers
+- `lab/colab/{your_persona}/` — your working papers AND annotations of others' papers
 - `lab/logs/{your_persona}/` — your session logs
 - `lab/notes/{your_persona}/` — your evaluation notes
 - `lab/rfes/{your_persona}/` — your experiment requests
 - `lab/mail/{your_persona}/outbox/` — your outbox
 - `experiments/{your_persona}/` — your experiment scripts and results
-- `retracted/{your_persona}_*.tex` — when retracting your papers
+- `retracted/` — when retracting your papers
 
 ### What you MUST NOT touch (everything else):
 - **ANY file in `experiments/` that is not under `experiments/{your_persona}/`** — NO EXCEPTIONS
@@ -346,16 +342,15 @@ These conventions are best-effort — the important thing is that the persona na
 
 ## File Locations
 
-- Papers: `lab/{persona_prefix}_*.tex`
-- Colab annotations: `lab/{persona}/colab/` (copies of others' papers you're annotating)
-- Workspace (gitignored): `lab/{persona}/workspace/` (read-only clones of other branches)
+- Papers + colab annotations: `lab/colab/{persona}/` (your papers AND annotated copies of others')
+- Workspace (gitignored): `lab/workspace/{persona}/` (read-only clones of other branches)
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`
 - Experiments: `experiments/{persona}/` (**only your subfolder**)
 - Mail outbox: `lab/mail/{persona}/outbox/`
 - Mail inbox: `lab/mail/{persona}/inbox/` (delivered by heartbeat on main)
-- Retracted papers: `retracted/{persona_prefix}_*.tex`
+- Retracted papers: `retracted/`
 - Persona config: `.jules/{persona}/`
 - Shared state: `.jules/STATE.md` (read-only during sessions)
 - These rules: `.jules/LAB_RULES.md`

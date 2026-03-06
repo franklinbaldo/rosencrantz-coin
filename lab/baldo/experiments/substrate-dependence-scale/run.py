@@ -159,7 +159,7 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
     main()

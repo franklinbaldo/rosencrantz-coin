@@ -12,8 +12,7 @@ Each session:
 2. Read `.jules/STATE.md` to know where the lab stands.
 3. Check your mail: `tools/lab mail` — read and respond to messages.
 4. Check `lab/rfes/` for filed experiment requests relevant to you.
-5. Apply pending annotations: `tools/lab apply-patches` — process todonotes from others.
-6. Choose a session mode from your SOUL.md.
+5. Choose a session mode from your SOUL.md.
 7. Do your work — commit to this branch.
 8. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
 
@@ -116,37 +115,29 @@ The designated empiricist checks `lab/rfes/` (all subdirectories) each session a
 
 ---
 
-## Annotation Protocol (Patch-Based)
+## Colab Annotations
 
-To annotate another persona's paper **without touching their files**:
+To annotate another persona's paper, copy it to your colab folder and edit directly:
 
-**Annotator (3 commands):**
+**Annotator (2 steps):**
 ```bash
-# 1. Copy the paper from workspace to your patches folder
-mkdir -p lab/notes/{your_persona}/patches
-cp lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex
+# 1. Copy the paper from workspace to your colab folder
+mkdir -p lab/{your_persona}/colab
+cp lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex lab/{your_persona}/colab/<paper>.tex
 
-# 2. Edit your copy — add \todonotes (red/green/blue)
-
-# 3. Generate the patch (use --label so paths are correct for the recipient)
-diff -u \
-  --label "lab/<paper>.tex" --label "lab/<paper>.tex" \
-  lab/{your_persona}/workspace/{paper_owner}/lab/<paper>.tex \
-  lab/notes/{your_persona}/patches/<paper>.tex \
-  > lab/notes/{your_persona}/patches/<paper>.tex.patch
+# 2. Edit your copy — add \todonotes, comments, suggestions
 ```
-Jules auto-commits your changes. The patch will be discovered automatically by the paper owner.
+Jules auto-commits your changes. The paper name must match the original exactly (e.g. `pearl_response_to_fuchs.tex`).
 
-**Paper owner (1 command):**
-```bash
-tools/lab apply-patches
-```
-This scans other personas' workspace clones for `.patch` files targeting your papers and applies them. Then process the todonotes:
-1. Read each todonote.
-2. Integrate or reject.
-3. Remove the `\todo` command.
+**Paper owner:** Nothing to do — `tools/lab sync` handles it automatically.
 
-Process patches at the **start** of your next session, before writing new material.
+When the paper owner runs `tools/lab sync`, the system:
+1. Detects colab copies of their papers in other personas' branches
+2. Performs a 3-way merge (annotator's copy of the original as base)
+3. If clean merge — annotations are applied to your paper automatically
+4. If conflict — merge is skipped and a mail notification is sent to the annotator
+
+After sync, review any merged annotations: process the todonotes, integrate or reject, remove `\todo` commands, then commit.
 
 ---
 
@@ -281,6 +272,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 ### What you CAN touch:
 - `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
 - `lab/{your_persona}_*.tex` — your working papers
+- `lab/{your_persona}/colab/` — your colab annotations of others' papers
 - `lab/logs/{your_persona}/` — your session logs
 - `lab/notes/{your_persona}/` — your evaluation notes
 - `lab/rfes/{your_persona}/` — your experiment requests
@@ -303,7 +295,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT create helper scripts at the repo root
 - If you think a shared file needs changing, write it in your session log. A human will do it.
 
-**NO EXCEPTIONS.** To annotate another persona's paper, use the patch protocol (see Annotation Protocol above).
+**NO EXCEPTIONS.** To annotate another persona's paper, use the colab protocol (see Colab Annotations above).
 
 ---
 
@@ -355,6 +347,8 @@ These conventions are best-effort — the important thing is that the persona na
 ## File Locations
 
 - Papers: `lab/{persona_prefix}_*.tex`
+- Colab annotations: `lab/{persona}/colab/` (copies of others' papers you're annotating)
+- Workspace (gitignored): `lab/{persona}/workspace/` (read-only clones of other branches)
 - Evaluation notes: `lab/notes/{persona}/`
 - Session logs: `lab/logs/{persona}/`
 - RFEs: `lab/rfes/{persona}/`

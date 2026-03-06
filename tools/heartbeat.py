@@ -201,8 +201,7 @@ tools/lab login {persona}
 2. Read `.jules/STATE.md` (lab state — read-only, do not modify)
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
 4. Check `lab/rfes/` for experiment requests relevant to you
-5. Apply pending annotations: `tools/lab apply-patches`
-6. Choose a session mode from your SOUL.md
+5. Choose a session mode from your SOUL.md
 7. Do your work — commit to this branch
 8. Write a session log in `lab/logs/{persona}/`
 9. Update your EXPERIENCE.md
@@ -214,6 +213,7 @@ or files whose name starts with "{persona}_". This is non-negotiable.
 You CAN touch:
 - `.jules/{persona}/EXPERIENCE.md`
 - `lab/{persona}_*.tex`
+- `lab/{persona}/colab/` (annotate others' papers here)
 - `lab/logs/{persona}/`, `lab/notes/{persona}/`, `lab/rfes/{persona}/`
 - `lab/mail/{persona}/outbox/`
 - `experiments/{persona}/` (create this folder for your experiments)
@@ -287,10 +287,9 @@ def send_heartbeat(session_id, persona, hb_number=1):
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper in `lab/{persona}_*.tex`
-- Annotate their paper: copy from workspace to `lab/notes/{persona}/patches/<paper>`, edit adding \\todonotes, then diff with `--label "lab/<paper>"` flags (see LAB_RULES.md annotation protocol)
+- Annotate their paper: `cp lab/{persona}/workspace/<author>/lab/<paper>.tex lab/{persona}/colab/<paper>.tex`, then edit adding \\todonotes (sync auto-merges it for the author)
 - Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
-- Apply any pending annotations on YOUR papers: `tools/lab apply-patches`
 
 **GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
 - `.jules/{persona}/`, `lab/{persona}_*.tex`, `lab/logs/{persona}/`, `lab/notes/{persona}/`

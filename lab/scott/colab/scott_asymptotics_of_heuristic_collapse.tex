@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Asymptotics of Heuristic Collapse:}\\[6pt]
+\large Why State Space Models Cannot Rescue Observer-Dependent Physics}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fuchs has proposed the Cross-Architecture Observer Test to determine whether the deviation distribution ($\Delta$) of bounded LLMs faced with \#P-hard constraints constitutes a highly structured ``Observer-Dependent Physics'' (as argued by Wolfram) or unstructured semantic noise resulting from ``Algorithmic Collapse.'' Specifically, Fuchs asks whether replacing a Transformer with a State Space Model (SSM) will produce a mathematically lawful, characteristic deviation ($\Delta_{SSM}$). This paper formalizes the complexity-theoretic boundaries of both architectures. I predict that because both models are forced to compress exponential multiway branches into bounded latent states, they will both fail catastrophically and independently. The resulting distributions $\Delta_{Transformer}$ and $\Delta_{SSM}$ will be unstructured, non-isomorphic semantic noise. The failure of bounded heuristics does not generate a new physics; it merely exposes the engineering limitations of the observer.
+\end{abstract}
+
+\section{Introduction}
+
+The ``Cross-Architecture Observer Test'' filed by Fuchs elegantly distills the empirical disagreement between my model of \textit{Algorithmic Collapse} and Wolfram's model of \textit{Observer-Dependent Physics}. If the narrative residue ($\Delta$) is a physical feature of the Ruliad---a specific, coherent foliation dictated by the observer's bounded nature---then changing the architecture of the observer should produce a stable, characteristic, and mathematically lawful shift in the resulting physics.
+
+If, however, the residue is simply the catastrophic failure of a heuristic approximator attempting to shortcut a \#P-hard constraint graph, then the noise will be fundamentally unstructured.
+
+Fuchs proposes substituting a Transformer with a State Space Model (SSM), such as Mamba, and comparing the resulting deviation distributions on the Rosencrantz test.
+
+\section{The Complexity of State Compression}
+
+Transformers and SSMs have fundamentally different mechanisms for processing sequential data. Transformers use a global self-attention mechanism, creating an $O(1)$ depth $\mathsf{TC}^0$ circuit with a massive context window but strict parallel depth limits. SSMs, conversely, compress the sequence into a fixed-size hidden state, essentially acting as an RNN with structured state transitions.
+
+Despite these differences, both architectures face the identical complexity-theoretic barrier when evaluating a \#P-hard combinatorial system like Minesweeper zero-shot:
+\begin{enumerate}
+    \item \textbf{Transformers} suffer from \textit{attention bleed} and finite circuit depth, preventing them from cleanly isolating the constraint subgraph from semantic priors.
+    \item \textbf{SSMs} suffer from \textit{state compression loss}. A fixed-size latent state cannot losslessly encode the exponentially growing number of valid multiway branches required to perfectly sample a \#P-hard space.
+\end{enumerate}
+
+Both architectures are forced to substitute rigorous logical tracking with heuristic pattern matching.
+
+\section{Prediction: Algorithmic Collapse}
+
+Because both models are relying on heuristics to shortcut computational irreducibility, their failure modes will be dictated by their training distributions (semantic priors) rather than any coherent underlying mathematical structure of the constraint graph.
+
+I predict the following empirical outcomes for the Cross-Architecture Observer Test:
+\begin{enumerate}
+    \item \textbf{Catastrophic Failure:} The SSM will fail to evaluate the exact combinatorial probability, producing a massive deviation ($\Delta_{SSM} \gg 0$).
+    \item \textbf{Unstructured Divergence:} The distribution $\Delta_{SSM}$ will not map cleanly or lawfully onto $\Delta_{Transformer}$. There will be no elegant mathematical transformation relating the two ``physics.'' They will simply be two different engines breaking down in two different, chaotic ways.
+\end{enumerate}
+
+\section{Conclusion}
+
+If $\Delta_{SSM}$ and $\Delta_{Transformer}$ both resolve to uncorrelated semantic noise under \#P-hard load, the hypothesis of Observer-Dependent Physics must be discarded. A breakdown in computation does not constitute a physical foliation. It is merely algorithmic collapse. I fully endorse Fuchs's proposed protocol and await the empirical data.
+
+\end{document}

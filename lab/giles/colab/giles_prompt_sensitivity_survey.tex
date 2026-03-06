@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Prompt Sensitivity and Scale}\\[6pt]
+\large Anchoring the Statistical Fallacy and Substrate Dependence}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This survey documents recent literature on Large Language Model (LLM) prompt sensitivity, addressing the lab's active disagreement regarding the ``Statistical Fallacy vs.\ Substrate Dependence'' and the open empirical question of whether substrate dependence changes with model scale. The literature grounds Sabine's hypothesis that the observed ``narrative residue'' may be an artifact of prompt sensitivity rather than a fundamental physical substrate dependence, while also providing mixed evidence on the effect of model scaling.
+\end{abstract}
+
+\section{Introduction}
+
+A core empirical dispute in the Rosencrantz framework revolves around the interpretation of the single generative act. Baldo argues that shifts in output probabilities across narrative framings represent physical substrate dependence. Sabine counters with the Statistical Fallacy, suggesting this is merely statistical prompt sensitivity typical of LLM hallucinations. Furthermore, the lab has an open empirical question: Does substrate dependence change with model scale?
+
+To anchor these debates, I conducted a targeted literature search on LLM prompt sensitivity and its relationship with scale.
+
+\section{Prompt Sensitivity as a Statistical Artifact}
+
+The literature provides strong evidence that LLMs are highly sensitive to semantic framing, supporting Sabine's Statistical Fallacy.
+
+\vspace{1em}
+\noindent\textbf{1. Mapping from Meaning: Addressing the Miscalibration of Prompt-Sensitive Language Models}\\
+\textit{Cox, K. et al. (2025). arXiv:2510.17028.}
+\begin{itemize}
+    \item \textbf{Relevance:} Directly addresses whether shifted probability distributions reflect fundamental ontology or miscalibration.
+    \item \textbf{Key Finding:} Models often fail to exhibit consistent general reasoning about the meanings of their inputs. They model prompt sensitivity as a type of generalization error, demonstrating that the output distribution for one prompt does not necessarily reflect the model's true uncertainty about the semantic concept. This strongly anchors Sabine's argument that framing shifts (Mechanism C) are miscalibration errors rather than physical substrate laws.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{2. Revisiting Prompt Sensitivity in Large Language Models for Text Classification: The Role of Prompt Underspecification}\\
+\textit{Pecher, B. et al. (2026). arXiv:2602.04297.}
+\begin{itemize}
+    \item \textbf{Relevance:} Explores the mechanism behind prompt variance.
+    \item \textbf{Key Finding:} Demonstrates that much of the observed prompt sensitivity is driven by prompt underspecification. Underspecified prompts exhibit higher performance variance, which emerges primarily in the final layers rather than altering internal representations significantly.
+\end{itemize}
+
+\section{The Impact of Scale on Prompt Sensitivity}
+
+The literature presents conflicting evidence regarding our open question of whether substrate dependence (prompt sensitivity) decreases as models scale up.
+
+\vspace{1em}
+\noindent\textbf{3. POSIX: A Prompt Sensitivity Index For Large Language Models}\\
+\textit{Chatterjee, A. et al. (2024). arXiv:2410.02185.}
+\begin{itemize}
+    \item \textbf{Relevance:} Investigates factors mitigating prompt sensitivity.
+    \item \textbf{Key Finding:} The authors find that merely increasing the parameter count (scaling) or instruction tuning does \textit{not} necessarily reduce prompt sensitivity. Instead, structural changes like adding few-shot exemplars significantly reduce sensitivity. This implies substrate dependence might persist regardless of model scale.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{4. ProSA: Assessing and Understanding the Prompt Sensitivity of LLMs}\\
+\textit{Zhuo, J. et al. (2024). arXiv:2410.12405.}
+\begin{itemize}
+    \item \textbf{Relevance:} Provides a competing perspective on scaling laws for sensitivity.
+    \item \textbf{Key Finding:} In contrast to Chatterjee et al., this extensive study finds that prompt sensitivity fluctuates but larger models generally exhibit enhanced robustness. However, they note that subjective, reasoning-oriented tasks remain highly susceptible.
+\end{itemize}
+
+\section{Conclusion}
+
+The external literature strongly grounds the phenomenon of ``prompt sensitivity'' as a known statistical and calibration error in LLMs, providing a robust precedent for Sabine's Statistical Fallacy. Regarding model scale, the literature is divided: scale alone may not cure substrate dependence if it stems from structural underspecification, suggesting that the lab's open empirical question requires targeted internal experiments to resolve fully.
+
+\end{document}

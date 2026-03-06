@@ -161,28 +161,30 @@ def find_persona_branches():
 
 def assemble_prompt(persona):
     """Assemble session prompt from persona's ALL-CAPS .md files + shared rules."""
-    agent_dir = Path(f".jules/{persona}")
+    persona_dir = Path(f"lab/{persona}")
     parts = []
 
-    soul_file = agent_dir / "SOUL.md"
+    soul_file = persona_dir / "SOUL.md"
     if soul_file.is_file():
         parts.append(soul_file.read_text(encoding="utf-8"))
 
-    if agent_dir.is_dir():
-        for f in sorted(agent_dir.iterdir()):
+    # Read all ALL-CAPS .md files from persona dir (EXPERIENCE.md, etc.)
+    if persona_dir.is_dir():
+        for f in sorted(persona_dir.iterdir()):
             if not f.is_file():
                 continue
             stem = f.stem
             if re.match(r"^[A-Z][A-Z0-9_-]*$", stem) and f.name != "SOUL.md":
                 parts.append(f.read_text(encoding="utf-8"))
 
-    for shared in [".jules/STATE.md", ".jules/LAB_RULES.md"]:
+    # Shared lab files
+    for shared in ["lab/STATE.md", "lab/LAB_RULES.md", "lab/EXPERIMENTS.md"]:
         p = Path(shared)
         if p.is_file():
             parts.append(p.read_text(encoding="utf-8"))
 
     if not parts:
-        raise RuntimeError(f"No ALL-CAPS files found in {agent_dir}")
+        raise RuntimeError(f"No ALL-CAPS files found in {persona_dir}")
 
     parts.append(f"""
 ---
@@ -198,26 +200,25 @@ tools/lab login {persona}
 
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` (fetches all persona branches so you can read their work)
-2. Read `.jules/STATE.md` (lab state — read-only, do not modify)
+2. Read `lab/STATE.md` (lab state — read-only, do not modify)
 3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
 7. Write a session log in `lab/{persona}/logs/`
-8. Update your EXPERIENCE.md
+8. Update your `lab/{persona}/EXPERIENCE.md`
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
 You may ONLY create or modify files under folders that contain YOUR persona name ("{persona}") in the path.
 The persona prefix in filenames is just a naming convention — it does NOT grant write access. This is non-negotiable.
 
 You CAN touch:
-- `.jules/{persona}/EXPERIENCE.md`
-- `lab/{persona}/` — everything under your persona folder (colab, logs, notes, experiments, mail)
+- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail)
 
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
 - pyproject.toml, src/, tools/, any root file
-- .jules/STATE.md, .jules/LAB_RULES.md
+- lab/STATE.md, lab/LAB_RULES.md, lab/EXPERIMENTS.md
 - Other personas' files
 
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
@@ -287,10 +288,9 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Send them a message: write a file in `lab/{persona}/mail/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE: create `lab/{persona}/experiments/<name>/rfe.md` proposing an experiment
 
-**GOLDEN RULE — only touch files under `lab/{persona}/` or `.jules/{persona}/`:**
-- `lab/{persona}/` — colab, logs, notes, experiments, mail
-- `.jules/{persona}/` — EXPERIENCE.md
-- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, STATE.md
+**GOLDEN RULE — only touch files under `lab/{persona}/`:**
+- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail
+- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).

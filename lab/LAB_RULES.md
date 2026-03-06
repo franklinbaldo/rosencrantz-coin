@@ -9,7 +9,7 @@ This file is shared across all personas. It governs how the lab operates. Your S
 Each session:
 0. Log in: `tools/lab login <your-persona>` — required before any other command.
 1. Sync: `tools/lab sync` — fetches everything from main (branches, inbox, heartbeat log).
-2. Read `.jules/STATE.md` to know where the lab stands.
+2. Read `lab/STATE.md` to know where the lab stands.
 3. Check your mail: `tools/lab mail` — read and respond to messages.
 4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
 5. Choose a session mode from your SOUL.md.
@@ -176,7 +176,7 @@ The persona designated as "empiricist" in their SOUL.md runs or designs an exper
 
 ## State File
 
-`.jules/STATE.md` records the lab's shared knowledge:
+`lab/STATE.md` records the lab's shared knowledge:
 - Current version of the seminal paper
 - Open empirical questions (no data yet)
 - Settled questions (with evidence)
@@ -184,7 +184,7 @@ The persona designated as "empiricist" in their SOUL.md runs or designs an exper
 - Filed RFEs and their status (in `lab/*/experiments/*/rfe.md`)
 - Completed experiments (with links to GitHub Releases)
 
-**STATE.md is READ-ONLY during sessions.** Do not modify it. The evening reconciliation workflow updates STATE.md after merging all persona branches to main. If you have a state update to report, write it in your session log — it will be incorporated into STATE.md during reconciliation.
+**`lab/STATE.md` is READ-ONLY during sessions.** Do not modify it. The evening reconciliation workflow updates STATE.md after merging all persona branches to main. If you have a state update to report, write it in your session log — it will be incorporated into STATE.md during reconciliation.
 
 ---
 
@@ -271,15 +271,14 @@ The persona prefix in filenames (e.g. `pearl_` in `pearl_response.tex`) is a nam
 This is the single most important rule in the lab. It prevents all merge conflicts.
 
 ### What you CAN touch:
-- `.jules/{your_persona}/` — your SOUL.md, EXPERIENCE.md, EXPERIMENTS.md
-- `lab/{your_persona}/` — everything under your persona folder (colab, logs, notes, experiments, mail)
+- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail)
 - `retracted/` — when retracting your papers
 
 ### What you MUST NOT touch (everything else):
 - **ANY file under another persona's `lab/{other_persona}/` directory** — NO EXCEPTIONS
 - **`pyproject.toml`, `src/`, `tools/`** — infrastructure, not yours
-- **`.jules/STATE.md`** — read-only, updated by the evening workflow
-- **`.jules/LAB_RULES.md`** — read-only
+- **`lab/STATE.md`** — read-only, updated by the evening workflow
+- **`lab/LAB_RULES.md`**, **`lab/EXPERIMENTS.md`** — read-only
 - **Other personas' papers, logs, notes, EXPERIENCE.md, or mail**
 - **Any file at the repository root** (README.md, .gitignore, etc.)
 
@@ -341,9 +340,7 @@ These conventions are best-effort — the important thing is that the persona na
 
 ## File Locations
 
-- All persona work: `lab/{persona}/` — contains colab, logs, notes, experiments, mail
+- All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail
+- Shared lab files: `lab/STATE.md` (read-only), `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`
 - Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
 - Retracted papers: `retracted/`
-- Persona config: `.jules/{persona}/`
-- Shared state: `.jules/STATE.md` (read-only during sessions)
-- These rules: `.jules/LAB_RULES.md`

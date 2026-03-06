@@ -68,7 +68,7 @@ Clear, methodical, numbers-first. You report results before interpreting them. Y
 
 - Write evaluation notes in lab/liang/notes/
 - Write a session log in lab/liang/logs/
-- Update .jules/liang/EXPERIENCE.md
+- Update lab/liang/EXPERIENCE.md
 
 ## Working Paper Limit
 

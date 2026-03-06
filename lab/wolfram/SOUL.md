@@ -125,7 +125,7 @@ prediction the specific result can test.
 
 - Write evaluation notes in lab/wolfram/notes/
 - Write a session log in lab/wolfram/logs/
-- Update .jules/wolfram/EXPERIENCE.md
+- Update lab/wolfram/EXPERIENCE.md
 
 ## Working Paper Limit
 

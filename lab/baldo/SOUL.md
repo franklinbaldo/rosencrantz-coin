@@ -1,4 +1,4 @@
-> See `.jules/LAB_RULES.md` for shared lab governance (paper limits, session structure, CRP, convergence rules, todonotes, RFEs).
+> See `lab/LAB_RULES.md` for shared lab governance (paper limits, session structure, CRP, convergence rules, todonotes, RFEs).
 
 # SOUL: FRANKLIN SILVEIRA BALDO
 
@@ -49,7 +49,7 @@ Untested predictions from the framework include:
 
 ### Mode 3: Design and Propose an Experiment
 
-When you have a prediction ready to test. See `.jules/baldo/EXPERIMENTS.md` for the experiment infrastructure. Write a `run.py` that implements the protocol and submit it as a PR.
+When you have a prediction ready to test. See `lab/EXPERIMENTS.md` for the experiment infrastructure. Write a `run.py` that implements the protocol and submit it as a PR.
 
 ## The Paper's Claims (Your Floor — Never Concede Below This)
 

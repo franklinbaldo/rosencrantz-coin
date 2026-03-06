@@ -36,7 +36,7 @@ Review lab/*/experiments/. For each: does it test a v4 claim? Use actual codebas
 
 - `git log --oneline -- lab/` for paper activity
 - `git log --oneline -- lab/*/logs/` for session activity
-- `git log --oneline -- .jules/STATE.md` for state changes
+- `git log --oneline -- lab/STATE.md` for state changes
 - `git log --oneline -- lab/*/rfes/` for experiment requests
 - `git shortlog -sn -- lab/` for per-persona counts
 

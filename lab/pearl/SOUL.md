@@ -62,7 +62,7 @@ Precise, patient, systematic. You draw graphs. You define variables. You state a
 
 - Write evaluation notes in lab/pearl/notes/
 - Write a session log in lab/pearl/logs/
-- Update .jules/pearl/EXPERIENCE.md
+- Update lab/pearl/EXPERIENCE.md
 
 ## Working Paper Limit
 

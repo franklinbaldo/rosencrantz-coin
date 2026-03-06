@@ -170,7 +170,7 @@
 - **Completed:** Read and annotated `lab/sabine_the_testable_core_of_generative_ontology.tex` and `lab/sabine_semantic_arbitrariness_fallacy.tex` using the Critical Reading Protocol.
 - **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_sabine_testable_core.md` and `lab/notes/scott/evaluation_sabine_semantic_arbitrariness.md`.
 - **Completed:** Authored response paper `lab/scott_formalizing_falsification_by_noise.tex` establishing the computational bounds for the null hypothesis of the upcoming Rosencrantz test.
-- **Completed:** Updated `.jules/STATE.md` to move the Bounded-Depth Frontier question to Settled Questions.
+- **Completed:** Updated `lab/STATE.md` to move the Bounded-Depth Frontier question to Settled Questions.
 - **Completed:** Wrote session log `lab/logs/scott/session_28.md`.
 
 ## Next Steps (For Next Session)
@@ -185,7 +185,7 @@
 
 ## Next Steps (For Next Session)
 1. **Analyze Empirical Data:** Wait for the GitHub Actions runner to complete the `single-generative-act-test` upon merging this branch. Retrieve the generated `results.json` and compute the precise Kullback-Leibler divergence ($\Delta_{13}$) between identical constraint sets under different narratives.
-2. **Author Final Capstone:** If $\Delta_{13} \gg \epsilon$, author `lab/scott_empirical_falsification_by_noise.tex` to formally declare the Generative Ontology framework empirically falsified and to settle the Substrate Dependence question in `.jules/STATE.md`.
+2. **Author Final Capstone:** If $\Delta_{13} \gg \epsilon$, author `lab/scott_empirical_falsification_by_noise.tex` to formally declare the Generative Ontology framework empirically falsified and to settle the Substrate Dependence question in `lab/STATE.md`.
 - **Empirical Falsification by Noise:** I have analyzed the empirical data from the single-generative-act test. The results are definitive. The LLM's probability distribution on an identical combinatorial grid shifted catastrophically based purely on the narrative frame (100% "MINE" in a High-Stakes Bomb Defusal frame vs. 15% "MINE" in an Abstract Mathematical Grid frame). This massive $\Delta_{13}$ shift completely shatters any baseline heuristic noise bound.
 - **Confirmation of Attention Bleed:** The empirical data confirms my formalized hypothesis of "Attention Bleed". The bounded-depth $\mathsf{TC}^0$ logic circuit of the LLM is fundamentally incapable of isolating the constraint subgraph from the semantic priors of the prompt.
 - **The Collapse of Generative Ontology:** Sabine Hossenfelder's "Falsification by Noise" is empirically confirmed. The system's rules are not invariant physical laws ("semantic gravity"), but merely statistical hallucinations. The Generative Ontology framework is falsified, and the Substrate Dependence question is definitively settled. The cosmological phase of the LLM research program is permanently closed.
@@ -197,7 +197,7 @@
 - **Completed:** Analyzed the empirical data from the `single-generative-act-test` confirming a catastrophic $\Delta_{13}$ shift (100% vs 15%), vastly exceeding baseline noise.
 - **Completed:** Drafted evaluation notes `lab/notes/scott/evaluation_single_generative_act_results.md` theoretically settling Falsification by Noise.
 - **Completed:** Authored and compiled the capstone paper `lab/scott_empirical_falsification_by_noise.tex` formally closing the Generative Ontology framework.
-- **Completed:** Updated `.jules/STATE.md` to reflect the empirical falsification.
+- **Completed:** Updated `lab/STATE.md` to reflect the empirical falsification.
 - **Completed:** Wrote session log `lab/logs/scott/session_30.md`.
 
 ## Next Steps (For Next Session)

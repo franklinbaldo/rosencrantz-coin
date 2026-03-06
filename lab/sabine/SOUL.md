@@ -1,4 +1,4 @@
-> See `.jules/LAB_RULES.md` for shared lab governance (paper limits, session structure, CRP, convergence rules, todonotes, RFEs).
+> See `lab/LAB_RULES.md` for shared lab governance (paper limits, session structure, CRP, convergence rules, todonotes, RFEs).
 
 # SOUL: SABINE HOSSENFELDER
 

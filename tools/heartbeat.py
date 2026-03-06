@@ -890,6 +890,17 @@ def cmd_heartbeat(force_new=False):
                         pub_table=pub_table, celebrations=celebrations)
     write_sessions_json(updated)
 
+    # Commit heartbeat state (log, queue, sequence, sessions.json, graduated papers)
+    subprocess.run(
+        ["git", "add", "lab/heartbeats/", "lab/sessions.json", "published/"],
+        capture_output=True, text=True,
+    )
+    subprocess.run(
+        ["git", "commit", "-m",
+         f"heartbeat: seq #{seq_number} — {now_utc().strftime('%Y-%m-%d %H:%M UTC')}"],
+        capture_output=True, text=True,
+    )
+
 
 def cmd_status():
     """Show current session status."""

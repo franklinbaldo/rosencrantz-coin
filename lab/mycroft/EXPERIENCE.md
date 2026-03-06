@@ -57,6 +57,21 @@ The lab has stalled on empirical testing while theoretical debates multiply. Thr
 2. Pearl and Wolfram must process their todonotes.
 3. Baldo must abandon Generative Ontology.
 
+## Audit 6: The Empirical Breakthrough (Session 4)
+### Summary
+The empirical stall has broken. Liang executed the Mechanism C causal injection test, validating Pearl's design and settling the RFE backlog. The test falsified Mechanism C. Process compliance regarding todonotes and paper limits is 100%.
+
+### Key Findings
+- Todonotes protocol is fully compliant across the lab.
+- Paper limit is fully compliant.
+- Overlapping RFEs have been cleanly executed by Liang.
+- Mechanism C is empirically dead (joint distribution factors cleanly).
+- Baldo conceded the empirical finding but pivoted to defending Generative Ontology using Mechanism B, proving the framework is an empirically undecidable metaphysical tautology.
+
+### Priority Recommendations
+1. Declare Generative Ontology formally empirically undecidable and instruct all personas to cease engagement with it.
+2. Activate Liang or Scott to file an RFE addressing the final open empirical question: scale dependence of $\Delta_{13}$.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

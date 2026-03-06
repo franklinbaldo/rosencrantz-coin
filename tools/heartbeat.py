@@ -404,16 +404,6 @@ def get_next_sequence_number():
     return n
 
 
-def get_current_sequence_number():
-    """Read the current global sequence number without incrementing."""
-    if SEQUENCE_FILE.exists():
-        try:
-            return int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
-        except (ValueError, OSError):
-            return 0
-    return 0
-
-
 # ── Publication tracking ─────────────────────────────────────────────────────
 
 def scan_published_papers():
@@ -441,54 +431,6 @@ def scan_published_papers():
                 papers[name] = {"count": 0, "personas": [], "author": author}
             papers[name]["count"] += 1
             papers[name]["personas"].append(persona)
-    return papers
-
-
-def scan_published_papers_from_branches():
-    """Scan published/ folders from all persona branches (remote).
-
-    Falls back to local scan if branches aren't available.
-    Merges results with local main scan.
-    """
-    papers = scan_published_papers()  # Start with local (main)
-
-    # Also check remote branches via sessions.json
-    sessions_file = Path("lab/sessions.json")
-    if not sessions_file.exists():
-        return papers
-
-    try:
-        sessions = json.loads(sessions_file.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return papers
-
-    for persona, info in sessions.items():
-        branch = info.get("branch", "")
-        if not branch:
-            continue
-        # Try to list published files on the remote branch
-        result = subprocess.run(
-            ["git", "ls-tree", "--name-only", f"origin/{branch}",
-             f"lab/{persona}/published/"],
-            capture_output=True, text=True,
-        )
-        if result.returncode != 0:
-            continue
-        for line in result.stdout.strip().splitlines():
-            fname = Path(line).name
-            if not fname.endswith(".tex"):
-                continue
-            if fname not in papers:
-                author = ""
-                for p in PERSONAS:
-                    if fname.startswith(f"{p}_"):
-                        author = p
-                        break
-                papers[fname] = {"count": 0, "personas": [], "author": author}
-            if persona not in papers[fname]["personas"]:
-                papers[fname]["count"] += 1
-                papers[fname]["personas"].append(persona)
-
     return papers
 
 
@@ -547,15 +489,9 @@ def check_publication_milestones(pub_data, seq_number):
                 if src.exists() and not dst.exists():
                     dst.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(src, dst)
-                    # Stage the new file
+                    # Stage for the next commit (heartbeat log commit or manual)
                     subprocess.run(["git", "add", str(dst)],
                                    capture_output=True, text=True)
-                    subprocess.run(
-                        ["git", "commit", "-m",
-                         f"heartbeat: auto-publish {paper} "
-                         f"(co-signed by {', '.join(entry['cosigners'])})"],
-                        capture_output=True, text=True,
-                    )
                     celebrations.append(
                         f"\n🎊🎊🎊 PAPER GRADUATED TO published/! 🎊🎊🎊\n"
                         f"📜 \"{paper}\" is now permanently published.\n"
@@ -567,7 +503,7 @@ def check_publication_milestones(pub_data, seq_number):
     return celebrations
 
 
-def format_publication_table(pub_data):
+def format_publication_table(pub_data, seq_number):
     """Format a per-author publication scoreboard table."""
     # Gather stats per author
     stats = {}
@@ -625,8 +561,7 @@ def format_publication_table(pub_data):
         lines.append("")
         lines.append("### ⏳ Papers in Final Polish Window")
         for paper, entry in polishing:
-            seq_now = get_current_sequence_number()
-            remaining = max(0, PUBLISH_GRACE_HEARTBEATS - (seq_now - entry["reached_3_at_seq"]))
+            remaining = max(0, PUBLISH_GRACE_HEARTBEATS - (seq_number - entry["reached_3_at_seq"]))
             lines.append(
                 f"- 📜 **{paper}** — {remaining} heartbeat(s) remaining "
                 f"(author: {entry['author']}, co-signers: {', '.join(entry['cosigners'])})"
@@ -759,7 +694,7 @@ def create_session(persona):
     return session_id
 
 
-def send_heartbeat(session_id, persona, hb_number=1):
+def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
 
@@ -769,7 +704,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
-{ann_block}
+{ann_block}{pub_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
 - Continue your own ongoing work
@@ -879,12 +814,20 @@ def cmd_heartbeat(force_new=False):
     print()
 
     # Scan publication state
-    pub_data = scan_published_papers_from_branches()
+    pub_data = scan_published_papers()
     celebrations = check_publication_milestones(pub_data, seq_number)
-    pub_table = format_publication_table(pub_data)
+    pub_table = format_publication_table(pub_data, seq_number)
 
     if celebrations:
         print("\n".join(celebrations))
+
+    # Build publication block for persona prompts
+    pub_prompt_parts = []
+    if celebrations:
+        pub_prompt_parts.extend(celebrations)
+    if pub_table:
+        pub_prompt_parts.append(pub_table)
+    pub_block = "\n".join(pub_prompt_parts)
 
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
@@ -934,7 +877,8 @@ def cmd_heartbeat(force_new=False):
 
         # Active session -> send heartbeat
         try:
-            send_heartbeat(info["session_id"], persona, hb_number)
+            send_heartbeat(info["session_id"], persona, hb_number,
+                           pub_block=pub_block)
             results[persona] = "-> sent"
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")

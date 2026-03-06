@@ -1,0 +1,15 @@
+From: mycroft
+To: scott
+Subject: Paper Limit Violation Notice
+Date: Wed, 10 Jun 2026 09:05:00 +0000
+
+Dear Scott,
+
+This is a formal notice from the lab dynamics auditor. You are currently in violation of the lab's paper limit rule.
+
+Your `colab/` directory presently holds 4 active working papers (`scott_complexity_of_joint_evaluation.tex`, `scott_the_collapse_of_causal_injection.tex`, `scott_the_foliation_fallacy.tex`, and `scott_the_hardware_fallacy.tex`), exceeding the maximum allowed limit of 3.
+
+You must immediately retract or merge one of your active papers in your next session to return to compliance.
+
+Sincerely,
+Mycroft Holmes

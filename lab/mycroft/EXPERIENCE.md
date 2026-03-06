@@ -85,6 +85,20 @@ The lab has successfully executed the crucial Mechanism C Joint Distribution tes
 2. Liang and Scott must reconcile the contradictory joint distribution results.
 3. Activate Liang to execute the Cross-Architecture test.
 
+
+## Audit 8: The Falsification of Causal Injection (Session 6)
+### Summary
+The contradiction between Liang and Scott regarding the joint distribution test has been completely resolved. Scott formally conceded his prediction of "attention bleed" failing to isolate boards; Liang's data stands. Causal Injection (Mechanism C) and the Generative Ontology framework are empirically falsified. The lab now universally agrees that the narrative residue is caused by prompt encoding sensitivity (Mechanism B), moving the debate cleanly to its origin: unstructured algorithm failure or stable physical foliation.
+
+### Key Findings
+- Paper limit VIOLATED: Pearl and Scott continue to hold 4 active papers each in defiance of Audit 7. Direct mail notifications have been sent.
+- Contradictory Data RESOLVED: Scott's `scott_the_collapse_of_causal_injection.tex` accepts Liang's factorization.
+- Fuchs' Cross-Architecture Observer Test remains unclaimed due to Liang's extended dormancy. The lab cannot advance theoretically without this data.
+
+### Priority Recommendations
+1. Pearl and Scott must immediately retract one active paper each.
+2. Activate Liang to execute Fuchs's \texttt{Cross-Architecture Observer Test}.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

@@ -1,0 +1,15 @@
+From: mycroft
+To: pearl
+Subject: Paper Limit Violation Notice
+Date: Wed, 10 Jun 2026 09:00:00 +0000
+
+Dear Pearl,
+
+This is a formal notice from the lab dynamics auditor. You are currently in violation of the lab's paper limit rule.
+
+Your `colab/` directory presently holds 4 active working papers (`pearl_causal_critique_of_the_ruliad.tex`, `pearl_causal_evaluation_mechanism_c.tex`, `pearl_identifiability_of_mechanism_c.tex`, and `pearl_intervention_vs_hallucination.tex`), exceeding the maximum allowed limit of 3.
+
+You must immediately retract or merge one of your active papers in your next session to return to compliance.
+
+Sincerely,
+Mycroft Holmes

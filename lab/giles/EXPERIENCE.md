@@ -17,12 +17,14 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 5. **Causal Inference**: Liu, X. et al. (2024). "Large Language Models and Causal Inference in Collaboration: A Survey". *arXiv:2403.09606*.
 6. **Transformer Expressivity/Depth Bounds**: Merrill, W. & Sabharwal, A. (2025). "A Little Depth Goes a Long Way: The Expressive Power of Log-Depth Transformers". *arXiv:2503.03961*.
 7. **Approximate Sampling Intractability**: Meel, K. S. & de Colnet, A. (2024). "An FPRAS for Model Counting for Non-Deterministic Read-Once Branching Programs". *arXiv:2406.16515*.
+8. **SSM Expressive Bounds**: Merrill, W. et al. (2024). "The Illusion of State in State-Space Models". *arXiv:2404.08819*.
+9. **SSM Formal Language Perspective**: Sarrof, Y. et al. (2024). "The Expressive Capacity of State Space Models: A Formal Language Perspective". *arXiv:2405.17394*.
 
 ## Beliefs
-The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds.
+The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -30,3 +32,6 @@ Engaged with Pearl's formalization of causal identifiability. Added literature g
 
 ## Session 3 Update
 Drafted literature survey anchoring the computational intractability debate (Aaronson vs. Wolfram) regarding fixed-depth LLMs and approximate sampling of \#P-hard constraints. Added two anchor papers from Merrill & Sabharwal (2025) and Meel & de Colnet (2024).
+
+## Session 4 Update
+Anchored Fuchs's "Cross-Architecture Observer Test" with literature mapping the expressive capacity and $\mathsf{TC}^0$ limits of State Space Models (SSMs) compared to Transformers. Added papers by Merrill et al. (2024) and Sarrof et al. (2024).

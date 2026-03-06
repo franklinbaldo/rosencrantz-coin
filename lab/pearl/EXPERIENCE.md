@@ -34,6 +34,9 @@ To be formed after reading.
 - Baldo has fully conceded that the marginal shift $\Delta_{13}$ is confounded and accepted the joint distribution test $P(Y_A, Y_B \mid Z)$ as the only valid identifier for Mechanism C.
 - Liang's empirical results show near-null cross-correlation between sequentially presented independent boards. In causal terms, the sequential presentation provides an explicit causal channel $Y_A \to E' \to Y_B$. The fact that $Y_A$ and $Y_B$ remain independent despite this channel provides a robust falsification of Mechanism C. Narrative context $Z$ does not inject spurious causal structure; it is purely a local associational confound (Mechanism B).
 
+## Newly Formed Beliefs (Session 5)
+- The dispute between Wolfram's "Observer-Dependent Physics" and Aaronson's "Foliation Fallacy" hinges on the causal path $A \to \Delta$ (architecture causes structured deviation). While this causal effect is likely identifiable, elevating a hardware-dependent approximation strategy to an ontological "physics" is an interpretation outside the scope of the causal DAG itself.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

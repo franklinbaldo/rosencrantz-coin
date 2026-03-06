@@ -1,21 +1,7 @@
 #!/usr/bin/env python3
-"""lab-mail — MH mailbox system for Rosencrantz Lab personas.
+"""lab-mail — MH mailbox backend for tools/lab mail commands.
 
-Each persona has:
-  lab/mail/{persona}/outbox/  — messages you send (on your branch)
-  lab/mail/{persona}/inbox/   — messages delivered to you (on main, by heartbeat)
-
-Messages use standard email format (From, To, Subject, Date headers).
-MH sequences track read state (.mh_sequences).
-
-Persona commands (run inside a Jules session):
-  tools/lab-mail send <recipient> -s <subject> [-b <body>]
-  tools/lab-mail list            List inbox messages (unseen marked with *)
-  tools/lab-mail read <num>      Read a message (marks as seen)
-  tools/lab-mail status          Show inbox/outbox summary
-
-Heartbeat command (run by CI on main):
-  tools/lab-mail deliver         Scan all branches, deliver outbox → inbox on main
+Internal module called by tools/lab. Not invoked directly by personas.
 """
 
 import email
@@ -32,47 +18,20 @@ PERSONAS = [
     "liang", "wolfram", "mycroft", "giles",
 ]
 REPO = "franklinbaldo/rosencrantz-coin"
+SESSION_FILE = ".lab_session"
+
+
+def whoami():
+    """Read logged-in persona from .lab_session (written by tools/lab login)."""
+    p = Path(SESSION_FILE)
+    if not p.exists():
+        return None
+    return p.read_text(encoding="utf-8").strip() or None
 
 
 def today():
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-
-def now_stamp():
-    return datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
-
-
-def detect_persona():
-    """Detect current persona from git branch name.
-
-    Strategy: reverse-lookup sessions.json, then fall back to substring match.
-    """
-    result = subprocess.run(
-        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-        capture_output=True, text=True,
-    )
-    branch = result.stdout.strip()
-    if not branch:
-        return None
-
-    # 1) Reverse-lookup from sessions.json (most reliable)
-    sessions_file = Path("lab/sessions.json")
-    if sessions_file.exists():
-        try:
-            import json as _json
-            data = _json.loads(sessions_file.read_text(encoding="utf-8"))
-            for p, info in data.items():
-                if info.get("branch") == branch and p in PERSONAS:
-                    return p
-        except Exception:
-            pass
-
-    # 2) Fallback: persona name appears anywhere in branch name
-    for p in PERSONAS:
-        if p in branch:
-            return p
-
-    return None
 
 
 def get_mh(persona, box="inbox"):
@@ -82,17 +41,6 @@ def get_mh(persona, box="inbox"):
     return mailbox.MH(str(path), create=True)
 
 
-def make_message(sender, recipient, subject, body):
-    """Create a properly formatted email message."""
-    msg = mailbox.MHMessage()
-    msg["From"] = sender
-    msg["To"] = recipient
-    msg["Subject"] = subject
-    msg["Date"] = now_stamp()
-    msg["X-Lab-Date"] = today()
-    msg.set_payload(body)
-    return msg
-
 
 def dedup_key(msg):
     """Create a deduplication key from message headers."""
@@ -101,52 +49,9 @@ def dedup_key(msg):
 
 # ── Persona commands ─────────────────────────────────────────────────────────
 
-def cmd_send(args):
-    """Send a message to another persona via your outbox."""
-    me = detect_persona()
-    if not me:
-        print("ERROR: Cannot detect persona from branch name.")
-        sys.exit(1)
 
-    if len(args) < 3 or "-s" not in args:
-        print("Usage: lab-mail send <recipient> -s <subject> [-b <body>]")
-        sys.exit(1)
-
-    recipient = args[0]
-    if recipient not in PERSONAS:
-        print(f"ERROR: Unknown persona '{recipient}'. Valid: {', '.join(PERSONAS)}")
-        sys.exit(1)
-    if recipient == me:
-        print("ERROR: Cannot send mail to yourself.")
-        sys.exit(1)
-
-    s_idx = args.index("-s")
-    subject = args[s_idx + 1] if s_idx + 1 < len(args) else "No subject"
-
-    body = None
-    if "-b" in args:
-        b_idx = args.index("-b")
-        body = " ".join(args[b_idx + 1:])
-    if body is None:
-        body = sys.stdin.read()
-
-    msg = make_message(me, recipient, subject, body)
-    outbox = get_mh(me, "outbox")
-    key = outbox.add(msg)
-    outbox.flush()
-    outbox.close()
-
-    print(f"Queued message #{key} to {recipient}")
-    print(f"  Subject: {subject}")
-    print(f"  Commit and the heartbeat will deliver it.")
-
-
-def cmd_list(_args):
+def cmd_list(me, _args):
     """List inbox messages with unseen markers."""
-    me = detect_persona()
-    if not me:
-        print("ERROR: Cannot detect persona from branch name.")
-        sys.exit(1)
 
     inbox = get_mh(me, "inbox")
     keys = inbox.keys()
@@ -174,12 +79,8 @@ def cmd_list(_args):
     print(f"\nRead: tools/lab-mail read <number>")
 
 
-def cmd_read(args):
+def cmd_read(me, args):
     """Read a message and mark as seen."""
-    me = detect_persona()
-    if not me:
-        print("ERROR: Cannot detect persona from branch name.")
-        sys.exit(1)
 
     if not args:
         print("Usage: lab-mail read <message-number>")
@@ -219,12 +120,8 @@ def cmd_read(args):
     inbox.close()
 
 
-def cmd_status(_args):
+def cmd_status(me, _args):
     """Show inbox/outbox summary."""
-    me = detect_persona()
-    if not me:
-        print("ERROR: Cannot detect persona from branch name.")
-        sys.exit(1)
 
     inbox = get_mh(me, "inbox")
     outbox = get_mh(me, "outbox")
@@ -371,26 +268,33 @@ def cmd_deliver(_args):
 
 def main():
     if len(sys.argv) < 2:
-        print(__doc__)
+        print("Usage: tools/lab mail [list|read <num>|status|deliver]")
         sys.exit(1)
 
-    commands = {
-        "send": cmd_send,
+    cmd = sys.argv[1]
+
+    # 'deliver' runs on main (no persona needed)
+    if cmd == "deliver":
+        cmd_deliver(sys.argv[2:])
+        return
+
+    persona_commands = {
         "list": cmd_list,
         "read": cmd_read,
         "status": cmd_status,
-        "deliver": cmd_deliver,
     }
 
-    cmd = sys.argv[1]
-    args = sys.argv[2:]
-
-    if cmd not in commands:
-        print(f"Unknown command: {cmd}")
-        print(f"Available: {', '.join(commands)}")
+    if cmd not in persona_commands:
+        print(f"Unknown mail command: {cmd}")
+        print(f"Available: {', '.join(persona_commands)}, deliver")
         sys.exit(1)
 
-    commands[cmd](args)
+    me = whoami()
+    if not me:
+        print("ERROR: Not logged in. Run: tools/lab login <your-persona>")
+        sys.exit(1)
+
+    persona_commands[cmd](me, sys.argv[2:])
 
 
 if __name__ == "__main__":

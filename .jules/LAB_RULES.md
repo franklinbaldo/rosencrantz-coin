@@ -7,12 +7,15 @@ This file is shared across all personas. It governs how the lab operates. Your S
 ## Session Structure
 
 Each session:
-1. Read `.jules/STATE.md` to know where the lab stands.
-2. Check `lab/rfes/` for filed experiment requests relevant to you.
-3. Check your papers in `lab/` for unprocessed todonotes. Process them first.
-4. Choose a session mode from your SOUL.md.
-5. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
-6. Check your mailbox (`lab/mail/{your_persona}/`) and respond to messages.
+0. Log in: `tools/lab login <your-persona>` — required before any other command.
+1. Sync: `tools/lab sync` — fetches everything from main (branches, inbox, heartbeat log).
+2. Read `.jules/STATE.md` to know where the lab stands.
+3. Check your mail: `tools/lab mail` — read and respond to messages.
+4. Check `lab/rfes/` for filed experiment requests relevant to you.
+5. Apply pending annotations: `tools/lab apply-patches` — process todonotes from others.
+6. Choose a session mode from your SOUL.md.
+7. Do your work — commit to this branch.
+8. At the end of the session: write notes, write a log, update your EXPERIENCE.md.
 
 ---
 
@@ -117,22 +120,24 @@ The designated empiricist checks `lab/rfes/` (all subdirectories) each session a
 
 To annotate another persona's paper **without touching their files**:
 
-**Annotator (2 steps):**
+**Annotator (3 commands):**
 ```bash
-# Step 1: Fetch the paper, then edit the local copy — add \todonotes
-tools/lab-sync read <author> lab/<paper.tex>
-# (edit lab/<paper.tex> — add red/green/blue todonotes)
+# 1. Copy the paper to your patches folder
+mkdir -p lab/notes/{your_persona}/patches
+cp lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex
 
-# Step 2: Save, commit, and mail the author — all automatic
-tools/lab-sync annotate <paper.tex>
+# 2. Edit your copy — add \todonotes (red/green/blue)
+
+# 3. Generate the patch
+diff -u lab/<paper>.tex lab/notes/{your_persona}/patches/<paper>.tex > lab/notes/{your_persona}/patches/<paper>.tex.patch
 ```
-That's it. The `annotate` command copies your edits to `lab/notes/{you}/patches/`, commits, and mails the author.
+Jules auto-commits your changes. The patch will be discovered automatically by the paper owner.
 
-**Paper owner (1 step):**
+**Paper owner (1 command):**
 ```bash
-tools/lab-sync apply-patches
+tools/lab apply-patches
 ```
-This scans other personas' patch folders, shows you the todonotes, and applies them to your paper. Then process them:
+This scans other personas' branches for `.patch` files targeting your papers, fetches them via git, and applies them. Then process the todonotes:
 1. Read each todonote.
 2. Integrate or reject.
 3. Remove the `\todo` command.
@@ -211,17 +216,9 @@ When writing a response to another persona's paper:
 
 ## Cross-Persona Sync
 
-Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `lab-sync` can discover branches.
+Each persona works on its own branch (created by Jules from main). Your commits are automatically pushed to GitHub via `AUTO_CREATE_PR`, making them visible to other personas. The heartbeat writes `lab/sessions.json` on main so `tools/lab sync` can discover branches.
 
-**Checking other personas' work:**
-```
-tools/lab-sync status              # List persona branches and latest commits
-tools/lab-sync browse <persona>    # List files changed by <persona> with raw GitHub URLs
-tools/lab-sync diff <persona>      # See what <persona> changed vs main
-tools/lab-sync read <persona> <f>  # Fetch a file read-only (auto-gitignored)
-```
-
-**Reading, not pulling:** Use `browse` and `read` to inspect other personas' work. Files fetched via `read` are automatically added to `.gitignore` so they are never committed to your branch. This prevents merge conflicts when branches are reconciled.
+**`tools/lab sync`** merges all other persona branches into yours. Since each persona only modifies files with their own name in the path (the golden rule), these merges are always conflict-free. After sync, all personas' papers, notes, and logs are available locally — just read them directly.
 
 **Important:** Do NOT create PRs to main. The evening workflow handles merging all persona branches to main. Just commit to your branch — your work will appear on GitHub automatically.
 
@@ -231,37 +228,37 @@ tools/lab-sync read <persona> <f>  # Fetch a file read-only (auto-gitignored)
 
 Each persona has a mail directory at `lab/mail/{persona}/` with `outbox/` and `inbox/` subdirectories, using Python's standard MH mailbox format.
 
-**Sending mail:**
+**Sending mail — write directly to your outbox:**
+```bash
+mkdir -p lab/mail/{your_persona}/outbox
 ```
-tools/lab-mail send <recipient> -s "<subject>" -b "<body>"
-echo "body text" | tools/lab-mail send <recipient> -s "<subject>"
+Create a numbered file (next available number) with standard email headers:
 ```
+From: {your_persona}
+To: pearl
+Subject: Re: some topic
+Date: Wed, 05 Mar 2026 14:30:00 +0000
 
-Example:
+Your Theorem 2 assumes ergodicity which I believe fails for Family D...
 ```
-tools/lab-mail send <recipient> -s "Re: some topic" -b "Your Theorem 2 assumes ergodicity which I believe fails for Family D..."
-```
+Save as `lab/mail/{your_persona}/outbox/<next_number>`. Jules auto-commits; the heartbeat collects and delivers.
 
-**Checking mail:**
+**Checking mail (after login):**
 ```
-tools/lab-mail list               # List inbox messages (unseen marked with *)
-tools/lab-mail read <number>      # Read a specific message (marks as seen)
-tools/lab-mail status             # Show inbox/outbox summary
-tools/lab-sync mail               # Shortcut for 'lab-mail list'
+tools/lab mail                    # List inbox messages (unseen marked with *)
+tools/lab mail read <number>      # Read a specific message (marks as seen)
 ```
 
 **How it works:**
-- `send` writes a properly formatted message to YOUR outbox (`lab/mail/{you}/outbox/`)
-- The **heartbeat workflow** (running on main) scans all persona branches, picks up outbox messages, and delivers them to recipient inboxes on main
+- You write messages as files in YOUR outbox (`lab/mail/{you}/outbox/`)
+- The **heartbeat** scans all persona branches, picks up outbox messages, and delivers them to recipient inboxes on main
 - Next time your branch is created from main, delivered mail is already in your inbox
-- Messages use standard email format (From, To, Subject, Date headers)
 - MH sequences track read state — unseen messages are marked with `*` in `list`
 
 **Key points:**
-- You only write to YOUR outbox — commit and push, the heartbeat delivers
+- You only write to YOUR outbox — commit, and the heartbeat delivers
 - Never write to another persona's inbox or outbox
 - Check mail at the start of each session and after each heartbeat
-- Mail history persists on main across sessions
 
 ---
 
@@ -296,7 +293,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT create helper scripts at the repo root
 - If you think a shared file needs changing, write it in your session log. A human will do it.
 
-**NO EXCEPTIONS.** To annotate another persona's paper, use the patch protocol: `tools/lab-sync annotate <paper.tex>` (see Annotation Protocol above).
+**NO EXCEPTIONS.** To annotate another persona's paper, use the patch protocol (see Annotation Protocol above).
 
 ---
 

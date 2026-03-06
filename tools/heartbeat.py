@@ -191,15 +191,21 @@ def assemble_prompt(persona):
 
 You are starting a new lab session. Your branch starts from main.
 
+**First, log in (required by all tools):**
+```
+tools/lab login {persona}
+```
+
 **Follow the session structure from LAB_RULES.md:**
-1. Read `.jules/STATE.md` (lab state — read-only, do not modify)
-2. Check your mail: `tools/lab-mail list` (mail is delivered by the heartbeat on main)
-3. Check `lab/rfes/` for experiment requests relevant to you
-4. Apply pending annotations: `tools/lab-sync apply-patches`
-5. Choose a session mode from your SOUL.md
-6. Do your work — commit to this branch
-7. Write a session log in `lab/logs/{persona}/`
-8. Update your EXPERIENCE.md
+1. Sync: `tools/lab sync` (fetches all persona branches so you can read their work)
+2. Read `.jules/STATE.md` (lab state — read-only, do not modify)
+3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
+4. Check `lab/rfes/` for experiment requests relevant to you
+5. Apply pending annotations: `tools/lab apply-patches`
+6. Choose a session mode from your SOUL.md
+7. Do your work — commit to this branch
+8. Write a session log in `lab/logs/{persona}/`
+9. Update your EXPERIENCE.md
 
 **CRITICAL — THE GOLDEN RULE OF FILE OWNERSHIP:**
 You may ONLY create or modify files under folders containing YOUR persona name ("{persona}"),
@@ -221,9 +227,7 @@ You MUST NOT touch (even to "fix" things):
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
 
 **Reading other personas' work:**
-- `tools/lab-sync status` — see other personas' branches and latest commits
-- `tools/lab-sync browse <persona>` — list their changed files with raw GitHub URLs
-- `tools/lab-sync read <persona> <file>` — fetch a file read-only (auto-gitignored)
+After `tools/lab sync`, all personas' files are merged into your branch — just read them directly.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
@@ -274,16 +278,17 @@ def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
-1. **Check mail:** `tools/lab-mail list` — read with `tools/lab-mail read <num>` (mail delivered by heartbeat).
-2. **Browse other personas' work:** `tools/lab-sync status` then `tools/lab-sync browse <persona>`.
-3. **Read their files:** `tools/lab-sync read <persona> <filepath>` (fetched read-only, auto-gitignored).
+1. **Log in** (if not already): `tools/lab login {persona}`
+2. **Sync:** `tools/lab sync` — merges all persona branches + inbox from main.
+3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
+4. **Read other personas' work** — after sync, their files are local. Just read them directly.
 
 **Your task:** Pick ONE piece of new work from another persona and engage:
 - Write a response paper in `lab/{persona}_*.tex`
-- Annotate their paper: `tools/lab-sync read <author> lab/<paper.tex>`, edit it, then `tools/lab-sync annotate <paper.tex>`
-- Send them a message: `tools/lab-mail send <recipient> -s "subject" -b "body"`
+- Annotate their paper: `cp lab/<paper> lab/notes/{persona}/patches/<paper>`, edit the copy adding \\todonotes, then `diff -u lab/<paper> lab/notes/{persona}/patches/<paper> > lab/notes/{persona}/patches/<paper>.patch`
+- Send them a message: write a file in `lab/mail/{persona}/outbox/` with From/To/Subject/Date headers (heartbeat delivers)
 - File an RFE in `lab/rfes/{persona}/` if their work suggests an experiment
-- Apply any pending annotations on YOUR papers: `tools/lab-sync apply-patches`
+- Apply any pending annotations on YOUR papers: `tools/lab apply-patches`
 
 **GOLDEN RULE — only touch files with YOUR name ("{persona}") in the path:**
 - `.jules/{persona}/`, `lab/{persona}_*.tex`, `lab/logs/{persona}/`, `lab/notes/{persona}/`
@@ -344,7 +349,7 @@ def write_heartbeat_log(number, sessions, results):
 
 
 def write_sessions_json(sessions):
-    """Write persona -> branch mapping for lab-sync and lab-mail."""
+    """Write persona -> branch mapping for tools/lab and mail delivery."""
     branches = find_persona_branches()
 
     mapping = {}

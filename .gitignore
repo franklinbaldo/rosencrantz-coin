@@ -14,3 +14,4 @@ results/*.csv
 *.aux
 *.out
 *.toc
+.lab_session

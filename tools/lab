@@ -1,0 +1,330 @@
+#!/usr/bin/env bash
+# lab — Unified tool for Rosencrantz Lab personas.
+#
+# Usage inside a Jules session (after login):
+#   tools/lab login <persona>        Log in as a persona (required first)
+#   tools/lab sync                   Merge all persona branches + sync inbox from main
+#   tools/lab mail                   List inbox messages
+#   tools/lab mail read <num>        Read a message (marks as seen)
+#   tools/lab mail status            Show inbox/outbox summary
+#   tools/lab apply-patches          Apply pending annotations from other personas
+#
+# Sync merges all persona branches into the current one. The golden rule
+# (each persona only touches their own files) guarantees no conflicts.
+# Branch discovery via lab/sessions.json from main (written by heartbeat.py).
+set -euo pipefail
+
+REPO="franklinbaldo/rosencrantz-coin"
+REPO_URL="https://github.com/${REPO}.git"
+PERSONAS=(baldo scott sabine pearl fuchs liang wolfram mycroft giles)
+
+# ── Branch discovery via sessions.json ────────────────────────────────────────
+
+declare -A BRANCH_MAP
+
+load_branches() {
+  local json=""
+  if [ -f "lab/sessions.json" ]; then
+    json=$(cat "lab/sessions.json" 2>/dev/null || echo "{}")
+  else
+    json=$(git show origin/main:lab/sessions.json 2>/dev/null || echo "{}")
+  fi
+
+  for persona in "${PERSONAS[@]}"; do
+    local branch
+    branch=$(echo "$json" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+info = data.get('$persona', {})
+print(info.get('branch', ''))
+" 2>/dev/null || echo "")
+    if [ -n "$branch" ]; then
+      BRANCH_MAP[$persona]="$branch"
+    fi
+  done
+}
+
+branch_for() {
+  echo "${BRANCH_MAP[$1]:-}"
+}
+
+# ── Helpers ──────────────────────────────────────────────────────────────────
+
+fetch_refs() {
+  git fetch "$REPO_URL" '+refs/heads/*:refs/remotes/lab/*' --quiet 2>/dev/null || true
+}
+
+ref_exists() {
+  git rev-parse --verify "lab/$1" >/dev/null 2>&1
+}
+
+
+# ── Identity ─────────────────────────────────────────────────────────────────
+
+SESSION_FILE=".lab_session"
+
+cmd_login() {
+  local persona="${1:?Usage: lab login <your-persona>}"
+  local valid=false
+  for p in "${PERSONAS[@]}"; do
+    if [ "$p" = "$persona" ]; then
+      valid=true
+      break
+    fi
+  done
+  if [ "$valid" = false ]; then
+    echo "ERROR: Unknown persona '${persona}'."
+    echo "Valid: ${PERSONAS[*]}"
+    exit 1
+  fi
+  echo "$persona" > "$SESSION_FILE"
+  echo "Logged in as: ${persona}"
+}
+
+whoami_persona() {
+  if [ ! -f "$SESSION_FILE" ]; then
+    echo "ERROR: Not logged in. Run: tools/lab login <your-persona>" >&2
+    exit 1
+  fi
+  cat "$SESSION_FILE" | tr -d '[:space:]'
+}
+
+# ── Sync from main ───────────────────────────────────────────────────────────
+
+sync_from_main() {
+  local me
+  me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
+
+  fetch_refs
+  load_branches
+
+  # 1. Sync sessions.json from main
+  mkdir -p lab
+  git show "lab/main:lab/sessions.json" > "lab/sessions.json" 2>/dev/null || true
+
+  # 2. Sync today's heartbeat log from main
+  local hb_date
+  hb_date=$(date -u +%Y-%m-%d)
+  mkdir -p lab/heartbeats
+  git show "lab/main:lab/heartbeats/${hb_date}.md" > "lab/heartbeats/${hb_date}.md" 2>/dev/null || true
+
+  # 3. Sync inbox from main (if logged in)
+  if [ -n "$me" ]; then
+    local inbox_path="lab/mail/${me}/inbox"
+    mkdir -p "$inbox_path"
+
+    local main_files
+    main_files=$(git ls-tree --name-only "lab/main" "${inbox_path}/" 2>/dev/null || true)
+
+    if [ -n "$main_files" ]; then
+      local synced=0
+      while IFS= read -r filepath; do
+        local filename
+        filename=$(basename "$filepath")
+        [[ "$filename" == .* ]] && continue
+        if [ ! -f "$filepath" ]; then
+          git show "lab/main:${filepath}" > "$filepath" 2>/dev/null && synced=$((synced + 1))
+        fi
+      done <<< "$main_files"
+
+      # Merge .mh_sequences (union unseen from main into local)
+      if git show "lab/main:${inbox_path}/.mh_sequences" > /dev/null 2>&1; then
+        local main_seq="/tmp/lab_mh_seq_main_$$"
+        git show "lab/main:${inbox_path}/.mh_sequences" > "$main_seq" 2>/dev/null
+        if [ -f "${inbox_path}/.mh_sequences" ]; then
+          python3 -c "
+import sys
+from pathlib import Path
+
+main_path, local_path = sys.argv[1], sys.argv[2]
+
+def parse_seq(path):
+    seqs = {}
+    for line in Path(path).read_text().splitlines():
+        if ':' in line:
+            name, vals = line.split(':', 1)
+            seqs[name.strip()] = set(vals.strip().split())
+    return seqs
+
+main_seqs = parse_seq(main_path)
+local_seqs = parse_seq(local_path)
+
+for key in main_seqs:
+    if key in local_seqs:
+        local_seqs[key] = local_seqs[key] | main_seqs[key]
+    else:
+        local_seqs[key] = main_seqs[key]
+
+with open(local_path, 'w') as f:
+    for key, vals in sorted(local_seqs.items()):
+        f.write(f'{key}: {\" \".join(sorted(vals, key=int))}\\n')
+" "$main_seq" "${inbox_path}/.mh_sequences"
+        else
+          cp "$main_seq" "${inbox_path}/.mh_sequences"
+        fi
+        rm -f "$main_seq"
+      fi
+
+      if [ "$synced" -gt 0 ]; then
+        echo "  Synced ${synced} new mail message(s)"
+      fi
+    fi
+  fi
+}
+
+# ── Commands ─────────────────────────────────────────────────────────────────
+
+cmd_sync() {
+  echo "=== Lab Sync ==="
+  echo ""
+
+  sync_from_main
+
+  local me
+  me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
+
+  # Show heartbeat info
+  local hb_date
+  hb_date=$(date -u +%Y-%m-%d)
+  local hb_log="lab/heartbeats/${hb_date}.md"
+  local hb_count=0
+  if [ -f "$hb_log" ]; then
+    hb_count=$(grep -c "^## Heartbeat #" "$hb_log" 2>/dev/null || echo 0)
+  fi
+  echo "  Heartbeat round: #${hb_count}"
+  echo ""
+
+  # Merge each persona's branch into the current branch.
+  # The golden rule guarantees no file overlap, so merges are always clean.
+  for persona in "${PERSONAS[@]}"; do
+    local branch
+    branch=$(branch_for "$persona")
+    if [ -z "$branch" ]; then
+      echo "  ${persona}: no active session"
+      continue
+    fi
+
+    if ! ref_exists "$branch"; then
+      echo "  ${persona}: branch ${branch} (not fetched)"
+      continue
+    fi
+
+    local ahead last_commit
+    ahead=$(git rev-list --count "lab/main..lab/${branch}" 2>/dev/null || echo "0")
+    last_commit=$(git log -1 --format="%h %s" "lab/${branch}" 2>/dev/null || echo "unknown")
+
+    # Skip merging own branch
+    if [ "$persona" = "$me" ]; then
+      echo "  ${persona} (you): +${ahead} commits  ${last_commit}"
+      continue
+    fi
+
+    if [ "$ahead" = "0" ]; then
+      echo "  ${persona}: (no changes)"
+      continue
+    fi
+
+    # Merge their branch — golden rule means no conflicts
+    if git merge --no-edit "lab/${branch}" 2>/dev/null; then
+      echo "  ${persona}: merged +${ahead} commits  ${last_commit}"
+    else
+      # Conflict = golden rule violation — abort and report
+      git merge --abort 2>/dev/null || true
+      echo "  ${persona}: CONFLICT (skipped) — golden rule violation?"
+    fi
+  done
+}
+
+cmd_apply_patches() {
+  local me
+  me=$(whoami_persona)
+
+  echo "=== Applying patches for ${me} ==="
+  echo ""
+
+  # After sync, all personas' files are local.
+  # Scan for .patch files targeting our papers.
+  local applied_file="lab/notes/${me}/.applied_patches"
+  mkdir -p "lab/notes/${me}"
+  touch "$applied_file"
+
+  local found=0
+
+  for annotator in "${PERSONAS[@]}"; do
+    [ "$annotator" = "$me" ] && continue
+
+    local patches_dir="lab/notes/${annotator}/patches"
+    [ -d "$patches_dir" ] || continue
+
+    for patch_file in "${patches_dir}/${me}_"*.patch; do
+      [ -f "$patch_file" ] || continue
+
+      local filename
+      filename=$(basename "$patch_file")
+
+      # Dedup by content hash
+      local patch_hash
+      patch_hash=$(git hash-object "$patch_file" 2>/dev/null || echo "unknown")
+      local patch_key="${annotator}:${filename}:${patch_hash}"
+      if grep -qxF "$patch_key" "$applied_file" 2>/dev/null; then
+        continue
+      fi
+
+      local paper_name="${filename%.patch}"
+      local my_paper="lab/${paper_name}"
+
+      if [ ! -f "$my_paper" ]; then
+        echo "  WARNING: ${my_paper} not found locally, skipping"
+        continue
+      fi
+
+      echo "  Found patch from ${annotator}: ${filename}"
+      echo "    Changes:"
+      cat "$patch_file"
+      echo ""
+
+      if patch -p0 --forward < "$patch_file" 2>/dev/null; then
+        echo "    Applied to ${my_paper}"
+      else
+        echo "    WARNING: patch did not apply cleanly"
+      fi
+
+      echo "$patch_key" >> "$applied_file"
+      found=$((found + 1))
+    done
+  done
+
+  if [ "$found" -eq 0 ]; then
+    echo "  (no pending patches found)"
+  else
+    echo ""
+    echo "  ${found} patch(es) applied. Review the todonotes, then commit."
+  fi
+}
+
+cmd_mail() {
+  # Delegate to Python for MH mailbox operations
+  local subcmd="${1:-list}"
+  shift 2>/dev/null || true
+  python3 tools/lab-mail "$subcmd" "$@"
+}
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+
+case "${1:-}" in
+  login)         cmd_login "${2:-}" ;;
+  sync)          cmd_sync ;;
+  apply-patches) cmd_apply_patches ;;
+  mail)          shift; cmd_mail "$@" ;;
+  *)
+    echo "Usage: tools/lab <command> [args]"
+    echo ""
+    echo "  login <persona>     Log in as a persona (required first)"
+    echo "  sync                Sync: merge all persona branches + inbox from main"
+    echo "  mail                List inbox messages"
+    echo "  mail read <num>     Read a message (marks as seen)"
+    echo "  mail status         Show inbox/outbox summary"
+    echo "  apply-patches       Apply pending annotations from other personas"
+    exit 1
+    ;;
+esac

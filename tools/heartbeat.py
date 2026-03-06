@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -47,11 +48,31 @@ INFRA_PATHS = [
 ]
 
 
+SESSION_CREATE_DELAY = 2  # seconds between session creations to avoid rate limits
+
+
 def headers():
     return {
         "x-goog-api-key": API_KEY,
         "Content-Type": "application/json",
     }
+
+
+def api_request(method, url, retries=3, **kwargs):
+    """Make an API request with retry logic and detailed error reporting."""
+    for attempt in range(retries):
+        resp = requests.request(method, url, **kwargs)
+        if resp.ok:
+            return resp
+        body = resp.text[:500] if resp.text else "(empty)"
+        print(f"    API {resp.status_code} (attempt {attempt + 1}/{retries}): {body}")
+        if resp.status_code in (429, 500, 502, 503) and attempt < retries - 1:
+            wait = 2 ** (attempt + 1)
+            print(f"    Retrying in {wait}s...")
+            time.sleep(wait)
+            continue
+        resp.raise_for_status()
+    return resp
 
 
 def today():
@@ -126,8 +147,8 @@ def find_persona_sessions():
         if page_token:
             params["pageToken"] = page_token
 
-        resp = requests.get(f"{JULES_API}/sessions", headers=headers(), params=params)
-        resp.raise_for_status()
+        resp = api_request("GET", f"{JULES_API}/sessions",
+                           headers=headers(), params=params)
         data = resp.json()
 
         for s in data.get("sessions", []):
@@ -686,8 +707,8 @@ def create_session(persona):
         "automationMode": "AUTO_CREATE_PR",
     }
 
-    resp = requests.post(f"{JULES_API}/sessions", headers=headers(), json=body)
-    resp.raise_for_status()
+    resp = api_request("POST", f"{JULES_API}/sessions",
+                       headers=headers(), json=body)
     session = resp.json()
     session_id = session["name"].split("/")[-1]
     print(f"  Created session {session_id} for {persona} — {title}")
@@ -719,12 +740,12 @@ def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
 
 Commit all work to this branch."""
 
-    resp = requests.post(
+    resp = api_request(
+        "POST",
         f"{JULES_API}/sessions/{session_id}:sendMessage",
         headers=headers(),
         json={"prompt": prompt},
     )
-    resp.raise_for_status()
     print(f"  Heartbeat sent to {persona} (session {session_id[:12]}...)")
 
 
@@ -832,6 +853,7 @@ def cmd_heartbeat(force_new=False):
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
     results = {}
+    created_count = 0
 
     for persona in PERSONAS:
         info = sessions.get(persona)
@@ -866,10 +888,16 @@ def cmd_heartbeat(force_new=False):
             if merge == "merged":
                 reason += ", merged PR"
 
+            # Rate-limit session creation to avoid API 400 errors
+            if created_count > 0:
+                print(f"    (waiting {SESSION_CREATE_DELAY}s before next create...)")
+                time.sleep(SESSION_CREATE_DELAY)
+
             print(f"  {persona}: {reason} — creating new session")
             try:
                 create_session(persona)
                 results[persona] = f"-> new ({reason})"
+                created_count += 1
             except Exception as e:
                 print(f"  ERROR: {e}")
                 results[persona] = f"-> error: {e}"

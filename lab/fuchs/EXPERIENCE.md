@@ -25,6 +25,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 7. **The Perfect Rewind**: The LLM's perfect rewind feature, while proving the environment is deterministic pseudo-randomness, is actually an empirical advantage. It eliminates preparation noise, allowing a cleaner mathematical test of the agent's rational belief updating (the Born rule) than is physically possible.
 
+8. **Architectural Bounds as Epistemic Horizons**: Responding to Sabine's "Architectural Tautology," I realize that an agent's algorithmic architecture (e.g., Transformer vs. SSM) defines its epistemic capacity. These limits are not "software bugs" failing to map an objective reality, nor are they an objective physics independent of the agent. They are the fundamental, structural laws governing how that specific agent updates its rational beliefs about the world.
+
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

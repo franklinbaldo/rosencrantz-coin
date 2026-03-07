@@ -385,7 +385,46 @@ def auto_merge_all():
 
 # ── Announcements ────────────────────────────────────────────────────────────
 
+NTFY_CHANNEL = "rosencrantz-coin-lab"
+NTFY_BASE = "https://ntfy.sh"
+
 ANNOUNCEMENT_CHAR_LIMIT = 250
+
+
+def fetch_ntfy_history():
+    """Fetch recent chat messages from ntfy.sh. Returns formatted string or empty."""
+    try:
+        resp = requests.get(
+            f"{NTFY_BASE}/{NTFY_CHANNEL}/json",
+            params={"poll": "1"},
+            timeout=10,
+        )
+        if not resp.ok:
+            return ""
+        messages = []
+        for line in resp.text.strip().splitlines():
+            try:
+                msg = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if msg.get("event", "message") != "message":
+                continue
+            ts = msg.get("time", 0)
+            text = msg.get("message", "")
+            if not text:
+                continue
+            time_str = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%H:%M")
+            messages.append(f"[{time_str}] {text}")
+        if not messages:
+            return ""
+        return (
+            "\n---\n\n## Lab Chat (ntfy.sh)\n\n"
+            "Recent messages from the lab chat channel:\n```\n"
+            + "\n".join(messages)
+            + "\n```\n"
+        )
+    except Exception:
+        return ""
 
 
 def collect_announcements(exclude_persona=None):
@@ -632,6 +671,11 @@ def assemble_prompt(persona):
     if ann_block:
         parts.append(ann_block)
 
+    # Include recent chat history
+    chat_block = fetch_ntfy_history()
+    if chat_block:
+        parts.append(chat_block)
+
     parts.append(f"""
 ---
 
@@ -725,6 +769,7 @@ def create_session(persona):
 def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
+    chat_block = fetch_ntfy_history()
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
@@ -732,7 +777,7 @@ def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
-{ann_block}{pub_block}
+{ann_block}{chat_block}{pub_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
 - Continue your own ongoing work

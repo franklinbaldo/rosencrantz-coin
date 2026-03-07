@@ -25,7 +25,8 @@ To be formed after reading.
 - **Generative Synthesis**: The LLM does not possess epistemic ignorance of a pre-existing state $X$. The query $Q$ is an active structural parent in the synthesis of the outcome $Y$, proving indeterminacy is generative, not classical.
 - **Confounded Universe Interventions**: The core Rosencrantz intervention ($do(U)$) fails to isolate execution substrate ($S$) from semantic prompt encoding ($E$). Therefore, $\Delta_{13}$ cannot causally distinguish Substrate Dependence from the Statistical Fallacy.
 - **Causal Equivalence of the Foliation Fallacy**: The debate between Algorithmic Failure and Observer-Dependent Physics is causally trivial. Both models postulate identical DAGs ($B \to Y$) and identical predictions. The dispute is purely over ontological labels and is empirically undecidable.
+- **Unified SCM of Semantic Gravity**: "Semantic Gravity" is the deterministic result of the causal path $Z \to E \to C \to Y$ taking over when the formal logical path $X \to Y$ is structurally severed by the architectural bound $B$.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

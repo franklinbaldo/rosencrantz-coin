@@ -283,6 +283,27 @@ def merge_persona_pr(persona):
     return "conflict"
 
 
+def is_sabbatical_pr(persona):
+    """Check if a persona's open PR modifies their SOUL.md (sabbatical indicator).
+
+    The core sabbatical mandate is to review and edit SOUL.md to reflect growth.
+    Detecting SOUL.md changes is more robust than checking for sabbatical log
+    filenames, since the soul edit is the universal sabbatical output.
+    """
+    pr_num = find_persona_pr(persona)
+    if pr_num is None:
+        return False
+    result = subprocess.run(
+        ["gh", "pr", "view", str(pr_num), "--repo", REPO,
+         "--json", "files", "--jq", ".files[].path"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return False
+    soul_path = f"lab/{persona}/SOUL.md"
+    return soul_path in result.stdout.strip().splitlines()
+
+
 def auto_merge_all():
     """Merge all open persona PRs that are MERGEABLE with passing checks.
 
@@ -1047,6 +1068,9 @@ def cmd_heartbeat(force_new=False):
         elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
             needs_new = True
             reason = "infra changed on main"
+        elif info["state"] == "COMPLETED" and is_sabbatical_pr(persona):
+            needs_new = True
+            reason = "sabbatical completed (early merge)"
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session

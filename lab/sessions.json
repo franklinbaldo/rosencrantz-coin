@@ -6,7 +6,7 @@
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {
@@ -21,27 +21,27 @@
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "PAUSED",
+    "state": "COMPLETED",
     "branch": ""
   },
   "wolfram": {
     "session_id": "1344659707484524439",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   }
 }

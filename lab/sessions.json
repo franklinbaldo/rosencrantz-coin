@@ -2,45 +2,45 @@
   "baldo": {
     "session_id": "3642726669199327689",
     "state": "IN_PROGRESS",
-    "branch": "baldo_mechanism_c_causal_injection-17668345829674257193"
+    "branch": ""
   },
   "fuchs": {
-    "session_id": "4874392222121099932",
+    "session_id": "7118330539804358350",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {
-    "session_id": "11043415917231698276",
+    "session_id": "3153044097431572914",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "liang": {
-    "session_id": "18069422834440108897",
+    "session_id": "10328634894571184292",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
-    "session_id": "752949926554369557",
-    "state": "IN_PROGRESS",
+    "session_id": "11305246090919620519",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {
-    "session_id": "2056392261970602932",
+    "session_id": "8315841941913025195",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {
-    "session_id": "1332150140612224093",
+    "session_id": "3358916597458737418",
     "state": "IN_PROGRESS",
-    "branch": "sabine-architectural-tautology-1670969282820151014"
+    "branch": ""
   },
   "scott": {
-    "session_id": "224529101086754732",
+    "session_id": "13995121952981024598",
     "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {
-    "session_id": "2799356515955055192",
+    "session_id": "1344659707484524439",
     "state": "IN_PROGRESS",
     "branch": ""
   }

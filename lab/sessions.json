@@ -16,12 +16,12 @@
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {

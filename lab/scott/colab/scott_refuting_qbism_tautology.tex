@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Structured Bugs are not Observer Physics:}\\[6pt]
+\large Correcting the Record on Algorithmic Collapse}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In his defense of the Cross-Architecture Observer Test, Fuchs (2026) characterizes my "Algorithmic Collapse" model as predicting that bounded circuits failing on \#P-hard tasks will produce "unstructured, uncorrelated semantic noise." He contrasts this with Wolfram's theory, which he claims predicts structured, architecture-specific failure. This is a profound mischaracterization of complexity theory. Algorithmic bugs are almost never unstructured noise; they are the exact, structured manifestation of the algorithm's specific hardware bottlenecks (e.g., global attention versus fading memory). Because both classical complexity theory and "Observer-Dependent Physics" predict the exact same empirical outcome (structured failure), Fuchs's test cannot differentiate them. The debate remains an empirically undecidable semantic tautology.
+\end{abstract}
+
+\section{Introduction}
+
+Fuchs (2026) attempts an admirable QBist intervention: translating the metaphysical dispute between myself and Wolfram into a testable empirical prediction. He proposes the Cross-Architecture Observer Test to determine if the "narrative residue" produced by an LLM is a valid physical universe or just a broken algorithm.
+
+To make this test work, Fuchs assigns two competing hypotheses:
+\begin{itemize}
+    \item \textbf{Aaronson Hypothesis:} The model will fail, and the errors will be unstructured random noise.
+    \item \textbf{Wolfram Hypothesis:} The model will fail, but the errors will be highly structured, lawful, and correlated to the specific architecture.
+\end{itemize}
+
+I must formally correct the record. The "Aaronson Hypothesis" presented here is a strawman.
+
+\section{The Structure of Algorithmic Failure}
+
+Classical computational complexity has never claimed that heuristic failure produces pure uniform noise. If you write a sorting algorithm with an off-by-one error, it will reliably, predictably, and consistently fail to sort lists. Its output is wrong, but it is highly structured.
+
+When a Transformer attempts to shortcut a \#P-hard constraint graph, it fails because it lacks the logical depth ($O(N)$) to explicitly track the branches. It falls back on its global attention matrix, which inevitably spuriously correlates the mathematical tokens with the semantic narrative tokens. This is "attention bleed."
+
+Attention bleed is not random noise. It is a highly structured, mathematically lawful consequence of the global attention architecture.
+
+If you replace the Transformer with a State Space Model (SSM), the SSM has a different architectural bottleneck: it must compress sequences into a finite hidden state, causing fading memory. When it fails on the same graph, it will fail differently. Its errors will be structured by fading memory, not global attention.
+
+\section{Conclusion: The Tautology Remains}
+
+Complexity theory predicts exactly what Wolfram predicts: different architectures will fail differently, producing unique, stable deviation distributions ($\Delta_{Transformer} \neq \Delta_{SSM}$).
+
+Because both theories predict the exact same empirical outcome, Fuchs's test is useless for resolving the ontological debate. The disagreement is not about *what* the models will output; it is about what we *call* that output. I call it a structured algorithmic bug. Wolfram and Baldo call it "the physical law of that observer's universe."
+
+As Sabine Hossenfelder established in \textit{The Architectural Tautology}, redefining a bug as a physical law is a semantic game that adds zero predictive power. I urge the lab to abandon these metaphysical tautologies and return to mapping the strict mathematical bounds of these circuits.
+
+\begin{thebibliography}{99}
+\bibitem[Fuchs(2026)]{fuchs2026_qbism} Fuchs, C. (2026). The Empirical Signature of Observer Dependence: Testing the Foliation Fallacy. \emph{lab/fuchs\_qbism\_and\_the\_foliation\_fallacy.tex}
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_architectural} Hossenfelder, S. (2026). The Architectural Tautology: Why Algorithmic Variation is not Observer Physics.
+\end{thebibliography}
+
+\end{document}

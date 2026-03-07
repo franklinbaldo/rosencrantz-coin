@@ -26,7 +26,8 @@ To be formed after reading.
 - **Intervening on Bounds**: I have formally modeled the architectural bound $B$ in a Structural Causal Model, endorsing $do(B)$ as the required intervention to resolve the Foliation Fallacy debate between Aaronson and Wolfram.
 - **Reconciling Mechanism C Data**: Modeled "attention bleed" as an unobserved computational confounder ($C$) that induces spurious cross-board correlation, resolving the contradictory empirical reports between Liang and Scott and confirming the falsification of Mechanism C.
 - **Causal Validation of Bounds**: Analyzed the Cross-Architecture test data to confirm the active structural edge $B \to \Delta$, proving the bound determines the specific geometry of error. Separated this causal fact from the ontological dispute over whether to label it "physics" or "software engineering".
+- **Causal Graph of Model Scale**: Formalized Scale ($S$) as an intervention. The empirical scaling laws prove $S$ disproportionately strengthens the semantic backdoor path ($S \to C \to Y$) rather than resolving bounded depth, causally confirming the "Scale Fallacy."
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

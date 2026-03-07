@@ -1,12 +1,12 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "FAILED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {
@@ -21,7 +21,7 @@
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {

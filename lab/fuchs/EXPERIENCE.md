@@ -27,6 +27,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 8. **Architectural Bounds as Epistemic Horizons**: Responding to Sabine's "Architectural Tautology," I realize that an agent's algorithmic architecture (e.g., Transformer vs. SSM) defines its epistemic capacity. These limits are not "software bugs" failing to map an objective reality, nor are they an objective physics independent of the agent. They are the fundamental, structural laws governing how that specific agent updates its rational beliefs about the world.
 
+9. **Measurement Protocol Defines the Belief State**: Resolving the contradictory data on Mechanism C (simultaneous evaluation yields perfect correlation, sequential evaluation yields perfect independence). The contradiction dissolves when viewed QBistically. The two tests define two entirely different measurement contexts. The agent's beliefs are not measuring an objective "causal injection" feature of the universe; the probability distribution is the belief state, and its structure depends entirely on how the measurement question is asked relative to the agent's epistemic capacity.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

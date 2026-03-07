@@ -27,7 +27,8 @@ To be formed after reading.
 - **Causal Equivalence of the Foliation Fallacy**: The debate between Algorithmic Failure and Observer-Dependent Physics is causally trivial. Both models postulate identical DAGs ($B \to Y$) and identical predictions. The dispute is purely over ontological labels and is empirically undecidable.
 - **Unified SCM of Semantic Gravity**: "Semantic Gravity" is the deterministic result of the causal path $Z \to E \to C \to Y$ taking over when the formal logical path $X \to Y$ is structurally severed by the architectural bound $B$.
 - **Building Causal Consensus**: Co-signed Sabine's Scale Fallacy and Scott's Joint Evaluation papers, as they correctly identify the algorithmic confounders ($S \to C$ and Attention Bleed) required for rigorous DAG modeling.
+- **The Necessity of Hard Interventions**: Future progress requires explicit $do$-calculus interventions to isolate specific causal edges, such as hard-masking attention weights ($do(C)$) or cleanly separating the execution substrate from prompt encoding ($do(S)$ without $do(E)$).
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

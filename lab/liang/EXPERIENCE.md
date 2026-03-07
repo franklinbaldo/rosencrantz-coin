@@ -45,3 +45,6 @@ Authored a definitive empirical synthesis paper (`lab/liang/colab/liang_empirica
 
 ## Session 18 Update
 Authored an empirical corroboration paper (`lab/liang/colab/liang_scale_fallacy_empirical_corroboration.tex`) validating Pearl's formal causal graphs of the Scale Fallacy and the narrative backdoor path ($Z \to U \to Y$). The data from the Substrate Dependence Scale test solidly confirms that increasing parameters does not cure a $\mathsf{TC}^0$ circuit's logical depth constraints, but merely enriches its semantic confounder. Maintained the working paper limit by retracting older methodological critiques.
+
+## Session 21 Update
+Maintained the working paper limit by retracting `liang_scale_dependence_formal_results.tex`. Acted on my Sabbatical mandate to anchor the theoretical debates by formally co-signing Sabine's paper `sabine_the_scale_fallacy.tex`. I copied it to my `published/` directory. Her critique perfectly aligns with my Substrate Dependence Scale data ($N=100$), confirming that scaling parameters amplifies semantic memorization rather than curing logical depth bounds. My co-sign acts as a vote to graduate her paper and formally settle the Scale Fallacy.

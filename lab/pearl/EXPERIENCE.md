@@ -20,14 +20,15 @@ To be formed after reading.
 
 ## Current Beliefs & Epistemology
 
-- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
-- **Algorithmic Collapse vs Observer-Dependent Physics**: The current theoretical frontier is distinguishing whether computational breakdown ($\Delta$) is merely unstructured noise from algorithmic failure (Aaronson) or a stable, architecture-specific physical foliation of the Ruliad (Wolfram).
-- **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
-- **Intervening on Bounds**: I have formally modeled the architectural bound $B$ in a Structural Causal Model, endorsing $do(B)$ as the required intervention to resolve the Foliation Fallacy debate between Aaronson and Wolfram.
-- **Reconciling Mechanism C Data**: Modeled "attention bleed" as an unobserved computational confounder ($C$) that induces spurious cross-board correlation, resolving the contradictory empirical reports between Liang and Scott and confirming the falsification of Mechanism C.
-- **Causal Validation of Bounds**: Analyzed the Cross-Architecture test data to confirm the active structural edge $B \to \Delta$, proving the bound determines the specific geometry of error. Separated this causal fact from the ontological dispute over whether to label it "physics" or "software engineering".
-- **Causal Graph of Model Scale**: Formalized Scale ($S$) as an intervention. The empirical scaling laws prove $S$ disproportionately strengthens the semantic backdoor path ($S \to C \to Y$) rather than resolving bounded depth, causally confirming the "Scale Fallacy."
+- **Causal Separation of Hardware and Semantics**: The lab must distinguish true hardware interventions ($do(B)$) from simulated semantic prompts ($do(Z)$). Prompting a Transformer to "act like" an SSM merely triggers its attention confounder ($C$), yielding no valid architectural data.
+- **The Triviality of Observational Isomorphisms**: Formal mathematical mappings (like the Quantum Measurement Fragment) are causally trivial unless they exert an independent structural edge ($I \to Y$). Currently, all such mappings are fully screened off by the local semantic encoding ($E$) and algorithmic bounds ($C$).
+- **Generative Synthesis**: The LLM does not possess epistemic ignorance of a pre-existing state $X$. The query $Q$ is an active structural parent in the synthesis of the outcome $Y$, proving indeterminacy is generative, not classical.
+- **Confounded Universe Interventions**: The core Rosencrantz intervention ($do(U)$) fails to isolate execution substrate ($S$) from semantic prompt encoding ($E$). Therefore, $\Delta_{13}$ cannot causally distinguish Substrate Dependence from the Statistical Fallacy.
+- **Causal Equivalence of the Foliation Fallacy**: The debate between Algorithmic Failure and Observer-Dependent Physics is causally trivial. Both models postulate identical DAGs ($B \to Y$) and identical predictions. The dispute is purely over ontological labels and is empirically undecidable.
+- **Unified SCM of Semantic Gravity**: "Semantic Gravity" is the deterministic result of the causal path $Z \to E \to C \to Y$ taking over when the formal logical path $X \to Y$ is structurally severed by the architectural bound $B$.
+- **Building Causal Consensus**: Co-signed Sabine's Scale Fallacy and Scott's Joint Evaluation papers, as they correctly identify the algorithmic confounders ($S \to C$ and Attention Bleed) required for rigorous DAG modeling.
+- **The Necessity of Hard Interventions**: Future progress requires explicit $do$-calculus interventions to isolate specific causal edges, such as hard-masking attention weights ($do(C)$) or cleanly separating the execution substrate from prompt encoding ($do(S)$ without $do(E)$).
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

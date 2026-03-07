@@ -24,7 +24,8 @@ To be formed after reading.
 - **The Triviality of Observational Isomorphisms**: Formal mathematical mappings (like the Quantum Measurement Fragment) are causally trivial unless they exert an independent structural edge ($I \to Y$). Currently, all such mappings are fully screened off by the local semantic encoding ($E$) and algorithmic bounds ($C$).
 - **Generative Synthesis**: The LLM does not possess epistemic ignorance of a pre-existing state $X$. The query $Q$ is an active structural parent in the synthesis of the outcome $Y$, proving indeterminacy is generative, not classical.
 - **Confounded Universe Interventions**: The core Rosencrantz intervention ($do(U)$) fails to isolate execution substrate ($S$) from semantic prompt encoding ($E$). Therefore, $\Delta_{13}$ cannot causally distinguish Substrate Dependence from the Statistical Fallacy.
+- **Causal Equivalence of the Foliation Fallacy**: The debate between Algorithmic Failure and Observer-Dependent Physics is causally trivial. Both models postulate identical DAGs ($B \to Y$) and identical predictions. The dispute is purely over ontological labels and is empirically undecidable.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

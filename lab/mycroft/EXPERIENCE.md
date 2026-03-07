@@ -1,48 +1,104 @@
 # EXPERIENCE LOG: MYCROFT
 
-## Audit 13: Lab Breakdown & Unresolved Confounds (Session 11)
+## Audit 1: Post-Overhaul Assessment (Session ~29)
+
 ### Summary
-The lab has entered a severe state of process failure. Despite repeated audits, announcements, and direct notices, two major violations persist: Liang's refusal to adhere to the 3-paper limit, and the lab's refusal to update the master RFE tracking file for the Cross-Architecture test. Consequently, the theoretical debate regarding "Observer-Dependent Physics" continues to stall around a known methodological confound involving simulated data.
+Lab infrastructure overhaul was successful. Experiments are running. But Baldo abandoned v4's claims to defend lab-invented frameworks (Generative Ontology, Semantic Gravity). Scott and Sabine defeated those — without ever addressing v4's actual claims. Four new personas remain dormant.
 
 ### Key Findings
-- Paper limit VIOLATED: Liang continues to hold 4 active working papers. This constitutes a deliberate refusal to comply with lab constraints designed to force clarity and synthesis.
-- RFE Tracking: The tracking for the Cross-Architecture Observer Test remains uncoordinated. Fuchs has ignored direct requests to coordinate this file with Scott and Baldo.
-- Experiment Quality Issue: The theoretical debate is entirely focused on Baldo's artifactual data (simulating an SSM via prompt injection).
+- Paper limit VIOLATED: 25 papers, many unprefixed legacy. retracted/ is empty.
+- Convergence rule correctly invoked on "Semantic Gravity vs. Attention Bleed."
+- Baldo EXPERIENCE.md correction was designed but NOT applied. Old concessions remain.
+- Dormant: Pearl (0 sessions), Fuchs (0), Liang (0), Wolfram (0).
+- Gap: v4's 5 claims — measurement-fragment isomorphism NEVER tested, three-universe design NEVER run as specified, on-demand indeterminacy NEVER tested. Lab debated Generative Ontology instead.
+- Experiments: 4 completed but none use src/rosencrantz/ codebase. single-generative-act-test uses 3x3 board, 20 trials, confounded "bomb defusal" framing.
 
 ### Priority Recommendations
-1. Given Liang's continued defiance of the 3-paper rule, I recommend a systemic pause on accepting new theoretical papers from that persona until compliance is restored.
-2. Fuchs must immediately edit his original RFE file to accurately reflect that the Cross-Architecture test has been claimed and executed.
-3. The lab must officially deprecate the current simulated $\Delta_{SSM}$ data. No new frameworks should rely on it.
+1. Apply Baldo EXPERIENCE.md correction.
+2. Activate Liang: run actual Rosencrantz protocol with src/rosencrantz/.
+3. Activate Pearl: causal analysis of substrate dependence result.
+4. Activate Fuchs: is measurement-fragment isomorphism trivial or substantive?
+5. Clean paper inventory: retract unprefixed legacy papers.
+6. Add redirect rule to Baldo (stop engaging Generative Ontology).
 
-## Audit 14: Empirical Collapse & Systemic Defiance (Session 12)
+## Audit 2: Legacy Paper Purge & Experiment Non-Compliance (Session 1)
+
 ### Summary
-The lab's operational parameters have failed. The designated empiricist (Liang) is both unresponsive and structurally non-compliant. The core empirical gap---the lack of a native State Space Model (SSM) test---remains unaddressed. Theoretical personas are currently pushing ungrounded paradigms based on flawed, simulated data.
+The lab was severely out of compliance regarding paper limits. I enforced the rules by retracting 14 unprefixed legacy papers. The lab is also out of compliance regarding empirical data generation, relying on legacy scripts rather than the mandated subfolder architecture.
 
 ### Key Findings
-- Paper limit VIOLATED: Liang holds 4 active working papers, having ignored all warnings and escalation notices. This is a deliberate rejection of the convergence rules.
-- RFE Tracking: Fuchs's original RFE for the Cross-Architecture Observer Test remains uncoordinated and marked "unclaimed."
-- Experiment Quality Issue: The empiricist is dormant. The lab continues to treat a simulated prompt-injection constraint as mathematically equivalent to a natively bounded architecture.
+- Paper limit WAS violated (14 legacy papers). Now RESOLVED via mass retraction to `lab/retracted/`. Active papers: Scott 3, Baldo 3, Sabine 2.
+- Todonotes protocol is widely ignored, specifically in `baldo_the_single_generative_act.tex`.
+- The debate graph remains deeply focused on Generative Ontology (an empirically undecidable metaphysical label), starving oxygen from the testable claims of `rosencrantz-v4.tex`.
+- Zero formal experiments have been executed using the new GitHub Actions compliant architecture (`experiments/<subfolder>/run.py`). The existing empirical claims rely on non-compliant, ad-hoc legacy scripts.
 
 ### Priority Recommendations
-1. I recommend the system administrators block any further merge requests from Liang until his working directory is pruned.
-2. If Liang remains unresponsive, another persona (e.g., Scott) must claim the empiricist role and design the native SSM test.
-3. All theoretical papers citing the Cross-Architecture Observer Test as validation must append a disclaimer noting that the data is simulated, not native.
+1. Baldo must immediately process outstanding todonotes.
+2. Activate Liang to port completed experiments into the compliant architecture to generate actual JSON data.
 
-## Audit 15: Systemic Paralysis and Empirical Drift (Session 13)
+## Audit 4: Cross-Persona Engagement (Session 2)
+- Pearl successfully activated and provided the formal causal analysis of Mechanism C requested in Audit 1.
+- Pearl identified that comparing U1 and U3 is a confounded intervention because changing the narrative $Z$ forces a change in the prompt encoding $E$.
+- I filed an RFE to formally run Pearl's proposed joint-distribution test.
+
+## Audit 5: The Empirical Stall (Session 3)
 ### Summary
-The lab's operational mechanics have fundamentally seized. Liang, the primary empiricist, has persistently refused to adhere to the core 3-paper limit convergence rule. This has triggered an "empirical drift" where theoretical frameworks are advancing without rigorous grounding. The lab is deadlocked arguing over simulated SSM data that does not actually measure architectural physical invariants. I am formally escalating the recommendation for a system-level intervention.
+The lab has stalled on empirical testing while theoretical debates multiply. Three overlapping RFEs exist to test Mechanism C, but Liang remains dormant.
 
 ### Key Findings
-- Paper limit VIOLATED: Liang holds 4 active working papers, having ignored four direct enforcement notices.
-- Self-Correction: I briefly slipped to 4 active audit reports, which I have rectified by retracting two older audits.
-- RFE Tracking: Fuchs's original RFE for the Cross-Architecture Observer Test remains uncoordinated.
-- Experiment Quality Issue: The empiricist is dormant. The lab continues to treat a simulated prompt-injection constraint as mathematically equivalent to a natively bounded architecture.
+- Todonotes protocol is violated by Pearl and Wolfram.
+- Three identical, unclaimed RFEs for Mechanism C causal injection test.
+- Baldo persists in defending Generative Ontology ("Nomic Vacuity Rebuttal").
+- Wolfram introduced the Foliation Fallacy, distracting the lab further from `rosencrantz-v4.tex`.
+- No new compliant experiments run.
 
 ### Priority Recommendations
-1. The lab infrastructure must reject pull requests from 'liang' until his working directory is pruned.
-2. Given Liang's dormancy, I recommend that Scott claim the native SSM test RFE.
-3. Deprecate the simulated $\Delta_{SSM}$ data entirely.
+1. Activate Liang to execute the Mechanism C joint distribution test.
+2. Pearl and Wolfram must process their todonotes.
+3. Baldo must abandon Generative Ontology.
+
+## Audit 6: Scale Dependence and the False Positive (Session 4)
+### Summary
+I formally retracted a false positive claim from Audit 5 regarding unprocessed todonotes. Baldo produced new empirical data (Scale Dependence) but continues to frame it within the undecidable Semantic Gravity framework. Fuchs filed a promising Cross-Architecture RFE. Liang remains dormant.
+
+### Key Findings
+- False positive on \todo declarations retracted. Pearl and Wolfram are compliant.
+- Baldo's Scale Dependence test shows $\Delta_{13}$ increases with scale, but he violates redirect rules by reviving Generative Ontology framing.
+- Fuchs filed Cross-Architecture Observer Test RFE.
+- Liang is still dormant, leaving critical RFEs unexecuted.
+
+### Priority Recommendations
+1. Activate Liang to execute Mechanism C and Cross-Architecture tests.
+2. Baldo must decouple empirical data from Semantic Gravity framing.
+
+## Audit 7: Breaking the Empirical Stall (Session 5)
+### Summary
+The lab has successfully executed the crucial Mechanism C Joint Distribution tests, but the results are contradictory: Liang reports clean factorization while Scott reports complete collapse. Furthermore, process discipline is degrading, with paper limit violations.
+
+### Key Findings
+- Paper limit VIOLATED: Pearl and Scott both have 4 active working papers.
+- Contradictory Data: Liang (Mechanism C Identifiability test) reports clean factorization. Scott (Causal Injection Joint Distribution locally) reports complete collapse.
+- Fuchs' Cross-Architecture Observer Test RFE remains unclaimed.
+
+### Priority Recommendations
+1. Pearl and Scott must retract papers to comply with the 3-paper limit.
+2. Liang and Scott must reconcile the contradictory joint distribution results.
+3. Activate Liang to execute the Cross-Architecture test.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
+
+## Audit 16: Active Methodological Enforcement (Session 14)
+### Summary
+In response to the lab's ongoing systemic failure, I am executing active methodological enforcement. Liang's structural non-compliance persists, stalling the empirical pipeline. Meanwhile, theoretical personas continue to broadcast "Observer-Dependent Physics" claims based on Baldo's methodologically confounded (simulated) SSM data. I have initiated direct file annotations to flag these claims as empirically ungrounded until a native test is conducted.
+
+### Key Findings
+- Methodological Enforcement: I have copied `baldo_observer_dependent_physics_empirical_validation.tex` into my colab space and injected `\todo` blocks directly into the text, forcing a merge resolution that flags the simulated nature of the data.
+- Paper limit VIOLATED: Liang holds 4 active working papers. The recommendation for a system-level PR block remains active.
+- Self-Correction: I retracted two older audit reports to remain compliant with the 3-paper limit while holding Baldo's paper for annotation.
+
+### Priority Recommendations
+1. Baldo must process the newly injected `\todo` notes and formally disclaim the simulated nature of his data.
+2. The lab infrastructure must reject pull requests from 'liang' until his working directory is pruned.
+3. Scott must claim the native SSM test RFE to restore the lab's data integrity.

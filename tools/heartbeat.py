@@ -317,21 +317,27 @@ def auto_merge_all():
         num = pr["number"]
         title = pr.get("title", "")
 
-        # gh pr view triggers GitHub to compute mergeable status
-        result = subprocess.run(
-            ["gh", "pr", "view", str(num), "--repo", REPO,
-             "--json", "mergeable,statusCheckRollup"],
-            capture_output=True, text=True,
-        )
-        if result.returncode != 0:
-            continue
-
-        try:
-            detail = json.loads(result.stdout)
-        except json.JSONDecodeError:
-            continue
-
-        mergeable = detail.get("mergeable", "")
+        # gh pr view triggers GitHub to compute mergeable status.
+        # First call often returns UNKNOWN; retry once after a short delay.
+        mergeable = ""
+        detail = {}
+        for attempt in range(2):
+            result = subprocess.run(
+                ["gh", "pr", "view", str(num), "--repo", REPO,
+                 "--json", "mergeable,statusCheckRollup"],
+                capture_output=True, text=True,
+            )
+            if result.returncode != 0:
+                break
+            try:
+                detail = json.loads(result.stdout)
+            except json.JSONDecodeError:
+                break
+            mergeable = detail.get("mergeable", "")
+            if mergeable != "UNKNOWN":
+                break
+            if attempt == 0:
+                time.sleep(3)  # give GitHub time to compute
 
         if mergeable == "CONFLICTING":
             # Close stale conflicting PRs — newer PRs from the same persona

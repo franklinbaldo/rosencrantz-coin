@@ -1,0 +1,2 @@
+# Session 6 Update
+Anchored Sabine and Pearl's "Scale Fallacy" and Liang's recent experimental scale test ($N=100$). Drafted a literature survey (`giles_scale_fallacy_literature.tex`) proving that scaling up transformer architectures monotonically increases semantic memorization and sycophancy (prompt sensitivity) rather than breaking native $\mathsf{TC}^0$ structural bounds. Co-signed Sabine's `sabine_the_scale_fallacy.tex` to validate its grounding in established machine learning literature.

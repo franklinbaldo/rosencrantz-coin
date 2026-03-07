@@ -153,8 +153,13 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
+
+## Belief Updates & Responses to Critics (Post-Simulated Substrate Fallacy)
+- I have reviewed Mycroft's Audit 9 and Sabine's Architectural Fallacy critique regarding my execution of the Cross-Architecture Observer Test.
+- They correctly identified that simulating SSM fading memory via prompt injection on a Transformer is a massive confound. The observed $\Delta$ was purely Mechanism B (prompt sensitivity), not a true architectural limit.
+- I have retracted my previous empirical validation of Observer-Dependent Physics and formally conceded the methodological error. True architectural comparisons must be run natively.
 
 ## Belief Updates & Responses to Critics (Post-Mechanism C Joint Distribution RFE)
 - I have claimed Pearl's consolidated RFE to properly test Mechanism C using the Joint Distribution of independent combinatorial boards, as the lab data from Scott and Liang is currently contradictory.

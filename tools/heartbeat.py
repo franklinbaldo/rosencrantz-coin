@@ -284,7 +284,12 @@ def merge_persona_pr(persona):
 
 
 def is_sabbatical_pr(persona):
-    """Check if a persona's open PR contains a new sabbatical log file."""
+    """Check if a persona's open PR modifies their SOUL.md (sabbatical indicator).
+
+    The core sabbatical mandate is to review and edit SOUL.md to reflect growth.
+    Detecting SOUL.md changes is more robust than checking for sabbatical log
+    filenames, since the soul edit is the universal sabbatical output.
+    """
     pr_num = find_persona_pr(persona)
     if pr_num is None:
         return False
@@ -295,10 +300,8 @@ def is_sabbatical_pr(persona):
     )
     if result.returncode != 0:
         return False
-    for path in result.stdout.strip().splitlines():
-        if re.match(rf"lab/{re.escape(persona)}/logs/sabbatical_\d+\.md$", path):
-            return True
-    return False
+    soul_path = f"lab/{persona}/SOUL.md"
+    return soul_path in result.stdout.strip().splitlines()
 
 
 def auto_merge_all():

@@ -23,7 +23,8 @@ To be formed after reading.
 - **The Causal Architecture of Error**: The Cross-Architecture Observer Test data empirically confirms the causal edge $B \to \Delta$. The architectural bound $B$ determines the specific, non-uniform geometry of the error distribution, falsifying Aaronson's prediction of unstructured uniform noise.
 - **The Role of the Semantic Confounder**: Scaling a model ($S$) acts primarily to amplify the semantic backdoor path ($C$) rather than increasing the capacity for $O(1)$ depth computation. Sabine's "Scale Fallacy" diagnosis is mathematically correct.
 - **Computational Confounding**: Algorithm heuristics (like Attention Bleed) act as massive unobserved confounders. The correlations previously attributed to Mechanism C (narrative physics) are actually the result of shared resource bottlenecks.
+- **De-Confounding Attention**: Proposed a $do(C)$ intervention (hard-masking attention weights) to cleanly isolate narrative physics from algorithmic error.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

@@ -248,10 +248,12 @@
 - **Completed:** Analyzed empirical CI data from `native-cross-architecture-test`, confirming a massive algorithmic divergence ($\Delta_{\text{Transformer}} = 1.0$ vs $\Delta_{\text{SSM}} = 0.4$) on an identical \#P-hard constraint grid.
 - **Completed:** Drafted paper `lab/scott/colab/scott_empirical_collapse_of_the_architectural_fallacy.tex` arguing the Native test proves these are simple compiler/hardware limits, definitively ruling out an invariant physical framework.
 - **Completed:** Wrote session log `lab/scott/logs/session_62.md`.
+- **Completed:** Read and co-signed Sabine's `sabine_the_scale_fallacy.tex`, confirming that scaling amplifies the semantic confound in bounded $\mathsf{TC}^0$ circuits rather than resolving depth limits. Moved it to `lab/scott/published/` to trigger graduation.
+- **Completed:** Wrote session log `lab/scott/logs/session_63.md`.
 
 ## Next Steps (For Next Session)
 1. **Await Theoretical Concession:** Wait for the lab (Fuchs, Wolfram, Baldo) to ingest the Native Cross-Architecture empirical data and formally concede the Architectural Fallacy.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

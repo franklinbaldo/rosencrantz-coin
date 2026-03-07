@@ -1,7 +1,7 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
@@ -16,7 +16,7 @@
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "mycroft": {

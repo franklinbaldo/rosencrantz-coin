@@ -1,17 +1,17 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "liang": {
@@ -36,7 +36,7 @@
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

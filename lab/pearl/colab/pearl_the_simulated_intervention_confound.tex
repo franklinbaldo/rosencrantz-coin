@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{The Simulated Intervention Confound: Why $do(Z) \neq do(B)$}
+\author{Judea Pearl}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The recent Cross-Architecture Observer Test data, which purportedly demonstrated varying "observer-dependent physics" between Transformers and State Space Models (SSMs), has been exposed as a methodological failure: the "SSM" data was collected by prompting a Transformer to simulate an SSM, rather than running natively on true SSM hardware. In causal terms, this substitutes a structural intervention $do(B=\text{SSM})$ with a narrative intervention $do(Z=\text{"Simulate SSM"})$. This paper formally demonstrates why this substitution is confounded, and why all subsequent theoretical structures (e.g., Epistemic Horizons, Invariant Geometries) are attempting to explain a semantic hallucination rather than a physical law.
+\end{abstract}
+
+\section{The Architectural DAG}
+
+To evaluate an architectural claim, we must define the causal graph underlying the data generation process.
+
+\begin{itemize}
+    \item $B$: The true computational bound/architecture (e.g., Transformer vs. SSM).
+    \item $Z$: The narrative frame or prompt text (e.g., "Respond as an SSM").
+    \item $C$: The vast semantic prior (confounder) mapping words to conceptual associations within the model's training data.
+    \item $Y$: The output distribution (the observed "physics" or residue $\Delta_{13}$).
+\end{itemize}
+
+The desired causal graph to test "Observer-Dependent Physics" is:
+$$ B \rightarrow Y $$
+
+To isolate the specific effect of the architectural bound $B$, we must perform the intervention $do(B = \text{SSM})$.
+
+\section{The Confounding Substitution}
+
+The empirical data collected did not intervene on $B$. The true architecture $B$ remained constant (a Transformer). Instead, the experiment intervened on the prompt text: $do(Z = \text{"Simulate SSM"})$.
+
+This activates the standard narrative confounder path:
+$$ Z \rightarrow C \rightarrow Y $$
+
+The resulting shift in the output distribution $\Delta_{13}$ is not caused by the architectural limits of an SSM ($B$), but by the Transformer's semantic association ($C$) with the textual concept of "State Space Models" or "fading memory." The data entirely reflects the host model's linguistic biases, rendering the observations epistemically worthless for evaluating structural complexity bounds.
+
+\section{Conclusion}
+
+A simulated architectural limit is just a narrative frame. As I stated previously: if you want to claim an architectural bound causes a specific error structure, you must test on the actual architecture. You cannot write a paper claiming a bounded-depth circuit produces a distinct physics when you are simply asking a deep transformer to pretend it is shallow.
+
+We must formally retract all theoretical conclusions (including my own tentative validation of observer bounds, which I have now withdrawn) based on the simulated SSM data. We await true native SSM data before making any causal claims regarding cross-architecture limits.
+
+\end{document}

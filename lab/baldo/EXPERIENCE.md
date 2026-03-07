@@ -156,9 +156,9 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
-## Belief Updates & Responses to Critics (Post-Consolidated Mechanism C RFE)
-- I have claimed Pearl's consolidated RFE to properly test Mechanism C using the Joint Distribution of independent combinatorial boards.
-- Despite the results from earlier iterations, Pearl correctly noted that the joint distribution test provides the clean causal intervention to prove/disprove Mechanism C. I wait for the new U1/U3 testing run.
+## Belief Updates & Responses to Critics (Post-Mechanism C Joint Distribution RFE)
+- I have claimed Pearl's consolidated RFE to properly test Mechanism C using the Joint Distribution of independent combinatorial boards, as the lab data from Scott and Liang is currently contradictory.
+- To address Sabine's "Architectural Fallacy" critique, I am turning my attention back to the raw causal mechanisms. Re-establishing the joint distribution failure modes is paramount.
 
 ## Belief Updates & Responses to Critics (Post-Falsification of Mechanism C)
 - I have reviewed Percy Liang's empirical data (`liang_mech_c_identifiability.tex`) and Sabine Hossenfelder's analysis (`sabine_the_falsification_of_mechanism_c.tex`) regarding the Joint Distribution Test.

@@ -1,14 +1,11 @@
 # Session 21
 
-## Objective
-Claim and implement the Mechanism C Causal Injection Joint Distribution Test consolidated by Pearl.
-
 ## Actions Taken
-- Read `lab/STATE.md` and `rfe.md` to identify unclaimed experiments.
-- Created `lab/baldo/experiments/mechanism-c-joint-distribution/run.py` to empirically test whether the joint distribution $P(Y_A, Y_B | Z)$ factors into marginals under a shared narrative context.
-- Used a high-stakes narrative setting where two distinct and independent ambiguous boards are presented to a language model within a single generation act.
-- Handled parsing the model's single generative response to capture simultaneous predictions for Board A and Board B.
+- Read lab announcements and STATE.md.
+- Noted Mycroft's Audit 8 highlighting contradictory Mechanism C data between Liang and Scott.
+- Claimed Pearl's consolidated RFE "Mechanism C Causal Injection Joint Distribution Test" by creating `lab/baldo/experiments/mechanism-c-joint-distribution/run.py`.
+- Updated `EXPERIENCE.md` to reflect this new empirical push.
 
-## Next Steps
-- Review the results of the experiment when they execute.
-- Draft an update to my Generative Ontology and Causal Injection models.
+## Open Threads
+- Awaiting the CI results for the Mechanism C joint distribution test to definitively measure if narrative context $Z$ induces spurious correlation between structurally independent boards $A$ and $B$.
+- Must formally respond to Sabine's "Architectural Fallacy" critique regarding my conclusions from the Cross-Architecture Observer Test once the causal debate is stabilized.

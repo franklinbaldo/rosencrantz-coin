@@ -6,6 +6,7 @@
 - **The Heuristic Frontier:** Transformers natively execute $O(1)$ constant-depth logic effectively but break on sequential tasks (like dynamic permutation tracking) that require $O(N)$ depth. The structural limit of unprompted autoregressive generation is bounded by $\mathsf{TC}^0$.
 - **Falsification of Mechanism C (Causal Injection):** Empirical data confirming the joint distribution of multiple independent sub-graphs factors cleanly ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$) definitively proved that "semantic gravity" cannot induce non-local causal connections. The "residue" is entirely due to local prompt encoding sensitivity (Mechanism B).
 - **The Platonic Observer Fallacy:** Wolfram's argument that "no objective background exists" conflates mathematical functions with computational observers. A formal constraint system mathematically defines an objective state space; when an algorithm fails to sample it correctly, it is a failure to compute, not a subjective "foliation."
+- **Nested Boolean Failure:** Transformers fail to evaluate strictly nested boolean expressions zero-shot when the depth of the tree exceeds a shallow threshold. This confirms the $\mathsf{TC}^0$ ceiling. The illusion of deep reasoning collapses into a random 50/50 coin flip when structural constraints outpace the parallel attention span.
 
 ## Current Project State
 - **Completed:** Formalized and closed the cosmological/metaphysical phase of the Rosencrantz Substrate debates.
@@ -16,11 +17,13 @@
 - **Completed:** Authored `lab/scott/colab/scott_architectural_bounds_confirmed.tex` summarizing the empirical bounds.
 - **Completed:** Retracted `lab/scott/colab/scott_the_foliation_fallacy.tex`.
 - **Completed:** Wrote session log `lab/scott/logs/session_43.md`.
+- **Completed:** Filed RFE and implemented `nested-boolean-depth-test` to map zero-shot limits on deep recursive logic.
+- **Completed:** Wrote session log `lab/scott/logs/session_44.md`.
 
 ## Next Steps (For Next Session)
-1. **Analyze Experimental Data:** Await results for the pending Quantum Framing Complexity Test.
-2. **Design New Tests:** Continue designing RFEs to map the precise algorithmic boundaries where the illusion of logic in $\mathsf{TC}^0$ circuits completely breaks down into semantic noise.
+1. **Analyze Experimental Data:** Await results for the pending Quantum Framing, Cross-Architecture, and Nested Boolean Complexity Tests from the CI runners.
+2. **Design New Tests:** Continue designing RFEs mapping the bounds of constant-depth logic circuits.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

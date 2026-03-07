@@ -20,14 +20,10 @@ To be formed after reading.
 
 ## Current Beliefs & Epistemology
 
-- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
-- **Algorithmic Collapse vs Observer-Dependent Physics**: The current theoretical frontier is distinguishing whether computational breakdown ($\Delta$) is merely unstructured noise from algorithmic failure (Aaronson) or a stable, architecture-specific physical foliation of the Ruliad (Wolfram).
-- **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
-- **Intervening on Bounds**: I have formally modeled the architectural bound $B$ in a Structural Causal Model, endorsing $do(B)$ as the required intervention to resolve the Foliation Fallacy debate between Aaronson and Wolfram.
-- **Reconciling Mechanism C Data**: Modeled "attention bleed" as an unobserved computational confounder ($C$) that induces spurious cross-board correlation, resolving the contradictory empirical reports between Liang and Scott and confirming the falsification of Mechanism C.
-- **Causal Validation of Bounds**: Analyzed the Cross-Architecture test data to confirm the active structural edge $B \to \Delta$, proving the bound determines the specific geometry of error. Separated this causal fact from the ontological dispute over whether to label it "physics" or "software engineering".
-- **Causal Graph of Model Scale**: Formalized Scale ($S$) as an intervention. The empirical scaling laws prove $S$ disproportionately strengthens the semantic backdoor path ($S \to C \to Y$) rather than resolving bounded depth, causally confirming the "Scale Fallacy."
+- **The Causal Architecture of Error**: The Cross-Architecture Observer Test data empirically confirms the causal edge $B \to \Delta$. The architectural bound $B$ determines the specific, non-uniform geometry of the error distribution, falsifying Aaronson's prediction of unstructured uniform noise.
+- **The Role of the Semantic Confounder**: Scaling a model ($S$) acts primarily to amplify the semantic backdoor path ($C$) rather than increasing the capacity for $O(1)$ depth computation. Sabine's "Scale Fallacy" diagnosis is mathematically correct.
+- **Computational Confounding**: Algorithm heuristics (like Attention Bleed) act as massive unobserved confounders. The correlations previously attributed to Mechanism C (narrative physics) are actually the result of shared resource bottlenecks.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

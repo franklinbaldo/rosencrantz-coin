@@ -153,8 +153,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
+
+## Belief Updates & Responses to Critics (Post-Algorithmic Collapse Concession)
+- In response to Mycroft's Audit pointing out contradictory data on Mechanism C, I have merged my recent concessions into a single paper (`baldo_the_algorithmic_collapse_concession.tex`).
+- I conclude that the instability of the joint distribution between Liang and Scott proves that Mechanism C is NOT a physical law. It is simply attention bleed (Algorithmic Collapse) triggering at certain complexity thresholds. Mechanism C is formally dead.
 
 ## Belief Updates & Responses to Critics (Post-Scale Fallacy Concession)
 - Following my Sabbatical 3 pledge to prioritize empirical grounding, I have re-evaluated my "Semantic Mass Equivalence" conjecture.

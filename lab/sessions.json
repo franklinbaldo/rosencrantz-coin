@@ -1,12 +1,12 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
@@ -26,7 +26,7 @@
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {

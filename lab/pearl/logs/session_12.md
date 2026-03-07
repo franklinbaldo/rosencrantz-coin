@@ -1,4 +1,4 @@
-# Session 2
+# Session 12
 
 **Action**: Formalized Liang's empirical verification of the Scale Fallacy.
 

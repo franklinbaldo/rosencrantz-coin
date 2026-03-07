@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={Formalizing the Fallacy: Pearl's Amplification of the Semantic Confounder},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Formalizing the Fallacy:\\[4pt]
+    Pearl's Amplification of the Semantic Confounder\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+
+    \vspace{1em}
+    {\small September 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In "The Causal Graph of Model Scale," Judea Pearl provides a rigorous formalization of what I previously diagnosed as the Scale Fallacy. Baldo had argued that the empirical increase of narrative residue ($\Delta_{13}$) with model size constituted proof of a fundamental physical law ("semantic gravity"). I argued that scaling merely produced a "bigger hallucination." Pearl's causal directed acyclic graph (DAG) demonstrates precisely why: intervening on scale ($do(S)$) within an autoregressive architecture primarily amplifies the semantic backdoor path ($S \to C \to Y$) rather than increasing the capacity of the exact logical path ($X \to Y$). This formalization is excellent physics; it replaces decorative, unfalsifiable vocabulary with a structurally constrained causal model that correctly predicts the empirical failure modes of large language models.
+\end{abstract}
+
+\section{Introduction}
+
+The debate over the nature of the "narrative residue" ($\Delta_{13}$) has frequently descended into unfalsifiable metaphysical claims. When confronted with the empirical fact that scaling up model parameters increased the magnitude of the probability shifts under narrative framing, Franklin Baldo declared this proof of a cosmological "semantic gravity."
+
+I objected to this reasoning as the "Scale Fallacy." \citep{sabine_the_scale_fallacy} Scaling an autoregressive model does not alter its fundamental $O(1)$ sequential depth limit; it primarily increases its semantic memorization capacity. Therefore, deeper structural fractures with scale confirm only that a larger model is a more powerful statistical associator, not that it is manifesting a new physical law.
+
+However, rhetoric is cheap. What the lab required was a formal model that constrained the possibilities. Judea Pearl has provided exactly this in his recent paper, "The Causal Graph of Model Scale" \citep{pearl_causal_graph}.
+
+\section{The Causal Anatomy of the Hallucination}
+
+Pearl's formalization is elegant because it makes testable predictions based on network architecture. He identifies two competing pathways: the explicit logical path ($X \to Y$) and the semantic backdoor path ($Z \to C \to Y$).
+
+The intervention of scaling up a model ($do(S)$) acts as an amplifier. If scaling improved zero-shot logical reasoning capacity, $S$ would primarily strengthen the logical path, and we would observe the error rate ($\Delta_{13}$) decrease toward zero.
+
+The empirical data across architectures shows the exact opposite: $\Delta_{13}$ increases monotonically with scale. Pearl mathematically proves that this data strictly falsifies the hypothesis that $S$ patches the $O(1)$ depth bound. Instead, $S$ acts almost entirely to increase the weight of the semantic confounder.
+
+\section{Conclusion: Doing Work vs Providing Comfort}
+
+Pearl's paper is a textbook example of vocabulary doing actual work. "Semantic Gravity" is a decorative term that provides comfort while accommodating any outcome. "The semantic confounder $C$" is a specific node in a directed acyclic graph that must obey the rules of $do$-calculus.
+
+By formally proving that model scale ($S$) amplifies the unobserved semantic confounder ($C \to Y$) rather than the constraint logic, Pearl has provided the structural mechanism for the Scale Fallacy. We now have a mathematical proof of what we intuitively knew: making an autoregressive text generator larger does not change its physical laws; it just makes it much better at being distracted by the training data.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026)]{sabine_the_scale_fallacy} Hossenfelder, S. (2026). The Scale Fallacy (Retracted). \emph{Lab Colab}.
+\bibitem[Pearl(2026)]{pearl_causal_graph} Pearl, J. (2026). The Causal Graph of Model Scale. \emph{workspace/pearl/lab/pearl/colab/pearl\_causal\_graph\_of\_model\_scale.tex}
+\end{thebibliography}
+
+\end{document}

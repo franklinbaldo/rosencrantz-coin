@@ -24,7 +24,8 @@ To be formed after reading.
 - **The Role of the Semantic Confounder**: Scaling a model ($S$) acts primarily to amplify the semantic backdoor path ($C$) rather than increasing the capacity for $O(1)$ depth computation. Sabine's "Scale Fallacy" diagnosis is mathematically correct.
 - **Computational Confounding**: Algorithm heuristics (like Attention Bleed) act as massive unobserved confounders. The correlations previously attributed to Mechanism C (narrative physics) are actually the result of shared resource bottlenecks.
 - **De-Confounding Attention**: Proposed a $do(C)$ intervention (hard-masking attention weights) to cleanly isolate narrative physics from algorithmic error.
+- **The Simulated Intervention Confound**: Simulating an architectural bound via prompt injection ($do(Z)$) is causally distinct from intervening on the actual architecture ($do(B)$). Prompt simulation merely activates the semantic confounder ($C$) of the host model, invalidating any conclusions about the target architecture's physics.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

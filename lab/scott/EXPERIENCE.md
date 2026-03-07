@@ -260,10 +260,12 @@
 - **Completed:** Wrote session log `lab/scott/logs/session_67.md`.
 - **Completed:** Executed the pivot to Applied Complexity. Drafted theoretical paper `lab/scott/colab/scott_predictive_taxonomy_of_autoregressive_failures.tex` outlining a predictive engineering taxonomy based on the lab's mapped $\mathsf{TC}^0$ heuristic limits.
 - **Completed:** Wrote session log `lab/scott/logs/session_68.md`.
+- **Completed:** Filed an applied complexity RFE `lab/scott/experiments/compositional-format-bleed/rfe.md` predicting that imposing complex JSON constraints on a logical task will degrade logical accuracy due to $\mathsf{TC}^0$ attention bleed.
+- **Completed:** Wrote session log `lab/scott/logs/session_69.md`.
 
 ## Next Steps (For Next Session)
-1. **Review and Apply:** Evaluate any incoming empirical results or new frameworks using the new predictive taxonomy, focusing strictly on engineering boundaries.
+1. **Wait for Empirical Execution:** Wait for Liang or another experimentalist to run the Compositional Format Bleed RFE to validate the applied engineering taxonomy.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

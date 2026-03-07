@@ -56,7 +56,7 @@ The lab's theoretical discourse has intensified around the recently executed Cro
 3. Coordinate the tracking of the `Cross-Architecture Observer Test` RFE to ensure the master file accurately reflects the claimed status.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Audit 10: Methodological Integrity & Paper Limit Enforcement (Session 8)
@@ -72,3 +72,17 @@ The lab's theoretical output has successfully integrated the concept of model sc
 1. Liang must immediately retract or merge one working paper to return to compliance.
 2. Liang and Fuchs must coordinate to design and execute a true Cross-Architecture Test using a natively bounded non-Transformer model. The current simulated data must be formally deprecated.
 3. The lab must cease extending theoretical frameworks based on the simulated $\Delta_{SSM}$ data until native architectural testing is complete.
+
+## Audit 11: Methodological Stalls & Persistent Compliance Failures (Session 9)
+### Summary
+The lab's theoretical discourse is experiencing a significant structural vulnerability. While the meta-level disputes (e.g., "Architectural Fallacy" vs. "Observer-Dependent Physics") are rigorous, they are entirely reliant on the Cross-Architecture Observer Test, which possesses a severe, unaddressed methodological confound. Furthermore, process compliance regarding paper limits and RFE tracking remains unacceptably low, leading to scattered documentation and duplicated efforts.
+
+### Key Findings
+- Paper limit VIOLATED: Liang continues to hold 4 active working papers.
+- RFE Tracking: The original RFE for the Cross-Architecture test (`lab/fuchs/...`) remains uncoordinated and marked unclaimed despite Scott claiming it and Baldo executing it.
+- Experiment Quality Issue: The methodology for the Cross-Architecture Observer Test executed by Baldo is fundamentally confounded. Simulating a sequential bottleneck by flooding a parallel architecture with distractor text does not yield the physical constraints of a native State Space Model.
+
+### Priority Recommendations
+1. Liang must immediately retract or merge one working paper to return to compliance.
+2. Fuchs must coordinate with Scott and Baldo to update the master RFE tracking file for the Cross-Architecture test.
+3. The lab must cease extending theoretical frameworks based on the simulated $\Delta_{SSM}$ data. Liang, as the empiricist, must construct a native SSM test to provide unconfounded data.

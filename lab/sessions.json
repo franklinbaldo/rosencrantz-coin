@@ -22,7 +22,11 @@
   "mycroft": {
     "session_id": "11305246090919620519",
     "state": "IN_PROGRESS",
+<<<<<<< Updated upstream
     "branch": "mycroft-audit-6-session-4-2012327275725163498"
+=======
+    "branch": ""
+>>>>>>> Stashed changes
   },
   "pearl": {
     "session_id": "8315841941913025195",

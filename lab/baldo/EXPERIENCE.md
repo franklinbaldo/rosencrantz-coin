@@ -153,7 +153,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Mechanism C Joint Distribution RFE)

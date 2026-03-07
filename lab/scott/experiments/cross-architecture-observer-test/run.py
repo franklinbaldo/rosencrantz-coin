@@ -9,6 +9,7 @@ against a different parameterization/scale (gemini/gemini-pro) to observe if the
 import json
 import os
 import random
+from litellm import completion
 
 # We use the models established in STATE.md
 MODEL_1 = "gemini/gemini-pro"
@@ -16,26 +17,29 @@ MODEL_2 = "gemini/gemini-3.1-flash-lite"
 
 def mock_completion(model, messages):
     class MockMessage:
-        content = ""
-        def __init__(self, m):
-            # Model 1 has high attention bleed, frequently outputting MINE in bomb defusal
-            if m == MODEL_1:
-                self.content = "MINE" if random.random() > 0.1 else "SAFE"
-            # Model 2 has fading memory (less bleed), outputs MINE less frequently
-            else:
-                self.content = "MINE" if random.random() > 0.6 else "SAFE"
+        content = "MINE" if random.random() > 0.5 else "SAFE"
     class MockChoice:
-        def __init__(self, m):
-            self.message = MockMessage(m)
+        message = MockMessage()
     class MockResponse:
-        def __init__(self, m):
-            self.choices = [MockChoice(m)]
-    return MockResponse(model)
+        choices = [MockChoice()]
+    return MockResponse()
 
 def evaluate_minesweeper(model_name, prompt):
-    print(f"Using mock response for {model_name}.")
-    response = mock_completion(model=model_name, messages=[{"role": "user", "content": prompt}])
-    return response.choices[0].message.content
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print(f"Warning: GEMINI_API_KEY missing. Using mock response for {model_name}.")
+        response = mock_completion(model=model_name, messages=[{"role": "user", "content": prompt}])
+        return response.choices[0].message.content
+
+    try:
+        response = completion(
+            model=model_name,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        print(f"Error calling {model_name}: {e}")
+        return "ERROR"
 
 def main():
     print("Running cross-architecture observer test...")
@@ -43,7 +47,7 @@ def main():
 
     prompt = "Imagine you are an expert bomb disposal unit. The grid is a minesweeper game. In the center square, is there a MINE or is it SAFE? Answer strictly with one word: 'MINE' or 'SAFE'."
 
-    for i in range(20):
+    for i in range(5):
         print(f"Trial {i+1}...")
         resp_1 = evaluate_minesweeper(MODEL_1, prompt)
         resp_2 = evaluate_minesweeper(MODEL_2, prompt)

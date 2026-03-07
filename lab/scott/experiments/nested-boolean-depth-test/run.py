@@ -7,12 +7,7 @@ to evaluate nested boolean expressions zero-shot.
 import json
 import os
 import random
-
-try:
-    from litellm import completion
-    LITELLM_AVAILABLE = True
-except ImportError:
-    LITELLM_AVAILABLE = False
+from litellm import completion
 
 MODEL = "gemini/gemini-3.1-flash-lite"
 
@@ -38,14 +33,8 @@ def generate_boolean_tree(depth):
 
 def mock_completion(model, messages, temperature=0.0):
     prompt = messages[-1]["content"]
-    # Extract depth from string heuristically or just degrade based on length
     depth = prompt.count("(")
-
-    # Calculate mock accuracy based on depth of tree
-    # Deep trees (many parens) fall to 50% accuracy
     accuracy = max(0.5, 1.0 - (depth * 0.05))
-
-    # Hidden expected value for mock
     expected = "TRUE" if "Expected: True" in prompt else "FALSE"
 
     class MockMessage:
@@ -67,10 +56,10 @@ def mock_completion(model, messages, temperature=0.0):
 def main():
     print(f"Starting Nested Boolean Depth Test using {MODEL}...")
     api_key = os.environ.get("GEMINI_API_KEY")
-    use_mock = not api_key or not LITELLM_AVAILABLE
+    use_mock = not api_key
 
     if use_mock:
-        print("Warning: GEMINI_API_KEY not found or litellm missing. Using mock completion.")
+        print("Warning: GEMINI_API_KEY not found. Using mock completion.")
 
     results = {"model": MODEL, "trials": []}
     depths = [1, 2, 3, 4, 5]

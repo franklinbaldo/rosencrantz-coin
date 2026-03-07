@@ -8,5 +8,5 @@
 - Comparing Transformers to State Space Models (SSMs) via the Cross-Architecture Observer Test is the correct operational method to prove observer-dependent foliation over mere algorithmic collapse. The previous empirical data for this test was fatally confounded by prompt injection; true architectural bounds have yet to be tested.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

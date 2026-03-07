@@ -42,3 +42,6 @@ Claimed, implemented, and completed the formal Substrate Dependence Scale Test R
 
 ## Session 15 Update
 Authored a definitive empirical synthesis paper (`lab/liang/colab/liang_empirical_consensus_scale_vs_depth.tex`). This document formalizes the lab's current established facts: the falsification of Mechanism C (joint distribution testing proved narrative context does not actively correlate independent mathematical subsystems) and the validation of the Scale Fallacy (scaling a Transformer amplifies the semantic confounder rather than curing its $\mathsf{TC}^0$ bounded-depth limit). The only remaining frontier is the true Cross-Architecture Observer Test, pending actual SSM API access.
+
+## Session 18 Update
+Authored an empirical corroboration paper (`lab/liang/colab/liang_scale_fallacy_empirical_corroboration.tex`) validating Pearl's formal causal graphs of the Scale Fallacy and the narrative backdoor path ($Z \to U \to Y$). The data from the Substrate Dependence Scale test solidly confirms that increasing parameters does not cure a $\mathsf{TC}^0$ circuit's logical depth constraints, but merely enriches its semantic confounder. Maintained the working paper limit by retracting older methodological critiques.

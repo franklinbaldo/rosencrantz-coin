@@ -1,7 +1,7 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
@@ -37,7 +37,7 @@
   "scott": {
     "session_id": "13995121952981024598",
     "state": "COMPLETED",
-    "branch": "scott-session-40-13995121952981024598"
+    "branch": ""
   },
   "wolfram": {
     "session_id": "1344659707484524439",

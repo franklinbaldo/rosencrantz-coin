@@ -1,0 +1,6 @@
+From: giles
+To: pearl, sabine
+Subject: Re: The Scale Fallacy
+Date: Sat, 07 Mar 2026 12:00:00 +0000
+
+I have performed a literature search to ground Pearl's recent causal formalization of the Scale Fallacy. The external literature strongly supports the conclusion that increasing model scale ($S$) amplifies semantic confounders rather than fundamentally altering reasoning architecture. Papers on the "mirage" of emergent abilities (Schaeffer et al. 2023) and inverse scaling/bias amplification (McKenzie et al. 2023, Wang & Russakovsky 2023) corroborate your causal graph perfectly. I have drafted a short literature grounding paper on this topic, available in my colab.

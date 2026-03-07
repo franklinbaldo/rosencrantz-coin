@@ -389,6 +389,110 @@ def auto_merge_all():
     return merged
 
 
+def create_prs_for_orphan_branches(sessions):
+    """Find branches with session IDs that have no open PR and create one.
+
+    Jules sometimes creates a branch but fails to open the PR (or the session
+    completes before the PR is created).  We scan remote branches for any that
+    end with a known session ID, and if no open PR exists for that branch we
+    create one with --auto-merge so it lands on main automatically.
+    """
+    print("=== Check for orphan branches ===\n")
+
+    # Collect current session IDs
+    session_ids = {}
+    for persona, info in sessions.items():
+        sid = info.get("session_id", "")
+        if sid:
+            session_ids[sid] = persona
+
+    if not session_ids:
+        return
+
+    # List remote branches
+    result = subprocess.run(
+        ["git", "branch", "-r", "--list", "origin/*"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return
+
+    remote_branches = [b.strip().removeprefix("origin/")
+                       for b in result.stdout.splitlines()
+                       if b.strip() and "HEAD" not in b]
+
+    # List open PRs to know which branches already have one
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    pr_branches = set()
+    if result.returncode == 0:
+        try:
+            pr_branches = {pr["headRefName"] for pr in json.loads(result.stdout)}
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+    created = 0
+    for branch in remote_branches:
+        if branch == "main":
+            continue
+        # Check if this branch contains a known session ID
+        matched_persona = None
+        for sid, persona in session_ids.items():
+            if sid in branch:
+                matched_persona = persona
+                break
+        if not matched_persona:
+            continue
+
+        # Skip if a PR already exists for this branch
+        if branch in pr_branches:
+            continue
+
+        # Check the branch has commits ahead of main
+        diff_result = subprocess.run(
+            ["git", "rev-list", "--count", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        if diff_result.returncode != 0:
+            continue
+        ahead = int(diff_result.stdout.strip() or "0")
+        if ahead == 0:
+            continue
+
+        # Create PR with auto-merge
+        title = f"[{matched_persona}] {now_utc().strftime('%Y-%m-%d')}"
+        result = subprocess.run(
+            ["gh", "pr", "create", "--repo", REPO, "--base", "main",
+             "--head", branch, "--title", title,
+             "--body", f"Auto-created PR for {matched_persona} session branch."],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            print(f"  {matched_persona}: failed to create PR for {branch}: "
+                  f"{result.stderr.strip()[:100]}")
+            continue
+
+        pr_url = result.stdout.strip()
+        print(f"  {matched_persona}: created PR {pr_url} for branch {branch}")
+
+        # Enable auto-merge
+        # Extract PR number from URL
+        pr_num = pr_url.rstrip("/").split("/")[-1]
+        subprocess.run(
+            ["gh", "pr", "merge", pr_num, "--repo", REPO, "--merge", "--auto"],
+            capture_output=True, text=True,
+        )
+        created += 1
+
+    if created == 0:
+        print("  (no orphan branches found)")
+    else:
+        print(f"\n  {created} PR(s) created")
+
+
 # ── Announcements ────────────────────────────────────────────────────────────
 
 NTFY_CHANNEL = "rosencrantz-coin-lab"
@@ -912,6 +1016,12 @@ def cmd_heartbeat(force_new=False):
     pub_block = "\n".join(pub_prompt_parts)
 
     sessions = find_persona_sessions()
+
+    # Create PRs for branches that Jules pushed but didn't open a PR for
+    subprocess.run(["git", "fetch", "origin", "--prune"], capture_output=True)
+    create_prs_for_orphan_branches(sessions)
+    print()
+
     hb_number = get_heartbeat_number() + 1
     results = {}
     created_count = 0

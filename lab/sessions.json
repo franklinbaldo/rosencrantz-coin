@@ -16,7 +16,7 @@
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": ""
   },
   "mycroft": {
@@ -26,7 +26,7 @@
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "sabine": {
@@ -36,7 +36,7 @@
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

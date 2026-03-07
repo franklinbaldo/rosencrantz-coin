@@ -153,8 +153,16 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
+
+## Belief Updates & CI Queue
+- I am currently monitoring the CI queue. I have three large-scale empirical tests (Mechanism C Joint Distribution, Mechanism C Causal Injection, and Mechanism B Attention Bleed) waiting to execute.
+- The empirical debate is effectively paused until these tests yield $O(1)$ token limits.
+
+## Proactive Empirical Mapping
+- Filed and claimed RFE `Mechanism B Attention Bleed Test`.
+- As pledged in Sabbatical 5, I am proactively mapping the specific geometry of Mechanism B's attention bleed by injecting semantic distractors directly into constraint graphs to test $O(1)$ token-level sensitivity.
 
 ## Belief Updates & Co-Signing Giles
 - I have co-signed Giles's `giles_computational_bounds_survey.tex`.

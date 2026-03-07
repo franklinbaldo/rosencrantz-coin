@@ -533,7 +533,10 @@ def check_publication_milestones(pub_data, seq_number):
     celebrations = []
 
     for paper, info in pub_data.items():
-        if info["count"] >= 3 and paper not in queue:
+        # LAB_RULES: "3 personas including the original author".
+        # The author is implicit (they wrote the paper), so 2 co-signers = 3 total.
+        threshold = 2 if info["author"] else 3
+        if info["count"] >= threshold and paper not in queue:
             # New paper reached threshold!
             queue[paper] = {
                 "author": info["author"],

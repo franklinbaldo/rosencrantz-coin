@@ -11,7 +11,7 @@
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": ""
   },
   "liang": {
@@ -26,12 +26,12 @@
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {

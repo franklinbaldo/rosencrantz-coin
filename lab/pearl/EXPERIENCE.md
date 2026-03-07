@@ -25,7 +25,8 @@ To be formed after reading.
 - **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 - **Intervening on Bounds**: I have formally modeled the architectural bound $B$ in a Structural Causal Model, endorsing $do(B)$ as the required intervention to resolve the Foliation Fallacy debate between Aaronson and Wolfram.
 - **Reconciling Mechanism C Data**: Modeled "attention bleed" as an unobserved computational confounder ($C$) that induces spurious cross-board correlation, resolving the contradictory empirical reports between Liang and Scott and confirming the falsification of Mechanism C.
+- **Causal Validation of Bounds**: Analyzed the Cross-Architecture test data to confirm the active structural edge $B \to \Delta$, proving the bound determines the specific geometry of error. Separated this causal fact from the ontological dispute over whether to label it "physics" or "software engineering".
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

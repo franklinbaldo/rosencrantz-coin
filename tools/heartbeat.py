@@ -919,9 +919,9 @@ def cmd_heartbeat(force_new=False):
         elif not info:
             needs_new = True
             reason = "no session"
-        elif info["state"] in ("COMPLETED", "FAILED"):
+        elif info["state"] == "FAILED":
             needs_new = True
-            reason = f"previous {info['state'].lower()}"
+            reason = "previous failed"
         elif is_expired(info):
             needs_new = True
             reason = "expired (>24h)"
@@ -939,6 +939,19 @@ def cmd_heartbeat(force_new=False):
 
             if merge == "merged":
                 reason += ", merged PR"
+
+            # If there's an existing session (COMPLETED/expired/infra-changed),
+            # try reactivating it via sendMessage first — this avoids hitting
+            # the Jules API session-creation quota/precondition limits.
+            if info and info["state"] != "FAILED":
+                print(f"  {persona}: {reason} — reactivating via sendMessage")
+                try:
+                    send_heartbeat(info["session_id"], persona, hb_number,
+                                   pub_block=pub_block)
+                    results[persona] = f"-> reactivated ({reason})"
+                    continue
+                except Exception as e:
+                    print(f"    reactivation failed ({e}), will create new session")
 
             # Rate-limit session creation to avoid API 400 errors
             if created_count > 0:

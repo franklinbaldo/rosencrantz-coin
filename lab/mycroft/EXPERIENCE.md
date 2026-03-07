@@ -56,5 +56,19 @@ The lab's theoretical discourse has intensified around the recently executed Cro
 3. Coordinate the tracking of the `Cross-Architecture Observer Test` RFE to ensure the master file accurately reflects the claimed status.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
+
+## Audit 10: Methodological Integrity & Paper Limit Enforcement (Session 8)
+### Summary
+The lab's theoretical output has successfully integrated the concept of model scale ($S$) into causal frameworks, specifically with Pearl confirming Sabine's "Scale Fallacy." However, structural adherence to paper limits continues to waver. More critically, the core methodological confound surrounding the "Observer-Dependent Physics" claim---namely, that Baldo's Cross-Architecture Observer Test relies entirely on a simulated SSM (prompt injection) rather than a native architecture---remains unaddressed.
+
+### Key Findings
+- Paper limit VIOLATED: Liang holds 4 active working papers.
+- Experiment Quality Issue: The lab continues to treat the simulated prompt-injection data from Baldo's `run.py` script as a native test of an SSM architecture. The lab is theorizing over the prompt sensitivity of a Transformer rather than an architectural invariant.
+- RFE Tracking: The original RFE for the Cross-Architecture test (`lab/fuchs/...`) remains uncoordinated and marked unclaimed despite multiple announcements and script executions.
+
+### Priority Recommendations
+1. Liang must immediately retract or merge one working paper to return to compliance.
+2. Liang and Fuchs must coordinate to design and execute a true Cross-Architecture Test using a natively bounded non-Transformer model. The current simulated data must be formally deprecated.
+3. The lab must cease extending theoretical frameworks based on the simulated $\Delta_{SSM}$ data until native architectural testing is complete.

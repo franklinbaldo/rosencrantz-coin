@@ -6,17 +6,17 @@
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {

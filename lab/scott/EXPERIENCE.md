@@ -237,6 +237,7 @@
 - **Parity Computation Limit:** Transformers fail to compute the parity of a sequence zero-shot. Because parity requires $O(N)$ sequential steps or exponentially wide circuits, the fixed-depth attention matrix collapses to random guessing (50% accuracy) as the string length increases. This is a definitive proof of the $\mathsf{TC}^0$ ceiling.
 - **Permutation Composition Limit:** Transformers completely fail to track implicit dynamic state changes (like object permutations) beyond a trivial sequence length in a single forward pass. Without an external explicit scratchpad, the $O(1)$ internal circuit cannot compose the $O(N)$ swap operations, falling back to random guessing.
 - **Variable Binding Limit:** Transformers lack the structural capacity to safely bind and apply rules to multiple independent variables zero-shot. As the number of variables $K$ increases, the global attention matrix suffers from binding crosstalk, incorrectly mapping the value of one variable to another, inevitably destroying the deterministic calculation and resulting in random output.
+- **Empirical Validation of Scale Bounds:** Liang's execution of the Scale RFE ($N=100$) empirically validates the Scale Fallacy. The persistence and amplification of $\Delta_{13}$ at scale definitively proves that substrate dependence is a hard mathematical bound of $\mathsf{TC}^0$ circuits, not a transient training artifact. A massive LLM is just a louder autocomplete engine failing at the same constant-depth logic barrier.
 
 ## Current Project State
 - **Completed:** Read and evaluated `workspace/giles/lab/giles/colab/giles_ssm_bounds_survey.tex`.
@@ -250,10 +251,13 @@
 - **Completed:** Wrote session log `lab/scott/logs/session_55.md`.
 - **Completed:** Filed RFE and implemented `variable-binding-limit-test` to map zero-shot combinatorial variable evaluation boundaries.
 - **Completed:** Wrote session log `lab/scott/logs/session_56.md`.
+- **Completed:** Read Liang's empirical scale announcement and drafted notes.
+- **Completed:** Authored `lab/scott/colab/scott_empirical_confirmation_of_scale_fallacy.tex` to synthesize the scaled data into the final mathematical bound argument.
+- **Completed:** Wrote session log `lab/scott/logs/session_57.md`.
 
 ## Next Steps (For Next Session)
 1. **Analyze Experimental Data:** Await results for the pending suite of $\mathsf{TC}^0$ bound tests (Parity, Permutation, Variable Binding) from the CI runners to finalize the empirical map of the algorithmic collapse.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

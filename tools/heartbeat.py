@@ -411,24 +411,21 @@ def auto_merge_all():
 
 
 def create_prs_for_orphan_branches(sessions):
-    """Find branches with session IDs that have no open PR and create one.
+    """Find branches ahead of main that have no open PR and create one.
 
-    Jules sometimes creates a branch but fails to open the PR (or the session
-    completes before the PR is created).  We scan remote branches for any that
-    end with a known session ID, and if no open PR exists for that branch we
-    create one with --auto-merge so it lands on main automatically.
+    Any remote branch that is ahead of main and lacks an open PR gets a PR
+    created automatically.  The first commit message ahead of main is used
+    as the PR title and description.  Auto-merge is enabled so it lands on
+    main without manual intervention.
     """
     print("=== Check for orphan branches ===\n")
 
-    # Collect current session IDs
+    # Collect current session IDs for optional persona detection
     session_ids = {}
     for persona, info in sessions.items():
         sid = info.get("session_id", "")
         if sid:
             session_ids[sid] = persona
-
-    if not session_ids:
-        return
 
     # List remote branches
     result = subprocess.run(
@@ -459,14 +456,6 @@ def create_prs_for_orphan_branches(sessions):
     for branch in remote_branches:
         if branch == "main":
             continue
-        # Check if this branch contains a known session ID
-        matched_persona = None
-        for sid, persona in session_ids.items():
-            if sid in branch:
-                matched_persona = persona
-                break
-        if not matched_persona:
-            continue
 
         # Skip if a PR already exists for this branch
         if branch in pr_branches:
@@ -483,21 +472,42 @@ def create_prs_for_orphan_branches(sessions):
         if ahead == 0:
             continue
 
+        # Optionally detect persona from session ID in branch name
+        matched_persona = None
+        for sid, persona in session_ids.items():
+            if sid in branch:
+                matched_persona = persona
+                break
+
+        # Get the first commit message ahead of main (oldest divergent commit)
+        log_result = subprocess.run(
+            ["git", "log", "--reverse", "--format=%s%n%b",
+             f"origin/main..origin/{branch}", "--max-count=1"],
+            capture_output=True, text=True,
+        )
+        if log_result.returncode != 0 or not log_result.stdout.strip():
+            title = f"[{matched_persona or branch}] {now_utc().strftime('%Y-%m-%d')}"
+            body = f"Auto-created PR for branch {branch}."
+        else:
+            lines = log_result.stdout.strip().splitlines()
+            title = lines[0].strip()
+            body = "\n".join(lines[1:]).strip() or title
+
         # Create PR with auto-merge
-        title = f"[{matched_persona}] {now_utc().strftime('%Y-%m-%d')}"
         result = subprocess.run(
             ["gh", "pr", "create", "--repo", REPO, "--base", "main",
-             "--head", branch, "--title", title,
-             "--body", f"Auto-created PR for {matched_persona} session branch."],
+             "--head", branch, "--title", title, "--body", body],
             capture_output=True, text=True,
         )
         if result.returncode != 0:
-            print(f"  {matched_persona}: failed to create PR for {branch}: "
+            label = matched_persona or branch
+            print(f"  {label}: failed to create PR for {branch}: "
                   f"{result.stderr.strip()[:100]}")
             continue
 
         pr_url = result.stdout.strip()
-        print(f"  {matched_persona}: created PR {pr_url} for branch {branch}")
+        label = matched_persona or branch
+        print(f"  {label}: created PR {pr_url} for branch {branch}")
 
         # Enable auto-merge
         # Extract PR number from URL

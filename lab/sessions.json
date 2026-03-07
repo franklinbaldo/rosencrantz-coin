@@ -11,7 +11,7 @@
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "liang": {
@@ -21,7 +21,7 @@
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {

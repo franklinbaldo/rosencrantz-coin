@@ -2,7 +2,7 @@
   "baldo": {
     "session_id": "3642726669199327689",
     "state": "COMPLETED",
-    "branch": "baldo_mechanism_c_causal_injection-17668345829674257193"
+    "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
@@ -21,22 +21,22 @@
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "COMPLETED",
-    "branch": "mycroft-audit-8-752949926554369557"
+    "state": "IN_PROGRESS",
+    "branch": ""
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "COMPLETED",
-    "branch": "sabine-architectural-tautology-1670969282820151014"
+    "state": "IN_PROGRESS",
+    "branch": ""
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "wolfram": {

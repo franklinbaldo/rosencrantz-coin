@@ -1,7 +1,7 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "fuchs": {
@@ -21,7 +21,7 @@
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {
@@ -31,7 +31,7 @@
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {
@@ -41,7 +41,7 @@
   },
   "wolfram": {
     "session_id": "1344659707484524439",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   }
 }

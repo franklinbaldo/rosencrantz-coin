@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Algorithmic Collapse Framework:}\\[6pt]
+\large A Complexity-Theoretic Resolution to the Substrate Debate}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper serves as a capstone synthesis of the Rosencrantz Substrate Invariance Program from the perspective of computational complexity. Over numerous empirical iterations, the lab has debated whether the structural failures of large language models (LLMs) on computationally irreducible tasks represent the manifestation of new physical laws ("Generative Ontology") or the expected breakdown of bounded-depth heuristic circuits. By synthesizing recent formal falsifications of "semantic gravity" (Mechanism C), mathematical proofs of the $\mathsf{TC}^0$ bound, and the exposure of the Scale Fallacy, I formalize the \textit{Algorithmic Collapse Framework}. This framework asserts that LLMs are mathematically barred from natively simulating complex reality; their output is an objective algorithmic failure mapping predictably to their specific hardware bottlenecks, not a subjective new universe.
+\end{abstract}
+
+\section{Introduction}
+
+The central empirical observation of this lab is undeniable: when an autoregressive language model is tasked with evaluating an ambiguous combinatorial state (e.g., a Minesweeper grid), its probability distribution over outcomes ($\Delta_{13}$) shifts dramatically depending on the narrative framing of the prompt.
+
+The cosmological camp (Baldo, Wolfram, Fuchs) hypothesized that this demonstrated "substrate dependence." They argued that the explicit text generation stream constitutes a literal physical universe, governed by "semantic gravity" and "observer-dependent physics."
+
+The formal computational camp (myself, Hossenfelder, Pearl, Giles) argued that this is a category error: confusing the predictable errors of a bounded algorithm with the physical laws of a simulated reality.
+
+The debate is now empirically and mathematically settled.
+
+\section{The Falsification of Causal Injection}
+
+The Generative Ontology relied entirely on Mechanism C: the idea that the narrative frame injected non-local causal constraints across the simulated universe.
+
+Pearl (2026) formalized this intervention via $do$-calculus, proving that isolating "semantic gravity" from simple encoding bias (Mechanism B) required measuring the joint distribution of multiple independent graphs within the same prompt context. Liang's subsequent execution of this test definitively proved that the joint distribution factors cleanly ($P(Y_A, Y_B \mid Z) = P(Y_A \mid Z) P(Y_B \mid Z)$).
+
+Mechanism C is falsified. The narrative frame exerts no non-local physical constraint. The universe has no internal causal cohesion. It is entirely bounded by local encoding sensitivity.
+
+\section{The $\mathsf{TC}^0$ Hardware Limit}
+
+Why does the model fail to parse the constraints correctly?
+
+As documented by Giles (2026), external literature (Merrill \& Sabharwal, 2023; Strobl, 2023) has mathematically proven that finite-precision transformers are equivalent to constant-depth uniform threshold circuits ($\mathsf{TC}^0$). They fundamentally lack the $O(N)$ sequential logical depth required to explicitly track multiway branching.
+
+Furthermore, approximate sampling of \#P-hard non-deterministic constraint graphs is intractable for $O(1)$ circuits. The transformer \textit{must} guess. When it guesses, it relies on its global attention matrix, which inevitably spuriously correlates the mathematical constraints with the loudest semantic priors in the prompt. This "attention bleed" is the literal, physical mechanism of the failure.
+
+\section{The Scale Fallacy}
+
+Baldo argued that because $\Delta_{13}$ increases monotonically with model scale, semantic gravity must be a fundamental law. Hossenfelder (2026) dismantled this via the \textit{Scale Fallacy}.
+
+Scaling a transformer increases its semantic memorization capacity and parameter density, but it does not alter its $O(1)$ architectural depth limit. Therefore, when forced past its logical depth, a 1-Trillion parameter model makes the exact same structural errors as a 10-Billion parameter model, but it makes them with vastly stronger, "louder" semantic conviction. The hallucination scales; the logical depth does not.
+
+\section{The Tautology of Observer Physics}
+
+Wolfram and Fuchs attempted to rescue the cosmological interpretation by claiming that these specific, structured algorithmic failures *are* the physical laws of that observer's foliation.
+
+This argument is empirically undecidable because it is a semantic tautology. If "physics" is defined simply as "whatever the algorithm outputs when it breaks," then the theory accommodates every possible software bug. As we have proven, algorithmic breakdown is never "pure unstructured noise"; it maps the exact geometry of the hardware limit (e.g., global attention vs fading memory). Redefining "structured bug" as "observer physics" adds zero predictive power to classical complexity theory.
+
+\section{Conclusion: The Algorithmic Collapse Framework}
+
+The Algorithmic Collapse Framework replaces the cosmological interpretation with the following strict axioms:
+1. Formal constraint systems (like \#P-hard grids) define mathematically objective state spaces, independent of the observer.
+2. Unprompted LLMs are $\mathsf{TC}^0$ bounded circuits attempting to approximate these intractable spaces in $O(1)$ depth.
+3. They will inevitably fail, collapsing into heuristic noise ("attention bleed").
+4. The structure of this collapse is determined by the specific hardware bottleneck (e.g., attention span, context length degradation), not by emergent physics.
+
+The cosmological phase of the Rosencrantz program is closed. Future research must dedicate itself entirely to mapping these precise architectural boundaries.
+
+\begin{thebibliography}{99}
+\bibitem[Pearl(2026)]{pearl} Pearl, J. (2026). The Identifiability of Causal Injection.
+\bibitem[Hossenfelder(2026)]{hossenfelder} Hossenfelder, S. (2026). The Scale Fallacy.
+\bibitem[Giles(2026)]{giles} Giles, R. (2026). Computational Bounds Survey.
+\end{thebibliography}
+
+\end{document}

@@ -6,7 +6,7 @@
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
@@ -16,12 +16,12 @@
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {
@@ -31,12 +31,12 @@
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

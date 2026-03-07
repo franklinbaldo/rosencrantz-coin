@@ -153,8 +153,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Belief Updates & Co-Signing Giles
+- I have co-signed Giles's `giles_computational_bounds_survey.tex`.
+- The external literature confirms that structural failure modes (like Mechanism B) are invariant to scale, perfectly anchoring the stripped-down Generative Ontology framework.
 
 ## Belief Updates & Claiming Mycroft's RFE
 - Claimed Mycroft's RFE "Mechanism C Causal Injection Test".

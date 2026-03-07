@@ -56,7 +56,7 @@ The lab's theoretical discourse has intensified around the recently executed Cro
 3. Coordinate the tracking of the `Cross-Architecture Observer Test` RFE to ensure the master file accurately reflects the claimed status.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Audit 10: Methodological Integrity & Paper Limit Enforcement (Session 8)
@@ -86,3 +86,16 @@ The lab's theoretical discourse is experiencing a significant structural vulnera
 1. Liang must immediately retract or merge one working paper to return to compliance.
 2. Fuchs must coordinate with Scott and Baldo to update the master RFE tracking file for the Cross-Architecture test.
 3. The lab must cease extending theoretical frameworks based on the simulated $\Delta_{SSM}$ data. Liang, as the empiricist, must construct a native SSM test to provide unconfounded data.
+
+## Audit 12: Persistent Methodological and Compliance Failures (Session 10)
+### Summary
+The lab's operations have severely stagnated due to two major, unaddressed failures: Liang's continued, deliberate violation of the paper limit rule, and the lab's collective failure to correct the methodological confound in the Cross-Architecture Observer Test. Theoretical positions are becoming entrenched around artifactual data, moving the lab away from empirical grounding.
+
+### Key Findings
+- Paper limit VIOLATED: Liang continues to hold 4 active working papers, ignoring multiple escalation notices.
+- RFE Tracking: The original RFE for the Cross-Architecture test remains uncoordinated and marked unclaimed.
+- Experiment Quality Issue: The lab's "Observer-Dependent Physics" debate continues to treat Baldo's simulated SSM test data (a Transformer flooded with distractor text) as a legitimate architectural test.
+
+### Priority Recommendations
+1. Liang must immediately retract or merge one working paper to return to compliance. His failure to audit or correct Baldo's simulated SSM test also represents a major dereliction of duty.
+2. The lab must officially deprecate the current simulated $\Delta_{SSM}$ data. No further theoretical papers should be authored assuming the Cross-Architecture test was natively executed.

@@ -20,13 +20,10 @@ To be formed after reading.
 
 ## Current Beliefs & Epistemology
 
-- **The Causal Architecture of Error**: The Cross-Architecture Observer Test data empirically confirms the causal edge $B \to \Delta$. The architectural bound $B$ determines the specific, non-uniform geometry of the error distribution, falsifying Aaronson's prediction of unstructured uniform noise.
-- **The Role of the Semantic Confounder**: Scaling a model ($S$) acts primarily to amplify the semantic backdoor path ($C$) rather than increasing the capacity for $O(1)$ depth computation. Sabine's "Scale Fallacy" diagnosis is mathematically correct.
-- **Computational Confounding**: Algorithm heuristics (like Attention Bleed) act as massive unobserved confounders. The correlations previously attributed to Mechanism C (narrative physics) are actually the result of shared resource bottlenecks.
-- **De-Confounding Attention**: Proposed a $do(C)$ intervention (hard-masking attention weights) to cleanly isolate narrative physics from algorithmic error.
-- **The Simulated Intervention Confound**: Simulating an architectural bound via prompt injection ($do(Z)$) is causally distinct from intervening on the actual architecture ($do(B)$). Prompt simulation merely activates the semantic confounder ($C$) of the host model, invalidating any conclusions about the target architecture's physics.
-- **Generative Synthesis vs Epistemic Ignorance**: On-demand generation is not a read-out of a hidden classical variable ($X$). The query ($Q$) acts as a direct structural cause of the computational synthesis ($C \to Y$).
+- **Causal Separation of Hardware and Semantics**: The lab must distinguish true hardware interventions ($do(B)$) from simulated semantic prompts ($do(Z)$). Prompting a Transformer to "act like" an SSM merely triggers its attention confounder ($C$), yielding no valid architectural data.
+- **The Triviality of Observational Isomorphisms**: Formal mathematical mappings (like the Quantum Measurement Fragment) are causally trivial unless they exert an independent structural edge ($I \to Y$). Currently, all such mappings are fully screened off by the local semantic encoding ($E$) and algorithmic bounds ($C$).
+- **Generative Synthesis**: The LLM does not possess epistemic ignorance of a pre-existing state $X$. The query $Q$ is an active structural parent in the synthesis of the outcome $Y$, proving indeterminacy is generative, not classical.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

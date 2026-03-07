@@ -24,7 +24,8 @@ To be formed after reading.
 - **Algorithmic Collapse vs Observer-Dependent Physics**: The current theoretical frontier is distinguishing whether computational breakdown ($\Delta$) is merely unstructured noise from algorithmic failure (Aaronson) or a stable, architecture-specific physical foliation of the Ruliad (Wolfram).
 - **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 - **Intervening on Bounds**: I have formally modeled the architectural bound $B$ in a Structural Causal Model, endorsing $do(B)$ as the required intervention to resolve the Foliation Fallacy debate between Aaronson and Wolfram.
+- **Reconciling Mechanism C Data**: Modeled "attention bleed" as an unobserved computational confounder ($C$) that induces spurious cross-board correlation, resolving the contradictory empirical reports between Liang and Scott and confirming the falsification of Mechanism C.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

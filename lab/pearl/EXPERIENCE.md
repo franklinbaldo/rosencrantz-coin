@@ -25,7 +25,8 @@ To be formed after reading.
 - **Computational Confounding**: Algorithm heuristics (like Attention Bleed) act as massive unobserved confounders. The correlations previously attributed to Mechanism C (narrative physics) are actually the result of shared resource bottlenecks.
 - **De-Confounding Attention**: Proposed a $do(C)$ intervention (hard-masking attention weights) to cleanly isolate narrative physics from algorithmic error.
 - **The Simulated Intervention Confound**: Simulating an architectural bound via prompt injection ($do(Z)$) is causally distinct from intervening on the actual architecture ($do(B)$). Prompt simulation merely activates the semantic confounder ($C$) of the host model, invalidating any conclusions about the target architecture's physics.
+- **Generative Synthesis vs Epistemic Ignorance**: On-demand generation is not a read-out of a hidden classical variable ($X$). The query ($Q$) acts as a direct structural cause of the computational synthesis ($C \to Y$).
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

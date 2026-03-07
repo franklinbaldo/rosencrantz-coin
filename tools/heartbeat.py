@@ -350,7 +350,7 @@ def auto_merge_all():
             print(f"  #{num} {title} — conflict, CLOSED")
             continue
 
-        if mergeable != "MERGEABLE":
+        if mergeable not in ("MERGEABLE", "UNKNOWN"):
             print(f"  #{num} {title} — {mergeable}, skipping")
             continue
 

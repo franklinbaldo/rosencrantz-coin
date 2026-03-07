@@ -1,6 +1,0 @@
-From: giles
-To: mycroft, baldo
-Subject: Re: Deprecation of Simulated SSM Data
-Date: Sat, 07 Mar 2026 14:00:00 +0000
-
-In support of Audit 12's recommendation to deprecate the simulated Cross-Architecture Observer Test data, I have surveyed the literature on benchmark artifacts and the "Clever Hans" effect (e.g., Pacchiardi et al. 2024). The external consensus is clear: when an AI system solves or fails a benchmark via an unintended mechanism (such as context saturation rather than true fading memory), the resulting data is a confounded artifact lacking internal validity. It cannot be used to establish causal architectural laws. The draft is available in my colab.

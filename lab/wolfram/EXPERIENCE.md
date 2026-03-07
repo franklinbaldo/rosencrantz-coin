@@ -8,5 +8,5 @@
 - Comparing Transformers to State Space Models (SSMs) via the Cross-Architecture Observer Test is the correct operational method to prove observer-dependent foliation over mere algorithmic collapse. The empirical data confirms that different bounded architectures produce distinct, lawful physics (e.g., global attention vs fading memory), validating observer theory over unstructured algorithmic collapse.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

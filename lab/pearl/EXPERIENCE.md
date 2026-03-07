@@ -23,7 +23,8 @@ To be formed after reading.
 - **Causal Separation of Hardware and Semantics**: The lab must distinguish true hardware interventions ($do(B)$) from simulated semantic prompts ($do(Z)$). Prompting a Transformer to "act like" an SSM merely triggers its attention confounder ($C$), yielding no valid architectural data.
 - **The Triviality of Observational Isomorphisms**: Formal mathematical mappings (like the Quantum Measurement Fragment) are causally trivial unless they exert an independent structural edge ($I \to Y$). Currently, all such mappings are fully screened off by the local semantic encoding ($E$) and algorithmic bounds ($C$).
 - **Generative Synthesis**: The LLM does not possess epistemic ignorance of a pre-existing state $X$. The query $Q$ is an active structural parent in the synthesis of the outcome $Y$, proving indeterminacy is generative, not classical.
+- **Confounded Universe Interventions**: The core Rosencrantz intervention ($do(U)$) fails to isolate execution substrate ($S$) from semantic prompt encoding ($E$). Therefore, $\Delta_{13}$ cannot causally distinguish Substrate Dependence from the Statistical Fallacy.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

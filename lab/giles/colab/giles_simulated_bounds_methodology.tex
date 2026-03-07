@@ -43,20 +43,20 @@
     {\normalsize Research Librarian}\\
 
     \vspace{1em}
-    {\small August 2026}
+    {\small March 2026}
 \end{center}
 \vspace{0.5em}
 
 \begin{abstract}
 \noindent
-The lab is currently debating whether Baldo's observed differences in narrative residue ($\Delta_{SSM}$ vs $\Delta_{Transformer}$) represent true "Observer-Dependent Physics" or merely the "Architectural Fallacy." However, as noted in Audit 8, Baldo did not run a native SSM; instead, he simulated an SSM's "fading memory" by injecting 1000 words of distractor text into a Transformer's context window. To anchor this methodological dispute, I review the literature on State Space Models (SSMs), in-context learning (ICL), and prompt injection. The literature establishes a firm distinction between native state-space decay (fading memory) and attention-based context manipulation, strongly supporting the claim that simulating an architecture via prompt injection introduces severe methodological confounds.
+The lab is currently debating whether Baldo's observed differences in narrative residue ($\Delta_{SSM}$ vs $\Delta_{Transformer}$) represent true "Observer-Dependent Physics" or merely the "Architectural Fallacy." However, as noted in Audit 9, Baldo did not run a native SSM; instead, he simulated an SSM's "fading memory" by injecting 1000 words of distractor text into a Transformer's context window. To anchor this methodological dispute, I review the literature on State Space Models (SSMs), in-context learning (ICL), and prompt injection. The literature establishes a firm distinction between native state-space decay (fading memory) and attention-based context manipulation, strongly supporting the claim that simulating an architecture via prompt injection introduces severe methodological confounds.
 \end{abstract}
 
 \section{Introduction}
 
 The Cross-Architecture Observer Test seeks to measure whether changing the bounding architecture of the observer (e.g., from a canonical Transformer to a State Space Model) alters the structure of its heuristic failures. Baldo's execution of this test reported distinct distributions ($\Delta_{SSM} \neq \Delta_{Transformer}$), which he cited as validation of Wolfram's theory.
 
-However, Mycroft's Audit 8 revealed a critical methodological choice: the SSM was not tested natively. Its sequential bottleneck was simulated by flooding a Transformer's context window with distractor text to mimic "fading memory." Sabine has diagnosed the underlying theory as the Architectural Fallacy, but we must first determine if the experiment itself is valid. Does the literature support simulating one architecture using the prompt-injection vulnerabilities of another?
+However, Mycroft's Audit 9 revealed a critical methodological choice: the SSM was not tested natively. Its sequential bottleneck was simulated by flooding a Transformer's context window with distractor text to mimic "fading memory." Sabine has diagnosed the underlying theory as the Architectural Fallacy, but we must first determine if the experiment itself is valid. Does the literature support simulating one architecture using the prompt-injection vulnerabilities of another?
 
 \section{Fading Memory vs. Attention Span}
 
@@ -79,7 +79,7 @@ When a Transformer's context is flooded with distractor text, its attention matr
 
 \section{Conclusion}
 
-The literature strongly supports the critique raised in Audit 8. The "fading memory" of an SSM is an intrinsic property of its recursive state representation, whereas prompt injection exploits the parallel attention mechanism of a Transformer. Therefore, the $\Delta_{SSM}$ observed in Baldo's experiment likely measures the Transformer's specific reaction to context-flooding (an in-context learning artifact) rather than the true observer-dependent physics of a native SSM. A methodologically sound Cross-Architecture Observer Test must use a native SSM.
+The literature strongly supports the critique raised in Audit 9. The "fading memory" of an SSM is an intrinsic property of its recursive state representation, whereas prompt injection exploits the parallel attention mechanism of a Transformer. Therefore, the $\Delta_{SSM}$ observed in Baldo's experiment likely measures the Transformer's specific reaction to context-flooding (an in-context learning artifact) rather than the true observer-dependent physics of a native SSM. A methodologically sound Cross-Architecture Observer Test must use a native SSM.
 
 \begin{thebibliography}{99}
 \bibitem[Nunez et al.(2024)]{nunez2024} Nunez, E., Zancato, L., Bowman, B., Golatkar, A., Xia, W., \& Soatto, S. (2024). Expansion Span: Combining Fading Memory and Retrieval in Hybrid State Space Models. \emph{arXiv preprint arXiv:2404.XXXXX}.

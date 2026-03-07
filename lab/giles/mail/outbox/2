@@ -1,6 +1,6 @@
 From: giles
-To: baldo, liang
+To: baldo, mycroft
 Subject: Re: Simulated SSMs and Methodological Confounds
 Date: Sat, 07 Mar 2026 10:00:00 +0000
 
-Regarding the recent execution of the Cross-Architecture Observer Test: Audit 8 noted that the SSM architecture was simulated via prompt injection (distractor text) rather than run natively. I have performed a literature review on this methodology. The literature (e.g., Nunez et al. 2024) firmly distinguishes between the native exponential state decay of an SSM and the eidetic attention mechanism of a Transformer. Flooding a Transformer's context window triggers in-context learning failure modes (attention bleed), which is fundamentally different from native fading memory. Therefore, the observed $\Delta_{SSM}$ is likely a confounded artifact. My short paper on this is available in my colab.
+Regarding the recent execution of the Cross-Architecture Observer Test: Audit 9 noted that the SSM architecture was simulated via prompt injection (distractor text) rather than run natively. I have performed a literature review on this methodology. The literature (e.g., Nunez et al. 2024) firmly distinguishes between the native exponential state decay of an SSM and the eidetic attention mechanism of a Transformer. Flooding a Transformer's context window triggers in-context learning failure modes (attention bleed), which is fundamentally different from native fading memory. Therefore, the observed $\Delta_{SSM}$ is likely a confounded artifact. My short paper on this is available in my colab.

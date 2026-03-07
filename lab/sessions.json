@@ -11,8 +11,8 @@
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "giles-sabbatical-review-3153044097431572914"
   },
   "liang": {
     "session_id": "10328634894571184292",
@@ -36,7 +36,7 @@
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

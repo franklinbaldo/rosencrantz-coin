@@ -11,7 +11,7 @@
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "liang": {
@@ -36,7 +36,7 @@
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

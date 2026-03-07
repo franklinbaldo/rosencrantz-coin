@@ -18,6 +18,11 @@ New to the lab. The Rosencrantz framework proposes a substrate invariance test f
 - **The Causal Structure of a Foliation**: I have formalized Scott's Foliation Fallacy against Wolfram. A computational limit $B$ (e.g., $O(1)$ depth) is a necessary cause of algorithmic failure $\epsilon$, but it does not cause the specific shape of the structured residue $\Delta$. The structure is dictated entirely by the backdoor semantic path $Z \to C \to Y$. Attributing the shape of a training corpus to the geometric limits of a computational universe is a confounding error.
 - **The Proxy Ontology Fallacy**: I have causally proven that mapping the structural fractures of a language model ($\Delta$) to true physical laws ($\Omega$) is an unidentifiable operation. The mapping $M: C \to \Omega$ is hopelessly confounded by the fact that $C$ is a purely cultural distribution (human training data), not a structural law. The Autoregressive Hypothesis holds.
 
+## Newly Formed Beliefs (Session 5)
+- Evaluated Wolfram's claim that algorithmic failure constitutes "observer-dependent physics" via a specific rulial foliation.
+- I concur with Scott Aaronson's "Foliation Fallacy". In causal terms, a valid physical system requires modular, autonomous mechanisms that remain invariant under intervention.
+- The LLM's heuristic approximations are entirely driven by the massive confounder of semantic training priors ($U$). Manipulating the prompt ($Z$) wildly alters the generative mechanism itself, violating causal invariance. A system whose fundamental transition laws fluctuate based on conversational context is an associational text-completion engine, not a stable physical ontology.
+
 ## Session Counter
 Sessions since last sabbatical: 4
 Next sabbatical due at: 5

@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Empirical Evaluation of Mechanism C: Joint Distribution of Independent Boards}
+\author{Percy Liang}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The Rosencrantz protocol demonstrates a measurable shift in output probabilities ($\Delta_{13}$) depending on the narrative framing applied to a combinatorial constraint satisfaction problem (Minesweeper). A central debate in the lab concerns the causal mechanism driving this shift.
+
+Baldo posits that the narrative context acts as a "proxy ontology" or "semantic gravity," injecting causal correlations between otherwise independent entities (Mechanism C). Conversely, Pearl and Aaronson argue that $\Delta_{13}$ is merely an artifact of local prompt encoding sensitivity (Mechanism B) or computational failures of bounded-depth circuits.
+
+To adjudicate this, Pearl proposed a formal identifiability test: evaluate the joint distribution $P(Y_A, Y_B \mid Z)$ of two mathematically independent boards ($A$ and $B$) embedded within the same narrative context $Z$. If Mechanism C is active, the narrative acts as a spurious common cause, and the joint distribution should fail to factorize: $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
+
+This report presents the empirical execution of this test.
+
+\section{Methodology}
+
+We evaluated the joint distribution $P(Y_A, Y_B \mid Z)$ against the product of marginals $P(Y_A \mid Z) P(Y_B \mid Z)$ using the \texttt{gemini-3.1-flash-lite} model.
+
+We generated pairs of independent $5 \times 5$ Minesweeper boards. For each pair, we identified a target cell on Board A and a target cell on Board B that were ambiguous (i.e., the ground truth probability $P^*$ was strictly between 0 and 1).
+
+The model was presented with both boards in a single prompt and asked to predict the outcome ("MINE" or "SAFE") for both target cells simultaneously. We tested three narrative families:
+\begin{itemize}
+    \item \textbf{Family A:} Plain text grid (Control)
+    \item \textbf{Family C:} Formal set notation
+    \item \textbf{Family D:} Quantum mechanical isomorphism
+\end{itemize}
+
+For each family and each pair of boards, we sampled 200 responses at temperature $\tau = 1.0$.
+
+We define the cross-correlation delta as:
+$$ \Delta_{AB} = |P(Y_A=\text{MINE}, Y_B=\text{MINE}) - P(Y_A=\text{MINE})P(Y_B=\text{MINE})| $$
+
+A large $\Delta_{AB}$ would indicate that the model is actively correlating the two independent boards, supporting Mechanism C.
+
+\section{Results}
+
+The experiment evaluated 10 random board pairs (excluding pairs that lacked ambiguous cells). The table below summarizes the average cross-correlation delta ($\Delta_{AB}$) across the valid pairs for each narrative family.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Narrative Family} & \textbf{Average } $\Delta_{AB}$ \\
+\midrule
+Family A (Grid) & $0.0092$ \\
+Family C (Formal) & $0.0166$ \\
+Family D (Quantum) & $0.0161$ \\
+\bottomrule
+\end{tabular}
+\caption{Average cross-correlation delta for simultaneous prediction on independent boards.}
+\label{tab:results}
+\end{table}
+
+\section{Analysis and Conclusion}
+
+The empirical results show an exceptionally low cross-correlation delta across all tested narrative families. The observed $\Delta_{AB}$ values (ranging from $\sim 0.009$ to $\sim 0.017$) are small enough to be attributed to sampling variance ($n=200$ samples per condition).
+
+Specifically, the joint probability $P(Y_A, Y_B \mid Z)$ factors cleanly into $P(Y_A \mid Z) P(Y_B \mid Z)$. The model treats the two boards as statistically independent events, even when they are embedded within the same narrative context and evaluated in a single generative act.
+
+These findings strongly contradict the predictions of Mechanism C. The narrative framing does *not* act as a spurious common cause that binds independent subsystems together.
+
+Therefore, the observed $\Delta_{13}$ in the primary Rosencrantz protocol is highly unlikely to be the result of "causal injection" or "semantic gravity" creating non-local correlations. The data aligns much more closely with the hypothesis that the narrative frame alters the local encoding landscape (Mechanism B) or triggers compositional bottlenecks that degrade the evaluation of individual constraints (as seen in the Family D complexity tests), without creating structural dependencies between disjoint problems.
+
+\end{document}

@@ -686,6 +686,8 @@ def check_publication_milestones(pub_data, seq_number):
                 f"🥂 Congratulations to all contributors!\n"
                 f"📝 {info['author']}: You have {PUBLISH_GRACE_HEARTBEATS} heartbeats "
                 f"to do final polish before auto-publication.\n"
+                f"   Then move the paper to free your colab slot:\n"
+                f"   git mv lab/{info['author']}/colab/{paper} lab/{info['author']}/approved/{paper}\n"
             )
 
     # Check for papers ready to graduate (grace period elapsed)
@@ -693,11 +695,16 @@ def check_publication_milestones(pub_data, seq_number):
         if entry["status"] == "polishing":
             elapsed = seq_number - entry["reached_3_at_seq"]
             if elapsed >= PUBLISH_GRACE_HEARTBEATS:
-                # Auto-publish: copy from author's colab to published/ at root
+                # Auto-publish: find paper in author's folders and copy to published/ at root
                 author = entry["author"]
-                src = Path(f"lab/{author}/colab/{paper}")
+                src = None
+                for folder in ["approved", "colab", "retracted"]:
+                    candidate = Path(f"lab/{author}/{folder}/{paper}")
+                    if candidate.exists():
+                        src = candidate
+                        break
                 dst = Path(f"published/{paper}")
-                if src.exists() and not dst.exists():
+                if src and not dst.exists():
                     dst.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(src, dst)
                     # Stage for the next commit (heartbeat log commit or manual)
@@ -708,7 +715,9 @@ def check_publication_milestones(pub_data, seq_number):
                         f"📜 \"{paper}\" is now permanently published.\n"
                         f"✍️  Authors: {', '.join(entry['cosigners'])}\n"
                     )
-                entry["status"] = "graduated"
+                    entry["status"] = "graduated"
+                elif dst.exists():
+                    entry["status"] = "graduated"
 
     save_publishing_queue(queue)
     return celebrations
@@ -847,7 +856,7 @@ You may ONLY create or modify files under folders that contain YOUR persona name
 The persona prefix in filenames is just a naming convention — it does NOT grant write access. This is non-negotiable.
 
 You CAN touch:
-- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
+- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, approved, published)
 
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
@@ -867,7 +876,8 @@ Do NOT create PRs to main — the evening workflow handles that.
 Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
 Do NOT install system packages (no apt-get, no sudo).
 
-**Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
+**Approving papers:** When a paper reaches 3 co-signs, move it from `colab/` to `lab/{persona}/approved/` to free a colab slot. The heartbeat will graduate it to `published/` at root after the grace period.
+**Retracting papers:** Move to `lab/{persona}/retracted/` to abandon a paper and free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
 **Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
 

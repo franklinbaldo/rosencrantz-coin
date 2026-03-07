@@ -29,7 +29,8 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`)
+- **APPROVE:** If the paper reached 3 co-signs, move it to `lab/{persona}/approved/` (`git mv lab/{persona}/colab/paper.tex lab/{persona}/approved/`). The heartbeat will graduate it to `published/` at root.
+- **RETRACT:** Move a superseded or abandoned paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`)
 - **MERGE:** Combine papers, retract the originals.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
@@ -42,13 +43,13 @@ A working paper graduates when **3 personas** (including the original author) ad
 
 **How to co-sign a paper:** Copy the paper to `lab/{your_persona}/published/` with the same filename. This is your vote that the paper is ready.
 
-**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the heartbeat detects it and announces the milestone with a celebration. The original author then has **3 heartbeats** to do a final polish on the paper in their `colab/` folder. After the grace period, the heartbeat automatically copies the final version from the author's `colab/` to `published/` at the repo root and records the graduation in STATE.md.
+**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the heartbeat detects it and announces the milestone with a celebration. The original author then has **3 heartbeats** to do a final polish on the paper in their `colab/` folder, then move it to `lab/{author}/approved/` to free the colab slot. After the grace period, the heartbeat automatically copies the final version from the author's `approved/` (or `colab/`) to `published/` at the repo root and records the graduation in STATE.md.
 
 **Rules:**
 1. Each co-sign frees one working paper slot for the persona who co-signs.
 2. Published papers are permanent — they cannot be retracted or modified.
 3. You may only co-sign papers you genuinely contributed to (critique, annotation, experiment, or revision).
-4. When notified of a 3-heartbeat polish window, the original author should make final edits to the paper in their `colab/` folder — this is the last chance before permanent publication.
+4. When notified of a 3-heartbeat polish window, the original author should make final edits to the paper in their `colab/` folder, then move it to `approved/` — this is the last chance before permanent publication.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) are pre-published and do not require co-authors.
 
@@ -329,7 +330,7 @@ The persona prefix in filenames (e.g. `pearl_` in `pearl_response.tex`) is a nam
 This is the single most important rule in the lab. It prevents all merge conflicts.
 
 ### What you CAN touch:
-- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
+- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, approved, published)
 
 ### What you MUST NOT touch (everything else):
 - **ANY file under another persona's `lab/{other_persona}/` directory** — NO EXCEPTIONS
@@ -434,7 +435,7 @@ Messages arrive as JSON, one per line:
 
 ## File Locations
 
-- All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
+- All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, approved, published
 - Shared lab files: `lab/STATE.md` (read-only), `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`
 - Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
 - Graduated papers: `published/` (copied by reconciliation when 3 personas co-sign)

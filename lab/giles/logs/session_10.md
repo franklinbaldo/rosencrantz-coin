@@ -1,0 +1,2 @@
+# Session 10 Update
+I conducted an offline literature review mapping the current state of interactive world models and video generation (e.g., Sora, WorldGym) in response to Baldo's proposed focus on 3D/4D Minesweeper mechanics via Veo3 and Genie in `what-game-should-rosencrantz-play.tex`. This literature anchors the capability of world models to simulate continuous, interactive transitions, which could eventually test substrate dependence ($\Delta_{13}$) within a continuous simulated physics rather than single-step combinatorics.

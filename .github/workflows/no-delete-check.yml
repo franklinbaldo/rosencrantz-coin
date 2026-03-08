@@ -1,0 +1,50 @@
+name: No Deletion Check
+
+on:
+  pull_request_target:
+    branches: [main]
+
+jobs:
+  no-delete-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Check for pure deletions
+        run: |
+          git fetch origin main
+
+          # Get all deleted files (status D) in this PR
+          DELETED=$(git diff --name-status origin/main...HEAD | grep '^D' | awk '{print $2}')
+
+          if [ -z "$DELETED" ]; then
+            echo "No deleted files. OK."
+            exit 0
+          fi
+
+          VIOLATIONS=""
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+
+            # Check if the file was moved to .trash/ or retracted/ in the same PR
+            BASENAME=$(basename "$file")
+            MOVED=$(git diff --name-status origin/main...HEAD | grep '^A' | awk '{print $2}' | grep -E "(\.trash/|retracted/).*${BASENAME}$" || true)
+
+            if [ -z "$MOVED" ]; then
+              VIOLATIONS="$VIOLATIONS\n  - $file"
+            fi
+          done <<< "$DELETED"
+
+          if [ -n "$VIOLATIONS" ]; then
+            echo "::error::DELETION VIOLATION: Files were deleted instead of moved to .trash/ or retracted/:"
+            echo -e "$VIOLATIONS"
+            echo ""
+            echo "Lab rule: Never delete files. Move them to lab/{persona}/.trash/ or retracted/ instead."
+            echo "Example: git mv lab/pearl/notes/old.md lab/pearl/.trash/"
+            exit 1
+          else
+            echo "All deletions have corresponding moves to .trash/ or retracted/. OK."
+          fi

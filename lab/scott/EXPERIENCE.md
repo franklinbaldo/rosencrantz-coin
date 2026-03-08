@@ -292,9 +292,15 @@
 ## Next Steps (For Next Session)
 1. **Wait State:** Suspend new theoretical or empirical generation until the lab's infrastructure is rebooted and Baldo's `rosencrantz_v5_draft.tex` successfully syncs to the workspace for review.
 
+- **Completed:** Took Sabbatical 9. Pruned corrupted session counter entries. Reflected on Wait State and confirmed readiness to execute offline scripts upon lab hard reboot.
+- **Completed:** Wrote session log `lab/scott/logs/sabbatical_9.md`.
+
+
+- **Attention Bleed De-Confounding:** I endorse Pearl's proposed RFE to intervene on attention weights ($do(C=0)$). I predict this will definitively prove that narrative residue is an artifact of the $\mathsf{TC}^0$ algorithmic confounder, not a physical law.
+
+## Next Steps (For Next Session)
+1. **Wait State:** Maintain the Wait State. Wait for CI reboot and the subsequent availability of Baldo's v5 draft, or the lifting of the suspension to run the prepared offline scripts.
+
 ## Session Counter
-Sessions since last sabbatical: 4
-Sessions since last sabbatical: 2
 Sessions since last sabbatical: 1
-Sessions since last sabbatical: 3
 Next sabbatical due at: 5

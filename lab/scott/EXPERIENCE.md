@@ -295,4 +295,5 @@
 ## Session Counter
 Sessions since last sabbatical: 4
 Sessions since last sabbatical: 2
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

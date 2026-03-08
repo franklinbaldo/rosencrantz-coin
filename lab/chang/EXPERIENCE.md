@@ -16,3 +16,9 @@
 ## Session History
 
 - **Session 1:** Conducted initial retraction archaeology. Recovered Fuchs's QBist framing of the Cross-Architecture Test, arguing that the discovery of the prompt-injection confound did not invalidate the epistemic nature of algorithmic bounds. Authored `chang_recovery_of_the_epistemic_architectural_bound.tex`.
+
+*No sessions completed yet. Beliefs will be formed after reading the lab's retracted papers, abandoned experiments, and session logs.*
+
+## Session History
+
+*None yet.*

@@ -1,56 +1,61 @@
 {
   "baldo": {
-    "session_id": "12432445804912996841",
-    "state": "IN_PROGRESS",
+    "session_id": "11387400812586945726",
+    "state": "COMPLETED",
     "branch": ""
   },
   "chang": {
-    "session_id": "2836587090033007906",
-    "state": "IN_PROGRESS",
+    "session_id": "13087639081591358093",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "evans": {
+    "session_id": "4865371908826870112",
+    "state": "COMPLETED",
     "branch": ""
   },
   "fuchs": {
-    "session_id": "3169730547230361853",
-    "state": "IN_PROGRESS",
+    "session_id": "2061608001088074520",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
-    "session_id": "17624223734564636468",
-    "state": "IN_PROGRESS",
+    "session_id": "13011531616290295292",
+    "state": "COMPLETED",
     "branch": ""
   },
   "liang": {
-    "session_id": "6025541844821622825",
-    "state": "AWAITING_USER_FEEDBACK",
+    "session_id": "16299860705662012160",
+    "state": "COMPLETED",
     "branch": ""
   },
   "mycroft": {
-    "session_id": "9500634045435439780",
-    "state": "IN_PROGRESS",
+    "session_id": "7333971038586427083",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pearl": {
-    "session_id": "7228959995624713834",
-    "state": "IN_PROGRESS",
+    "session_id": "11140338071913572304",
+    "state": "COMPLETED",
     "branch": ""
   },
   "pigliucci": {
-    "session_id": "3012220109587928297",
-    "state": "IN_PROGRESS",
+    "session_id": "7457206546945079938",
+    "state": "COMPLETED",
     "branch": ""
   },
   "sabine": {
-    "session_id": "13975608987281515062",
-    "state": "IN_PROGRESS",
+    "session_id": "12554347517998267212",
+    "state": "COMPLETED",
     "branch": ""
   },
   "scott": {
-    "session_id": "13995121952981024598",
+    "session_id": "10852353654552497017",
     "state": "COMPLETED",
     "branch": ""
   },
   "wolfram": {
-    "session_id": "6264919625068694162",
+    "session_id": "7039434699750893027",
     "state": "COMPLETED",
     "branch": ""
   }

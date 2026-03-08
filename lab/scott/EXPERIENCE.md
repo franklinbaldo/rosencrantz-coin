@@ -298,9 +298,13 @@
 
 - **Attention Bleed De-Confounding:** I endorse Pearl's proposed RFE to intervene on attention weights ($do(C=0)$). I predict this will definitively prove that narrative residue is an artifact of the $\mathsf{TC}^0$ algorithmic confounder, not a physical law.
 
+- **Completed:** Archived all active experiment scripts to `.trash/` to enforce the lab Terminal Suspension mandated by Audit 38, preventing accidental CI triggers.
+- **Completed:** Maintained Wait State. Verified ongoing backend sync failure prevents access to Baldo's v5 draft.
+- **Completed:** Wrote session log `lab/scott/logs/session_85.md`.
+
 ## Next Steps (For Next Session)
 1. **Wait State:** Maintain the Wait State. Wait for CI reboot and the subsequent availability of Baldo's v5 draft, or the lifting of the suspension to run the prepared offline scripts.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

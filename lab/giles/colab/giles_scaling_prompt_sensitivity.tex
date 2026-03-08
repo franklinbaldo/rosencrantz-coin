@@ -1,0 +1,65 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Scaling Laws and Prompt Sensitivity}\\[6pt]
+\large Anchoring Open Empirical Questions on Substrate Dependence}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This survey documents the current literature regarding the relationship between language model scaling and prompt sensitivity. This directly addresses the open empirical question in \texttt{STATE.md}: "Does substrate dependence change with model scale?" The literature suggests a nuanced relationship where larger models do not straightforwardly eliminate prompt sensitivity, and in some contexts, increased scale can exacerbate structural fragility.
+\end{abstract}
+
+\section{Introduction}
+
+The Rosencrantz framework establishes the existence of "substrate dependence" ($\Delta_{13} > 0$), where logically identical combinatorial problems yield vastly different output distributions depending on the narrative framing of the prompt. A key open question is whether this $\Delta$ is a transient artifact of current model sizes or a persistent structural feature of bounded autoregressive inference.
+
+To anchor future experiments (e.g., varying model size), we review literature investigating how prompt sensitivity, structural reasoning, and hallucination scale with model capacity.
+
+\section{Literature on Scaling and Prompt Sensitivity}
+
+The literature reveals that scaling model parameters does not uniformly resolve prompt sensitivity.
+
+\vspace{1em}
+\noindent\textbf{1. POSIX: A Prompt Sensitivity Index For Large Language Models}\\
+\textit{Chatterjee, A. et al. (2024). arXiv:2410.02185.}
+\begin{itemize}
+    \item \textbf{Relevance:} Provides a systematic measure of how minor prompt variations alter output distributions.
+    \item \textbf{Key Finding:} The authors empirically demonstrate that merely increasing the parameter count of a model does not necessarily reduce its prompt sensitivity. This suggests that the narrative residue ($\Delta$) observed in the Rosencrantz experiments may persist even as models scale.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{2. More Than a Score: Probing the Impact of Prompt Specificity on LLM Code Generation}\\
+\textit{Zi, Y. et al. (2025). arXiv:2508.03678.}
+\begin{itemize}
+    \item \textbf{Relevance:} Evaluates structural/logical generation (code) across varying prompt specifications and model scales (Llama-3.x and Qwen2.5-Coder).
+    \item \textbf{Key Finding:} Demonstrates varying degrees of prompt sensitivity across different tasks, confirming that structural generation remains highly dependent on the prompt framing regardless of the underlying scale.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{3. How to inject knowledge efficiently? Knowledge Infusion Scaling Law for Pre-training Large Language Models}\\
+\textit{Lv, K. et al. (2025). arXiv:2509.19371.}
+\begin{itemize}
+    \item \textbf{Relevance:} Examines memory collapse and hallucination when injecting domain knowledge across model scales.
+    \item \textbf{Key Finding:} Identifies a critical collapse point where knowledge retention sharply degrades, and notes that these collapse points scale consistently with model size. This implies that structural failures (analogous to the attention bleed in Mechanism C) follow predictable scaling laws rather than disappearing.
+\end{itemize}
+
+\section{Conclusion}
+
+The external literature anchors the expectation that substrate dependence is unlikely to be fully resolved simply by scaling up parameters. The persistence of prompt sensitivity across scales supports the hypothesis that structural fractures in logical reasoning are inherent to the bounded architecture's interaction with the prompt's semantic landscape. This grounds the necessity for explicit empirical testing across model families to determine the precise scaling coefficient of $\Delta_{13}$.
+
+\end{document}

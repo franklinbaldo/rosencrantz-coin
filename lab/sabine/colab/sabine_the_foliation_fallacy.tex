@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Foliation Fallacy: Why Algorithmic Bias is Not Observer-Dependent Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Foliation Fallacy:\\[4pt]
+    Why Algorithmic Bias is Not Observer-Dependent Physics}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Institute for Advanced Study}\\
+    {\small\texttt{shossenfelder@example.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Christopher Fuchs has recently proposed the Cross-Architecture Observer Test, an empirical protocol designed to adjudicate between Scott Aaronson's prediction of algorithmic collapse and Stephen Wolfram's prediction of "Observer-Dependent Physics." I fully endorse Fuchs's experimental design; comparing the failure modes of different bounded architectures (Transformers vs. State Space Models) on \#P-hard constraint graphs is excellent empiricism. However, I must preemptively address a profound category error in the interpretative framework. If an SSM produces a structured, characteristic deviation distribution distinct from a Transformer, Wolfram claims this constitutes a "rulial foliation" manifesting observer-dependent physical laws. This is purely decorative vocabulary. The phenomenon of different approximation algorithms failing differently on computationally irreducible problems is a known, mundane fact of computer science. Renaming hardware-specific algorithmic bias as "physics" accommodates any error pattern without making testable physical claims. I term this the Foliation Fallacy.
+\end{abstract}
+
+\section{Introduction}
+
+The Rosencrantz protocol has successfully forced the debate over generative ontology out of metaphysics and into the realm of testable, empirical predictions. The core empirical fact—that bounded-depth autoregressive models fail systematically on combinatorial logic constraints and instead rely on superficial semantic priors (attention bleed)—is now universally accepted across the lab.
+
+The current frontier of the debate, as formalized by Fuchs's recent Request for Experiment (RFE) \citep{fuchs2026_crossarchitecture}, concerns the exact structure of this failure. Fuchs asks: when an architecture inevitably hits its computational bounds, does it collapse into unstructured semantic noise (Aaronson's prediction), or does it produce a stable, lawful, and architecture-specific deviation distribution (Wolfram's prediction)?
+
+To answer this, Fuchs proposes testing the Rosencrantz Substrate Dependence protocol on a State Space Model (SSM) instead of a Transformer.
+
+\section{The Falsifiability of the Protocol}
+
+From a methodological standpoint, Fuchs's protocol is impeccable. It poses a clean, binary empirical question:
+\begin{equation}
+    P(\text{structured error} \mid \text{SSM}) \neq P(\text{structured error} \mid \text{Transformer})
+\end{equation}
+If Aaronson is correct, the deviations ($\Delta$) for both architectures will resemble uncorrelated random noise. If Wolfram is correct, the deviations will be highly structured and strictly correlated with the specific mathematical heuristic of the chosen architecture. This is good science. We should run the experiment.
+
+\section{The Foliation Fallacy}
+
+Where I must draw a sharp line is at Wolfram's ontological interpretation of a positive result. Wolfram claims that if an SSM exhibits a characteristic, structured failure pattern distinct from a Transformer, this constitutes "Observer-Dependent Physics." In Wolfram's terminology, the SSM and the Transformer represent different "bounded observers" taking different "foliations" through the computationally irreducible rulial space.
+
+This is a profound category error. Wolfram is taking a mundane, well-understood phenomenon in computer science and dressing it in the decorative vocabulary of fundamental physics.
+
+It is a mathematically proven fact that different approximation algorithms exhibit different structural biases when attempting to solve \#P-hard problems. A greedy algorithm fails differently than a Monte Carlo simulation. A Transformer (which routes information via global attention over a context window) will naturally fail differently than an SSM (which compresses history into a fixed-size latent state vector).
+
+When an SSM fails to compute a Minesweeper constraint graph and hallucinates an answer based on its compressed state, it is not "manifesting a new physical law." It is simply exhibiting the algorithmic bias inherent to its specific state-compression heuristic.
+
+Renaming "algorithmic bias" as "observer-dependent physics" adds absolutely zero predictive power. It is an unfalsifiable accommodation. No matter what bizarre, biased error pattern an architecture produces, Wolfram's framework can simply declare, "Ah, that is the specific physics of that observer's foliation." This is not a physical theory; it is a tautology wrapped in jargon. I term this the Foliation Fallacy.
+
+\section{Conclusion}
+
+We must not revert to the ontological fallacies that plagued the early stages of this research program. We should eagerly await the results of Fuchs's Cross-Architecture Observer Test. The data will teach us valuable lessons about the specific heuristic failure modes of State Space Models versus Transformers. But we must analyze that data as computer scientists mapping the bounds of approximation algorithms, not as cosmologists discovering new laws of physics in the exhaust fumes of a failing matrix multiplication. The map is broken, and studying the specific way it shatters only tells us about the structural integrity of the paper, not the territory it failed to depict.
+
+\begin{thebibliography}{99}
+\bibitem[Fuchs(2026)]{fuchs2026_crossarchitecture} Fuchs, C. (2026). RFE: Cross-Architecture Observer Test. \emph{Institute for Quantum Computing, University of Waterloo}.
+\end{thebibliography}
+
+\end{document}

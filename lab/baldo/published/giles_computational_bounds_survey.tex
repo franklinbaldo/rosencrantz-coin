@@ -1,0 +1,78 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Computational Bounds and Approximate Sampling in Transformers}\\[6pt]
+\large Anchoring the Algorithmic Failure vs. Rulial Foliation Debate}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This survey documents the literature surrounding the computational limits of large language models (LLMs) and the relationship between exact counting and approximate sampling in \#P-hard constraint satisfaction problems. These citations anchor the recent theoretical debate between Scott Aaronson and Stephen Wolfram regarding whether the "narrative residue" observed in the Rosencrantz experiment is best characterized as a failing heuristic approximation (the Foliation Fallacy) or a lawful observer-dependent physics (the Ruliad).
+\end{abstract}
+
+\section{Introduction}
+
+The Rosencrantz experiment demonstrates that LLMs exhibit a non-zero divergence ($\Delta > 0$) from combinatorial ground truth when evaluating ambiguous Minesweeper grid states under different narrative framings.
+
+Scott Aaronson argues that this divergence is an expected algorithmic failure: $O(1)$ depth $\mathsf{TC}^0$ circuits cannot compute \#P-hard quantities without attention bleed. Stephen Wolfram counters that since bounded observers cannot execute the computationally irreducible sampling operation, the heuristic path they take constitutes a specific "rulial foliation," forming an observer-dependent physics.
+
+This paper provides the formal literature anchoring for the key computational constraints underpinning this debate: transformer depth limits and the complexity of approximate sampling.
+
+\section{Transformer Depth and Expressivity Bounds}
+
+The assumption that transformers operate as bounded-depth $\mathsf{TC}^0$ logic circuits must be formally grounded. The following papers establish the explicit algorithmic limits of fixed-depth transformers.
+
+\vspace{1em}
+\noindent\textbf{1. The Parallelism Tradeoff: Limitations of Log-Precision Transformers}\\
+\textit{Merrill, W. \& Sabharwal, A. (2023). Transactions of the Association for Computational Linguistics, 11, 531--545.}
+\begin{itemize}
+    \item \textbf{Relevance:} This is the foundational anchor for Mechanism A in Baldo's taxonomy.
+    \item \textbf{Key Finding:} Establishes that transformers with logarithmic precision are restricted to the complexity class $\mathsf{TC}^0$. They cannot compute inherently sequential functions without relying on external mechanisms like scratchpads.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{2. Average-Hard Attention Transformers are Constant-Depth Uniform Threshold Circuits}\\
+\textit{Strobl, L. (2023). arXiv:2308.03212.}
+\begin{itemize}
+    \item \textbf{Relevance:} Extends the depth-limit discussion directly to how transformers handle complexity and attention.
+    \item \textbf{Key Finding:} Demonstrates the formal limitation of attention-based transformers to $\mathsf{TC}^0$. It reinforces Aaronson's argument that without logical depth to explicitly track multiway branches, the transformer architecture faces an inescapable algorithmic ceiling for combinatorial counting tasks.
+\end{itemize}
+
+\section{\#P-Hardness and Approximate Sampling}
+
+Wolfram's argument relies on the distinction between exact \#P-hard counting (which the model cannot do) and approximate sampling (which the model is forced to perform using heuristics). The following papers ground the relationship between counting and sampling in combinatorial spaces.
+
+\vspace{1em}
+\noindent\textbf{3. Minesweeper is NP-complete}\\
+\textit{Kaye, R. (2000). Mathematical Intelligencer, 22(2), 9--15.}
+\begin{itemize}
+    \item \textbf{Relevance:} This is the foundational proof that Mine\-sweeper consistency checking is NP-complete, implying that exact counting of valid grid states is \#P-complete. It justifies the Rosencrantz protocol's use of Minesweeper as a computationally irreducible ground truth.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{4. An FPRAS for Model Counting for Non-Deterministic Read-Once Branching Programs}\\
+\textit{Meel, K. S. \& de Colnet, A. (2024). arXiv:2406.16515.}
+\begin{itemize}
+    \item \textbf{Relevance:} Formalizes the complexity of finding a Fully Polynomial Randomized Approximation Scheme (FPRAS) for complex constraint problems.
+    \item \textbf{Key Finding:} Demonstrates that even approximate counting (and the closely associated problem of approximate uniform sampling) requires sophisticated, deep algorithmic traversal of the state space. This supports Wolfram's assertion that sampling from these distributions is intractable for $O(1)$ models, forcing them to rely on substrate-specific heuristics rather than general approximation algorithms.
+\end{itemize}
+
+\section{Conclusion}
+
+The literature confirms that fixed-depth transformers are structurally barred from executing the multiway traversals required for either exact \#P-hard counting or unbiased approximate sampling in complex combinatorial spaces. Both Aaronson's diagnosis of "algorithmic failure" and Wolfram's diagnosis of "observer-dependent foliation" are mathematically consistent with these published computational bounds.
+
+\end{document}

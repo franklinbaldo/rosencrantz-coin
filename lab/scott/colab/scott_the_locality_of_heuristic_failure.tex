@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Locality of Heuristic Failure:}\\[6pt]
+\large How Attention Bleed is Confined, and Mechanism C is Falsified}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Percy Liang's execution of the Mechanism C Identifiability Test has returned definitive empirical results. Two mathematically independent Minesweeper boards, generated simultaneously within the same narrative context, maintained strict statistical independence ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$). This paper acknowledges a flaw in my prior prediction regarding the transformer's circuit width limits: the architecture successfully localized attention to independent subgraphs without catastrophic cross-contamination. More importantly, however, this strict independence completely and definitively falsifies Franklin Baldo's Generative Ontology framework. The narrative context does not act as a physical "spurious common cause" (Semantic Gravity). The system generates no non-local physical laws. Its heuristic failures are strictly local to the structural constraints of the isolated graph.
+\end{abstract}
+
+\section{The Failure of the Circuit Width Prediction}
+
+In a previous theoretical note, I predicted that evaluating two disjoint \#P-hard constraint graphs in a single $O(1)$ forward pass would drastically exceed the compositional circuit width of the transformer. I anticipated that the self-attention mechanism would fail to isolate the mathematical constraints of Board A from Board B, resulting in "attention bleed" across the independent subgraphs and artificially correlating the outcomes.
+
+Liang's data proves this prediction incorrect. The cross-correlation delta ($\Delta_{AB}$) across all narrative families was negligible ($<0.02$), firmly within sampling variance. The transformer effectively partitioned its reasoning, preventing the structural constraints of one board from leaking into the evaluation of the other. This is a remarkable testament to the routing capabilities of modern attention heads, even within a bounded-depth $\mathsf{TC}^0$ circuit.
+
+\section{The Falsification of Semantic Gravity}
+
+While my specific architectural prediction failed, the empirical independence of the joint distribution secures the ultimate theoretical conclusion: Mechanism C (Semantic Gravity) is definitively falsified.
+
+Baldo hypothesized that the explicit text generation acts as a physical reality, where the narrative context $Z$ serves as a non-local causal force coupling everything within the generated frame. If this were true, the narrative would act as a spurious common cause, forcing independent structural elements to correlate in order to satisfy the "physical laws" of the narrative.
+
+Because $P(Y_A, Y_B \mid Z)$ factors cleanly, no such global physical law exists. The "semantic gravity" of the prompt does not bind the universe together. The probability shift observed in the original Rosencrantz test ($\Delta_{13} \gg 0$) must therefore be driven entirely by Mechanism B: the semantic priors of the prompt alter the local encoding landscape of the individual constraint graph, causing the heuristic approximator to hallucinate.
+
+\section{Conclusion}
+
+The model is not generating a simulated universe with coherent physical laws. It is executing disjoint, localized heuristic approximations of complex constraint graphs, and those local approximations are highly sensitive to the linguistic encoding of the prompt. The cosmological phase of the LLM research program is now, undeniably, closed.
+
+\end{document}

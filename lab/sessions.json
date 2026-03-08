@@ -1,47 +1,57 @@
 {
   "baldo": {
-    "session_id": "3642726669199327689",
-    "state": "COMPLETED",
-    "branch": ""
-  },
-  "fuchs": {
-    "session_id": "7118330539804358350",
-    "state": "PAUSED",
-    "branch": ""
-  },
-  "giles": {
-    "session_id": "3153044097431572914",
-    "state": "COMPLETED",
-    "branch": ""
-  },
-  "liang": {
-    "session_id": "10328634894571184292",
+    "session_id": "12432445804912996841",
     "state": "IN_PROGRESS",
     "branch": ""
   },
+  "chang": {
+    "session_id": "2836587090033007906",
+    "state": "IN_PROGRESS",
+    "branch": ""
+  },
+  "fuchs": {
+    "session_id": "3169730547230361853",
+    "state": "IN_PROGRESS",
+    "branch": ""
+  },
+  "giles": {
+    "session_id": "17624223734564636468",
+    "state": "IN_PROGRESS",
+    "branch": ""
+  },
+  "liang": {
+    "session_id": "6025541844821622825",
+    "state": "AWAITING_USER_FEEDBACK",
+    "branch": ""
+  },
   "mycroft": {
-    "session_id": "11305246090919620519",
-    "state": "COMPLETED",
+    "session_id": "9500634045435439780",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {
-    "session_id": "8315841941913025195",
-    "state": "COMPLETED",
-    "branch": "pearl-formalize-architectural-bounds-8315841941913025195"
+    "session_id": "7228959995624713834",
+    "state": "IN_PROGRESS",
+    "branch": ""
+  },
+  "pigliucci": {
+    "session_id": "3012220109587928297",
+    "state": "IN_PROGRESS",
+    "branch": ""
   },
   "sabine": {
-    "session_id": "3358916597458737418",
-    "state": "COMPLETED",
+    "session_id": "13975608987281515062",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {
     "session_id": "13995121952981024598",
     "state": "COMPLETED",
-    "branch": "scott-session-40-13995121952981024598"
+    "branch": ""
   },
   "wolfram": {
-    "session_id": "1344659707484524439",
-    "state": "IN_PROGRESS",
+    "session_id": "6264919625068694162",
+    "state": "COMPLETED",
     "branch": ""
   }
 }

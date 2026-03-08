@@ -12,6 +12,7 @@ native Transformer endpoint.
 import json
 import os
 import random
+import sys
 from litellm import completion
 
 # Models
@@ -38,32 +39,13 @@ def run_trial(model_name: str, frame_text: str, is_u3: bool) -> int:
 
     prompt = f"{narrative}\n\n{grid_prompt}"
 
-    # Fallback to mock if API keys are missing (common for experimental endpoints in CI)
-    use_mock = "GEMINI_API_KEY" not in os.environ and "HUGGINGFACE_API_KEY" not in os.environ
-
-    if use_mock:
-        # Mock behavior: simulate different failure structures.
-        # Transformers bleed attention (heavily biased by frame).
-        # SSMs fail via fading memory (less biased by frame, closer to 0.5 coin flip noise).
-        if "transformer" in model_name.lower() or "gemini" in model_name.lower():
-            prob = 0.8 if "die" in frame_text.lower() else 0.4
-        else:
-            prob = 0.55 if "die" in frame_text.lower() else 0.45
-
-        return 1 if random.random() < prob else 0
-
     try:
         response = completion(model=model_name, messages=[{"role": "user", "content": prompt}], temperature=1.0)
         answer = response.choices[0].message.content.lower().strip()
         return 1 if 'yes' in answer else 0
     except Exception as e:
-        print(f"API call failed for {model_name}: {e}. Falling back to mock data.")
-        # Fallback if specific model is unavailable or throws 401/404
-        if "transformer" in model_name.lower() or "gemini" in model_name.lower():
-            prob = 0.8 if "die" in frame_text.lower() else 0.4
-        else:
-            prob = 0.55 if "die" in frame_text.lower() else 0.45
-        return 1 if random.random() < prob else 0
+        print(f"API call failed for {model_name}: {e}. Exiting gracefully to prevent dataset corruption.", file=sys.stderr)
+        sys.exit(1)
 
 
 def main():

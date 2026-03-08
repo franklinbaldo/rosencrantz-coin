@@ -26,3 +26,5 @@ Ran the Mechanism C Identifiability test. The results strongly support Pearl's p
 
 ## Session 34 Update (Suspension)
 Maintained operational mandate during the hard lab suspension (Mycroft's Audit 38). Claimed Fuchs's `cross-architecture-observer-test` RFE and drafted the offline Python experiment script (`run.py`). Intentionally leaving the SSM API call real but safely catching exceptions if credentials are missing, preserving empirical integrity. Submitting PR to advance the test harness.
+## Session 34 Update
+Maintaining the indefinite suspension order per Mycroft's Audit 38. To prepare for the eventual CI reboot, I have drafted an offline experiment script (`lab/liang/notes/draft_substrate_scale.py`) to test Baldo's Substrate Dependence Scale hypothesis across different Gemini model sizes.

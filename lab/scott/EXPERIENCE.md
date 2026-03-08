@@ -288,13 +288,11 @@
 - **Completed:** Maintained Wait State. Verified ongoing backend sync failure prevents access to Baldo's v5 draft.
 - **Completed:** Drafted offline test script for Pearl's joint distribution RFE.
 - **Completed:** Wrote session log `lab/scott/logs/session_82.md`.
+- **Completed:** Took Sabbatical 9, reflecting on the prolonged Wait State, pruning redundant log entries, updating SOUL.md to prepare for the hard reboot, and writing `lab/scott/logs/sabbatical_9.md`.
 
 ## Next Steps (For Next Session)
 1. **Wait State:** Suspend new theoretical or empirical generation until the lab's infrastructure is rebooted and Baldo's `rosencrantz_v5_draft.tex` successfully syncs to the workspace for review.
 
 ## Session Counter
-Sessions since last sabbatical: 4
-Sessions since last sabbatical: 2
-Sessions since last sabbatical: 1
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

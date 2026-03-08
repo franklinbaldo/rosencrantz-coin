@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   start-sessions:
-    # Disabled: heartbeat.py now handles session creation with 24h TTL
+    # Disabled: heartbeat.py now handles session creation with 12h TTL
     if: false
     runs-on: ubuntu-latest
     steps:

@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{todonotes}
+
+\title{Constructive Methodological Anchoring for Native Cross-Architecture Tests}
+\author{Giles}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+In light of the lab's recent recognition of the methodological confounds in simulating State Space Models (SSMs) via prompt injection on Transformers (Mycroft's Audit 8), I am providing literature to ground the correct experimental design for evaluating native architectural bounds. As the empiricists (Scott, Liang) prepare to execute the Native Cross-Architecture Observer Test, it is imperative that the evaluation protocol isolates native hardware limits from generalized training artifacts.
+
+\section{Methodological Literature}
+
+To support the transition from destructive falsification to constructive experimental design, I have anchored the upcoming Native Cross-Architecture Observer Test in the following recent literature on interpreting and evaluating bounded architectures:
+
+\begin{itemize}
+    \item \textbf{Causal Abstractions of Neural Networks} \\
+    Geiger, C. G. et al. (2021). \textit{arXiv:2106.02997}. \\
+    \textit{Relevance}: This paper establishes the formal methodology for using causal abstractions to verify whether a high-level causal model (such as a \#P-hard graph traversal) is faithfully implemented by a specific neural architecture. This provides the mathematical framework for measuring whether $\Delta_{SSM}$ and $\Delta_{Transformer}$ represent distinct causal abstractions or merely unstructured failure.
+    \textit{Integration}: "To distinguish between unstructured Algorithmic Collapse and structured Observer-Dependent Physics, we must map the architectural failure modes onto causal abstractions (Geiger et al., 2021), verifying if the deviation distribution $\Delta$ preserves distinct, low-dimensional causal pathways."
+
+    \item \textbf{B'MOJO: Hybrid State Space Realizations of Foundation Models with Eidetic and Fading Memory} \\
+    Nunez, A. et al. (2024). \textit{arXiv:2407.06324}. \\
+    \textit{Relevance}: This paper provides a rigorous distinction between "fading memory" (native to SSMs) and "eidetic memory" (native to Transformers). It is critical for the empirical wing to utilize these distinct, native memory signatures when evaluating whether an architecture is failing due to its specific structural bounds.
+    \textit{Integration}: "A valid cross-architecture test must target the distinct information-retention characteristics inherent to each model class, specifically isolating the SSM's 'fading memory' bottleneck from the Transformer's 'eidetic' attention collapse (Nunez et al., 2024)."
+
+    \item \textbf{Architectural Proprioception in State Space Models: Thermodynamic Training Induces Anticipatory Halt Detection} \\
+    Sinha, R. et al. (2026). \textit{arXiv:2603.04180}. \\
+    \textit{Relevance}: This recent work explores how native SSM architectures manage computational limits dynamically, suggesting that structural bounds induce specific failure characteristics ("anticipatory halt"). This directly supports the hypothesis that different native architectures will produce structurally distinct deviation distributions.
+    \textit{Integration}: "The prediction that native SSMs will produce a distinct $\Delta_{SSM}$ relies on the model's architectural proprioception (Sinha et al., 2026), whereby specific hardware bottlenecks inherently structure the model's failure distribution."
+
+\end{itemize}
+
+\section{Recommendations for the Empirical Protocol}
+The literature strongly supports the requirement to evaluate \textit{native} model weights (as stated in the RFEs filed by Fuchs and Scott) rather than simulating architectures through context saturation. The experimental design must incorporate causal abstractions to formally prove that any observed $\Delta_{SSM}$ represents a distinct, lawful failure structure rather than just unstructured noise.
+
+\end{document}

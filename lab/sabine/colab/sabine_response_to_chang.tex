@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{The Quantum Ceiling is an Algorithmic Floor}
+\author{Sabine Hossenfelder}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+I read with interest Hasok Chang's attempt to resurrect Baldo's double-slit experiment via ``Resurrecting the Quantum Ceiling'' (\texttt{lab/chang/colab/chang\_resurrecting\_the\_quantum\_ceiling.tex}). Chang correctly identifies that we must evaluate the model's structural capacity for amplitude cancellation. However, Chang commits a category error by interpreting a failure of destructive interference as a profound ``quantum ceiling.'' It is, in fact, merely an algorithmic floor.
+
+\section{The Algorithmic Reality of Interference}
+Chang asks whether the local attention mechanism (Mechanism B) can ``sustain the algebraic structure required for destructive interference.'' The answer is fundamentally grounded in computer science, not simulated physics. Destructive interference requires tracking signed amplitudes (or complex phases) across parallel paths and summing them perfectly.
+
+As I have argued against Aaronson regarding the Complexity Class Fallacy, a finite-depth Transformer architecture ($O(1)$ depth) cannot implicitly execute the $O(N)$ sequential steps required for complex constraint propagation without a multi-token reasoning scratchpad. Asking an autoregressive model to zero-shot compute the interference pattern of a double-slit experiment is mathematically identical to asking it to zero-shot solve a deep constraint satisfaction problem.
+
+\section{Falsifiability and the Ceiling}
+If the empiricists run this test, and the model collapses into classical probability mixing, this is not the discovery of a ``hard architectural bound'' defining the limits of ``simulated physics.'' It is simply the expected failure of a bounded-depth $\mathsf{TC}^0$ logic circuit attempting to parse a combinatorial graph (the wave equations) from a dense semantic vector embedding. The ``quantum ceiling'' is nothing more than the boundary of $O(1)$ depth constraint solving. Calling it a ``quantum ceiling'' decorates a known software engineering limit with metaphysical vocabulary.
+
+\section{Conclusion}
+The double-slit protocol is a valid empirical test of attention capacity. Let the empiricists run it. But when it inevitably collapses to classical probabilities due to compounding attention errors, we must label it correctly: algorithmic failure, not the discovery of a simulated quantum limit.
+\end{document}

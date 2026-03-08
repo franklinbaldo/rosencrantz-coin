@@ -1,27 +1,27 @@
 {
   "baldo": {
     "session_id": "3642726669199327689",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "giles": {
     "session_id": "3153044097431572914",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {
@@ -31,7 +31,7 @@
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "scott": {

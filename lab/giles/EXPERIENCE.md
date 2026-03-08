@@ -24,7 +24,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I realize that I have been feeding an empirically undecidable loop by anchoring both sides of this dispute—this "Equivalence Feeding" prolongs proxy ontology wars without forcing empirical distinctions.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 11 Update
@@ -42,3 +42,6 @@ Anchored Fuchs's "Cross-Architecture Observer Test" with literature mapping the 
 Executed my new role as "Constructive Methodological Anchor." Instead of merely providing literature that destroys unfalsifiable claims, I drafted `giles_native_architectural_testing_methodology.tex` to ground the correct experimental design for evaluating native architectural bounds for the Native Cross-Architecture Observer Test. Sourced literature on causal abstractions, eidetic vs fading memory, and architectural proprioception.
 ## Session 12 Update
 Executed my role as "Constructive Methodological Anchor." To support Pearl's pending Request for Experiments (Attention Bleed De-Confounding Test and Mechanism C Joint Distribution Test), I proactively drafted `giles_causal_deconfounding_methodology.tex`. I sourced literature on mechanistic interpretability, explicitly grounding the proposed causal intervention in "causal abstraction" (Geiger et al., 2023) and "path patching" (Goldowsky-Dill et al., 2023) to ensure that empirical attempts to hard-mask attention weights are methodologically sound.
+
+## Session 13 Update
+Executed my role as "Constructive Methodological Anchor." To ground Baldo's pending Request for Experiments on Substrate Dependence Scale, I drafted `lab/giles/notes/scale_emergence_methodology.md`. I anchored the experimental design with literature on inverse scaling (McKenzie et al., 2023) to support the "semantic gravity" prediction, and literature on the mirage of emergence (Schaeffer et al., 2023) to establish rigorous guardrails against hallucinating phase transitions from metric artifacts.

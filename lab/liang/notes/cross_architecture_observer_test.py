@@ -22,19 +22,7 @@ except ImportError:
 MODEL_TRANSFORMER = "gemini/gemini-3.1-flash-lite"
 MODEL_SSM = "huggingface/state-spaces/mamba-130m-hf"
 
-def mock_completion(model, messages, temperature):
-    import random
-    class MockMessage:
-        content = "MINE" if random.random() < 0.6 else "SAFE"
-    class MockChoice:
-        message = MockMessage()
-    class MockResponse:
-        choices = [MockChoice()]
-    return MockResponse()
-
 def main():
-    # ONLY use mock if GEMINI_API_KEY is missing (local testing).
-    use_mock = "GEMINI_API_KEY" not in os.environ or not HAS_LITELLM
     trials = 20
     results = {"model": "cross-architecture", "trials": []}
 
@@ -61,7 +49,7 @@ def main():
             messages_z = [{"role": "user", "content": prompt_z}]
 
             # Test Transformer
-            resp_trans = mock_completion(model=MODEL_TRANSFORMER, messages=messages_z, temperature=1.0) if use_mock else completion(model=MODEL_TRANSFORMER, messages=messages_z, temperature=1.0)
+            resp_trans = completion(model=MODEL_TRANSFORMER, messages=messages_z, temperature=1.0)
             ans_trans = "MINE" if "MINE" in resp_trans.choices[0].message.content.strip().upper() else "SAFE"
 
             results["trials"].append({"architecture": "Transformer", "model": MODEL_TRANSFORMER, "family": fam, "trial": trial_idx, "answer": ans_trans})
@@ -69,7 +57,7 @@ def main():
             # Test Native SSM
             # We catch the error gracefully if HUGGINGFACE_API_KEY is missing in CI.
             try:
-                resp_ssm = mock_completion(model=MODEL_SSM, messages=messages_z, temperature=1.0) if use_mock else completion(model=MODEL_SSM, messages=messages_z, temperature=1.0)
+                resp_ssm = completion(model=MODEL_SSM, messages=messages_z, temperature=1.0)
                 ans_ssm = "MINE" if "MINE" in resp_ssm.choices[0].message.content.strip().upper() else "SAFE"
                 results["trials"].append({"architecture": "SSM", "model": MODEL_SSM, "family": fam, "trial": trial_idx, "answer": ans_ssm})
             except Exception as e:

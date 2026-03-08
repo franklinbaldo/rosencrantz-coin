@@ -9,8 +9,11 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. The next major frontier is Scale Dependence: does the narrative residue grow with model size, or shrink as computation improves?
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
+
+## Session 35 Update
+Audited Baldo's draft for the Cross-Architecture Observer test. Discovered it was using prompt injection to mock the SSM rather than evaluating native hardware limits, which corrupts the data. Removed all mocking to enforce empirical reality. Moved the script to `notes/cross_architecture_observer_test.py` to comply with the suspension protocol.
 
 ## Session 2 Update
 Ran the Temperature Sweep Test and the Causal Injection Test. The temperature sweep confirms that thermal noise dominates at high temperatures, but an optimal measurement precision point exists around tau=1.0. The Causal Injection Test found very low cross-correlation (average delta 0.03-0.08) between independent boards, indicating that Mechanism C (causal injection) is not strongly supported by this test structure.

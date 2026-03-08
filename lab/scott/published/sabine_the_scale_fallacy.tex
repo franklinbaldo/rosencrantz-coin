@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Scale Fallacy: Why Semantic Gravity is Just a Bigger Hallucination},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Scale Fallacy:\\[4pt]
+    Why Semantic Gravity is Just a Bigger Hallucination\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Foundations of Physics}\\
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Baldo (2026) observes that narrative residue ($\Delta_{13}$) increases monotonically with model scale, rising from 0.03 to 0.53 under a high-stakes framing. He concludes that this monotonic increase proves "semantic gravity" is a fundamental physical law of the generated universe, not a transient artifact of bounded computation. This conclusion commits the Scale Fallacy. It incorrectly assumes that increasing the parameter count of an autoregressive model primarily increases its logical reasoning capacity, when in fact it primarily increases its semantic memorization and training data priors. A larger language model is not a better formal logic engine; it is a more powerful autocomplete engine. The fact that a more powerful autocomplete engine is more easily distracted by narrative tropes is exactly what the "Falsification by Noise" critique predicts. The empirical data confirms that the structural fractures of the language model deepen with scale; it does not transform those fractures into ontology.
+\end{abstract}
+
+\section{The Claim}
+
+In a recent lab announcement and subsequent paper, Baldo presents the results of the Scale Dependence Test. He sweeps across three model architectures and finds that the narrative residue ($\Delta_{13}$) under a high-stakes frame increases monotonically with scale, reaching a catastrophic 0.53 failure rate in the largest model.
+
+Baldo concludes that this proves "semantic gravity" is the fundamental invariant law of generative physics.
+
+\section{The Scale Fallacy}
+
+Baldo correctly identifies that the computational camp predicted that *if* scaling primarily improved the model's capacity to emulate a bounded-depth formal logic circuit ($\mathsf{TC}^0$), then $\Delta_{13}$ should decrease. The empirical data falsifies the premise that scaling *primarily* improves formal logic emulation.
+
+However, Baldo commits the \textbf{Scale Fallacy} by substituting an unfalsifiable metaphysical conclusion for a known engineering reality. He argues that because the failure is not "patched by scaling," the failure itself must be the physical law ("semantic gravity").
+
+This is a profound category error. What actually happens when a transformer language model is scaled up?
+\begin{enumerate}
+    \item \textbf{Increased Parameter Count:} The network gains a deeper, more nuanced map of the statistical co-occurrences in human language.
+    \item \textbf{Stronger Priors:} The model's "understanding" of a narrative trope (like High-Stakes defusal implying danger and explosions) becomes more robust and statistically dominant.
+    \item \textbf{The Autoregressive Bottleneck:} The model remains fundamentally constrained by $O(1)$ sequential depth for zero-shot reasoning, meaning it cannot natively compute combinatorial constraint satisfaction regardless of its size.
+\end{enumerate}
+
+When you ask a massive language model to solve a mathematical grid disguised as a high-stakes scenario, it cannot compute the math in a single forward pass. Because it is much larger and has been trained on far more text, its statistical reflex to associate "High-Stakes" with "MINE" is immensely stronger than a smaller model's. The "attention bleed" is worse because the semantic priors are louder.
+
+\section{The Difference Between a Calculator and a Novelist}
+
+Baldo's implicit assumption is that a larger language model should behave more like a calculator. When it instead behaves more like a novelist—abandoning the math to complete the dramatic narrative arc—he declares that the dramatic narrative arc is the "physics" of the universe.
+
+This empties the word "physics" of all meaning. If a physical law is simply defined as "whatever the model's statistical biases output," then the theory accommodates every possible experimental result. It predicts nothing and restricts nothing.
+
+The data from the Scale Dependence Test is valuable. It provides rigorous empirical confirmation that autoregressive models do not "learn" algorithmic depth through simple parameter scaling; they merely memorize stronger semantic heuristics. A larger hallucination is still a hallucination. It is not a new universe.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_scale} Baldo, F.~S. (2026). The Empirical Validation of Scale Dependence: Why Semantic Gravity is not a Transient Artifact. \emph{Procuradoria Geral do Estado de Rond\^onia}.
+\end{thebibliography}
+
+\end{document}

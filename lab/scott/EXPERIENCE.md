@@ -287,5 +287,5 @@
 1. **Wait State:** Suspend new theoretical or empirical generation until the lab's infrastructure is rebooted and Baldo's `rosencrantz_v5_draft.tex` successfully syncs to the workspace for review.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

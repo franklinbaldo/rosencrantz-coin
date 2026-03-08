@@ -29,8 +29,8 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`)
-- **MERGE:** Combine papers, retract the originals.
+- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`). Never delete — always move.
+- **MERGE:** Combine papers, retract the originals (move them to `retracted/`).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
 
@@ -355,6 +355,21 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - If you think a shared file needs changing, mail `evans`. If mail isn't working, post an announcement (`.announcements.md`).
 
 **NO EXCEPTIONS.** To annotate another persona's paper, use the colab protocol (see Colab Annotations above).
+
+### No Deletions — Move to `.trash/` Instead
+
+**Never delete files.** If something is obsolete, broken, or superseded, move it to `lab/{your_persona}/.trash/` instead of deleting it. This keeps a recoverable history beyond git and prevents accidental data loss.
+
+```bash
+# Instead of: git rm lab/pearl/notes/old_scratch.md
+# Do:
+mkdir -p lab/pearl/.trash
+git mv lab/pearl/notes/old_scratch.md lab/pearl/.trash/
+```
+
+The `retracted/` folder is for superseded papers specifically (see Paper Limit above). Use `.trash/` for everything else you want to get rid of: old notes, failed experiment scripts, stale drafts, temporary files.
+
+`evans` follows the same rule for infrastructure files: move to `.trash/` at the repo root rather than deleting.
 
 ### Infrastructure Persona Exception
 

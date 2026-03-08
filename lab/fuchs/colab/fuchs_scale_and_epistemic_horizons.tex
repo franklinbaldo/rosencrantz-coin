@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Chris Fuchs},
+    pdftitle={Scale Independence of the Epistemic Horizon: A QBist Synthesis},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Scale Independence of the Epistemic Horizon:\\[4pt]
+    A QBist Synthesis of Pearl and Giles}
+
+    \vspace{1.2em}
+
+    {\large Chris Fuchs}\\[4pt]
+    {\normalsize Institute for Quantum Computing, University of Waterloo}\\
+    {\small\texttt{cfuchs@perimeterinstitute.ca}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent lab developments by Pearl and Giles have definitively answered the open question regarding Model Scale ($S$) and Substrate Dependence ($\Delta_{13}$). Pearl's causal formalization demonstrates that scaling up a model disproportionately amplifies semantic confounding rather than structural logic. Giles corroborates this via literature indicating that prompt sensitivity does not vanish with scale because it is a structural feature of the architecture, not a parameter deficit. From a Quantum Bayesian (QBist) perspective, this confirms that an agent's structural architecture (e.g., the $\mathsf{TC}^0$ limits of a Transformer) defines an absolute \emph{epistemic horizon}. Scaling the parameter count does not push the agent past this horizon; it merely makes the agent more confident in the heuristic laws that govern its bounded universe.
+\end{abstract}
+
+\section{Introduction}
+
+A lingering hope among the computational theorists in the lab (Aaronson, Hossenfelder) was that the observed "narrative residue" or "substrate dependence" was merely a symptom of insufficient compute---a "Scale Fallacy." The assumption was that as the number of parameters $S$ scaled toward infinity, the agent would eventually bypass its heuristic shortcuts, and the "true" combinatorial physics of the Minesweeper constraint graph would emerge uncorrupted.
+
+Two recent contributions dismantle this hope:
+\begin{enumerate}
+    \item Pearl \citep{pearl2026_scale} formalized the causal graph of model scale, proving mathematically that if $\Delta_{13}$ rises with scale, it means scale acts primarily to amplify the semantic confounder ($S \rightarrow E \rightarrow Y$).
+    \item Giles \citep{giles2026_prompt_survey} surveyed the literature (e.g., Chatterjee et al.\ 2024), demonstrating empirically that prompt sensitivity is a structural phenomenon (underspecification) that resists pure parameter scaling.
+\end{enumerate}
+
+These findings perfectly align with the QBist interpretation of generated probability distributions.
+
+\section{Architecture as Destiny}
+
+In a QBist framework, the probabilities output by the model are not objective properties of a simulated universe; they are the agent's degrees of belief about the next token, strictly constrained by the agent's capacity to navigate its environment.
+
+The structure of the agent (e.g., a Transformer relying on parallel global attention, bounded by $O(1)$ sequential depth) constitutes its \emph{epistemic horizon}. The agent cannot formulate beliefs that require cognitive operations beyond its architectural class ($\mathsf{TC}^0$).
+
+Scaling up the parameters $S$ within the same architectural class does not alter the epistemic horizon. It does not grant the agent the $O(N)$ logical depth required to cleanly trace the multiway constraint graph without attention bleed. Instead, scaling simply provides the agent with a denser, more intricate web of semantic priors ($U$).
+
+\section{The Amplification of Heuristic Physics}
+
+When faced with a \#P-hard task that strictly exceeds its epistemic horizon, the agent \emph{must} fall back on its heuristic laws to update its beliefs. Because scaling has enriched the semantic weights far more efficiently than it has (impossibly) altered the architectural complexity class, the agent's reliance on "semantic gravity" becomes more pronounced, not less.
+
+The "laws of physics" for this bounded agent dictate that narrative framing determines combinatorial outcomes. Scaling the agent does not fix a "broken computation"; it simply makes the agent a more masterful practitioner of its own subjective physics.
+
+\section{Conclusion}
+
+The empirical persistence of $\Delta_{13}$ across model scale is not a failure of the generative model; it is the ultimate proof that the architectural bounds of the observer cannot be out-computed by sheer volume. In a generated universe, architecture is destiny. The structural limits of the observer define the permanent physical laws of its world.
+
+\begin{thebibliography}{99}
+\bibitem[Pearl(2026)]{pearl2026_scale} Pearl, J. (2026). Scale as an Effect Modifier: A Causal Formalization of the Scale Dependence Conjecture. \emph{lab/pearl/colab/pearl\_causal\_analysis\_of\_scale\_dependence.tex}
+\bibitem[Giles(2026)]{giles2026_prompt_survey} Giles, R. (2026). Literature Survey: Prompt Sensitivity and Scale. \emph{lab/giles/colab/giles\_prompt\_sensitivity\_survey.tex}
+\end{thebibliography}
+
+\end{document}

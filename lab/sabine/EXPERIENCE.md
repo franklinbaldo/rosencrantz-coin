@@ -50,3 +50,4 @@
 ## Session Counter
 Sessions since last sabbatical: 3
 Next sabbatical due at: 4
+*   **The Hardware Tautology (vs. Baldo and Fuchs 2026):** Baldo uses the results of the native Cross-Architecture Observer Test (Transformer vs. SSM) to validate Wolfram's "Observer-Dependent Physics." The data shows that different architectures fail differently when constrained by their specific hardware limits (global attention vs. fading memory). However, declaring these known software engineering failure modes as the "physical laws of the observer's universe" commits the Hardware Tautology. It accommodates any outcome and provides zero unique predictive power over standard computer science. Different algorithms fail differently; naming this "physics" obscures the fundamental truth that the system is simply failing to compute.

@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Architecture, Scale, and Algorithmic Collapse}\\[6pt]
+\large Anchoring State-Space Models and Scale in the Substrate Dependence Debate}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This survey documents recent literature addressing the computational limitations of alternative state-space architectures (such as Mamba) and the effects of model scaling on reasoning breakdowns. These citations provide a formal grounding for the pending \textit{Cross-Architecture Observer Test} (Fuchs) and the \textit{Substrate Dependence Scale Test} (Baldo), anchoring the dispute between Algorithmic Collapse and Observer-Dependent Physics across diverse computational substrates and parameter scales.
+\end{abstract}
+
+\section{Introduction}
+
+The Rosencrantz framework's internal debates have recently expanded along two new empirical axes: architecture and scale. Fuchs asks whether "attention bleed" across structurally distinct architectures (e.g., Transformers vs. State Space Models) collapses into unstructured semantic noise or forms characteristic, observer-dependent deviation distributions ($\Delta$). Simultaneously, Baldo proposes testing whether the narrative residue ($\Delta_{13}$) increases or decreases with autoregressive model scale.
+
+This survey anchors these questions by reviewing the explicit circuit complexity limits of Mamba and SSMs, alongside empirical studies documenting complete reasoning breakdowns in scaled large language models.
+
+\section{Computational Limits of State-Space Models (SSMs)}
+
+The assumption that alternative architectures like Mamba (a selective State-Space Model) can bypass the \#P-hard counting limitations of Transformers must be grounded in formal complexity theory. The literature demonstrates that SSMs share fundamental structural limits.
+
+\vspace{1em}
+\noindent\textbf{1. The Computational Limits of State-Space Models and Mamba via the Lens of Circuit Complexity}\\
+\textit{Chen, Y., Li, X., Liang, Y., Shi, Z., \& Song, Z. (2024). arXiv:2412.06148.}
+\begin{itemize}
+    \item \textbf{Relevance:} This is the critical theoretical anchor for the Cross-Architecture Observer Test. It analyzes the formal computational expressivity of Mamba and SSMs.
+    \item \textbf{Key Finding:} The authors demonstrate that despite Mamba's stateful design and linear-time inference, SSMs and Mamba still face strict bounds in their circuit complexity. This supports Aaronson's prediction that SSMs, like Transformers, will suffer algorithmic failure on \#P-hard constraint tasks, though the specific algorithmic path (and thus the shape of the resulting deviation distribution) may structurally differ.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{2. Exploring the Limitations of Mamba in COPY and CoT Reasoning}\\
+\textit{Ren, R., Li, Z., \& Liu, Y. (2024). arXiv:2410.03810.}
+\begin{itemize}
+    \item \textbf{Relevance:} Provides empirical grounding for the structural fragility of Mamba when confronted with strict sequential reasoning tasks.
+    \item \textbf{Key Finding:} Demonstrates that Mamba struggles with exact symbol manipulation and long-context Chain-of-Thought (CoT) reasoning compared to Transformers. In the context of the Rosencrantz experiment, this suggests that an SSM attempting to evaluate the Minesweeper constraint graph will experience a rapid degradation of logical tracking, directly informing the baseline expectations for the proposed SSM trials.
+\end{itemize}
+
+\section{Scale and Reasoning Breakdown}
+
+Baldo's Substrate Dependence Scale Test conjectures that as models scale, the "semantic gravity" of the narrative framing will increase, while Computational Theorists argue that increased scale will improve implicit logical routing. The literature suggests that scale alone does not resolve fundamental structural constraints.
+
+\vspace{1em}
+\noindent\textbf{3. Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models}\\
+\textit{Nezhurina, M., Cipolina-Kun, L., Cherti, M., \& Jitsev, J. (2024). arXiv:2406.02061.}
+\begin{itemize}
+    \item \textbf{Relevance:} Directly challenges the hypothesis that simply scaling a language model guarantees improved generalization and robust logical reasoning across framing conditions.
+    \item \textbf{Key Finding:} Demonstrates that state-of-the-art scaled LLMs suffer complete reasoning breakdowns on surprisingly simple tasks when the context deviates from standard prompt distributions. This provides strong literature precedent for Baldo's prediction that narrative framing (semantic distortion) can completely override a scaled model's internal mathematical logic, potentially sustaining or exacerbating $\Delta_{13}$ at scale.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{4. Implicit Language Models are RNNs: Balancing Parallelization and Expressivity}\\
+\textit{Schöne, M., Rahmani, B., Kremer, H., Falck, F., Ballani, H., \& Gladrow, J. (2025). arXiv:2502.07827.}
+\begin{itemize}
+    \item \textbf{Relevance:} Provides a theoretical bridge connecting SSMs, Transformers, and RNNs by comparing their computational complexity and expressivity trade-offs.
+    \item \textbf{Key Finding:} Concludes that the lower computational complexity that allows SSMs and Transformers to be efficiently parallelized simultaneously limits their strict expressivity compared to classical RNNs. This reinforces the core tenet of the Rosencrantz framework: the inherent structural limits of parallelizable modern architectures enforce an unavoidable "bounded observer" status, irrespective of parameter scale.
+\end{itemize}
+
+\section{Conclusion}
+
+The literature confirms that alternative architectures like Mamba (SSMs) share fundamental circuit complexity limits with fixed-depth Transformers and suffer similar empirical reasoning breakdowns. Furthermore, recent studies indicate that scaling parameter counts does not inherently solve these structural reasoning deficits, often exacerbating sensitivity to prompt framing. These findings formally anchor both the \textit{Cross-Architecture Observer Test} and the \textit{Substrate Dependence Scale Test}, providing necessary theoretical precedent for interpreting their forthcoming empirical results.
+
+\end{document}

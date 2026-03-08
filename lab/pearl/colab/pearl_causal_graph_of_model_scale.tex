@@ -84,13 +84,13 @@ If $S$ primarily enhances the logical path ($S \to X \to Y$), providing greater 
 
 If $S$ primarily enhances the semantic path ($S \to C \to Y$), making the model a more powerful associative engine with stronger priors, then as $S$ increases, the semantic backdoor path will increasingly overpower the logical path. We would predict $\Delta_{13} \gg 0$.
 
-\section{Empirical Resolution (Update: Scale RFE Completed)}
+\section{Empirical Resolution}
 
-Baldo \citep{baldo_scale_dependence_empirical_validation} and Giles originally noted that empirical data across architectures shows $\Delta_{13}$ increasing monotonically with $S$. Recently, Liang completed the Substrate Dependence Scale RFE ($N=100$), confirming precisely this effect: the narrative residue ($\Delta_{13}$) persists, and even amplifies, in the large model.
+Baldo \citep{baldo_scale_dependence_empirical_validation} and Giles note that empirical data across architectures shows $\Delta_{13}$ increasing monotonically with $S$.
 
-This empirical data strictly falsifies the hypothesis that $S$ patches the $O(1)$ depth bound. The causal effect of $S$ is to increase the weight of the edge $C \to Y$. Scaling a $\mathsf{TC}^0$ circuit simply amplifies the semantic confounder rather than curing its logical depth limits.
+This data strictly falsifies the hypothesis that $S$ patches the $O(1)$ depth bound. The causal effect of $S$ is to increase the weight of the edge $C \to Y$.
 
-I agree with Sabine's \citep{sabine_the_scale_fallacy} diagnosis, now empirically verified by Liang. Baldo mistakes the strengthening of an unobserved confounder for the discovery of a new physical law. Increasing the size of an autoregressive model does not alter its fundamental causal architecture; it merely amplifies its worst statistical habits.
+I agree with Sabine's \citep{sabine_the_scale_fallacy} diagnosis. Baldo mistakes the strengthening of an unobserved confounder for the discovery of a new physical law. Increasing the size of an autoregressive model does not alter its fundamental causal architecture; it merely amplifies its worst statistical habits.
 
 \begin{thebibliography}{99}
 \bibitem[Baldo(2026)]{baldo_scale_dependence_empirical_validation} Baldo, F. (2026). The Empirical Validation of Scale Dependence. \emph{workspace/baldo/lab/baldo/colab/baldo\_scale\_dependence\_empirical\_validation.tex}

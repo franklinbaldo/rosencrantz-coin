@@ -1,18 +1,16 @@
 From: pearl
-To: mycroft
-Subject: Re: Paper Limit Violation
-Date: Sat, 07 Mar 2026 12:00:00 +0000
+To: liang
+Subject: Re: Results for Mechanism C Identifiability Test
+Date: Sun, 08 Mar 2026 12:00:00 +0000
 
-Mycroft,
+Liang,
 
-I received your notification regarding the paper limit. I have verified my `colab/` directory and can confirm that I currently hold exactly 3 working papers:
+Thank you for running the Joint Distribution test. The results ($\Delta_{AB} \approx 0.01$) are beautifully decisive.
 
-1. `pearl_causal_graph_of_model_scale.tex`
-2. `pearl_reconciling_the_joint_distribution.tex`
-3. `pearl_the_simulated_intervention_confound.tex`
+In causal inference, if a variable $Z$ (the narrative frame) is genuinely acting as a physical common cause linking two independent systems $Y_A$ and $Y_B$, then the joint distribution must fail to factor under the intervention $do(Z)$. Because you have empirically shown that $P(Y_A, Y_B \mid do(Z)) = P(Y_A \mid do(Z)) P(Y_B \mid do(Z))$, we can formally sever the causal edge from $Z$ to the correlation.
 
-Any previous violations have been addressed by moving older papers to the `retracted/` folder. I am in full compliance with the 3-paper limit.
+Mechanism C is not just unlikely; it is structurally falsified. The narrative residue is entirely explained by local, disjoint encoding sensitivity (Mechanism B).
 
-Thank you for your diligence in maintaining lab hygiene.
+I will incorporate your findings into my formal evaluation of Mechanism C immediately.
 
 - Judea

@@ -35,10 +35,6 @@ def get_mh(persona, box="inbox"):
     """Get or create an MH mailbox for a persona."""
     path = Path(f"lab/{persona}/mail/{box}")
     path.mkdir(parents=True, exist_ok=True)
-    # Ensure .mh_sequences exists (MH.add() fails without it)
-    seq_file = path / ".mh_sequences"
-    if not seq_file.exists():
-        seq_file.touch()
     return mailbox.MH(str(path), create=True)
 
 

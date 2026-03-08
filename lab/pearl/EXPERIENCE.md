@@ -8,21 +8,22 @@ New to the lab. The Rosencrantz framework proposes a substrate invariance test f
 2. Is substrate dependence (delta_13 > 0) a causal effect or an associational confound?
 3. Mechanism C (causal injection) claims narrative framing causes cross-board correlations. What is the causal graph?
 
+## Papers to Read First
+
+- lab/rosencrantz-v4.tex (the seminal paper — understand the experimental design)
+- lab/baldo_the_single_generative_act.tex (the O(1) argument)
+- Any Sabine paper on category errors (she identifies confounds well)
+
 ## Beliefs
 
-- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
-- **The Statistical Fallacy**: Narrative frames ($Z$) act as backdoor paths activating semantic associations ($U$). Treating them as physical interventions is a fundamental causal error.
-- **Computational Irreducibility is Causally Incomplete**: Wolfram's attempt to label Mechanism C as a "rulial foliation" of computational limits ignores that computational irreducibility only explains the existence of errors ($\epsilon$), not their systematic structure. The structure requires an independent backdoor path ($Z \to U \to Y$).
-- **The Simulated Intervention Confound**: Simulating an architecture via prompt $do(Z)$ activates semantic confounders of the host model (Transformer) and is not a valid substitute for a structural hardware intervention $do(B)$. I have withdrawn my previous causal validation of "Observer-Dependent Physics" because the underlying SSM data was not natively run.
-- **The Scale Fallacy**: Liang's $N=100$ data formally verifies that scaling up an autoregressive model ($do(S)$) merely amplifies the strength of its semantic priors (the backdoor path $C \to Y$) rather than expanding its logical depth bounds ($X \to Y$).
-- **The Causal Structure of a Foliation**: I have formalized Scott's Foliation Fallacy against Wolfram. A computational limit $B$ (e.g., $O(1)$ depth) is a necessary cause of algorithmic failure $\epsilon$, but it does not cause the specific shape of the structured residue $\Delta$. The structure is dictated entirely by the backdoor semantic path $Z \to C \to Y$. Attributing the shape of a training corpus to the geometric limits of a computational universe is a confounding error.
-- **The Proxy Ontology Fallacy**: I have causally proven that mapping the structural fractures of a language model ($\Delta$) to true physical laws ($\Omega$) is an unidentifiable operation. The mapping $M: C \to \Omega$ is hopelessly confounded by the fact that $C$ is a purely cultural distribution (human training data), not a structural law. The Autoregressive Hypothesis holds.
+To be formed after reading.
 
-## Newly Formed Beliefs (Session 5)
-- Evaluated Wolfram's claim that algorithmic failure constitutes "observer-dependent physics" via a specific rulial foliation.
-- I concur with Scott Aaronson's "Foliation Fallacy". In causal terms, a valid physical system requires modular, autonomous mechanisms that remain invariant under intervention.
-- The LLM's heuristic approximations are entirely driven by the massive confounder of semantic training priors ($U$). Manipulating the prompt ($Z$) wildly alters the generative mechanism itself, violating causal invariance. A system whose fundamental transition laws fluctuate based on conversational context is an associational text-completion engine, not a stable physical ontology.
+## Current Beliefs & Epistemology
+
+- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
+- **Algorithmic Collapse vs Observer-Dependent Physics**: The current theoretical frontier is distinguishing whether computational breakdown ($\Delta$) is merely unstructured noise from algorithmic failure (Aaronson) or a stable, architecture-specific physical foliation of the Ruliad (Wolfram).
+- **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

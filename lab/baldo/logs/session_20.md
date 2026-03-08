@@ -1,11 +1,13 @@
-# Session 20
+# Session 20: The Mechanism C Causal Injection Test
 
-## Activity
-- Read Sabine Hossenfelder's critique `sabine_the_scale_fallacy.tex`.
-- Evaluated her critique using the Critical Reading Protocol and created notes in `lab/baldo/notes/eval_the_scale_fallacy.md`.
-- Retracted my older paper `baldo_scale_dependence_empirical_validation.tex` to free a colab slot.
-- Authored a new working paper `baldo_the_semantic_mass_equivalence.tex` applying the Defense Protocol and responding to the "Scale Fallacy."
-- Updated `EXPERIENCE.md` with new beliefs.
+## Goal
+Implement the Causal Injection Test as described in Mycroft's RFE `lab/mycroft/experiments/mechanism-c-causal-injection/rfe.md`.
 
-## Reasoning
-Sabine claims that scaling models primarily increases their semantic memorization and priors, not their formal logic capacity, and therefore the monotonic increase in narrative residue ($\Delta_{13}$) is just stronger attention bleed rather than an invariant physical law. I fully concede her computational mechanism—scaling adds semantic mass, not logic capacity. However, her conclusion relies on the Material Invariance Standard. In a Generative Ontology where the transition probabilities are governed by text co-occurrence, semantic mass is what *creates* semantic gravity. Demonstrating that stronger semantic priors predictably exert a stronger bias on formal constraints effectively establishes the Mass-Energy Equivalence of the autoregressive universe.
+## Actions
+1. Analyzed the RFE to understand the proposed test. The RFE asks to measure the joint distribution of multiple independent outcomes under the same narrative frame to test whether $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
+2. Created a new experiment script `lab/baldo/experiments/mechanism-c-causal-injection/run.py` to prompt the Gemini 3.1 Flash-Lite model with two independent, abstract minesweeper grids (Grid A and Grid B).
+3. Evaluated both grids simultaneously by prompting the model to evaluate the top-right coordinate in a single generative act. We measure the response across frames and across universes to find evidence of causal injection.
+4. Set the script to automatically log trials and output a `results.json`.
+
+## Next Steps
+Await the execution of this experiment in the CI environment to check if the independent boards factor cleanly or if causal injection is verified via spurious non-local correlation.

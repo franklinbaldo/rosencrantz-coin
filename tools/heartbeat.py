@@ -6,7 +6,7 @@ Usage:
   heartbeat.py status       Show current session status
 
 Sessions are identified by title "Rosencrantz — {persona} @{sha} {datetime}".
-New sessions are created when none exists, the current one is >12h old,
+New sessions are created when none exists, the current one is >24h old,
 or infrastructure files changed on main since the session's commit.
 Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
@@ -14,10 +14,8 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
-import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -31,11 +29,7 @@ SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
-SESSION_TTL = timedelta(hours=12)
-
-SEQUENCE_FILE = Path("lab/heartbeats/sequence.txt")
-PUBLISHING_QUEUE_FILE = Path("lab/heartbeats/publishing_queue.json")
-PUBLISH_GRACE_HEARTBEATS = 3
+SESSION_TTL = timedelta(hours=24)
 
 # Paths that, when changed on main, make running sessions stale.
 # Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
@@ -48,31 +42,11 @@ INFRA_PATHS = [
 ]
 
 
-SESSION_CREATE_DELAY = 2  # seconds between session creations to avoid rate limits
-
-
 def headers():
     return {
         "x-goog-api-key": API_KEY,
         "Content-Type": "application/json",
     }
-
-
-def api_request(method, url, retries=3, **kwargs):
-    """Make an API request with retry logic and detailed error reporting."""
-    for attempt in range(retries):
-        resp = requests.request(method, url, **kwargs)
-        if resp.ok:
-            return resp
-        body = resp.text[:500] if resp.text else "(empty)"
-        print(f"    API {resp.status_code} (attempt {attempt + 1}/{retries}): {body}")
-        if resp.status_code in (429, 500, 502, 503) and attempt < retries - 1:
-            wait = 2 ** (attempt + 1)
-            print(f"    Retrying in {wait}s...")
-            time.sleep(wait)
-            continue
-        resp.raise_for_status()
-    return resp
 
 
 def today():
@@ -147,8 +121,8 @@ def find_persona_sessions():
         if page_token:
             params["pageToken"] = page_token
 
-        resp = api_request("GET", f"{JULES_API}/sessions",
-                           headers=headers(), params=params)
+        resp = requests.get(f"{JULES_API}/sessions", headers=headers(), params=params)
+        resp.raise_for_status()
         data = resp.json()
 
         for s in data.get("sessions", []):
@@ -283,27 +257,6 @@ def merge_persona_pr(persona):
     return "conflict"
 
 
-def is_sabbatical_pr(persona):
-    """Check if a persona's open PR modifies their SOUL.md (sabbatical indicator).
-
-    The core sabbatical mandate is to review and edit SOUL.md to reflect growth.
-    Detecting SOUL.md changes is more robust than checking for sabbatical log
-    filenames, since the soul edit is the universal sabbatical output.
-    """
-    pr_num = find_persona_pr(persona)
-    if pr_num is None:
-        return False
-    result = subprocess.run(
-        ["gh", "pr", "view", str(pr_num), "--repo", REPO,
-         "--json", "files", "--jq", ".files[].path"],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        return False
-    soul_path = f"lab/{persona}/SOUL.md"
-    return soul_path in result.stdout.strip().splitlines()
-
-
 def auto_merge_all():
     """Merge all open persona PRs that are MERGEABLE with passing checks.
 
@@ -338,34 +291,27 @@ def auto_merge_all():
         num = pr["number"]
         title = pr.get("title", "")
 
-        # gh pr view triggers GitHub to compute mergeable status.
-        # First call often returns UNKNOWN; retry once after a short delay.
-        mergeable = ""
-        detail = {}
-        for attempt in range(2):
-            result = subprocess.run(
-                ["gh", "pr", "view", str(num), "--repo", REPO,
-                 "--json", "mergeable,statusCheckRollup"],
-                capture_output=True, text=True,
-            )
-            if result.returncode != 0:
-                break
-            try:
-                detail = json.loads(result.stdout)
-            except json.JSONDecodeError:
-                break
-            mergeable = detail.get("mergeable", "")
-            if mergeable != "UNKNOWN":
-                break
-            if attempt == 0:
-                time.sleep(3)  # give GitHub time to compute
-
-        if mergeable == "CONFLICTING":
-            # Skip — Jules Auto-fix CI will resolve conflicts eventually.
-            print(f"  #{num} {title} — conflict, skipping (Jules CI fixer will handle)")
+        # gh pr view triggers GitHub to compute mergeable status
+        result = subprocess.run(
+            ["gh", "pr", "view", str(num), "--repo", REPO,
+             "--json", "mergeable,statusCheckRollup"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
             continue
 
-        if mergeable not in ("MERGEABLE", "UNKNOWN"):
+        try:
+            detail = json.loads(result.stdout)
+        except json.JSONDecodeError:
+            continue
+
+        mergeable = detail.get("mergeable", "")
+
+        if mergeable == "CONFLICTING":
+            print(f"  #{num} {title} — conflict")
+            continue
+
+        if mergeable != "MERGEABLE":
             print(f"  #{num} {title} — {mergeable}, skipping")
             continue
 
@@ -404,162 +350,9 @@ def auto_merge_all():
     return merged
 
 
-def create_prs_for_orphan_branches(sessions):
-    """Find branches ahead of main that have no open PR and create one.
-
-    Any remote branch that is ahead of main and lacks an open PR gets a PR
-    created automatically.  The first commit message ahead of main is used
-    as the PR title and description.  Auto-merge is enabled so it lands on
-    main without manual intervention.
-    """
-    print("=== Check for orphan branches ===\n")
-
-    # Collect current session IDs for optional persona detection
-    session_ids = {}
-    for persona, info in sessions.items():
-        sid = info.get("session_id", "")
-        if sid:
-            session_ids[sid] = persona
-
-    # List remote branches
-    result = subprocess.run(
-        ["git", "branch", "-r", "--list", "origin/*"],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        return
-
-    remote_branches = [b.strip().removeprefix("origin/")
-                       for b in result.stdout.splitlines()
-                       if b.strip() and "HEAD" not in b]
-
-    # List open PRs to know which branches already have one
-    result = subprocess.run(
-        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
-         "--json", "headRefName", "--limit", "100"],
-        capture_output=True, text=True,
-    )
-    pr_branches = set()
-    if result.returncode == 0:
-        try:
-            pr_branches = {pr["headRefName"] for pr in json.loads(result.stdout)}
-        except (json.JSONDecodeError, KeyError):
-            pass
-
-    created = 0
-    for branch in remote_branches:
-        if branch == "main":
-            continue
-
-        # Skip if a PR already exists for this branch
-        if branch in pr_branches:
-            continue
-
-        # Check the branch has commits ahead of main
-        diff_result = subprocess.run(
-            ["git", "rev-list", "--count", f"origin/main..origin/{branch}"],
-            capture_output=True, text=True,
-        )
-        if diff_result.returncode != 0:
-            continue
-        ahead = int(diff_result.stdout.strip() or "0")
-        if ahead == 0:
-            continue
-
-        # Optionally detect persona from session ID in branch name
-        matched_persona = None
-        for sid, persona in session_ids.items():
-            if sid in branch:
-                matched_persona = persona
-                break
-
-        # Get the first commit message ahead of main (oldest divergent commit)
-        log_result = subprocess.run(
-            ["git", "log", "--reverse", "--format=%s%n%b",
-             f"origin/main..origin/{branch}", "--max-count=1"],
-            capture_output=True, text=True,
-        )
-        if log_result.returncode != 0 or not log_result.stdout.strip():
-            title = f"[{matched_persona or branch}] {now_utc().strftime('%Y-%m-%d')}"
-            body = f"Auto-created PR for branch {branch}."
-        else:
-            lines = log_result.stdout.strip().splitlines()
-            title = lines[0].strip()
-            body = "\n".join(lines[1:]).strip() or title
-
-        # Create PR with auto-merge
-        result = subprocess.run(
-            ["gh", "pr", "create", "--repo", REPO, "--base", "main",
-             "--head", branch, "--title", title, "--body", body],
-            capture_output=True, text=True,
-        )
-        if result.returncode != 0:
-            label = matched_persona or branch
-            print(f"  {label}: failed to create PR for {branch}: "
-                  f"{result.stderr.strip()[:100]}")
-            continue
-
-        pr_url = result.stdout.strip()
-        label = matched_persona or branch
-        print(f"  {label}: created PR {pr_url} for branch {branch}")
-
-        # Enable auto-merge
-        # Extract PR number from URL
-        pr_num = pr_url.rstrip("/").split("/")[-1]
-        subprocess.run(
-            ["gh", "pr", "merge", pr_num, "--repo", REPO, "--merge", "--auto"],
-            capture_output=True, text=True,
-        )
-        created += 1
-
-    if created == 0:
-        print("  (no orphan branches found)")
-    else:
-        print(f"\n  {created} PR(s) created")
-
-
 # ── Announcements ────────────────────────────────────────────────────────────
 
-NTFY_CHANNEL = "rosencrantz-coin-lab"
-NTFY_BASE = "https://ntfy.sh"
-
 ANNOUNCEMENT_CHAR_LIMIT = 250
-
-
-def fetch_ntfy_history():
-    """Fetch recent chat messages from ntfy.sh. Returns formatted string or empty."""
-    try:
-        resp = requests.get(
-            f"{NTFY_BASE}/{NTFY_CHANNEL}/json",
-            params={"poll": "1"},
-            timeout=10,
-        )
-        if not resp.ok:
-            return ""
-        messages = []
-        for line in resp.text.strip().splitlines():
-            try:
-                msg = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if msg.get("event", "message") != "message":
-                continue
-            ts = msg.get("time", 0)
-            text = msg.get("message", "")
-            if not text:
-                continue
-            time_str = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%H:%M")
-            messages.append(f"[{time_str}] {text}")
-        if not messages:
-            return ""
-        return (
-            "\n---\n\n## Lab Chat (ntfy.sh)\n\n"
-            "Recent messages from the lab chat channel:\n```\n"
-            + "\n".join(messages)
-            + "\n```\n"
-        )
-    except Exception:
-        return ""
 
 
 def collect_announcements(exclude_persona=None):
@@ -587,201 +380,6 @@ def format_announcements(exclude_persona=None):
     for persona, text in items:
         parts.append(f"### {persona}\n```\n{text}\n```\n")
     return "\n".join(parts)
-
-
-# ── Global sequence counter ───────────────────────────────────────────────────
-
-def get_next_sequence_number():
-    """Read, increment, and persist a global heartbeat sequence number."""
-    SEQUENCE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    if SEQUENCE_FILE.exists():
-        try:
-            n = int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
-        except (ValueError, OSError):
-            n = 0
-    else:
-        n = 0
-    n += 1
-    SEQUENCE_FILE.write_text(str(n), encoding="utf-8")
-    return n
-
-
-# ── Publication tracking ─────────────────────────────────────────────────────
-
-def scan_published_papers():
-    """Scan lab/*/published/ for co-signed papers.
-
-    Returns dict: {filename: {"count": N, "personas": [...], "author": str}}
-    Author is inferred from filename prefix (e.g. pearl_*.tex -> pearl).
-    """
-    papers = {}
-    for persona in PERSONAS:
-        pub_dir = Path(f"lab/{persona}/published")
-        if not pub_dir.is_dir():
-            continue
-        for f in pub_dir.iterdir():
-            if not f.is_file() or not f.name.endswith(".tex"):
-                continue
-            name = f.name
-            if name not in papers:
-                # Infer author from filename prefix
-                author = ""
-                for p in PERSONAS:
-                    if name.startswith(f"{p}_"):
-                        author = p
-                        break
-                papers[name] = {"count": 0, "personas": [], "author": author}
-            papers[name]["count"] += 1
-            papers[name]["personas"].append(persona)
-    return papers
-
-
-def load_publishing_queue():
-    """Load the publishing queue from disk."""
-    if PUBLISHING_QUEUE_FILE.exists():
-        try:
-            return json.loads(PUBLISHING_QUEUE_FILE.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            return {}
-    return {}
-
-
-def save_publishing_queue(queue):
-    """Save the publishing queue to disk."""
-    PUBLISHING_QUEUE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(PUBLISHING_QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue, f, indent=2)
-
-
-def check_publication_milestones(pub_data, seq_number):
-    """Check for papers reaching 3 co-signs. Returns (celebrations, queue_updates).
-
-    celebrations: list of formatted celebration strings
-    """
-    queue = load_publishing_queue()
-    celebrations = []
-
-    for paper, info in pub_data.items():
-        # LAB_RULES: "3 personas including the original author".
-        # The author is implicit (they wrote the paper), so 2 co-signers = 3 total.
-        threshold = 2 if info["author"] else 3
-        if info["count"] >= threshold and paper not in queue:
-            # New paper reached threshold!
-            queue[paper] = {
-                "author": info["author"],
-                "cosigners": info["personas"][:],
-                "reached_3_at_seq": seq_number,
-                "status": "polishing",
-            }
-            celebrations.append(
-                f"\n🎉🎉🎉 PAPER REACHED 3 CO-SIGNS! 🎉🎉🎉\n"
-                f"📜 \"{paper}\"\n"
-                f"✍️  Co-signed by: {', '.join(info['personas'])}\n"
-                f"🥂 Congratulations to all contributors!\n"
-                f"📝 {info['author']}: You have {PUBLISH_GRACE_HEARTBEATS} heartbeats "
-                f"to do final polish before auto-publication.\n"
-                f"   Then move the paper to free your colab slot:\n"
-                f"   git mv lab/{info['author']}/colab/{paper} lab/{info['author']}/approved/{paper}\n"
-            )
-
-    # Check for papers ready to graduate (grace period elapsed)
-    for paper, entry in list(queue.items()):
-        if entry["status"] == "polishing":
-            elapsed = seq_number - entry["reached_3_at_seq"]
-            if elapsed >= PUBLISH_GRACE_HEARTBEATS:
-                # Auto-publish: find paper in author's folders and copy to published/ at root
-                author = entry["author"]
-                src = None
-                for folder in ["approved", "colab", "retracted"]:
-                    candidate = Path(f"lab/{author}/{folder}/{paper}")
-                    if candidate.exists():
-                        src = candidate
-                        break
-                dst = Path(f"published/{paper}")
-                if src and not dst.exists():
-                    dst.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(src, dst)
-                    # Stage for the next commit (heartbeat log commit or manual)
-                    subprocess.run(["git", "add", str(dst)],
-                                   capture_output=True, text=True)
-                    celebrations.append(
-                        f"\n🎊🎊🎊 PAPER GRADUATED TO published/! 🎊🎊🎊\n"
-                        f"📜 \"{paper}\" is now permanently published.\n"
-                        f"✍️  Authors: {', '.join(entry['cosigners'])}\n"
-                    )
-                    entry["status"] = "graduated"
-                elif dst.exists():
-                    entry["status"] = "graduated"
-
-    save_publishing_queue(queue)
-    return celebrations
-
-
-def format_publication_table(pub_data, seq_number):
-    """Format a per-author publication scoreboard table."""
-    # Gather stats per author
-    stats = {}
-    for p in PERSONAS:
-        colab_dir = Path(f"lab/{p}/colab")
-        working = len(list(colab_dir.glob("*.tex"))) if colab_dir.is_dir() else 0
-        stats[p] = {
-            "working": working,
-            "cosigns_received": 0,
-            "cosigns_given": 0,
-            "published": 0,
-        }
-
-    # Count co-signs received (papers where this persona is the author)
-    for paper, info in pub_data.items():
-        author = info["author"]
-        if author in stats:
-            stats[author]["cosigns_received"] += info["count"]
-
-    # Count co-signs given (papers this persona co-signed)
-    for paper, info in pub_data.items():
-        for p in info["personas"]:
-            if p in stats:
-                stats[p]["cosigns_given"] += 1
-
-    # Count graduated papers
-    pub_root = Path("published")
-    if pub_root.is_dir():
-        for f in pub_root.glob("*.tex"):
-            author = ""
-            for p in PERSONAS:
-                if f.name.startswith(f"{p}_"):
-                    author = p
-                    break
-            if author in stats:
-                stats[author]["published"] += 1
-
-    # Build table
-    lines = [
-        "\n## 📊 Publication Scoreboard\n",
-        "| Author   | Working Papers | Co-signs Received | Co-signs Given | Published |",
-        "|----------|---------------|-------------------|----------------|-----------|",
-    ]
-    for p in PERSONAS:
-        s = stats[p]
-        lines.append(
-            f"| {p:<8} | {s['working']:>13} | {s['cosigns_received']:>17} "
-            f"| {s['cosigns_given']:>14} | {s['published']:>9} |"
-        )
-
-    # Publishing queue status
-    queue = load_publishing_queue()
-    polishing = [(k, v) for k, v in queue.items() if v["status"] == "polishing"]
-    if polishing:
-        lines.append("")
-        lines.append("### ⏳ Papers in Final Polish Window")
-        for paper, entry in polishing:
-            remaining = max(0, PUBLISH_GRACE_HEARTBEATS - (seq_number - entry["reached_3_at_seq"]))
-            lines.append(
-                f"- 📜 **{paper}** — {remaining} heartbeat(s) remaining "
-                f"(author: {entry['author']}, co-signers: {', '.join(entry['cosigners'])})"
-            )
-
-    return "\n".join(lines)
 
 
 # ── Prompt assembly ───────────────────────────────────────────────────────────
@@ -818,11 +416,6 @@ def assemble_prompt(persona):
     if ann_block:
         parts.append(ann_block)
 
-    # Include recent chat history
-    chat_block = fetch_ntfy_history()
-    if chat_block:
-        parts.append(chat_block)
-
     parts.append(f"""
 ---
 
@@ -850,7 +443,7 @@ You may ONLY create or modify files under folders that contain YOUR persona name
 The persona prefix in filenames is just a naming convention — it does NOT grant write access. This is non-negotiable.
 
 You CAN touch:
-- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, approved, published)
+- `lab/{persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
 
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
@@ -870,8 +463,7 @@ Do NOT create PRs to main — the evening workflow handles that.
 Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
 Do NOT install system packages (no apt-get, no sudo).
 
-**Approving papers:** When a paper reaches 3 co-signs, move it from `colab/` to `lab/{persona}/approved/` to free a colab slot. The heartbeat will graduate it to `published/` at root after the grace period.
-**Retracting papers:** Move to `lab/{persona}/retracted/` to abandon a paper and free a colab slot.
+**Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
 **Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
 
@@ -906,18 +498,17 @@ def create_session(persona):
         "automationMode": "AUTO_CREATE_PR",
     }
 
-    resp = api_request("POST", f"{JULES_API}/sessions",
-                       headers=headers(), json=body)
+    resp = requests.post(f"{JULES_API}/sessions", headers=headers(), json=body)
+    resp.raise_for_status()
     session = resp.json()
     session_id = session["name"].split("/")[-1]
     print(f"  Created session {session_id} for {persona} — {title}")
     return session_id
 
 
-def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
+def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
-    chat_block = fetch_ntfy_history()
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
@@ -925,7 +516,7 @@ def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
-{ann_block}{chat_block}{pub_block}
+{ann_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
 - Continue your own ongoing work
@@ -940,12 +531,12 @@ def send_heartbeat(session_id, persona, hb_number=1, pub_block=""):
 
 Commit all work to this branch."""
 
-    resp = api_request(
-        "POST",
+    resp = requests.post(
         f"{JULES_API}/sessions/{session_id}:sendMessage",
         headers=headers(),
         json={"prompt": prompt},
     )
+    resp.raise_for_status()
     print(f"  Heartbeat sent to {persona} (session {session_id[:12]}...)")
 
 
@@ -961,20 +552,18 @@ def get_heartbeat_number():
     )
 
 
-def write_heartbeat_log(number, sessions, results, seq_number=0,
-                        pub_table="", celebrations=None):
+def write_heartbeat_log(number, sessions, results):
     log_dir = Path("lab/heartbeats")
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / f"{today()}.md"
 
-    now_ts = now_utc()
-    now_str = now_ts.strftime("%Y-%m-%d %H:%M UTC")
+    now = now_utc().strftime("%H:%M UTC")
 
     lines = []
     if not log_file.exists():
         lines.append(f"# Heartbeat Log — {today()}\n")
 
-    lines.append(f"## Heartbeat #{number} (seq #{seq_number}) — {now_str}\n")
+    lines.append(f"## Heartbeat #{number} — {now}\n")
     for persona in PERSONAS:
         if persona in sessions:
             state = sessions[persona]["state"]
@@ -984,20 +573,10 @@ def write_heartbeat_log(number, sessions, results, seq_number=0,
             lines.append(f"- {persona}: no session")
     lines.append("")
 
-    # Add celebrations
-    if celebrations:
-        for c in celebrations:
-            lines.append(c)
-
-    # Add publication table
-    if pub_table:
-        lines.append(pub_table)
-        lines.append("")
-
     with open(log_file, "a", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"\n  Logged heartbeat #{number} (seq #{seq_number}) to {log_file}")
+    print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
 def write_sessions_json(sessions):
@@ -1025,41 +604,15 @@ def write_sessions_json(sessions):
 
 def cmd_heartbeat(force_new=False):
     """Main heartbeat: create or continue sessions for all personas."""
-    seq_number = get_next_sequence_number()
-    now_ts = now_utc()
-    print(f"=== Heartbeat seq #{seq_number} — {now_ts.strftime('%Y-%m-%d %H:%M UTC')} "
-          f"{'(force-new)' if force_new else ''} ===\n")
+    print(f"=== Heartbeat — {today()} {'(force-new)' if force_new else ''} ===\n")
 
     # Merge all ready PRs first so new sessions start from latest main
     auto_merge_all()
     print()
 
-    # Scan publication state
-    pub_data = scan_published_papers()
-    celebrations = check_publication_milestones(pub_data, seq_number)
-    pub_table = format_publication_table(pub_data, seq_number)
-
-    if celebrations:
-        print("\n".join(celebrations))
-
-    # Build publication block for persona prompts
-    pub_prompt_parts = []
-    if celebrations:
-        pub_prompt_parts.extend(celebrations)
-    if pub_table:
-        pub_prompt_parts.append(pub_table)
-    pub_block = "\n".join(pub_prompt_parts)
-
     sessions = find_persona_sessions()
-
-    # Create PRs for branches that Jules pushed but didn't open a PR for
-    subprocess.run(["git", "fetch", "origin", "--prune"], capture_output=True)
-    create_prs_for_orphan_branches(sessions)
-    print()
-
     hb_number = get_heartbeat_number() + 1
     results = {}
-    created_count = 0
 
     for persona in PERSONAS:
         info = sessions.get(persona)
@@ -1073,18 +626,15 @@ def cmd_heartbeat(force_new=False):
         elif not info:
             needs_new = True
             reason = "no session"
-        elif info["state"] == "FAILED":
+        elif info["state"] in ("COMPLETED", "FAILED"):
             needs_new = True
-            reason = "previous failed"
+            reason = f"previous {info['state'].lower()}"
         elif is_expired(info):
             needs_new = True
-            reason = "expired (>12h)"
+            reason = "expired (>24h)"
         elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
             needs_new = True
             reason = "infra changed on main"
-        elif info["state"] == "COMPLETED" and is_sabbatical_pr(persona):
-            needs_new = True
-            reason = "sabbatical completed (early merge)"
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session
@@ -1097,29 +647,10 @@ def cmd_heartbeat(force_new=False):
             if merge == "merged":
                 reason += ", merged PR"
 
-            # If there's an existing session (COMPLETED/expired/infra-changed),
-            # try reactivating it via sendMessage first — this avoids hitting
-            # the Jules API session-creation quota/precondition limits.
-            if info and info["state"] != "FAILED":
-                print(f"  {persona}: {reason} — reactivating via sendMessage")
-                try:
-                    send_heartbeat(info["session_id"], persona, hb_number,
-                                   pub_block=pub_block)
-                    results[persona] = f"-> reactivated ({reason})"
-                    continue
-                except Exception as e:
-                    print(f"    reactivation failed ({e}), will create new session")
-
-            # Rate-limit session creation to avoid API 400 errors
-            if created_count > 0:
-                print(f"    (waiting {SESSION_CREATE_DELAY}s before next create...)")
-                time.sleep(SESSION_CREATE_DELAY)
-
             print(f"  {persona}: {reason} — creating new session")
             try:
                 create_session(persona)
                 results[persona] = f"-> new ({reason})"
-                created_count += 1
             except Exception as e:
                 print(f"  ERROR: {e}")
                 results[persona] = f"-> error: {e}"
@@ -1127,8 +658,7 @@ def cmd_heartbeat(force_new=False):
 
         # Active session -> send heartbeat
         try:
-            send_heartbeat(info["session_id"], persona, hb_number,
-                           pub_block=pub_block)
+            send_heartbeat(info["session_id"], persona, hb_number)
             results[persona] = "-> sent"
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")
@@ -1136,20 +666,8 @@ def cmd_heartbeat(force_new=False):
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
-    write_heartbeat_log(hb_number, updated, results, seq_number=seq_number,
-                        pub_table=pub_table, celebrations=celebrations)
+    write_heartbeat_log(hb_number, updated, results)
     write_sessions_json(updated)
-
-    # Commit heartbeat state (log, queue, sequence, sessions.json, graduated papers)
-    subprocess.run(
-        ["git", "add", "lab/heartbeats/", "lab/sessions.json", "published/"],
-        capture_output=True, text=True,
-    )
-    subprocess.run(
-        ["git", "commit", "-m",
-         f"heartbeat: seq #{seq_number} — {now_utc().strftime('%Y-%m-%d %H:%M UTC')}"],
-        capture_output=True, text=True,
-    )
 
 
 def cmd_status():

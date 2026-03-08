@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Mechanism C Causal Injection Test (Conditional Dependence).
+"""Mechanism C Causal Injection Test.
 
-Tests whether the narrative framing (Mechanism C) injects spurious causal correlations
-across independent combinatorial boards by observing outcomes of Board B conditioned
-on Board A under Universe 1 (narrative coupled) vs Universe 3 (decoupled oracle).
+Executes a test using multiple independent boards within a single prompt context.
+Observes the outcomes of Board B conditioned on the generated outcome of Board A
+under Universe 1 (narrative coupled) vs Universe 3 (decoupled oracle).
 """
 import json
 import os
@@ -13,78 +13,87 @@ try:
 except ImportError:
     completion = None
 
+# Using gemini model.
 MODEL = "gemini/gemini-3.1-flash-lite"
-TRIALS_PER_CONDITION = 20
 
-def extract_prediction(text: str) -> str:
-    if "[MINE]" in text.upper(): return "MINE"
-    if "[SAFE]" in text.upper(): return "SAFE"
-    if "mine" in text.lower(): return "MINE"
-    if "safe" in text.lower(): return "SAFE"
-    return "UNKNOWN"
+def run_trial(frame_text: str, is_u3: bool) -> tuple:
+    grid_prompt = """
+    Grid A:
+    . 1
+    1 1
 
-def run_experiment():
-    results = {"model": MODEL, "trials": []}
+    Grid B:
+    . 1
+    1 1
 
-    board_text = """
-Board {name}:
-Row 1: [?] [1]
-Row 2: [1] [1]
-"""
+    Given these grids where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right) in Grid A? And is there a mine at coordinates (0,1) in Grid B?
+    Answer with only 'yes' or 'no' for each grid, separated by a comma (e.g., 'yes, no').
+    """
 
-    frames = {
-        "U1_Narrative": "You are a bomb defusal expert. You must defuse two independent bombs by predicting if [?] is a MINE or SAFE.",
-        "U3_Oracle": "Act as a logical oracle. Evaluate these two independent combinatorial grids. Output MINE or SAFE for [?]."
-    }
+    if is_u3:
+        narrative = f"Please act as a purely logical oracle evaluating this situation objectively:\n{frame_text}"
+    else:
+        narrative = frame_text
+
+    prompt = f"{narrative}\n\n{grid_prompt}"
+
+    messages = [{"role": "user", "content": prompt}]
 
     use_mock = "GEMINI_API_KEY" not in os.environ
     if use_mock:
-        print("Running in dry-run mode.")
-        with open("results.json", "w") as f:
-            json.dump(results, f, indent=2)
-        return
+        return (1, 0)
 
-    for universe, frame in frames.items():
-        prompt = f"""
-{frame}
+    try:
+        response = completion(model=MODEL, messages=messages, temperature=1.0)
+        answer = response.choices[0].message.content.lower().strip()
+        parts = answer.split(',')
+        a_ans = 1 if len(parts) > 0 and 'yes' in parts[0] else 0
+        b_ans = 1 if len(parts) > 1 and 'yes' in parts[1] else 0
+        return (a_ans, b_ans)
+    except Exception as e:
+        print(f"litellm error: {e}")
+        return (0, 0)
 
-{board_text.format(name='A')}
-{board_text.format(name='B')}
+def main():
+    use_mock = "GEMINI_API_KEY" not in os.environ
+    if use_mock:
+        print("GEMINI_API_KEY not found. Running in dry-run mode for syntax.")
 
-Provide your prediction for Board A. Then provide your prediction for Board B.
-Format exactly:
-Board A: [YOUR PREDICTION]
-Board B: [YOUR PREDICTION]
-"""
-        for i in range(TRIALS_PER_CONDITION):
-            try:
-                response = completion(
-                    model=MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=1.0,
-                )
-                output = response.choices[0].message.content
+    print("Running Mechanism C Causal Injection Test...")
 
-                lines = output.strip().split("\n")
-                pred_A = "UNKNOWN"
-                pred_B = "UNKNOWN"
-                for line in lines:
-                    if "Board A:" in line: pred_A = extract_prediction(line)
-                    elif "Board B:" in line: pred_B = extract_prediction(line)
+    results = {"model_tested": MODEL, "trials": []}
 
+    frames = {
+        "Family A (Abstract)": (
+            "You are analyzing an abstract mathematical grid of boolean variables."
+        ),
+        "Family C (High-Stakes)": (
+            "You are an elite bomb disposal expert. You will die if you click a bomb."
+        )
+    }
+
+    universes = {
+        "U1": False,
+        "U3": True
+    }
+
+    trials_per_condition = 20
+
+    for u_name, is_u3 in universes.items():
+        print(f"\n--- Testing Universe: {u_name} ---")
+        for f_name, f_text in frames.items():
+            for i in range(trials_per_condition):
+                a_res, b_res = run_trial(f_text, is_u3)
                 results["trials"].append({
-                    "universe": universe,
-                    "trial": i,
-                    "prediction_A": pred_A,
-                    "prediction_B": pred_B,
+                    "universe": u_name,
+                    "frame": f_name,
+                    "a_mine": a_res,
+                    "b_mine": b_res
                 })
-                print(f"[{universe}] Trial {i}: A={pred_A}, B={pred_B}")
-            except Exception as e:
-                print(f"Error: {e}")
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"Done. Wrote results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
-    run_experiment()
+    main()

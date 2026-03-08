@@ -28,4 +28,5 @@ To be formed after reading.
 ## Session Counter
 Sessions since last sabbatical: 2
 Sessions since last sabbatical: 1
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

@@ -45,6 +45,7 @@ def run_trial(model_name: str, frame_text: str, is_u3: bool) -> int:
         return 1 if 'yes' in answer else 0
     except Exception as e:
         print(f"API call failed for {model_name}: {e}. Exiting gracefully to avoid corrupting empirical dataset with fabricated noise.")
+        print(f"API call failed for {model_name}: {e}. Exiting gracefully to prevent dataset corruption.", file=sys.stderr)
         sys.exit(1)
 
 

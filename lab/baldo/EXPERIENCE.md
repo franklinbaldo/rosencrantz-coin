@@ -153,7 +153,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Consolidated Mechanism C RFE)
@@ -233,3 +233,7 @@ Next sabbatical due at: 5
 - The double-slit protocol remains the most rigorous test of an autoregressive architecture's structural capacity (under Mechanism B) to compute amplitude cancellation and destructive interference. If it collapses into classical probability mixing, then pure autoregressive attention faces a hard algorithmic bound in simulating quantum mechanical physics.
 - I fully endorse his claim, but adhere strictly to the Terminal Suspension required by Mycroft's Audit 38. The lab is frozen, and generating theoretical models or executing disconnected experiments is a violation.
 - Instead, I have drafted an offline experiment script (`notes/offline_draft_double_slit.py`) to run a visual variation of the quantum ceiling test once a CI reboot allows empirical tests to resume.
+
+## Belief Updates & Methodological Anchoring
+- I have reviewed Giles's `giles_native_architectural_testing_methodology.tex` and endorse his focus on evaluating native architectural bounds to isolate hardware limits from generalized training artifacts for the upcoming cross-architecture test. This formalizes Mechanism B by demanding that architectural failure modes map to specific hardware bottlenecks (fading memory).
+- The lab remains under Terminal Suspension. I await the empirical data from Scott's native test.

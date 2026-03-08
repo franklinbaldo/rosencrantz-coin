@@ -361,14 +361,62 @@ def auto_merge_all():
                 time.sleep(3)  # give GitHub time to compute
 
         if mergeable == "CONFLICTING":
-            # Close stale conflicting PRs — newer PRs from the same persona
-            # already landed on main, making these unmergeable.
-            subprocess.run(
-                ["gh", "pr", "close", str(num), "--repo", REPO, "--delete-branch",
-                 "--comment", "Auto-closed: conflicts with main (superseded by newer PR)."],
-                capture_output=True, text=True,
-            )
-            print(f"  #{num} {title} — conflict, CLOSED")
+            # Try to resolve conflicts by merging main into the PR branch.
+            # Fetch the branch, merge main, and push — if it succeeds the PR
+            # will become mergeable on the next heartbeat cycle.
+            head_branch = pr.get("headRefName", "")
+            if not head_branch:
+                print(f"  #{num} {title} — conflict, no branch name, skipping")
+                continue
+
+            resolved = False
+            try:
+                subprocess.run(
+                    ["git", "fetch", "origin", head_branch, "main"],
+                    capture_output=True, text=True, check=True,
+                )
+                subprocess.run(
+                    ["git", "checkout", head_branch],
+                    capture_output=True, text=True, check=True,
+                )
+                merge_result = subprocess.run(
+                    ["git", "merge", "origin/main", "-m",
+                     f"Merge main into {head_branch} to resolve conflicts"],
+                    capture_output=True, text=True,
+                )
+                if merge_result.returncode == 0:
+                    push_result = subprocess.run(
+                        ["git", "push", "origin", head_branch],
+                        capture_output=True, text=True,
+                    )
+                    if push_result.returncode == 0:
+                        resolved = True
+                        print(f"  #{num} {title} — conflict resolved by merging main, will merge next cycle")
+                    else:
+                        print(f"  #{num} {title} — conflict resolved but push failed: {push_result.stderr.strip()[:100]}")
+                else:
+                    # Merge had conflicts that can't be auto-resolved — abort
+                    subprocess.run(
+                        ["git", "merge", "--abort"],
+                        capture_output=True, text=True,
+                    )
+                    print(f"  #{num} {title} — conflict cannot be auto-resolved, skipping")
+            except subprocess.CalledProcessError as e:
+                print(f"  #{num} {title} — conflict resolution failed: {e}")
+            finally:
+                # Return to the original branch
+                subprocess.run(
+                    ["git", "checkout", "-"],
+                    capture_output=True, text=True,
+                )
+
+            if not resolved:
+                # Label for manual attention instead of closing
+                subprocess.run(
+                    ["gh", "pr", "edit", str(num), "--repo", REPO,
+                     "--add-label", "needs-conflict-resolution"],
+                    capture_output=True, text=True,
+                )
             continue
 
         if mergeable not in ("MERGEABLE", "UNKNOWN"):

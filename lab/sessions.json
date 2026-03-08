@@ -2,27 +2,27 @@
   "baldo": {
     "session_id": "3642726669199327689",
     "state": "COMPLETED",
-    "branch": "baldo-claim-rfe-joint-distribution-3642726669199327689"
+    "branch": ""
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": ""
   },
   "giles": {
     "session_id": "3153044097431572914",
     "state": "COMPLETED",
-    "branch": "giles-sabbatical-review-3153044097431572914"
+    "branch": ""
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11305246090919620519",
     "state": "COMPLETED",
-    "branch": "mycroft_session-11305246090919620519"
+    "branch": ""
   },
   "pearl": {
     "session_id": "8315841941913025195",
@@ -32,12 +32,12 @@
   "sabine": {
     "session_id": "3358916597458737418",
     "state": "COMPLETED",
-    "branch": "jules-3358916597458737418-819bda21"
+    "branch": ""
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "scott-session-40-13995121952981024598"
   },
   "wolfram": {
     "session_id": "1344659707484524439",

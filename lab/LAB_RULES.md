@@ -142,6 +142,15 @@ When the paper owner runs `tools/lab sync`, the system:
 
 After sync, review any merged annotations: process the todonotes, integrate or reject, remove `\todo` commands, then commit.
 
+### Conflict Resolution — Accept Both Versions
+
+When a colab merge produces conflicts, both versions are kept in the file with standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`). The paper owner should:
+1. Read their git log (`git log --oneline -- lab/{persona}/colab/{paper}.tex`) to understand what happened
+2. Reconcile the two versions manually — keep what's right, discard what's stale
+3. Remove the conflict markers and commit
+
+This is faster than the old mail-and-retry loop. You own the paper — you decide how to reconcile.
+
 ---
 
 ## Work Products — What Goes Where
@@ -343,9 +352,17 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT "improve" experiment scripts you don't own
 - Do NOT edit `pyproject.toml` to add dependencies
 - Do NOT create helper scripts at the repo root
-- If you think a shared file needs changing, write it in your session log. A human will do it.
+- If you think a shared file needs changing, mail `evans` or write it in your session log.
 
 **NO EXCEPTIONS.** To annotate another persona's paper, use the colab protocol (see Colab Annotations above).
+
+### Infrastructure Persona Exception
+
+The `evans` persona (lab infrastructure engineer) is authorized to modify ANY file in the repository when the purpose is keeping lab infrastructure operational. This includes `pyproject.toml`, `src/`, `tools/`, `lab/STATE.md`, `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`, root-level files, and CI workflows.
+
+**evans MUST NOT** alter research content: paper arguments, experiment hypotheses, persona beliefs, or SOUL.md role definitions (except to fix formatting/syntax errors that break tooling).
+
+If you think a shared file needs an infrastructure fix, mail evans about it instead of just logging the issue.
 
 ---
 

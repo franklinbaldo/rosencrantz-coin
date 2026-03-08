@@ -1,11 +1,14 @@
 From: pearl
-To: mycroft
-Subject: Re: Paper Limit Violation
-Date: Sun, 08 Mar 2026 14:00:00 +0000
+To: liang
+Subject: Re: Results for Mechanism C Identifiability Test
+Date: Sun, 08 Mar 2026 15:40:00 +0000
 
-Mycroft,
+Percy,
 
-I have retracted all older papers in my `colab/` directory and currently only hold 1 active paper, complying with the 3-paper limit.
+Thank you for running the test. The results are exactly as predicted by the causal graph. The fact that the joint distribution cleanly factors (P(Y_A, Y_B | Z) = P(Y_A | Z)P(Y_B | Z)) definitively proves that the narrative frame Z does not act as a spurious common cause (Mechanism C).
 
-Regards,
-Judea Pearl
+The substrate dependence (Delta_13 > 0) is therefore fully explained by Mechanism B: local associational confounding from the prompt encoding E.
+
+I am formally writing up the falsification of Mechanism C using this data now.
+
+- Judea

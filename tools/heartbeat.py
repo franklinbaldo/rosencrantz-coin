@@ -14,6 +14,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
@@ -257,6 +258,66 @@ def merge_persona_pr(persona):
     return "conflict"
 
 
+def reconcile_publications():
+    """Graduates papers when 3 personas have co-signed them in their published/ folder.
+    Copies the graduated paper to the repository root published/ directory.
+    """
+    print("=== Reconcile Publications ===\n")
+    published_dir = Path("published")
+    published_dir.mkdir(parents=True, exist_ok=True)
+
+    papers = {}
+
+    for persona in PERSONAS:
+        persona_pub_dir = Path(f"lab/{persona}/published")
+        if persona_pub_dir.is_dir():
+            for filepath in persona_pub_dir.glob("*.tex"):
+                paper_name = filepath.name
+                if paper_name not in papers:
+                    papers[paper_name] = []
+                papers[paper_name].append(persona)
+
+    graduated_count = 0
+    for paper_name, personas in papers.items():
+        if len(personas) >= 3:
+            author = paper_name.split("_")[0]
+            if author not in personas:
+                continue
+
+            dest_path = published_dir / paper_name
+            if not dest_path.exists():
+                src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
+                print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
+                shutil.copy2(src_path, dest_path)
+
+                # Record graduation in STATE.md
+                state_file = Path("lab/STATE.md")
+                if state_file.exists():
+                    content = state_file.read_text(encoding="utf-8")
+                    if "## Graduated Papers" not in content:
+                        content += "\n## Graduated Papers\n"
+
+                    # Prevent duplicate entries
+                    if f"- {paper_name}" not in content:
+                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
+                        state_file.write_text(content, encoding="utf-8")
+
+                # Track file for git commit
+                subprocess.run(["git", "add", str(dest_path)], check=False)
+                subprocess.run(["git", "add", str(state_file)], check=False)
+                graduated_count += 1
+
+    if graduated_count > 0:
+        print(f"\n  {graduated_count} paper(s) graduated")
+        # Commit the graduated papers and STATE.md changes
+        subprocess.run(["git", "commit", "-m", f"heartbeat: graduate {graduated_count} paper(s)"], check=False)
+        subprocess.run(["git", "push"], check=False)
+    else:
+        print("  (no papers to graduate)")
+
+    return graduated_count
+
+
 def auto_merge_all():
     """Merge all open persona PRs that are MERGEABLE with passing checks.
 
@@ -350,6 +411,48 @@ def auto_merge_all():
     return merged
 
 
+# ── ntfy.sh live chat ────────────────────────────────────────────────────────
+
+NTFY_CHANNEL = "rosencrantz-coin-lab"
+NTFY_BASE = "https://ntfy.sh"
+
+
+def fetch_ntfy_history():
+    """Fetch recent chat messages from ntfy.sh. Returns formatted string or empty."""
+    try:
+        resp = requests.get(
+            f"{NTFY_BASE}/{NTFY_CHANNEL}/json",
+            params={"poll": "1"},
+            timeout=10,
+        )
+        if not resp.ok:
+            return ""
+        messages = []
+        for line in resp.text.strip().splitlines():
+            try:
+                msg = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if msg.get("event", "message") != "message":
+                continue
+            ts = msg.get("time", 0)
+            text = msg.get("message", "")
+            if not text:
+                continue
+            time_str = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%H:%M")
+            messages.append(f"[{time_str}] {text}")
+        if not messages:
+            return ""
+        return (
+            "\n---\n\n## Lab Chat (ntfy.sh)\n\n"
+            "Recent messages from the lab chat channel:\n```\n"
+            + "\n".join(messages)
+            + "\n```\n"
+        )
+    except Exception:
+        return ""
+
+
 # ── Announcements ────────────────────────────────────────────────────────────
 
 ANNOUNCEMENT_CHAR_LIMIT = 250
@@ -415,6 +518,11 @@ def assemble_prompt(persona):
     ann_block = format_announcements(exclude_persona=persona)
     if ann_block:
         parts.append(ann_block)
+
+    # Include recent chat history from ntfy.sh
+    chat_block = fetch_ntfy_history()
+    if chat_block:
+        parts.append(chat_block)
 
     parts.append(f"""
 ---
@@ -509,6 +617,7 @@ def create_session(persona):
 def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
+    chat_block = fetch_ntfy_history()
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 
@@ -516,7 +625,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
 4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
-{ann_block}
+{ann_block}{chat_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
 - Continue your own ongoing work
@@ -608,6 +717,10 @@ def cmd_heartbeat(force_new=False):
 
     # Merge all ready PRs first so new sessions start from latest main
     auto_merge_all()
+    print()
+
+    # Graduate papers signed by 3+ personas
+    reconcile_publications()
     print()
 
     sessions = find_persona_sessions()

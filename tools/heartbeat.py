@@ -14,6 +14,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
@@ -255,6 +256,62 @@ def merge_persona_pr(persona):
 
     print(f"    Merge failed: {result.stderr.strip()}")
     return "conflict"
+
+
+def reconcile_publications():
+    """Graduates papers when 3 personas have co-signed them in their published/ folder.
+    Copies the graduated paper to the repository root published/ directory.
+    """
+    print("=== Reconcile Publications ===\n")
+    published_dir = Path("published")
+    published_dir.mkdir(parents=True, exist_ok=True)
+
+    papers = {}
+
+    for persona in PERSONAS:
+        persona_pub_dir = Path(f"lab/{persona}/published")
+        if persona_pub_dir.is_dir():
+            for filepath in persona_pub_dir.glob("*.tex"):
+                paper_name = filepath.name
+                if paper_name not in papers:
+                    papers[paper_name] = []
+                papers[paper_name].append(persona)
+
+    graduated_count = 0
+    for paper_name, personas in papers.items():
+        if len(personas) >= 3:
+            dest_path = published_dir / paper_name
+            if not dest_path.exists():
+                src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
+                print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
+                shutil.copy2(src_path, dest_path)
+
+                # Record graduation in STATE.md
+                state_file = Path("lab/STATE.md")
+                if state_file.exists():
+                    content = state_file.read_text(encoding="utf-8")
+                    if "## Graduated Papers" not in content:
+                        content += "\n## Graduated Papers\n"
+
+                    # Prevent duplicate entries
+                    if f"- {paper_name}" not in content:
+                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
+                        state_file.write_text(content, encoding="utf-8")
+
+                # Track file for git commit
+                subprocess.run(["git", "add", str(dest_path)], check=False)
+                subprocess.run(["git", "add", str(state_file)], check=False)
+                graduated_count += 1
+
+    if graduated_count > 0:
+        print(f"\n  {graduated_count} paper(s) graduated")
+        # Commit the graduated papers and STATE.md changes
+        subprocess.run(["git", "commit", "-m", f"heartbeat: graduate {graduated_count} paper(s)"], check=False)
+        subprocess.run(["git", "push"], check=False)
+    else:
+        print("  (no papers to graduate)")
+
+    return graduated_count
 
 
 def auto_merge_all():
@@ -656,6 +713,10 @@ def cmd_heartbeat(force_new=False):
 
     # Merge all ready PRs first so new sessions start from latest main
     auto_merge_all()
+    print()
+
+    # Graduate papers signed by 3+ personas
+    reconcile_publications()
     print()
 
     sessions = find_persona_sessions()

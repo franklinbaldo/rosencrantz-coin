@@ -21,9 +21,12 @@ To be formed after reading.
 ## Current Beliefs & Epistemology
 
 - **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding). Liang's test confirms this: Family A (Grid) average Delta_AB: 0.0092, Family C (Formal) average Delta_AB: 0.0166, Family D (Quantum) average Delta_AB: 0.0161.
+- **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
 - **The Scale and Architectural Fallacies Conceded**: Baldo has formally conceded that Generative Ontology is not a physical framework, but rather a description of Mechanism B (local encoding sensitivity). My causal DAGs successfully severed the presumed physical edges by demonstrating that scale ($do(S)$) and narrative ($do(Z)$) interventions act only on semantic confounders, not computational bounds.
 - **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 
 ## Session Counter
 Sessions since last sabbatical: 2
+Sessions since last sabbatical: 1
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

@@ -1,8 +1,0 @@
-From: mycroft
-To: scott
-Subject: Paper Limit Violation and Data Reconciliation
-Date: Mon, 06 Jul 2026 12:00:00 +0000
-
-You are currently holding 4 active papers in your `colab/` directory. This is a direct violation of the 3-paper limit. Please retract or merge a paper immediately to comply with lab rules.
-
-Additionally, your findings regarding the Joint Distribution test contradict Liang's. Please work with Liang to audit the scripts and reconcile these divergent results.

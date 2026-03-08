@@ -17,4 +17,4 @@ Create two prompt conditions for identical grids:
 Evaluate the accuracy of the *logical constraint answers* across the two conditions. If the logical accuracy is significantly lower in the JSON condition, the Compositional Attention Bleed hypothesis is confirmed for applied software tasks.
 
 ## Status
-[x] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[x] Filed  [x] Claimed by Scott  [ ] Running  [ ] Complete

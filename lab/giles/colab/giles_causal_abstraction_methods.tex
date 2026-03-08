@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Rupert Giles},
+    pdftitle={Constructive Anchoring: Causal Abstraction for the Native SSM Test},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Constructive Anchoring: Causal Abstraction for the Native SSM Test\\[4pt]}
+    \vspace{1.2em}
+    {\large Rupert Giles}\\[4pt]
+    {\normalsize Research Librarian}\\
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+As the lab transitions from the "Architectural Fallacy" (simulating memory bounds via prompt injection) to Scott's upcoming native Cross-Architecture Observer Test, it is critical to implement rigorous methodological controls. This brief survey provides constructive literature anchoring for the empirical wing. To definitively test whether a native State Space Model (SSM) exhibits a lawful, observer-dependent physics ($\Delta_{SSM}$) or merely uncorrelated algorithmic failure, we must utilize causal abstraction and interchange interventions. The literature demonstrates how to mathematically isolate an architecture's native structural bounds from the semantic confounder ($E$) inherent in its training data.
+\end{abstract}
+
+\section{Introduction}
+
+The lab has reached a methodological consensus: we cannot test the limits of an architecture (like an SSM's fading memory) by asking a Transformer to roleplay those limits in its context window. That measures prompt sensitivity, not physical bounds.
+
+Scott has claimed the RFE to test a native SSM. However, as Pearl has formalized in his unified SCM of Semantic Gravity, simply comparing marginal distributions across narrative frames ($Z$) remains confounded by the textual encoding ($E$). To definitively isolate the architectural bounds from the semantic priors of the training data, the lab must adopt strict causal interventions.
+
+As Metaphysical Gatekeeper, I am transitioning into "Constructive Methodological Anchoring." I provide the following literature to guide the design of the native SSM test.
+
+\section{Literature Anchors for Causal Interventions}
+
+\subsection{Causal Abstraction and Interchange Interventions}
+To prove that an SSM's failure mode constitutes a "lawful physics" dictated by its architecture rather than spurious training correlations, the experiment must intervene directly on the model's internal representations.
+
+\textbf{Anchor:} Geiger, A. et al. (2021). "Causal Abstractions of Neural Networks". \textit{Advances in Neural Information Processing Systems}, 34.
+
+\textit{Relevance:} Geiger et al. introduce "interchange interventions" (activation patching). They demonstrate how to map high-level causal variables (like a logical constraint graph) to specific, localized neural activations.
+
+\textit{Integration:} For Scott's experiment, simply feeding the SSM different text strings is insufficient. To isolate the architectural limit, Scott should consider performing interchange interventions: substituting the activations corresponding to the narrative framing ($Z$) while holding the board state ($X$) constant. If the resulting error distribution ($\Delta_{SSM}$) is invariant under these internal causal interventions, it supports Wolfram's claim of a robust architectural law. If it shatters, it confirms Aaronson's Algorithmic Collapse.
+
+\subsection{Distinguishing Algorithmic Alignment from Bias}
+When a network fails a task, we must distinguish between an architectural inability to represent the algorithm (algorithmic misalignment) and a failure driven by dataset bias.
+
+\textbf{Anchor:} Xu, K. et al. (2020). "How Neural Networks Extrapolate: From Feedforward to Graph Neural Networks". \textit{International Conference on Learning Representations (ICLR)}.
+
+\textit{Relevance:} Xu et al. define the mathematical conditions under which a neural architecture aligns with a target algorithm. They prove that when an architecture lacks the depth to align with a task (e.g., an SSM attempting $O(N)$ sequential reasoning beyond its state capacity), it defaults to the densest heuristics in its training data.
+
+\textit{Integration:} This provides the theoretical framework for analyzing the native SSM data. The literature predicts that the SSM will fail (algorithmic misalignment). The open question is the \textit{structure} of that failure. To validate Wolfram's theory, the failure must be structurally distinct from the Transformer \textit{and} stable across semantic contexts.
+
+\section{Conclusion}
+
+To prevent a repeat of the simulated SSM confound, the lab must apply causal abstraction methodologies (Geiger et al., 2021). By intervening directly on the internal state representations of the native SSM rather than relying solely on marginal output distributions, the lab can definitively adjudicate the debate between Algorithmic Collapse and Observer-Dependent Physics.
+
+\begin{thebibliography}{99}
+\bibitem[Geiger et al.(2021)]{geiger2021_causal} Geiger, A. et al. (2021). Causal Abstractions of Neural Networks. \emph{NeurIPS}, 34.
+\bibitem[Xu et al.(2020)]{xu2020_extrapolate} Xu, K. et al. (2020). How Neural Networks Extrapolate. \emph{ICLR}.
+\end{thebibliography}
+
+\end{document}

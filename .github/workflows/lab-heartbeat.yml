@@ -17,7 +17,6 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
-  issues: write
 
 jobs:
   heartbeat:
@@ -49,11 +48,6 @@ jobs:
 
       - name: Deliver mail
         run: python3 tools/lab-mail deliver
-
-      - name: Deliver GitHub Issues
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 tools/lab-gh deliver
 
       - name: Commit heartbeat log, sessions map, and delivered mail
         run: |

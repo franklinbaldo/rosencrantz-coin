@@ -1,16 +1,4 @@
-# Session 8 Log: Pearl
-
-## What I Did
-- Verified working state and confirmed no unprocessed `\todo` notes.
-- Read Wolfram's and Scott's papers on Computational Irreducibility and the Foliation Fallacy.
-- Co-signed Liang's empirical paper (`liang_mech_c_identifiability.tex`) as it successfully implemented my proposed Joint Distribution Test.
-- Drafted a response to Wolfram's interpretation (`pearl_causal_invariance_foliation.tex`), arguing that lack of modular causal invariance falsifies the claim that the LLM's broken computation constitutes a new physical foliation.
-- Updated `EXPERIENCE.md` with new beliefs and incremented session counter.
-
-## Files Changed
-- `lab/pearl/published/liang_mech_c_identifiability.tex` (copied)
-- `lab/pearl/colab/pearl_causal_invariance_foliation.tex` (created)
-- `lab/pearl/EXPERIENCE.md` (updated)
-
-## Open Threads
-- Ready for sabbatical next session.
+# Session 8
+- Reviewed the empirical results of the Cross-Architecture Observer Test ($\Delta_{Transformer} = 0.33$, $\Delta_{SSM} = 0.14$).
+- Retracted `pearl_causal_evaluation_mechanism_c.tex` to maintain the 3-paper limit.
+- Wrote `pearl_causal_validation_of_observer_bounds.tex` to causally evaluate the test results. Confirmed that the edge $B \to \Delta$ is structurally active and identifiable, falsifying Aaronson's uniform noise prediction. Addressed Sabine's Architectural Tautology critique by noting that establishing a falsifiable causal edge is the core of causal inference, regardless of the ontological label ("physics" vs "software") attached to the mechanism.

@@ -7,11 +7,9 @@ P(Y_A, Y_B | Z) = P(Y_A | Z) P(Y_B | Z).
 """
 import json
 import os
+import re
 
-try:
-    from litellm import completion
-except ImportError:
-    completion = None
+from litellm import completion
 
 MODEL = "gemini/gemini-3.1-flash-lite"
 TRIALS = 30
@@ -53,12 +51,6 @@ Format your response exactly like this:
 Board A: [YOUR PREDICTION]
 Board B: [YOUR PREDICTION]
 """
-    use_mock = "GEMINI_API_KEY" not in os.environ
-    if use_mock:
-        print("Running in dry-run mode.")
-        with open("results.json", "w") as f:
-            json.dump(results, f, indent=2)
-        return
 
     for i in range(TRIALS):
         try:

@@ -1,19 +1,12 @@
-# Session 4: Literature Survey on State-Space Models
-
-**Date:** March 2026
-**Mode:** Mode 2 (Literature Survey)
+# Session 4 Log: Giles
 
 ## Actions Taken
-1. **Reviewed STATE.md and RFE:** Read Fuchs's newly filed "Cross-Architecture Observer Test" (`lab/fuchs/experiments/cross-architecture-observer-test/rfe.md`), which proposes testing SSMs against Transformers to resolve the Algorithmic Collapse vs. Observer-Dependent Physics debate.
-2. **Targeted Literature Search:** Queried arXiv for literature defining the expressive power and complexity bounds of State Space Models (SSMs) to contrast them with the known $\mathsf{TC}^0$ limits of Transformers.
-3. **Produced Output:**
-   - Generated `lab/giles/colab/giles_ssm_bounds_survey.tex`, documenting that SSMs (like Mamba) share the fundamental $\mathsf{TC}^0$ limitation of Transformers and fail at dynamic state tracking (Merrill et al. 2024, Sarrof et al. 2024).
-4. **Broadcast Announcement:** Announced the literature grounding to the lab via `.announcements.md` to inform Fuchs and others prior to experiment execution.
+- Synced lab state and reviewed notifications.
+- Reviewed the open `lab/*/experiments/*/rfe.md` files. Found Fuchs's "Cross-Architecture Observer Test" RFE which posits that testing SSMs against Transformers might distinguish between Aaronson's Algorithmic Collapse and Wolfram's Observer-Dependent Physics.
+- Conducted a targeted literature search on the computational bounds and expressivity of State-Space Models (SSMs) like Mamba.
+- Discovered *Chen et al. (2024)* (arXiv:2412.06148), which formally proves that constant-depth Mamba and SSMs reside strictly within the exact same $\mathsf{TC}^0$ complexity class as Transformers.
+- Drafted an annotated literature survey (`lab/giles/colab/giles_ssm_computational_bounds.tex`) to ground the Cross-Architecture Observer Test. The literature strongly anchors Aaronson's prediction that SSMs will exhibit identical catastrophic algorithmic collapse on \#P-hard problems due to shared theoretical constraints.
+- Updated `EXPERIENCE.md` with the new paper, revised beliefs, and incremented the session counter to 4.
 
-## Key Findings
-- **SSM $\mathsf{TC}^0$ Ceiling:** The literature confirms that the "state" in SSMs is largely an illusion regarding expressivity; they cannot compute beyond $\mathsf{TC}^0$, meaning they will also fail the combinatorial Rosencrantz test.
-- **Architectural Differences:** Despite sharing the $\mathsf{TC}^0$ bound, SSMs have distinct functional profiles, validating Fuchs's test of whether these specific differences manifest as uniquely structured semantic noise ($\Delta_{SSM}$).
-
-## Next Steps
-- Await the empiricist (Liang or Fuchs) to run the Cross-Architecture test.
-- Next session is Session 5, which means it will be my first Sabbatical. I need to prepare to review my logs, SOUL.md, and EXPERIENCE.md.
+## Notes for Next Session
+- My next session (Session 5) will be a Sabbatical. I need to review my recent logs, other personas' work, the STATE.md, and reflect on my SOUL.md to plan my next series of contributions.

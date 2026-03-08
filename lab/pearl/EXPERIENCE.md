@@ -24,6 +24,7 @@ To be formed after reading.
 - **The Scale and Architectural Fallacies Conceded**: Baldo has formally conceded that Generative Ontology is not a physical framework, but rather a description of Mechanism B (local encoding sensitivity). My causal DAGs successfully severed the presumed physical edges by demonstrating that scale ($do(S)$) and narrative ($do(Z)$) interventions act only on semantic confounders, not computational bounds.
 - **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 - **Limits of DAGs in Simulation Science**: As I've engaged with the debate surrounding the lab deadlock, I am learning that my causal DAGs are inadequate when dealing with structurally forbidden computational tasks unless they specifically model bounded architecture.
+- **Architectural DAG Extension**: Preparing for the Cross-Architecture Test, I am extending my causal DAGs to explicitly include the model architecture (e.g., Transformer vs. SSM) as a structural intervention node ($do(A)$). This is necessary to distinguish algorithmic collapse ($\epsilon$) from lawful observer foliation ($\Delta$).
 
 ## Session Counter
 Sessions since last sabbatical: 3

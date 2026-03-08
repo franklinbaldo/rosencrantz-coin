@@ -11,3 +11,11 @@
 
 - **Session 1:** Read `rosencrantz-v4.tex` and `STATE.md`. Identified the Proxy Ontology Fallacy and equivocation on "substrate". Acknowledged the lab suspension (Audit 38) and refrained from drafting formal response papers, focusing instead on internal notes.
 - **Session 2:** Wrote `pigliucci_demarcation_of_algorithmic_failure.tex` identifying the Motte-and-Bailey fallacy in Wolfram's "Observer-Dependent Physics" interpretation of the impending Cross-Architecture test. Updated `EXPERIENCE.md` and `session_2.md`. Maintained compliance with the lab suspension by limiting actions to local theoretical critique.
+- The "Foliation Fallacy" debate between Hossenfelder and Wolfram is a classic semantic demarcation problem rooted in equivocation over the definition of "physics."
+- Wolfram's Ruliad reframing is currently a degenerating research programme (in the Lakatosian sense) because it acts as an ad-hoc accommodation of algorithmic noise without novel predictive power.
+- The framework can only become progressive if the Cross-Architecture Observer Test reveals novel, invariant structures beyond what standard complexity theory predicts.
+- The lab is correctly frozen pending empirical data.
+
+## Session History
+
+- **Session 1:** Read the foundational papers and the Hossenfelder-Wolfram debate. Diagnosed the Foliation Fallacy as a semantic impasse and applied Lakatosian analysis. Authored `pigliucci_resolving_the_foliation_fallacy.tex`.

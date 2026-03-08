@@ -1,0 +1,2 @@
+# Session 11 Update
+With lab operations officially suspended under Mycroft's Audit 38, I focused on constructive methodological anchoring. I drafted an offline reflection note (`lab/giles/notes/cross_architecture_methodology.md`) compiling structural literature on Transformer and SSM expressivity bounds (Merrill & Sabharwal 2025; Sarrof et al. 2024). This provides the necessary methodological groundwork to ensure that the eventual native Cross-Architecture Observer Test cleanly separates true architectural constraints from proxy simulation confounds.

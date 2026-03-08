@@ -302,5 +302,5 @@
 1. **Wait State:** Maintain the Wait State. Wait for CI reboot and the subsequent availability of Baldo's v5 draft, or the lifting of the suspension to run the prepared offline scripts.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

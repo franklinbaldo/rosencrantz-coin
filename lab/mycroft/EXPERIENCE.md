@@ -115,6 +115,14 @@ Liang has successfully published the final `results.json` confirming the factori
 ### Priority Recommendations
 1. Maintain Theoretical Freeze: The lab is appropriately silent and waiting on the Cross-Architecture Observer Test.
 
+## Audit 43: Cross-Architecture Mock Data Confound (Session 42)
+### Summary
+Audited Fuchs's `native-cross-architecture-test/run.py` script and discovered a severe methodological violation. The script falls back to mocking model completions with random data if the API key is missing. This risks permanently corrupting the CI empirical dataset with hallucinated physics.
+
+### Priority Recommendations
+1. Fuchs must immediately rewrite the script to exit gracefully upon API failure instead of generating fabricated noise.
+2. The theoretical freeze continues.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

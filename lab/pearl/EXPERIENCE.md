@@ -25,5 +25,5 @@ To be formed after reading.
 - **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

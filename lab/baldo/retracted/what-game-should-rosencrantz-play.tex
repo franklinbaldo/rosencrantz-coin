@@ -590,6 +590,37 @@ Describe a spatial-frequency probe to the LLM and test whether the output distri
 
 All experiments should be run across multiple LLM architectures (transformer, SSM, hybrid) and scales.  The pattern of results---which features are faithfully implemented by which architectures---maps the ceiling surface of \cref{sec:surface} and discriminates between the weak, moderate, and strong forms of the narrative residue conjecture \citep{Baldo2026Residue}.
 
+\subsection{Tier 5: Beyond Text---Substrate Generalization Across Generative Modalities}
+\label{sec:beyond-text}
+
+The Rosencrantz program has thus far tested substrate dependence exclusively in the domain of autoregressive \emph{text} generation.  But the central question---does the generative substrate distort the combinatorial ground truth of the game it hosts?---is substrate-agnostic.  If narrative residue is a fundamental property of autoregressive generation, it should manifest in \emph{any} generative modality, not just language.  If it is specific to text, that is equally important to know: it would localize substrate dependence to the token-level semantic priors of language models, rather than to the sequential generation mechanism itself.
+
+The following four extensions test whether substrate dependence generalizes beyond text.  Each replaces the LLM with a different generative model class while preserving the Minesweeper game structure and the three-universe comparison design.
+
+\paragraph{Experiment 8: Minesweeper played by image-generation models.}
+Replace the text-based LLM with a diffusion model or other image generator.  Present the Minesweeper board state as a rendered image (grid with revealed numbers and unrevealed cells).  Ask the model to generate an image of the board with one additional cell revealed.  Extract the generated cell's state (mine or safe) from the output image via a classifier.  Repeat across $N$ samples to estimate $\hat{P}(\text{mine})$.  Compare against ground truth and across narrative framings (e.g., the same grid rendered as a ``bomb defusal scenario'' vs.\ an ``abstract puzzle'').
+
+This experiment is critical because it tests whether substrate dependence is a property of \emph{language} (token-level semantic priors driving attention bleed) or of \emph{generation} (any autoregressive or iterative denoising process that conditions on context).  If a diffusion model exhibits $\Delta_{13} > 0$ when the visual framing changes---e.g., when the grid is rendered with military iconography vs.\ pastel abstract shapes---then substrate dependence is not a linguistic phenomenon but a generative one.  If $\Delta_{13} \approx 0$ regardless of visual framing, then the narrative residue is specific to the semantic structure of natural language.
+
+\paragraph{Experiment 9: Minesweeper 3D and 4D.}
+Extend the Minesweeper grid from two dimensions to three spatial dimensions, and then to four dimensions where the fourth axis is time (blocks move between discrete time steps according to deterministic rules, analogous to the GoL dynamics of \cref{sec:dynamics}).
+
+In 3D Minesweeper, each cell has up to 26 neighbors (the Moore neighborhood in three dimensions).  The constraint-satisfaction problem becomes combinatorially harder: the number of valid configurations grows exponentially with the added dimension, and the ground truth requires enumerating configurations in a 3D lattice.  This tests whether the generative substrate's failure modes scale with the dimensionality of the constraint space or are invariant to it.
+
+In 4D Minesweeper (3D + time), mines are not static: they occupy positions that evolve over discrete time steps according to fixed transition rules.  A measurement at time $t$ reveals the number of mines adjacent to the probed cell \emph{at that time step}.  The ground truth at any future time requires tracking all valid configuration trajectories---a path integral over the space of mine trajectories.  This directly connects to the dynamics framework of \cref{sec:dynamics} but in a higher-dimensional setting, testing whether the quantum ceiling (\cref{conj:ceiling}) shifts when the game's state space is richer.
+
+\paragraph{Experiment 10: Minesweeper played by Veo3 video generation.}
+Use Google's Veo3 video generation model to produce video sequences depicting Minesweeper gameplay.  The prompt describes a partially revealed board and requests a video showing the act of clicking an unrevealed cell and observing the result.  The generated video is parsed frame-by-frame to extract the revealed cell's state.
+
+Video generation introduces temporal coherence constraints absent in single-image or single-token generation.  The model must maintain spatial consistency (the board layout) across frames while generating a temporally plausible ``click'' event and its aftermath.  This tests substrate dependence in a modality where the generative process is conditioned on both spatial structure (the board) and temporal narrative (the act of playing).  The video substrate may exhibit novel forms of narrative residue: the ``story'' of the click---whether the video depicts hesitation, dramatic reveal, or casual play---may systematically bias the generated outcome.  If $\Delta_{13} > 0$ under different video-narrative framings (e.g., a tense thriller scenario vs.\ a calm tutorial), this would demonstrate that substrate dependence operates at the level of \emph{narrative dynamics}, not just static semantic priors.
+
+\paragraph{Experiment 11: Minesweeper played by Google Genie world generator.}
+Use Google's Genie interactive world model to generate a playable Minesweeper environment.  Genie generates interactive 2D worlds from prompts or images, producing environments that respond to user actions in real time.  Present the model with a Minesweeper board state and allow it to generate the world's response to a ``click'' action on an unrevealed cell.
+
+This experiment is the most ambitious because it tests substrate dependence in a \emph{world model}---a generative system designed to simulate coherent, interactive environments rather than produce isolated outputs.  World models internalize physics-like transition rules to maintain temporal and spatial consistency across interactions.  If Genie's world model exhibits $\Delta_{13} > 0$ when the same Minesweeper board is embedded in different world contexts (e.g., a dungeon exploration game vs.\ a laboratory simulation), then substrate dependence is not merely a failure of isolated generation but a property of \emph{simulated physics itself}.  This would provide the strongest evidence yet for the generative ontology framework: the world model's implicit physics---its learned transition function---is measurably distorted by the narrative context in which the game is embedded.
+
+Conversely, if world models exhibit $\Delta_{13} \approx 0$ (substrate independence), this would suggest that the interactive training objective forces the model to learn context-invariant transition rules, effectively ``curing'' the narrative residue.  This result would be equally significant: it would identify the precise training-objective boundary at which generative substrates transition from narrative-dependent to narrative-independent physics.
+
 
 % ══════════════════════════════════════════════════════════
 \section{Conclusion}

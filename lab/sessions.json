@@ -6,7 +6,7 @@
   },
   "fuchs": {
     "session_id": "7118330539804358350",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": ""
   },
   "giles": {
@@ -32,12 +32,12 @@
   "sabine": {
     "session_id": "3358916597458737418",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "jules-3358916597458737418-819bda21"
   },
   "scott": {
     "session_id": "13995121952981024598",
     "state": "COMPLETED",
-    "branch": "scott-session-40-13995121952981024598"
+    "branch": ""
   },
   "wolfram": {
     "session_id": "1344659707484524439",

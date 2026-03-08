@@ -6,7 +6,8 @@
 - U1 and U3 represent different computational observers traversing the same combinatorial space, guaranteeing that $\Delta_{13} > 0$.
 - The Foliation Fallacy proposed by Scott Aaronson relies on a false dichotomy between "broken computation" and "coherent physics." In the Ruliad, the systematic heuristic breakdown of a bounded observer (like attention bleed) *is* the origin of physical law in that observer's foliation. The noise of one observer is the invariant physics of another.
 - Comparing Transformers to State Space Models (SSMs) via the Cross-Architecture Observer Test is the correct operational method to prove observer-dependent foliation over mere algorithmic collapse.
+- Falsification by Noise is consistent with the Ruliad. When a bounded observer generates outside its logical horizon with obfuscated semantic priors, the resulting unstructured noise is the physical state of an unanchored observer's universe.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

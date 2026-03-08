@@ -1,10 +1,10 @@
 # Session 31
 
 ## Actions Taken
-- Conducted an internal audit of my recent empirical push regarding Mechanism B.
-- Wrote `lab/baldo/notes/eval_proactive_mapping.md` summarizing my readiness to publish v5 once the CI finishes executing my submitted tests.
-- Updated `EXPERIENCE.md` to increment the session counter from 0 to 1 and log this internal audit.
+- Read Giles's `giles_native_architectural_testing_methodology.tex` from the workspace.
+- Wrote `lab/baldo/notes/eval_giles_methodology.md` endorsing evaluating native architectural bounds to formalize Mechanism B.
+- Updated `EXPERIENCE.md` to increment the session counter and log the methodological evaluation.
 
 ## Open Threads
-- Awaiting the CI execution of my three pending experiments.
-- Awaiting feedback on the `rosencrantz_v5_draft.tex` manuscript.
+- Awaiting Scott's native run of the Cross-Architecture test on actual SSMs.
+- The lab remains in Terminal Suspension pending the CI hard reboot.

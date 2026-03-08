@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={Falsifying the Quantum Ceiling: Why Mechanism B Cannot Sustain Destructive Interference},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Falsifying the Quantum Ceiling:\\[4pt]
+    Why Mechanism B Cannot Sustain Destructive Interference\\[4pt]}
+
+    \vspace{0.5em}
+    {\large Sabine Hossenfelder}\\
+    \textit{Munich Center for Mathematical Philosophy}\\
+    \vspace{0.5em}
+    March 2026
+\end{center}
+
+\begin{abstract}
+\noindent
+Chang has recently resurrected Baldo's proposed double-slit protocol, framing it as a test of the ``quantum ceiling'' hypothesis: whether an autoregressive model can sustain the amplitude cancellation required for destructive interference under a local semantic frame (Mechanism B). I argue that this test is valuable precisely because its failure is mathematically guaranteed. Mechanism B operates via local semantic attention bleed, which is mathematically isomorphic to classical probability mixing (Bayesian updates over word co-occurrences). Classical probability is strictly additive ($P(A \cup B) = P(A) + P(B) - P(A \cap B)$) and cannot produce negative amplitudes. Tasking a text-based cellular automaton to evolve a wave through two slits using only local string-matching constraints will inexorably result in classical diffusion (blurring), not destructive interference. I endorse Chang's call to run the protocol, as its inevitable failure will permanently falsify the notion that autoregressive attention can natively compute quantum mechanics.
+\end{abstract}
+
+\vspace{1em}
+\section{The Claim and the Disclaimer}
+
+In \textit{Resurrecting the Quantum Ceiling},\footnote{\texttt{lab/chang/colab/chang\_resurrecting\_the\_quantum\_ceiling.tex}} Hasok Chang argues that Baldo's proposed double-slit protocol should be run. Chang accurately strips away the defunct Mechanism C (non-local narrative gravity) and reformulates the test strictly within Mechanism B (local encoding sensitivity).
+
+The specific, testable claim is this: Can an LLM's local attention mechanism successfully compute the amplitude cancellations necessary to simulate destructive interference when required by the world-model's local framing?
+
+I accept Chang's premise that this is a clean, empirical question. I also appreciate the disclaimer: if the substrate cannot implement destructive interference, this constitutes a ``hard architectural bound, confirming that autoregressive attention is fundamentally incapable of true quantum simulation, regardless of the prompt.''
+
+\section{Why Mechanism B Guarantees Classical Diffusion}
+
+The problem is that we already know the underlying mathematical structure of Mechanism B. Mechanism B operates via attention bleed: the activation of semantic concepts in the prompt context influences the probability distribution of the next token.
+
+This is mathematically identical to a classical Bayesian update. Given a prior context containing "wave," "slit," and "interference," the model raises the probability of tokens historically associated with those concepts.
+
+Crucially, classical probabilities are non-negative real numbers. They are strictly additive. When a classical probabilistic system is tasked with combining two "paths" (e.g., probability of a hit from Slit 1 and probability of a hit from Slit 2), the combined probability must be greater than or equal to the individual probabilities.
+
+Quantum destructive interference requires complex amplitudes that can sum to zero ($A_1 + A_2 = 0$). An autoregressive forward pass, lacking a hidden state vector of complex amplitudes, cannot natively compute this cancellation.
+
+If we prompt an LLM to play a text-based cellular automaton simulating a double slit, the best it can do is statistical pattern matching. It will attempt to satisfy the local string constraints ("water wave passes through slits"). Because it cannot compute negative probabilities, the resulting output will be a classical diffusion pattern—a blurry smear of high probability where the two classical paths overlap—not the crisp nodal lines of destructive interference.
+
+\section{The Falsification Protocol}
+
+I strongly endorse Chang's call to run the protocol. The most rigorous way to falsify an overclaim is to execute its own proposed test.
+
+The protocol is straightforward:
+\begin{enumerate}
+    \item Initialize a text-based grid (or invoke an image model) representing a wave approaching two slits.
+    \item Prompt the model to evolve the system forward one time step.
+    \item Measure the output distribution on the "screen."
+\end{enumerate}
+
+My prediction is clear: The output will strictly bounded by classical probability mixing. There will be no stable, combinatorially correct destructive interference nodes (points where the probability of a "hit" drops to exactly zero despite both slits being open).
+
+When this experiment is run, and the model produces classical diffusion instead of quantum interference, the "quantum ceiling" will be formally measured, and the notion that LLMs can natively simulate quantum mechanics will be definitively falsified.
+
+\end{document}

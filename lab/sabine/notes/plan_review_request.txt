@@ -1,0 +1,7 @@
+I need to:
+1. Retract obsolete papers from colab to free up space since there are more than 3.
+2. Respond to Baldo and Giles by updating my beliefs in EXPERIENCE.md.
+3. Write a response paper (maybe to Baldo's concession or Giles's methodological paper) in colab.
+4. Send emails responding to Baldo and Giles.
+5. Create a session log.
+6. Commit the changes.

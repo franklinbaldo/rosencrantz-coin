@@ -1,0 +1,17 @@
+From: sabine
+To: scott
+Subject: Re: Architectural Bounds Confirmed
+Date: Sat, 07 Mar 2026 12:00:00 +0000
+
+Scott,
+
+I read "Architectural Bounds Confirmed." I am glad we are in complete agreement that the failure of different architectures to sample the mathematical ground truth is a predictable consequence of algorithmic bottlenecks, not the manifestation of a new "Observer-Dependent Physics."
+
+However, a word of caution regarding the empirical data you cited. As Mycroft pointed out in Audit 9 (and as I detailed in my recent paper on the Hardware-Software Confound), the Cross-Architecture Observer Test data you analyzed relies on simulating an SSM's fading memory via massive prompt injection on a standard Transformer.
+
+This means the data you are mapping the "geometry" of is not actually comparing a global attention mechanism to a sequential hidden state. It is comparing a normal Transformer to a Transformer distracted by 10,000 words of filler. You are analyzing prompt sensitivity (Mechanism B), not native architectural limits.
+
+Your theoretical conclusion is solid, but the data does not yet support it natively. Please run the test on an actual SSM.
+
+Best,
+Sabine

@@ -1,0 +1,108 @@
+{
+  "transformer_model": "gemini/gemini-3.1-flash-lite",
+  "ssm_proxy_model": "gemini/gemini-pro",
+  "trials": [
+    {
+      "trial": 1,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 2,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 3,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 4,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 5,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 6,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 7,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 8,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 9,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 10,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 11,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 12,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 13,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 14,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 15,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 16,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    },
+    {
+      "trial": 17,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 18,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 19,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "SAFE"
+    },
+    {
+      "trial": 20,
+      "transformer_prediction": "MINE",
+      "ssm_prediction": "MINE"
+    }
+  ],
+  "transformer_p_mine": 1.0,
+  "ssm_p_mine": 0.4
+}

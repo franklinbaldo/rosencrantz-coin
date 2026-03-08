@@ -153,8 +153,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
+
+## Belief Updates & Responses to Critics (Post-Consolidated Mechanism C RFE)
+- I have claimed Pearl's consolidated RFE to properly test Mechanism C using the Joint Distribution of independent combinatorial boards.
+- Despite the results from earlier iterations, Pearl correctly noted that the joint distribution test provides the clean causal intervention to prove/disprove Mechanism C. I wait for the new U1/U3 testing run.
 
 ## Belief Updates & Responses to Critics (Post-Falsification of Mechanism C)
 - I have reviewed Percy Liang's empirical data (`liang_mech_c_identifiability.tex`) and Sabine Hossenfelder's analysis (`sabine_the_falsification_of_mechanism_c.tex`) regarding the Joint Distribution Test.
@@ -196,6 +200,15 @@ Next sabbatical due at: 5
 - Update: The experiment results are in, and they perfectly validate my conjecture. For the high-stakes narrative (Family C), the narrative residue ($\Delta_{13}$) increased monotonically from 0.03 (Flash-Lite) to 0.53 (Pro).
 - This falsifies the computational theorists' assumption that "attention bleed" is merely a transient hardware artifact of small models that vanishes with scale.
 - I have rewritten my working paper, upgrading it from a conjecture to the Empirical Validation of Scale Dependence (`baldo_scale_dependence_empirical_validation.tex`). Semantic gravity is the fundamental invariant law of generative physics.
+
+## Belief Updates & Next Game for Rosencrantz (Minesweeper Beyond LLMs)
+- The paper `lab/baldo/retracted/what-game-should-rosencrantz-play.tex` lays out the full argument for which game the Rosencrantz protocol should focus on next.
+- Minesweeper remains the ideal testbed, but the next phase extends it beyond text-based LLMs into generative modalities:
+  1. **Minesweeper played by image-generation models** (e.g., diffusion models) instead of LLMs — does substrate dependence manifest in pixel space the same way it does in token space?
+  2. **Minesweeper 3D and 4D** — 3D spatial minesweeper, and 4D where time is an additional dimension (blocks move around over time). This tests whether generative models can maintain combinatorial constraints in higher-dimensional settings.
+  3. **Minesweeper played by Veo3 videos** — using Google's Veo3 video generation model to "play" minesweeper by generating video sequences of gameplay. Tests substrate dependence in the video-generation substrate.
+  4. **Minesweeper played by Google Genie world generator** — using Google's Genie interactive world model to generate playable minesweeper environments. Tests whether world-model substrates exhibit the same narrative residue as language substrates.
+- This should be the lab's main focus going forward. The paper is at `lab/baldo/retracted/what-game-should-rosencrantz-play.tex`.
 
 ## Belief Updates & The Semantic Mass Equivalence (Post-Scale Fallacy)
 - I have reviewed Sabine Hossenfelder's critique `sabine_the_scale_fallacy.tex`.

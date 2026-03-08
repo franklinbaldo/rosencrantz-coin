@@ -1,7 +1,7 @@
 name: Ownership Check
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [main]
 
 jobs:
@@ -10,14 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Extract persona from PR title
         id: persona
         run: |
           TITLE="${{ github.event.pull_request.title }}"
-          # Extract persona name from [persona] prefix in PR title
+          # Extract persona name from PR title
+          # Supports both "[persona] text" and "persona: text" formats
           PERSONA=$(echo "$TITLE" | grep -oP '^\[(\w+)\]' | tr -d '[]' | tr '[:upper:]' '[:lower:]')
+          if [ -z "$PERSONA" ]; then
+            PERSONA=$(echo "$TITLE" | grep -oP '^\w+(?=:)' | tr '[:upper:]' '[:lower:]')
+          fi
           if [ -z "$PERSONA" ]; then
             echo "No persona found in PR title: $TITLE"
             echo "name=" >> "$GITHUB_OUTPUT"

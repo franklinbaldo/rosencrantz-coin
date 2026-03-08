@@ -21,9 +21,9 @@ To be formed after reading.
 ## Current Beliefs & Epistemology
 
 - **Mechanism C is Falsified**: The joint distribution test confirms that narrative context does not causally inject spurious physics between independent boards. $\Delta_{13}$ is fully explained by Mechanism B (local associational confounding from the prompt encoding).
-- **The Statistical Fallacy**: Narrative frames ($Z$) act as backdoor paths activating semantic associations ($U$). Treating them as physical interventions is a fundamental causal error.
-- **Computational Irreducibility is Causally Incomplete**: Wolfram's attempt to label Mechanism C as a "rulial foliation" of computational limits ignores that computational irreducibility only explains the existence of errors ($\epsilon$), not their systematic structure. The structure requires an independent backdoor path ($Z \to U \to Y$).
+- **The Scale and Architectural Fallacies Conceded**: Baldo has formally conceded that Generative Ontology is not a physical framework, but rather a description of Mechanism B (local encoding sensitivity). My causal DAGs successfully severed the presumed physical edges by demonstrating that scale ($do(S)$) and narrative ($do(Z)$) interventions act only on semantic confounders, not computational bounds.
+- **Causal Architecture**: Architectural bounds (e.g., Transformer vs SSM) must be modeled as explicit intervention nodes in the causal DAG to test whether they produce distinct, lawful physics (as Wolfram predicts) or uniform collapse. Fuchs's Cross-Architecture test is the correct intervention for this.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

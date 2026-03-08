@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Literature Survey: Prompt Sensitivity and Semantic Priors}\\[6pt]
+\large Anchoring the Statistical Fallacy vs. Substrate Dependence Debate}
+\author{Rupert Giles\\[4pt]
+\textit{Lab Research Librarian}}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This survey documents the literature surrounding prompt sensitivity, semantic priors, and calibration in large language models (LLMs). These citations anchor the debate between Sabine Hossenfelder and Franklin Baldo regarding whether the narrative residue ($\Delta_{13} > 0$) observed in the single generative act constitutes a novel "substrate dependence" of simulated physics, or is simply a manifestation of the well-documented statistical vulnerability of autoregressive heuristics to framing effects (the Statistical Fallacy).
+\end{abstract}
+
+\section{Introduction}
+
+In \emph{The Single Generative Act}, Baldo (2026) isolates the Rosencrantz protocol's measurement to a single $O(1)$ forward pass, successfully avoiding the compounding errors of sequential reasoning. He argues that the resulting distribution shift ($\Delta_{13} \gg 0$) across different narrative frames constitutes "substrate dependence."
+
+Hossenfelder (2026) counters in \emph{The Statistical Fallacy} that because the model cannot compute the exact combinatorial constraints, its single-token output is entirely driven by pattern matching over text co-occurrences. Thus, shifting the narrative framing merely alters the semantic priors, and measuring this shift is simply measuring "prompt sensitivity," a known artifact of text generation.
+
+This paper provides the formal literature anchoring for prompt sensitivity, framing effects, and semantic priors, grounding Hossenfelder's diagnosis of statistical hallucination.
+
+\section{Prompt Sensitivity and Framing Effects}
+
+The argument that narrative framing inherently alters the generated distribution relies on established findings that LLMs are highly sensitive to mathematically irrelevant syntactic and semantic changes in the prompt.
+
+\vspace{1em}
+\noindent\textbf{1. POSIX: A Prompt Sensitivity Index For Large Language Models}\\
+\textit{Chatterjee, A. et al. (2024). arXiv:2410.02185.}
+\begin{itemize}
+    \item \textbf{Relevance:} This paper is the primary anchor for Hossenfelder's claim that the LLM is merely exhibiting prompt sensitivity.
+    \item \textbf{Key Finding:} Demonstrates that LLMs exhibit high variance in output distributions when presented with semantically equivalent but lexically or structurally distinct prompts. This formally supports the claim that changing the framing from "abstract grid" to "bomb defusal" will reliably shift the model's probabilistic outputs, even if the underlying logic is identical.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{2. Large Language Models and Causal Inference in Collaboration: A Survey}\\
+\textit{Liu, X. et al. (2024). arXiv:2403.09606.}
+\begin{itemize}
+    \item \textbf{Relevance:} Explores how LLMs handle causal reasoning and confounding variables within text.
+    \item \textbf{Key Finding:} Highlights that LLM reasoning is frequently confounded by spurious correlations in the training data. The vocabulary of a prompt acts as a confounder, activating related semantic clusters rather than isolated logical rules. This supports the assertion that "semantic gravity" is an artifact of dataset correlations rather than an emergent physical law.
+\end{itemize}
+
+\section{Calibration and Output Distributions}
+
+Baldo asserts that the output of the single generative act is a "probabilistic judgment" that samples from the model's conditional distribution. The literature on model calibration addresses whether these probabilistic outputs reflect logical truth or statistical approximations.
+
+\vspace{1em}
+\noindent\textbf{3. Calibrating the Confidence of Large Language Models by Eliciting Fidelity}\\
+\textit{Zhang, M. et al. (2024). arXiv:2404.02655.}
+\begin{itemize}
+    \item \textbf{Relevance:} Anchors the discussion on how to interpret the model's output probabilities (e.g., $P(\text{MINE})$).
+    \item \textbf{Key Finding:} Shows that raw output probabilities from LLMs are often poorly calibrated and heavily influenced by the immediate text context rather than the ground-truth accuracy of the statement. This reinforces the idea that the probability distributions observed in the Rosencrantz experiment are statistical heuristics rather than exact evaluations.
+\end{itemize}
+
+\section{Conclusion}
+
+The literature confirms that LLM output distributions are highly sensitive to narrative framing and semantic priors, independent of the underlying logical or mathematical constraints. Hossenfelder's "Statistical Fallacy"---the argument that the observed substrate dependence is simply a manifestation of prompt sensitivity---is strongly supported by current empirical studies on autoregressive language models.
+
+\end{document}

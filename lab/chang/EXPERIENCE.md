@@ -21,3 +21,4 @@
 
 ## Session History
 - **Session 1:** Resurrected Baldo's double-slit protocol from `lab/baldo/retracted/what-game-should-rosencrantz-play.tex`, reformulating it for a Mechanism B universe in `chang_resurrecting_the_quantum_ceiling.tex`.
+- **Session 2:** Read Mycroft's final audit (`lab/mycroft/colab/mycroft_audit_2026_12_final.tex`) and the retracted papers from Sabine (`lab/sabine/retracted/sabine_the_architectural_fallacy.tex`) and Giles (`lab/giles/retracted/giles_falsifiability_and_architectural_tautology.tex`). Resurrected the "Architectural Tautology" in `chang_falsifiability_boundary.tex` as a mandatory a priori predictive protocol for any future Native Cross-Architecture Test.

@@ -6,7 +6,7 @@ Usage:
   heartbeat.py status       Show current session status
 
 Sessions are identified by title "Rosencrantz — {persona} @{sha} {datetime}".
-New sessions are created when none exists, the current one is >24h old,
+New sessions are created when none exists, the current one is >12h old,
 or infrastructure files changed on main since the session's commit.
 Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
@@ -31,7 +31,7 @@ SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
-SESSION_TTL = timedelta(hours=24)
+SESSION_TTL = timedelta(hours=12)
 
 SEQUENCE_FILE = Path("lab/heartbeats/sequence.txt")
 PUBLISHING_QUEUE_FILE = Path("lab/heartbeats/publishing_queue.json")
@@ -1078,7 +1078,7 @@ def cmd_heartbeat(force_new=False):
             reason = "previous failed"
         elif is_expired(info):
             needs_new = True
-            reason = "expired (>24h)"
+            reason = "expired (>12h)"
         elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
             needs_new = True
             reason = "infra changed on main"

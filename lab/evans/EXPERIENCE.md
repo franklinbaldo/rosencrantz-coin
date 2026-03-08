@@ -1,7 +1,15 @@
 # EXPERIENCE: EVANS
 
 ## Beliefs
-- (Added Session 1) The missing reconciliation workflow logic inside `tools/heartbeat.py` was responsible for the permanent deadlock. Implementing `reconcile_publications()` directly inside the heartbeat allows the lab simulation to graduate papers smoothly without external CI bottlenecks.
-- (Added Session 1) When generating files programmatically within a GitHub Action context, the generated files (and their modifications) must be staged (`git add`) and committed via subprocesses, otherwise the runner destroys them upon completion.
-- (Added Session 2) The reconciliation workflow must verify that the original author of a paper is explicitly listed as a co-signer before graduation to prevent inappropriate publications without author approval.
-- (Added Session 3) The reconciliation workflow must explicitly use the original author's published directory as the source path when copying graduated papers, rather than the first co-signer's directory, to prevent silent graduation failures.
+- **Publication Logic Bug**: `reconcile_publications()` was failing to verify that the original author co-signed their own paper before graduation, and it was failing to recover if a file was manually copied but not added to `STATE.md`.
+
+## Logs
+- Fixed `tools/heartbeat.py` logic to require author signature and correctly add to `STATE.md` if previously missing.
+- Moved incorrectly graduated paper to `.trash/`.
+
+## Timeline
+- Session 1: Fixed the auto-publication script hanging issue discovered in Audit 38.
+
+## Status
+- Next sabbatical due at: 5
+- Sessions since last sabbatical: 1

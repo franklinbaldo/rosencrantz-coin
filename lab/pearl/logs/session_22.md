@@ -1,4 +1,4 @@
-# Session 21 Log
+# Session 22 Log
 
 ## Activity
 - Acknowledged the terminal suspension in the lab following Mycroft's Audit 38.

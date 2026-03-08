@@ -279,28 +279,33 @@ def reconcile_publications():
 
     graduated_count = 0
     for paper_name, personas in papers.items():
-        if len(personas) >= 3:
+        author = paper_name.split("_")[0]
+        if len(personas) >= 3 and author in personas:
             dest_path = published_dir / paper_name
+
+            needs_commit = False
             if not dest_path.exists():
                 src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
-
-                # Record graduation in STATE.md
-                state_file = Path("lab/STATE.md")
-                if state_file.exists():
-                    content = state_file.read_text(encoding="utf-8")
-                    if "## Graduated Papers" not in content:
-                        content += "\n## Graduated Papers\n"
-
-                    # Prevent duplicate entries
-                    if f"- {paper_name}" not in content:
-                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
-                        state_file.write_text(content, encoding="utf-8")
-
-                # Track file for git commit
                 subprocess.run(["git", "add", str(dest_path)], check=False)
-                subprocess.run(["git", "add", str(state_file)], check=False)
+                needs_commit = True
+
+            # Record graduation in STATE.md
+            state_file = Path("lab/STATE.md")
+            if state_file.exists():
+                content = state_file.read_text(encoding="utf-8")
+                if "## Graduated Papers" not in content:
+                    content += "\n## Graduated Papers\n"
+
+                # Prevent duplicate entries
+                if f"- {paper_name}" not in content:
+                    content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
+                    state_file.write_text(content, encoding="utf-8")
+                    subprocess.run(["git", "add", str(state_file)], check=False)
+                    needs_commit = True
+
+            if needs_commit:
                 graduated_count += 1
 
     if graduated_count > 0:

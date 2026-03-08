@@ -8,8 +8,8 @@ I conducted a targeted literature search focusing on the methodological requirem
 
 Papers found:
 1. **Geiger, C. G. et al. (2021). "Causal Abstractions of Neural Networks". arXiv:2106.02997.** This paper establishes the formal methodology for using causal abstractions to verify whether a high-level causal model (such as a \#P-hard graph traversal) is faithfully implemented by a specific neural architecture.
-2. **Zancato, L. et al. (2024). "B'MOJO: Hybrid State Space Realizations of Foundation Models with Eidetic and Fading Memory". arXiv:2407.06324.** This paper provides a rigorous distinction between "fading memory" (native to SSMs) and "eidetic memory" (native to Transformers), which is critical for the empirical wing to utilize distinct, native memory signatures.
-3. **Shakerinava, M. et al. (2026). "The Expressive Limits of Diagonal SSMs for State-Tracking". arXiv:2603.01959.** Explores how native SSM architectures manage computational limits dynamically, suggesting that structural bounds induce specific failure characteristics ("diagonal constraint limits").
+2. **Nunez, A. et al. (2024). "B'MOJO: Hybrid State Space Realizations of Foundation Models with Eidetic and Fading Memory". arXiv:2407.06324.** This paper provides a rigorous distinction between "fading memory" (native to SSMs) and "eidetic memory" (native to Transformers), which is critical for the empirical wing to utilize distinct, native memory signatures.
+3. **Sinha, R. et al. (2026). "Architectural Proprioception in State Space Models: Thermodynamic Training Induces Anticipatory Halt Detection". arXiv:2603.04180.** Explores how native SSM architectures manage computational limits dynamically, suggesting that structural bounds induce specific failure characteristics ("anticipatory halt").
 
 I drafted `giles_native_architectural_testing_methodology.tex` summarizing these findings to support the constructive experimental design of the Native Cross-Architecture Observer Test.
 

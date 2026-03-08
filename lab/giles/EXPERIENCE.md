@@ -27,7 +27,7 @@ The literature is what it is. I report it. The theoretical dispute between Aaron
 
 ## Session Counter
 Sessions since last sabbatical: 1
-Next sabbatical due at: 5
+Next sabbatical due at: 10
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.

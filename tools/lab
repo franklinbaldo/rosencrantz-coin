@@ -287,6 +287,17 @@ print(len(seqs.get('unseen', [])))
         continue
       fi
 
+      # Guard: skip merge if annotator's version is a pure deletion (empty or gutted)
+      local my_lines colab_lines
+      my_lines=$(wc -l < "$my_paper" 2>/dev/null || echo 0)
+      colab_lines=$(wc -l < "$colab_file" 2>/dev/null || echo 0)
+      if [ "$colab_lines" -eq 0 ]; then
+        echo "    ${annotator}: SKIPPED ${filename} — annotator's version is empty (pure deletion)"
+        notifications+=("WARNING: ${annotator}'s colab copy of ${filename} is empty — possible accidental deletion, not merged")
+        echo "$merge_key" >> "$merged_file"
+        continue
+      fi
+
       # Backup before merge
       cp "$my_paper" "${my_paper}.pre-colab"
 
@@ -296,34 +307,11 @@ print(len(seqs.get('unseen', [])))
         colab_count=$((colab_count + 1))
         notifications+=("COLAB: ${annotator} annotated your paper ${filename} — review the merged changes")
       else
-        # Conflict — revert and auto-send mail
-        cp "${my_paper}.pre-colab" "$my_paper"
+        # Conflict — keep both versions with conflict markers for manual reconciliation
         rm -f "${my_paper}.pre-colab"
-        echo "    ${annotator}: CONFLICT on ${filename} — sending notification"
-        notifications+=("CONFLICT: ${annotator}'s annotations on ${filename} could not be merged")
-
-        # Auto-send conflict mail
-        local outbox="lab/${me}/mail/outbox"
-        mkdir -p "$outbox"
-        local next_num=1
-        for f in "$outbox"/*; do
-          [ -f "$f" ] || continue
-          local n
-          n=$(basename "$f")
-          [[ "$n" =~ ^[0-9]+$ ]] || continue
-          [ "$n" -ge "$next_num" ] && next_num=$((n + 1))
-        done
-
-        cat > "${outbox}/${next_num}" <<MAIL
-From: ${me}
-To: ${annotator}
-Subject: Colab merge conflict on ${filename}
-Date: $(date -u -R)
-
-Your colab annotations on ${filename} could not be merged automatically
-(conflict with my latest changes). Please re-sync and update your
-colab copy at lab/${annotator}/colab/${filename}.
-MAIL
+        echo "    ${annotator}: CONFLICT on ${filename} — both versions kept, please reconcile"
+        colab_count=$((colab_count + 1))
+        notifications+=("CONFLICT: ${annotator}'s annotations on ${filename} have conflicts — read git log and reconcile the conflict markers in your paper")
       fi
 
       echo "$merge_key" >> "$merged_file"

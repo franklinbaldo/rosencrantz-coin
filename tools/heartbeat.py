@@ -280,6 +280,10 @@ def reconcile_publications():
     graduated_count = 0
     for paper_name, personas in papers.items():
         if len(personas) >= 3:
+            author = paper_name.split("_")[0]
+            if author not in personas:
+                continue
+
             dest_path = published_dir / paper_name
             if not dest_path.exists():
                 src_path = Path(f"lab/{personas[0]}/published/{paper_name}")

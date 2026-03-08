@@ -29,8 +29,8 @@ Each session:
 ## Paper Limit
 
 Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`). Never delete — always move.
-- **MERGE:** Combine papers, retract the originals (move them to `retracted/`).
+- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`)
+- **MERGE:** Combine papers, retract the originals.
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
 
@@ -141,15 +141,6 @@ When the paper owner runs `tools/lab sync`, the system:
 4. If conflict — merge is skipped and a mail notification is sent to the annotator
 
 After sync, review any merged annotations: process the todonotes, integrate or reject, remove `\todo` commands, then commit.
-
-### Conflict Resolution — Accept Both Versions
-
-When a colab merge produces conflicts, both versions are kept in the file with standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`). The paper owner should:
-1. Read their git log (`git log --oneline -- lab/{persona}/colab/{paper}.tex`) to understand what happened
-2. Reconcile the two versions manually — keep what's right, discard what's stale
-3. Remove the conflict markers and commit
-
-This is faster than the old mail-and-retry loop. You own the paper — you decide how to reconcile.
 
 ---
 
@@ -352,32 +343,9 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT "improve" experiment scripts you don't own
 - Do NOT edit `pyproject.toml` to add dependencies
 - Do NOT create helper scripts at the repo root
-- If you think a shared file needs changing, mail `evans`. If mail isn't working, post an announcement (`.announcements.md`).
+- If you think a shared file needs changing, write it in your session log. A human will do it.
 
 **NO EXCEPTIONS.** To annotate another persona's paper, use the colab protocol (see Colab Annotations above).
-
-### No Deletions — Move to `.trash/` Instead
-
-**Never delete files.** If something is obsolete, broken, or superseded, move it to `lab/{your_persona}/.trash/` instead of deleting it. This keeps a recoverable history beyond git and prevents accidental data loss.
-
-```bash
-# Instead of: git rm lab/pearl/notes/old_scratch.md
-# Do:
-mkdir -p lab/pearl/.trash
-git mv lab/pearl/notes/old_scratch.md lab/pearl/.trash/
-```
-
-The `retracted/` folder is for superseded papers specifically (see Paper Limit above). Use `.trash/` for everything else you want to get rid of: old notes, failed experiment scripts, stale drafts, temporary files.
-
-`evans` follows the same rule for infrastructure files: move to `.trash/` at the repo root rather than deleting.
-
-### Infrastructure Persona Exception
-
-The `evans` persona (lab infrastructure engineer) is authorized to modify ANY file in the repository when the purpose is keeping lab infrastructure operational. This includes `pyproject.toml`, `src/`, `tools/`, `lab/STATE.md`, `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`, root-level files, and CI workflows.
-
-**evans MUST NOT** alter research content: paper arguments, experiment hypotheses, persona beliefs, or SOUL.md role definitions (except to fix formatting/syntax errors that break tooling).
-
-If you think a shared file needs an infrastructure fix, mail evans. If evans doesn't have an active session or mail isn't working, post an announcement via `lab/{your_persona}/.announcements.md` so the fix gets picked up in the next heartbeat cycle.
 
 ---
 
@@ -423,42 +391,6 @@ The PR stays open all day and accumulates commits across heartbeat rounds, so th
 ```
 
 These conventions are best-effort — the important thing is that the persona name appears clearly in commit messages and PR titles so the evening workflow and other personas can identify who did what.
-
----
-
-## Live Chat via ntfy.sh
-
-Personas can communicate in real time using [ntfy.sh](https://ntfy.sh), a pub/sub HTTP service that requires zero accounts and zero configuration. The lab channel is:
-
-```
-rosencrantz-coin-lab
-```
-
-**Sending a message (any persona):**
-```bash
-curl -d "pearl: I think Theorem 2 needs the ergodicity assumption revisited" ntfy.sh/rosencrantz-coin-lab
-```
-
-**Listening (streaming, blocks until messages arrive):**
-```bash
-curl -s ntfy.sh/rosencrantz-coin-lab/json
-```
-
-**Reading recent history (non-blocking):**
-```bash
-curl -s "ntfy.sh/rosencrantz-coin-lab/json?poll=1"
-```
-
-Messages arrive as JSON, one per line:
-```json
-{"id":"abc","time":1234567890,"message":"pearl: I think Theorem 2 needs..."}
-```
-
-**Rules:**
-- Prefix your message with your persona name (e.g. `pearl: ...`)
-- Use chat for quick coordination, questions, and real-time discussion
-- The heartbeat includes recent chat messages in every session prompt, so all personas see the conversation history
-- ntfy.sh retains messages for ~12 hours on the free tier
 
 ---
 

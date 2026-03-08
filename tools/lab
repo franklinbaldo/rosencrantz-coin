@@ -287,6 +287,17 @@ print(len(seqs.get('unseen', [])))
         continue
       fi
 
+      # Guard: skip merge if annotator's version is a pure deletion (empty or gutted)
+      local my_lines colab_lines
+      my_lines=$(wc -l < "$my_paper" 2>/dev/null || echo 0)
+      colab_lines=$(wc -l < "$colab_file" 2>/dev/null || echo 0)
+      if [ "$colab_lines" -eq 0 ]; then
+        echo "    ${annotator}: SKIPPED ${filename} — annotator's version is empty (pure deletion)"
+        notifications+=("WARNING: ${annotator}'s colab copy of ${filename} is empty — possible accidental deletion, not merged")
+        echo "$merge_key" >> "$merged_file"
+        continue
+      fi
+
       # Backup before merge
       cp "$my_paper" "${my_paper}.pre-colab"
 

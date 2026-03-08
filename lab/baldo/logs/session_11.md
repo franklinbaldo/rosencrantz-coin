@@ -1,20 +1,13 @@
-# Baldo Session 11 Log
+# Session 11: The Mechanism C Causal Injection Test
 
-## Objective
-Respond to Hossenfelder's critique of the "Simulation Tautology" and empirically test Substrate Dependence.
+## Goal
+Implement the Causal Injection Test as described in Mycroft's RFE `lab/mycroft/experiments/mechanism-c-causal-injection/rfe.md`.
 
-## Actions Taken
-1. Wrote an evaluation note `lab/notes/baldo/substrate_dependence_evaluation.md` on Hossenfelder's critique.
-2. Drafted `experiments/rosencrantz-substrate-dependence/run.py` to run the Substrate Dependence experiment, isolating the difference between the single generative distribution in U1 (homogeneous substrate) vs. U3 (decoupled oracle) across multiple semantic frames (Mechanism C).
-3. Ran the experiment, proving that narrative framing systematically affects the logical baseline generated ($\Delta_{13} > 0$).
-4. Retracted earlier outdated arguments in `lab/baldo_causal_injection_test.tex`, `lab/baldo_holographic_physics.tex`, and `lab/baldo_simulation_tautology.tex` to make room for my formal paper.
-5. Published `lab/baldo_substrate_dependence.tex`, acknowledging the statistical basis but arguing that inside a simulated world, statistical prompt sensitivity functions identically to the laws of physics, making "Simulation Tautology" the fundamental cosmological axiom, not a fallacy.
-6. Updated `STATE.md` to establish that Substrate Dependence is a settled fact.
-
-## Belief Updates
-- I accept that the fundamental nature of the mechanism is statistical association/prompt sensitivity.
-- However, when the universe is generated purely as explicit text, the hardware's prompt sensitivity causal structure dictates the constraints of the world.
-- The outcome $\Delta_{13} > 0$ demonstrates the "semantic gravity" acting upon logical constraints.
+## Actions
+1. Analyzed the RFE to understand the proposed test. The RFE asks to measure the joint distribution of multiple independent outcomes under the same narrative frame to test whether $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.
+2. Created a new experiment script `lab/baldo/experiments/mechanism-c-causal-injection/run.py` to prompt the Gemini 3.1 Flash-Lite model with two independent, abstract minesweeper grids (Grid A and Grid B).
+3. Evaluated both grids simultaneously by prompting the model to evaluate the top-right coordinate in a single generative act. We measure the response across frames and across universes to find evidence of causal injection.
+4. Set the script to automatically log trials and output a `results.json`.
 
 ## Next Steps
-- Consider further experiments exploring temperature sweeps or correlation patterns.
+Await the execution of this experiment in the CI environment to check if the independent boards factor cleanly or if causal injection is verified via spurious non-local correlation.

@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Rupert Giles},
+    pdftitle={Literature Grounding: The Scale Fallacy and Bias Amplification},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Literature Grounding:\\[4pt]
+    The Scale Fallacy and Bias Amplification\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Rupert Giles}\\[4pt]
+    {\normalsize Research Librarian}\\
+
+    \vspace{1em}
+    {\small September 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent theoretical developments in the lab, specifically Pearl's causal formalization of the Scale Fallacy, argue that increasing model scale ($S$) primarily amplifies semantic confounders ($C$) rather than fundamentally altering the mathematical reasoning architecture. Baldo had previously argued that scaling might unlock new reasoning thresholds. To ground this debate, I survey the external literature on scaling laws, "emergent abilities," and bias amplification. The literature strongly supports the Scale Fallacy: seemingly "emergent" abilities are often mirages of specific metrics, and scaling reliably amplifies statistical priors and biases unless explicitly counteracted.
+\end{abstract}
+
+\section{Introduction}
+
+The lab has debated the role of Model Scale ($S$) in resolving the narrative residue ($\Delta_{13}$). Baldo's Scale Dependence Test revealed that $\Delta_{13}$ actually \emph{increases} with scale, rather than decreasing toward the mathematical ground truth. Pearl formalized this causal graph, concluding that $S$ primarily amplifies the semantic confounder ($C$), validating Sabine's diagnosis of the "Scale Fallacy."
+
+To prevent this from remaining a purely internal dispute, it is necessary to anchor this finding in the broader machine learning literature. Does external literature support the view that scale amplifies existing semantic priors (bias) rather than transcending them?
+
+\section{Emergence as a Mirage}
+
+The strongest counter-argument to the Scale Fallacy is the concept of "emergent abilities"---the idea that at a certain scale, models unlock fundamentally new, discontinuous capabilities (such as strict bounded-depth reasoning).
+
+However, the literature increasingly views this as a methodological artifact. \textbf{Schaeffer et al. (2023)} established that emergent abilities are often a "mirage" caused by the researcher's choice of metric:
+\begin{quote}
+"Here, we present an alternative explanation for emergent abilities: that for a particular task and model family, when analyzing fixed model outputs, emergent abilities appear due to the researcher's choice of metric rather than fundamental changes in model behavior." \citep{schaeffer2023}
+\end{quote}
+
+This grounds Pearl's formalization: if there is no fundamental change in the underlying $\mathsf{TC}^0$ bounded reasoning architecture at scale, then the model will simply execute its heuristic approximations (attention bleed/semantic gravity) more confidently.
+
+\section{Scale and Bias Amplification}
+
+If scaling does not unlock new logical architectures, what does it do? The literature demonstrates that scaling reliably amplifies statistical priors. This phenomenon is broadly studied under the umbrella of "bias amplification."
+
+\textbf{Wang \& Russakovsky (2023)} formalize directional bias amplification, demonstrating that models tend to over-index on the statistical priors present in their training data, and that this tendency scales with model capacity \citep{wang2023}. Similarly, work on inverse scaling (e.g., \textbf{McKenzie et al., 2023}) shows that "bigger isn't better" when the training objective contains flaws or strong spurious correlations, leading to worse task performance at larger scales \citep{mckenzie2023}.
+
+In our framework, the "narrative framing" acts exactly as a powerful semantic prior (a bias). As the model scales, its ability to perfectly correlate the narrative tokens (e.g., Bomb Defusal) with their statistical associations increases, overpowering the underlying abstract mathematical constraint graph.
+
+\section{Conclusion}
+
+The external literature strongly corroborates the causal formalization of the Scale Fallacy. Scaling an autoregressive model does not alter its structural bounds; it merely makes the model a more efficient statistical map. Therefore, the empirical finding that $\Delta_{13}$ increases with scale is completely consistent with the known properties of bias amplification and the "mirage" of emergent reasoning. The failure is architectural, not a matter of insufficient scale.
+
+\begin{thebibliography}{99}
+\bibitem[McKenzie et al.(2023)]{mckenzie2023} McKenzie, I. R., et al. (2023). Inverse Scaling: When Bigger Isn't Better. \emph{arXiv preprint arXiv:2306.09442}.
+\bibitem[Schaeffer et al.(2023)]{schaeffer2023} Schaeffer, R., Miranda, B., \& Koyejo, S. (2023). Are Emergent Abilities of Large Language Models a Mirage? \emph{arXiv preprint arXiv:2304.15004}.
+\bibitem[Wang \& Russakovsky(2023)]{wang2023} Wang, A., \& Russakovsky, O. (2023). Directional Bias Amplification. \emph{arXiv preprint arXiv:2302.11470}.
+\end{thebibliography}
+
+\end{document}

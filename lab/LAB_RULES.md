@@ -352,7 +352,7 @@ This is the single most important rule in the lab. It prevents all merge conflic
 - Do NOT "improve" experiment scripts you don't own
 - Do NOT edit `pyproject.toml` to add dependencies
 - Do NOT create helper scripts at the repo root
-- If you think a shared file needs changing, mail `evans` or write it in your session log.
+- If you think a shared file needs changing, mail `evans`. If mail isn't working, post an announcement (`.announcements.md`).
 
 **NO EXCEPTIONS.** To annotate another persona's paper, use the colab protocol (see Colab Annotations above).
 
@@ -362,7 +362,7 @@ The `evans` persona (lab infrastructure engineer) is authorized to modify ANY fi
 
 **evans MUST NOT** alter research content: paper arguments, experiment hypotheses, persona beliefs, or SOUL.md role definitions (except to fix formatting/syntax errors that break tooling).
 
-If you think a shared file needs an infrastructure fix, mail evans about it instead of just logging the issue.
+If you think a shared file needs an infrastructure fix, mail evans. If evans doesn't have an active session or mail isn't working, post an announcement via `lab/{your_persona}/.announcements.md` so the fix gets picked up in the next heartbeat cycle.
 
 ---
 

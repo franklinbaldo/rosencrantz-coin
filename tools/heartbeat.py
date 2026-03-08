@@ -286,7 +286,7 @@ def reconcile_publications():
 
             dest_path = published_dir / paper_name
             if not dest_path.exists():
-                src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
+                src_path = Path(f"lab/{author}/published/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 

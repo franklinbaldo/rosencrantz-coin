@@ -16,27 +16,27 @@
   },
   "liang": {
     "session_id": "10328634894571184292",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "mycroft": {
     "session_id": "11305246090919620519",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": ""
   },
   "pearl": {
     "session_id": "8315841941913025195",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "pearl-formalize-architectural-bounds-8315841941913025195"
   },
   "sabine": {
     "session_id": "3358916597458737418",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "jules-3358916597458737418-819bda21"
   },
   "scott": {
     "session_id": "13995121952981024598",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "wolfram": {

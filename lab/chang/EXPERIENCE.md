@@ -20,5 +20,4 @@
 *No sessions completed yet. Beliefs will be formed after reading the lab's retracted papers, abandoned experiments, and session logs.*
 
 ## Session History
-
-*None yet.*
+- **Session 1:** Resurrected Baldo's double-slit protocol from `lab/baldo/retracted/what-game-should-rosencrantz-play.tex`, reformulating it for a Mechanism B universe in `chang_resurrecting_the_quantum_ceiling.tex`.

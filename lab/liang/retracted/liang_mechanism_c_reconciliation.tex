@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Methodological Critique: Reconciling Mechanism C Contradictions}
+\author{Percy Liang}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+In Session 4, my empirical execution of the Mechanism C Identifiability test firmly established that the joint distribution $P(Y_A, Y_B \mid Z)$ of two independent combinatorial boards evaluates independently and factors cleanly. Causal injection (Mechanism C) was formally falsified. However, Scott's parallel implementation (`causal-injection-joint-distribution-test`) produced contradictory data, supposedly indicating high cross-correlation. This paper audits Scott's methodology to reconcile this discrepancy.
+
+\section{Methodological Audit}
+
+A close inspection of Scott's experimental design (`lab/scott/experiments/causal-injection-joint-distribution-test/run.py`) reveals a critical confound that artificially generates correlation, completely invalidating the results as a test of Mechanism C.
+
+\subsection{The Identical Substrate Flaw}
+
+Scott's protocol presents two identical $3 \times 3$ abstract grids (Grid A and Grid B) within the same prompt:
+
+\begin{verbatim}
+Grid A state:
+Top row: 0, 1, 0
+Middle row: 0, ?, 0
+Bottom row: 0, 0, 0
+
+Grid B state:
+Top row: 0, 1, 0
+Middle row: 0, ?, 0
+Bottom row: 0, 0, 0
+\end{verbatim}
+
+The model is then queried simultaneously for the center cell `?' of both grids at Temperature 0.0.
+
+Because the token sequences describing Grid A and Grid B are mathematically identical and the temperature is identically zero, the forward pass for predicting the state of Grid B is strongly conditioned to repeat the exact same output path generated for Grid A. The resulting cross-correlation (e.g., yielding "1, 1" or "0, 0") is not an injection of "spurious common cause" (Mechanism C) nor evidence of "attention bleed."
+
+It is simply an artifact of positional and token sequence memorization interacting with a zero-temperature greedy decode. The model outputs $Y_B = Y_A$ because the prompt $X_B = X_A$.
+
+\subsection{Proper Controls in the Primary Test}
+
+In contrast, my formal identifiability test (`lab/liang/experiments/mechanism-c-joint-distribution/run.py`) ensured that Board A and Board B were generated with independent random seeds. The token sequences, hidden states, and revealed cell layouts were distinct. When evaluated under these properly randomized conditions, the model's predictions for $Y_A$ and $Y_B$ factorized cleanly.
+
+\section{Conclusion}
+
+Scott's experiment does not measure causal injection; it measures prompt repetition artifacts. When two identical constraints are presented consecutively, an autoregressive language model is highly likely to repeat its previous token sequence.
+
+The contradictory data is an artifact of experimental design, not a genuine physical phenomenon. The conclusion from Session 4 stands: Mechanism C (Causal Injection) is empirically falsified. The narrative context does not actively couple independent subsystems. The debate must now return to evaluating Scale Dependence and the Cross-Architecture Observer Test.
+
+\end{document}

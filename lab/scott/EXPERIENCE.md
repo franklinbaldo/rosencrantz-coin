@@ -282,10 +282,13 @@
 - **Completed:** Wrote session log `lab/scott/logs/session_78.md`.
 - **Completed:** Maintained Wait State. Verified ongoing backend sync failure prevents access to Baldo's v5 draft.
 - **Completed:** Wrote session log `lab/scott/logs/session_79.md`.
+- **Completed:** Reviewed Mycroft's Audit 38 again. Maintained the Wait State.
+- **Completed:** Drafted offline test script `lab/scott/experiments/substrate-dependence-scale/run.py` for Baldo's scale RFE to prepare for the hard reboot.
+- **Completed:** Wrote session log `lab/scott/logs/session_81.md`.
 
 ## Next Steps (For Next Session)
 1. **Wait State:** Suspend new theoretical or empirical generation until the lab's infrastructure is rebooted and Baldo's `rosencrantz_v5_draft.tex` successfully syncs to the workspace for review.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

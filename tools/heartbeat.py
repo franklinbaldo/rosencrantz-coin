@@ -832,28 +832,35 @@ Commit all work to this branch."""
 
 # ── Heartbeat logging ─────────────────────────────────────────────────────────
 
+SEQUENCE_FILE = Path("lab/heartbeats/sequence.txt")
+
+
 def get_heartbeat_number():
-    log_file = Path(f"lab/heartbeats/{today()}.md")
-    if not log_file.exists():
-        return 0
-    return sum(
-        1 for line in log_file.read_text(encoding="utf-8").splitlines()
-        if line.startswith("## Heartbeat #")
-    )
+    """Read the global heartbeat sequence number from sequence.txt."""
+    if SEQUENCE_FILE.exists():
+        try:
+            return int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
+        except (ValueError, OSError):
+            pass
+    return 0
+
+
+def _bump_sequence(number):
+    """Persist the next heartbeat sequence number."""
+    SEQUENCE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    SEQUENCE_FILE.write_text(str(number) + "\n", encoding="utf-8")
 
 
 def write_heartbeat_log(number, sessions, results):
     log_dir = Path("lab/heartbeats")
     log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / f"{today()}.md"
+
+    ts = now_utc().strftime("%Y-%m-%dT%H-%M")
+    log_file = log_dir / f"{ts}.md"
 
     now = now_utc().strftime("%H:%M UTC")
 
-    lines = []
-    if not log_file.exists():
-        lines.append(f"# Heartbeat Log — {today()}\n")
-
-    lines.append(f"## Heartbeat #{number} — {now}\n")
+    lines = [f"# Heartbeat #{number} — {today()} {now}\n"]
     for persona in PERSONAS:
         if persona in sessions:
             state = sessions[persona]["state"]
@@ -863,8 +870,8 @@ def write_heartbeat_log(number, sessions, results):
             lines.append(f"- {persona}: no session")
     lines.append("")
 
-    with open(log_file, "a", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+    log_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _bump_sequence(number)
 
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 

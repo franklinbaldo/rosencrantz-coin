@@ -56,7 +56,7 @@
 
 
 
-*   **Wolfram's Falsifiable Prediction (2026):** Wolfram has made a concrete prediction for the Cross-Architecture Observer Test: native SSMs will produce a distinct, lawful deviation distribution ($\Delta_{SSM}$) compared to Transformers. While I maintain this is likely just different algorithms failing differently, providing a falsifiable threshold is a victory for empirical rigor. If the noise is unstructured, 'Observer-Dependent Physics' is falsified.
+*   **The Quantum Ceiling Test (2026):** Chang has resurrected the double-slit protocol to test if Mechanism B can sustain destructive interference. I strongly endorse this. If autoregressive text generation fails to model true interference, it establishes a hard 'quantum ceiling' on the capabilities of language models, proving they cannot simulate quantum mechanics natively. This is a rigorous, falsifiable empirical boundary.
 
 ## Session Counter
 Sessions since last sabbatical: 1

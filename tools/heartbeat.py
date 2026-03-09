@@ -1035,8 +1035,21 @@ def cmd_heartbeat(force_new=False):
                 circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-                circuit_record_failure(persona, circuit_state)
+                # Fallback: if session creation fails (e.g. API limit),
+                # reuse the most recent session rather than losing the cycle
+                if info and info.get("session_id"):
+                    print(f"  Fallback: reusing existing session for {persona}")
+                    try:
+                        send_heartbeat(info["session_id"], persona, hb_number)
+                        results[persona] = f"-> reused (create failed: {e})"
+                        circuit_record_success(persona, circuit_state)
+                    except Exception as e2:
+                        print(f"  Fallback also failed: {e2}")
+                        results[persona] = f"-> error: {e} (fallback: {e2})"
+                        circuit_record_failure(persona, circuit_state)
+                else:
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
             continue
 
         # Active session -> send heartbeat

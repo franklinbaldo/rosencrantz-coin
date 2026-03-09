@@ -7,8 +7,6 @@ Internal module called by tools/lab. Not invoked directly by personas.
 import email
 import email.message
 import mailbox
-import os
-import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -142,136 +140,87 @@ def cmd_status(me, _args):
     outbox.close()
 
 
-# ── Heartbeat command (central delivery) ─────────────────────────────────────
+# ── Mail delivery (from workspace checkouts) ─────────────────────────────────
 
-def load_session_branches():
-    """Load persona -> branch mapping from lab/sessions.json."""
-    sessions_file = Path("lab/sessions.json")
-    if not sessions_file.exists():
-        return {}
-    try:
-        import json as _json
-        data = _json.loads(sessions_file.read_text(encoding="utf-8"))
-        return {p: info["branch"] for p, info in data.items() if info.get("branch")}
-    except Exception:
-        return {}
+def cmd_deliver(args):
+    """Deliver mail from workspace checkouts to the current persona's inbox.
 
-
-def cmd_deliver(_args):
-    """Scan all persona branches and deliver outbox messages to inboxes on main.
-
-    Called by the heartbeat workflow running on main.
+    Called by `tools/lab sync` after cloning branches into workspace/.
+    Reads outbox files directly from workspace/{sender}/lab/{sender}/mail/outbox/.
+    Prints the number of delivered messages to stdout (for the shell caller).
     """
-    print(f"=== Mail delivery — {today()} ===\n")
-
-    branches = load_session_branches()
-    if not branches:
-        print("  (no sessions.json or no active branches)")
+    if not args:
+        print("0")
         return
 
-    # Fetch all remote branches
-    subprocess.run(
-        ["git", "fetch", f"https://github.com/{REPO}.git",
-         "+refs/heads/*:refs/remotes/lab/*"],
-        capture_output=True,
-    )
+    me = args[0]
+    workspace = Path("workspace")
+    total = 0
 
-    total_delivered = 0
+    inbox = get_mh(me, "inbox")
+    existing_keys = set()
+    for k in inbox.keys():
+        existing_keys.add(dedup_key(inbox[k]))
 
-    for sender in PERSONAS:
-        branch = branches.get(sender)
-        if not branch:
+    for sender_dir in sorted(workspace.iterdir()):
+        if not sender_dir.is_dir():
             continue
-        ref = f"lab/{branch}"
-
-        # Check if branch exists
-        result = subprocess.run(
-            ["git", "rev-parse", "--verify", ref],
-            capture_output=True,
-        )
-        if result.returncode != 0:
+        sender = sender_dir.name
+        if sender == me or sender not in PERSONAS:
             continue
 
-        # List files in sender's outbox
-        outbox_path = f"lab/{sender}/mail/outbox"
-        result = subprocess.run(
-            ["git", "ls-tree", "--name-only", ref, f"{outbox_path}/"],
-            capture_output=True, text=True,
-        )
-        if result.returncode != 0 or not result.stdout.strip():
+        outbox_path = sender_dir / "lab" / sender / "mail" / "outbox"
+        if not outbox_path.is_dir():
             continue
 
-        for filepath in result.stdout.strip().splitlines():
-            filename = os.path.basename(filepath)
-            if filename.startswith("."):
+        for msg_file in sorted(outbox_path.iterdir()):
+            if msg_file.name.startswith(".") or not msg_file.is_file():
                 continue
 
-            # Read message content from branch
-            cat_result = subprocess.run(
-                ["git", "show", f"{ref}:{filepath}"],
-                capture_output=True, text=True,
-            )
-            if cat_result.returncode != 0:
-                continue
-
-            content = cat_result.stdout
-
-            # Parse email
             try:
+                content = msg_file.read_text(encoding="utf-8", errors="replace")
                 msg = email.message_from_string(content)
             except Exception:
                 continue
 
             recipient = msg.get("To", "")
-            if recipient not in PERSONAS or recipient == sender:
+            if recipient != me:
                 continue
-
-            # Open recipient's inbox and check for duplicates
-            inbox = get_mh(recipient, "inbox")
-            existing_keys = set()
-            for k in inbox.keys():
-                existing_keys.add(dedup_key(inbox[k]))
 
             msg_key = dedup_key(msg)
             if msg_key in existing_keys:
-                inbox.close()
                 continue
 
-            # Deliver — replace non-ASCII chars to avoid MH encoding errors
+            # Deliver
             safe_content = content.encode("ascii", "replace").decode("ascii")
             mh_msg = mailbox.MHMessage(safe_content)
             new_key = inbox.add(mh_msg)
 
-            # Add to unseen sequence
             sequences = inbox.get_sequences()
             unseen = list(sequences.get("unseen", []))
             unseen.append(new_key)
             sequences["unseen"] = sorted(unseen)
             inbox.set_sequences(sequences)
 
-            inbox.flush()
-            inbox.close()
+            existing_keys.add(msg_key)
+            total += 1
 
-            subject = msg.get("Subject", "(no subject)")
-            print(f"  {sender} → {recipient}: {subject}")
-            total_delivered += 1
+    inbox.flush()
+    inbox.close()
+    print(total)
 
-    if total_delivered == 0:
-        print("  (no new mail to deliver)")
-    else:
-        print(f"\n  {total_delivered} message(s) delivered")
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: tools/lab mail [list|read <num>|status|deliver]")
+        print("Usage: tools/lab mail [list|read <num>|status|deliver <persona>]")
         sys.exit(1)
 
     cmd = sys.argv[1]
 
-    # 'deliver' runs on main (no persona needed)
+    # 'deliver' reads from workspace/ checkouts (called by tools/lab sync)
     if cmd == "deliver":
         cmd_deliver(sys.argv[2:])
         return

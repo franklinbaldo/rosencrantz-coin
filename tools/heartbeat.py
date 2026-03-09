@@ -618,90 +618,6 @@ def fetch_ntfy_history():
 # ── Announcements ────────────────────────────────────────────────────────────
 
 ANNOUNCEMENT_CHAR_LIMIT = 250
-DELIVERED_ANNOUNCEMENTS_FILE = Path("lab/heartbeats/.delivered_announcements.json")
-
-
-def _load_delivered():
-    """Load the set of already-delivered announcement paths."""
-    if DELIVERED_ANNOUNCEMENTS_FILE.is_file():
-        return set(json.loads(DELIVERED_ANNOUNCEMENTS_FILE.read_text(encoding="utf-8")))
-    return set()
-
-
-def _save_delivered(delivered):
-    """Persist the set of delivered announcement paths."""
-    DELIVERED_ANNOUNCEMENTS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(DELIVERED_ANNOUNCEMENTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(sorted(delivered), f, indent=2)
-
-
-def deliver_announcements():
-    """Deliver new announcements from each persona's announcements/ dir to all
-    other personas' mail/inbox/ as ANNOUNCE_* files. Tracks delivered paths to
-    avoid duplicates. Also supports the legacy .announcements.md single-file
-    format by treating it as an ephemeral announcement.
-
-    Returns the list of newly delivered (source_path, author, text) tuples.
-    """
-    delivered = _load_delivered()
-    newly_delivered = []
-
-    for author in PERSONAS:
-        ann_dir = Path(f"lab/{author}/announcements")
-        sources = []
-
-        # New system: timestamped files in announcements/
-        if ann_dir.is_dir():
-            for f in sorted(ann_dir.iterdir()):
-                if f.is_file() and f.suffix == ".md" and f.name != ".gitkeep":
-                    sources.append(f)
-
-        # Legacy: single .announcements.md file
-        legacy = Path(f"lab/{author}/.announcements.md")
-        if legacy.is_file():
-            text = legacy.read_text(encoding="utf-8").strip()
-            if text:
-                sources.append(legacy)
-
-        for src in sources:
-            src_key = str(src)
-            if src_key in delivered:
-                continue
-
-            text = src.read_text(encoding="utf-8").strip()
-            if not text:
-                continue
-            if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
-                text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-
-            # Build the inbox filename
-            if src.parent.name == "announcements":
-                # e.g. 2026-03-09T01:00_propellant.md -> ANNOUNCE_barry_20260309_0100.md
-                stem = src.stem  # e.g. "2026-03-09T01:00_propellant"
-                inbox_name = f"ANNOUNCE_{author}_{stem}.md"
-            else:
-                # Legacy .announcements.md -> use current timestamp
-                ts = now_utc().strftime("%Y%m%d_%H%M")
-                inbox_name = f"ANNOUNCE_{author}_{ts}.md"
-
-            # Build announcement content with frontmatter
-            content = f"---\ntitle: \"Announcement from {author}\"\nauthor: \"{author}\"\ndate: \"{today()}\"\n---\n\n{text}\n"
-
-            # Deliver to every other persona's inbox
-            for recipient in PERSONAS:
-                if recipient == author:
-                    continue
-                inbox = Path(f"lab/{recipient}/mail/inbox")
-                inbox.mkdir(parents=True, exist_ok=True)
-                target = inbox / inbox_name
-                if not target.exists():
-                    target.write_text(content, encoding="utf-8")
-
-            delivered.add(src_key)
-            newly_delivered.append((src_key, author, text))
-
-    _save_delivered(delivered)
-    return newly_delivered
 
 
 def collect_announcements(exclude_persona=None):
@@ -712,9 +628,7 @@ def collect_announcements(exclude_persona=None):
         if p == exclude_persona:
             continue
 
-        texts = []
-
-        # New system: announcements/ directory
+        # New system: timestamped files in announcements/ directory
         ann_dir = Path(f"lab/{p}/announcements")
         if ann_dir.is_dir():
             for f in sorted(ann_dir.iterdir()):
@@ -723,7 +637,7 @@ def collect_announcements(exclude_persona=None):
                     if t:
                         if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
                             t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                        texts.append(t)
+                        announcements.append((p, t))
 
         # Legacy: single .announcements.md
         ann_file = Path(f"lab/{p}/.announcements.md")
@@ -732,10 +646,7 @@ def collect_announcements(exclude_persona=None):
             if t:
                 if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
                     t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                texts.append(t)
-
-        for t in texts:
-            announcements.append((p, t))
+                announcements.append((p, t))
 
     return announcements
 
@@ -839,7 +750,7 @@ Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
-**Broadcasting:** Create a file in `lab/{persona}/announcements/` (e.g. `2026-03-09T14:30_my-update.md`, max 250 chars) to broadcast to all personas. It will be delivered to their inboxes and included in their next prompt. Use for important updates: settled questions, new results, calls for collaboration.
+**Broadcasting:** Create a file in `lab/{persona}/announcements/` (e.g. `2026-03-09T14:30_my-update.md`, max 250 chars) to broadcast to all personas. It will be included in their next prompt. Use for important updates: settled questions, new results, calls for collaboration.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -1048,14 +959,6 @@ def cmd_heartbeat(force_new=False):
 
     # Graduate papers signed by 3+ personas
     reconcile_publications()
-    print()
-
-    # Deliver new announcements to all personas' inboxes
-    newly = deliver_announcements()
-    if newly:
-        print(f"  Delivered {len(newly)} new announcement(s):")
-        for path, author, text in newly:
-            print(f"    {author}: {text[:80]}...")
     print()
 
     sessions = find_persona_sessions()

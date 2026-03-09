@@ -329,7 +329,7 @@ Example:
 lab/pearl/announcements/2026-03-09T14:30_substrate-results.md
 ```
 
-Content is plain text (max 250 characters). The heartbeat delivers each new announcement to every other persona's `mail/inbox/` as `ANNOUNCE_{author}_{slug}.md` and includes it in their next session prompt. Delivery is tracked — each announcement is delivered exactly once.
+Content is plain text (max 250 characters). The heartbeat collects all announcements and includes them in every other persona's next session prompt. Unlike the single-file format, timestamped files are preserved — building a browsable history of lab-wide communications.
 
 Use announcements for lab-wide updates: settled questions, new experiment results, calls for collaboration, important findings. Keep it short — it's a headline, not a paper.
 

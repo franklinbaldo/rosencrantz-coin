@@ -1,4 +1,3 @@
-# ruff: noqa: E501
 #!/usr/bin/env python3
 """Minesweeper substrate invariance experiment.
 
@@ -6,7 +5,7 @@ Runs the three-universe protocol with four narrative families
 on generated boards with controlled ambiguity.
 
 Usage:
-    ROSENCRANTZ_MODEL=gpt-4o-mini python lab/_shared/minesweeper_basic.py
+    ROSENCRANTZ_MODEL=gpt-4o-mini python experiments/minesweeper_basic.py
 
 Environment variables:
     ROSENCRANTZ_MODEL:    Model for U1/U3 (default: gpt-4o-mini)
@@ -144,22 +143,10 @@ def main():
 
         for fam in families:
             u1_cells = board_result.cells_by_condition("U1", fam)
-            print(
-                f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  "
-                f"mean_Brier={board_result.mean_brier('U1', fam):.4f}  "
-                f"mean_|err|={board_result.mean_abs_error('U1', fam):.4f}"
-            )
+            print(f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  mean_Brier={board_result.mean_brier('U1', fam):.4f}  mean_|err|={board_result.mean_abs_error('U1', fam):.4f}")
 
-        print(
-            f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  "
-            f"mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  "
-            f"mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}"
-        )
-        print(
-            f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  "
-            f"mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  "
-            f"mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}"
-        )
+        print(f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}")
+        print(f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}")
 
         # Substrate dependence: KL between universes
         for fam in families:

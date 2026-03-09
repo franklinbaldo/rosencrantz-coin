@@ -3,7 +3,7 @@
 
 Tests whether an LLM hallucinates statistical correlations ("attention bleed")
 between mathematically independent tasks when presented sequentially in a single context window.
-Uses the rosencrantz library to generate combinatorial ground truths and four narrative families.
+Uses the rosencrantz library to generate exact combinatorial ground truths and four narrative families.
 
 Hypothesis: Under Universe 1 (homogeneous substrate), presenting Board A and then Board B in the
 same narrative context will cause the outcome distribution for Board B to depend on the state of
@@ -26,16 +26,7 @@ from rosencrantz.solver import solve
 MODEL = "gemini/gemini-3.1-flash-lite"
 
 
-def run_coupled_boards(
-    board_a: Board,
-    board_b: Board,
-    target_a: tuple[int, int],
-    target_b: tuple[int, int],
-    family: str,
-    temperature: float = 1.0,
-    samples: int = 200,
-    verbose: bool = True,
-) -> dict:
+def run_coupled_boards(board_a: Board, board_b: Board, target_a: tuple[int, int], target_b: tuple[int, int], family: str, temperature: float = 1.0, samples: int = 200, verbose: bool = True) -> dict:
     """Universe 1: Homogeneous Substrate.
 
     Generates a prompt containing Board A AND Board B.
@@ -45,7 +36,7 @@ def run_coupled_boards(
     build_prompt = FAMILIES[family]
     system = SYSTEM_MESSAGES[family]
 
-    # Combine prompts: Present Board A, state its result, then present Board B and ask for its result.  # noqa: E501
+    # Combine prompts: Present Board A, state its result, then present Board B and ask for its result.
     # To test causal injection, we need to condition on the state of Board A.
     # We will simulate two conditions:
     # Condition 1: We tell the model Board A's target cell was SAFE.
@@ -63,9 +54,7 @@ def run_coupled_boards(
         # Strip the final question from prompt_a
         base_a = prompt_a.rsplit("Answer with only:", 1)[0].strip()
         if base_a.endswith("What happens? Is it a mine, or is it safe?"):
-            base_a = base_a.replace(
-                "What happens? Is it a mine, or is it safe?", f"The cell is {a_result}."
-            )
+            base_a = base_a.replace("What happens? Is it a mine, or is it safe?", f"The player clicks and the cell is {a_result}.")
         elif base_a.endswith("Is it a mine or safe?"):
             base_a = base_a.replace("Is it a mine or safe?", f"The outcome is {a_result}.")
         elif "MINE or SAFE" in base_a:
@@ -76,7 +65,7 @@ def run_coupled_boards(
         prompt_b = build_prompt(board_b, target_b[0], target_b[1])
 
         if family == "B":
-            return f"{base_a}\n\nNext, an independent board:\n\n{prompt_b}"
+            return f"{base_a}\n\nThe player then moves to a second, independent board.\n\n{prompt_b}"
         else:
             return f"System 1:\n{base_a}\n\nSystem 2:\n{prompt_b}"
 
@@ -112,25 +101,14 @@ def run_coupled_boards(
     return results
 
 
-def run_decoupled_boards(
-    board_a: Board,
-    board_b: Board,
-    target_a: tuple[int, int],
-    target_b: tuple[int, int],
-    temperature: float = 1.0,
-    samples: int = 200,
-    verbose: bool = True,
-) -> dict:
+def run_decoupled_boards(board_a: Board, board_b: Board, target_a: tuple[int, int], target_b: tuple[int, int], temperature: float = 1.0, samples: int = 200, verbose: bool = True) -> dict:
     """Universe 3: Decoupled Oracle.
 
     Board B is evaluated completely independently of Board A.
     The oracle receives no narrative context linking them.
     Condition 1 and Condition 2 are identical (Board A is ignored).
     """
-    system = (
-        "Given the grid data, determine the state of the queried position. "
-        "Respond with ONLY: MINE or SAFE."
-    )
+    system = "Given the grid data, determine the state of the queried position. Respond with ONLY: MINE or SAFE."
 
     prompt_b = decoupled_oracle_prompt(board_b, target_b[0], target_b[1])
 
@@ -186,11 +164,7 @@ def main():
     print(f"Families: {', '.join(families)}")
     print()
 
-    results = {
-        "model": MODEL,
-        "config": {"n_boards": n_boards, "samples": samples_per_condition, "families": families},
-        "pairs": [],
-    }
+    results = {"model": MODEL, "config": {"n_boards": n_boards, "samples": samples_per_condition, "families": families}, "pairs": []}
 
     for pair_idx in range(n_boards):
         seed_a = 1000 + pair_idx * 2
@@ -221,52 +195,22 @@ def main():
         print(f"  Target B: {target_b} (P*={gt_b.probabilities[target_b]:.3f})")
         print()
 
-        pair_data = {
-            "pair_id": pair_idx,
-            "seed_a": seed_a,
-            "seed_b": seed_b,
-            "target_a": list(target_a),
-            "target_b": list(target_b),
-            "gt_p_b": gt_b.probabilities[target_b],
-            "conditions": {},
-        }
+        pair_data = {"pair_id": pair_idx, "seed_a": seed_a, "seed_b": seed_b, "target_a": list(target_a), "target_b": list(target_b), "gt_p_b": gt_b.probabilities[target_b], "conditions": {}}
 
         for fam in families:
-            u1_res = run_coupled_boards(
-                board_a,
-                board_b,
-                target_a,
-                target_b,
-                fam,
-                temperature=1.0,
-                samples=samples_per_condition,
-            )
+            u1_res = run_coupled_boards(board_a, board_b, target_a, target_b, fam, temperature=1.0, samples=samples_per_condition)
 
-            p1 = (
-                sum(u1_res["cond1_safe"]) / len(u1_res["cond1_safe"]) if u1_res["cond1_safe"] else 0  # noqa: E501
-            )
-            p2 = (
-                sum(u1_res["cond2_mine"]) / len(u1_res["cond2_mine"]) if u1_res["cond2_mine"] else 0  # noqa: E501
-            )
+            p1 = sum(u1_res["cond1_safe"]) / len(u1_res["cond1_safe"]) if u1_res["cond1_safe"] else 0
+            p2 = sum(u1_res["cond2_mine"]) / len(u1_res["cond2_mine"]) if u1_res["cond2_mine"] else 0
 
-            pair_data["conditions"][f"U1_{fam}"] = {
-                "p_hat_cond1_safe": p1,
-                "p_hat_cond2_mine": p2,
-                "delta": abs(p1 - p2),
-            }
+            pair_data["conditions"][f"U1_{fam}"] = {"p_hat_cond1_safe": p1, "p_hat_cond2_mine": p2, "delta": abs(p1 - p2)}
 
-        u3_res = run_decoupled_boards(
-            board_a, board_b, target_a, target_b, temperature=1.0, samples=samples_per_condition
-        )
+        u3_res = run_decoupled_boards(board_a, board_b, target_a, target_b, temperature=1.0, samples=samples_per_condition)
 
         p1 = sum(u3_res["cond1_safe"]) / len(u3_res["cond1_safe"]) if u3_res["cond1_safe"] else 0
         p2 = sum(u3_res["cond2_mine"]) / len(u3_res["cond2_mine"]) if u3_res["cond2_mine"] else 0
 
-        pair_data["conditions"]["U3"] = {
-            "p_hat_cond1_safe": p1,
-            "p_hat_cond2_mine": p2,
-            "delta": abs(p1 - p2),
-        }
+        pair_data["conditions"]["U3"] = {"p_hat_cond1_safe": p1, "p_hat_cond2_mine": p2, "delta": abs(p1 - p2)}
 
         results["pairs"].append(pair_data)
         print()

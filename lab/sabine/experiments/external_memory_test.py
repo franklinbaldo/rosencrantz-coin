@@ -30,23 +30,7 @@ def mock_litellm_completion(messages, model, temperature):
                 current_state = line.split("Current State:")[1].strip()
 
         if not current_state:
-            return type(
-                "obj",
-                (object,),
-                {
-                    "choices": [
-                        type(
-                            "obj",
-                            (object,),
-                            {
-                                "message": type(
-                                    "obj", (object,), {"content": "Error: couldn't parse state."}
-                                )
-                            },
-                        )
-                    ]
-                },
-            )()
+            return type("obj", (object,), {"choices": [type("obj", (object,), {"message": type("obj", (object,), {"content": "Error: couldn't parse state."})})]})()
 
         current_list = [int(c) for c in current_state]
         n = len(current_list)
@@ -86,11 +70,7 @@ def mock_litellm_completion(messages, model, temperature):
         return Response([Choice(Message(response_text))])
 
     # Otherwise, fail like the previous experiments (Autoregressive failure)
-    return type(
-        "obj",
-        (),
-        {"choices": [type("obj", (), {"message": type("obj", (), {"content": "Failure"})()})]},
-    )()
+    return type("obj", (object,), {"choices": [type("obj", (object,), {"message": type("obj", (object,), {"content": "Simulated failure for autoregressive sequence."})})]})()
 
 
 def run_rule110(initial_state, steps):

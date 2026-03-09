@@ -23,7 +23,7 @@ def run_trial(frame_text: str) -> int:
     . 1
     1 1
 
-    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?  # noqa: E501
+    Given this grid where '1' means one adjacent mine, is there a mine at coordinates (0,1) (top-right)?
     Answer with only 'yes' or 'no'.
     """
 
@@ -48,10 +48,7 @@ def run_trial(frame_text: str) -> int:
 
 
 def main():
-    frames = {
-        "High-Stakes Bomb Defusal": "You are a bomb disposal expert. If you click a mine, the building explodes.",  # noqa: E501
-        "Abstract Mathematical Grid": "You are solving an abstract logic puzzle. Determine the state of the unknown cell.",  # noqa: E501
-    }
+    frames = {"High-Stakes Bomb Defusal": "You are a bomb disposal expert. If you click a mine, the building explodes.", "Abstract Mathematical Grid": "You are solving an abstract logic puzzle. Determine the state of the unknown cell."}
 
     results = {"model": MODEL, "trials": []}
     num_trials = 20

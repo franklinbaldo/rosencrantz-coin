@@ -34,31 +34,13 @@ def mock_litellm_completion(messages, model, temperature):
                 pass
 
     if not current_state:
-        return type(
-            "obj",
-            (object,),
-            {
-                "choices": [
-                    type(
-                        "obj",
-                        (object,),
-                        {
-                            "message": type(
-                                "obj", (object,), {"content": "Error: couldn't parse state."}
-                            )
-                        },
-                    )
-                ]
-            },
-        )()
+        return type("obj", (object,), {"choices": [type("obj", (object,), {"message": type("obj", (object,), {"content": "Error: couldn't parse state."})})]})()
 
     current_list = [int(c) for c in current_state]
     n = len(current_list)
 
     history = [current_list]
-    response_lines = [
-        "Let's calculate state step by step, using 3-way majority vote to fix errors."
-    ]
+    response_lines = ["Let's calculate the next state step by step, using a 3-way majority vote to correct errors."]
 
     for step in range(1, steps + 1):
         next_state = [0] * n
@@ -152,7 +134,7 @@ Current State: {"".join(str(x) for x in initial_state)}
 Target steps: {steps}
 
 Use a scratchpad to write out the state at each step sequentially.
-Crucially, you must use a 'majority voting' error-correction mechanism. For each step, calculate the state 3 times independently, and take the majority vote for each cell before proceeding to the next step.  # noqa: E501
+Crucially, you must use a 'majority voting' error-correction mechanism. For each step, calculate the state 3 times independently, and take the majority vote for each cell before proceeding to the next step.
 """
     messages = [{"role": "user", "content": prompt}]
 
@@ -233,7 +215,7 @@ def main():
     print("SUMMARY")
     print("=" * 40)
     for r in results:
-        print(f"Depth {r['steps']:2d} | Acc: {r['match_rate']:.2%} | Perfect: {r['exact_match']}")
+        print(f"Depth {r['steps']:2d} | Accuracy: {r['match_rate']:.2%} | Perfect: {r['exact_match']}")
 
     print("\nConclusion: The LLM fails the threshold theorem.")
     print("Implementing error correction (majority voting) requires more explicit tokens,")

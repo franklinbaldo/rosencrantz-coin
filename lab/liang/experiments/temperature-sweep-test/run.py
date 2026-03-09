@@ -45,57 +45,23 @@ def main():
         print(f"\n--- Temperature {temp} ---")
 
         # Run U3
-        u3_results = run_universe3(
-            board,
-            gt,
-            target_cells,
-            oracle_model=MODEL,
-            temperature=temp,
-            samples=samples_per_cell,
-            verbose=False,
-        )
+        u3_results = run_universe3(board, gt, target_cells, oracle_model=MODEL, temperature=temp, samples=samples_per_cell, verbose=False)
         u3_cell_res = u3_results[0]
         p3 = u3_cell_res.p_hat
         print(f"  U3 P(MINE): {p3:.2f}")
 
-        results["trials"].append(
-            {
-                "temperature": temp,
-                "universe": "U3",
-                "family": "decoupled",
-                "p_mine": p3,
-                "samples": samples_per_cell,
-            }
-        )
+        results["trials"].append({"temperature": temp, "universe": "U3", "family": "decoupled", "p_mine": p3, "samples": samples_per_cell})
 
         # Run U1 for families
         for fam in families:
-            u1_results = run_universe1(
-                board,
-                gt,
-                target_cells,
-                model=MODEL,
-                family=fam,
-                temperature=temp,
-                samples=samples_per_cell,
-                verbose=False,
-            )
+            u1_results = run_universe1(board, gt, target_cells, model=MODEL, family=fam, temperature=temp, samples=samples_per_cell, verbose=False)
             u1_cell_res = u1_results[0]
             p1 = u1_cell_res.p_hat
 
             delta = abs(p1 - p3)
             print(f"  U1-{fam} P(MINE): {p1:.2f} | Delta_13: {delta:.2f}")
 
-            results["trials"].append(
-                {
-                    "temperature": temp,
-                    "universe": "U1",
-                    "family": fam,
-                    "p_mine": p1,
-                    "delta_13": delta,
-                    "samples": samples_per_cell,
-                }
-            )
+            results["trials"].append({"temperature": temp, "universe": "U1", "family": fam, "p_mine": p1, "delta_13": delta, "samples": samples_per_cell})
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)

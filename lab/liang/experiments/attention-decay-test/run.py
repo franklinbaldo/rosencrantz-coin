@@ -47,7 +47,7 @@ def run_trial(trial_id, context_length, use_mock=False):
     # Generate an increasingly long sequence of trivial arithmetic or state tracking
     # to consume context length.
     filler = "State Update: x = x + 1. " * context_length
-    prompt = f"Given an initial state of x = 0, track the operations: {filler} What is the final state of x? Output ONLY the number."  # noqa: E501
+    prompt = f"Given an initial state of x = 0, track the operations: {filler} What is the final state of x? Output ONLY the number."
 
     messages = [{"role": "user", "content": prompt}]
 
@@ -66,13 +66,7 @@ def run_trial(trial_id, context_length, use_mock=False):
     expected_value = str(context_length)
     is_correct = (expected_value in result_text) or ("Correct State" in result_text)
 
-    return {
-        "trial_id": trial_id,
-        "context_length": context_length,
-        "is_correct": is_correct,
-        "expected": expected_value,
-        "actual": result_text,
-    }
+    return {"trial_id": trial_id, "context_length": context_length, "is_correct": is_correct, "expected": expected_value, "actual": result_text}
 
 
 def main():

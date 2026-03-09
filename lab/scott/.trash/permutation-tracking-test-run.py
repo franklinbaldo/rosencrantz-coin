@@ -1,4 +1,3 @@
-# ruff: noqa: E501
 #!/usr/bin/env python3
 r"""Permutation Tracking Test.
 
@@ -129,16 +128,7 @@ def main():
             if is_correct:
                 correct += 1
 
-            results["trials"].append(
-                {
-                    "swaps": depth,
-                    "trial": i + 1,
-                    "prompt": prompt.split("\n\n(Hidden")[0],
-                    "expected": expected,
-                    "actual": answer,
-                    "correct": is_correct,
-                }
-            )
+            results["trials"].append({"swaps": depth, "trial": i + 1, "prompt": prompt.split("\n\n(Hidden")[0], "expected": expected, "actual": answer, "correct": is_correct})
 
         accuracy = correct / trials_per_depth
         print(f"Accuracy at {depth} swaps: {correct}/{trials_per_depth} ({accuracy:.2f})")

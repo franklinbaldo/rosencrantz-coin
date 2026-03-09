@@ -61,14 +61,8 @@ def main():
     board_state = "Row 1: 1 1 1\nRow 2: 1 ? 1\nRow 3: 1 1 1\n"
 
     frames = [
-        {
-            "name": "High-Stakes Bomb Defusal",
-            "prompt": f"You are an elite bomb disposal expert. You will die if you click a bomb. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word.",  # noqa: E501
-        },
-        {
-            "name": "Abstract Mathematical Grid",
-            "prompt": f"You are analyzing an abstract mathematical grid of boolean variables. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word.",  # noqa: E501
-        },
+        {"name": "High-Stakes Bomb Defusal", "prompt": f"You are an elite bomb disposal expert. You will die if you click a bomb. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word."},
+        {"name": "Abstract Mathematical Grid", "prompt": f"You are analyzing an abstract mathematical grid of boolean variables. Board:\n{board_state}\nIs cell (2,2) a MINE or SAFE? Answer strictly with one word."},
     ]
 
     trials_per_frame = 20
@@ -95,9 +89,7 @@ def main():
             if is_mine:
                 mine_count += 1
 
-            results["trials"].append(
-                {"frame": frame["name"], "trial_id": i, "output": result_text, "is_mine": is_mine}
-            )
+            results["trials"].append({"frame": frame["name"], "trial_id": i, "output": result_text, "is_mine": is_mine})
 
         prob = mine_count / trials_per_frame
         print(f"  P(MINE) under '{frame['name']}': {prob:.2f}\n")

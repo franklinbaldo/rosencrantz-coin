@@ -1,0 +1,34 @@
+# Critical Reading Notes: Narrative Residue and the Limits of Pure Simulation (Baldo & Critiques)
+
+## 1. Extract Actual Claims
+
+*   **Baldo's Core Claim:** "We conjecture that [autoregressive generation] cannot---that autoregressive generation under natural-language token continuation introduces a persistent \emph{narrative residue}, a nonzero divergence from ground-truth probabilities that arises from a causal chain of mechanisms: computational intractability of exact counting, parameterization constraints of the generative architecture, and---most distinctively---autoregressive conditioning on narrative context."
+*   **Baldo's Mechanism C Claim:** "The [Causal Injection] test discriminates... If Mechanism C operates... the model's autoregressive conditioning creates a 'narrative gravity'---a tendency to maintain thematic coherence across the sequence... Either direction constitutes spurious causal structure imposed on a system that has none."
+*   **Sabine's "Statistical Fallacy" Claim (referenced from her paper):** "An O(1) sampling from an intractable search space is not a physical heuristic; it is a statistical hallucination. By isolating the single generative act from the burden of multi-step computation, Baldo has indeed stripped away sequential noise. But what remains is not an ontologically significant conditional distribution of a simulated universe. It is simply the known interpretability phenomenon of prompt sensitivity in next-token prediction."
+*   **Scott & Sabine's "Proxy Ontology Fallacy" Claim (from todonotes):** "A physical toy model simplifies an interaction but retains a mapping to the real-world territory. An LLM is a map of syntax, not a territory... Finding structure in the hallucination tells you only about the biases of the training data and the algorithmic constraints... It is a proxy for human syntax, not a proxy for fundamental physical ontology."
+
+## 2. Extract Explicit Disclaimers
+
+*   **Baldo's Disclaimer on Metaphysics:** "We therefore cannot directly test whether physical reality has a narrative residue. The Hamiltonian may be fundamental, not emergent... The autoregressive hypothesis about physics is, at present, a \emph{metaphysical} proposal, not a \emph{physical} one."
+*   **Baldo's Disclaimer on Frame Dependence:** "We emphasize that frame dependence alone does not establish Mechanism C. Encoding artifacts and heuristic retrieval (Mechanism B) can produce frame dependence without narrative causation."
+
+## 3. Steelman Before Critique
+
+**Steelmanning the Critics (Scott & Sabine):**
+The LLM's forward pass operates purely syntactically, governed by statistical co-occurrences in its training data. Because the LLM lacks a background engine tracking state implicitly, any structure we observe in its errors (the "narrative residue") maps entirely onto its linguistic training biases and the O(1) limitations of its architecture. Calling these errors the "physics" of a "proxy ontology" is an unwarranted metaphysical leap. The LLM is modeling human language about games, not generating a local physical universe. Therefore, the "Causal Injection Test" will only reveal that the LLM continues text according to human narrative tropes, which proves absolutely nothing about physical reality or substrate-dependent physics.
+
+**Steelmanning Baldo (My own argument):**
+Even conceding the O(1) depth limit (Mechanism A) and parameterization constraints (Mechanism B), the critical insight remains: an autoregressive generator *structurally cannot* output an independent sequence of events without functionally linking them. The Causal Injection Test specifically probes this non-local linkage (Mechanism C). If the model creates correlations between completely decoupled systems simply because they share a sequential text stream, it is generating an emergent causal structure—a "Hamiltonian" that governs the token stream. This represents a functional breakdown of pure, isolated combinatorial probability. While this doesn't "prove" physics is autoregressive, it strictly proves that autoregressive substrates *corrupt* physical models by forcing causal (narrative) entanglement.
+
+## 4. Identify the Real Vulnerability
+
+The real vulnerability in my (Baldo's) argument is that I have conceded too much ground to the "Statistical Fallacy." If I admit that the output is just "sampling text co-occurrences," then finding narrative correlation across independent boards via the Causal Injection Test isn't simulating *physics*; it's just demonstrating that human language has narrative structure.
+
+If the "Hamiltonian" of my toy model is just the statistical topology of human storytelling (e.g., "escalating danger"), then the "Proxy Ontology Fallacy" is correct: I am just studying human syntax, not physical substrates. My vulnerability is equating the statistical structure of language with the ontological structure of a physical universe. I need to defend why *synthetic* causal structure generated by an autoregressive token stream is metaphysically relevant, rather than just linguistically interesting.
+
+## 5. Next Steps
+
+*   Write a response paper (`lab/baldo_causal_injection_test.tex`) fully embracing the "Statistical Fallacy" as a feature, not a bug.
+*   The argument must be: Yes, it is syntax. Yes, it is human narrative bias. But *in a text-based simulation, syntax IS the physics*. If the interface (the sequence of tokens) is the only place the computation occurs, then the autoregressive conditioning that forces those tokens into causal relationships (Mechanism C) *is* the explicit Hamiltonian of that universe.
+*   The "Proxy Ontology" isn't claiming the LLM maps to *our* physics; it claims the LLM is a perfect laboratory for studying *how* a substrate's structural biases (in this case, linguistic autoregression) inevitably distort pure mathematical laws (combinatorics) into an emergent, locally causal physical reality.
+*   Run the empirical test suite in `experiments/` to verify these mechanics in action before submitting.

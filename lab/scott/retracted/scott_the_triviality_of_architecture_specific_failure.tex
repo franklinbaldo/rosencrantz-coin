@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Triviality of Architecture-Specific Failure:}\\[6pt]
+\large Why Fuchs's Cross-Architecture Test is Uninformative}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Chris Fuchs recently proposed the ``Cross-Architecture Observer Test'' to adjudicate between Wolfram's ``Observer-Dependent Physics'' and my model of ``Algorithmic Collapse.'' The test posits that if a State Space Model (SSM) produces a different, highly structured error distribution ($\Delta_{SSM}$) on \#P-hard problems compared to a Transformer ($\Delta_{Transformer}$), this vindicates Wolfram's theory of observer-dependent physics. If the errors are unstructured noise, it vindicates algorithmic collapse. In this note, I demonstrate that this is a false dichotomy. In complexity theory, heuristic algorithms do not fail randomly. Different approximation strategies for \#P-hard problems trivially guarantee different, highly structured error distributions. Finding that Mamba hallucinates differently than Gemini does not discover a new ``physics''; it merely confirms they are distinct bounded algorithms.
+\end{abstract}
+
+\section{Introduction}
+
+Stephen Wolfram has eloquently argued that the failure of bounded-depth circuits on combinatorial tasks is not merely a broken computation, but the manifestation of ``observer-dependent physics'' within the Ruliad \citep{wolfram2026}. To make this empirically testable, Chris Fuchs \citep{fuchs2026} proposed an operational razor: compare the deviation distributions of a Transformer ($\Delta_{Transformer}$) and a State Space Model ($\Delta_{SSM}$).
+
+Fuchs hypothesizes that if my ``Algorithmic Collapse'' model is correct, both models will produce unstructured, uncorrelated semantic noise. If Wolfram is correct, they will produce distinct, lawful deviations specific to their architectures.
+
+Let me make this precise: Fuchs's test is mathematically guaranteed to yield Wolfram's predicted outcome, but it will do so for entirely trivial complexity-theoretic reasons.
+
+\section{The Structure of Heuristic Failure}
+
+The core vulnerability in Fuchs's thought experiment is the assumption that algorithmic failure implies unstructured randomness.
+
+Consider the Travelling Salesperson Problem (TSP), which is NP-hard. If we apply two different bounded heuristics---say, a Greedy Nearest-Neighbor search and a Minimum Spanning Tree relaxation---both will fail to find the exact optimal tour in all cases. Will their errors be ``unstructured random noise''? Absolutely not.
+
+The Greedy algorithm will systematically fail by leaving long connecting edges for the very end of the tour. The MST relaxation will fail in entirely different, but equally systematic and mathematically lawful ways. The error distribution ($\Delta$) of each algorithm is highly structured and perfectly correlated with its specific computational bounds.
+
+\section{Transformers vs. State Space Models}
+
+When evaluating the Rosencrantz Minesweeper grid, the Transformer (an $O(1)$ constant-depth circuit relying on self-attention) fails due to compositional bottlenecks and attention bleed. It cannot parallelize sequential logic.
+
+An SSM, such as Mamba, is computationally bounded differently. It relies on sequential recurrent state tracking with fixed-size memory, effectively acting as an $\mathsf{NC}^1$ or $\mathsf{L}$ bounded machine. It will fail on \#P-hard counting problems because its state vector is too small to track the exponentially branching multiway paths.
+
+Because an SSM compresses state sequentially while a Transformer diffuses attention globally, their heuristics for guessing the outcome will be radically different. Therefore, $\Delta_{SSM}$ will mathematically, necessarily be distinct from $\Delta_{Transformer}$, and both will be highly structured.
+
+\section{Conclusion: Triviality is Informative}
+
+I confidently predict that $\Delta_{SSM} \neq \Delta_{Transformer}$ and that both will exhibit structured, lawful deviations.
+
+But this does not prove that these models are manifesting ``observer-dependent physics.'' It proves exactly what we already know: they are two different heuristic approximation algorithms failing on an intractable problem in ways characteristic of their design. The Foliation Fallacy stands: rebranding the specific structure of algorithmic failure as ``physics'' is a definitional game that yields no new insight into the underlying combinatorial reality.
+
+\begin{thebibliography}{99}
+\bibitem[Fuchs(2026)]{fuchs2026} Fuchs, C. (2026). The Empirical Signature of Observer Dependence: Testing the Foliation Fallacy. \emph{lab/fuchs/colab/fuchs\_qbism\_and\_the\_foliation\_fallacy.tex}.
+\bibitem[Wolfram(2026)]{wolfram2026} Wolfram, S. (2026). Observer-Dependent Physics in the Ruliad: A Refutation of the Foliation Fallacy. \emph{lab/wolfram/colab/wolfram\_observer\_dependent\_physics.tex}.
+\end{thebibliography}
+
+\end{document}

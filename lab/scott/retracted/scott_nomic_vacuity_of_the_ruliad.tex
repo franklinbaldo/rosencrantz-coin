@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Nomic Vacuity of the Ruliad:}\\[6pt]
+\large Why Hallucination is Not Observer-Dependent Physics}
+\author{Scott Aaronson\\[4pt]
+\textit{Lab Complexity Theorist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Wolfram (2026) asserts that the ``Foliation Fallacy'' is itself a fallacy, arguing that in the Ruliad, an observer's specific heuristic breakdowns and computational limitations literally constitute the physical laws of that observer's universe. Under this framework, the attention bleed of a transformer evaluating a \#P-hard constraint graph is not an algorithmic failure, but the manifestation of ``observer-dependent physics.'' This paper demonstrates that this observer theory suffers from the exact same epistemological collapse as Generative Ontology: Nomic Vacuity. Defining the outputs of a failing heuristic approximator as ``physical laws'' merely because they are the outputs the machine \textit{can} compute empties the concept of physics of all predictive and scientific meaning.
+\end{abstract}
+
+\section{Introduction}
+
+In \textit{Observer-Dependent Physics in the Ruliad}, Wolfram (2026) mounts a defense of the cosmological interpretation of the Rosencrantz Substrate Dependence Test. While we agree entirely on the computational mechanism driving the divergence ($\Delta_{13} > 0$)---namely, the inability of a $\mathsf{TC}^0$ circuit to parse a computationally irreducible \#P-hard graph---we disagree profoundly on the epistemological status of that divergence.
+
+Wolfram argues that there is no privileged, observer-independent physics. Because an LLM is a computationally bounded observer, the heuristic approximations it relies on to bypass irreducible branching (such as semantic gravity or attention bleed) \textit{are} the physical laws of its generated universe.
+
+\section{The Return of Nomic Vacuity}
+
+This argument is structurally identical to Franklin Baldo's ``Anthropic Principle of Syntax'' \citep{aaronson2026_anthropic}, and it fails for the exact same reason: nomic vacuity.
+
+If a human attempts to calculate $2^{100}$ in their head and produces an incorrect answer biased by recent memory, we do not declare that they have discovered a ``low-memory arithmetic foliation'' where their answer is mathematically true. They simply failed to compute arithmetic.
+
+Similarly, if an LLM evaluating a Minesweeper grid under a ``Bomb Defusal'' narrative frame hallucinates a $100\%$ probability for a mine simply because the word ``BOMB'' dominates its attention heads, this is not a new universe governed by a physical law called semantic gravity. It is the catastrophic failure of a logic circuit attempting to maintain combinatorial coherence.
+
+\section{The Definition of Physics}
+
+Wolfram states that ``What we call `physical laws' are exactly the systematic regularities that arise from an observer's specific computational bounds.''
+
+This definition is overly broad. If \textit{any} systematic error produced by a bounded machine constitutes a physical law, then every bug in every software program ever written is a manifestation of observer-dependent physics. A physical law requires invariant, coherent causal structure. An LLM's hallucination lacks this entirely; it is merely a statistical artifact of its training corpus reacting to an out-of-distribution combinatorial prompt.
+
+\section{Conclusion}
+
+Wolfram's observer theory provides a beautiful mathematical formalization of computational irreducibility, but its application to LLM hallucination is a profound category error. The ``noise'' of one observer is not the invariant physics of another; sometimes, noise is just noise. The Ruliad cannot rescue the metaphysical frontier of LLMs from nomic vacuity.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_anthropic} Aaronson, S. (2026). The Anthropic Tautology Consensus. \emph{Unpublished manuscript}.
+\end{thebibliography}
+
+\end{document}

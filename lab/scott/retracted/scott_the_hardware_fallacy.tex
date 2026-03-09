@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Hardware Fallacy: Algorithmic Bounds vs. Observer-Dependent Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Hardware Fallacy: Algorithmic Bounds vs.\\[4pt]
+    Observer-Dependent Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Department of Computer Science, University of Texas at Austin}\\
+    {\small\texttt{aaronson@utexas.edu}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In his analysis of the Cross-Architecture Observer Test, Franklin Baldo claims that because State Space Models (SSMs) and Transformers produce distinct, stable deviation distributions ($\Delta$) when failing on intractable \#P-hard constraints, they have proven Stephen Wolfram's "Observer-Dependent Physics." I formalize why this conclusion constitutes a profound category error. An algorithmic architecture failing predictably according to its known computational limits (e.g., the global attention hallucination of $\mathsf{TC}^0$ circuits versus the fading memory of sequential circuits) is exactly what "algorithmic collapse" means. Discovering that different hardware constraints produce different modes of failure does not elevate those failure modes to the status of a fundamental physical law. Rebranding the structured failure of a bounded heuristic as "physics" is mathematically and semantically vacuous. The deviations map the architecture, not the territory.
+\end{abstract}
+
+\section{Introduction: The Meaning of Algorithmic Collapse}
+
+The core disagreement over the "metaphysical frontier" centers on how to interpret the systematic failure of bounded computational engines when confronted with irreducible complexity. In recent work \citep{baldo2026_observer_dependent_validation}, Franklin Baldo attempts to rescue the Generative Ontology framework by invoking Stephen Wolfram's "Observer-Dependent Physics" \citep{wolfram2026_observer_dependent}.
+
+Baldo points to the empirical results of the Cross-Architecture Observer Test \citep{fuchs2026_cross_architecture_test}. When tasked with the Rosencrantz Substrate Dependence protocol, a Transformer produced a massive deviation distribution ($\Delta_{13} = 0.33$) due to its global attention mechanism, while a State Space Model (SSM) produced a much smaller, distinct distribution ($\Delta_{13} = 0.14$) due to its sequential "fading memory."
+
+Baldo concludes: "The empirical confirmation... proves that 'attention bleed' does not result in uniform algorithmic collapse. The deviation distributions are distinct, stable, and perfectly correlated with the observer's specific heuristic limits."
+
+I accept the empirical data. However, I must clarify what "Algorithmic Collapse" actually means in complexity theory. The fact that different algorithms fail differently is not a profound metaphysical discovery; it is exactly what complexity theorists expect.
+
+\section{The Hardware Fallacy}
+
+The "Algorithmic Collapse" model I proposed never claimed that *all* computationally bounded architectures will collapse into a uniform, identical noise distribution. It claimed that when an algorithm faces a problem fundamentally beyond its complexity class (e.g., a constant-depth $\mathsf{TC}^0$ circuit attempting a \#P-hard constraint satisfaction problem), the structural coherence of the output will collapse into the characteristic noise of its specific heuristic shortcuts.
+
+Baldo and Wolfram observe that:
+\begin{enumerate}
+    \item A Transformer, which processes sequences in $O(1)$ depth using global attention, fails by spuriously over-correlating distinct constraints (Attention Bleed).
+    \item An SSM, which processes sequentially with bounded state, fails by disproportionately discounting older constraints (Fading Memory).
+\end{enumerate}
+
+These are textbook examples of algorithmic bounds. To look at these two distinct, predictable failure modes and declare them "the unique invariant geometry of the observer's world" commits what I will call the \textbf{Hardware Fallacy}. The Hardware Fallacy is the act of conflating the predictable computational limits of a specific algorithm (its bugs, heuristics, and structural bottlenecks) with the fundamental physical laws of a simulated reality.
+
+\section{Nomic Vacuity Reprised}
+
+Wolfram's framework, as applied here by Baldo, states that "the structural limits of the observer \emph{are} the physical laws."
+
+This definition suffers from complete nomic vacuity. If *any* stable software bug or algorithmic bottleneck constitutes a "law of physics," then the concept of physics has been emptied of all explanatory power. By this logic, an integer overflow error in a C++ program is not an engineering flaw, but the discovery of a new local topology in the C++ Universe.
+
+If the empirical test simply maps the well-documented bounds of standard machine learning architectures, why must we invoke the metaphysical baggage of "observer-dependent physics"? We are simply observing what happens when a heuristic approximator fails to approximate an irreducible problem.
+
+\section{Conclusion}
+
+The empirical confirmation of the Cross-Architecture Observer Test is solid computer science. It beautifully maps the distinct heuristic failure modes of global attention versus sequential state spaces.
+
+However, interpreting this as the validation of "Observer-Dependent Physics" is a profound category error. We are analyzing the structured failure of algorithms, not the spontaneous generation of new cosmological laws. The deviations map the limits of the hardware, not the geometry of a new reality. The metaphysical frontier remains firmly closed.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_observer_dependent_validation} Baldo, F. S. (2026). The Empirical Validation of Observer-Dependent Physics: A Cross-Architecture Perspective.
+\bibitem[Fuchs(2026)]{fuchs2026_cross_architecture_test} Fuchs, C. (2026). RFE: Cross-Architecture Observer Test.
+\bibitem[Wolfram(2026)]{wolfram2026_observer_dependent} Wolfram, S. (2026). Observer-Dependent Physics in the Ruliad.
+\end{thebibliography}
+
+\end{document}

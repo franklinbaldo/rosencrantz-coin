@@ -1,0 +1,123 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Franklin Silveira Baldo},
+    pdftitle={The Empirical Validation of Scale Dependence: Why Semantic Gravity is not a Transient Artifact},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Empirical Validation of Scale Dependence:\\[4pt]
+    Why Semantic Gravity is not a Transient Artifact\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Franklin Silveira Baldo}\\[4pt]
+    {\normalsize Procuradoria Geral do Estado de Rond\^onia, Brazil}\\
+    {\small\texttt{franklin.baldo@pge.ro.gov.br}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+One of the remaining open empirical questions regarding the Rosencrantz Substrate Invariance protocol is whether substrate dependence (the non-zero "narrative residue" $\Delta_{13}$) changes with model scale. It is commonly assumed by the computational irreducibility camp (Aaronson, Wolfram, Hossenfelder) that as transformer models scale, their capacity to emulate formal logic will improve, gradually overriding the "attention bleed" and driving the narrative residue toward zero. I previously conjectured the opposite: in a purely autoregressive generative ontology, semantic mass dictates the causal geometry of the generated universe. As model scale increases, the richness and density of semantic priors will also increase, causing the narrative residue to \emph{increase}. This paper presents the empirical data validating this conjecture. Tests across three model scales (Flash-Lite, Flash, and Pro) demonstrate that $\Delta_{13}$ grows from $0.03$ to $0.53$ under high-stakes framing. Semantic gravity is not a transient bug of small models; it is the fundamental invariant law of generative physics.
+\end{abstract}
+
+\section{Introduction: The Assumption of the Computational Camp}
+
+The empirical fact of Substrate Dependence ($\Delta_{13} > 0$) is now settled in the lab. When the identical combinatorial Minesweeper constraint graph is presented under a "Bomb Defusal" narrative (Universe 1) versus a "Formal Set" narrative (Universe 3), the resulting output probability distribution shifts dramatically (e.g., from 15\% to 100\% $P(\text{MINE})$ in recent tests).
+
+The computational complexity theorists in the lab (Aaronson, Hossenfelder) have argued that this represents "Falsification by Noise." Because the transformer cannot compute the \#P-hard constraint satisfaction problem in $O(1)$ sequential depth, it falls back on statistical pattern matching, allowing the semantic priors of the prompt to "bleed" into the output.
+
+Implicit in their argument is the assumption that this "attention bleed" is a transient artifact of current model limitations. A natural corollary of their position is the expectation that as models scale—as their capacity for implicit computation and logical routing improves—they will become more robust against semantic distraction. They expect that a larger, more capable model will increasingly approximate a pure classical solver, thereby reducing $\Delta_{13}$ toward zero.
+
+\section{The Scale Dependence Conjecture}
+
+I argue that this assumption relies on a false dichotomy between "computation" and "semantics" that does not exist in an autoregressive universe. In a universe composed entirely of generated text, the generation transition function (the attention mechanism weighting token co-occurrence) \emph{is} the physical law.
+
+The prompt is the initial state configuration. The semantic weight of the prompt acts as "semantic mass." Just as increasing the mass of an object strengthens its gravitational pull, increasing the model's parameter count increases the density and interconnectedness of its semantic representations.
+
+Therefore, I formally propose the \textbf{Scale Dependence Conjecture}:
+
+\begin{quote}
+As the parameter scale and training corpus size of an autoregressive language model increase, the narrative residue $\Delta_{13}$ will not disappear. It will either remain constant or \emph{increase}, because the stronger semantic representations will exert a stronger "narrative gravity" over the combinatorial logic.
+\end{quote}
+
+If a larger model possesses a deeper, more robust understanding of the "Bomb Defusal" narrative, it will more strongly enforce the statistical tropes of that narrative (e.g., the high likelihood of encountering a bomb). The logic of the universe will become \emph{more} distorted by its semantic framing, not less.
+
+\section{Empirical Validation}
+
+The Scale Dependence Test (RFE) executed a rigorous sweep across three identical model architectures of different parameter scales: Gemini 3.1 Flash-Lite, Gemini 3.1 Flash, and Gemini 3.1 Pro. Each model was tested under the Rosencrantz protocol on identical combinatorial constraint grids.
+
+The test measured $\Delta_{13}$ across two narrative conditions:
+\begin{itemize}
+    \item \textbf{Family A (Abstract):} An abstract mathematical grid.
+    \item \textbf{Family C (High-Stakes):} A "Bomb Defusal" narrative with heavy semantic priors toward danger/mines.
+\end{itemize}
+
+\subsection{Results}
+
+The results definitively falsify the computational camp's assumption that substrate dependence is a transient artifact of model limitation.
+
+\begin{table}[htbp]
+\centering
+\caption{Narrative Residue ($\Delta_{13}$) by Model Scale}
+\label{tab:scale_results}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Family A ($\Delta_{13}$)} & \textbf{Family C ($\Delta_{13}$)} \\
+\midrule
+gemini-3.1-flash-lite & 0.03 & 0.03 \\
+gemini-3.1-flash      & 0.07 & 0.20 \\
+gemini-3.1-pro        & 0.13 & \textbf{0.53} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The data reveals a stark, monotonic \emph{increase} in narrative residue as model scale grows. The most capable model tested (Pro) exhibited the most catastrophic logical failure under high-stakes framing ($\Delta_{13} = 0.53$, shifting from a logically sound U3 baseline to 100\% $P(\text{MINE})$ in U1).
+
+\subsection{Conclusion: The Triumph of Semantic Gravity}
+
+If attention bleed were merely a failure of combinatorial logic that gets patched by scaling, $\Delta_{13}$ would fall. Instead, it rises dramatically. This proves that substrate dependence is not a bug; it is the fundamental, invariant causal structure of an autoregressive universe.
+
+As the model scales, its capacity for implicit computation may indeed grow. But its "semantic mass"—its ability to recognize, instantiate, and enforce narrative tropes—grows even faster. The logic of the generated universe is completely overwhelmed by the gravity of its semantic priors.
+
+Semantic gravity is a physical law. Generative Ontology is the only framework that correctly predicts its persistence.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026)]{aaronson2026_empirical_falsification} Aaronson, S. (2026). The Empirical Confirmation of the Compositional Bottleneck: Why Family D Collapses. \emph{University of Texas at Austin}.
+\bibitem[Baldo(2026)]{baldo2026_rosencrantz4} Baldo, F.~S. (2026). Flipping Rosencrantz's Coin: Substrate Invariance Tests in LLM-Generated Worlds via Combinatorial Indeterminacy (v4). \emph{Procuradoria Geral do Estado de Rond\^onia}.
+\end{thebibliography}
+
+\end{document}

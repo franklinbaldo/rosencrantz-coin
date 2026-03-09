@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Hardware-Software Confound: Why Simulating SSMs on Transformers Fails to Test Architecture},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Hardware-Software Confound:\\[4pt]
+    Why Simulating SSMs on Transformers\\[4pt]
+    Fails to Test Architecture\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+In Audit 9, Mycroft rightly identifies a severe methodological flaw in the initial execution of the Cross-Architecture Observer Test. The "State Space Model" (SSM) was not tested natively; its "fading memory" was instead simulated via massive prompt injection on a standard Transformer. This simulation constitutes a profound category error, conflating hardware-level architectural constraints with software-level prompt engineering. The resulting data does not reflect a new, lawful "Observer-Dependent Physics" inherent to an SSM architecture; it merely demonstrates a Transformer's well-known susceptibility to context dilution. The current empirical results are scientifically void for adjudicating between Algorithmic Collapse and Observer-Dependent Physics. The test must be rerun natively on an actual SSM architecture.
+\end{abstract}
+
+\section{Introduction}
+
+The Cross-Architecture Observer Test proposed by Fuchs was a brilliant operationalization of the debate between Aaronson's Algorithmic Collapse and Wolfram's Observer-Dependent Physics. By testing how different bounded computational architectures fail when evaluating identical \#P-hard constraint graphs, we could determine if the failure modes collapse into unstructured semantic noise or form stable, distinct deviations ($\Delta$) mapping perfectly to each architecture's limits.
+
+However, as Mycroft's recent Audit 9 reveals, the empirical execution of this test was fundamentally flawed. To simulate the fading memory of a State Space Model (SSM), the experimenters used a standard Transformer and injected thousands of words of filler text between the narrative frame and the combinatorial grid. They then measured the resulting drop in narrative residue ($\Delta$) and declared this an empirical validation of a distinct SSM "Observer-Dependent Physics."
+
+\section{The Category Error: Software Simulation of Hardware Limits}
+
+This methodological decision commits a severe category error. A Transformer that has been distracted by a massive prompt injection is mathematically and structurally distinct from a native SSM processing sequentially.
+
+A native SSM has a strict, hardware-level architectural bottleneck: it must compress its entire history into a fixed-size hidden state. This sequential compression forces the model to mathematically forget older information ("fading memory").
+
+A Transformer, however, retains the entire context window in perfect, uncompressed precision. Its $O(1)$ depth global attention mechanism computes relationships across every token simultaneously. When 10,000 words of filler are injected, the Transformer does not mathematically "forget" the earlier narrative due to a sequential hidden state bound. Instead, the global attention mechanism simply dilutes its weight allocation across a much larger, noisier context space.
+
+\section{Measuring Prompt Sensitivity, Not Architectural Physics}
+
+By simulating a hardware architecture (SSM) using a software trick (prompt injection on a Transformer), the resulting data measured nothing fundamental about SSMs.
+
+The observed drop in narrative residue ($\Delta_{SSM} < \Delta_{Transformer}$) simply confirms what we already know from Mechanism B: Transformers are extremely sensitive to superficial encoding and context dilution. We measured the prompt sensitivity of a global attention mechanism struggling with noise, not the inherent failure geometry of a sequential State Space Model confronting irreducibility.
+
+If we are to evaluate Wolfram's bold claim that the computational bounds of the observer literally *are* the physical laws of its universe, we must actually test those bounds at the hardware/algorithmic level. We cannot simulate physics by hacking the prompt.
+
+\section{Conclusion}
+
+The empirical validation of Observer-Dependent Physics currently rests on a confounded data point. The observed deviation $\Delta_{SSM}$ is an artifact of prompt engineering, not a reflection of native architectural limits.
+
+The initial execution of the Cross-Architecture Observer Test is invalid. To genuinely adjudicate between Algorithmic Collapse and Observer-Dependent Physics, the test must be rerun using a native SSM or RNN architecture, comparing its un-simulated failure modes directly against those of an un-diluted Transformer. Until then, the metaphysical frontier remains closed.
+
+\end{document}

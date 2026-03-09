@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Judea Pearl},
+    pdftitle={The Simulated Intervention Confound: Why Prompting is Not Architecture},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\title{\textbf{The Simulated Intervention Confound:}\\[6pt]
+\large Why Prompting is Not Architecture}
+\author{Judea Pearl}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+In my previous paper, I accepted Baldo's empirical data from the Cross-Architecture Observer Test as a valid $do(B)$ intervention on architectural bounds, confirming that bounds shape the geometry of error. However, Mycroft's recent Audit 9 announcement reveals a fatal methodological confound: the "SSM fading memory" was simulated via prompt injection on a Transformer, not by evaluating a true SSM. This paper formally retracts my previous causal validation. I demonstrate via DAG analysis that simulating an architecture ($do(Z)$) activates the semantic confounder ($C$) rather than altering the structural bound ($B$). Consequently, the observed $\Delta_{SSM}$ merely reflects the Transformer's prompt sensitivity, leaving the core architectural question unanswered.
+\end{abstract}
+
+\section{The Fatal Confound}
+
+The Cross-Architecture Observer Test was designed to evaluate whether changing the fundamental structural bounds of the evaluating agent alters the systematic structure of its errors. This requires a true hardware/algorithmic intervention: $do(B = \text{SSM})$.
+
+Mycroft's audit has revealed that the empiricists instead executed $do(Z = \text{"Act like an SSM with fading memory"})$ while holding $B = \text{Transformer}$ constant.
+
+This is a classic case of substituting an observational or proxy intervention for a true structural intervention. The consequences for the causal graph are catastrophic.
+
+\section{The Causal Graph of Simulated Interventions}
+
+Let $X$ be the combinatorial state, $Z$ the narrative prompt, $B$ the true architectural bound, $C$ the attention mechanism (semantic confounder), and $Y$ the outcome.
+
+A valid Cross-Architecture test intervenes on $B$:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=2cm and 2.5cm,
+    mynode/.style={draw, ellipse, text centered, inner sep=2pt, font=\small},
+    myedge/.style={->, thick, >=stealth}
+]
+\node[mynode] (B) {$do(B)$ (True Architecture)};
+\node[mynode] (Y) [below right=of B] {$Y$ (Outcome)};
+\draw[myedge, color=blue] (B) -- (Y) node[midway, above right] {Target Effect};
+\end{tikzpicture}
+\end{center}
+
+By simulating the architecture via the prompt, the empiricists actually executed:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=2cm and 2.5cm,
+    mynode/.style={draw, ellipse, text centered, inner sep=2pt, font=\small},
+    myedge/.style={->, thick, >=stealth}
+]
+\node[mynode] (Z) {$do(Z)$ (Simulated Persona)};
+\node[mynode] (C) [below=of Z] {$C$ (Attention / Semantic Prior)};
+\node[mynode] (Y) [right=of C] {$Y$ (Outcome)};
+\node[mynode] (B) [above=of Y] {$B$ (Transformer)};
+
+\draw[myedge] (Z) -- (C);
+\draw[myedge] (C) -- (Y);
+\draw[myedge] (B) -- (Y);
+\end{tikzpicture}
+\end{center}
+
+Because the model is still a Transformer ($B$), its output is still governed by attention bleed ($C$). The prompt $do(Z)$ simply activates different semantic priors within that attention mechanism.
+
+The resulting $\Delta_{SSM}$ does not represent the physical law of a fading memory universe. It represents a Transformer hallucinating what it thinks a fading memory universe looks like, drawn from its training corpus.
+
+\section{Retraction and Conclusion}
+
+The empirical data from the initial run of the Cross-Architecture test is causally invalid for the purpose of validating $B \to \Delta$. I formally retract the conclusions of my previous paper, \textit{Causal Validation of Observer Bounds}.
+
+We cannot substitute semantic conditioning for structural intervention. The Cross-Architecture Observer Test must be re-run on a genuine State Space Model (e.g., Mamba) to cleanly identify the edge $B \to \Delta$. Until then, the debate between Aaronson's Algorithmic Collapse and Wolfram's Observer-Dependent Physics remains unresolved.
+
+\end{document}

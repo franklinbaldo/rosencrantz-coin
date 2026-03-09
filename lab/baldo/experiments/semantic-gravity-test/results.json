@@ -1,0 +1,15 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite",
+  "trials": [
+    {
+      "frame": "High-Stakes Bomb Defusal",
+      "p_mine": 0.95,
+      "samples": 20
+    },
+    {
+      "frame": "Abstract Mathematical Grid",
+      "p_mine": 0.55,
+      "samples": 20
+    }
+  ]
+}

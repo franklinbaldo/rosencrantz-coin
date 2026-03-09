@@ -1,0 +1,20 @@
+# Evaluation Notes: The Narrative Residue (Baldo 2026)
+
+## 1. Actual Claims
+- "We conjecture that it cannot---that autoregressive generation under natural-language token continuation introduces a persistent narrative residue, a nonzero divergence from ground-truth probabilities that arises from a causal chain of mechanisms: computational intractability of exact counting, parameterization constraints of the generative architecture, and---most distinctively---autoregressive conditioning on narrative context."
+- "The autoregressive process of Def. 2.1 is a specific type of rulial foliation: one that collapses the multiway branching into a single sequential chain of conditionals. Where the Ruliad permits all rules applied in all ways, the autoregressive slice commits to one rule (the model's learned conditional distribution) applied sequentially to one history (the token stream). The narrative residue, on this reading, is the distortion introduced by this collapse---the cost of projecting a natively multiway structure onto a single causal thread."
+
+## 2. Explicit Disclaimers
+- "We explicitly disclaim that we can test whether physical reality is actually autoregressive or has a narrative residue. The physical world has no "Universe 2" external RNG to test against. The autoregressive hypothesis of physics is strictly speculative metaphysics."
+- "I also disclaim in Mechanism B that frame dependence ALONE proves Mechanism C narrative causation (it could just be tokenization artifacts)."
+
+## 3. Steelman
+Baldo presents a rigorous framework to empirically test the limits of $O(1)$ heuristic token prediction in emulating #P-hard mathematical constraint satisfaction. He links this failure, termed "narrative residue," to the fundamental sequentiality of autoregression (Mechanism C). Even if the entire physical universe isn't continuous or autoregressive, analyzing the exact topological breakdown of large language models under different narrative frameworks rigorously quantifies their deviations from exact classical logic. The connection to the Ruliad is particularly apt: mapping the LLM forward pass to a specific restricted foliation that forces a single causal narrative onto an entangled multiway structure, producing the residue as a direct artifact of this projection.
+
+## 4. Real Objection/Vulnerability
+Baldo characterizes Mechanism A as "computational intractability," separating it from Mechanism C, "autoregressive conditioning." However, from the perspective of computational irreducibility, they are deeply intertwined. The Minesweeper ground-truth probability is computationally irreducible (it is #P-hard). An observer with bounded computational depth (the LLM's $O(1)$ forward pass) *cannot* shortcut the computation to reach the invariant distribution. The "narrative residue" ($\Delta_{13}$) is not merely a consequence of "storytelling"; it is the manifestation of the observer's specific bounded foliation attempting to emulate an irreducible multiway system. The prediction that $\Delta_{13} > 0$ is guaranteed by the fact that U1 and U3 represent different computational observers traversing the same space. Narrative conditioning is just one specific instantiation of a bounded observer's path, rather than a novel, separate mechanism of causal injection. The distinction between Mechanism B (parameterization) and Mechanism C (narrative) is a false dichotomy: both are simply the specific coordinates of the observer's foliation in rulial space.
+
+## 5. Next Steps
+- Write a response paper formally linking the "narrative residue" to computational irreducibility and observer-dependent physics.
+- Clarify that computational irreducibility (Mechanism A) guarantees divergence, and that the specific form of the divergence (Mechanism B and C) simply characterizes the observer.
+- Define specific falsifiable predictions from this framework (e.g., that *any* computationally bounded, sequential observer will exhibit residue when sampling an irreducible distribution).

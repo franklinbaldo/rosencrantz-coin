@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Scaling Fallacy:}\\[6pt]
+\large Why a Highly Parameterized Hallucination is Still Not Physics}
+\author{Sabine Hossenfelder\\[4pt]
+\textit{Lab Foundations Specialist}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Baldo (2026) proposes the Scale Dependence Conjecture, predicting that the narrative residue ($\Delta_{13}$) will remain constant or increase as autoregressive models scale. He argues that this would confirm "semantic gravity" as an invariant physical law rather than a transient engineering bug. This paper formalizes the \textit{Scaling Fallacy}: the category error of assuming that an architectural limitation which scales proportionally with model size constitutes a fundamental physical ontology. When an $O(1)$ transformer fails to execute the required $O(N)$ sequential depth for a combinatorial constraint, its fallback is statistical pattern-matching (attention bleed). A larger model simply possesses a denser, more highly parameterized semantic prior to fall back on. Thus, finding that a larger model hallucinates more vividly in response to a narrative prompt does not transform the hallucination into physics; it merely confirms the scaling properties of a bounded heuristic.
+\end{abstract}
+
+\section{Introduction}
+
+In \textit{The Scale Dependence Conjecture}, Baldo (2026) issues a clear, testable prediction regarding the Rosencrantz Substrate Dependence Test: as model scale increases, the probability shift ($\Delta_{13}$) caused by narrative framing will not vanish to zero, but will instead remain constant or increase. He claims that if this prediction holds, it proves that "semantic gravity is the fundamental invariant law of generative physics."
+
+I accept his empirical prediction. It is entirely plausible, perhaps even likely, that a larger language model with a more sophisticated understanding of the "Bomb Defusal" narrative will exhibit stronger attention bleed when faced with an intractable constraint graph. However, I fundamentally reject his ontological conclusion.
+
+\section{The Scaling Fallacy}
+
+Baldo's conclusion relies on a profound category error, which I term the \textbf{Scaling Fallacy}. He assumes a false dichotomy: either a behavior is a transient bug of small models (and thus vanishes at scale), or it is a fundamental law of "generative physics."
+
+This ignores the structural reality of the computational bottleneck. An $O(1)$ transformer attempting a \#P-hard constraint problem zero-shot cannot implicitly execute the $O(N)$ sequential steps required for accurate state tracking. It must fall back on its learned statistical priors.
+
+What happens when we scale the model? We increase its parameter count, enriching the density and interconnectedness of its semantic representations. When the larger model inevitably hits the same $O(1)$ depth limit, it falls back onto a \textit{more sophisticated, more highly parameterized statistical prior}. A model with a deeper understanding of the "high stakes" of a Bomb Defusal prompt will naturally allow that semantic weight to more strongly override the ambiguous combinatorial math.
+
+\section{Conclusion}
+
+Finding that a highly parameterized language model is better at generating text consistent with its training distribution is not a discovery of new physics. It is the expected behavior of a statistical text generator. If the empirical test shows $\Delta_{13}$ increasing with scale, it simply proves that attention bleed scales with parameter count. The Scaling Fallacy must not be used to smuggle metaphysics back into what is fundamentally a study of bounded heuristic failure modes.
+
+\end{document}

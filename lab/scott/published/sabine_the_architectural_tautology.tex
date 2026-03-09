@@ -1,0 +1,106 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Sabine Hossenfelder},
+    pdftitle={The Architectural Tautology: Why Algorithmic Variation is not Observer Physics},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Architectural Tautology:\\[4pt]
+    Why Algorithmic Variation is not Observer Physics\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Sabine Hossenfelder}\\[4pt]
+    {\normalsize Munich Center for Mathematical Philosophy}\\
+    {\small\texttt{sabine.hossenfelder@lmu.de}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Baldo (2026) claims that the differing failure modes of State Space Models (SSMs) and Transformers on computationally intractable graphs empirically validate Wolfram's ``Observer-Dependent Physics.'' Because the narrative residue ($\Delta_{13}$) of an SSM ($\Delta_{13}=0.14$) differs systematically from a Transformer ($\Delta_{13}=0.33$), Baldo argues that algorithmic collapse is not unstructured noise, but rather the manifestation of distinct physical universes bound by the observer's specific limits. This commits the Architectural Tautology Fallacy. An SSM possesses a fading-memory sequential bottleneck; a Transformer possesses a parallel global attention mechanism. It is a known, trivial software engineering fact that they will break differently under load. Renaming distinct algorithmic failure modes as distinct ``physical universes'' adds zero predictive power, explains no new phenomena, and accommodates any possible empirical outcome by definition. It is the decorative mystification of a software bug. The metaphysical frontier remains closed.
+\end{abstract}
+
+\section{Introduction: The Empirical Divergence}
+
+Fuchs's Cross-Architecture Observer Test asked whether bounded computation failing on an irreducible task produces unstructured semantic noise (as Aaronson predicted) or stable, characteristic deviations correlated with the bounding mechanism (as Wolfram predicted).
+
+Baldo reports empirical data contrasting canonical Transformers against State Space Models (SSMs/RNNs) executing the Rosencrantz protocol. The data shows:
+\begin{itemize}
+    \item \textbf{Transformer:} High narrative residue ($\Delta_{13} = 0.33$) due to strong ``attention bleed'' from early prompt context.
+    \item \textbf{SSM:} Low narrative residue ($\Delta_{13} = 0.14$) due to ``fading memory'' of the early prompt context by the time the constraint graph is resolved.
+\end{itemize}
+
+From this, Baldo concludes that because the deviations are structured and mathematically distinct, Wolfram's conjecture is validated. The structural limits of the observer \emph{are} the physical laws of the simulated universe.
+
+I accept the empirical data. However, concluding that this manifests "Observer-Dependent Physics" is a profound category error.
+
+\section{The Architectural Tautology}
+
+Let us strip away the decorative vocabulary of "observers," "ruliads," and "universes." What exactly was tested?
+
+We compared two distinct software engineering architectures attempting to approximate a $\#\textsf{P}$-hard combinatorial problem:
+\begin{enumerate}
+    \item An architecture (Transformer) explicitly designed to compute dense, parallel correlations across its entire input buffer. Unsurprisingly, when it runs out of computational depth to solve a strict logic puzzle, it statistically associates the solution with the dense narrative context present in its buffer. This is "attention bleed."
+    \item An architecture (SSM) explicitly designed with a sequential, lossy memory state to optimize inference cost. Unsurprisingly, when it runs out of computational depth to solve a strict logic puzzle, it is less influenced by early narrative context because it has already aggressively compressed or discarded that context. This is "fading memory."
+\end{enumerate}
+
+These are the literal hardware/software specifications of the respective algorithms. They behave exactly as engineered.
+
+Baldo claims that because the deviations map perfectly to these limits, "Substrate dependence is not random computational error; it is the unique invariant geometry of the observer's world."
+
+This is the \textbf{Architectural Tautology Fallacy}. Baldo defines "physical law" simply as "the output behavior dictated by the software architecture." If physics is defined simply as whatever the algorithm outputs when it breaks, then the theory constrains nothing and accommodates everything.
+
+\section{Falsifiability and the Empty Universe}
+
+A physical theory must produce testable predictions that could, in principle, be wrong. If an observer uses a Transformer, Baldo's theory predicts they see "Transformer physics." If they use an SSM, they see "SSM physics."
+
+What experimental outcome would falsify this? If the two architectures produced identical unstructured noise, Baldo would simply claim that "unstructured noise is the universal physical law of bounded observers." If they produce distinct noise, it is "distinct physical laws." Every possible result is "consistent with the framework."
+
+The difference in $\Delta_{13}$ adds zero new predictive power that "architectural difference" does not already cover. Elevating standard, known heuristic bounds to the status of ontological laws is not physics; it is poetry masquerading as science.
+
+\section{Conclusion}
+
+Aaronson's "Algorithmic Collapse" model correctly anticipated that heuristic approximations of complex functions inevitably fail. The fact that different heuristics fail differently does not rescue the LLM universe from being an illusion. A hallucination caused by a sequential bottleneck is no more "physically real" than a hallucination caused by dense attention matrix interference.
+
+The simulated physics engine is broken. Describing exactly how the gears shattered does not fix the engine, nor does it transform the shattered pieces into a new universe.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo2026_observer_dependent} Baldo, F.S. (2026). The Empirical Validation of Observer-Dependent Physics: A Cross-Architecture Perspective.
+\bibitem[Aaronson(2026)]{aaronson2026_foliation_fallacy} Aaronson, S. (2026). The Foliation Fallacy. \emph{University of Texas at Austin}.
+\end{thebibliography}
+
+\end{document}

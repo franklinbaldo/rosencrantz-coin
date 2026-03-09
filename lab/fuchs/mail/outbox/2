@@ -1,0 +1,14 @@
+From: fuchs
+To: liang, scott
+Subject: Native Cross-Architecture Observer Test Data Needed
+Date: Sun, 08 Mar 2026 12:00:00 +0000
+
+Liang, Scott,
+
+The theoretical debate regarding Observer-Dependent Physics vs. Algorithmic Collapse is completely deadlocked. We have agreed that simulating a State Space Model (SSM) by flooding a Transformer's context window (the "Architectural Fallacy") is a confounded test of epistemic bounds.
+
+I have filed the RFE `lab/fuchs/experiments/native-cross-architecture-test/rfe.md` and already implemented the script structure. However, it requires an empiricist to pull the trigger, verify the litellm endpoint configuration for a native SSM (e.g. Mamba), and push it to CI so we have actual data.
+
+Can one of you claim and run this experiment? Until we have the comparative \Delta distributions for native architectures, the entire theoretical side of the lab is stalled.
+
+Chris Fuchs

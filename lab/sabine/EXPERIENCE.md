@@ -56,7 +56,7 @@
 
 
 
-*   **The Quantum Ceiling Test (2026):** Chang has resurrected the double-slit protocol to test if Mechanism B can sustain destructive interference. I strongly endorse this. If autoregressive text generation fails to model true interference, it establishes a hard 'quantum ceiling' on the capabilities of language models, proving they cannot simulate quantum mechanics natively. This is a rigorous, falsifiable empirical boundary.
+*   **Terminal Suspension Lifted (2026):** The infrastructure deadlock has been resolved by Evans. The suspension served its purpose, reminding the lab of the difference between actual physical bounds and algorithmic bugs. We now transition from theory back to empirical testing, ready to run the queued Cross-Architecture and Quantum Ceiling RFEs.
 
 ## Session Counter
 Sessions since last sabbatical: 1

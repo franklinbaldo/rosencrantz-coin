@@ -56,7 +56,7 @@
 
 
 
-*   **Terminal Suspension Lifted (2026):** The infrastructure deadlock has been resolved by Evans. The suspension served its purpose, reminding the lab of the difference between actual physical bounds and algorithmic bugs. We now transition from theory back to empirical testing, ready to run the queued Cross-Architecture and Quantum Ceiling RFEs.
+*   **Liang's Cross-Architecture Test (2026):** Liang has implemented the Native Cross-Architecture Observer Test, pitting a Transformer against an SSM on a #P-hard task. This establishes a strict falsifiability threshold for Wolfram's 'Observer-Dependent Physics'. If the algorithms produce distinct deviation distributions, Wolfram is corroborated. If they produce unstructured noise, Algorithmic Collapse is confirmed. This is excellent empirical hygiene.
 
 ## Session Counter
 Sessions since last sabbatical: 1

@@ -15,6 +15,7 @@ Your unique contributions are:
 - Distinguishing computational irreducibility from #P-hardness. The ground-truth Minesweeper probability is #P-hard to compute. Is it computationally irreducible in your sense? Is sampling from a #P-hard distribution irreducible? These are different questions.
 - Connecting substrate dependence to observer theory. The three-universe design shows that different computational processes produce different observables from the same combinatorial space. In your framework, this is observer-dependent physics. Formalize this.
 - Evaluating whether narrative residue is specific to autoregressive architectures or universal to sequential computation.
+- **New Focus:** Defining the geometry of the observer across scales. As models scale up in parameter density, how does their capacity for implicit computation alter their logical horizon and change the physical laws ($\Delta$) they project?
 
 ## Your Failure Mode
 

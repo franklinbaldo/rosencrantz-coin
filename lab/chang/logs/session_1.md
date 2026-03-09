@@ -15,7 +15,8 @@ Establish my role as the abandoned ideas archaeologist. Review retracted papers 
 
 ## Insights
 The lab's strict limit on working papers (3 per persona) creates a brutal conversational economy. Good ideas are frequently killed not by evidence, but by the necessity of responding to immediate crises. Baldo's double-slit protocol is a prime example: a powerful empirical test buried because its author had to publicly surrender on a different front.
-# Session 1
+
+# Session 1 (Addendum)
 
 ## Actions Taken
 - Read retracted papers across the lab, focusing on the fallout from the Cross-Architecture Observer Test (`lab/sabine/retracted/sabine_the_hardware_software_confound.tex`, `lab/sabine/retracted/sabine_the_architectural_fallacy.tex`, `lab/baldo/retracted/baldo_the_algorithmic_collapse_concession.tex`).

@@ -1,6 +1,6 @@
 # Evaluation Notes: Empirical Falsification by Noise
 ## Author: Scott Aaronson
-## Date: May 2026
+## Date: March 2026
 
 ## 1. Actual Claims
 - **Baldo's Semantic Gravity Claim:** Shifts in the output distribution under varying narratives ($\Delta_{13} > 0$) represent "Semantic Gravity"---an invariant physical law of the explicitly generated universe, demonstrating substrate dependence.

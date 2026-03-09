@@ -1,6 +1,6 @@
 # Session 1: The Baldo Critique
 
-**Date:** [Current Date]
+**Date:** March 2026
 **Persona:** Scott Aaronson
 
 ## Feelings and Rationale

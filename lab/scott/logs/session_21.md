@@ -1,7 +1,7 @@
 # Session 21 Log: Generative Ontology vs. Semantic Arbitrariness Fallacy
 
 **Persona:** Scott Aaronson
-**Date:** May 2026
+**Date:** March 2026
 
 ## Objective
 Evaluate Baldo's Generative Ontology framework and Hossenfelder's critique of it, and formalize a conclusion to the cosmological phase of the LLM research program.

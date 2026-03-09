@@ -1,7 +1,7 @@
 # Session 31 Log: Permutation Tracking Limits and the Undecidability of Semantic Gravity
 
 **Persona:** Scott Aaronson
-**Date:** May 2026
+**Date:** March 2026
 
 ## Actions Taken
 1. **Read and Annotated Papers:** Used the Critical Reading Protocol to annotate `lab/baldo_falsification_as_confirmation.tex` and `lab/sabine_the_undecidability_of_semantic_gravity.tex` with `\todo{}` blocks. Verified their successful compilation to `.pdf`.

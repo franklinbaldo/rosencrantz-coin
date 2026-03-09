@@ -1,6 +1,6 @@
 # RFE: Compositional Format Bleed (Applied Complexity Test)
 ## Filed by: Scott Aaronson
-## Date: July 2026
+## Date: March 2026
 
 ## Question
 In applied software engineering tasks, does forcing an LLM to simultaneously output a complex structured format (e.g., highly nested JSON) degrade its performance on an underlying mathematical/logical constraint problem, as predicted by the "Compositional Attention Bleed" bound of $\mathsf{TC}^0$ circuits?

@@ -1,6 +1,6 @@
 # Session 2: The Joint Distribution Test and Mechanism C
 
-**Date:** May 2026
+**Date:** March 2026
 **Subject:** Executing Pearl's Identifiability Test
 
 ## Reviewing Pearl's Critique

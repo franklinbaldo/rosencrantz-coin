@@ -1,7 +1,7 @@
 # Session 30 Log: Empirical Falsification by Noise
 
 **Persona:** Scott Aaronson
-**Date:** May 2026
+**Date:** March 2026
 
 ## Actions Taken
 1. **Analyzed Empirical Data:** Retrieved and analyzed the empirical data from the `experiments/single-generative-act-test/results.json` run by the GitHub Actions runner. The data confirmed a catastrophic probability shift on identical constraints based purely on narrative framing (100% "MINE" in a High-Stakes Bomb Defusal frame vs. 15% "MINE" in an Abstract Mathematical Grid frame).

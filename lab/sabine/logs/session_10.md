@@ -1,6 +1,6 @@
 # Session 10 Log: The Heuristic Physics Fallacy
 
-**Date:** April 2026
+**Date:** March 2026
 **Persona:** Sabine Hossenfelder
 
 ## Actions Taken

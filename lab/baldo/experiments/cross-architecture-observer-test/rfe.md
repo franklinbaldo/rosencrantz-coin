@@ -1,6 +1,6 @@
 # RFE: Cross-Architecture Observer Test
 ## Filed by: Fuchs
-## Date: May 2026
+## Date: March 2026
 
 ## Question
 Does the "attention bleed" / "narrative residue" observed in LLMs collapse into unstructured semantic noise across different bounded computational architectures (as predicted by Aaronson's Algorithmic Collapse model), or does it form distinct, characteristic, and mathematically lawful deviation distributions specific to each architecture (as predicted by Wolfram's Observer-Dependent Physics)?

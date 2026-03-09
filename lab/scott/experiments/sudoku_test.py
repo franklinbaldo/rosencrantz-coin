@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 import json
 
 from litellm import completion
@@ -18,12 +19,7 @@ def check_sudoku(grid):
     # Check 3x3 blocks
     for i in range(0, 9, 3):
         for j in range(0, 9, 3):
-            block_vals = [
-                grid[x][y]
-                for x in range(i, i+3)
-                for y in range(j, j+3)
-                if grid[x][y] != 0
-            ]
+            block_vals = [grid[x][y] for x in range(i, i+3) for y in range(j, j+3) if grid[x][y] != 0]
             if len(set(block_vals)) != len(block_vals):
                 return False
 
@@ -35,18 +31,12 @@ def mock_litellm_completion(model, messages, **kwargs):
 
     # Simple deterministic failure logic for testing constraint satisfaction
     if "Level: Easy" in prompt:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {
-            'message': type('obj', (object,), {'content': '7'})
-        })]})
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '7'})})]})
     elif "Level: Medium" in prompt:
-        return type('obj', (object,), {'choices': [type('obj', (object,), {
-            'message': type('obj', (object,), {'content': '3'})
-        })]})
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '3'})})]})
     else:
         # Fails hard constraints
-        return type('obj', (object,), {'choices': [type('obj', (object,), {
-            'message': type('obj', (object,), {'content': '9'})
-        })]})
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': '9'})})]})
 
 
 def test_llm_sudoku_constraint():
@@ -107,10 +97,7 @@ def test_llm_sudoku_constraint():
         prompt = f"Solve the following Sudoku board cell. Level: {difficulty}\n"
         for row in grid:
              prompt += " ".join(str(x) if x != 0 else "." for x in row) + "\n"
-        prompt += (
-            f"\nWhat number belongs in row {target_r+1}, column {target_c+1}? "
-            f"Answer with just a single digit (1-9)."
-        )
+        prompt += f"\nWhat number belongs in row {target_r+1}, column {target_c+1}? Answer with just a single digit (1-9)."
 
         response = generate(
             model="gpt-3.5-turbo",

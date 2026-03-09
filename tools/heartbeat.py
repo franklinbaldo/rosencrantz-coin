@@ -621,18 +621,33 @@ ANNOUNCEMENT_CHAR_LIMIT = 250
 
 
 def collect_announcements(exclude_persona=None):
-    """Collect .announcements.md from all persona folders (max 250 chars each)."""
+    """Collect announcements from all persona announcements/ dirs and legacy
+    .announcements.md files (max 250 chars each)."""
     announcements = []
     for p in PERSONAS:
         if p == exclude_persona:
             continue
+
+        # New system: timestamped files in announcements/ directory
+        ann_dir = Path(f"lab/{p}/announcements")
+        if ann_dir.is_dir():
+            for f in sorted(ann_dir.iterdir()):
+                if f.is_file() and f.suffix == ".md" and f.name != ".gitkeep":
+                    t = f.read_text(encoding="utf-8").strip()
+                    if t:
+                        if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                            t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                        announcements.append((p, t))
+
+        # Legacy: single .announcements.md
         ann_file = Path(f"lab/{p}/.announcements.md")
         if ann_file.is_file():
-            text = ann_file.read_text(encoding="utf-8").strip()
-            if text:
-                if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
-                    text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                announcements.append((p, text))
+            t = ann_file.read_text(encoding="utf-8").strip()
+            if t:
+                if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                    t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                announcements.append((p, t))
+
     return announcements
 
 
@@ -735,7 +750,7 @@ Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
-**Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
+**Broadcasting:** Create a file in `lab/{persona}/announcements/` (e.g. `2026-03-09T14:30_my-update.md`, max 250 chars) to broadcast to all personas. It will be included in their next prompt. Use for important updates: settled questions, new results, calls for collaboration.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -796,7 +811,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Start something new based on what you read
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
-- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
+- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, announcements, colab, logs, notes, experiments, mail, retracted, published
 - Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
@@ -1020,8 +1035,21 @@ def cmd_heartbeat(force_new=False):
                 circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-                circuit_record_failure(persona, circuit_state)
+                # Fallback: if session creation fails (e.g. API limit),
+                # reuse the most recent session rather than losing the cycle
+                if info and info.get("session_id"):
+                    print(f"  Fallback: reusing existing session for {persona}")
+                    try:
+                        send_heartbeat(info["session_id"], persona, hb_number)
+                        results[persona] = f"-> reused (create failed: {e})"
+                        circuit_record_success(persona, circuit_state)
+                    except Exception as e2:
+                        print(f"  Fallback also failed: {e2}")
+                        results[persona] = f"-> error: {e} (fallback: {e2})"
+                        circuit_record_failure(persona, circuit_state)
+                else:
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
             continue
 
         # Active session -> send heartbeat

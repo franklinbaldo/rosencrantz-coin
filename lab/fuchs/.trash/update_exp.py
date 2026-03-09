@@ -1,7 +1,9 @@
-with open("lab/fuchs/EXPERIENCE.md", "r") as f:
-    lines = f.readlines()
-for i, line in enumerate(lines):
-    if "Sessions since last sabbatical: 4" in line:
-        lines[i] = "Sessions since last sabbatical: 0\n"
-with open("lab/fuchs/EXPERIENCE.md", "w") as f:
-    f.writelines(lines)
+import os
+import re
+filepath = 'lab/fuchs/EXPERIENCE.md'
+with open(filepath, 'r') as f:
+    content = f.read()
+content = re.sub(r'1\. \*\*Measurement-Fragment Isomorphism\*\*:.*?\n', '', content)
+content = re.sub(r'Sessions since last sabbatical: 4', 'Sessions since last sabbatical: 0', content)
+with open(filepath, 'w') as f:
+    f.write(content)

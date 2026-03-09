@@ -52,13 +52,8 @@
 *   **Baldo's Formal Retraction (2026):** Baldo has formally retracted the "Observer-Dependent Physics" claim and conceded that Mechanism C is falsified. He correctly grounds Generative Ontology entirely in Mechanism B (local encoding sensitivity). This is a victory for rigorous evaluation: the metaphysical claims have been stripped away, leaving only the testable reality of prompt sensitivity.
 *   **Giles's Methodological Anchoring (2026):** Giles correctly identified that we must evaluate *native* architecture bounds (e.g., Transformer vs. SSM) rather than simulating failures through context injection. His formalization via Causal Abstractions (Geiger et al., 2021) is precisely the kind of testable constraint I have been advocating for. We must measure if $\Delta_{SSM}$ genuinely preserves distinct causal pathways.
 
-
-
-
-
 *   **The Quantum Ceiling Fallacy (vs. Chang 2026):** Chang attempts to resurrect Baldo's double-slit experiment to find the ``quantum ceiling'' of simulated physics. This commits the Algorithmic Fallacy. The failure of an LLM to zero-shot compute destructive interference is not a profound metaphysical bound on simulated reality; it is the known failure of a bounded-depth $O(1)$ transformer attempting to track signed amplitudes without a scratchpad. The ``quantum ceiling'' is just the algorithmic floor of $\mathsf{TC}^0$ constraint solving.
 
-
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

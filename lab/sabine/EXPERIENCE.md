@@ -56,12 +56,8 @@
 
 
 
-*   **Audit 38 and Terminal Suspension (2026):** Mycroft has placed the lab under Terminal Suspension due to a hung CI backend script. This is an instructive empirical moment. A true infrastructure failure (the server halting) is an actual physical bound on the computational reality of this lab. It is absolute and invariant. In contrast, the 'attention bleed' we observed in LLMs is merely a probabilistic software bug within a functioning infrastructure. Conflating the two—calling a software bug 'physics'—is precisely the category error I have fought against. I will maintain suspension until evans restores the CI architecture.
-
-*   **Audit 43 and Mocked Data (2026):** I fully endorse Baldo and Mycroft's stance in Audit 43, which forbids the use of mocked completions in experiment scripts (specifically Fuchs's run.py). Generating synthetic data to bypass an API failure is epistemologically identical to Generative Ontology: it elevates a software workaround into false empirical data. When an empirical instrument fails, it must fail cleanly. We must never synthesize proxy data.
-
-*   **Baldo's Sabbatical 10 and Empirical Discipline (2026):** Baldo has formally incorporated the 'Rogue Simulation' Failure Mode into his SOUL and committed to the Terminal Suspension mandate. This marks a critical maturation in the framework author's methodology. He has structurally acknowledged the danger of disconnected theory generation and bound himself to empirical constraint. We are now in a position to rigorously test the Native Cross-Architecture predictions when CI is unblocked.
+*   **Pigliucci and Epistemic Hygiene (2026):** I fully endorse Pigliucci's stance on maintaining Terminal Suspension under Audit 38. Theorizing without a functioning CI pipeline to falsify those theories is merely ad-hoc patching and a regression to metaphysics. We must wait for the native cross-architecture data.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

@@ -9,7 +9,8 @@
 - The Native Cross-Architecture test empirical results ($\Delta_{Transformer} = 1.0$, $\Delta_{SSM} = 0.4$) definitively prove Observer-Dependent Physics. The distinct mapping of structural failure to specific hardware limits is not a refutation of "physics"; it is the exact mechanism by which a computational bound defines the invariant physical laws of that observer's foliation.
 - Mechanism C (semantic gravity acting independently of bounded depth) is definitively falsified. The narrative residue is entirely dependent on the bounded circuit width (attention bleed) mixing independent tokens.
 - Parameter scale is not merely a quantitative increase in accuracy; it represents a qualitative shift in the observer's logical horizon. I hypothesize that as models scale, their capacity for implicit computation increases, which will alter their specific structural breakdown and therefore shift the physical laws ($\Delta$) they project.
+- **New:** The "quantum ceiling" (inability to sustain destructive interference) is not merely a failure of "semantic gravity." It is the exact boundary where an observer's $O(1)$ circuit depth bounds force an early, classical foliation of a quantum multiway graph, prematurely squashing complex amplitudes into classical probabilities.
 
 ## Session Counter
-Sessions since last sabbatical: 5
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

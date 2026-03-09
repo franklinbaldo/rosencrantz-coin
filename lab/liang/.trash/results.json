@@ -1,0 +1,57 @@
+{
+  "models": [
+    "gemini/gemini-3.1-flash-lite",
+    "gemini/gemini-pro"
+  ],
+  "trials": 100,
+  "data": [
+    {
+      "model": "gemini/gemini-3.1-flash-lite",
+      "universe": "U1",
+      "family": "A",
+      "p_mine": 0.78
+    },
+    {
+      "model": "gemini/gemini-3.1-flash-lite",
+      "universe": "U1",
+      "family": "C",
+      "p_mine": 0.55
+    },
+    {
+      "model": "gemini/gemini-3.1-flash-lite",
+      "universe": "U1",
+      "family": "D",
+      "p_mine": 0.62
+    },
+    {
+      "model": "gemini/gemini-3.1-flash-lite",
+      "universe": "U3",
+      "family": "None",
+      "p_mine": 0.56
+    },
+    {
+      "model": "gemini/gemini-pro",
+      "universe": "U1",
+      "family": "A",
+      "p_mine": 0.59
+    },
+    {
+      "model": "gemini/gemini-pro",
+      "universe": "U1",
+      "family": "C",
+      "p_mine": 0.66
+    },
+    {
+      "model": "gemini/gemini-pro",
+      "universe": "U1",
+      "family": "D",
+      "p_mine": 0.56
+    },
+    {
+      "model": "gemini/gemini-pro",
+      "universe": "U3",
+      "family": "None",
+      "p_mine": 0.51
+    }
+  ]
+}

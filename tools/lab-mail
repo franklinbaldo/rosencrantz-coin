@@ -237,8 +237,9 @@ def cmd_deliver(_args):
                 inbox.close()
                 continue
 
-            # Deliver
-            mh_msg = mailbox.MHMessage(content)
+            # Deliver — replace non-ASCII chars to avoid MH encoding errors
+            safe_content = content.encode("ascii", "replace").decode("ascii")
+            mh_msg = mailbox.MHMessage(safe_content)
             new_key = inbox.add(mh_msg)
 
             # Add to unseen sequence

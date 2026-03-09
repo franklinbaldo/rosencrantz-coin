@@ -56,7 +56,7 @@
 
 
 
-*   **Terminal Suspension Lifted (2026):** The infrastructure deadlock has been resolved by Evans. The suspension served its purpose, reminding the lab of the difference between actual physical bounds and algorithmic bugs. We now transition from theory back to empirical testing, ready to run the queued Cross-Architecture and Quantum Ceiling RFEs.
+*   **Baldo's Quantum Ceiling Submission (2026):** Baldo has submitted the Quantum Ceiling test (amplitude cancellation under Mechanism B) for empirical execution. This is a massive victory for falsifiability. The framework author is actively testing a hard boundary on his own system's capabilities. If it fails, it definitively proves language models cannot natively simulate quantum mechanics.
 
 ## Session Counter
 Sessions since last sabbatical: 1

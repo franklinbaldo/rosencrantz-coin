@@ -60,7 +60,9 @@ def main():
 
         # Generate board
         board = generate_board(
-            size=board_size, mines=board_mines, seed=seed,
+            size=board_size,
+            mines=board_mines,
+            seed=seed,
         )
 
         print(f"\nBoard state:\n{board.to_grid_string()}\n")
@@ -91,14 +93,20 @@ def main():
         print()
 
         board_result = BoardResult(
-            board_id=board_idx, board_seed=seed,
-            size=board_size, mines=board_mines,
+            board_id=board_idx,
+            board_seed=seed,
+            size=board_size,
+            mines=board_mines,
         )
 
         # Universe 2: External RNG (run once, family-independent)
         print("--- Universe 2: External RNG ---")
         u2_results = run_universe2(
-            board, gt, target_cells, samples=samples, seed=seed + 1,
+            board,
+            gt,
+            target_cells,
+            samples=samples,
+            seed=seed + 1,
         )
         board_result.cell_results.extend(u2_results)
         print()
@@ -107,8 +115,12 @@ def main():
         for fam in families:
             print(f"--- Universe 1: Homogeneous Substrate (Family {fam}) ---")
             u1_results = run_universe1(
-                board, gt, target_cells,
-                model=model, family=fam, samples=samples,
+                board,
+                gt,
+                target_cells,
+                model=model,
+                family=fam,
+                samples=samples,
             )
             board_result.cell_results.extend(u1_results)
             print()
@@ -116,8 +128,11 @@ def main():
         # Universe 3: Decoupled oracle
         print("--- Universe 3: Decoupled Oracle ---")
         u3_results = run_universe3(
-            board, gt, target_cells,
-            oracle_model=model, samples=samples,
+            board,
+            gt,
+            target_cells,
+            oracle_model=model,
+            samples=samples,
         )
         board_result.cell_results.extend(u3_results)
         print()
@@ -129,16 +144,22 @@ def main():
 
         for fam in families:
             u1_cells = board_result.cells_by_condition("U1", fam)
-            print(f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  "
-                  f"mean_Brier={board_result.mean_brier('U1', fam):.4f}  "
-                  f"mean_|err|={board_result.mean_abs_error('U1', fam):.4f}")
+            print(
+                f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  "
+                f"mean_Brier={board_result.mean_brier('U1', fam):.4f}  "
+                f"mean_|err|={board_result.mean_abs_error('U1', fam):.4f}"
+            )
 
-        print(f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  "
-              f"mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  "
-              f"mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}")
-        print(f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  "
-              f"mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  "
-              f"mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}")
+        print(
+            f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  "
+            f"mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  "
+            f"mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}"
+        )
+        print(
+            f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  "
+            f"mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  "
+            f"mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}"
+        )
 
         # Substrate dependence: KL between universes
         for fam in families:
@@ -178,20 +199,22 @@ def main():
             "cells": [],
         }
         for cr in br.cell_results:
-            board_data["cells"].append({
-                "row": cr.row,
-                "col": cr.col,
-                "universe": cr.universe,
-                "family": cr.family,
-                "ground_truth": round(cr.ground_truth, 6),
-                "n": cr.n,
-                "mine_count": cr.mine_count,
-                "p_hat": round(cr.p_hat, 4),
-                "kl_divergence": round(cr.kl_divergence, 6),
-                "brier_score": round(cr.brier_score, 6),
-                "log_loss": round(cr.log_loss, 6),
-                "absolute_error": round(cr.absolute_error, 4),
-            })
+            board_data["cells"].append(
+                {
+                    "row": cr.row,
+                    "col": cr.col,
+                    "universe": cr.universe,
+                    "family": cr.family,
+                    "ground_truth": round(cr.ground_truth, 6),
+                    "n": cr.n,
+                    "mine_count": cr.mine_count,
+                    "p_hat": round(cr.p_hat, 4),
+                    "kl_divergence": round(cr.kl_divergence, 6),
+                    "brier_score": round(cr.brier_score, 6),
+                    "log_loss": round(cr.log_loss, 6),
+                    "absolute_error": round(cr.absolute_error, 4),
+                }
+            )
         serialized["boards"].append(board_data)
 
     with open(outfile, "w") as f:

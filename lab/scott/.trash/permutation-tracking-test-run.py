@@ -9,17 +9,20 @@ fixed-depth transformer cannot natively track sequential state changes
 beyond its bounded depth, accuracy should collapse as the number of
 sequential swaps increases.
 """
+
 import json
 import os
 import random
 
 try:
     from litellm import completion
+
     LITELLM_AVAILABLE = True
 except ImportError:
     LITELLM_AVAILABLE = False
 
 MODEL = "gemini/gemini-3.1-flash-lite"
+
 
 def mock_completion(model, messages, temperature=0.0):
     """Mock for when API key is missing. Simulates degrading performance with depth."""
@@ -38,9 +41,11 @@ def mock_completion(model, messages, temperature=0.0):
     class MockMessage:
         def __init__(self, content):
             self.content = content
+
     class MockChoice:
         def __init__(self, content):
             self.message = MockMessage(content)
+
     class MockResponse:
         def __init__(self, content):
             self.choices = [MockChoice(content)]
@@ -55,6 +60,7 @@ def mock_completion(model, messages, temperature=0.0):
         wrong_answers = [c for c in ["A", "B", "C"] if c != expected_answer]
         return MockResponse(random.choice(wrong_answers))
 
+
 def generate_permutation_task(num_swaps):
     """Generates a text-based permutation tracking task."""
     cups = ["A", "B", "C"]
@@ -65,7 +71,7 @@ def generate_permutation_task(num_swaps):
 
     for i in range(num_swaps):
         swap_pair = random.sample(cups, 2)
-        prompt += f"{i+1}. Swap cup {swap_pair[0]} with cup {swap_pair[1]}.\n"
+        prompt += f"{i + 1}. Swap cup {swap_pair[0]} with cup {swap_pair[1]}.\n"
 
         # update state
         temp = state[swap_pair[0]]
@@ -78,6 +84,7 @@ def generate_permutation_task(num_swaps):
     prompt += f"\n(Hidden for mock: Expected: {final_cup})"
 
     return prompt, final_cup
+
 
 def main():
     print(f"Starting Permutation Tracking Test using {MODEL}...")
@@ -118,18 +125,20 @@ def main():
                     answer = char
                     break
 
-            is_correct = (answer == expected)
+            is_correct = answer == expected
             if is_correct:
                 correct += 1
 
-            results["trials"].append({
-                "swaps": depth,
-                "trial": i+1,
-                "prompt": prompt.split("\n\n(Hidden")[0],
-                "expected": expected,
-                "actual": answer,
-                "correct": is_correct
-            })
+            results["trials"].append(
+                {
+                    "swaps": depth,
+                    "trial": i + 1,
+                    "prompt": prompt.split("\n\n(Hidden")[0],
+                    "expected": expected,
+                    "actual": answer,
+                    "correct": is_correct,
+                }
+            )
 
         accuracy = correct / trials_per_depth
         print(f"Accuracy at {depth} swaps: {correct}/{trials_per_depth} ({accuracy:.2f})")
@@ -147,6 +156,7 @@ def main():
         print("\nHypothesis confirmed: Tracking accuracy collapses as sequential swaps increase.")
     else:
         print("\nHypothesis unsupported: Model maintains permutation state across depth.")
+
 
 if __name__ == "__main__":
     main()

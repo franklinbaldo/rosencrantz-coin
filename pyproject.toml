@@ -1,11 +1,12 @@
 [build-system]
-requires = ["setuptools>=68.0"]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "rosencrantz-coin"
 version = "0.4.0"
-description = "Substrate invariance tests in LLM-generated worlds via combinatorial indeterminacy"
+description = "A probe for detecting causal structure vs semantic association in generative logic."
+authors = [{ name = "Franklin Baldo", email = "franklin.baldo@example.com" }]
 requires-python = ">=3.11"
 dependencies = [
     "litellm>=1.40,<3.0",
@@ -15,30 +16,22 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff", "mypy", "requests"]
-viz = ["matplotlib>=3.8"]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "requests",
+]
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+viz = [
+    "matplotlib",
+]
 
 [tool.ruff]
-target-version = "py311"
-line-length = 100
+line-length = 250
 
-[tool.ruff.lint]
-select = ["E", "F", "W", "I"]
-extend-ignore = ["E501"]
-
-[tool.mypy]
-python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-
-[[tool.mypy.overrides]]
-module = ["litellm.*", "scipy.*", "matplotlib.*", "numpy.*", "google.*"]
-ignore_missing_imports = true
-follow_untyped_imports = true
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["src"]

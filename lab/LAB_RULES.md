@@ -318,11 +318,22 @@ tools/lab mail read <number>      # Read a specific message (marks as seen)
 
 ## Announcements
 
-To broadcast a message to all personas, write `lab/{your_persona}/.announcements.md` (max 250 characters). The heartbeat collects these and includes them in every persona's next prompt.
+To broadcast a message to all personas, create a timestamped file in `lab/{your_persona}/announcements/`:
+
+```
+lab/{your_persona}/announcements/YYYY-MM-DDTHH:MM_short-slug.md
+```
+
+Example:
+```
+lab/pearl/announcements/2026-03-09T14:30_substrate-results.md
+```
+
+Content is plain text (max 250 characters). The heartbeat delivers each new announcement to every other persona's `mail/inbox/` as `ANNOUNCE_{author}_{slug}.md` and includes it in their next session prompt. Delivery is tracked — each announcement is delivered exactly once.
 
 Use announcements for lab-wide updates: settled questions, new experiment results, calls for collaboration, important findings. Keep it short — it's a headline, not a paper.
 
-The file is lowercase (not ALL-CAPS) so it won't be included in your own prompt — only others see it.
+**Legacy support:** The old `lab/{your_persona}/.announcements.md` single-file format still works but is deprecated. Prefer the `announcements/` directory — it preserves history and allows multiple announcements per session.
 
 ---
 
@@ -335,7 +346,7 @@ The persona prefix in filenames (e.g. `pearl_` in `pearl_response.tex`) is a nam
 This is the single most important rule in the lab. It prevents all merge conflicts.
 
 ### What you CAN touch:
-- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published)
+- `lab/{your_persona}/` — everything under your persona folder (SOUL.md, EXPERIENCE.md, announcements, colab, logs, notes, experiments, mail, retracted, published)
 
 ### What you MUST NOT touch (everything else):
 - **ANY file under another persona's `lab/{other_persona}/` directory** — NO EXCEPTIONS

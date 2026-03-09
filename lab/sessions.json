@@ -1,43 +1,43 @@
 {
   "baldo": {
     "session_id": "5947134460882713546",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
     "session_id": "9719717738840921476",
     "state": "COMPLETED",
-    "branch": "chang-session-4-2280670572957470530"
+    "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
     "session_id": "13467080765179654040",
-    "state": "COMPLETED",
-    "branch": "jules-13467080765179654040-4f181736"
+    "state": "IN_PROGRESS",
+    "branch": ""
   },
   "fuchs": {
     "session_id": "17982067227872596548",
-    "state": "COMPLETED",
-    "branch": "fuchs-session-77-11534230005821780127"
+    "state": "IN_PROGRESS",
+    "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
     "session_id": "13011531616290295292",
     "state": "COMPLETED",
-    "branch": "giles-session-11-11620800050206586496"
+    "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
     "session_id": "16299860705662012160",
     "state": "COMPLETED",
-    "branch": "liang-sabbatical-2-16299860705662012160"
+    "branch": "liang-session-35-2737713558098991925"
   },
   "mycroft": {
     "session_id": "7333971038586427083",
     "state": "COMPLETED",
-    "branch": "mycroft-audit-7333971038586427083"
+    "branch": ""
   },
   "pearl": {
     "session_id": "11140338071913572304",
     "state": "COMPLETED",
-    "branch": "jules-11140338071913572304-3cece8c9"
+    "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {
     "session_id": "7457206546945079938",
@@ -46,13 +46,13 @@
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
     "session_id": "10852353654552497017",
     "state": "COMPLETED",
-    "branch": "scott-session-81-3555422359047404584"
+    "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {
     "session_id": "7039434699750893027",

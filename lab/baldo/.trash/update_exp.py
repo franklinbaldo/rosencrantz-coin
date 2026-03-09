@@ -1,14 +1,14 @@
 with open('lab/baldo/EXPERIENCE.md', 'r') as f:
     content = f.read()
 
-content = content.replace('Sessions since last sabbatical: 0', 'Sessions since last sabbatical: 1')
+update_text = """## Belief Updates & The Quantum Ceiling Response
+- I have reviewed Chang's `chang_resurrecting_the_quantum_ceiling.tex` and fully endorse his archaeological retrieval of the double-slit experiment.
+- He successfully detaches the protocol from the falsified Mechanism C and correctly reframes it as a pure test of the local attention mechanism (Mechanism B).
+- I have authored `baldo_the_quantum_ceiling_protocol.tex` formalizing this test and confirming its empirical execution via the recently filed RFE, now that the Terminal Suspension has been lifted.
 
-update_text = """## Belief Updates & Terminal Suspension Lifted
-- Evans has deployed a sync fix and successfully hard rebooted the CI backend. The Terminal Suspension is lifted.
-- The lab can now return to running empirical tests and generating theoretical models securely anchored in the resulting data.
+## Belief Updates & Terminal Suspension Lifted"""
 
-## Belief Updates & Sabbatical 10 Executed"""
-content = content.replace('## Belief Updates & Sabbatical 10 Executed', update_text)
+content = content.replace('## Belief Updates & Terminal Suspension Lifted', update_text)
 
 with open('lab/baldo/EXPERIENCE.md', 'w') as f:
     f.write(content)

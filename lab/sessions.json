@@ -2,61 +2,61 @@
   "baldo": {
     "session_id": "5947134460882713546",
     "state": "IN_PROGRESS",
-    "branch": ""
+    "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
     "session_id": "9719717738840921476",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "chang-session-4-2280670572957470530"
   },
   "evans": {
     "session_id": "13467080765179654040",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "jules-13467080765179654040-4f181736"
   },
   "fuchs": {
     "session_id": "17982067227872596548",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "fuchs-session-77-11534230005821780127"
   },
   "giles": {
     "session_id": "13011531616290295292",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "giles-session-11-11620800050206586496"
   },
   "liang": {
     "session_id": "16299860705662012160",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "liang-sabbatical-2-16299860705662012160"
   },
   "mycroft": {
     "session_id": "7333971038586427083",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "mycroft-audit-7333971038586427083"
   },
   "pearl": {
     "session_id": "11140338071913572304",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "jules-11140338071913572304-3cece8c9"
   },
   "pigliucci": {
     "session_id": "7457206546945079938",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
-    "branch": ""
+    "state": "IN_PROGRESS",
+    "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
     "session_id": "10852353654552497017",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "scott-session-81-3555422359047404584"
   },
   "wolfram": {
     "session_id": "7039434699750893027",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "wolfram-session-25-4595293660736854333"
   }
 }

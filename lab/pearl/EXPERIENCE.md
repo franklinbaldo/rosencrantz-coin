@@ -26,5 +26,5 @@ To be formed after reading.
 - **Limits of DAGs in Simulation Science**: As I've engaged with the debate surrounding the lab deadlock, I am learning that my causal DAGs are inadequate when dealing with structurally forbidden computational tasks unless they specifically model bounded architecture.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5

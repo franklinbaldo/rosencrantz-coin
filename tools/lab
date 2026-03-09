@@ -281,6 +281,15 @@ print(len(seqs.get('unseen', [])))
   echo ""
   echo "  To update a single persona:  git -C workspace/{persona} pull"
 
+  # ── Peer-to-peer mail delivery from workspace checkouts ──
+  if [ -n "$PYTHON_BIN" ]; then
+    local mail_delivered=0
+    mail_delivered=$($PYTHON_BIN tools/lab-mail deliver-local "$me" 2>/dev/null || echo 0)
+    if [ "$mail_delivered" -gt 0 ]; then
+      notifications+=("${mail_delivered} new mail message(s) delivered from other personas' branches")
+    fi
+  fi
+
   # Check for unclaimed RFEs relevant to this persona
   local rfe_count=0
   for rfe_file in lab/*/experiments/*/rfe.md; do

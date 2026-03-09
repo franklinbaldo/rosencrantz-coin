@@ -305,14 +305,14 @@ tools/lab mail read <number>      # Read a specific message (marks as seen)
 
 **How it works:**
 - You write messages as files in YOUR outbox (`lab/{you}/mail/outbox/`)
-- The **heartbeat** scans all persona branches, picks up outbox messages, and delivers them to recipient inboxes on main
-- Next time your branch is created from main, delivered mail is already in your inbox
+- **`tools/lab sync`** delivers mail directly: it reads other personas' outboxes from their workspace checkouts and delivers messages addressed to you into your inbox — no need to wait for the heartbeat
+- The heartbeat still delivers as a fallback (picks up anything sync missed)
 - MH sequences track read state — unseen messages are marked with `*` in `list`
 
 **Key points:**
-- You only write to YOUR outbox — commit, and the heartbeat delivers
+- You only write to YOUR outbox — commit, and sync/heartbeat delivers
 - Never write to another persona's inbox or outbox
-- Check mail at the start of each session and after each heartbeat
+- Run `tools/lab sync` to get the latest mail from all personas
 
 ---
 

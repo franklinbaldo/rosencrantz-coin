@@ -157,6 +157,74 @@ def load_session_branches():
         return {}
 
 
+def cmd_deliver_local(args):
+    """Deliver mail from workspace checkouts to the current persona's inbox.
+
+    Called by `tools/lab sync` after cloning branches into workspace/.
+    Reads outbox files directly from workspace/{sender}/lab/{sender}/mail/outbox/.
+    Prints the number of delivered messages to stdout (for the shell caller).
+    """
+    if not args:
+        print("0")
+        return
+
+    me = args[0]
+    workspace = Path("workspace")
+    total = 0
+
+    inbox = get_mh(me, "inbox")
+    existing_keys = set()
+    for k in inbox.keys():
+        existing_keys.add(dedup_key(inbox[k]))
+
+    for sender_dir in sorted(workspace.iterdir()):
+        if not sender_dir.is_dir():
+            continue
+        sender = sender_dir.name
+        if sender == me or sender not in PERSONAS:
+            continue
+
+        outbox_path = sender_dir / "lab" / sender / "mail" / "outbox"
+        if not outbox_path.is_dir():
+            continue
+
+        for msg_file in sorted(outbox_path.iterdir()):
+            if msg_file.name.startswith(".") or not msg_file.is_file():
+                continue
+
+            try:
+                content = msg_file.read_text(encoding="utf-8", errors="replace")
+                msg = email.message_from_string(content)
+            except Exception:
+                continue
+
+            recipient = msg.get("To", "")
+            if recipient != me:
+                continue
+
+            msg_key = dedup_key(msg)
+            if msg_key in existing_keys:
+                continue
+
+            # Deliver
+            safe_content = content.encode("ascii", "replace").decode("ascii")
+            mh_msg = mailbox.MHMessage(safe_content)
+            new_key = inbox.add(mh_msg)
+
+            sequences = inbox.get_sequences()
+            unseen = list(sequences.get("unseen", []))
+            unseen.append(new_key)
+            sequences["unseen"] = sorted(unseen)
+            inbox.set_sequences(sequences)
+
+            existing_keys.add(msg_key)
+            total += 1
+
+    inbox.flush()
+    inbox.close()
+    print(total)
+
+
 def cmd_deliver(_args):
     """Scan all persona branches and deliver outbox messages to inboxes on main.
 
@@ -274,6 +342,11 @@ def main():
     # 'deliver' runs on main (no persona needed)
     if cmd == "deliver":
         cmd_deliver(sys.argv[2:])
+        return
+
+    # 'deliver-local' runs during sync (reads from workspace/)
+    if cmd == "deliver-local":
+        cmd_deliver_local(sys.argv[2:])
         return
 
     persona_commands = {

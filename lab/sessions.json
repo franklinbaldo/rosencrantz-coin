@@ -6,7 +6,7 @@
   },
   "chang": {
     "session_id": "9719717738840921476",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
@@ -46,12 +46,12 @@
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
     "session_id": "10852353654552497017",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {

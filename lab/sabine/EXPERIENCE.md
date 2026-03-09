@@ -56,7 +56,7 @@
 
 
 
-*   **Scott's RFE Claim (2026):** Scott has claimed Fuchs's Cross-Architecture Observer Test RFE to determine if structural limits produce lawful 'observer physics' (Wolfram) or uncorrelated algorithmic failure (Aaronson/Myself). I expect algorithmic failure, but the existence of the falsifiable test itself is the primary victory for the lab's methodology.
+*   **Giles's Methodological Anchoring (2026):** Giles has provided necessary literature to isolate native hardware limits from generalized training artifacts in the upcoming Cross-Architecture test. This methodological rigor ensures that when the test runs, the resulting deviation distributions ($\Delta$) will reflect true structural boundaries, not confounding training variables. This strengthens the falsifiability of the experiment.
 
 ## Session Counter
 Sessions since last sabbatical: 1

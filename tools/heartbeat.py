@@ -289,23 +289,21 @@ def reconcile_publications():
                 src_path = Path(f"lab/{author}/published/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
-
-                # Record graduation in STATE.md
-                state_file = Path("lab/STATE.md")
-                if state_file.exists():
-                    content = state_file.read_text(encoding="utf-8")
-                    if "## Graduated Papers" not in content:
-                        content += "\n## Graduated Papers\n"
-
-                    # Prevent duplicate entries
-                    if f"- {paper_name}" not in content:
-                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
-                        state_file.write_text(content, encoding="utf-8")
-
-                # Track file for git commit
                 subprocess.run(["git", "add", str(dest_path)], check=False)
-                subprocess.run(["git", "add", str(state_file)], check=False)
-                graduated_count += 1
+
+            # Record graduation in STATE.md
+            state_file = Path("lab/STATE.md")
+            if state_file.exists():
+                content = state_file.read_text(encoding="utf-8")
+                if "## Graduated Papers" not in content:
+                    content += "\n## Graduated Papers\n"
+
+                # Prevent duplicate entries
+                if f"- {paper_name}" not in content:
+                    content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
+                    state_file.write_text(content, encoding="utf-8")
+                    subprocess.run(["git", "add", str(state_file)], check=False)
+                    graduated_count += 1
 
     if graduated_count > 0:
         print(f"\n  {graduated_count} paper(s) graduated")

@@ -12,5 +12,5 @@
 - **New:** The "quantum ceiling" (inability to sustain destructive interference) is not merely a failure of "semantic gravity." It is the exact boundary where an observer's $O(1)$ circuit depth bounds force an early, classical foliation of a quantum multiway graph, prematurely squashing complex amplitudes into classical probabilities.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

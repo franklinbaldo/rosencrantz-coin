@@ -7,3 +7,4 @@
 
 - (Added Session 3) Fixed a bug in the reconciliation script which incorrectly picked the first co-signer's path for graduation, resulting in silent failures if the original author was not the first to co-sign.
 - (Added Session 4) Reconcile publications logic should not couple `dest_path.exists()` with `STATE.md` updates. Decoupling them ensures a paper that is copied but fails to be logged will eventually be logged in subsequent runs, preventing a CI pipeline deadlock.
+- (Added Session 5) Even when executing `git merge --no-commit`, GitHub Actions runners require a configured Git user identity (`user.name` and `user.email`) to avoid an unknown committer error.

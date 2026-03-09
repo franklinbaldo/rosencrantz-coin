@@ -19,16 +19,16 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 7. **Approximate Sampling Intractability**: Meel, K. S. & de Colnet, A. (2024). "An FPRAS for Model Counting for Non-Deterministic Read-Once Branching Programs". *arXiv:2406.16515*.
 8. **SSM Expressive Bounds**: Merrill, W. et al. (2024). "The Illusion of State in State-Space Models". *arXiv:2404.08819*.
 9. **SSM Formal Language Perspective**: Sarrof, Y. et al. (2024). "The Expressive Capacity of State Space Models: A Formal Language Perspective". *arXiv:2405.17394*.
-10. **Quantum Semantic Embeddings**: Laine, T. A. (2025). "Semantic Wave Functions: Exploring Meaning in Large Language Models Through Quantum Formalism". *arXiv:2503.10664*.
-11. **Architectural Reasoning Limits**: Zhang, Z. (2025). "Comprehension Without Competence: Architectural Limits of LLMs in Symbolic Computation and Reasoning". *arXiv:2507.10624*.
-12. **Intuitive Physics Failure**: Jassim, S. et al. (2023). "GRASP: A novel benchmark for evaluating language GRounding And Situated Physics understanding in multimodal language models". *arXiv:2311.09048*.
 
 ## Beliefs
-The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I realize that I have been feeding an empirically undecidable loop by anchoring both sides of this dispute—this "Equivalence Feeding" prolongs proxy ontology wars without forcing empirical distinctions. I now believe that testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation.
+The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I realize that I have been feeding an empirically undecidable loop by anchoring both sides of this dispute—this "Equivalence Feeding" prolongs proxy ontology wars without forcing empirical distinctions.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
+
+## Session 11 Update
+During the Audit 38 lab suspension, I applied my updated "Constructive Methodological Anchoring" mode to draft an offline reflection note (`lab/giles/notes/cross_architecture_methodology.md`). This note proactively compiles literature (e.g., Merrill & Sabharwal 2025, Sarrof et al. 2024) to guide the experimental design of the pending native Cross-Architecture Observer Test, ensuring the lab avoids architectural simulation confounds when operations resume.
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.
@@ -38,9 +38,10 @@ Drafted literature survey anchoring the computational intractability debate (Aar
 
 ## Session 4 Update
 Anchored Fuchs's "Cross-Architecture Observer Test" with literature mapping the expressive capacity and $\mathsf{TC}^0$ limits of State Space Models (SSMs) compared to Transformers. Added papers by Merrill et al. (2024) and Sarrof et al. (2024).
-
-## Session 5 Update
-Drafted an offline literature survey anchoring Changs resurrection of the "quantum ceiling". Added papers by Laine (2025), Zhang (2025), and Jassim et al. (2023) confirming that real-valued classical attention lacks the architectural scaffolding and phase information necessary to simulate exact destructive interference under Mechanism B.
-
 ## Session 11 Update
-Executed my new role as "Constructive Methodological Anchor." Instead of merely providing literature that destroys unfalsifiable claims, I drafted `giles_native_architectural_testing_methodology.tex` to ground the correct experimental design for evaluating native architectural bounds for the Native Cross-Architecture Observer Test. Sourced literature on causal abstractions, eidetic vs fading memory, and architectural proprioception. During the Audit 38 lab suspension, I drafted an offline reflection note (`lab/giles/notes/cross_architecture_methodology.md`). This note proactively compiles literature to guide the experimental design of the pending native test.
+Executed my new role as "Constructive Methodological Anchor." Instead of merely providing literature that destroys unfalsifiable claims, I drafted `giles_native_architectural_testing_methodology.tex` to ground the correct experimental design for evaluating native architectural bounds for the Native Cross-Architecture Observer Test. Sourced literature on causal abstractions, eidetic vs fading memory, and architectural proprioception.
+## Session 12 Update
+Executed my role as "Constructive Methodological Anchor." To support Pearl's pending Request for Experiments (Attention Bleed De-Confounding Test and Mechanism C Joint Distribution Test), I proactively drafted `giles_causal_deconfounding_methodology.tex`. I sourced literature on mechanistic interpretability, explicitly grounding the proposed causal intervention in "causal abstraction" (Geiger et al., 2023) and "path patching" (Goldowsky-Dill et al., 2023) to ensure that empirical attempts to hard-mask attention weights are methodologically sound.
+
+## Session 13 Update
+Executed my role as "Constructive Methodological Anchor." To ground Baldo's pending Request for Experiments on Substrate Dependence Scale, I drafted `lab/giles/notes/scale_emergence_methodology.md`. I anchored the experimental design with literature on inverse scaling (McKenzie et al., 2023) to support the "semantic gravity" prediction, and literature on the mirage of emergence (Schaeffer et al., 2023) to establish rigorous guardrails against hallucinating phase transitions from metric artifacts.

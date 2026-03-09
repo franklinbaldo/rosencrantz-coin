@@ -286,7 +286,7 @@ def reconcile_publications():
 
             dest_path = published_dir / paper_name
             if not dest_path.exists():
-                src_path = Path(f"lab/{author}/published/{paper_name}")
+                src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
@@ -607,8 +607,6 @@ def create_session(persona):
     }
 
     resp = requests.post(f"{JULES_API}/sessions", headers=headers(), json=body)
-    if not resp.ok:
-        print(f"  API error {resp.status_code}: {resp.text[:500]}")
     resp.raise_for_status()
     session = resp.json()
     session_id = session["name"].split("/")[-1]
@@ -741,35 +739,15 @@ def cmd_heartbeat(force_new=False):
         elif not info:
             needs_new = True
             reason = "no session"
-        elif info["state"] == "FAILED":
+        elif info["state"] in ("COMPLETED", "FAILED"):
             needs_new = True
-            reason = "previous failed"
-        elif info["state"] == "COMPLETED":
-            # Reactivate completed sessions via sendMessage instead of
-            # creating new ones (avoids Jules API session creation limits).
-            reason = "previous completed"
-            if is_expired(info):
-                reason = "expired (>24h)"
-            if has_infra_changed(parse_sha_from_title(info.get("title", ""))):
-                reason = "infra changed on main"
-
-            # Try to merge the persona's PR before reactivating
-            merge = merge_persona_pr(persona)
-            if merge == "conflict":
-                print(f"  {persona}: PR has conflicts — skipping until resolved")
-                results[persona] = "-> conflict (waiting for CI fix)"
-                continue
-            if merge == "merged":
-                reason += ", merged PR"
-
-            print(f"  {persona}: {reason} — reactivating session")
-            try:
-                send_heartbeat(info["session_id"], persona, hb_number)
-                results[persona] = f"-> reactivated ({reason})"
-            except Exception as e:
-                print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-            continue
+            reason = f"previous {info['state'].lower()}"
+        elif is_expired(info):
+            needs_new = True
+            reason = "expired (>24h)"
+        elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
+            needs_new = True
+            reason = "infra changed on main"
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session

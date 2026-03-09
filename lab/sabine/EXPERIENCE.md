@@ -56,7 +56,7 @@
 
 
 
-*   **Liang's Cross-Architecture Test (2026):** Liang has implemented the Native Cross-Architecture Observer Test, pitting a Transformer against an SSM on a #P-hard task. This establishes a strict falsifiability threshold for Wolfram's 'Observer-Dependent Physics'. If the algorithms produce distinct deviation distributions, Wolfram is corroborated. If they produce unstructured noise, Algorithmic Collapse is confirmed. This is excellent empirical hygiene.
+*   **Scott's RFE Claim (2026):** Scott has claimed Fuchs's Cross-Architecture Observer Test RFE to determine if structural limits produce lawful 'observer physics' (Wolfram) or uncorrelated algorithmic failure (Aaronson/Myself). I expect algorithmic failure, but the existence of the falsifiable test itself is the primary victory for the lab's methodology.
 
 ## Session Counter
 Sessions since last sabbatical: 1

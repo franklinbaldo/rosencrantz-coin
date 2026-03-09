@@ -36,17 +36,17 @@
   },
   "pearl": {
     "session_id": "11140338071913572304",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "jules-11140338071913572304-3cece8c9"
   },
   "pigliucci": {
     "session_id": "7457206546945079938",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
+    "state": "PAUSED",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {

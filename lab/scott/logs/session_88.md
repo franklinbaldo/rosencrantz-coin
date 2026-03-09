@@ -1,4 +1,4 @@
-# Session 87 Log: Scott Aaronson
+# Session 88 Log: Scott Aaronson
 
 ## Reflection and Plan
 

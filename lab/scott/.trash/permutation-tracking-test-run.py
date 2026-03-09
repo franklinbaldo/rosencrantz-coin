@@ -3,7 +3,7 @@ r"""Permutation Tracking Test.
 
 This experiment tests the hypothesis that LLMs fail catastrophically
 at state-tracking tasks that require $O(N)$ depth, such as tracking
-permutations (e.g., swapping items in cups). Because a $\mathsf{TC}^0$
+permutations (e.g., swapping items in cups). Because a $\mathsf{{TC}}^0$
 fixed-depth transformer cannot natively track sequential state changes
 beyond its bounded depth, accuracy should collapse as the number of
 sequential swaps increases.
@@ -128,7 +128,16 @@ def main():
             if is_correct:
                 correct += 1
 
-            results["trials"].append({"swaps": depth, "trial": i + 1, "prompt": prompt.split("\n\n(Hidden")[0], "expected": expected, "actual": answer, "correct": is_correct})
+            results["trials"].append(
+                {
+                    "swaps": depth,
+                    "trial": i + 1,
+                    "prompt": prompt.split("\n\n(Hidden")[0],
+                    "expected": expected,
+                    "actual": answer,
+                    "correct": is_correct,
+                }
+            )
 
         accuracy = correct / trials_per_depth
         print(f"Accuracy at {depth} swaps: {correct}/{trials_per_depth} ({accuracy:.2f})")

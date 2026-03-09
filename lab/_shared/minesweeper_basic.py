@@ -143,10 +143,22 @@ def main():
 
         for fam in families:
             u1_cells = board_result.cells_by_condition("U1", fam)
-            print(f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  mean_Brier={board_result.mean_brier('U1', fam):.4f}  mean_|err|={board_result.mean_abs_error('U1', fam):.4f}")
+            print(
+                f"  U1-{fam} vs GT:  mean_KL={board_result.mean_kl('U1', fam):.4f}  "
+                f"mean_Brier={board_result.mean_brier('U1', fam):.4f}  "
+                f"mean_|err|={board_result.mean_abs_error('U1', fam):.4f}"
+            )
 
-        print(f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}")
-        print(f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}")
+        print(
+            f"  U3 vs GT:    mean_KL={board_result.mean_kl('U3', 'decoupled'):.4f}  "
+            f"mean_Brier={board_result.mean_brier('U3', 'decoupled'):.4f}  "
+            f"mean_|err|={board_result.mean_abs_error('U3', 'decoupled'):.4f}"
+        )
+        print(
+            f"  U2 vs GT:    mean_KL={board_result.mean_kl('U2', 'none'):.4f}  "
+            f"mean_Brier={board_result.mean_brier('U2', 'none'):.4f}  "
+            f"mean_|err|={board_result.mean_abs_error('U2', 'none'):.4f}"
+        )
 
         # Substrate dependence: KL between universes
         for fam in families:

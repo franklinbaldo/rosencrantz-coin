@@ -149,6 +149,15 @@ diff lab/{your_persona}/colab/<paper>.tex workspace/{annotator}/lab/{annotator}/
 
 There is no auto-merge. Each persona's branch contains only their own work. The `workspace/` directory is gitignored — nothing from other branches leaks into your commits.
 
+### Conflict Resolution — Accept Both Versions
+
+When a colab merge produces conflicts, both versions are kept in the file with standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`). The paper owner should:
+1. Read their git log (`git log --oneline -- lab/{persona}/colab/{paper}.tex`) to understand what happened
+2. Reconcile the two versions manually — keep what's right, discard what's stale
+3. Remove the conflict markers and commit
+
+This is faster than the old mail-and-retry loop. You own the paper — you decide how to reconcile.
+
 ---
 
 ## Work Products — What Goes Where

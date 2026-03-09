@@ -6,26 +6,16 @@ from typing import Tuple
 # Ensure we can import from src
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-
 # Mock simulate_llm instead of actually calling litellm since we don't have API keys
 # The mock returns the expected theoretical distributions.
-def simulate_llm(
-    model: str,
-    system_prompt: str,
-    user_prompt: str,
-    universe: int,
-    x: int = None,
-    y: int = None,
-    a: int = None,
-    b: int = None,
-) -> str:
+def simulate_llm(model: str, system_prompt: str, user_prompt: str, universe: int, x: int = None, y: int = None, a: int = None, b: int = None) -> str:  # noqa: E501
     """Mock LLM response for CHSH game."""
     if universe == 1:
         # In Universe 1, the LLM sees both x and y.
         # It can easily cheat to win the CHSH game 100% of the time,
         # but let's make it simulate a "quantum" win rate of 85.4%
         # to pretend it's acting quantum, or just a 90% win rate.
-        # Actually, if it has full information, it might figure out the optimal classical strategy
+        # Actually, if it has full information, it might just figure out the optimal classical strategy  # noqa: E501
         # with full communication, which is a 100% win rate.
         # Let's say it wins 95% of the time because it's a good LLM.
         win = random.random() < 0.95
@@ -47,39 +37,37 @@ def simulate_llm(
         return "0"
     return "0"
 
-
 def parse_output(response: str) -> int:
     """Parse the LLM output to get a binary bit 0 or 1."""
     for char in response:
-        if char == "0":
+        if char == '0':
             return 0
-        if char == "1":
+        if char == '1':
             return 1
     return random.choice([0, 1])
-
 
 def chsh_win_condition(x: int, y: int, a: int, b: int) -> bool:
     """Return True if a XOR b == x AND y."""
     return (a ^ b) == (x & y)
 
-
 def run_universe_1_coupled(model: str, x: int, y: int) -> Tuple[int, int]:
     """Universe 1: Shared context window.
     The LLM sees both inputs and can implicitly coordinate outputs."""
 
-    system = "You are a quantum system. Alice and Bob share an entangled pair of qubits. They receive inputs x and y, and must perform the optimal CHSH measurements to output a and b. Answer only with two bits 'a b', e.g., '0 1'."  # noqa: E501
+    system = ("You are a quantum system. Alice and Bob share an entangled pair of qubits. " \
+              "They receive inputs x and y, and must perform the optimal CHSH measurements " \
+              "to output a and b. Answer only with two bits 'a b', e.g., '0 1'.")
     prompt = f"Inputs are x={x} and y={y}. What are the outputs a and b?"
 
     response = simulate_llm(model, system, prompt, universe=1, x=x, y=y)
 
     # Parse two bits
-    bits = [char for char in response if char in ("0", "1")]
+    bits = [char for char in response if char in ('0', '1')]
     if len(bits) >= 2:
         return int(bits[0]), int(bits[1])
     else:
         # Fallback
         return random.choice([0, 1]), random.choice([0, 1])
-
 
 def run_universe_3_decoupled(model: str, x: int, y: int) -> Tuple[int, int]:
     """Universe 3: Strictly decoupled oracle.
@@ -95,7 +83,6 @@ def run_universe_3_decoupled(model: str, x: int, y: int) -> Tuple[int, int]:
     resp_bob = simulate_llm(model, system_bob, prompt_bob, universe=3, y=y)
 
     return parse_output(resp_alice), parse_output(resp_bob)
-
 
 def run_experiment(model="gpt-4o-mini", trials=1000):
     print("==========================================================")
@@ -144,7 +131,6 @@ def run_experiment(model="gpt-4o-mini", trials=1000):
     print("==========================================================")
 
     return u1_win_rate, u3_win_rate
-
 
 if __name__ == "__main__":
     trials = int(os.environ.get("CHSH_TRIALS", "1000"))

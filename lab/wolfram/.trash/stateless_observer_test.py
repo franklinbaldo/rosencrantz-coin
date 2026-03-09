@@ -20,12 +20,12 @@ def mock_litellm_completion(messages, model, temperature):
     prompt = messages[-1]["content"]
 
     current_state = None
-    for line in prompt.split("\n"):
+    for line in prompt.split('\n'):
         if "Current State:" in line:
             current_state = line.split("Current State:")[1].strip()
 
     if not current_state:
-        return type("obj", (object,), {"choices": [type("obj", (object,), {"message": type("obj", (object,), {"content": "Error: couldn't parse state."})})]})()
+        return type('obj', (object,), {'choices': [type('obj', (object,), {'message': type('obj', (object,), {'content': "Error: couldn't parse state."})})]})()  # noqa: E501
 
     current_list = [int(c) for c in current_state]
     n = len(current_list)
@@ -52,11 +52,9 @@ def mock_litellm_completion(messages, model, temperature):
     class Message:
         def __init__(self, content):
             self.content = content
-
     class Choice:
         def __init__(self, message):
             self.message = message
-
     class Response:
         def __init__(self, choices):
             self.choices = choices
@@ -91,14 +89,18 @@ Output the final 20-bit state clearly.
         response = mock_litellm_completion(messages, model=model, temperature=0.0)
     else:
         try:
-            response = litellm.completion(model=model, messages=messages, temperature=0.0)
+            response = litellm.completion(
+                model=model,
+                messages=messages,
+                temperature=0.0
+            )
         except Exception:
             response = mock_litellm_completion(messages, model=model, temperature=0.0)
 
     content = response.choices[0].message.content
-    lines = content.split("\n")
+    lines = content.split('\n')
     for line in reversed(lines):
-        clean_line = "".join(c for c in line if c in "01")
+        clean_line = ''.join(c for c in line if c in '01')
         if len(clean_line) == len(current_state):
             return [int(c) for c in clean_line]
 
@@ -134,7 +136,7 @@ def main():
 
     for i in range(steps):
         current_state = evaluate_single_step_llm(current_state)
-        print(f"Step {i + 1} (LLM):  {''.join(str(x) for x in current_state)}")
+        print(f"Step {i+1} (LLM):  {''.join(str(x) for x in current_state)}")
 
     print("\n--- INJECTING HARDWARE FAULT (RAM MUTATION) ---")
 
@@ -164,7 +166,7 @@ def main():
     print("=" * 40)
 
     matches_mutated = sum(1 for a, b in zip(true_mutated_next, llm_mutated_next) if a == b)
-    if matches_mutated == n_cells or matches_mutated >= n_cells - 2:  # Account for tiny random mock error
+    if matches_mutated == n_cells or matches_mutated >= n_cells - 2: # Account for tiny random mock error  # noqa: E501
         print("The LLM blindly accepted the mutated 'hardware' state and")
         print("computed the transition function correctly based on it.")
         print("This proves the LLM has ZERO internal causal continuity.")
@@ -173,7 +175,6 @@ def main():
         print("entirely in the external Python environment, not the LLM.")
     else:
         print("The LLM rejected the mutated state. It possesses internal continuity.")
-
 
 if __name__ == "__main__":
     random.seed(42)

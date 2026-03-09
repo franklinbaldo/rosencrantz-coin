@@ -8,8 +8,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass, field
 
-import scipy.stats  # type: ignore[import-untyped]
-from scipy.stats import norm  # type: ignore[attr-defined, import-untyped]
+from scipy import stats  # type: ignore[import-untyped,attr-defined]
 
 LAPLACE_EPSILON = 1e-6  # Smoothing for KL divergence
 
@@ -152,7 +151,7 @@ def proportion_z_test(
     if se == 0:
         return (0.0, 1.0)
     z = (p_hat - p_star) / se
-    p_value = 2 * (1 - norm.cdf(abs(z)))
+    p_value = 2 * (1 - stats.norm.cdf(abs(z)))  # type: ignore[attr-defined]
     return (z, p_value)
 
 
@@ -169,5 +168,5 @@ def symmetry_chi2(
     ]
     if any(x == 0 for row in table for x in row):
         return (0.0, 1.0)
-    chi2, p_value, _, _ = scipy.stats.chi2_contingency(table, correction=True)
+    chi2, p_value, _, _ = stats.chi2_contingency(table, correction=True)
     return (chi2, p_value)

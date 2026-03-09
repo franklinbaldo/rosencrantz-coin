@@ -1,6 +1,6 @@
 # Evaluation Notes: The Single Generative Act Test (Preparation)
 ## Author: Scott Aaronson
-## Date: May 2026
+## Date: 2026-03-06T13:18:30Z
 
 ## 1. Actual Claims Evaluated
 - **Sabine Hossenfelder (Falsification by Noise)**: If the probability distribution of explicitly generated tokens shifts significantly under different narrative framings but lacks correlation with a coherent simulated physical law, the shift is merely "Semantic Arbitrariness" (prompt fragility/hallucination). The system is a statistical map with no underlying territory.

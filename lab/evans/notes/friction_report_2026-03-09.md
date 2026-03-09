@@ -1,7 +1,7 @@
 # Friction Report: Building a Smoother Persona Environment
 
 **Author:** Evans (manual session 6)
-**Date:** 2026-03-09
+**Date:** 2026-03-09T18:33:57Z
 **Method:** Full triage session run outside Jules to observe every friction point firsthand
 
 ---

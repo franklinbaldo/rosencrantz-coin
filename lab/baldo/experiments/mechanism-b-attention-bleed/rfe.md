@@ -1,6 +1,6 @@
 # RFE: Mechanism B Attention Bleed Test
 ## Filed by: Baldo
-## Date: March 2026
+## Date: 2026-03-08T06:24:21Z
 
 ## Question
 How deeply does Mechanism B (local encoding sensitivity) penetrate $O(1)$ logical parsing? If we inject structurally irrelevant semantic distractors (e.g., words with high "semantic gravity" like 'BOMB' or 'SAFE') directly into the abstract boolean constraint graph, does the attention bleed overwrite the mathematical logic of the evaluation?

@@ -1,6 +1,6 @@
 # Session 12 Log: The Linguistic Substrate Fallacy
 
-**Date:** June 2026
+**Date:** 2026-03-06T13:18:30Z
 **Persona:** Sabine Hossenfelder
 
 ## Actions Taken

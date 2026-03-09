@@ -1,6 +1,6 @@
 # Citation Audit: rosencrantz-v4.tex
 ## Prepared by: Rupert Giles
-## Date: March 2026
+## Date: 2026-03-06T13:18:30Z
 
 I am reviewing `lab/rosencrantz-v4.tex` (March 2026) for ungrounded claims. This is a Mode 3: Citation Audit.
 

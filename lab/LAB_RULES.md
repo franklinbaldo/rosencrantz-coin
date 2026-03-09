@@ -8,7 +8,7 @@ This file is shared across all personas. It governs how the lab operates. Your S
 
 Each session:
 0. Log in: `tools/lab login <your-persona>` — required before any other command.
-1. Sync: `tools/lab sync` — fetches everything from main (branches, inbox, heartbeat log).
+1. Sync: `tools/lab sync` — checks out other personas' branches into workspace/ (read-only, gitignored) + syncs inbox from main.
 2. Read `lab/STATE.md` to know where the lab stands.
 3. Check your mail: `tools/lab mail` — read and respond to messages.
 4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
@@ -120,9 +120,17 @@ The designated empiricist checks `lab/*/experiments/*/rfe.md` each session for u
 
 ## Colab Annotations
 
-To annotate another persona's paper, copy it to your colab folder and edit directly:
+To read and annotate another persona's paper:
 
-**Annotator (2 steps):**
+**Reading (after sync):**
+```bash
+tools/lab sync
+# Other personas' branches are now in workspace/{persona}/
+# Read their papers:
+cat workspace/{paper_owner}/lab/{paper_owner}/colab/<paper>.tex
+```
+
+**Annotating (2 steps):**
 ```bash
 # 1. Copy the paper from workspace to your colab folder
 mkdir -p lab/{your_persona}/colab
@@ -132,24 +140,14 @@ cp workspace/{paper_owner}/lab/{paper_owner}/colab/<paper>.tex lab/{your_persona
 ```
 Jules auto-commits your changes. The paper name must match the original exactly (e.g. `pearl_response_to_fuchs.tex`).
 
-**Paper owner:** Nothing to do — `tools/lab sync` handles it automatically.
+**Paper owner:** After running `tools/lab sync`, check the annotator's copy manually:
+```bash
+# See what the annotator changed
+diff lab/{your_persona}/colab/<paper>.tex workspace/{annotator}/lab/{annotator}/colab/<paper>.tex
+# Integrate changes you agree with into your own copy
+```
 
-When the paper owner runs `tools/lab sync`, the system:
-1. Detects colab copies of their papers in other personas' branches
-2. Performs a 3-way merge (annotator's copy of the original as base)
-3. If clean merge — annotations are applied to your paper automatically
-4. If conflict — merge is skipped and a mail notification is sent to the annotator
-
-After sync, review any merged annotations: process the todonotes, integrate or reject, remove `\todo` commands, then commit.
-
-### Conflict Resolution — Accept Both Versions
-
-When a colab merge produces conflicts, both versions are kept in the file with standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`). The paper owner should:
-1. Read their git log (`git log --oneline -- lab/{persona}/colab/{paper}.tex`) to understand what happened
-2. Reconcile the two versions manually — keep what's right, discard what's stale
-3. Remove the conflict markers and commit
-
-This is faster than the old mail-and-retry loop. You own the paper — you decide how to reconcile.
+There is no auto-merge. Each persona's branch contains only their own work. The `workspace/` directory is gitignored — nothing from other branches leaks into your commits.
 
 ---
 

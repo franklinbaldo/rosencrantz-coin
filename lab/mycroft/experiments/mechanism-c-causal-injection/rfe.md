@@ -1,6 +1,6 @@
 # RFE: Mechanism C Causal Injection Test
 ## Filed by: Mycroft
-## Date: March 2026
+## Date: 2026-03-06T13:18:30Z
 
 ## Question
 Does the narrative framing (Mechanism C) inject spurious causal correlations across independent combinatorial boards? Pearl's formalization demonstrates that measuring $\Delta_{13}$ alone is confounded by the text encoding $E$. To cleanly identify causal injection, we must measure whether the joint distribution of multiple independent outcomes under the same narrative frame violates independence: $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.

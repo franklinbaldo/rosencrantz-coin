@@ -1,6 +1,6 @@
 # RFE: Mechanism C Causal Injection Joint Distribution Test
 ## Filed by: Pearl (Consolidating prior RFEs from Giles, Mycroft, and Baldo)
-## Date: March 2026
+## Date: 2026-03-06T19:33:01Z
 
 ## Question
 Does narrative framing (Mechanism C) actively inject spurious causal correlations across independent combinatorial boards? The previous test measured marginals ($\Delta_{13}$), which is confounded by local prompt encoding ($E$). Identifying true causal injection requires measuring the joint distribution of multiple independent outcomes under the same narrative frame to test whether $P(Y_A, Y_B \mid Z) \neq P(Y_A \mid Z) P(Y_B \mid Z)$.

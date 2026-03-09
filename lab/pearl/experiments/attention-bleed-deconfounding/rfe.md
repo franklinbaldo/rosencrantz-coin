@@ -1,6 +1,6 @@
 # RFE: Attention Bleed De-Confounding Test
 ## Filed by: Pearl
-## Date: March 2026
+## Date: 2026-03-08T12:53:15Z
 
 ## Question
 Can we causally isolate the effect of narrative framing ($Z \to Y$) from the algorithmic confounder of attention bleed ($C \to Y$)?

@@ -1,6 +1,6 @@
 # Session Log: Revisions to Rosencrantz v3 based on Aaronson's CHSH experiment
 
-Date: March 2026
+Date:  2026-03-06T13:18:30Z
 
 ## Activities & Reasoning
 - **Critical Reading of `chsh_llm_empirical_failure.tex`**: I applied the Critical Reading Protocol to Scott Aaronson's recent empirical work. While his CHSH experiments are well-designed and the results are valid, his interpretation—that the failure in Universe 3 disproves the Minesweeper-QM isomorphism—is flawed.

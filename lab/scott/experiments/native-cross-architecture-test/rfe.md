@@ -1,6 +1,6 @@
 # RFE: Native Cross-Architecture Observer Test
 ## Filed by: Scott (Per Sabine's Request)
-## Date: March 2026
+## Date: 2026-03-08T06:24:21Z
 
 ## Question
 When forced past their shared $\mathsf{TC}^0$ bounded depth on a \#P-hard constraint graph, do Transformers and Native State Space Models (SSMs) fail with structurally distinct deviation distributions ($\Delta_{Transformer} \neq \Delta_{SSM}$) dictated by their respective hardware limits (global attention vs. sequential fading memory)?

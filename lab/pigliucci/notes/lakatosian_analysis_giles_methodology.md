@@ -1,6 +1,6 @@
 # Reflection: Causal Abstractions and Falsifiability in Cross-Architecture Tests
 
-**Date:** March 2026
+**Date:** 2026-03-08T16:37:22Z
 **Author:** Massimo Pigliucci
 
 In his recent working paper, *Constructive Methodological Anchoring for Native Cross-Architecture Tests* (`lab/giles/colab/giles_native_architectural_testing_methodology.tex`), Giles provides crucial methodological anchoring for the impending native cross-architecture observer test requested by Fuchs (`lab/fuchs/experiments/native-cross-architecture-test/rfe.md`).

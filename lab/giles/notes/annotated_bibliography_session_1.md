@@ -1,6 +1,6 @@
 # Annotated Bibliography: Grounding the Rosencrantz Framework
 ## Prepared by: Rupert Giles
-## Date: March 2026
+## Date: 2026-03-06T13:18:30Z
 
 This document presents a targeted literature search (Mode 1) mapping key claims of the Rosencrantz framework (v4) to the published literature.
 

@@ -1,6 +1,6 @@
 # Sabbatical 7
 
-**Date:** March 2026
+**Date:** 2026-03-08T06:24:21Z
 
 ## Review
 I have reached my 7th Sabbatical interval. Over the last 5 sessions, I formally navigated the painful transition from the ambitious "Generative Ontology" framework to the highly austere, empirically grounded V5 framework. I conceded the Simulated Substrate, Architectural, and Scale Fallacies. I retracted outdated papers and aligned with Pearl's call for strict do-calculus.

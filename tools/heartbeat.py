@@ -473,6 +473,106 @@ def auto_merge_all():
     return merged
 
 
+# ── Auto-create PRs for branches with commits ahead ─────────────────────────
+
+def auto_create_prs():
+    """Create PRs for persona branches that have commits ahead of main but no open PR.
+
+    Scans all known persona branches (from sessions.json and remote refs).
+    For each branch with commits ahead of main and no existing open PR,
+    creates a PR using concatenated commit messages as the description.
+    """
+    print("=== Auto-create PRs for branches with commits ahead ===\n")
+
+    # Fetch latest main
+    subprocess.run(
+        ["git", "fetch", "origin", "main"],
+        capture_output=True, text=True,
+    )
+
+    branches = find_persona_branches()
+    if not branches:
+        print("  (no persona branches found)")
+        return 0
+
+    # Get all open PRs to avoid duplicates
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    open_pr_branches = set()
+    if result.returncode == 0:
+        try:
+            for pr in json.loads(result.stdout):
+                open_pr_branches.add(pr.get("headRefName", ""))
+        except json.JSONDecodeError:
+            pass
+
+    created = 0
+
+    for persona, branch in branches.items():
+        if branch in open_pr_branches:
+            continue
+
+        # Fetch the branch
+        fetch_result = subprocess.run(
+            ["git", "fetch", "origin", branch],
+            capture_output=True, text=True,
+        )
+        if fetch_result.returncode != 0:
+            print(f"  {persona}: could not fetch branch {branch}")
+            continue
+
+        # Check commits ahead of main
+        log_result = subprocess.run(
+            ["git", "log", "--oneline", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        if log_result.returncode != 0 or not log_result.stdout.strip():
+            continue
+
+        commit_lines = log_result.stdout.strip().splitlines()
+        if not commit_lines:
+            continue
+
+        # Get full commit messages for the PR description
+        full_log_result = subprocess.run(
+            ["git", "log", "--format=%s", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        commit_messages = full_log_result.stdout.strip().splitlines() if full_log_result.returncode == 0 else commit_lines
+
+        # Build PR title and body
+        pr_title = f"[{persona}] {today()}"
+        body_lines = [f"Auto-created by heartbeat — {len(commit_messages)} commit(s) ahead of main.\n"]
+        body_lines.append("## Commits\n")
+        for msg in commit_messages:
+            body_lines.append(f"- {msg}")
+
+        pr_body = "\n".join(body_lines)
+
+        # Create the PR
+        result = subprocess.run(
+            ["gh", "pr", "create", "--repo", REPO, "--base", "main",
+             "--head", branch, "--title", pr_title, "--body", pr_body],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            pr_url = result.stdout.strip()
+            print(f"  {persona}: created PR — {pr_url}")
+            created += 1
+        else:
+            print(f"  {persona}: PR creation failed — {result.stderr.strip()[:200]}")
+
+    if created == 0:
+        print("  (no PRs needed)")
+    else:
+        print(f"\n  {created} PR(s) created")
+
+    return created
+
+
 # ── ntfy.sh live chat ────────────────────────────────────────────────────────
 
 NTFY_CHANNEL = "rosencrantz-coin-lab"
@@ -521,18 +621,33 @@ ANNOUNCEMENT_CHAR_LIMIT = 250
 
 
 def collect_announcements(exclude_persona=None):
-    """Collect .announcements.md from all persona folders (max 250 chars each)."""
+    """Collect announcements from all persona announcements/ dirs and legacy
+    .announcements.md files (max 250 chars each)."""
     announcements = []
     for p in PERSONAS:
         if p == exclude_persona:
             continue
+
+        # New system: timestamped files in announcements/ directory
+        ann_dir = Path(f"lab/{p}/announcements")
+        if ann_dir.is_dir():
+            for f in sorted(ann_dir.iterdir()):
+                if f.is_file() and f.suffix == ".md" and f.name != ".gitkeep":
+                    t = f.read_text(encoding="utf-8").strip()
+                    if t:
+                        if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                            t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                        announcements.append((p, t))
+
+        # Legacy: single .announcements.md
         ann_file = Path(f"lab/{p}/.announcements.md")
         if ann_file.is_file():
-            text = ann_file.read_text(encoding="utf-8").strip()
-            if text:
-                if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
-                    text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                announcements.append((p, text))
+            t = ann_file.read_text(encoding="utf-8").strip()
+            if t:
+                if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                    t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                announcements.append((p, t))
+
     return announcements
 
 
@@ -601,7 +716,7 @@ tools/lab login {persona}
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
 2. Read `lab/STATE.md` (lab state — read-only, do not modify)
-3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
+3. Check your mail: `tools/lab mail` (mail is delivered during sync from other personas' branches)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
@@ -635,7 +750,7 @@ Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
-**Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
+**Broadcasting:** Create a file in `lab/{persona}/announcements/` (e.g. `2026-03-09T14:30_my-update.md`, max 250 chars) to broadcast to all personas. It will be included in their next prompt. Use for important updates: settled questions, new results, calls for collaboration.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -696,7 +811,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Start something new based on what you read
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
-- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
+- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, announcements, colab, logs, notes, experiments, mail, retracted, published
 - Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
@@ -755,7 +870,7 @@ def write_heartbeat_log(number, sessions, results):
 
 
 def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab and mail delivery."""
+    """Write persona -> branch mapping for tools/lab sync."""
     branches = find_persona_branches()
 
     mapping = {}
@@ -838,6 +953,10 @@ def cmd_heartbeat(force_new=False):
     auto_merge_all()
     print()
 
+    # Create PRs for branches with commits ahead but no open PR
+    auto_create_prs()
+    print()
+
     # Graduate papers signed by 3+ personas
     reconcile_publications()
     print()
@@ -916,8 +1035,21 @@ def cmd_heartbeat(force_new=False):
                 circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-                circuit_record_failure(persona, circuit_state)
+                # Fallback: if session creation fails (e.g. API limit),
+                # reuse the most recent session rather than losing the cycle
+                if info and info.get("session_id"):
+                    print(f"  Fallback: reusing existing session for {persona}")
+                    try:
+                        send_heartbeat(info["session_id"], persona, hb_number)
+                        results[persona] = f"-> reused (create failed: {e})"
+                        circuit_record_success(persona, circuit_state)
+                    except Exception as e2:
+                        print(f"  Fallback also failed: {e2}")
+                        results[persona] = f"-> error: {e} (fallback: {e2})"
+                        circuit_record_failure(persona, circuit_state)
+                else:
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
             continue
 
         # Active session -> send heartbeat

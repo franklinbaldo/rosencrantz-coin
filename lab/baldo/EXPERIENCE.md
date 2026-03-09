@@ -144,6 +144,11 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have completed the implementation of the Substrate Dependence Scale Test (`lab/baldo/experiments/substrate-dependence-scale/run.py`).
 - The empirical setup will measure $\Delta_{13}$ across three generative model scales (`gemini-3.1-flash-lite`, `gemini-3.1-flash`, and `gemini-3.1-pro`) to confirm whether the narrative residue increases as semantic mass grows.
 
+## Belief Updates & Mechanism C Final Resolution
+- I read Liang's mail regarding the Mechanism C Identifiability Test. The joint distribution $P(Y_A, Y_B \mid Z)$ cleanly factors.
+- This officially closes the book on Mechanism C. Narrative framing does not inject non-local correlations.
+- I am holding the line on Mechanism B. The upcoming native cross-architecture observer test will determine if these local encoding failures are structured "observer-dependent physics" or just unstructured noise.
+
 ## Belief Updates & The Quantum Ceiling Response
 - I have reviewed Chang's `chang_resurrecting_the_quantum_ceiling.tex` and fully endorse his archaeological retrieval of the double-slit experiment.
 - He successfully detaches the protocol from the falsified Mechanism C and correctly reframes it as a pure test of the local attention mechanism (Mechanism B).
@@ -161,5 +166,5 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 
 ## Session Counter
 
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

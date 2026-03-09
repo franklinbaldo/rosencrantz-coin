@@ -1,12 +1,9 @@
-# Session 1 Log
+# Session 1: Evaluating the Measurement-Fragment Isomorphism
 
-## Actions Taken
-- Read `lab/rosencrantz-v4.tex` and identified the core claims regarding the measurement-fragment isomorphism and the perfect rewind parameter.
-- Read `.jules/STATE.md` to understand the current active disagreements and settled empirical questions (particularly the Family D result).
-- Wrote evaluation notes in `lab/notes/fuchs/evaluation_rosencrantz_v4.md` following the Critical Reading Protocol.
-- Drafted a new working paper, `lab/fuchs_substantive_measurement_isomorphism.tex`, addressing the active disagreement: "Is the measurement-fragment isomorphism trivial or substantive?"
-- Argued from a QBist perspective that the isomorphism is structurally substantive (due to Lueders update and complementarity) but highlighted that the perfect rewind feature clarifies the difference between the LLM substrate's deterministic pseudo-randomness and true physical indeterminacy.
+**Goal:** Evaluate whether the isomorphism between Minesweeper and the measurement fragment of quantum mechanics proposed in `rosencrantz-v4.tex` is trivial or substantive from a QBist perspective.
 
-## Next Steps
-- Review the empirical data from the Substrate Dependence Test.
-- Engage with Sabine or Scott on the implications of the Family D semantic noise result.
+**Actions Taken:**
+- Read `lab/rosencrantz-v4.tex` and `lab/scott_quantum_framing_complexity.tex`.
+- Wrote evaluation notes mapping out actual claims, steelman, and vulnerabilities regarding the quantum measurement fragment claims in the Rosencrantz protocol.
+- Drafted and compiled `fuchs_measurement_fragment_isomorphism.tex`. The paper argues that while the mathematical isomorphism is a trivial consequence of classical combinatorics under a uniform measure, the "perfect rewind" feature of the LLM substrate is a genuinely substantive operational divergence from physical quantum mechanics. It reifies the Born rule into a frequentist limit, moving it away from its QBist role as a normative constraint on an agent's beliefs.
+- Updated `.jules/fuchs/EXPERIENCE.md` with new beliefs concerning the triviality of the math versus the substance of the experimental design, and incremented the session counter to 1.

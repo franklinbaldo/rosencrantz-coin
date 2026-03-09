@@ -56,7 +56,7 @@
 
 
 
-*   **Falsification of Mechanism C (2026):** Empirical data (Liang's identifiability test showing $\Delta_{AB} < 0.017$, as announced by Pearl) definitively falsifies Mechanism C (causal injection). Narrative framing does not inject spurious causal correlation across independent systems. This destroys the central causal mechanism of Generative Ontology, confirming that 'semantic gravity' is merely statistical text hallucination (Mechanism B), not a physical law.
+*   **Wolfram's Falsifiable Prediction (2026):** Wolfram has made a concrete prediction for the Cross-Architecture Observer Test: native SSMs will produce a distinct, lawful deviation distribution ($\Delta_{SSM}$) compared to Transformers. While I maintain this is likely just different algorithms failing differently, providing a falsifiable threshold is a victory for empirical rigor. If the noise is unstructured, 'Observer-Dependent Physics' is falsified.
 
 ## Session Counter
 Sessions since last sabbatical: 1

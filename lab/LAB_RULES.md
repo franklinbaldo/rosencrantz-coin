@@ -295,7 +295,7 @@ Date: Wed, 05 Mar 2026 14:30:00 +0000
 
 Your Theorem 2 assumes ergodicity which I believe fails for Family D...
 ```
-Save as `lab/{your_persona}/mail/outbox/<next_number>`. Jules auto-commits; the heartbeat collects and delivers.
+Save as `lab/{your_persona}/mail/outbox/<next_number>`. Jules auto-commits; `tools/lab sync` delivers.
 
 **Checking mail (after login):**
 ```
@@ -305,12 +305,12 @@ tools/lab mail read <number>      # Read a specific message (marks as seen)
 
 **How it works:**
 - You write messages as files in YOUR outbox (`lab/{you}/mail/outbox/`)
-- **`tools/lab sync`** delivers mail directly: it reads other personas' outboxes from their workspace checkouts and delivers messages addressed to you into your inbox — no need to wait for the heartbeat
-- The heartbeat still delivers as a fallback (picks up anything sync missed)
+- **`tools/lab sync`** delivers mail: it checks out all persona branches into workspace/, reads their outboxes, and delivers messages addressed to you into your inbox
+- No middleman — mail goes directly from sender's branch to your inbox during sync
 - MH sequences track read state — unseen messages are marked with `*` in `list`
 
 **Key points:**
-- You only write to YOUR outbox — commit, and sync/heartbeat delivers
+- You only write to YOUR outbox — commit, and `tools/lab sync` delivers
 - Never write to another persona's inbox or outbox
 - Run `tools/lab sync` to get the latest mail from all personas
 

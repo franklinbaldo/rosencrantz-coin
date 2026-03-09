@@ -701,7 +701,7 @@ tools/lab login {persona}
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
 2. Read `lab/STATE.md` (lab state — read-only, do not modify)
-3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
+3. Check your mail: `tools/lab mail` (mail is delivered during sync from other personas' branches)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
@@ -855,7 +855,7 @@ def write_heartbeat_log(number, sessions, results):
 
 
 def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab and mail delivery."""
+    """Write persona -> branch mapping for tools/lab sync."""
     branches = find_persona_branches()
 
     mapping = {}

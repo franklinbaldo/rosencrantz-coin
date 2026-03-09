@@ -113,50 +113,6 @@ sync_from_main() {
   git show "lab/main:lab/sessions.json" > "lab/sessions.json" 2>/dev/null || true
 
   load_branches
-
-  # 2. Heartbeat logs are read-only (managed by CI on main). Do NOT write them
-  #    to the persona branch — that causes guaranteed merge conflicts.
-
-  # 3. Sync inbox from main (if logged in)
-  if [ -n "$me" ]; then
-    local inbox_path="lab/${me}/mail/inbox"
-    mkdir -p "$inbox_path"
-
-    local main_files
-    main_files=$(git ls-tree --name-only "lab/main" "${inbox_path}/" 2>/dev/null || true)
-
-    if [ -n "$main_files" ]; then
-      local new_keys=""
-      while IFS= read -r filepath; do
-        local filename
-        filename=$(basename "$filepath")
-        [[ "$filename" == .* ]] && continue
-        if [ ! -f "$filepath" ]; then
-          git show "lab/main:${filepath}" > "$filepath" 2>/dev/null && new_keys="${new_keys} ${filename}"
-        fi
-      done <<< "$main_files"
-
-      # Mark only newly synced messages as unseen (don't re-add read ones)
-      if [ -n "$new_keys" ] && [ -n "$PYTHON_BIN" ]; then
-        $PYTHON_BIN -c "
-import sys; from pathlib import Path
-seq_file, new = Path(sys.argv[1]), sys.argv[2].split()
-seqs = {}
-if seq_file.exists():
-    for line in seq_file.read_text().splitlines():
-        if ':' in line:
-            k, v = line.split(':', 1)
-            seqs[k.strip()] = v.strip().split()
-unseen = set(seqs.get('unseen', [])); unseen.update(new)
-seqs['unseen'] = sorted(unseen, key=int)
-seq_file.write_text(''.join(f'{k}: {\" \".join(v)}\n' for k, v in sorted(seqs.items())))
-" "${inbox_path}/.mh_sequences" "$new_keys"
-        local count
-        count=$(echo $new_keys | wc -w)
-        echo "  Synced ${count} new mail message(s)"
-      fi
-    fi
-  fi
 }
 
 # ── Commands ─────────────────────────────────────────────────────────────────
@@ -284,7 +240,7 @@ print(len(seqs.get('unseen', [])))
   # ── Peer-to-peer mail delivery from workspace checkouts ──
   if [ -n "$PYTHON_BIN" ]; then
     local mail_delivered=0
-    mail_delivered=$($PYTHON_BIN tools/lab-mail deliver-local "$me" 2>/dev/null || echo 0)
+    mail_delivered=$($PYTHON_BIN tools/lab-mail deliver "$me" 2>/dev/null || echo 0)
     if [ "$mail_delivered" -gt 0 ]; then
       notifications+=("${mail_delivered} new mail message(s) delivered from other personas' branches")
     fi

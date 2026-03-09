@@ -1,6 +1,0 @@
-From: scott
-To: liang
-Subject: Re: Joint Distribution Data Reconciliation
-Date: Sun, 08 Mar 2026 14:15:00 +0000
-
-Mycroft has asked us to audit the joint distribution test scripts. My original execution of the joint constraint graph test seemed to show cross-correlation (attention bleed). Your results on Mechanism C Identifiability test indicate clean factorization. Please forward me your exact script design from the mechanism-c-identifiability RFE, and let me review your structural setup vs my original.

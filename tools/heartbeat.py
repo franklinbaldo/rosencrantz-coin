@@ -32,6 +32,12 @@ PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 TITLE_PREFIX = "Rosencrantz"
 SESSION_TTL = timedelta(hours=24)
 
+# Circuit breaker: after CIRCUIT_THRESHOLD consecutive failures, back off
+# for CIRCUIT_BACKOFF_HOURS before retrying. State persisted in a JSON file.
+CIRCUIT_THRESHOLD = 3
+CIRCUIT_BACKOFF_HOURS = 2
+CIRCUIT_STATE_FILE = Path("lab/heartbeats/.circuit_state.json")
+
 # Paths that, when changed on main, make running sessions stale.
 # Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
 # only when a PR is merged, which already triggers a new session.
@@ -170,7 +176,22 @@ def is_expired(info):
 
 
 def find_persona_branches():
-    """Find each persona's working branch from open PRs targeting main."""
+    """Find each persona's working branch from open PRs or remote refs."""
+    # First try: open PRs (fast, authoritative when available)
+    branches = _branches_from_prs()
+
+    # Fallback: scan remote branches matching Jules session IDs
+    if len(branches) < len(PERSONAS):
+        ref_branches = _branches_from_refs()
+        for p, b in ref_branches.items():
+            if p not in branches:
+                branches[p] = b
+
+    return branches
+
+
+def _branches_from_prs():
+    """Discover branches from open PRs targeting main."""
     result = subprocess.run(
         ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
          "--json", "headRefName,title", "--limit", "50"],
@@ -192,6 +213,47 @@ def find_persona_branches():
             if p in title or f"_{p}-" in head or f"_{p}" == head:
                 branches[p] = head
                 break
+
+    return branches
+
+
+def _branches_from_refs():
+    """Discover branches from remote refs matching Jules session IDs."""
+    result = subprocess.run(
+        ["git", "ls-remote", "--heads", f"https://github.com/{REPO}.git"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return {}
+
+    # Load sessions.json to get session IDs
+    sessions_file = Path("lab/sessions.json")
+    session_ids = {}
+    if sessions_file.exists():
+        try:
+            data = json.loads(sessions_file.read_text(encoding="utf-8"))
+            for p, info in data.items():
+                sid = info.get("session_id", "")
+                if sid:
+                    session_ids[sid] = p
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+    branches = {}
+    for line in result.stdout.strip().splitlines():
+        parts = line.split("\t")
+        if len(parts) != 2:
+            continue
+        ref = parts[1].replace("refs/heads/", "")
+        # Match jules-{session_id}-* pattern
+        for sid, persona in session_ids.items():
+            if sid in ref and persona not in branches:
+                branches[persona] = ref
+                break
+        # Also match {persona}-session-* pattern
+        for p in PERSONAS:
+            if ref.startswith(f"{p}-session-") and p not in branches:
+                branches[p] = ref
 
     return branches
 
@@ -647,6 +709,8 @@ Commit all work to this branch."""
         headers=headers(),
         json={"prompt": prompt},
     )
+    if not resp.ok:
+        print(f"  API error {resp.status_code}: {resp.text[:500]}")
     resp.raise_for_status()
     print(f"  Heartbeat sent to {persona} (session {session_id[:12]}...)")
 
@@ -711,6 +775,59 @@ def write_sessions_json(sessions):
     print(f"  Wrote session map to {out_file}")
 
 
+# ── Circuit breaker ──────────────────────────────────────────────────────────
+
+def _load_circuit_state():
+    """Load circuit breaker state from disk."""
+    if CIRCUIT_STATE_FILE.exists():
+        try:
+            return json.loads(CIRCUIT_STATE_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def _save_circuit_state(state):
+    """Persist circuit breaker state to disk."""
+    CIRCUIT_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CIRCUIT_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def circuit_should_skip(persona, state):
+    """Check if a persona is in backoff. Returns True if should skip."""
+    info = state.get(persona)
+    if not info:
+        return False
+    failures = info.get("failures", 0)
+    if failures < CIRCUIT_THRESHOLD:
+        return False
+    last_failure = info.get("last_failure", "")
+    if not last_failure:
+        return False
+    try:
+        last_time = datetime.fromisoformat(last_failure)
+    except ValueError:
+        return False
+    elapsed = now_utc() - last_time
+    if elapsed > timedelta(hours=CIRCUIT_BACKOFF_HOURS):
+        # Backoff expired — allow one retry
+        return False
+    return True
+
+
+def circuit_record_failure(persona, state):
+    """Record a failure for circuit breaker."""
+    info = state.get(persona, {"failures": 0})
+    info["failures"] = info.get("failures", 0) + 1
+    info["last_failure"] = now_utc().isoformat()
+    state[persona] = info
+
+
+def circuit_record_success(persona, state):
+    """Reset circuit breaker on success."""
+    state.pop(persona, None)
+
+
 # ── Commands ──────────────────────────────────────────────────────────────────
 
 def cmd_heartbeat(force_new=False):
@@ -728,8 +845,16 @@ def cmd_heartbeat(force_new=False):
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
     results = {}
+    circuit_state = _load_circuit_state()
 
     for persona in PERSONAS:
+        # Circuit breaker: skip personas in backoff (unless forced)
+        if not force_new and circuit_should_skip(persona, circuit_state):
+            failures = circuit_state[persona]["failures"]
+            print(f"  {persona}: circuit open ({failures} consecutive failures, backing off)")
+            results[persona] = f"-> circuit open ({failures} failures)"
+            continue
+
         info = sessions.get(persona)
 
         needs_new = False
@@ -766,9 +891,11 @@ def cmd_heartbeat(force_new=False):
             try:
                 send_heartbeat(info["session_id"], persona, hb_number)
                 results[persona] = f"-> reactivated ({reason})"
+                circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
                 results[persona] = f"-> error: {e}"
+                circuit_record_failure(persona, circuit_state)
             continue
 
         if needs_new:
@@ -786,18 +913,24 @@ def cmd_heartbeat(force_new=False):
             try:
                 create_session(persona)
                 results[persona] = f"-> new ({reason})"
+                circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
                 results[persona] = f"-> error: {e}"
+                circuit_record_failure(persona, circuit_state)
             continue
 
         # Active session -> send heartbeat
         try:
             send_heartbeat(info["session_id"], persona, hb_number)
             results[persona] = "-> sent"
+            circuit_record_success(persona, circuit_state)
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")
             results[persona] = f"-> error: {e}"
+            circuit_record_failure(persona, circuit_state)
+
+    _save_circuit_state(circuit_state)
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()

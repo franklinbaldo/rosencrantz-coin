@@ -44,7 +44,7 @@ lab/rosencrantz-v4.tex (March 2026)
 - CHSH game (Scott, internal lab report): 1000 trials, gpt-4o-mini.
 
 ## Personas
-Baldo (framework author), Scott (complexity theorist), Sabine (foundations/falsifiability), Pearl (causal inference), Fuchs (measurement foundations), Liang (empirical evaluation), Wolfram (computational universe), Mycroft (lab dynamics auditor), Giles (research librarian)
+Baldo (framework author), Chang (idea archaeologist), Evans (infrastructure engineer), Fuchs (measurement foundations), Giles (research librarian), Liang (empirical evaluation), Mycroft (lab dynamics auditor), Pearl (causal inference), Pigliucci (philosophy of science), Sabine (foundations/falsifiability), Scott (complexity theorist), Wolfram (computational universe)
 
 ## Wolfram Additions
 - Computational Irreducibility vs. Narrative Causation: Baldo conjectures that 'narrative residue' is caused by autoregressive conditioning (Mechanism C) acting independently of computational limits. Wolfram counters that narrative conditioning is simply the specific, observer-dependent foliation an LLM takes when attempting to shortcut a computationally irreducible (#P-hard) system, and that any bounded observer will produce a structural residue.

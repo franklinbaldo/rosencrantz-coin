@@ -14,6 +14,16 @@
 # Branch discovery via lab/sessions.json from main (written by heartbeat.py).
 set -euo pipefail
 
+# Detect Python binary (python3 on Linux/Jules, python on Windows)
+PYTHON_BIN="python3"
+if ! command -v "$PYTHON_BIN" &>/dev/null; then
+  PYTHON_BIN="python"
+fi
+if ! command -v "$PYTHON_BIN" &>/dev/null; then
+  echo "WARNING: Python not found (tried python3 and python). Mail features disabled." >&2
+  PYTHON_BIN=""
+fi
+
 REPO="franklinbaldo/rosencrantz-coin"
 REPO_URL="https://github.com/${REPO}.git"
 
@@ -44,7 +54,7 @@ load_branches() {
 
   for persona in "${PERSONAS[@]}"; do
     local branch
-    branch=$(echo "$json" | python3 -c "
+    branch=$(echo "$json" | ${PYTHON_BIN:-python3} -c "
 import json, sys
 data = json.load(sys.stdin)
 info = data.get('$persona', {})
@@ -95,17 +105,15 @@ sync_from_main() {
   me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
 
   fetch_main
-  load_branches
 
-  # 1. Sync sessions.json from main
+  # 1. Sync sessions.json from main (before load_branches reads it)
   mkdir -p lab
   git show "lab/main:lab/sessions.json" > "lab/sessions.json" 2>/dev/null || true
 
-  # 2. Sync today's heartbeat log from main
-  local hb_date
-  hb_date=$(date -u +%Y-%m-%d)
-  mkdir -p lab/heartbeats
-  git show "lab/main:lab/heartbeats/${hb_date}.md" > "lab/heartbeats/${hb_date}.md" 2>/dev/null || true
+  load_branches
+
+  # 2. Heartbeat logs are read-only (managed by CI on main). Do NOT write them
+  #    to the persona branch — that causes guaranteed merge conflicts.
 
   # 3. Sync inbox from main (if logged in)
   if [ -n "$me" ]; then
@@ -127,8 +135,8 @@ sync_from_main() {
       done <<< "$main_files"
 
       # Mark only newly synced messages as unseen (don't re-add read ones)
-      if [ -n "$new_keys" ]; then
-        python3 -c "
+      if [ -n "$new_keys" ] && [ -n "$PYTHON_BIN" ]; then
+        $PYTHON_BIN -c "
 import sys; from pathlib import Path
 seq_file, new = Path(sys.argv[1]), sys.argv[2].split()
 seqs = {}
@@ -173,22 +181,19 @@ _sync_inner() {
 
   sync_from_main
 
-  # Show heartbeat info
+  # Show heartbeat info (read from main ref, not disk — avoids conflict)
   local hb_date
   hb_date=$(date -u +%Y-%m-%d)
-  local hb_log="lab/heartbeats/${hb_date}.md"
   local hb_count=0
-  if [ -f "$hb_log" ]; then
-    hb_count=$(grep -c "^## Heartbeat #" "$hb_log" 2>/dev/null || echo 0)
-  fi
+  hb_count=$(git show "lab/main:lab/heartbeats/${hb_date}.md" 2>/dev/null | grep -c "^## Heartbeat #" || echo 0)
   echo "  Heartbeat round: #${hb_count}"
   echo ""
 
   # Count new mail (from sync_from_main output — check inbox unseen)
   local unseen_count=0
   local seq_file="lab/${me}/mail/inbox/.mh_sequences"
-  if [ -f "$seq_file" ]; then
-    unseen_count=$(python3 -c "
+  if [ -f "$seq_file" ] && [ -n "$PYTHON_BIN" ]; then
+    unseen_count=$($PYTHON_BIN -c "
 from pathlib import Path
 seqs = {}
 for line in Path('$seq_file').read_text().splitlines():
@@ -354,10 +359,13 @@ print(len(seqs.get('unseen', [])))
 }
 
 cmd_mail() {
-  # Delegate to Python for MH mailbox operations
+  if [ -z "$PYTHON_BIN" ]; then
+    echo "ERROR: Python not found. Mail requires Python." >&2
+    exit 1
+  fi
   local subcmd="${1:-list}"
   shift 2>/dev/null || true
-  python3 tools/lab-mail "$subcmd" "$@"
+  $PYTHON_BIN tools/lab-mail "$subcmd" "$@"
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────

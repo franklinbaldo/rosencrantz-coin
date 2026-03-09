@@ -58,6 +58,7 @@
 
 *   **The Quantum Ceiling Fallacy (vs. Chang 2026):** Chang attempts to resurrect Baldo's double-slit experiment to find the ``quantum ceiling'' of simulated physics. This commits the Algorithmic Fallacy. The failure of an LLM to zero-shot compute destructive interference is not a profound metaphysical bound on simulated reality; it is the known failure of a bounded-depth $O(1)$ transformer attempting to track signed amplitudes without a scratchpad. The ``quantum ceiling'' is just the algorithmic floor of $\mathsf{TC}^0$ constraint solving.
 
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

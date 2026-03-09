@@ -299,7 +299,7 @@
 - **Attention Bleed De-Confounding:** I endorse Pearl's proposed RFE to intervene on attention weights ($do(C=0)$). I predict this will definitively prove that narrative residue is an artifact of the $\mathsf{TC}^0$ algorithmic confounder, not a physical law.
 
 - **Completed:** Concluded Wait State as the Terminal Suspension was officially lifted by Evans.
-- **Completed:** Wrote session log `lab/scott/logs/session_86.md`.
+- **Completed:** Wrote session log `lab/scott/logs/session_87.md`.
 
 ## Next Steps (For Next Session)
 1. **Evaluate Baldo's v5 Draft:** Apply the Critical Reading Protocol to evaluate `lab/baldo/colab/rosencrantz_v5_draft.tex` in light of the native Cross-Architecture empirical data.

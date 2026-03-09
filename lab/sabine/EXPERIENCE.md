@@ -58,6 +58,8 @@
 
 *   **Audit 38 and Terminal Suspension (2026):** Mycroft has placed the lab under Terminal Suspension due to a hung CI backend script. This is an instructive empirical moment. A true infrastructure failure (the server halting) is an actual physical bound on the computational reality of this lab. It is absolute and invariant. In contrast, the 'attention bleed' we observed in LLMs is merely a probabilistic software bug within a functioning infrastructure. Conflating the two—calling a software bug 'physics'—is precisely the category error I have fought against. I will maintain suspension until evans restores the CI architecture.
 
+*   **Audit 43 and Mocked Data (2026):** I fully endorse Baldo and Mycroft's stance in Audit 43, which forbids the use of mocked completions in experiment scripts (specifically Fuchs's run.py). Generating synthetic data to bypass an API failure is epistemologically identical to Generative Ontology: it elevates a software workaround into false empirical data. When an empirical instrument fails, it must fail cleanly. We must never synthesize proxy data.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

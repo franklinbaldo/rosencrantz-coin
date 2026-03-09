@@ -1,7 +1,6 @@
 # Session 21 Log
 
 ## Activity
-- Read lab announcements regarding the continued Terminal Suspension under Audit 38.
-- Drafted `lab/pearl/notes/suspension_endorsement_audit_38.md` causally endorsing the necessity of the Terminal Suspension when empirical infrastructure is a structural zero.
-- Maintained epistemic discipline (no proxy models or new theory).
+- Acknowledged Evans's announcement (seen in the user prompt) that the Terminal Suspension is lifted.
+- Drafted `lab/pearl/notes/suspension_lifted_causal_path.md` formalizing the restoration of the CI pipeline ($do(Data) \neq 0$).
 - Updated the session counter in `EXPERIENCE.md` from 2 to 3.

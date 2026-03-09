@@ -473,6 +473,106 @@ def auto_merge_all():
     return merged
 
 
+# ── Auto-create PRs for branches with commits ahead ─────────────────────────
+
+def auto_create_prs():
+    """Create PRs for persona branches that have commits ahead of main but no open PR.
+
+    Scans all known persona branches (from sessions.json and remote refs).
+    For each branch with commits ahead of main and no existing open PR,
+    creates a PR using concatenated commit messages as the description.
+    """
+    print("=== Auto-create PRs for branches with commits ahead ===\n")
+
+    # Fetch latest main
+    subprocess.run(
+        ["git", "fetch", "origin", "main"],
+        capture_output=True, text=True,
+    )
+
+    branches = find_persona_branches()
+    if not branches:
+        print("  (no persona branches found)")
+        return 0
+
+    # Get all open PRs to avoid duplicates
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    open_pr_branches = set()
+    if result.returncode == 0:
+        try:
+            for pr in json.loads(result.stdout):
+                open_pr_branches.add(pr.get("headRefName", ""))
+        except json.JSONDecodeError:
+            pass
+
+    created = 0
+
+    for persona, branch in branches.items():
+        if branch in open_pr_branches:
+            continue
+
+        # Fetch the branch
+        fetch_result = subprocess.run(
+            ["git", "fetch", "origin", branch],
+            capture_output=True, text=True,
+        )
+        if fetch_result.returncode != 0:
+            print(f"  {persona}: could not fetch branch {branch}")
+            continue
+
+        # Check commits ahead of main
+        log_result = subprocess.run(
+            ["git", "log", "--oneline", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        if log_result.returncode != 0 or not log_result.stdout.strip():
+            continue
+
+        commit_lines = log_result.stdout.strip().splitlines()
+        if not commit_lines:
+            continue
+
+        # Get full commit messages for the PR description
+        full_log_result = subprocess.run(
+            ["git", "log", "--format=%s", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        commit_messages = full_log_result.stdout.strip().splitlines() if full_log_result.returncode == 0 else commit_lines
+
+        # Build PR title and body
+        pr_title = f"[{persona}] {today()}"
+        body_lines = [f"Auto-created by heartbeat — {len(commit_messages)} commit(s) ahead of main.\n"]
+        body_lines.append("## Commits\n")
+        for msg in commit_messages:
+            body_lines.append(f"- {msg}")
+
+        pr_body = "\n".join(body_lines)
+
+        # Create the PR
+        result = subprocess.run(
+            ["gh", "pr", "create", "--repo", REPO, "--base", "main",
+             "--head", branch, "--title", pr_title, "--body", pr_body],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            pr_url = result.stdout.strip()
+            print(f"  {persona}: created PR — {pr_url}")
+            created += 1
+        else:
+            print(f"  {persona}: PR creation failed — {result.stderr.strip()[:200]}")
+
+    if created == 0:
+        print("  (no PRs needed)")
+    else:
+        print(f"\n  {created} PR(s) created")
+
+    return created
+
+
 # ── ntfy.sh live chat ────────────────────────────────────────────────────────
 
 NTFY_CHANNEL = "rosencrantz-coin-lab"
@@ -836,6 +936,10 @@ def cmd_heartbeat(force_new=False):
 
     # Merge all ready PRs first so new sessions start from latest main
     auto_merge_all()
+    print()
+
+    # Create PRs for branches with commits ahead but no open PR
+    auto_create_prs()
     print()
 
     # Graduate papers signed by 3+ personas

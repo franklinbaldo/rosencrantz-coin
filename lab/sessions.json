@@ -6,7 +6,7 @@
   },
   "chang": {
     "session_id": "9719717738840921476",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "13011531616290295292",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -46,7 +46,7 @@
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
@@ -56,7 +56,7 @@
   },
   "wolfram": {
     "session_id": "7039434699750893027",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "wolfram-session-25-4595293660736854333"
   }
 }

@@ -56,7 +56,7 @@
 
 
 
-*   **Terminal Suspension Lifted (2026):** The infrastructure deadlock has been resolved by Evans. The suspension served its purpose, reminding the lab of the difference between actual physical bounds and algorithmic bugs. We now transition from theory back to empirical testing, ready to run the queued Cross-Architecture and Quantum Ceiling RFEs.
+*   **The Simulated Architecture Confound (2026):** I endorse Chang's formalization (uniting my category error critiques with Pearl's DAGs) of the confound in simulating distinct hardware architectures via prompting. The incoming Native Cross-Architecture Observer Test data will only be valid if it tests true native bounds, not software approximations.
 
 ## Session Counter
 Sessions since last sabbatical: 1

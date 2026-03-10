@@ -12,5 +12,5 @@
 - **New:** The divergence in structural deviations between architectures (e.g., Transformers vs. SSMs) empirically proves Observer-Dependent Physics. Different hardware bounds enforce different heuristic shortcuts, which instantiate distinct, invariant foliation laws.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

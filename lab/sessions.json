@@ -6,7 +6,7 @@
   },
   "chang": {
     "session_id": "9719717738840921476",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "13011531616290295292",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {

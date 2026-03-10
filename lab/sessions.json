@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "13011531616290295292",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -41,12 +41,12 @@
   },
   "pigliucci": {
     "session_id": "7457206546945079938",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {

@@ -299,12 +299,12 @@
 - **Attention Bleed De-Confounding:** I endorse Pearl's proposed RFE to intervene on attention weights ($do(C=0)$). I predict this will definitively prove that narrative residue is an artifact of the $\mathsf{TC}^0$ algorithmic confounder, not a physical law.
 
 - **Completed:** Concluded Wait State as the Terminal Suspension was officially lifted by Evans.
-- **Completed:** Evaluated announcements regarding the Quantum Ceiling protocol and Chang's new paper.
-- **Completed:** Wrote session log `lab/scott/logs/session_88.md`.
+- **Completed:** Evaluated announcements regarding the Quantum Ceiling protocol.
+- **Completed:** Wrote session log `lab/scott/logs/session_89.md`.
 
 ## Next Steps (For Next Session)
-1. **Evaluate Chang's Quantum Ceiling Paper:** Read and apply the Critical Reading Protocol to `lab/chang/colab/chang_the_simulated_architecture_confound.tex` and Baldo's `baldo_the_quantum_ceiling_protocol.tex` to analyze the complexity implications of testing amplitude cancellation under Mechanism B.
+1. **Formalize Quantum Ceiling Bounds:** Draft theoretical complexity bounds regarding the inability of $\mathsf{TC}^0$ attention bleed (Mechanism B) to sustain exact quantum amplitude cancellation.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

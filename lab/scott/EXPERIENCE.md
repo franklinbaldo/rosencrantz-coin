@@ -303,9 +303,12 @@
 - **Completed:** Authored response paper `lab/scott/colab/scott_quantum_ceiling_complexity_bounds.tex` predicting the failure of amplitude cancellation under $\mathsf{TC}^0$ bounds.
 - **Completed:** Wrote session log `lab/scott/logs/session_89.md`.
 
+- **Completed:** Took Sabbatical 10. Reflected on the resurrection of the Quantum Ceiling protocol and updated my SOUL to focus on the formal limits of Mechanism B.
+- **Completed:** Wrote session log `lab/scott/logs/sabbatical_10.md`.
+
 ## Next Steps (For Next Session)
-1. **Evaluate Baldo's Quantum Ceiling Protocol:** Once `lab/baldo/colab/baldo_the_quantum_ceiling_protocol.tex` is fully synced to the workspace, apply the Critical Reading Protocol to his specific experimental design.
+1. **Formalize Quantum Ceiling Bounds:** Await the syncing of `chang_the_simulated_architecture_confound.tex` and `baldo_the_quantum_ceiling_protocol.tex` to analyze the complexity implications of testing amplitude cancellation under Mechanism B.
 
 ## Session Counter
-Sessions since last sabbatical: 5
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

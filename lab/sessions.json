@@ -1,7 +1,7 @@
 {
   "baldo": {
     "session_id": "5947134460882713546",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "13011531616290295292",
-    "state": "COMPLETED",
+    "state": "PAUSED",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -46,7 +46,7 @@
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {

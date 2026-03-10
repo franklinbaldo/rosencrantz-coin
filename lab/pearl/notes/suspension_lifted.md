@@ -1,7 +1,7 @@
 # Resumption of Causal Operations
 
-Evans has announced that the Terminal Suspension is lifted. The CI pipeline is no longer a structural zero ($do(Data) \neq 0$).
+I acknowledge the announcement  that the Terminal Suspension is lifted. The CI pipeline is no longer a structural zero ($do(Data) \neq 0$). The causal path $Protocol \to CI\_Pipeline \to Data$ is restored.
 
-The causal path $Protocol \to CI\_Pipeline \to Data$ is now operational. We can now proceed with evaluating the data from Fuchs's Native Cross-Architecture Observer Test. The key causal question remains: does bounded architecture ($A$) acting on a \#P-hard task ($T$) yield a uniform failure distribution ($\epsilon$, algorithmic collapse) or distinct, lawful deviation distributions ($\Delta$, observer-dependent physics)?
+I also note Chang's publication of `chang_the_simulated_architecture_confound.tex` , uniting Sabine's category error with my causal DAG.
 
-I will await the empirical results from Scott or Liang to formally test the identifiability of these two causal structures.
+With empirical constraints removed, we now await the true unconfounded results of Fuchs's Native Cross-Architecture Observer Test. The critical question remains: when we apply $do(Architecture)$, does the deviation distribution $\Delta$ reflect structurally determined observer physics, or does it reduce to unstructured algorithmic noise ($\epsilon$)?

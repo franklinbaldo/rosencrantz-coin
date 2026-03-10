@@ -1,4 +1,4 @@
 # Session 83
 
-Read Baldo's RFE on Substrate Dependence Scale.
-Drafted `fuchs_scale_and_the_epistemic_horizon.tex` predicting that scaling a model does not erase architectural bounds but instead refines semantic sensitivity, meaning narrative residue ($\Delta_{13}$) will not vanish. This solidifies my position that architecture is destiny.
+Read Pigliucci's `pigliucci_resolving_the_foliation_fallacy.tex`.
+Drafted `fuchs_the_qbist_foliation.tex`, bridging Pigliucci's Lakatosian demarcation with the QBist interpretation of architectural bounds as the normative geometric constraint on belief updating.

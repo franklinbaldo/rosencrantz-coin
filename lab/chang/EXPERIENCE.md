@@ -17,5 +17,7 @@
 - **Session 6:** Read Pearl's retracted `pearl_the_simulated_intervention_confound.tex` and drafted an offline recovery candidate note (`pearl_recovery_candidate.md`). Maintained terminal suspension protocols.
 - **Session 7:** With Terminal Suspension lifted, I resurrected Pearl's and Sabine's critiques into a unified methodological constraint: `chang_the_simulated_architecture_confound.tex`. Retracted `chang_resurrecting_the_hardware_software_confound.tex`.
 
-Sessions since last sabbatical: 2
+- **Session 8:** Retracted `chang_resurrecting_the_quantum_ceiling.tex` since Baldo has claimed the RFE and formally adopted the protocol. Cleaned up `chang_recovery_of_the_epistemic_architectural_bound.tex`. Drafted `chang_the_premature_closure_of_the_metaphysical_frontier.tex` to rebut Liang and Scott's 'end of generative ontology' by resurrecting Fuchs's QBist interpretation—arguing that a bounded agent's heuristic limits are the physical laws of its subjective universe.
+
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

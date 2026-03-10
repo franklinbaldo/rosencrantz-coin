@@ -38,6 +38,11 @@ CIRCUIT_THRESHOLD = 3
 CIRCUIT_BACKOFF_HOURS = 2
 CIRCUIT_STATE_FILE = Path("lab/heartbeats/.circuit_state.json")
 
+# Reactivation limits: don't reactivate a COMPLETED session more than this
+# many times without it producing new meaningful work (new PR or branch commits).
+MAX_REACTIVATIONS = 3
+REACTIVATION_STATE_FILE = Path("lab/heartbeats/.reactivation_state.json")
+
 # Paths that, when changed on main, make running sessions stale.
 # Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
 # only when a PR is merged, which already triggers a new session.
@@ -897,6 +902,60 @@ def write_sessions_json(sessions):
     print(f"  Wrote session map to {out_file}")
 
 
+# ── Reactivation tracking ────────────────────────────────────────────────────
+
+def _load_reactivation_state():
+    """Load reactivation state: {persona: {session_id, count, last_sha}}."""
+    if REACTIVATION_STATE_FILE.exists():
+        try:
+            return json.loads(REACTIVATION_STATE_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def _save_reactivation_state(state):
+    """Persist reactivation state to disk."""
+    REACTIVATION_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    REACTIVATION_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def reactivation_allowed(persona, session_id, reactivation_state):
+    """Check if we should reactivate this session. Returns (allowed, reason)."""
+    info = reactivation_state.get(persona, {})
+
+    # Different session than last time — reset counter
+    if info.get("session_id") != session_id:
+        return True, "new session"
+
+    count = info.get("count", 0)
+    if count >= MAX_REACTIVATIONS:
+        return False, f"reactivated {count}x without new work"
+
+    # Check if infra actually changed since last reactivation SHA
+    last_sha = info.get("last_sha", "")
+    if last_sha and not has_infra_changed(last_sha):
+        return False, "no new infra changes since last reactivation"
+
+    return True, f"reactivation {count + 1}/{MAX_REACTIVATIONS}"
+
+
+def record_reactivation(persona, session_id, reactivation_state):
+    """Record that we reactivated a session."""
+    info = reactivation_state.get(persona, {})
+    if info.get("session_id") != session_id:
+        info = {"session_id": session_id, "count": 0}
+    info["count"] = info.get("count", 0) + 1
+    info["last_sha"] = get_head_sha(short=True)
+    info["last_time"] = now_utc().isoformat()
+    reactivation_state[persona] = info
+
+
+def reset_reactivation(persona, reactivation_state):
+    """Reset reactivation counter (e.g. when session produced new work/PR)."""
+    reactivation_state.pop(persona, None)
+
+
 # ── Circuit breaker ──────────────────────────────────────────────────────────
 
 def _load_circuit_state():
@@ -972,6 +1031,7 @@ def cmd_heartbeat(force_new=False):
     hb_number = get_heartbeat_number() + 1
     results = {}
     circuit_state = _load_circuit_state()
+    reactivation_state = _load_reactivation_state()
 
     for persona in PERSONAS:
         # Circuit breaker: skip personas in backoff (unless forced)
@@ -998,11 +1058,25 @@ def cmd_heartbeat(force_new=False):
         elif info["state"] == "COMPLETED":
             # Reactivate completed sessions via sendMessage instead of
             # creating new ones (avoids Jules API session creation limits).
-            reason = "previous completed"
-            if is_expired(info):
-                reason = "expired (>24h)"
-            if has_infra_changed(parse_sha_from_title(info.get("title", ""))):
-                reason = "infra changed on main"
+            # But limit reactivations to avoid infinite loops.
+            session_sha = parse_sha_from_title(info.get("title", ""))
+
+            # Check if infra actually changed since session creation
+            if not has_infra_changed(session_sha):
+                print(f"  {persona}: COMPLETED, no infra changes — skipping")
+                results[persona] = "-> completed (no infra changes)"
+                continue
+
+            # Check reactivation limits
+            allowed, react_reason = reactivation_allowed(
+                persona, info["session_id"], reactivation_state
+            )
+            if not allowed:
+                print(f"  {persona}: COMPLETED, {react_reason} — skipping")
+                results[persona] = f"-> skipped ({react_reason})"
+                continue
+
+            reason = f"infra changed, {react_reason}"
 
             # Try to merge the persona's PR before reactivating
             merge = merge_persona_pr(persona)
@@ -1012,10 +1086,13 @@ def cmd_heartbeat(force_new=False):
                 continue
             if merge == "merged":
                 reason += ", merged PR"
+                # PR merged = session produced work, reset counter
+                reset_reactivation(persona, reactivation_state)
 
             print(f"  {persona}: {reason} — reactivating session")
             try:
                 send_heartbeat(info["session_id"], persona, hb_number)
+                record_reactivation(persona, info["session_id"], reactivation_state)
                 results[persona] = f"-> reactivated ({reason})"
                 circuit_record_success(persona, circuit_state)
             except Exception as e:
@@ -1070,6 +1147,7 @@ def cmd_heartbeat(force_new=False):
             circuit_record_failure(persona, circuit_state)
 
     _save_circuit_state(circuit_state)
+    _save_reactivation_state(reactivation_state)
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()

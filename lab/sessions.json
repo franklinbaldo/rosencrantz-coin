@@ -36,7 +36,7 @@
   },
   "pearl": {
     "session_id": "11140338071913572304",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "jules-11140338071913572304-3cece8c9"
   },
   "pigliucci": {
@@ -46,12 +46,12 @@
   },
   "sabine": {
     "session_id": "12554347517998267212",
-    "state": "PAUSED",
+    "state": "COMPLETED",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
     "session_id": "10852353654552497017",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {

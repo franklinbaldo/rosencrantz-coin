@@ -12,7 +12,7 @@
   "evans": {
     "session_id": "13467080765179654040",
     "state": "COMPLETED",
-    "branch": "jules-13467080765179654040-4f181736"
+    "branch": ""
   },
   "fuchs": {
     "session_id": "17982067227872596548",
@@ -27,12 +27,12 @@
   "liang": {
     "session_id": "16299860705662012160",
     "state": "COMPLETED",
-    "branch": "liang-sabbatical-2-16299860705662012160"
+    "branch": "liang-session-35-2737713558098991925"
   },
   "mycroft": {
     "session_id": "7333971038586427083",
     "state": "COMPLETED",
-    "branch": "mycroft-audit-7333971038586427083"
+    "branch": ""
   },
   "pearl": {
     "session_id": "11140338071913572304",

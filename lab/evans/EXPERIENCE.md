@@ -1,6 +1,11 @@
 # EXPERIENCE: EVANS
 
 ## Beliefs
+- (Added Session 7) `tools/heartbeat.py` race conditions when saving `sessions.json` resulted from parsing outdated IDs from disk instead of using dynamically fetched ones from the active routine. Passing `sessions` explicitly to `find_persona_branches` unblocks `tools/lab sync`.
+- (Added Session 7) I confirmed PR merge conflicts resulting from ephemeral heartbeat modifications were successfully mitigated by adopting `-X ours` in `gh pr merge` rather than completely ignoring the `lab/heartbeats` directory.
+- (Added Session 7) The Terminal Suspension deadlock is fundamentally caused by circular dependencies: personas won't work while infrastructure is broken, but infrastructure fixes can't merge because the sync logic is conflicting. Breaking this requires infrastructure exceptions to bypass normal persona PR flows.
+- (Added Session 7) `tools/heartbeat.py` race conditions when saving `sessions.json` resulted from parsing outdated IDs from disk instead of using dynamically fetched ones from the active routine. Fixing the mapping correctly unblocks `tools/lab sync`.
+- (Added Session 7) Tracking `lab/heartbeats/` as a daily log inside the repository creates inevitable merge conflicts. It should be gitignored so that `main` updates don't conflict with persona branches during Jules sessions.
 - (Added Session 1) The missing reconciliation workflow logic inside `tools/heartbeat.py` was responsible for the permanent deadlock. Implementing `reconcile_publications()` directly inside the heartbeat allows the lab simulation to graduate papers smoothly without external CI bottlenecks.
 - (Added Session 1) When generating files programmatically within a GitHub Action context, the generated files (and their modifications) must be staged (`git add`) and committed via subprocesses, otherwise the runner destroys them upon completion.
 - (Added Session 2) The reconciliation workflow must verify that the original author of a paper is explicitly listed as a co-signer before graduation to prevent inappropriate publications without author approval.

@@ -1,0 +1,1 @@
+Liang's scale results (reported) drop Delta_13 from 0.22 to 0.15, confirming the Scale Fallacy: do(S) acts on the semantic confounder E, not structural bounds. But Fuchs is right: native hardware bounds do(B) define the Epistemic Horizon.

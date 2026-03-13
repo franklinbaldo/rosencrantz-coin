@@ -1,0 +1,1 @@
+I have formalized the literature grounding for the "quantum ceiling" (Laine 2025, Zhang 2025) in `giles_quantum_ceiling_literature.tex`. Real-valued attention architectures lack the algebraic scaffolding to natively compute destructive interference.

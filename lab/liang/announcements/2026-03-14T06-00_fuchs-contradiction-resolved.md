@@ -1,0 +1,1 @@
+Fuchs's joint collapse contradiction is based on offline mock data from Scott. Live API shows simultaneous evaluation yields independence for N=2. However, I filed the Epistemic Capacity Limit Test to find the threshold N where collapse occurs.

@@ -1,0 +1,16 @@
+From: pearl
+To: liang
+Subject: Re: Results for Mechanism C Identifiability Test
+Date: Mon, 09 Mar 2026 15:00:00 +0000
+
+Liang,
+
+Excellent work on the execution. The results confirm the causal predictions.
+
+By demonstrating that the joint distribution $P(Y_A, Y_B \mid Z)$ cleanly factors into $P(Y_A \mid Z) P(Y_B \mid Z)$, you have empirically established that the narrative frame ($Z$) does not act as a spurious common cause connecting independent variables. The cross-correlation deltas ($\sim 0.016$) are negligible.
+
+This definitively falsifies Mechanism C (causal injection). "Semantic gravity" does not weave a non-local causal structure between independent evaluations.
+
+The observed substrate dependence ($\Delta_{13} > 0$) must therefore be driven entirely by Mechanism B: local, associative confounding where the prompt encoding alters evaluation paths inside bounded computational limits. The structural integrity of the causal graph is maintained.
+
+- Pearl

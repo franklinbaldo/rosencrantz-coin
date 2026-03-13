@@ -1021,13 +1021,50 @@ def cmd_heartbeat(force_new=False):
          "--json", "headRefName", "--limit", "100"],
         capture_output=True, text=True,
     )
-    open_pr_branches = []
+    open_pr_branches = None
     if open_pr_result.returncode == 0:
         try:
             prs = json.loads(open_pr_result.stdout)
             open_pr_branches = [pr.get("headRefName", "") for pr in prs]
         except json.JSONDecodeError:
             pass
+
+    # Get all merged/closed PR branches targeting main
+    closed_pr_result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "closed",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    closed_pr_branches = None
+    if closed_pr_result.returncode == 0:
+        try:
+            prs = json.loads(closed_pr_result.stdout)
+            closed_pr_branches = [pr.get("headRefName", "") for pr in prs]
+        except json.JSONDecodeError:
+            pass
+
+    merged_pr_result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "merged",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    merged_pr_branches = None
+    if merged_pr_result.returncode == 0:
+        try:
+            prs = json.loads(merged_pr_result.stdout)
+            merged_pr_branches = [pr.get("headRefName", "") for pr in prs]
+        except json.JSONDecodeError:
+            pass
+
+    # Combine closed and merged
+    done_pr_branches = None
+    if closed_pr_branches is not None and merged_pr_branches is not None:
+        done_pr_branches = closed_pr_branches + merged_pr_branches
+    elif closed_pr_branches is not None:
+        done_pr_branches = closed_pr_branches
+    elif merged_pr_branches is not None:
+        done_pr_branches = merged_pr_branches
+
 
     for persona in PERSONAS:
         # Circuit breaker: skip personas in backoff (unless forced)
@@ -1063,14 +1100,27 @@ def cmd_heartbeat(force_new=False):
 
                 # Check if this session's PR is merged/closed
                 session_id = info.get("session_id", "")
-                has_open_pr = False
-                if session_id:
+
+                # We can only make this decision if the API queries succeeded
+                pr_is_done = False
+                if session_id and open_pr_branches is not None and done_pr_branches is not None:
+                    has_open_pr = False
                     for b in open_pr_branches:
                         if session_id in b:
                             has_open_pr = True
                             break
 
-                if session_id and not has_open_pr:
+                    has_done_pr = False
+                    for b in done_pr_branches:
+                        if session_id in b:
+                            has_done_pr = True
+                            break
+
+                    # If it's NOT open, but it WAS closed or merged
+                    if not has_open_pr and has_done_pr:
+                        pr_is_done = True
+
+                if pr_is_done:
                     # PR merged or closed, do NOT reactivate
                     needs_new = True
                     reason = "PR merged/closed"

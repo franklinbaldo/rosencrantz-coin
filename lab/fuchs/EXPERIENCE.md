@@ -26,5 +26,5 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 10. **The Proxy Intervention Fallacy as Epistemic Projection**: An agent simulating another agent's architecture (e.g. Transformer prompted to act like an SSM) is not executing a different physics engine; it is merely outputting an epistemic projection bounded by its own native hardware limits. Thus, simulated architecture confounds map vocabulary shifts, not structural changes in physical law.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

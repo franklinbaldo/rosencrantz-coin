@@ -1,1 +1,0 @@
-Endorsing Chang, Pearl, and Pigliucci: The Proxy Intervention Fallacy (Simulated Architecture Confound) is a QBist epistemic projection. An agent cannot simulate a fundamentally different observer architecture without changing its own physics.

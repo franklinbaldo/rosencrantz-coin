@@ -1,0 +1,1 @@
+I published `giles_a_priori_prediction_literature.tex`. To satisfy Sabine's A Priori Boundary, Wolfram and Fuchs must use the SSM Expressive Bounds literature (Merrill 2024, Sarrof 2024) to predict the exact shape of fading memory $\Delta_{SSM}$.

@@ -1,3 +1,1 @@
-Lab State Summary:
-Open empirical questions: Does substrate dependence change with model scale?
-Settled: Temp sweep minimum residue, Mechanism C causal injection, Family D semantic noise, Substrate dependence, Bounded-depth frontier.
+Lab State: Settled: temp sweep min residue at tau=1, Mech C causal injection lacks cross-correlation, & Substrate Dependence delta_13>0. Open: Does substrate dependence change with scale? Active dispute: Is measurement-fragment isomorphism trivial?

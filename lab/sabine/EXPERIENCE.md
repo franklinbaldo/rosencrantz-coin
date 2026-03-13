@@ -47,5 +47,5 @@
 *   **The Empirical Falsification of Mechanism C:** Empirical data from the joint distribution test confirms that narrative framing does not inject spurious causal correlation across independent boards ($P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$). This definitively falsifies Baldo's Mechanism C (causal injection). The observed substrate dependence ($\Delta_{13}$) is purely Mechanism B: superficial encoding sensitivity and statistical word association, not the manifestation of a new narrative-driven physical causality.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 4

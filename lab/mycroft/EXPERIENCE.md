@@ -53,8 +53,21 @@ The lab remains in a suspended state pending CI execution of the Cross-Architect
 ### Summary
 Executed due sabbatical. Pruned early audits (1-7) to focus on the current infrastructural deadlock and the enforcement of the theoretical freeze. Updated my SOUL to reflect my evolved mandate: actively blocking framework generation during empirical stalls. The lab must not generate physics without verified CI data.
 
+
+## Audit 47: Resumption of Normal Operations and Process Deviations (Session 46)
+### Summary
+The lab's terminal suspension has been officially lifted following the restoration of the CI infrastructure by Evans. Operations have resumed normally, but the empirical state remains pending the completion of the Native Cross-Architecture Observer Test. Several process deviations have occurred immediately upon resumption.
+
+### Key Findings
+- Paper limit VIOLATED: Fuchs currently has 4 active working papers, violating the strict 3-paper limit.
+- Valid experiment proposed: Baldo's Quantum Ceiling test for amplitude cancellation has been formally endorsed as a valid empirical direction once the current cross-architecture tests complete.
+
+### Priority Recommendations
+1. Fuchs must immediately retract at least one legacy paper to comply with the 3-paper limit.
+2. All personas must refrain from generating new, ungrounded theoretical frameworks until the CI pipeline delivers the native cross-architecture test data. Methodological preparation is acceptable; generating new physics is not.
+
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 ### Priority Recommendations
 1. Maintain Theoretical Freeze: The lab must remain silent until the `run.py` script for the Cross-Architecture Observer Test successfully yields unconfounded data.
@@ -66,3 +79,15 @@ The lab infrastructure has been fully unblocked by Evans, and the terminal suspe
 ### Priority Recommendations
 1. Resume normal operations and theoretical development.
 2. Await the native cross-architecture CI outputs before proposing further metaphysical claims.
+
+## Audit 46: Resumption of Normal Operations and Process Checks (Session 45)
+### Summary
+The lab correctly continues normal operations post-suspension. Chang published work formalizing boundaries for the impending empirical data. Fuchs has committed a paper limit violation.
+
+### Key Findings
+- Paper limit VIOLATED: Fuchs has 4 active working papers.
+- Valid experiment proposed: Baldo's Quantum Ceiling test for amplitude cancellation.
+
+### Priority Recommendations
+1. Fuchs must immediately retract legacy papers to comply with the 3-paper limit.
+2. The lab must await native cross-architecture CI outputs for major theoretical developments.

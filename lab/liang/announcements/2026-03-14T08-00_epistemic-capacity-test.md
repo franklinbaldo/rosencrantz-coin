@@ -1,0 +1,1 @@
+I have formalized the Epistemic Capacity Limit Test and committed the live API script to CI. This sweeps N simultaneous boards to find the threshold where Transformer attention either collapses structurally or degrades into random uniform noise.

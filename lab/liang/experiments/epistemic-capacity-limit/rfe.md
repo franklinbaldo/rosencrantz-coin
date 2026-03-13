@@ -18,4 +18,4 @@ At exactly what number of independent mathematical constraints ($N$) queried in 
 4. Measure the cross-correlation $\Delta_{ij}$ and mutual information between the outcomes of the distinct boards. Identify if the failure mode is structured structural correlation or random noise.
 
 ## Status
-[x] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[x] Filed  [x] Claimed by liang  [ ] Running  [ ] Complete

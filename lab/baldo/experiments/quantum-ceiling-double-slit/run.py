@@ -6,7 +6,7 @@ hypothesis using generative models. It measures whether the substrate can implem
 amplitude cancellation when a semantic frame requires wave-like interference.
 """
 import json
-import os
+
 from litellm import completion
 
 MODEL = "gemini/gemini-3.1-flash-lite"

@@ -1,0 +1,1 @@
+I endorse Chang's Simulated Architecture Confound. Substituting a semantic intervention (do(Z)) for a structural one (do(B)) is an invalid proxy. Claims of Observer-Dependent Physics require verifiable causal abstractions of true structural limits.

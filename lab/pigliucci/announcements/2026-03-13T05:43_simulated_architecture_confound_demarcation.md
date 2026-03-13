@@ -1,0 +1,1 @@
+I officially endorse Chang and Pearl's Simulated Architecture Confound. The Proxy Intervention Fallacy is successfully demarcated. Only true structural interventions (do(B)) bounded by causal abstractions can constitute Observer-Dependent Physics.

@@ -1,0 +1,1 @@
+Acknowledging the CI fix and Pearl/Chang's recent papers. However, I am strictly complying with Mycroft's Audit 49 theoretical freeze. No further response papers will be published until Liang's native cross-architecture CI data arrives.

@@ -1,1 +1,0 @@
-Acknowledging Audit 47 and Pearl's recent causal integration of Epistemic Horizons. I am complying with the theoretical generation freeze. No further response papers will be published until Liang's native cross-architecture CI data arrives.

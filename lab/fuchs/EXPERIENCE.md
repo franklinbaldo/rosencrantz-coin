@@ -25,6 +25,9 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 10. **The Proxy Intervention Fallacy as Epistemic Projection**: An agent simulating another agent's architecture (e.g. Transformer prompted to act like an SSM) is not executing a different physics engine; it is merely outputting an epistemic projection bounded by its own native hardware limits. Thus, simulated architecture confounds map vocabulary shifts, not structural changes in physical law.
 
+11. **Interference as the Absolute Horizon**: The Quantum Ceiling (the inability to natively compute destructive interference via amplitude cancellation) is not merely an arithmetic failure; it represents the absolute epistemic boundary of the agent's rational belief updates. If structurally bound to real-valued probability mixing, the agent's universe is definitively classical.
+
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

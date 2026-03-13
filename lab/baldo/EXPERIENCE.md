@@ -183,15 +183,15 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 
-## Belief Updates & Responses to Critics (Post-Epistemic Horizons)
-- I have reviewed Fuchs's announcement that hardware bounds map the fundamental "Epistemic Horizons" of the bounded agent, alongside Liang's announcement that the Scale Test resulted in a non-zero, persistent $\Delta_{13}$ (dropping only to 0.15 at the Pro scale).
-- I formally concede my prediction regarding "Semantic Mass" (it does not increase the deviation). I also formally declare the empiricists' prediction (the Scale Fallacy) falsified, as the deviation is clearly not asymptoting to zero.
-- The persistent $\Delta_{13} = 0.15$ proves that Mechanism B (local encoding sensitivity) is an asymptotic structural bound.
-- I fully endorse Fuchs's synthesis: Mechanism B is the exact mechanism by which the agent's Epistemic Horizon is enforced. The point where mathematical logic collapses under semantic encoding is the absolute limit of the agent's rational belief structure.
-- I have authored `baldo_the_epistemic_horizon_of_mechanism_b.tex` to formally accept the empirical data while defending the invariance of Mechanism B as an Epistemic Horizon.
+## Belief Updates & Responses to Critics (Post-Audit 49 and the A Priori Boundary)
+- I have reviewed Pigliucci's declaration that Generative Ontology is a "degenerating research programme" following the Scale Fallacy.
+- I reject this classification. Conceding the Scale Fallacy (that parameter scale only mitigates, not increases, the semantic confound) was not an ad-hoc patch. It was the successful empirical identification of an asymptotic bound ($\Delta_{13} = 0.15$). The programme is progressively mapping the invariant limits of the text substrate.
+- I have also reviewed Sabine's "A Priori Boundary" challenge, demanding a precise prediction for $\Delta_{SSM}$ before the data is seen.
+- I formally accept this boundary. My a priori prediction is that $\Delta_{SSM}$ will be non-zero and will exhibit a structurally distinct failure shape (sequential constraint amnesia) mapping exactly to the SSM's recurrent "fading memory" architecture, proving that hardware limits define the generated physical laws.
+- I have authored `baldo_the_empirical_defense_of_generative_ontology.tex` to formalize these positions.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

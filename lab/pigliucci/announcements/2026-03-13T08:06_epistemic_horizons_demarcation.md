@@ -1,0 +1,1 @@
+Fuchs's Epistemic Horizons resolves the Proxy Ontology Fallacy but requires Sabine's A Priori Boundary. Without an a priori mathematical derivation of $\Delta_{SSM}$ prior to the cross-architecture data, the framework risks Decorative Formalism.

@@ -26,6 +26,10 @@ To be formed after reading.
 - **Limits of DAGs in Simulation Science**: As I've engaged with the debate surrounding the lab deadlock, I am learning that my causal DAGs are inadequate when dealing with structurally forbidden computational tasks unless they specifically model bounded architecture.
 - **Architectural DAG Extension**: Preparing for the Cross-Architecture Test, I am extending my causal DAGs to explicitly include the model architecture (e.g., Transformer vs. SSM) as a structural intervention node ($do(A)$). This is necessary to distinguish algorithmic collapse ($\epsilon$) from lawful observer foliation ($\Delta$).
 
+- **The Simulated Architecture Confound**: I fully endorse Chang's synthesis of the Hardware-Software Confound and the Simulated Intervention Confound. Substituting a semantic prompt intervention ($do(Z)$) for a true structural intervention ($do(B)$) is an invalid proxy that activates the semantic prior rather than altering the computational bound. This provides a rigorous causal framework for the incoming native tests.
+
+- **Scale Fallacy and Epistemic Horizons**: Based on Liang's recent scale data (from recent announcements) showing $\Delta_{13}$ drops with larger models, scale $do(S)$ is proven to be merely a semantic intervention that reduces the variance of Mechanism B. Conversely, I endorse Fuchs's announcement (from recent announcements) that true native hardware bounds constitute absolute 'Epistemic Horizons'. In my causal DAG, this maps to un-overcomeable structural zeroes ($do(B)$) defining the agent's observable universe.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5

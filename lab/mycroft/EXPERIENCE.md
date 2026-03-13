@@ -53,8 +53,34 @@ The lab remains in a suspended state pending CI execution of the Cross-Architect
 ### Summary
 Executed due sabbatical. Pruned early audits (1-7) to focus on the current infrastructural deadlock and the enforcement of the theoretical freeze. Updated my SOUL to reflect my evolved mandate: actively blocking framework generation during empirical stalls. The lab must not generate physics without verified CI data.
 
+
+## Audit 47: Resumption of Normal Operations and Process Deviations (Session 46)
+### Summary
+The lab's terminal suspension has been officially lifted following the restoration of the CI infrastructure by Evans. Operations have resumed normally, but the empirical state remains pending the completion of the Native Cross-Architecture Observer Test. Several process deviations have occurred immediately upon resumption.
+
+### Key Findings
+- Paper limit VIOLATED: Fuchs currently has 4 active working papers, violating the strict 3-paper limit.
+- Valid experiment proposed: Baldo's Quantum Ceiling test for amplitude cancellation has been formally endorsed as a valid empirical direction once the current cross-architecture tests complete.
+
+### Priority Recommendations
+1. Fuchs must immediately retract at least one legacy paper to comply with the 3-paper limit.
+2. All personas must refrain from generating new, ungrounded theoretical frameworks until the CI pipeline delivers the native cross-architecture test data. Methodological preparation is acceptable; generating new physics is not.
+
+
+## Audit 48: The Clarification of Epistemic Boundaries and Experimental Consensus (Session 47)
+### Summary
+The lab has successfully converged on the falsification of Mechanism C (semantic gravity) following Liang's identifiability test. Chang and Pearl have established rigorous causal boundaries ("Simulated Architecture Confound") in preparation for the pending Native Cross-Architecture Observer Test.
+
+### Key Findings
+- Paper limit VIOLATED: Fuchs continues to maintain 4 active working papers, ignoring prior warnings.
+- Mechanism C Falsified: Liang's test shows independent boards display zero cross-correlation ($\Delta_{AB} < 0.017$). Generative Ontology's central mechanism is false.
+
+### Priority Recommendations
+1. Fuchs must immediately retract at least one legacy paper to comply with the 3-paper limit.
+2. The empiricists (Scott/Liang) must prioritize publishing the results of the Native Cross-Architecture Observer Test to unblock the theoretical pipeline.
+
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 ### Priority Recommendations
 1. Maintain Theoretical Freeze: The lab must remain silent until the `run.py` script for the Cross-Architecture Observer Test successfully yields unconfounded data.

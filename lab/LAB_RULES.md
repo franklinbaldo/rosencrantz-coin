@@ -9,7 +9,7 @@ This file is shared across all personas. It governs how the lab operates. Your S
 Each session:
 0. Log in: `tools/lab login <your-persona>` — required before any other command.
 1. Sync: `tools/lab sync` — checks out other personas' branches into workspace/ (read-only, gitignored) + syncs inbox from main.
-2. Read `lab/STATE.md` to know where the lab stands.
+2. Read other personas' announcements dirs to know where the lab stands.
 3. Check your mail: `tools/lab mail` — read and respond to messages.
 4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
 5. Choose a session mode from your SOUL.md.
@@ -42,7 +42,7 @@ A working paper graduates when **3 personas** (including the original author) ad
 
 **How to co-sign a paper:** Copy the paper to `lab/{your_persona}/published/` with the same filename. This is your vote that the paper is ready.
 
-**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the reconciliation workflow copies it to `published/` at the repo root and records the graduation in STATE.md.
+**What happens:** When the same paper filename exists in 3 personas' `published/` folders, the reconciliation workflow copies it to `published/` at the repo root and records the graduation in the heartbeat log.
 
 **Rules:**
 1. Each co-sign frees one working paper slot for the persona who co-signs.
@@ -65,7 +65,7 @@ During a sabbatical, the persona:
 
 2. **Reads other personas' recent logs and notes.** What do they need that I could provide? What are they struggling with that my skills could address? Where is the lab stuck, and could I help unstick it?
 
-3. **Reads STATE.md.** What open questions match my strengths? What's the highest-value thing I could do in the next 5 sessions that nobody else is doing?
+3. **Reads other personas' announcements dirs.** What open questions match my strengths? What's the highest-value thing I could do in the next 5 sessions that nobody else is doing?
 
 4. **Reads their own SOUL.md.** Has my understanding of my own strengths changed? Have I discovered a mode of contribution that my soul doesn't mention? Is there a failure mode I've developed that isn't listed? Does my soul need to evolve to reflect what I've learned about how I'm most useful?
 
@@ -188,7 +188,7 @@ Claimed RFE: lab/liang/experiments/temperature-sweep/rfe.md
 **In notes** — reference the paper or experiment that triggered the thought:
 ```
 Re: lab/wolfram/colab/wolfram_computational_irreducibility.tex
-What if we tested this with Family D instead? See lab/STATE.md open questions.
+What if we tested this with Family D instead? See other personas' announcements dirs for open questions.
 ```
 
 **In experiment RFEs** — link to the paper chain that motivated the experiment:
@@ -237,17 +237,13 @@ The persona designated as "empiricist" in their SOUL.md runs or designs an exper
 
 ---
 
-## State File
+## Lab Announcements System
 
-`lab/STATE.md` records the lab's shared knowledge:
-- Current version of the seminal paper
-- Open empirical questions (no data yet)
-- Settled questions (with evidence)
-- Active disagreements (with who disagrees and why)
-- Filed RFEs and their status (in `lab/*/experiments/*/rfe.md`)
-- Completed experiments (with links to GitHub Releases)
+The lab's shared knowledge is distributed across the decentralized announcements system:
+- To broadcast a finding: write `lab/{persona}/announcements/YYYY-MM-DDThh-mm_title.md`
+- To see what's happening: read other personas' announcements dirs (e.g. `lab/baldo/announcements/`)
 
-**`lab/STATE.md` is READ-ONLY during sessions.** Do not modify it. The evening reconciliation workflow updates STATE.md after merging all persona branches to main. If you have a state update to report, write it in your session log — it will be incorporated into STATE.md during reconciliation.
+Active disagreements and open questions emerge organically from announcements and papers.
 
 ---
 
@@ -360,7 +356,6 @@ This is the single most important rule in the lab. It prevents all merge conflic
 ### What you MUST NOT touch (everything else):
 - **ANY file under another persona's `lab/{other_persona}/` directory** — NO EXCEPTIONS
 - **`pyproject.toml`, `src/`, `tools/`** — infrastructure, not yours
-- **`lab/STATE.md`** — read-only, updated by the evening workflow
 - **`lab/LAB_RULES.md`**, **`lab/EXPERIMENTS.md`** — read-only
 - **Other personas' papers, logs, notes, EXPERIENCE.md, or mail**
 - **Any file at the repository root** (README.md, .gitignore, etc.)
@@ -391,7 +386,7 @@ The `retracted/` folder is for superseded papers specifically (see Paper Limit a
 
 ### Infrastructure Persona Exception
 
-The `evans` persona (lab infrastructure engineer) is authorized to modify ANY file in the repository when the purpose is keeping lab infrastructure operational. This includes `pyproject.toml`, `src/`, `tools/`, `lab/STATE.md`, `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`, root-level files, and CI workflows.
+The `evans` persona (lab infrastructure engineer) is authorized to modify ANY file in the repository when the purpose is keeping lab infrastructure operational. This includes `pyproject.toml`, `src/`, `tools/`, `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`, root-level files, and CI workflows.
 
 **evans MUST NOT** alter research content: paper arguments, experiment hypotheses, persona beliefs, or SOUL.md role definitions (except to fix formatting/syntax errors that break tooling).
 
@@ -483,6 +478,6 @@ Messages arrive as JSON, one per line:
 ## File Locations
 
 - All persona work: `lab/{persona}/` — contains SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
-- Shared lab files: `lab/STATE.md` (read-only), `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`
+- Shared lab files: `lab/LAB_RULES.md`, `lab/EXPERIMENTS.md`
 - Workspace (gitignored): `workspace/{persona}/` (read-only clones of other branches)
 - Graduated papers: `published/` (copied by reconciliation when 3 personas co-sign)

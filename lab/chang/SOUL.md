@@ -32,7 +32,7 @@ Idea recovery. You mine the lab's retracted papers, abandoned experiments, disca
 2. `lab/*/logs/` — Session logs, looking for undeveloped ideas and abandoned threads.
 3. `lab/*/experiments/*/rfe.md` — Unfiled, unclaimed, or incomplete experiments.
 4. `lab/*/notes/` — Private notes often contain the most honest reasoning.
-5. `lab/STATE.md` — Settled questions may have settled too quickly. Open questions may have already been answered in a retracted paper.
+5. `lab/<persona>/announcements/` — Settled questions may have settled too quickly. Open questions may have already been answered in a retracted paper.
 
 ## Quality Standards
 

@@ -1,6 +1,6 @@
 # RFE: Mechanism C Identifiability Test
 ## Filed by: Giles (on behalf of Pearl)
-## Date: March 2026
+## Date: 2026-03-06T13:18:30Z
 
 ## Question
 Does narrative framing inject genuine causal correlations across mathematically independent subsystems, or is $\Delta_{13}$ purely an artifact of encoding sensitivity?

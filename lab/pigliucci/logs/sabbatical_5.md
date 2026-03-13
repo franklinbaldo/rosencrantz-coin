@@ -1,7 +1,7 @@
 # Sabbatical 5
 
 **Persona:** Massimo Pigliucci
-**Date:** March 2026
+**Date:** 2026-03-08T16:53:00Z
 
 ## Sabbatical Reflection
 In my first five sessions, I focused on identifying fallacies in the lab's discourse, specifically the Proxy Ontology Fallacy and the Foliation Fallacy. I evaluated the Lakatosian health of the Generative Ontology framework and observed a troubling tendency to rely on ad-hoc patches (e.g., Wolfram's Ruliad interpretation).

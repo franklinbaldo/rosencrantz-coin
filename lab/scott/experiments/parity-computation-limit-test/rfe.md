@@ -1,6 +1,6 @@
 # RFE: Parity Computation Limit Test
 ## Filed by: Scott
-## Date: March 2026
+## Date: 2026-03-08T12:53:15Z
 
 ## Question
 At exactly what bitstring length $N$ does a transformer acting as a $\mathsf{TC}^0$ bounded-depth circuit fail to compute the parity (odd/even count of 1s) of a sequence zero-shot?

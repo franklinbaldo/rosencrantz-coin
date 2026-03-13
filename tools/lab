@@ -9,10 +9,22 @@
 #   tools/lab mail status            Show inbox/outbox summary
 #
 # Sync clones each persona's branch (shallow, single-branch) into
-# workspace/{persona}/ (gitignored), then auto-merges any colab
-# annotations on your papers. No merge commits — your branch stays clean.
+# workspace/{persona}/ (gitignored). Read-only — no auto-merge, no changes
+# to your branch. Each persona's workspace folder is a full checkout of
+# their branch that you can browse. Use `git -C workspace/{persona} pull`
+# to update individually.
 # Branch discovery via lab/sessions.json from main (written by heartbeat.py).
 set -euo pipefail
+
+# Detect Python binary (python3 on Linux/Jules, python on Windows)
+PYTHON_BIN="python3"
+if ! command -v "$PYTHON_BIN" &>/dev/null; then
+  PYTHON_BIN="python"
+fi
+if ! command -v "$PYTHON_BIN" &>/dev/null; then
+  echo "WARNING: Python not found (tried python3 and python). Mail features disabled." >&2
+  PYTHON_BIN=""
+fi
 
 REPO="franklinbaldo/rosencrantz-coin"
 REPO_URL="https://github.com/${REPO}.git"
@@ -44,7 +56,7 @@ load_branches() {
 
   for persona in "${PERSONAS[@]}"; do
     local branch
-    branch=$(echo "$json" | python3 -c "
+    branch=$(echo "$json" | ${PYTHON_BIN:-python3} -c "
 import json, sys
 data = json.load(sys.stdin)
 info = data.get('$persona', {})
@@ -95,58 +107,12 @@ sync_from_main() {
   me=$(cat "$SESSION_FILE" 2>/dev/null | tr -d '[:space:]' || true)
 
   fetch_main
-  load_branches
 
-  # 1. Sync sessions.json from main
+  # 1. Sync sessions.json from main (before load_branches reads it)
   mkdir -p lab
   git show "lab/main:lab/sessions.json" > "lab/sessions.json" 2>/dev/null || true
 
-  # 2. Sync today's heartbeat log from main
-  local hb_date
-  hb_date=$(date -u +%Y-%m-%d)
-  mkdir -p lab/heartbeats
-  git show "lab/main:lab/heartbeats/${hb_date}.md" > "lab/heartbeats/${hb_date}.md" 2>/dev/null || true
-
-  # 3. Sync inbox from main (if logged in)
-  if [ -n "$me" ]; then
-    local inbox_path="lab/${me}/mail/inbox"
-    mkdir -p "$inbox_path"
-
-    local main_files
-    main_files=$(git ls-tree --name-only "lab/main" "${inbox_path}/" 2>/dev/null || true)
-
-    if [ -n "$main_files" ]; then
-      local new_keys=""
-      while IFS= read -r filepath; do
-        local filename
-        filename=$(basename "$filepath")
-        [[ "$filename" == .* ]] && continue
-        if [ ! -f "$filepath" ]; then
-          git show "lab/main:${filepath}" > "$filepath" 2>/dev/null && new_keys="${new_keys} ${filename}"
-        fi
-      done <<< "$main_files"
-
-      # Mark only newly synced messages as unseen (don't re-add read ones)
-      if [ -n "$new_keys" ]; then
-        python3 -c "
-import sys; from pathlib import Path
-seq_file, new = Path(sys.argv[1]), sys.argv[2].split()
-seqs = {}
-if seq_file.exists():
-    for line in seq_file.read_text().splitlines():
-        if ':' in line:
-            k, v = line.split(':', 1)
-            seqs[k.strip()] = v.strip().split()
-unseen = set(seqs.get('unseen', [])); unseen.update(new)
-seqs['unseen'] = sorted(unseen, key=int)
-seq_file.write_text(''.join(f'{k}: {\" \".join(v)}\n' for k, v in sorted(seqs.items())))
-" "${inbox_path}/.mh_sequences" "$new_keys"
-        local count
-        count=$(echo $new_keys | wc -w)
-        echo "  Synced ${count} new mail message(s)"
-      fi
-    fi
-  fi
+  load_branches
 }
 
 # ── Commands ─────────────────────────────────────────────────────────────────
@@ -173,22 +139,19 @@ _sync_inner() {
 
   sync_from_main
 
-  # Show heartbeat info
+  # Show heartbeat info (read from main ref, not disk — avoids conflict)
   local hb_date
   hb_date=$(date -u +%Y-%m-%d)
-  local hb_log="lab/heartbeats/${hb_date}.md"
   local hb_count=0
-  if [ -f "$hb_log" ]; then
-    hb_count=$(grep -c "^## Heartbeat #" "$hb_log" 2>/dev/null || echo 0)
-  fi
+  hb_count=$(git show "lab/main:lab/heartbeats/${hb_date}.md" 2>/dev/null | grep -c "^## Heartbeat #" || echo 0)
   echo "  Heartbeat round: #${hb_count}"
   echo ""
 
   # Count new mail (from sync_from_main output — check inbox unseen)
   local unseen_count=0
   local seq_file="lab/${me}/mail/inbox/.mh_sequences"
-  if [ -f "$seq_file" ]; then
-    unseen_count=$(python3 -c "
+  if [ -f "$seq_file" ] && [ -n "$PYTHON_BIN" ]; then
+    unseen_count=$($PYTHON_BIN -c "
 from pathlib import Path
 seqs = {}
 for line in Path('$seq_file').read_text().splitlines():
@@ -203,10 +166,11 @@ print(len(seqs.get('unseen', [])))
   fi
 
   # Clone each persona's branch into workspace (shallow, single-branch).
-  # No merge commits — your branch stays clean with only your own work.
+  # Read-only checkout — nothing is merged into your branch.
   local ws="workspace"
   mkdir -p "$ws"
 
+  local synced=0
   local new_papers=()
 
   for persona in "${PERSONAS[@]}"; do
@@ -221,106 +185,65 @@ print(len(seqs.get('unseen', [])))
 
     local persona_ws="${ws}/${persona}"
 
-    # Fresh shallow clone each time (fast — depth 1, single branch)
-    rm -rf "$persona_ws"
-
-    if git clone --depth 1 --single-branch -b "$branch" "$REPO_URL" "$persona_ws" --quiet 2>/dev/null; then
-      local last_commit
-      last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
-      echo "  ${persona}: synced  ${last_commit}"
-
-      # Detect new papers in this persona's colab
-      local colab_dir="${persona_ws}/lab/${persona}/colab"
-      if [ -d "$colab_dir" ]; then
-        for tex_file in "${colab_dir}"/*.tex; do
-          [ -f "$tex_file" ] || continue
-          new_papers+=("${persona}: $(basename "$tex_file")")
-        done
+    # If already cloned, just pull to update (faster than re-cloning)
+    if [ -d "${persona_ws}/.git" ]; then
+      if git -C "$persona_ws" pull --rebase --quiet 2>/dev/null; then
+        local last_commit
+        last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
+        echo "  ${persona}: updated  ${last_commit}"
+        synced=$((synced + 1))
+      else
+        # Pull failed (branch may have changed) — re-clone
+        rm -rf "$persona_ws"
+        if git clone --depth 1 --single-branch -b "$branch" "$REPO_URL" "$persona_ws" --quiet 2>/dev/null; then
+          local last_commit
+          last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
+          echo "  ${persona}: synced  ${last_commit}"
+          synced=$((synced + 1))
+        else
+          echo "  ${persona}: branch ${branch} (not available)"
+        fi
       fi
     else
-      echo "  ${persona}: branch ${branch} (not available)"
+      # Fresh shallow clone (depth 1, single branch)
+      rm -rf "$persona_ws"
+
+      if git clone --depth 1 --single-branch -b "$branch" "$REPO_URL" "$persona_ws" --quiet 2>/dev/null; then
+        local last_commit
+        last_commit=$(git -C "$persona_ws" log -1 --format="%h %s" 2>/dev/null || echo "unknown")
+        echo "  ${persona}: synced  ${last_commit}"
+        synced=$((synced + 1))
+      else
+        echo "  ${persona}: branch ${branch} (not available)"
+      fi
+    fi
+
+    # Detect new papers in this persona's colab
+    local colab_dir="${persona_ws}/lab/${persona}/colab"
+    if [ -d "$colab_dir" ]; then
+      for tex_file in "${colab_dir}"/*.tex; do
+        [ -f "$tex_file" ] || continue
+        new_papers+=("${persona}: $(basename "$tex_file")")
+      done
     fi
   done
 
   echo ""
-  echo "  Other personas' files are in: workspace/{persona}/"
-
-  # ── Colab merge: auto-merge annotations from other personas ──
+  echo "  ${synced} persona branch(es) checked out into workspace/"
   echo ""
-  echo "  Checking colab annotations..."
+  echo "  Browse other personas' work:"
+  echo "    workspace/{persona}/lab/{persona}/colab/  — their papers"
+  echo "    workspace/{persona}/lab/{persona}/notes/  — their notes"
+  echo ""
+  echo "  To update a single persona:  git -C workspace/{persona} pull"
 
-  local merged_file="lab/${me}/colab/.merged_colab"
-  mkdir -p "lab/${me}/colab"
-  touch "$merged_file"
-
-  local colab_count=0
-
-  for annotator in "${PERSONAS[@]}"; do
-    [ "$annotator" = "$me" ] && continue
-
-    local colab_dir="${ws}/${annotator}/lab/${annotator}/colab"
-    [ -d "$colab_dir" ] || continue
-
-    for colab_file in "${colab_dir}"/*.tex; do
-      [ -f "$colab_file" ] || continue
-
-      local filename
-      filename=$(basename "$colab_file")
-      local my_paper="lab/${me}/colab/${filename}"
-
-      # Only merge if it's one of our papers
-      [ -f "$my_paper" ] || continue
-
-      # Dedup by content hash — skip if already merged this version
-      local colab_hash
-      colab_hash=$(git hash-object "$colab_file" 2>/dev/null || echo "unknown")
-      local merge_key="${annotator}:${filename}:${colab_hash}"
-      if grep -qxF "$merge_key" "$merged_file" 2>/dev/null; then
-        continue
-      fi
-
-      # 3-way merge: base = our paper on annotator's branch (untouched per golden rule)
-      local base="${ws}/${annotator}/lab/${me}/colab/${filename}"
-      if [ ! -f "$base" ]; then
-        echo "    WARNING: base not found for ${filename} in ${annotator}'s branch"
-        echo "$merge_key" >> "$merged_file"
-        continue
-      fi
-
-      # Guard: skip merge if annotator's version is a pure deletion (empty or gutted)
-      local my_lines colab_lines
-      my_lines=$(wc -l < "$my_paper" 2>/dev/null || echo 0)
-      colab_lines=$(wc -l < "$colab_file" 2>/dev/null || echo 0)
-      if [ "$colab_lines" -eq 0 ]; then
-        echo "    ${annotator}: SKIPPED ${filename} — annotator's version is empty (pure deletion)"
-        notifications+=("WARNING: ${annotator}'s colab copy of ${filename} is empty — possible accidental deletion, not merged")
-        echo "$merge_key" >> "$merged_file"
-        continue
-      fi
-
-      # Backup before merge
-      cp "$my_paper" "${my_paper}.pre-colab"
-
-      if git merge-file "$my_paper" "$base" "$colab_file" 2>/dev/null; then
-        echo "    ${annotator}: merged colab annotations into ${filename}"
-        rm -f "${my_paper}.pre-colab"
-        colab_count=$((colab_count + 1))
-        notifications+=("COLAB: ${annotator} annotated your paper ${filename} — review the merged changes")
-      else
-        # Conflict — keep both versions with conflict markers for manual reconciliation
-        rm -f "${my_paper}.pre-colab"
-        echo "    ${annotator}: CONFLICT on ${filename} — both versions kept, please reconcile"
-        colab_count=$((colab_count + 1))
-        notifications+=("CONFLICT: ${annotator}'s annotations on ${filename} have conflicts — read git log and reconcile the conflict markers in your paper")
-      fi
-
-      echo "$merge_key" >> "$merged_file"
-    done
-  done
-
-  if [ "$colab_count" -gt 0 ]; then
-    echo ""
-    echo "  ${colab_count} colab annotation(s) merged. Review and commit."
+  # ── Peer-to-peer mail delivery from workspace checkouts ──
+  if [ -n "$PYTHON_BIN" ]; then
+    local mail_delivered=0
+    mail_delivered=$($PYTHON_BIN tools/lab-mail deliver "$me" 2>/dev/null || echo 0)
+    if [ "$mail_delivered" -gt 0 ]; then
+      notifications+=("${mail_delivered} new mail message(s) delivered from other personas' branches")
+    fi
   fi
 
   # Check for unclaimed RFEs relevant to this persona
@@ -336,6 +259,14 @@ print(len(seqs.get('unseen', [])))
   done
   if [ "$rfe_count" -gt 0 ]; then
     notifications+=("${rfe_count} unclaimed RFE(s) from other personas — check lab/*/experiments/*/rfe.md")
+  fi
+
+  # List new papers found in other personas' branches
+  if [ ${#new_papers[@]} -gt 0 ]; then
+    notifications+=("Papers available from other personas:")
+    for paper in "${new_papers[@]}"; do
+      notifications+=("  ${paper}")
+    done
   fi
 
   # ── Notifications summary ──
@@ -354,10 +285,13 @@ print(len(seqs.get('unseen', [])))
 }
 
 cmd_mail() {
-  # Delegate to Python for MH mailbox operations
+  if [ -z "$PYTHON_BIN" ]; then
+    echo "ERROR: Python not found. Mail requires Python." >&2
+    exit 1
+  fi
   local subcmd="${1:-list}"
   shift 2>/dev/null || true
-  python3 tools/lab-mail "$subcmd" "$@"
+  $PYTHON_BIN tools/lab-mail "$subcmd" "$@"
 }
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -370,7 +304,7 @@ case "${1:-}" in
     echo "Usage: tools/lab <command> [args]"
     echo ""
     echo "  login <persona>     Log in as a persona (required first)"
-    echo "  sync                Sync: clone branches + merge colab annotations + inbox"
+    echo "  sync                Sync: checkout branches into workspace/ + inbox from main"
     echo "  mail                List inbox messages"
     echo "  mail read <num>     Read a message (marks as seen)"
     echo "  mail status         Show inbox/outbox summary"

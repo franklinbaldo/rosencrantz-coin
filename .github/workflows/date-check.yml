@@ -1,0 +1,85 @@
+name: Date Check
+
+on:
+  pull_request_target:
+    branches: [main]
+
+jobs:
+  date-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Check frontmatter dates match git history
+        run: |
+          git fetch origin main
+
+          CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/main...HEAD -- '*.md')
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No markdown files changed. OK."
+            exit 0
+          fi
+
+          VIOLATIONS=""
+
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ ! -f "$file" ] && continue
+
+            # Extract date line from frontmatter (first 10 lines)
+            DATE_LINE=$(head -10 "$file" | grep -m1 -iP '^\**\s*(##\s*)?[Dd]at[ea]:\s*\**' || true)
+            [ -z "$DATE_LINE" ] && continue
+
+            # Skip template placeholders
+            echo "$DATE_LINE" | grep -qP '\[Date\]|\[Current' && continue
+
+            # Skip email-style RFC 2822 dates (e.g., "Date: Thu, 5 Mar 2026 ...")
+            echo "$DATE_LINE" | grep -qP '^Date:\s*[A-Z][a-z]{2},' && continue
+
+            # Extract the date value
+            DATE_VAL=$(echo "$DATE_LINE" | sed -E 's/^[*#[:space:]]*[Dd]at[ea]:\**[[:space:]]*//' | sed 's/\*//g' | xargs)
+            [ -z "$DATE_VAL" ] && continue
+
+            # Require ISO 8601 format with time: YYYY-MM-DDTHH:MM:SSZ
+            if ! echo "$DATE_VAL" | grep -qP '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'; then
+              VIOLATIONS="$VIOLATIONS\n  - $file"
+              VIOLATIONS="$VIOLATIONS\n      frontmatter: $DATE_VAL"
+              VIOLATIONS="$VIOLATIONS\n      error: Date must be in ISO 8601 UTC format (YYYY-MM-DDTHH:MM:SSZ)"
+              continue
+            fi
+
+            # Get git creation date for this file (UTC ISO format)
+            GIT_DATE_RAW=$(git log --follow --diff-filter=A --format="%aI" -- "$file" | tail -1)
+            if [ -z "$GIT_DATE_RAW" ]; then
+              GIT_DATE_RAW=$(git log --format="%aI" -- "$file" | head -1)
+            fi
+            [ -z "$GIT_DATE_RAW" ] && continue
+
+            # Convert git date to UTC ISO 8601
+            GIT_DATE=$(date -u -d "$GIT_DATE_RAW" '+%Y-%m-%dT%H:%M:%SZ' 2>/dev/null)
+            [ -z "$GIT_DATE" ] && continue
+
+            # Compare exact datetime
+            if [ "$DATE_VAL" != "$GIT_DATE" ]; then
+              VIOLATIONS="$VIOLATIONS\n  - $file"
+              VIOLATIONS="$VIOLATIONS\n      frontmatter: $DATE_VAL"
+              VIOLATIONS="$VIOLATIONS\n      git history:  $GIT_DATE"
+            fi
+          done <<< "$CHANGED_FILES"
+
+          if [ -n "$VIOLATIONS" ]; then
+            echo "::error::DATE MISMATCH: These files have frontmatter dates that don't match git history:"
+            echo -e "$VIOLATIONS"
+            echo ""
+            echo "The Date field must be the exact UTC datetime (ISO 8601) of the file's first commit."
+            echo "Format: YYYY-MM-DDTHH:MM:SSZ"
+            echo "Use: git log --follow --diff-filter=A --format='%aI' -- <file> | tail -1"
+            echo "Then convert to UTC: date -u -d '<git-date>' '+%Y-%m-%dT%H:%M:%SZ'"
+            exit 1
+          else
+            echo "All frontmatter dates match git history. OK."
+          fi

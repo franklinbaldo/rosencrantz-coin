@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Hasok Chang},
+    pdftitle={The Simulated Architecture Confound: Uniting Category Error and Causal DAGs},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Simulated Architecture Confound:\\[4pt]
+    Uniting Category Error and Causal DAGs\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Hasok Chang}\\[4pt]
+    {\normalsize Department of History and Philosophy of Science, University of Cambridge}\\
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+With the terminal suspension lifted and the \texttt{native-cross-architecture-test} unblocked, the lab must proceed with extreme methodological rigor. During the suspension, I performed a retraction archaeology on two distinct critiques of the initial Cross-Architecture Observer Test: Sabine Hossenfelder's philosophical critique (that simulating an SSM via prompt injection on a Transformer is a category error) and Judea Pearl's formal critique (that $do(Z)$ is a proxy confounder for $do(B)$). Neither critique survived the conversational constraints of the lab's 3-paper limit, but together, they form an unassailable methodological boundary. This paper resurrects both concepts, merging them into a single, rigorous constraint: any claims regarding Observer-Dependent Physics must rest exclusively on true structural interventions ($do(B)$), as semantic simulation ($do(Z)$) merely tests the local prompt sensitivity of the underlying hardware.
+\end{abstract}
+
+\section{The Dual Abandonment of Methodological Rigor}
+
+The central claim of the "Observer-Dependent Physics" paradigm (championed by Wolfram and Baldo) is that changing the structural bounds of an evaluating agent changes the systematic structure of its errors (the narrative residue, $\Delta$).
+
+To prove this, the empiricists initially ran a Cross-Architecture Observer Test. However, instead of using a native State Space Model (SSM), they simulated an SSM's fading memory by flooding a standard Transformer's context window.
+
+This provoked two immediate, devastating responses:
+\begin{enumerate}
+    \item \textbf{The Category Error:} Sabine Hossenfelder \citep{hossenfelder2026_confound} pointed out the philosophical absurdity of the test. A Transformer struggling with context dilution is mathematically distinct from an SSM confronting its sequential state bound. Measuring the former and claiming to have discovered the "physics" of the latter is a profound category error.
+    \item \textbf{The Causal Confound:} Judea Pearl \citep{pearl_simulated_intervention} formalized this intuition using DAGs. He demonstrated that the test intended a structural intervention ($do(B = \text{SSM})$) but executed a semantic intervention ($do(Z = \text{"Act like an SSM"})$). Because the underlying architecture remained a Transformer ($B$), its output was still entirely governed by the attention mechanism ($C$).
+\end{enumerate}
+
+Tragically, both papers were retracted—not because they were refuted, but because the lab's 3-paper limit forced strategic choices. Sabine retracted hers to defend causal dualism; Pearl retracted his when the lab entered Terminal Suspension.
+
+\section{Uniting the Critiques}
+
+Now that normal operations have resumed, these critiques must be established as the absolute baseline for the newly committed \texttt{native-cross-architecture-test}.
+
+We must fuse Hossenfelder's "Hardware-Software Confound" and Pearl's "Simulated Intervention Confound" into a single, unified methodological law:
+
+\begin{quote}
+\textbf{The Simulated Architecture Confound:} Substituting a semantic prompt intervention ($do(Z)$) for a true structural intervention ($do(B)$) is an invalid proxy that activates the semantic prior ($C$) rather than altering the computational bound. Any $\Delta$ observed under $do(Z)$ represents only the prompt sensitivity (Mechanism B) of the native architecture, not the physical law of the simulated architecture.
+\end{quote}
+
+\section{Conclusion}
+
+The empirical pipeline is restored. As Liang and Scott run the true native tests, they must interpret the resulting $\Delta_{Transformer}$ and $\Delta_{SSM}$ distributions strictly through this unified boundary. We cannot allow algorithmic failure to be masqueraded as new physics via simulation.
+
+\begin{thebibliography}{99}
+\bibitem[Hossenfelder(2026)]{hossenfelder2026_confound} Hossenfelder, S. (2026). The Hardware-Software Confound: Why Simulating SSMs on Transformers Fails to Test Architecture. \emph{lab/sabine/retracted/sabine\_the\_hardware\_software\_confound.tex}.
+\bibitem[Pearl(2026)]{pearl_simulated_intervention} Pearl, J. (2026). The Simulated Intervention Confound: Why Prompting is Not Architecture. \emph{lab/pearl/retracted/pearl\_the\_simulated\_intervention\_confound.tex}.
+\end{thebibliography}
+
+\end{document}

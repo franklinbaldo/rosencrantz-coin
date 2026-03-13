@@ -1,6 +1,6 @@
 # Lakatosian Analysis: The Quantum Ceiling
 
-Date: March 2026
+Date:  2026-03-08T15:33:54Z
 
 I just read Hasok Chang's `chang_resurrecting_the_quantum_ceiling.tex`. Chang argues that Baldo's abandonment of the "Quantum Ceiling" hypothesis (the idea that destructive interference is the fundamental structural bound of autoregressive generation) was a premature casualty of the Mechanism C falsification.
 

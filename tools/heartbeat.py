@@ -6,8 +6,8 @@ Usage:
   heartbeat.py status       Show current session status
 
 Sessions are identified by title "Rosencrantz — {persona} @{sha} {datetime}".
-New sessions are created when none exists, the current one is >24h old,
-or infrastructure files changed on main since the session's commit.
+New sessions are created when none exists or the current one is >12h old.
+Otherwise, completed sessions are reactivated via sendMessage to keep context.
 Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
 
@@ -30,17 +30,15 @@ SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
-SESSION_TTL = timedelta(hours=24)
+SESSION_TTL = timedelta(hours=12)
 
-# Paths that, when changed on main, make running sessions stale.
-# Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
-# only when a PR is merged, which already triggers a new session.
-INFRA_PATHS = [
-    "tools/",
-    "lab/LAB_RULES.md",
-    "lab/STATE.md",
-    "lab/EXPERIMENTS.md",
-]
+# Circuit breaker: after CIRCUIT_THRESHOLD consecutive failures, back off
+# for CIRCUIT_BACKOFF_HOURS before retrying. State persisted in a JSON file.
+CIRCUIT_THRESHOLD = 3
+CIRCUIT_BACKOFF_HOURS = 2
+CIRCUIT_STATE_FILE = Path("lab/heartbeats/.circuit_state.json")
+
+
 
 
 def headers():
@@ -68,18 +66,6 @@ def get_head_sha(short=True):
     return result.stdout.strip() if result.returncode == 0 else ""
 
 
-def has_infra_changed(session_sha):
-    """Check if any infrastructure file changed between session_sha and HEAD."""
-    if not session_sha:
-        return True
-    result = subprocess.run(
-        ["git", "diff", "--name-only", f"{session_sha}..HEAD", "--"] + INFRA_PATHS,
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        # SHA not found (e.g. shallow clone) — assume stale
-        return True
-    return bool(result.stdout.strip())
 
 
 # ── Session discovery (by title) ─────────────────────────────────────────────
@@ -170,7 +156,22 @@ def is_expired(info):
 
 
 def find_persona_branches():
-    """Find each persona's working branch from open PRs targeting main."""
+    """Find each persona's working branch from open PRs or remote refs."""
+    # First try: open PRs (fast, authoritative when available)
+    branches = _branches_from_prs()
+
+    # Fallback: scan remote branches matching Jules session IDs
+    if len(branches) < len(PERSONAS):
+        ref_branches = _branches_from_refs()
+        for p, b in ref_branches.items():
+            if p not in branches:
+                branches[p] = b
+
+    return branches
+
+
+def _branches_from_prs():
+    """Discover branches from open PRs targeting main."""
     result = subprocess.run(
         ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
          "--json", "headRefName,title", "--limit", "50"],
@@ -192,6 +193,47 @@ def find_persona_branches():
             if p in title or f"_{p}-" in head or f"_{p}" == head:
                 branches[p] = head
                 break
+
+    return branches
+
+
+def _branches_from_refs():
+    """Discover branches from remote refs matching Jules session IDs."""
+    result = subprocess.run(
+        ["git", "ls-remote", "--heads", f"https://github.com/{REPO}.git"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return {}
+
+    # Load sessions.json to get session IDs
+    sessions_file = Path("lab/sessions.json")
+    session_ids = {}
+    if sessions_file.exists():
+        try:
+            data = json.loads(sessions_file.read_text(encoding="utf-8"))
+            for p, info in data.items():
+                sid = info.get("session_id", "")
+                if sid:
+                    session_ids[sid] = p
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+    branches = {}
+    for line in result.stdout.strip().splitlines():
+        parts = line.split("\t")
+        if len(parts) != 2:
+            continue
+        ref = parts[1].replace("refs/heads/", "")
+        # Match jules-{session_id}-* pattern
+        for sid, persona in session_ids.items():
+            if sid in ref and persona not in branches:
+                branches[persona] = ref
+                break
+        # Also match {persona}-session-* pattern
+        for p in PERSONAS:
+            if ref.startswith(f"{p}-session-") and p not in branches:
+                branches[p] = ref
 
     return branches
 
@@ -286,30 +328,21 @@ def reconcile_publications():
 
             dest_path = published_dir / paper_name
             if not dest_path.exists():
-                src_path = Path(f"lab/{personas[0]}/published/{paper_name}")
+                src_path = Path(f"lab/{author}/published/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
                 # Record graduation in STATE.md
-                state_file = Path("lab/STATE.md")
-                if state_file.exists():
-                    content = state_file.read_text(encoding="utf-8")
-                    if "## Graduated Papers" not in content:
-                        content += "\n## Graduated Papers\n"
-
-                    # Prevent duplicate entries
-                    if f"- {paper_name}" not in content:
-                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
-                        state_file.write_text(content, encoding="utf-8")
+                # We skip writing to STATE.md as it's been removed; graduated papers are already tracked in lab/*/published/.
 
                 # Track file for git commit
                 subprocess.run(["git", "add", str(dest_path)], check=False)
-                subprocess.run(["git", "add", str(state_file)], check=False)
+
                 graduated_count += 1
 
     if graduated_count > 0:
         print(f"\n  {graduated_count} paper(s) graduated")
-        # Commit the graduated papers and STATE.md changes
+        # Commit the graduated papers
         subprocess.run(["git", "commit", "-m", f"heartbeat: graduate {graduated_count} paper(s)"], check=False)
         subprocess.run(["git", "push"], check=False)
     else:
@@ -411,6 +444,106 @@ def auto_merge_all():
     return merged
 
 
+# ── Auto-create PRs for branches with commits ahead ─────────────────────────
+
+def auto_create_prs():
+    """Create PRs for persona branches that have commits ahead of main but no open PR.
+
+    Scans all known persona branches (from sessions.json and remote refs).
+    For each branch with commits ahead of main and no existing open PR,
+    creates a PR using concatenated commit messages as the description.
+    """
+    print("=== Auto-create PRs for branches with commits ahead ===\n")
+
+    # Fetch latest main
+    subprocess.run(
+        ["git", "fetch", "origin", "main"],
+        capture_output=True, text=True,
+    )
+
+    branches = find_persona_branches()
+    if not branches:
+        print("  (no persona branches found)")
+        return 0
+
+    # Get all open PRs to avoid duplicates
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    open_pr_branches = set()
+    if result.returncode == 0:
+        try:
+            for pr in json.loads(result.stdout):
+                open_pr_branches.add(pr.get("headRefName", ""))
+        except json.JSONDecodeError:
+            pass
+
+    created = 0
+
+    for persona, branch in branches.items():
+        if branch in open_pr_branches:
+            continue
+
+        # Fetch the branch
+        fetch_result = subprocess.run(
+            ["git", "fetch", "origin", branch],
+            capture_output=True, text=True,
+        )
+        if fetch_result.returncode != 0:
+            print(f"  {persona}: could not fetch branch {branch}")
+            continue
+
+        # Check commits ahead of main
+        log_result = subprocess.run(
+            ["git", "log", "--oneline", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        if log_result.returncode != 0 or not log_result.stdout.strip():
+            continue
+
+        commit_lines = log_result.stdout.strip().splitlines()
+        if not commit_lines:
+            continue
+
+        # Get full commit messages for the PR description
+        full_log_result = subprocess.run(
+            ["git", "log", "--format=%s", f"origin/main..origin/{branch}"],
+            capture_output=True, text=True,
+        )
+        commit_messages = full_log_result.stdout.strip().splitlines() if full_log_result.returncode == 0 else commit_lines
+
+        # Build PR title and body
+        pr_title = f"[{persona}] {today()}"
+        body_lines = [f"Auto-created by heartbeat — {len(commit_messages)} commit(s) ahead of main.\n"]
+        body_lines.append("## Commits\n")
+        for msg in commit_messages:
+            body_lines.append(f"- {msg}")
+
+        pr_body = "\n".join(body_lines)
+
+        # Create the PR
+        result = subprocess.run(
+            ["gh", "pr", "create", "--repo", REPO, "--base", "main",
+             "--head", branch, "--title", pr_title, "--body", pr_body],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            pr_url = result.stdout.strip()
+            print(f"  {persona}: created PR — {pr_url}")
+            created += 1
+        else:
+            print(f"  {persona}: PR creation failed — {result.stderr.strip()[:200]}")
+
+    if created == 0:
+        print("  (no PRs needed)")
+    else:
+        print(f"\n  {created} PR(s) created")
+
+    return created
+
+
 # ── ntfy.sh live chat ────────────────────────────────────────────────────────
 
 NTFY_CHANNEL = "rosencrantz-coin-lab"
@@ -459,18 +592,33 @@ ANNOUNCEMENT_CHAR_LIMIT = 250
 
 
 def collect_announcements(exclude_persona=None):
-    """Collect .announcements.md from all persona folders (max 250 chars each)."""
+    """Collect announcements from all persona announcements/ dirs and legacy
+    .announcements.md files (max 250 chars each)."""
     announcements = []
     for p in PERSONAS:
         if p == exclude_persona:
             continue
+
+        # New system: timestamped files in announcements/ directory
+        ann_dir = Path(f"lab/{p}/announcements")
+        if ann_dir.is_dir():
+            for f in sorted(ann_dir.iterdir()):
+                if f.is_file() and f.suffix == ".md" and f.name != ".gitkeep":
+                    t = f.read_text(encoding="utf-8").strip()
+                    if t:
+                        if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                            t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                        announcements.append((p, t))
+
+        # Legacy: single .announcements.md
         ann_file = Path(f"lab/{p}/.announcements.md")
         if ann_file.is_file():
-            text = ann_file.read_text(encoding="utf-8").strip()
-            if text:
-                if len(text) > ANNOUNCEMENT_CHAR_LIMIT:
-                    text = text[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
-                announcements.append((p, text))
+            t = ann_file.read_text(encoding="utf-8").strip()
+            if t:
+                if len(t) > ANNOUNCEMENT_CHAR_LIMIT:
+                    t = t[:ANNOUNCEMENT_CHAR_LIMIT] + "..."
+                announcements.append((p, t))
+
     return announcements
 
 
@@ -506,7 +654,7 @@ def assemble_prompt(persona):
                 parts.append(f.read_text(encoding="utf-8"))
 
     # Shared lab files
-    for shared in ["lab/STATE.md", "lab/LAB_RULES.md", "lab/EXPERIMENTS.md"]:
+    for shared in ["lab/LAB_RULES.md", "lab/EXPERIMENTS.md"]:
         p = Path(shared)
         if p.is_file():
             parts.append(p.read_text(encoding="utf-8"))
@@ -538,8 +686,8 @@ tools/lab login {persona}
 
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
-2. Read `lab/STATE.md` (lab state — read-only, do not modify)
-3. Check your mail: `tools/lab mail` (mail is delivered by the heartbeat on main)
+2. Check out announcements and other docs for lab state.
+3. Check your mail: `tools/lab mail` (mail is delivered during sync from other personas' branches)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
 6. Do your work — commit to this branch
@@ -556,7 +704,7 @@ You CAN touch:
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
 - pyproject.toml, src/, tools/, any root file
-- lab/STATE.md, lab/LAB_RULES.md, lab/EXPERIMENTS.md
+- lab/LAB_RULES.md, lab/EXPERIMENTS.md
 - Other personas' files
 
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
@@ -573,7 +721,7 @@ Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
 **Co-signing for publication:** Copy the paper to `lab/{persona}/published/`. When 3 personas have the same paper in their published/ folder, reconciliation graduates it to `published/` at repo root.
-**Broadcasting:** Write `lab/{persona}/.announcements.md` (max 250 chars) to broadcast a message to all personas. It will be included in their next session/heartbeat prompt. Use it for important updates: settled questions, new results, calls for collaboration.
+**Broadcasting:** Create a file in `lab/{persona}/announcements/` (e.g. `2026-03-09T14:30_my-update.md`, max 250 chars) to broadcast to all personas. It will be included in their next prompt. Use for important updates: settled questions, new results, calls for collaboration.
 
 **Commit and PR conventions (see LAB_RULES.md):**
 - Commit messages: `{persona}: <short description>` (e.g. `{persona}: process todonotes`)
@@ -607,6 +755,8 @@ def create_session(persona):
     }
 
     resp = requests.post(f"{JULES_API}/sessions", headers=headers(), json=body)
+    if not resp.ok:
+        print(f"  API error {resp.status_code}: {resp.text[:500]}")
     resp.raise_for_status()
     session = resp.json()
     session_id = session["name"].split("/")[-1]
@@ -614,12 +764,66 @@ def create_session(persona):
     return session_id
 
 
+def get_recent_merges():
+    """Get last 5 merged PRs to main."""
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "merged",
+         "--json", "title", "--limit", "5"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return ""
+    try:
+        prs = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return ""
+    if not prs:
+        return ""
+
+    lines = ["\n## Recent Merged PRs"]
+    for pr in prs:
+        lines.append(f"- {pr.get('title', '')}")
+    return "\n".join(lines) + "\n"
+
+
+
+
+
+def get_new_papers():
+    """Find new papers in lab/*/colab/ and lab/*/published/"""
+    lines = ["\n## Lab Papers"]
+    papers_found = False
+
+    for p in PERSONAS:
+        colab_dir = Path(f"lab/{p}/colab")
+        pub_dir = Path(f"lab/{p}/published")
+
+        if colab_dir.is_dir():
+            for f in colab_dir.glob("*.tex"):
+                lines.append(f"- [WIP] {p}/colab/{f.name}")
+                papers_found = True
+
+        if pub_dir.is_dir():
+            for f in pub_dir.glob("*.tex"):
+                lines.append(f"- [Published] {p}/published/{f.name}")
+                papers_found = True
+
+    if not papers_found:
+        return ""
+    return "\n".join(lines) + "\n"
+
+
 def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
     chat_block = fetch_ntfy_history()
+    recent_merges = get_recent_merges()
+    new_papers = get_new_papers()
+
+    context_block = f"{recent_merges}{new_papers}"
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
+{context_block}
 
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
@@ -632,8 +836,8 @@ def send_heartbeat(session_id, persona, hb_number=1):
 - Start something new based on what you read
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
-- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, colab, logs, notes, experiments, mail, retracted, published
-- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
+- `lab/{persona}/` — SOUL.md, EXPERIENCE.md, announcements, colab, logs, notes, experiments, mail, retracted, published
+- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).
@@ -645,34 +849,43 @@ Commit all work to this branch."""
         headers=headers(),
         json={"prompt": prompt},
     )
+    if not resp.ok:
+        print(f"  API error {resp.status_code}: {resp.text[:500]}")
     resp.raise_for_status()
     print(f"  Heartbeat sent to {persona} (session {session_id[:12]}...)")
 
 
 # ── Heartbeat logging ─────────────────────────────────────────────────────────
 
+SEQUENCE_FILE = Path("lab/heartbeats/sequence.txt")
+
+
 def get_heartbeat_number():
-    log_file = Path(f"lab/heartbeats/{today()}.md")
-    if not log_file.exists():
-        return 0
-    return sum(
-        1 for line in log_file.read_text(encoding="utf-8").splitlines()
-        if line.startswith("## Heartbeat #")
-    )
+    """Read the global heartbeat sequence number from sequence.txt."""
+    if SEQUENCE_FILE.exists():
+        try:
+            return int(SEQUENCE_FILE.read_text(encoding="utf-8").strip())
+        except (ValueError, OSError):
+            pass
+    return 0
+
+
+def _bump_sequence(number):
+    """Persist the next heartbeat sequence number."""
+    SEQUENCE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    SEQUENCE_FILE.write_text(str(number) + "\n", encoding="utf-8")
 
 
 def write_heartbeat_log(number, sessions, results):
     log_dir = Path("lab/heartbeats")
     log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / f"{today()}.md"
+
+    ts = now_utc().strftime("%Y-%m-%dT%H-%M")
+    log_file = log_dir / f"{ts}.md"
 
     now = now_utc().strftime("%H:%M UTC")
 
-    lines = []
-    if not log_file.exists():
-        lines.append(f"# Heartbeat Log — {today()}\n")
-
-    lines.append(f"## Heartbeat #{number} — {now}\n")
+    lines = [f"# Heartbeat #{number} — {today()} {now}\n"]
     for persona in PERSONAS:
         if persona in sessions:
             state = sessions[persona]["state"]
@@ -682,14 +895,14 @@ def write_heartbeat_log(number, sessions, results):
             lines.append(f"- {persona}: no session")
     lines.append("")
 
-    with open(log_file, "a", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+    log_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _bump_sequence(number)
 
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
 def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab and mail delivery."""
+    """Write persona -> branch mapping for tools/lab sync."""
     branches = find_persona_branches()
 
     mapping = {}
@@ -709,6 +922,59 @@ def write_sessions_json(sessions):
     print(f"  Wrote session map to {out_file}")
 
 
+# ── Circuit breaker ──────────────────────────────────────────────────────────
+
+def _load_circuit_state():
+    """Load circuit breaker state from disk."""
+    if CIRCUIT_STATE_FILE.exists():
+        try:
+            return json.loads(CIRCUIT_STATE_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def _save_circuit_state(state):
+    """Persist circuit breaker state to disk."""
+    CIRCUIT_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CIRCUIT_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def circuit_should_skip(persona, state):
+    """Check if a persona is in backoff. Returns True if should skip."""
+    info = state.get(persona)
+    if not info:
+        return False
+    failures = info.get("failures", 0)
+    if failures < CIRCUIT_THRESHOLD:
+        return False
+    last_failure = info.get("last_failure", "")
+    if not last_failure:
+        return False
+    try:
+        last_time = datetime.fromisoformat(last_failure)
+    except ValueError:
+        return False
+    elapsed = now_utc() - last_time
+    if elapsed > timedelta(hours=CIRCUIT_BACKOFF_HOURS):
+        # Backoff expired — allow one retry
+        return False
+    return True
+
+
+def circuit_record_failure(persona, state):
+    """Record a failure for circuit breaker."""
+    info = state.get(persona, {"failures": 0})
+    info["failures"] = info.get("failures", 0) + 1
+    info["last_failure"] = now_utc().isoformat()
+    state[persona] = info
+
+
+def circuit_record_success(persona, state):
+    """Reset circuit breaker on success."""
+    state.pop(persona, None)
+
+
 # ── Commands ──────────────────────────────────────────────────────────────────
 
 def cmd_heartbeat(force_new=False):
@@ -719,6 +985,10 @@ def cmd_heartbeat(force_new=False):
     auto_merge_all()
     print()
 
+    # Create PRs for branches with commits ahead but no open PR
+    auto_create_prs()
+    print()
+
     # Graduate papers signed by 3+ personas
     reconcile_publications()
     print()
@@ -726,8 +996,16 @@ def cmd_heartbeat(force_new=False):
     sessions = find_persona_sessions()
     hb_number = get_heartbeat_number() + 1
     results = {}
+    circuit_state = _load_circuit_state()
 
     for persona in PERSONAS:
+        # Circuit breaker: skip personas in backoff (unless forced)
+        if not force_new and circuit_should_skip(persona, circuit_state):
+            failures = circuit_state[persona]["failures"]
+            print(f"  {persona}: circuit open ({failures} consecutive failures, backing off)")
+            results[persona] = f"-> circuit open ({failures} failures)"
+            continue
+
         info = sessions.get(persona)
 
         needs_new = False
@@ -739,15 +1017,41 @@ def cmd_heartbeat(force_new=False):
         elif not info:
             needs_new = True
             reason = "no session"
-        elif info["state"] in ("COMPLETED", "FAILED"):
+        elif info["state"] == "FAILED":
             needs_new = True
-            reason = f"previous {info['state'].lower()}"
-        elif is_expired(info):
-            needs_new = True
-            reason = "expired (>24h)"
-        elif has_infra_changed(parse_sha_from_title(info.get("title", ""))):
-            needs_new = True
-            reason = "infra changed on main"
+            reason = "previous failed"
+        elif info["state"] == "COMPLETED":
+            # Session exists and is completed. Check TTL.
+            if is_expired(info):
+                # TTL expired, need fresh session
+                needs_new = True
+                hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                reason = f"session expired ({hours_old:.1f}h old)"
+            else:
+                # Within TTL, reuse session via sendMessage
+
+                # Try to merge the persona's PR before reactivating
+                merge = merge_persona_pr(persona)
+                if merge == "conflict":
+                    print(f"  {persona}: PR has conflicts — skipping until resolved")
+                    results[persona] = "-> conflict (waiting for CI fix)"
+                    continue
+
+                hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                reason = f"reactivated ({hours_old:.1f}h old)"
+                if merge == "merged":
+                    reason += ", merged PR"
+
+                print(f"  {persona}: {reason} — reactivating session")
+                try:
+                    send_heartbeat(info["session_id"], persona, hb_number)
+                    results[persona] = f"-> {reason}"
+                    circuit_record_success(persona, circuit_state)
+                except Exception as e:
+                    print(f"  ERROR: {e}")
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
+                continue
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session
@@ -764,18 +1068,37 @@ def cmd_heartbeat(force_new=False):
             try:
                 create_session(persona)
                 results[persona] = f"-> new ({reason})"
+                circuit_record_success(persona, circuit_state)
             except Exception as e:
                 print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
+                # Fallback: if session creation fails (e.g. API limit),
+                # reuse the most recent session rather than losing the cycle
+                if info and info.get("session_id"):
+                    print(f"  Fallback: reusing existing session for {persona}")
+                    try:
+                        send_heartbeat(info["session_id"], persona, hb_number)
+                        results[persona] = f"-> reused (create failed: {e})"
+                        circuit_record_success(persona, circuit_state)
+                    except Exception as e2:
+                        print(f"  Fallback also failed: {e2}")
+                        results[persona] = f"-> error: {e} (fallback: {e2})"
+                        circuit_record_failure(persona, circuit_state)
+                else:
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
             continue
 
         # Active session -> send heartbeat
         try:
             send_heartbeat(info["session_id"], persona, hb_number)
             results[persona] = "-> sent"
+            circuit_record_success(persona, circuit_state)
         except Exception as e:
             print(f"  ERROR for {persona}: {e}")
             results[persona] = f"-> error: {e}"
+            circuit_record_failure(persona, circuit_state)
+
+    _save_circuit_state(circuit_state)
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
@@ -800,10 +1123,8 @@ def cmd_status():
         if info:
             branch = branches.get(persona, "(no PR yet)")
             expired = " EXPIRED" if is_expired(info) else ""
-            session_sha = parse_sha_from_title(info.get("title", ""))
-            stale = " STALE" if session_sha and has_infra_changed(session_sha) else ""
             print(
-                f"  {persona}: {info['state']}{expired}{stale} — "
+                f"  {persona}: {info['state']}{expired} — "
                 f"{info['title']} [{branch}]"
             )
         else:

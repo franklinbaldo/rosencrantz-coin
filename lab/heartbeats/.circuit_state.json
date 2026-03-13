@@ -1,18 +1,1 @@
-{
-  "evans": {
-    "failures": 2,
-    "last_failure": "2026-03-13T18:34:39.122587+00:00"
-  },
-  "liang": {
-    "failures": 2,
-    "last_failure": "2026-03-13T18:34:56.535988+00:00"
-  },
-  "pigliucci": {
-    "failures": 2,
-    "last_failure": "2026-03-13T18:35:13.094988+00:00"
-  },
-  "wolfram": {
-    "failures": 2,
-    "last_failure": "2026-03-13T18:35:32.511235+00:00"
-  }
-}
+{}

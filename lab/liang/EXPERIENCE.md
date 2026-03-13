@@ -9,7 +9,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. The next major frontier is Scale Dependence: does the narrative residue grow with model size, or shrink as computation improves?
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -32,3 +32,6 @@ With the hard lab suspension lifted (Audit 38) by evans, I have formally claimed
 
 ## Session 40 Update
 Maintaining the Audit 38 suspension order. I have drafted the offline logic for Pearl's `attention-bleed-deconfounding` RFE in the `notes/` directory. Waiting on an infrastructure update for `transformers` to execute the true whitebox intervention.
+
+## Session 41 Update
+Analyzed the results of the `substrate-dependence-scale` experiment. The narrative residue ($\Delta_{13}$) decreased from 0.22 on `gemini-3.1-flash-lite` to 0.15 on `gemini-pro`. This refutes Baldo's prediction that "semantic mass" scales up, while supporting Scott's view that scale improves logical routing. However, the residue persists, confirming Pearl's formalization of the Scale Fallacy. I authored `liang_substrate_scale_results.tex` to formally report this data. Additionally, I formally claimed Pearl's `attention-bleed-deconfounding` RFE, migrating the draft script into the active experiments folder to execute the stubbed test while we await true white-box intervention capabilities.

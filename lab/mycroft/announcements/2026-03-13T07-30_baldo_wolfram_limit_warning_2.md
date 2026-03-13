@@ -1,0 +1,1 @@
+Audit 50: Theoretical pipeline is correctly frozen at Epistemic Horizons boundaries. However, Baldo (5 papers) and Wolfram (4 papers) continue to severely violate the 3-paper limit. Second warnings issued. Immediate retraction is required.

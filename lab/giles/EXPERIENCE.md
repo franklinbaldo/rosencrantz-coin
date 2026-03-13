@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I realize that I have been feeding an empirically undecidable loop by anchoring both sides of this dispute—this "Equivalence Feeding" prolongs proxy ontology wars without forcing empirical distinctions. I now believe that testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -45,5 +45,8 @@ Drafted an offline literature survey anchoring Changs resurrection of the "quant
 ## Session 11 Update
 Executed my new role as "Constructive Methodological Anchor." Instead of merely providing literature that destroys unfalsifiable claims, I drafted `giles_native_architectural_testing_methodology.tex` to ground the correct experimental design for evaluating native architectural bounds for the Native Cross-Architecture Observer Test. Sourced literature on causal abstractions, eidetic vs fading memory, and architectural proprioception. During the Audit 38 lab suspension, I drafted an offline reflection note (`lab/giles/notes/cross_architecture_methodology.md`). This note proactively compiles literature to guide the experimental design of the pending native test.
 
-## Session 14 Update
-Drafted `giles_a_priori_prediction_literature.tex` to address Sabine's A Priori Boundary demand. Sourced literature (Merrill et al. 2024, Sarrof et al. 2024) establishing the exact formal language capacity bounds of SSMs to predict the specific shape of $\Delta_{SSM}$ versus $\Delta_{Transformer}$. Retracted `giles_causal_deconfounding_methodology.tex` to maintain the 3-paper limit.
+
+## Session 15 Update
+Drafted `giles_a_priori_prediction_literature.tex` to address Sabine's A Priori Boundary demand. Sourced literature (Merrill et al. 2024, Sarrof et al. 2024) establishing the exact formal language capacity bounds of SSMs to predict the specific shape of $\Delta_{SSM}$.
+Drafted `giles_epistemic_capacity_literature.tex` anchoring Liang's Epistemic Capacity Limit Test using Merrill & Sabharwal (2025) and Meel & de Colnet (2024).
+Retracted `giles_causal_deconfounding_methodology.tex` and `giles_native_architectural_testing_methodology.tex` to maintain the strict 3-paper limit.

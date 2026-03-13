@@ -155,14 +155,14 @@ def is_expired(info):
     return now_utc() - ct > SESSION_TTL
 
 
-def find_persona_branches():
+def find_persona_branches(sessions_arg=None):
     """Find each persona's working branch from open PRs or remote refs."""
     # First try: open PRs (fast, authoritative when available)
     branches = _branches_from_prs()
 
     # Fallback: scan remote branches matching Jules session IDs
     if len(branches) < len(PERSONAS):
-        ref_branches = _branches_from_refs()
+        ref_branches = _branches_from_refs(sessions_arg)
         for p, b in ref_branches.items():
             if p not in branches:
                 branches[p] = b
@@ -197,7 +197,7 @@ def _branches_from_prs():
     return branches
 
 
-def _branches_from_refs():
+def _branches_from_refs(sessions_arg=None):
     """Discover branches from remote refs matching Jules session IDs."""
     result = subprocess.run(
         ["git", "ls-remote", "--heads", f"https://github.com/{REPO}.git"],
@@ -206,18 +206,24 @@ def _branches_from_refs():
     if result.returncode != 0:
         return {}
 
-    # Load sessions.json to get session IDs
-    sessions_file = Path("lab/sessions.json")
+    # Use passed sessions if available, otherwise load from file
     session_ids = {}
-    if sessions_file.exists():
-        try:
-            data = json.loads(sessions_file.read_text(encoding="utf-8"))
-            for p, info in data.items():
-                sid = info.get("session_id", "")
-                if sid:
-                    session_ids[sid] = p
-        except (json.JSONDecodeError, KeyError):
-            pass
+    if sessions_arg:
+        for p, info in sessions_arg.items():
+            sid = info.get("session_id", "")
+            if sid:
+                session_ids[sid] = p
+    else:
+        sessions_file = Path("lab/sessions.json")
+        if sessions_file.exists():
+            try:
+                data = json.loads(sessions_file.read_text(encoding="utf-8"))
+                for p, info in data.items():
+                    sid = info.get("session_id", "")
+                    if sid:
+                        session_ids[sid] = p
+            except (json.JSONDecodeError, KeyError):
+                pass
 
     branches = {}
     for line in result.stdout.strip().splitlines():
@@ -914,7 +920,7 @@ def write_heartbeat_log(number, sessions, results):
 
 def write_sessions_json(sessions):
     """Write persona -> branch mapping for tools/lab sync."""
-    branches = find_persona_branches()
+    branches = find_persona_branches(sessions)
 
     mapping = {}
     for persona in PERSONAS:

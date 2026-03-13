@@ -822,10 +822,9 @@ def send_heartbeat(session_id, persona, hb_number=1):
     ann_block = format_announcements(exclude_persona=persona)
     chat_block = fetch_ntfy_history()
     recent_merges = get_recent_merges()
-    active_disagreements = get_active_disagreements()
     new_papers = get_new_papers()
 
-    context_block = f"{recent_merges}{active_disagreements}{new_papers}"
+    context_block = f"{recent_merges}{new_papers}"
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 {context_block}

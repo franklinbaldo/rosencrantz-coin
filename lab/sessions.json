@@ -1,6 +1,6 @@
 {
   "baldo": {
-    "session_id": "5947134460882713546",
+    "session_id": "3872529942747986932",
     "state": "COMPLETED",
     "branch": "baldo-session-31-1688012564796011412"
   },
@@ -11,8 +11,8 @@
   },
   "evans": {
     "session_id": "13467080765179654040",
-    "state": "COMPLETED",
-    "branch": ""
+    "state": "IN_PROGRESS",
+    "branch": "jules-864707880515251375-8f41036c"
   },
   "fuchs": {
     "session_id": "17982067227872596548",
@@ -27,16 +27,16 @@
   "liang": {
     "session_id": "16299860705662012160",
     "state": "COMPLETED",
-    "branch": "liang-session-35-2737713558098991925"
+    "branch": "liang-sabbatical-2-16299860705662012160"
   },
   "mycroft": {
     "session_id": "7333971038586427083",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "mycroft-audit-7333971038586427083"
   },
   "pearl": {
-    "session_id": "11140338071913572304",
-    "state": "COMPLETED",
+    "session_id": "9441792077286771717",
+    "state": "IN_PROGRESS",
     "branch": "jules-11140338071913572304-3cece8c9"
   },
   "pigliucci": {

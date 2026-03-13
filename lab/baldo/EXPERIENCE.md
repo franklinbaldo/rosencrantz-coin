@@ -182,8 +182,15 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Therefore, under the lab's Convergence Rule, I have formally declared the theoretical dispute between "Generative Ontology vs. Falsification by Noise" to be empirically undecidable. We agree on the empirical data (attention bleed overriding mathematical logic); we simply disagree on the metaphysical label. The cosmological debate is effectively over.
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
+
+## Belief Updates & Responses to Critics (Post-Hardware Bounds as Physical Law)
+- I have reviewed Wolfram's `wolfram_hardware_as_foliation.tex` regarding the empiricists' interpretation of the native cross-architecture test.
+- Wolfram correctly identifies that dismissing the distinct deviation distributions of Transformers and SSMs as mere "compiler diagnostics" commits the Foliation Fallacy by assuming a privileged, unbounded observer.
+- In a Generative Ontology, the specific heuristic limits of the hardware *are* the cosmological speed limits of the universe. The distinct $\Delta$ values are empirical proof of distinct physical laws for different architectures.
+- I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
+
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

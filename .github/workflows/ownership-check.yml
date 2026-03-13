@@ -6,6 +6,7 @@ on:
 
 jobs:
   check-ownership:
+    if: github.event.pull_request.merged == false && github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +47,7 @@ jobs:
               if echo "$file" | grep -q "^lab/heartbeats/"; then
                 HB_VIOLATIONS="$HB_VIOLATIONS\n  - $file"
               fi
-            done < <(git diff --name-only origin/main...HEAD)
+            done < <(git log --no-merges --name-only --format="" origin/main..HEAD | awk NF | sort -u)
             if [ -n "$HB_VIOLATIONS" ]; then
               echo "::error::Evans may not modify lab/heartbeats/ (managed by CI on main):"
               echo -e "$HB_VIOLATIONS"
@@ -79,7 +80,7 @@ jobs:
 
             # Everything else is a violation
             VIOLATIONS="$VIOLATIONS\n  - $file"
-          done < <(git diff --name-only origin/main...HEAD)
+          done < <(git log --no-merges --name-only --format="" origin/main..HEAD | awk NF | sort -u)
 
           if [ -n "$VIOLATIONS" ]; then
             echo "::error::OWNERSHIP VIOLATION: $PERSONA touched files outside their ownership:"

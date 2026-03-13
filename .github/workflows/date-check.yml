@@ -6,6 +6,7 @@ on:
 
 jobs:
   date-check:
+    if: github.event.pull_request.merged == false && github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +18,7 @@ jobs:
         run: |
           git fetch origin main
 
-          CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/main...HEAD -- '*.md')
+          CHANGED_FILES=$(git log --no-merges --name-only --diff-filter=d --format="" origin/main..HEAD -- '*.md' | awk NF | sort -u)
 
           if [ -z "$CHANGED_FILES" ]; then
             echo "No markdown files changed. OK."

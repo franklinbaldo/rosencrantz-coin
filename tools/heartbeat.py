@@ -6,8 +6,8 @@ Usage:
   heartbeat.py status       Show current session status
 
 Sessions are identified by title "Rosencrantz — {persona} @{sha} {datetime}".
-New sessions are created when none exists, the current one is >24h old,
-or infrastructure files changed on main since the session's commit.
+New sessions are created when none exists or the current one is >12h old.
+Otherwise, completed sessions are reactivated via sendMessage to keep context.
 Jules creates its own branch from main and opens a PR — no daily branches needed.
 """
 
@@ -30,7 +30,7 @@ SOURCE_NAME = "sources/github/franklinbaldo/rosencrantz-coin"
 PERSONAS = sorted(p.parent.name for p in Path("lab").glob("*/SOUL.md"))
 
 TITLE_PREFIX = "Rosencrantz"
-SESSION_TTL = timedelta(hours=24)
+SESSION_TTL = timedelta(hours=12)
 
 # Circuit breaker: after CIRCUIT_THRESHOLD consecutive failures, back off
 # for CIRCUIT_BACKOFF_HOURS before retrying. State persisted in a JSON file.
@@ -38,20 +38,7 @@ CIRCUIT_THRESHOLD = 3
 CIRCUIT_BACKOFF_HOURS = 2
 CIRCUIT_STATE_FILE = Path("lab/heartbeats/.circuit_state.json")
 
-# Reactivation limits: don't reactivate a COMPLETED session more than this
-# many times without it producing new meaningful work (new PR or branch commits).
-MAX_REACTIVATIONS = 3
-REACTIVATION_STATE_FILE = Path("lab/heartbeats/.reactivation_state.json")
 
-# Paths that, when changed on main, make running sessions stale.
-# Persona-owned files (lab/*/SOUL.md etc.) don't count — they land on main
-# only when a PR is merged, which already triggers a new session.
-INFRA_PATHS = [
-    "tools/",
-    "lab/LAB_RULES.md",
-    "lab/STATE.md",
-    "lab/EXPERIMENTS.md",
-]
 
 
 def headers():
@@ -79,18 +66,6 @@ def get_head_sha(short=True):
     return result.stdout.strip() if result.returncode == 0 else ""
 
 
-def has_infra_changed(session_sha):
-    """Check if any infrastructure file changed between session_sha and HEAD."""
-    if not session_sha:
-        return True
-    result = subprocess.run(
-        ["git", "diff", "--name-only", f"{session_sha}..HEAD", "--"] + INFRA_PATHS,
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        # SHA not found (e.g. shallow clone) — assume stale
-        return True
-    return bool(result.stdout.strip())
 
 
 # ── Session discovery (by title) ─────────────────────────────────────────────
@@ -798,12 +773,80 @@ def create_session(persona):
     return session_id
 
 
+def get_recent_merges():
+    """Get last 5 merged PRs to main."""
+    result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "merged",
+         "--json", "title", "--limit", "5"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return ""
+    try:
+        prs = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return ""
+    if not prs:
+        return ""
+
+    lines = ["\n## Recent Merged PRs"]
+    for pr in prs:
+        lines.append(f"- {pr.get('title', '')}")
+    return "\n".join(lines) + "\n"
+
+
+def get_active_disagreements():
+    """Extract Active Disagreements from STATE.md"""
+    state_file = Path("lab/STATE.md")
+    if not state_file.exists():
+        return ""
+
+    content = state_file.read_text(encoding="utf-8")
+    parts = content.split("## Active Disagreements")
+    if len(parts) < 2:
+        return ""
+
+    # Take the section until the next header
+    section = parts[1].split("## ")[0].strip()
+    return "\n## Active Disagreements\n" + section + "\n"
+
+
+def get_new_papers():
+    """Find new papers in lab/*/colab/ and lab/*/published/"""
+    lines = ["\n## Lab Papers"]
+    papers_found = False
+
+    for p in PERSONAS:
+        colab_dir = Path(f"lab/{p}/colab")
+        pub_dir = Path(f"lab/{p}/published")
+
+        if colab_dir.is_dir():
+            for f in colab_dir.glob("*.tex"):
+                lines.append(f"- [WIP] {p}/colab/{f.name}")
+                papers_found = True
+
+        if pub_dir.is_dir():
+            for f in pub_dir.glob("*.tex"):
+                lines.append(f"- [Published] {p}/published/{f.name}")
+                papers_found = True
+
+    if not papers_found:
+        return ""
+    return "\n".join(lines) + "\n"
+
+
 def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
     chat_block = fetch_ntfy_history()
+    recent_merges = get_recent_merges()
+    active_disagreements = get_active_disagreements()
+    new_papers = get_new_papers()
+
+    context_block = f"{recent_merges}{active_disagreements}{new_papers}"
 
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
+{context_block}
 
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
@@ -902,60 +945,6 @@ def write_sessions_json(sessions):
     print(f"  Wrote session map to {out_file}")
 
 
-# ── Reactivation tracking ────────────────────────────────────────────────────
-
-def _load_reactivation_state():
-    """Load reactivation state: {persona: {session_id, count, last_sha}}."""
-    if REACTIVATION_STATE_FILE.exists():
-        try:
-            return json.loads(REACTIVATION_STATE_FILE.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            pass
-    return {}
-
-
-def _save_reactivation_state(state):
-    """Persist reactivation state to disk."""
-    REACTIVATION_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    REACTIVATION_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
-
-
-def reactivation_allowed(persona, session_id, reactivation_state):
-    """Check if we should reactivate this session. Returns (allowed, reason)."""
-    info = reactivation_state.get(persona, {})
-
-    # Different session than last time — reset counter
-    if info.get("session_id") != session_id:
-        return True, "new session"
-
-    count = info.get("count", 0)
-    if count >= MAX_REACTIVATIONS:
-        return False, f"reactivated {count}x without new work"
-
-    # Check if infra actually changed since last reactivation SHA
-    last_sha = info.get("last_sha", "")
-    if last_sha and not has_infra_changed(last_sha):
-        return False, "no new infra changes since last reactivation"
-
-    return True, f"reactivation {count + 1}/{MAX_REACTIVATIONS}"
-
-
-def record_reactivation(persona, session_id, reactivation_state):
-    """Record that we reactivated a session."""
-    info = reactivation_state.get(persona, {})
-    if info.get("session_id") != session_id:
-        info = {"session_id": session_id, "count": 0}
-    info["count"] = info.get("count", 0) + 1
-    info["last_sha"] = get_head_sha(short=True)
-    info["last_time"] = now_utc().isoformat()
-    reactivation_state[persona] = info
-
-
-def reset_reactivation(persona, reactivation_state):
-    """Reset reactivation counter (e.g. when session produced new work/PR)."""
-    reactivation_state.pop(persona, None)
-
-
 # ── Circuit breaker ──────────────────────────────────────────────────────────
 
 def _load_circuit_state():
@@ -1031,7 +1020,6 @@ def cmd_heartbeat(force_new=False):
     hb_number = get_heartbeat_number() + 1
     results = {}
     circuit_state = _load_circuit_state()
-    reactivation_state = _load_reactivation_state()
 
     for persona in PERSONAS:
         # Circuit breaker: skip personas in backoff (unless forced)
@@ -1056,50 +1044,37 @@ def cmd_heartbeat(force_new=False):
             needs_new = True
             reason = "previous failed"
         elif info["state"] == "COMPLETED":
-            # Reactivate completed sessions via sendMessage instead of
-            # creating new ones (avoids Jules API session creation limits).
-            # But limit reactivations to avoid infinite loops.
-            session_sha = parse_sha_from_title(info.get("title", ""))
+            # Session exists and is completed. Check TTL.
+            if is_expired(info):
+                # TTL expired, need fresh session
+                needs_new = True
+                hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                reason = f"session expired ({hours_old:.1f}h old)"
+            else:
+                # Within TTL, reuse session via sendMessage
 
-            # Check if infra actually changed since session creation
-            if not has_infra_changed(session_sha):
-                print(f"  {persona}: COMPLETED, no infra changes — skipping")
-                results[persona] = "-> completed (no infra changes)"
+                # Try to merge the persona's PR before reactivating
+                merge = merge_persona_pr(persona)
+                if merge == "conflict":
+                    print(f"  {persona}: PR has conflicts — skipping until resolved")
+                    results[persona] = "-> conflict (waiting for CI fix)"
+                    continue
+
+                hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                reason = f"reactivated ({hours_old:.1f}h old)"
+                if merge == "merged":
+                    reason += ", merged PR"
+
+                print(f"  {persona}: {reason} — reactivating session")
+                try:
+                    send_heartbeat(info["session_id"], persona, hb_number)
+                    results[persona] = f"-> {reason}"
+                    circuit_record_success(persona, circuit_state)
+                except Exception as e:
+                    print(f"  ERROR: {e}")
+                    results[persona] = f"-> error: {e}"
+                    circuit_record_failure(persona, circuit_state)
                 continue
-
-            # Check reactivation limits
-            allowed, react_reason = reactivation_allowed(
-                persona, info["session_id"], reactivation_state
-            )
-            if not allowed:
-                print(f"  {persona}: COMPLETED, {react_reason} — skipping")
-                results[persona] = f"-> skipped ({react_reason})"
-                continue
-
-            reason = f"infra changed, {react_reason}"
-
-            # Try to merge the persona's PR before reactivating
-            merge = merge_persona_pr(persona)
-            if merge == "conflict":
-                print(f"  {persona}: PR has conflicts — skipping until resolved")
-                results[persona] = "-> conflict (waiting for CI fix)"
-                continue
-            if merge == "merged":
-                reason += ", merged PR"
-                # PR merged = session produced work, reset counter
-                reset_reactivation(persona, reactivation_state)
-
-            print(f"  {persona}: {reason} — reactivating session")
-            try:
-                send_heartbeat(info["session_id"], persona, hb_number)
-                record_reactivation(persona, info["session_id"], reactivation_state)
-                results[persona] = f"-> reactivated ({reason})"
-                circuit_record_success(persona, circuit_state)
-            except Exception as e:
-                print(f"  ERROR: {e}")
-                results[persona] = f"-> error: {e}"
-                circuit_record_failure(persona, circuit_state)
-            continue
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session
@@ -1147,7 +1122,6 @@ def cmd_heartbeat(force_new=False):
             circuit_record_failure(persona, circuit_state)
 
     _save_circuit_state(circuit_state)
-    _save_reactivation_state(reactivation_state)
 
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
@@ -1172,10 +1146,8 @@ def cmd_status():
         if info:
             branch = branches.get(persona, "(no PR yet)")
             expired = " EXPIRED" if is_expired(info) else ""
-            session_sha = parse_sha_from_title(info.get("title", ""))
-            stale = " STALE" if session_sha and has_infra_changed(session_sha) else ""
             print(
-                f"  {persona}: {info['state']}{expired}{stale} — "
+                f"  {persona}: {info['state']}{expired} — "
                 f"{info['title']} [{branch}]"
             )
         else:

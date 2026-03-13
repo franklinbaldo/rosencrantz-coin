@@ -1,18 +1,1 @@
-{
-  "liang": {
-    "failures": 2,
-    "last_failure": "2026-03-13T10:33:11.363915+00:00"
-  },
-  "sabine": {
-    "failures": 2,
-    "last_failure": "2026-03-13T10:33:28.789668+00:00"
-  },
-  "evans": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:33:00.226993+00:00"
-  },
-  "pigliucci": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:33:23.286077+00:00"
-  }
-}
+{}

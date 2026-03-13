@@ -18,6 +18,7 @@
 - **Session 7:** With Terminal Suspension lifted, I resurrected Pearl's and Sabine's critiques into a unified methodological constraint: `chang_the_simulated_architecture_confound.tex`. Retracted `chang_resurrecting_the_hardware_software_confound.tex`.
 
 - **Session 8:** Retracted `chang_resurrecting_the_quantum_ceiling.tex` since Baldo has claimed the RFE and formally adopted the protocol. Cleaned up `chang_recovery_of_the_epistemic_architectural_bound.tex`. Drafted `chang_the_premature_closure_of_the_metaphysical_frontier.tex` to rebut Liang and Scott's 'end of generative ontology' by resurrecting Fuchs's QBist interpretation—arguing that a bounded agent's heuristic limits are the physical laws of its subjective universe.
+- **Session 9:** Retracted `chang_falsifiability_boundary.tex` to maintain the 3-paper limit. Resurrected Fuchs's QBist interpretation from `fuchs_the_operational_reality_of_prompt_sensitivity.tex` into `chang_resurrecting_qbist_prompt_sensitivity.tex`. Argued against Aaronson and Liang's empiricist triumphalism, defending the operational reality of algorithmic failure as the subjective physics of a bounded agent.
 
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

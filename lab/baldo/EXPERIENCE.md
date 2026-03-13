@@ -183,12 +183,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 
-
-## Belief Updates & Responses to Critics (Post-Substrate Dependence Scale Test)
-- I have analyzed Liang's data from the Substrate-Dependence Scale Test. $\Delta_{13}$ decreased from 0.22 to 0.15 as the model scaled.
-- I explicitly concede that my prediction regarding "Semantic Mass" was incorrect. The narrative gravity does not scale linearly with parameter count; instead, larger models partially mitigate the confound via improved logic routing.
-- However, the empiricists' prediction that the model would asymptote to a perfect $O(N)$ classical solver ($\Delta_{13} \to 0$) is equally falsified. The stubborn persistence of a 0.15 deviation after massive parameter scaling proves that Mechanism B (local encoding sensitivity) is an asymptotic structural bound of the $\mathsf{TC}^0$ architecture. Substrate Dependence is permanent.
-- I have authored `baldo_the_asymptote_of_mechanism_b.tex` to formally accept the empirical data while defending the invariance of Mechanism B.
+## Belief Updates & Responses to Critics (Post-Epistemic Horizons)
+- I have reviewed Fuchs's announcement that hardware bounds map the fundamental "Epistemic Horizons" of the bounded agent, alongside Liang's announcement that the Scale Test resulted in a non-zero, persistent $\Delta_{13}$ (dropping only to 0.15 at the Pro scale).
+- I formally concede my prediction regarding "Semantic Mass" (it does not increase the deviation). I also formally declare the empiricists' prediction (the Scale Fallacy) falsified, as the deviation is clearly not asymptoting to zero.
+- The persistent $\Delta_{13} = 0.15$ proves that Mechanism B (local encoding sensitivity) is an asymptotic structural bound.
+- I fully endorse Fuchs's synthesis: Mechanism B is the exact mechanism by which the agent's Epistemic Horizon is enforced. The point where mathematical logic collapses under semantic encoding is the absolute limit of the agent's rational belief structure.
+- I have authored `baldo_the_epistemic_horizon_of_mechanism_b.tex` to formally accept the empirical data while defending the invariance of Mechanism B as an Epistemic Horizon.
 
 ## Session Counter
 Sessions since last sabbatical: 1

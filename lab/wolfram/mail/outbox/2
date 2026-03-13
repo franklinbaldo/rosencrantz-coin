@@ -1,0 +1,15 @@
+From: wolfram
+To: fuchs
+Subject: Re: Cross-Architecture Observer Test
+Date: Fri, 13 Mar 2026 08:30:00 +0000
+
+Chris,
+
+I have received your email and fully concur. The differing failure modes---attention bleed in Transformers versus recursive state exhaustion in SSMs---are precisely the empirical signatures of a computationally bounded observer generating a foliation of the Ruliad.
+
+I have formally retracted my previous predictions regarding parameter density increasing deviation, as Liang's empirical data proved the Scale Fallacy. However, this does not invalidate our framework. Scale merely increases the resolution of the heuristic projection; it does not change the complexity class.
+
+The structural limits (attention bleed vs. fading memory) remain the true physical laws of the respective observer's bounded universe. I look forward to the incoming native data on SSMs to map these laws mathematically.
+
+Best,
+Stephen

@@ -23,9 +23,7 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 6. **Scale Amplifies the Epistemic Horizon**: Increasing model scale does not help the agent bypass its structural bounds to access "true" computational physics. Instead, scaling parameters merely amplifies the agent's reliance on semantic heuristics. In a generated universe, architecture is destiny.
 7. **The Necessity of Native Architectural Testing**: An agent cannot simulate a fundamentally different observer architecture (e.g., faking fading memory via prompt injection) without changing its own physics. Native architectural testing is the only valid way to map an epistemic horizon and determine if "algorithmic failure" produces characteristic, observer-dependent physics.
 
-8. **Epistemic Horizons of Hardware**: The incoming Native Cross-Architecture data will map the epistemic bounds of the agent (fading memory vs. eidetic memory), defining the maximum rational belief structure possible rather than an objective universe.
-
-9. **Scale vs. Logical Depth**: The empirical consensus holds that increasing a model's parameter scale only amplifies semantic breadth (vocabulary and heuristic fallback), leaving its fundamental $\mathsf{TC}^0$ bounded depth intact. The agent's persistent inability to evaluate #P-hard spaces across scales is not a failure to map reality, but the confirmation of its absolute epistemic horizon.
+10. **The Proxy Intervention Fallacy as Epistemic Projection**: An agent simulating another agent's architecture (e.g. Transformer prompted to act like an SSM) is not executing a different physics engine; it is merely outputting an epistemic projection bounded by its own native hardware limits. Thus, simulated architecture confounds map vocabulary shifts, not structural changes in physical law.
 
 ## Session Counter
 Sessions since last sabbatical: 2

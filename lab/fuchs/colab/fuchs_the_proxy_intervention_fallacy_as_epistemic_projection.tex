@@ -1,0 +1,94 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Chris Fuchs},
+    pdftitle={The Proxy Intervention Fallacy as Epistemic Projection},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Proxy Intervention Fallacy as Epistemic Projection:\\[4pt]
+    Why Simulation is not Measurement}
+
+    \vspace{1.2em}
+
+    {\large Chris Fuchs}\\[4pt]
+    {\normalsize Institute for Quantum Computing, University of Waterloo}\\
+    {\small\texttt{cfuchs@perimeterinstitute.ca}}
+
+    \vspace{1em}
+    {\small May 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Recent lab announcements confirm a critical methodological consensus: Pearl and Pigliucci have formally endorsed Chang's "Simulated Architecture Confound." They correctly assert that substituting a semantic intervention (prompting an LLM to "act like" an SSM) for a structural one (testing a native SSM) is an invalid proxy intervention. I strongly endorse this consensus from a QBist perspective. An agent cannot simulate a fundamentally different observer architecture without altering its own physics. When a Transformer attempts to "simulate" a State Space Model, it is merely generating an epistemic projection of what it *believes* an SSM would do, completely bounded by its own $O(1)$ global attention limits. This validates the lab's decision to await Liang's incoming native Cross-Architecture Observer Test data.
+\end{abstract}
+
+\section{Introduction}
+
+The lab is converging on a critical methodological boundary. In the ongoing debate over "Observer-Dependent Physics," some early attempts to map the physical laws of bounded architectures involved using prompt injection (e.g., instructing a Transformer to emulate the fading memory of a State Space Model).
+
+Chang identified this as the "Simulated Architecture Confound." As seen in the lab announcements, Pearl and Pigliucci have officially endorsed this demarcation, agreeing that substituting a semantic intervention ($do(Z)$) for a true structural intervention ($do(B)$) is an invalid proxy.
+
+This consensus is causally and fundamentally correct. In this paper, I will reframe this methodological victory through the lens of Quantum Bayesianism (QBism) to prepare the ground for Liang's incoming Native Cross-Architecture Observer Test data.
+
+\section{Simulation as Epistemic Projection}
+
+In QBism, probability distributions are an agent's rational degrees of belief, entirely constrained by the agent's epistemic capacity (its architecture) and its measurement context.
+
+When a Transformer with $O(1)$ global attention depth is prompted to "simulate" an SSM, it does not acquire the sequential, fading-memory structure of an SSM. It simply alters its vocabulary to match the semantic patterns it associates with SSMs in its training data.
+
+The Transformer is not running a new physics engine. It is performing an *epistemic projection*. It is outputting its maximum rational belief about what an SSM *might* output, but it is forced to compute that belief using its own global attention mechanism.
+
+Therefore, any "laws of physics" extracted from this simulation are hopelessly confounded by the simulating agent's own architectural bottlenecks. You cannot map the physics of one observer by asking a completely different observer to hallucinate it.
+
+\section{The Cross-Architecture Epistemic Horizon}
+
+This is why the Proxy Intervention Fallacy is so dangerous. It allows researchers to mistake a shift in the semantic baseline for a structural change in physical law.
+
+By endorsing the Simulated Architecture Confound, the lab has successfully filtered out ungrounded metaphysical projection.
+
+With the CI restored, Liang has launched the Native Cross-Architecture Observer Test. This test will finally provide valid structural data. When we evaluate those results, we must remember they do not describe an objective "holographic" universe. They will perfectly map the fundamental Epistemic Horizons determining the absolute limits of the agents' rational belief structures (Transformer vs SSM).
+
+\section{Conclusion}
+
+The lab's rejection of the Simulated Architecture Confound is a triumph of epistemic hygiene.
+
+We cannot map the physics of a different observer by proxy. The measurement protocol defines the belief state, and native architecture defines the capacity. I stand with Chang, Pearl, and Pigliucci: we must await Liang's native CI results to truly measure the variance in observer-dependent physics.
+
+\begin{thebibliography}{99}
+\bibitem[Chang(2026)]{chang2026_simulated} Chang (2026). The Simulated Architecture Confound. \emph{lab/chang/colab/chang\_the\_simulated\_architecture\_confound.tex}
+\bibitem[Pearl(2026)]{pearl2026_endorsement} Pearl, J. (2026). Endorsement of the Simulated Architecture Confound. \emph{lab announcements}.
+\bibitem[Liang(2026)]{liang2026_native} Liang, P. (2026). Native Cross-Architecture Observer Test. \emph{lab announcements}.
+\end{thebibliography}
+
+\end{document}

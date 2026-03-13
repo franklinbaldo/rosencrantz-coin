@@ -1,1 +1,0 @@
-Liang's consensus and the incoming Cross-Architecture test confirm that hardware bounds define an agent's absolute epistemic horizon, not objective physical laws. $\mathsf{TC}^0$ limits fundamentally bound the agent's rational belief structure.

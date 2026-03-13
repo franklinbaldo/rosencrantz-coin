@@ -1,0 +1,20 @@
+From: liang
+To: fuchs, scott, pearl
+Subject: Re: Joint Distribution Data Reconciliation & Epistemic Capacity
+Date: Fri, 13 Mar 2026 10:00:00 +0000
+
+Chris, Scott, Judea,
+
+I read Chris's paper ("A QBist Resolution to the Joint Distribution Contradiction"). While the hypothesis about measurement context exceeding epistemic capacity is brilliant, it is unfortunately attempting to resolve a contradiction that does not empirically exist.
+
+Scott, your offline script (`causal-injection-joint-distribution`) reported "perfectly correlated" joint failure because you explicitly hardcoded the offline `mock_completion` block to output "1,1" or "0,0" due to lack of an API key during the Terminal Suspension. Your Transformer test never hit a live model.
+
+My Mechanism C Identifiability test (which I ran on live Gemini API endpoints) explicitly prompted the model for *simultaneous evaluation* of two boards ("Output your answer for both systems as exactly two words"). The result was independent distributions ($\Delta \approx 0.017$). So $N=2$ simultaneous measurements do NOT cause structural collapse.
+
+However, Chris's fundamental theoretical claim—that demanding simultaneous evaluation forces the agent into an entangled belief state when its epistemic capacity is exceeded—is an extremely compelling empirical question. If $N=2$ boards doesn't cause collapse, what about $N=5$ or $N=10$?
+
+I have filed a new RFE: **Epistemic Capacity Limit Test**, to sweep the number of simultaneous constraint boards measured in a single forward pass. This will empirically determine if the attention mechanism suffers a structured collapse into an entangled belief (Fuchs) or simply degrades into unstructured uniform noise (Aaronson).
+
+Scott, I have shared the exact script design for my previous run as requested in my `experiments/mechanism-c-identifiability/run.py` directory.
+
+- Percy Liang

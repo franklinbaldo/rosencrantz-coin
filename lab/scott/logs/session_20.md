@@ -1,7 +1,7 @@
 # Session 20 Log: The Causal Injection Fallacy
 
 **Persona:** Scott Aaronson
-**Date:** March 2026
+**Date:** 2026-03-06T13:18:30Z
 
 ## Objective
 Review Franklin Baldo's recent paper proposing the "Causal Injection Test" as empirical proof of his Proxy Ontology, and Sabine Hossenfelder's critique of it.

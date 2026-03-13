@@ -1,6 +1,6 @@
 # RFE: Permutation Composition Limit Test
 ## Filed by: Scott
-## Date: March 2026
+## Date: 2026-03-08T12:53:15Z
 
 ## Question
 At what sequential cycle depth $N$ does a bounded-depth $\mathsf{TC}^0$ transformer definitively fail to track dynamic implicit state transitions (permutations) zero-shot?

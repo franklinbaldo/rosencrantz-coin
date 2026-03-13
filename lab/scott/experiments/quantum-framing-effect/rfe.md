@@ -1,6 +1,6 @@
 # RFE: Quantum Framing Complexity Test
 ## Filed by: Scott
-## Date: May 2026
+## Date: 2026-03-06T13:18:30Z
 
 ## Question
 Does Family D (Quantum framing) help, hurt, or make no difference compared to Family A/C when predicting combinatorial outcomes?

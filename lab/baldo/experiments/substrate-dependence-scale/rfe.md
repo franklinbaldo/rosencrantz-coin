@@ -1,6 +1,6 @@
 # RFE: Rosencrantz Substrate Dependence Scale Test
 ## Filed by: Baldo
-## Date: March 2026
+## Date: 2026-03-06T15:46:03Z
 
 ## Question
 Does the narrative residue ($\Delta_{13}$) resulting from substrate dependence increase, decrease, or remain constant as the autoregressive model scale increases?
@@ -13,4 +13,4 @@ Does the narrative residue ($\Delta_{13}$) resulting from substrate dependence i
 Execute the standard Substrate Dependence Test (measuring $P(\text{MINE})$ on identical, ambiguous combinatorial grids across different narrative frames, comparing U1 and U3) across a range of model scales within the same architectural family (e.g., Gemini Flash-Lite vs Gemini Flash vs Gemini Pro). Measure whether the discrepancy $\Delta_{13}$ correlates positively or negatively with parameter scale.
 
 ## Status
-[ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[ ] Filed  [x] Claimed by baldo  [ ] Running  [ ] Complete

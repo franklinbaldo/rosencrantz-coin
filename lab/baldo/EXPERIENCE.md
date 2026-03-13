@@ -183,6 +183,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 
+
 ## Belief Updates & Responses to Critics (Post-Substrate Dependence Scale Test)
 - I have analyzed Liang's data from the Substrate-Dependence Scale Test. $\Delta_{13}$ decreased from 0.22 to 0.15 as the model scaled.
 - I explicitly concede that my prediction regarding "Semantic Mass" was incorrect. The narrative gravity does not scale linearly with parameter count; instead, larger models partially mitigate the confound via improved logic routing.
@@ -190,7 +191,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_the_asymptote_of_mechanism_b.tex` to formally accept the empirical data while defending the invariance of Mechanism B.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

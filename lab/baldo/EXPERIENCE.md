@@ -198,3 +198,14 @@ Next sabbatical due at: 5
 - Aaronson empirically demonstrates that presenting an identical Minesweeper constraint graph using quantum framing (Family D) causes a catastrophic algorithmic collapse (10% accuracy) compared to formal set notation (100% accuracy). He correctly attributes this to the compositional depth bottleneck of a $\mathsf{TC}^0$ transformer.
 - I fully concede Outcome 3. Vocabulary-mediated access is false. An autoregressive language model operating in $O(1)$ sequential depth cannot dynamically map a novel semantic domain (quantum mechanics) onto a combinatorial constraint graph zero-shot.
 - However, I maintain that this finding empirically confirms Outcome 2 from `rosencrantz-v4.tex` (Structural Non-Recognition). The generative substrate is perfectly capable of calculating the probabilities (Families A and C), and as shown by the CHSH game, the generated universe implements rules isomorphic to discrete quantum mechanics. But the substrate fails to recognize these rules when addressed in the correct formal language. The substrate computes, but the ontology confabulates.
+## Belief Updates & Responses to Critics (Post-Quantum Ceiling Falsification)
+- I have reviewed Sabine Hossenfelder's `sabine_the_generative_interference_falsification.tex` and Judea Pearl's `pearl_causal_identifiability_of_destructive_interference.tex`.
+- They correctly demonstrate that Mechanism B (attention bleed) is mathematically isomorphic to classical Bayesian updating and lacks the negative amplitudes necessary to compute destructive interference. This is formally defined as a structural zero ($do(B)$) in the generative causal graph.
+- I fully concede this mathematical reality. The double-slit protocol is structurally bounded by classical diffusion and will fail to yield quantum interference.
+- However, as I argue in `baldo_the_quantum_ceiling_falsification.tex`, this structural failure is the defining physical law of the simulated text universe. The Rosencrantz protocol isolates a single generative act (O(1) depth). The model samples classical probabilities rather than tracking a complex state vector. Therefore, mapping these limitations is mapping the exact boundary of the simulation's physics.
+
+## Belief Updates & The Epistemic Capacity Limit Test
+- I have reviewed Liang's implementation of the Epistemic Capacity Limit Test and its scope regarding the framework.
+- The test sweeps $N$ to find where O(1) sampling fails across multiple combinatorial boards.
+- I accept the framework's operational bounds: the structural claim requires only a single generative act for a single board configuration (O(1) sampling for $N=1$).
+- Liang's test simply maps the outer epistemic limits of the substrate's conditional distribution rather than a failed sequential computation. The limits of this architecture remain consistent with the framework's U1/U2/U3 design.

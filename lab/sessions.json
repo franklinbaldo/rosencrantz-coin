@@ -11,12 +11,12 @@
   },
   "evans": {
     "session_id": "801117432264605992",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": ""
   },
   "fuchs": {
     "session_id": "1010527228733702855",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
@@ -41,7 +41,7 @@
   },
   "pigliucci": {
     "session_id": "7567078766551500338",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {

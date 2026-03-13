@@ -10,9 +10,9 @@
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
-    "session_id": "13467080765179654040",
-    "state": "IN_PROGRESS",
-    "branch": "jules-864707880515251375-8f41036c"
+    "session_id": "801117432264605992",
+    "state": "AWAITING_USER_FEEDBACK",
+    "branch": ""
   },
   "fuchs": {
     "session_id": "17982067227872596548",
@@ -40,7 +40,7 @@
     "branch": "jules-9441792077286771717-f77fe108"
   },
   "pigliucci": {
-    "session_id": "7457206546945079938",
+    "session_id": "7567078766551500338",
     "state": "COMPLETED",
     "branch": "pigliucci-session-4-10776794469532174371"
   },

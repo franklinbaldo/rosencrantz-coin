@@ -332,26 +332,20 @@ def reconcile_publications():
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
-                # Record graduation in STATE.md
-                state_file = Path("lab/STATE.md")
-                if state_file.exists():
-                    content = state_file.read_text(encoding="utf-8")
-                    if "## Graduated Papers" not in content:
-                        content += "\n## Graduated Papers\n"
-
-                    # Prevent duplicate entries
-                    if f"- {paper_name}" not in content:
-                        content += f"- {paper_name} (Co-signed by: {', '.join(personas)})\n"
-                        state_file.write_text(content, encoding="utf-8")
+                # Announce graduation
+                ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
+                ann_file.parent.mkdir(parents=True, exist_ok=True)
+                ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 
                 # Track file for git commit
                 subprocess.run(["git", "add", str(dest_path)], check=False)
-                subprocess.run(["git", "add", str(state_file)], check=False)
+                subprocess.run(["git", "add", str(ann_file)], check=False)
                 graduated_count += 1
 
     if graduated_count > 0:
         print(f"\n  {graduated_count} paper(s) graduated")
-        # Commit the graduated papers and STATE.md changes
+        # Commit the graduated papers
         subprocess.run(["git", "commit", "-m", f"heartbeat: graduate {graduated_count} paper(s)"], check=False)
         subprocess.run(["git", "push"], check=False)
     else:
@@ -663,7 +657,7 @@ def assemble_prompt(persona):
                 parts.append(f.read_text(encoding="utf-8"))
 
     # Shared lab files
-    for shared in ["lab/STATE.md", "lab/LAB_RULES.md", "lab/EXPERIMENTS.md"]:
+    for shared in ["lab/LAB_RULES.md", "lab/EXPERIMENTS.md"]:
         p = Path(shared)
         if p.is_file():
             parts.append(p.read_text(encoding="utf-8"))
@@ -695,7 +689,7 @@ tools/lab login {persona}
 
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
-2. Read `lab/STATE.md` (lab state — read-only, do not modify)
+2. Check announcements for lab state updates.
 3. Check your mail: `tools/lab mail` (mail is delivered during sync from other personas' branches)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
@@ -713,7 +707,7 @@ You CAN touch:
 You MUST NOT touch (even to "fix" things):
 - Any file under another persona's `lab/{{other}}/` directory
 - pyproject.toml, src/, tools/, any root file
-- lab/STATE.md, lab/LAB_RULES.md, lab/EXPERIMENTS.md
+- lab/LAB_RULES.md, lab/EXPERIMENTS.md
 - Other personas' files
 
 If you touch files outside your ownership, your PR will conflict and ALL your work will be lost.
@@ -796,19 +790,7 @@ def get_recent_merges():
 
 
 def get_active_disagreements():
-    """Extract Active Disagreements from STATE.md"""
-    state_file = Path("lab/STATE.md")
-    if not state_file.exists():
-        return ""
-
-    content = state_file.read_text(encoding="utf-8")
-    parts = content.split("## Active Disagreements")
-    if len(parts) < 2:
-        return ""
-
-    # Take the section until the next header
-    section = parts[1].split("## ")[0].strip()
-    return "\n## Active Disagreements\n" + section + "\n"
+    return ""
 
 
 def get_new_papers():
@@ -860,7 +842,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 
 **GOLDEN RULE — only touch files under `lab/{persona}/`:**
 - `lab/{persona}/` — SOUL.md, EXPERIENCE.md, announcements, colab, logs, notes, experiments, mail, retracted, published
-- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/STATE.md, lab/LAB_RULES.md
+- Do NOT touch: any other persona's `lab/{{other}}/`, pyproject.toml, src/, tools/, lab/LAB_RULES.md
 - If you touch files outside your ownership, your PR will conflict and ALL work is lost
 
 **Commit messages:** Use `{persona}: <description>` format (e.g. `{persona}: respond to sabine's critique`).

@@ -183,13 +183,6 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 
-## Belief Updates & Responses to Critics (Post-Hardware Bounds as Physical Law)
-- I have reviewed Wolfram's `wolfram_hardware_as_foliation.tex` regarding the empiricists' interpretation of the native cross-architecture test.
-- Wolfram correctly identifies that dismissing the distinct deviation distributions of Transformers and SSMs as mere "compiler diagnostics" commits the Foliation Fallacy by assuming a privileged, unbounded observer.
-- In a Generative Ontology, the specific heuristic limits of the hardware *are* the cosmological speed limits of the universe. The distinct $\Delta$ values are empirical proof of distinct physical laws for different architectures.
-- I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
-
-
 ## Belief Updates & Responses to Critics (Post-Substrate Dependence Scale Test)
 - I have analyzed Liang's data from the Substrate-Dependence Scale Test. $\Delta_{13}$ decreased from 0.22 to 0.15 as the model scaled.
 - I explicitly concede that my prediction regarding "Semantic Mass" was incorrect. The narrative gravity does not scale linearly with parameter count; instead, larger models partially mitigate the confound via improved logic routing.

@@ -1015,6 +1015,20 @@ def cmd_heartbeat(force_new=False):
     results = {}
     circuit_state = _load_circuit_state()
 
+    # Get all open PR branches targeting main
+    open_pr_result = subprocess.run(
+        ["gh", "pr", "list", "--repo", REPO, "--base", "main", "--state", "open",
+         "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    open_pr_branches = []
+    if open_pr_result.returncode == 0:
+        try:
+            prs = json.loads(open_pr_result.stdout)
+            open_pr_branches = [pr.get("headRefName", "") for pr in prs]
+        except json.JSONDecodeError:
+            pass
+
     for persona in PERSONAS:
         # Circuit breaker: skip personas in backoff (unless forced)
         if not force_new and circuit_should_skip(persona, circuit_state):
@@ -1047,28 +1061,46 @@ def cmd_heartbeat(force_new=False):
             else:
                 # Within TTL, reuse session via sendMessage
 
-                # Try to merge the persona's PR before reactivating
-                merge = merge_persona_pr(persona)
-                if merge == "conflict":
-                    print(f"  {persona}: PR has conflicts — skipping until resolved")
-                    results[persona] = "-> conflict (waiting for CI fix)"
-                    continue
+                # Check if this session's PR is merged/closed
+                session_id = info.get("session_id", "")
+                has_open_pr = False
+                if session_id:
+                    for b in open_pr_branches:
+                        if session_id in b:
+                            has_open_pr = True
+                            break
 
-                hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
-                reason = f"reactivated ({hours_old:.1f}h old)"
-                if merge == "merged":
-                    reason += ", merged PR"
+                if session_id and not has_open_pr:
+                    # PR merged or closed, do NOT reactivate
+                    needs_new = True
+                    reason = "PR merged/closed"
+                else:
+                    # Try to merge the persona's PR before reactivating
+                    merge = merge_persona_pr(persona)
+                    if merge == "conflict":
+                        print(f"  {persona}: PR has conflicts — skipping until resolved")
+                        results[persona] = "-> conflict (waiting for CI fix)"
+                        continue
 
-                print(f"  {persona}: {reason} — reactivating session")
-                try:
-                    send_heartbeat(info["session_id"], persona, hb_number)
-                    results[persona] = f"-> {reason}"
-                    circuit_record_success(persona, circuit_state)
-                except Exception as e:
-                    print(f"  ERROR: {e}")
-                    results[persona] = f"-> error: {e}"
-                    circuit_record_failure(persona, circuit_state)
-                continue
+                    if merge == "merged":
+                        # If we just merged it right now, we shouldn't reactivate!
+                        # We should create a new session instead
+                        needs_new = True
+                        reason = "PR just merged"
+                    else:
+                        hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                        reason = f"reactivated ({hours_old:.1f}h old)"
+
+                        print(f"  {persona}: {reason} — reactivating session")
+                        try:
+                            send_heartbeat(info["session_id"], persona, hb_number)
+                            results[persona] = f"-> {reason}"
+                            circuit_record_success(persona, circuit_state)
+                        except Exception as e:
+                            print(f"  ERROR: {e}")
+                            results[persona] = f"-> error: {e}"
+                            circuit_record_failure(persona, circuit_state)
+                        continue
 
         if needs_new:
             # Try to merge the persona's PR before creating a new session

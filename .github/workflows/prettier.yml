@@ -15,23 +15,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check for package.json
+        id: check_pkg
+        run: |
+          if [ -f package.json ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "No package.json found — skipping Prettier"
+          fi
+
       - name: Setup Node.js
+        if: steps.check_pkg.outputs.exists == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: Install dependencies
+        if: steps.check_pkg.outputs.exists == 'true'
         run: npm install
 
       - name: Format code with Prettier
+        if: steps.check_pkg.outputs.exists == 'true'
         run: npm run format
 
       - name: Configure Git
+        if: steps.check_pkg.outputs.exists == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
       - name: Commit and push changes
+        if: steps.check_pkg.outputs.exists == 'true'
         run: |
           if [[ -n $(git status -s) ]]; then
             git add -A

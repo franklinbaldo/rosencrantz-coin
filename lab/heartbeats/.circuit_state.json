@@ -1,1 +1,26 @@
-{}
+{
+  "chang": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:43:58.346517+00:00"
+  },
+  "fuchs": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:44:07.699375+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:44:16.852297+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:44:29.582997+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:44:43.950704+00:00"
+  },
+  "wolfram": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:44:52.718380+00:00"
+  }
+}

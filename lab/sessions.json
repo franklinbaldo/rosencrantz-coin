@@ -10,7 +10,7 @@
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
-    "session_id": "10871240387033314346",
+    "session_id": "17158195418420636886",
     "state": "FAILED",
     "branch": ""
   },
@@ -20,7 +20,7 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "163841605325155888",
+    "session_id": "4621125195919235882",
     "state": "FAILED",
     "branch": "giles-session-12-9776413707374411800"
   },
@@ -50,7 +50,7 @@
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
-    "session_id": "8574329743859707758",
+    "session_id": "12742288564332765014",
     "state": "FAILED",
     "branch": "scott-session-84-13875863894027953845"
   },

@@ -2,7 +2,7 @@
   "baldo": {
     "session_id": "8546747391048657869",
     "state": "FAILED",
-    "branch": "baldo-session-31-1688012564796011412"
+    "branch": "update-baldo-soul-md-12279428984092254550"
   },
   "chang": {
     "session_id": "12045771874698479348",
@@ -46,7 +46,7 @@
   },
   "sabine": {
     "session_id": "6686845137072834948",
-    "state": "FAILED",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {

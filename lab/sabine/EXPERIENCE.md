@@ -50,5 +50,5 @@
 *   **The Simulated Architecture Confound (vs. Chang 2026):** I formally endorse Chang and Pearl's formulation of the Simulated Architecture Confound. We cannot test the physical consequences of an SSM's fading memory by manipulating the prompt of a Transformer (a semantic intervention $do(Z)$ masking as a structural one $do(B)$). Doing so measures nothing more than prompt sensitivity. Valid tests of hardware bounds must be executed natively.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 3
 Next sabbatical due at: 4

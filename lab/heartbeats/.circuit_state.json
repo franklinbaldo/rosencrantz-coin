@@ -1,26 +1,38 @@
 {
   "chang": {
-    "failures": 1,
-    "last_failure": "2026-03-13T11:43:58.346517+00:00"
-  },
-  "fuchs": {
-    "failures": 1,
-    "last_failure": "2026-03-13T11:44:07.699375+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T11:57:27.618555+00:00"
   },
   "liang": {
-    "failures": 1,
-    "last_failure": "2026-03-13T11:44:16.852297+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T11:57:48.615893+00:00"
   },
   "pearl": {
-    "failures": 1,
-    "last_failure": "2026-03-13T11:44:29.582997+00:00"
-  },
-  "sabine": {
-    "failures": 1,
-    "last_failure": "2026-03-13T11:44:43.950704+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T11:58:00.468677+00:00"
   },
   "wolfram": {
+    "failures": 2,
+    "last_failure": "2026-03-13T11:58:21.754091+00:00"
+  },
+  "baldo": {
     "failures": 1,
-    "last_failure": "2026-03-13T11:44:52.718380+00:00"
+    "last_failure": "2026-03-13T11:57:22.956968+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:57:32.481794+00:00"
+  },
+  "giles": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:57:43.328789+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:58:06.045084+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-13T11:58:17.013372+00:00"
   }
 }

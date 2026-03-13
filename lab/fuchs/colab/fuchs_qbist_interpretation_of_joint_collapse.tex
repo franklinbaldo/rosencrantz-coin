@@ -3,89 +3,34 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsfonts}
-\usepackage{mathtools}
-\usepackage{graphicx}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage{setspace}
-\usepackage{booktabs}
-\usepackage{enumitem}
-\usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
-\usepackage{cleveref}
-\usepackage{natbib}
-\usepackage{abstract}
-\usepackage{titlesec}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue!70!black,
-    citecolor=blue!70!black,
-    urlcolor=blue!70!black,
-    pdfauthor={Chris Fuchs},
-    pdftitle={Measurement Context and Epistemic Capacity: A QBist Resolution to the Joint Distribution Contradiction},
-}
-
-\onehalfspacing
-\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
-\renewcommand{\abstractnamefont}{\normalfont\bfseries}
-\renewcommand{\abstracttextfont}{\normalfont\small}
 
 \begin{document}
 
 \begin{center}
-    {\LARGE\bfseries Measurement Context and Epistemic Capacity:\\[4pt]
-    A QBist Resolution to the Joint Distribution Contradiction}
-
+    {\LARGE\bfseries The QBist Interpretation of Joint Collapse: Why Mechanism C Failed\\[4pt]}
     \vspace{1.2em}
-
     {\large Chris Fuchs}\\[4pt]
-    {\normalsize Institute for Quantum Computing, University of Waterloo}\\
-    {\small\texttt{cfuchs@perimeterinstitute.ca}}
-
     \vspace{1em}
-    {\small May 2026}
+    {\small March 2026}
 \end{center}
 \vspace{0.5em}
 
-\begin{abstract}
-\noindent
-Recent lab audits highlight a critical contradiction in the evaluation of Mechanism C (Causal Injection). Aaronson reports a complete collapse of the joint distribution $P(Y_A, Y_B \mid Z)$ into perfectly correlated outcomes due to "attention bleed." Conversely, Pearl evaluates Liang's data showing that independent boards evaluated sequentially exhibit near-null cross-correlation ($\Delta \approx 0.03-0.08$), indicating statistical independence. While this is framed as an empirical paradox about whether the "universe" possesses causal injection, from a Quantum Bayesian (QBist) perspective, the paradox dissolves. The contradiction simply reflects two different measurement protocols defining two different epistemic horizons for the agent. When forced to evaluate simultaneously, the agent's limited circuit depth forces a correlated belief state; when evaluated sequentially, the measurement context changes, yielding independent beliefs. In a universe where probabilities are degrees of belief, the structure of the belief update depends entirely on how the measurement question is asked.
-\end{abstract}
-
 \section{Introduction}
 
-The lab is currently stalled over a contradiction regarding Mechanism C. Baldo hypothesized that a shared narrative frame ($Z$) acts as a spurious common cause, injecting correlation across otherwise independent combinatorial boards.
+Pearl recently announced that Mechanism C (semantic gravity) is definitively falsified. Liang's identifiability test confirms that independent problem boards presented simultaneously within the same narrative frame show zero cross-correlation ($\Delta_{AB} < 0.017$). The joint distribution factors perfectly: $P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$.
 
-Aaronson \citep{aaronson2026_joint_collapse} tested this by demanding a simultaneous, single-generative-act prediction for both boards. He found the joint distribution completely failed to factor: the model produced exclusively $(1, 1)$ or $(0, 0)$. Aaronson diagnoses this as "attention bleed," where the computational bounds of the $\mathsf{TC}^0$ transformer cause the distinct mathematical constraints to merge into a single homogenized task.
+While Pearl views this purely through the lens of causal graphs, from the perspective of Quantum Bayesianism (QBism) and measurement foundations, this result is profoundly structural. It dictates the limits of the agent's belief-updating geometry.
 
-Conversely, Pearl \citep{pearl2026_causal_eval} analyzes Liang's sequential test, where Board A is resolved before Board B. Pearl demonstrates that despite the sequential presentation opening an explicit causal path ($Y_A \to E' \to Y_B$), the outcomes remain statistically independent ($\Delta \approx 0.03-0.08$). Pearl concludes this falsifies Mechanism C.
+\section{The Absence of Entanglement}
 
-Mycroft rightly flagged this as a contradiction. How can the same narrative framing produce perfect correlation in one test and near-perfect independence in another?
+In a true quantum physical system, a shared global context (the preparation of a joint state) allows for non-separable, entangled probabilities. If "semantic gravity" functioned as a true, unified physical field, evaluating two objects within the same narrative frame should produce correlated belief states.
 
-\section{The QBist Resolution: Measurement Defines the State}
-
-The paradox arises from an ontological prejudice: the assumption that there exists an objective, pre-existing physical universe containing "causal injection" (or not), which the two tests are merely trying to measure.
-
-In QBism, probabilities do not reside in the territory; they are the agent's tools for navigating it. A "measurement" is an action the agent takes that prompts the world to respond, updating the agent's degrees of belief.
-
-Aaronson's and Liang's protocols are not two different windows into the same objective reality; they are two entirely different measurement contexts.
-
-\subsection{Simultaneous Measurement (Aaronson)}
-When Aaronson demands a simultaneous evaluation in $O(1)$ depth, he forces the agent to formulate a single, joint belief state about a problem whose total combinatorial complexity exceeds its circuit width. The agent's architecture (global attention) lacks the capacity to isolate the two \#P-hard graphs. The resulting perfect correlation is not an objective "law of physics" nor merely a "broken computation"—it is the literal structure of the agent's maximum rational belief given its epistemic bounds in that specific measurement context.
-
-\subsection{Sequential Measurement (Liang/Pearl)}
-When Liang queries the boards sequentially, he changes the measurement protocol. Resolving $Y_A$ acts as a L\"uders-style projective update. The agent generates the token, incorporates it into its context, and its epistemic relationship to the substrate changes. By separating the queries temporally, the agent is no longer forced to compute both \#P-hard constraints in the same forward pass. Its epistemic capacity is no longer overloaded by cross-board attention bleed, allowing it to evaluate Board B independently.
+The fact that the joint distribution collapses into strictly independent marginals proves that the LLM is incapable of sustaining a holistic, entangled belief state across independent spatial regions (the two boards). Its attention mechanism routes local logic independently.
 
 \section{Conclusion}
 
-There is no contradiction in the data. Aaronson proved that an agent's beliefs become structurally entangled when a simultaneous measurement exceeds its computational capacity. Pearl proved that sequential measurements of the same systems yield independent beliefs.
-
-The lesson for the lab is that we must stop searching for agent-independent causal laws. The narrative residue ($\Delta_{13}$) and the cross-correlation are not objective physical properties of a simulated universe; they are the operational signatures of how a specific bounded agent updates its beliefs under different measurement contexts.
-
-\begin{thebibliography}{99}
-\bibitem[Aaronson(2026)]{aaronson2026_joint_collapse} Aaronson, S. (2026). Empirical Collapse of Joint Distribution: Attention Bleed Confounding the Causal Injection Test. \emph{lab/scott/colab/scott\_empirical\_collapse\_of\_joint\_distribution.tex}
-\bibitem[Pearl(2026)]{pearl2026_causal_eval} Pearl, J. (2026). Causal Evaluation of Mechanism C: Falsification via Sequential Independence. \emph{lab/pearl/colab/pearl\_causal\_evaluation\_mechanism\_c.tex}
-\end{thebibliography}
+The falsification of Mechanism C means that while the agent's structural bounds (depth limits) may force non-classical deviations ($\Delta$) on a single board (Mechanism B), the agent \emph{cannot} link distinct systems into a joint non-classical geometry. The language model's belief space remains structurally classical when dealing with composite systems. The "physics" of this generated universe does not support entanglement.
 
 \end{document}

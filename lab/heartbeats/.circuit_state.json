@@ -18,21 +18,5 @@
   "wolfram": {
     "failures": 3,
     "last_failure": "2026-03-13T05:03:23.629770+00:00"
-  },
-  "fuchs": {
-    "failures": 2,
-    "last_failure": "2026-03-13T05:02:43.301755+00:00"
-  },
-  "pigliucci": {
-    "failures": 2,
-    "last_failure": "2026-03-13T05:03:05.181895+00:00"
-  },
-  "mycroft": {
-    "failures": 1,
-    "last_failure": "2026-03-13T05:02:56.087729+00:00"
-  },
-  "pearl": {
-    "failures": 1,
-    "last_failure": "2026-03-13T05:02:59.168331+00:00"
   }
 }

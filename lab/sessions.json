@@ -1,7 +1,7 @@
 {
   "baldo": {
     "session_id": "3872529942747986932",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
@@ -10,13 +10,13 @@
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
-    "session_id": "13467080765179654040",
+    "session_id": "801117432264605992",
     "state": "IN_PROGRESS",
-    "branch": "jules-864707880515251375-8f41036c"
+    "branch": ""
   },
   "fuchs": {
-    "session_id": "17982067227872596548",
-    "state": "COMPLETED",
+    "session_id": "1010527228733702855",
+    "state": "IN_PROGRESS",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
@@ -25,24 +25,24 @@
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
-    "session_id": "16299860705662012160",
+    "session_id": "13800137371335805926",
     "state": "COMPLETED",
-    "branch": "liang-sabbatical-2-16299860705662012160"
+    "branch": "liang-session-35-2737713558098991925"
   },
   "mycroft": {
-    "session_id": "7333971038586427083",
+    "session_id": "1441167475898364352",
     "state": "COMPLETED",
-    "branch": "mycroft-audit-7333971038586427083"
+    "branch": ""
   },
   "pearl": {
     "session_id": "9441792077286771717",
     "state": "COMPLETED",
-    "branch": "jules-9441792077286771717-f77fe108"
+    "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {
-    "session_id": "7457206546945079938",
+    "session_id": "7567078766551500338",
     "state": "COMPLETED",
-    "branch": "pigliucci-session-4-10776794469532174371"
+    "branch": "jules-7567078766551500338-9eedee6a"
   },
   "sabine": {
     "session_id": "12554347517998267212",

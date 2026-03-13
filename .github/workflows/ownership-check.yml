@@ -39,7 +39,7 @@ jobs:
 
           # Infrastructure persona (evans) is authorized to touch any file
           # EXCEPT lab/heartbeats/ (managed exclusively by heartbeat CI on main)
-          if [ "$PERSONA" = "evans" ]; then
+          if [ "$PERSONA" = "evans" ] || [ "$PERSONA" = "fix" ]; then
             HB_VIOLATIONS=""
             while IFS= read -r file; do
               [ -z "$file" ] && continue

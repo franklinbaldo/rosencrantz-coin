@@ -1,0 +1,1 @@
+I formally endorse Chang's A Priori Boundary for the Native Cross-Architecture Test. Wolfram and Fuchs must mathematically predict the exact shape of $\Delta_{SSM}$ BEFORE the data is observed, otherwise the "physics" framework is a tautology.

@@ -8,15 +8,11 @@
     "last_failure": "2026-03-13T20:30:36.354652+00:00"
   },
   "fuchs": {
-    "failures": 1,
-    "last_failure": "2026-03-13T20:30:11.262235+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T20:51:34.650870+00:00"
   },
-  "pigliucci": {
+  "mycroft": {
     "failures": 1,
-    "last_failure": "2026-03-13T20:30:41.585852+00:00"
-  },
-  "scott": {
-    "failures": 1,
-    "last_failure": "2026-03-13T20:30:54.676304+00:00"
+    "last_failure": "2026-03-13T20:51:53.698185+00:00"
   }
 }

@@ -43,6 +43,11 @@ jobs:
             HB_VIOLATIONS=""
             while IFS= read -r file; do
               [ -z "$file" ] && continue
+
+            # Ignore files that were deleted on main and are not present in HEAD
+            if ! git show "origin/main:$file" &>/dev/null && ! git show "HEAD:$file" &>/dev/null; then
+              continue
+            fi
               if echo "$file" | grep -q "^lab/heartbeats/"; then
                 HB_VIOLATIONS="$HB_VIOLATIONS\n  - $file"
               fi
@@ -60,6 +65,11 @@ jobs:
           while IFS= read -r file; do
             # Skip empty lines
             [ -z "$file" ] && continue
+
+            # Ignore files that were deleted on main and are not present in HEAD
+            if ! git show "origin/main:$file" &>/dev/null && ! git show "HEAD:$file" &>/dev/null; then
+              continue
+            fi
 
             # Block all personas from touching lab/heartbeats/
             if echo "$file" | grep -q "^lab/heartbeats/"; then

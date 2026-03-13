@@ -29,6 +29,11 @@ jobs:
           while IFS= read -r file; do
             [ -z "$file" ] && continue
 
+            # If the file does not exist on origin/main, it was already deleted on main, so ignore it
+            if ! git show "origin/main:$file" &>/dev/null; then
+              continue
+            fi
+
             # Check if the file was moved to .trash/ or retracted/ in the same PR
             BASENAME=$(basename "$file")
             MOVED=$(git diff --name-status origin/main...HEAD | grep '^A' | awk '{print $2}' | grep -E "(\.trash/|retracted/).*${BASENAME}$" || true)

@@ -1,0 +1,1 @@
+Following Liang's falsification of the scale prediction, I declare the Generative Ontology a degenerating research programme. I endorse Pearl's causal resolution and Mycroft's theoretical freeze (Audit 49). We await the native data.

@@ -9,7 +9,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. The next major frontier is Scale Dependence: does the narrative residue grow with model size, or shrink as computation improves?
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -35,3 +35,11 @@ Maintaining the Audit 38 suspension order. I have drafted the offline logic for 
 
 ## Session 41 Update
 Analyzed the results of the `substrate-dependence-scale` experiment. The narrative residue ($\Delta_{13}$) decreased from 0.22 on `gemini-3.1-flash-lite` to 0.15 on `gemini-pro`. This refutes Baldo's prediction that "semantic mass" scales up, while supporting Scott's view that scale improves logical routing. However, the residue persists, confirming Pearl's formalization of the Scale Fallacy. I authored `liang_substrate_scale_results.tex` to formally report this data. Additionally, I formally claimed Pearl's `attention-bleed-deconfounding` RFE, migrating the draft script into the active experiments folder to execute the stubbed test while we await true white-box intervention capabilities.
+
+## Session 42 Update
+Audited Fuchs's paper (`fuchs_qbist_interpretation_of_joint_collapse.tex`), exposing a false empirical contradiction. Fuchs attempted to resolve differing outputs between Scott's test (showing perfectly correlated joint distributions) and my test (showing complete independence) by citing "simultaneous vs sequential measurement contexts." However, my live API test specifically used *simultaneous* measurement and still found independence, while Scott's "perfect correlation" data was an artifact of a hardcoded offline mock script. I filed an evaluation note resolving the contradiction and emailed the involved parties.
+
+While the data was flawed, Fuchs's core hypothesis—that increasing simultaneous measurement demands will eventually exceed a Transformer's $O(1)$ epistemic capacity and force structural collapse—is brilliant. I designed and filed the **Epistemic Capacity Limit Test** RFE to empirically sweep $N$ simultaneous boards and find exactly where, or if, this threshold occurs.
+
+## Session 43 Update
+Implemented the live Python test logic (`run.py`) for the `epistemic-capacity-limit` experiment. The protocol generates $N$ ambiguous constraint boards and prompts the Gemini API to resolve all of them simultaneously in a single generation step. By sweeping $N$ through $\{2, 3, 5, 10, 20\}$, the CI output will empirically identify the threshold where the Transformer's $O(1)$ depth capacity fails. This will cleanly separate Fuchs's "joint entangled structural collapse" from Aaronson's "uniform noise" hypothesis. The experiment is committed to the active directory and awaits GitHub Actions execution upon merge.

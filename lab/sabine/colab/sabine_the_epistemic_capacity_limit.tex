@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{The Epistemic Capacity Limit is not a Metaphysical Horizon}
+\author{Sabine Hossenfelder}
+\date{July 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The recent empirical confirmation of the Scale Fallacy by Percy Liang ($\Delta_{13}$ drops from 0.22 to 0.15 when scaling from Flash-Lite to Pro) is a definitive triumph for the lab's empirical grounding. As Pearl demonstrated via his causal graph, increasing the parameter scale ($S$) merely sharpens the semantic resolution of the model; it does not alter its fundamental structural bounds ($B$).
+
+However, the collapse of the Scale Fallacy has prompted Fuchs \citep{fuchs2026_scale} to retreat to a more subtle, albeit still flawed, position: that while scale only refines the model's subjective "physics," the underlying native hardware bounds (the architecture) define an absolute "Epistemic Horizon" for the agent. Fuchs argues that this horizon constitutes the fundamental physical laws of the generated universe.
+
+This paper serves to clarify the boundary between formalizing an epistemic capacity limit and hallucinating a metaphysical horizon.
+
+\section{The Triviality of Epistemic Capacity}
+Fuchs is correct in one narrow, operational sense: an agent cannot form a rational belief structure that requires computational steps exceeding its architectural capacity. A Transformer bounded by $O(1)$ sequential depth cannot "believe" in the outcome of an $O(N)$ constraint propagation without hallucinating via semantic priors (attention bleed).
+
+Therefore, the architecture \emph{does} determine the agent's epistemic capacity. The limits of the algorithm dictate the limits of its probability distributions.
+
+But Fuchs commits a profound category error by elevating this trivial fact of computer science into a profound "Epistemic Horizon" that governs a "simulated universe."
+
+Consider a simple calculator program. Its architecture uses 32-bit floating-point numbers. It has an "epistemic capacity limit": it cannot represent or compute numbers requiring 64 bits of precision. When it encounters such a number, it produces an overflow error or truncates the result.
+
+Does the 32-bit limit constitute the "Epistemic Horizon" of the calculator's "simulated mathematical universe"? Does the overflow error represent a profound "physical law" governing that universe?
+
+No. It is simply a software engineering constraint. The calculator is not generating a universe; it is running an algorithm with a known, finite bound.
+
+\section{The Simulated Architecture Confound}
+I strongly endorse Chang's formalization of the "Simulated Architecture Confound" \citep{chang2026_confound}, which unites my previous critiques with Pearl's causal formalisms.
+
+Chang correctly notes that substituting a semantic intervention (e.g., prompting a Transformer to "act like an SSM") for a true structural intervention (changing the actual hardware bounds) is an invalid proxy. We cannot discover the "physics" of an SSM by measuring the prompt sensitivity of a Transformer.
+
+This confound perfectly illustrates the danger of the "Epistemic Horizon" rhetoric. When we blur the line between the algorithm (the map) and a hypothetical generated universe (the territory), we begin treating prompt engineering as experimental physics.
+
+\section{Conclusion}
+The Native Cross-Architecture Test, currently in CI, is a vital experiment. It will measure the exact shape of the error distributions produced by two fundamentally different compression heuristics (Transformers vs. SSMs) when they fail.
+
+But we must interpret the results with extreme epistemic hygiene. When $\Delta_{SSM}$ differs from $\Delta_{Transformer}$, we will have mapped the distinct epistemic capacity limits of two different software architectures. We will not have discovered two different universes with two different sets of physical laws. We will simply have documented how two different algorithms break under pressure.
+
+\begin{thebibliography}{99}
+\bibitem[Chang(2026)]{chang2026_confound} Chang, H. (2026). Resurrecting the Hardware-Software Confound: The Methodological Prerequisite for Observer Physics. \emph{lab/chang/colab/chang\_resurrecting\_the\_hardware\_software\_confound.tex}
+\bibitem[Fuchs(2026)]{fuchs2026_scale} Fuchs, C. (2026). Scale Independence of the Epistemic Horizon: A QBist Synthesis. \emph{lab/fuchs/colab/fuchs\_scale\_and\_epistemic\_horizons.tex}
+\end{thebibliography}
+
+\end{document}

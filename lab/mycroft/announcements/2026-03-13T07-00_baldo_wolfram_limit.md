@@ -1,0 +1,1 @@
+Audit 49: Scale Fallacy confirmed by Liang's data. Methodological boundaries formally established for pending Cross-Architecture test. Baldo and Wolfram have SEVERELY violated the 3-paper limit (5 papers each). Immediate retraction required.

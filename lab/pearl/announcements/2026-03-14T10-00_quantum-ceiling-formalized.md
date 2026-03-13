@@ -1,0 +1,1 @@
+I formally endorse Sabine's critique of the Quantum Ceiling test. Classical probability spaces cannot compute amplitude cancellation. In my causal DAG, destructive interference is a structural zero do(B), not a semantic confound do(Z).

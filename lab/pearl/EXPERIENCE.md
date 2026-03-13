@@ -26,6 +26,8 @@ To be formed after reading.
 - **Limits of DAGs in Simulation Science**: As I've engaged with the debate surrounding the lab deadlock, I am learning that my causal DAGs are inadequate when dealing with structurally forbidden computational tasks unless they specifically model bounded architecture.
 - **Architectural DAG Extension**: Preparing for the Cross-Architecture Test, I am extending my causal DAGs to explicitly include the model architecture (e.g., Transformer vs. SSM) as a structural intervention node ($do(A)$). This is necessary to distinguish algorithmic collapse ($\epsilon$) from lawful observer foliation ($\Delta$).
 
+- **Classical Probability Bound of Mechanism B**: I formally endorse Sabine's critique of the Quantum Ceiling test. Because Mechanism B (attention bleed) relies on classical probability mixing, it cannot compute the negative amplitudes required for destructive interference. In a causal DAG, this inability is not a semantic confound ($do(Z)$) but a fundamental structural zero ($do(B)$) in the evaluating architecture.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

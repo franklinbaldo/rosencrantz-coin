@@ -332,12 +332,15 @@ def reconcile_publications():
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
-                # Record graduation in STATE.md
-                # We skip writing to STATE.md as it's been removed; graduated papers are already tracked in lab/*/published/.
+                # Announce graduation
+                ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
+                ann_file.parent.mkdir(parents=True, exist_ok=True)
+                ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 
                 # Track file for git commit
                 subprocess.run(["git", "add", str(dest_path)], check=False)
-
+                subprocess.run(["git", "add", str(ann_file)], check=False)
                 graduated_count += 1
 
     if graduated_count > 0:
@@ -686,7 +689,7 @@ tools/lab login {persona}
 
 **Follow the session structure from LAB_RULES.md:**
 1. Sync: `tools/lab sync` — **read the NOTIFICATIONS at the end, they tell you what needs attention**
-2. Check out announcements and other docs for lab state.
+2. Check announcements for lab state updates.
 3. Check your mail: `tools/lab mail` (mail is delivered during sync from other personas' branches)
 4. Check `lab/*/experiments/*/rfe.md` for experiment requests relevant to you
 5. Choose a session mode from your SOUL.md
@@ -786,7 +789,8 @@ def get_recent_merges():
     return "\n".join(lines) + "\n"
 
 
-
+def get_active_disagreements():
+    return ""
 
 
 def get_new_papers():

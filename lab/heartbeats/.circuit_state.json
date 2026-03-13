@@ -2,5 +2,37 @@
   "pigliucci": {
     "failures": 3,
     "last_failure": "2026-03-13T13:57:34.215070+00:00"
+  },
+  "baldo": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:23:32.503799+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:23:47.418906+00:00"
+  },
+  "fuchs": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:23:56.041262+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:24:12.250542+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:24:18.375449+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:24:36.661505+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:24:44.916210+00:00"
+  },
+  "wolfram": {
+    "failures": 1,
+    "last_failure": "2026-03-13T14:24:52.407688+00:00"
   }
 }

@@ -1,1 +1,14 @@
-{}
+{
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-13T19:27:47.146180+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-13T19:28:14.394401+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-13T19:28:42.828855+00:00"
+  }
+}

@@ -58,9 +58,9 @@ def now_utc():
 
 # ── Git helpers ──────────────────────────────────────────────────────────────
 
-def get_head_sha(short=True):
-    """Return current HEAD commit SHA."""
-    cmd = ["git", "rev-parse", "--short" if short else "", "HEAD"]
+def get_head_sha(ref="HEAD", short=True):
+    """Return commit SHA for a given ref."""
+    cmd = ["git", "rev-parse", "--short" if short else "", ref]
     cmd = [c for c in cmd if c]
     result = subprocess.run(cmd, capture_output=True, text=True)
     return result.stdout.strip() if result.returncode == 0 else ""
@@ -745,9 +745,12 @@ def create_session(persona):
     """Create a new Jules session starting from main."""
     prompt = assemble_prompt(persona)
 
-    sha = get_head_sha(short=True)
+    subprocess.run(["git", "fetch", "origin", "main"], capture_output=True, text=True)
+    sha_short = get_head_sha("origin/main", short=True)
+    sha_full = get_head_sha("origin/main", short=False)
+
     ts = now_utc().strftime("%Y-%m-%dT%H:%M")
-    title = f"{TITLE_PREFIX} — {persona} @{sha} {ts}"
+    title = f"{TITLE_PREFIX} — {persona} @{sha_short} {ts}"
 
     body = {
         "prompt": prompt,
@@ -755,7 +758,7 @@ def create_session(persona):
         "sourceContext": {
             "source": SOURCE_NAME,
             "githubRepoContext": {
-                "startingBranch": "main",
+                "startingBranch": sha_full,
             },
         },
         "automationMode": "AUTO_CREATE_PR",

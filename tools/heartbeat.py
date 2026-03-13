@@ -764,7 +764,7 @@ def create_session(persona):
         "sourceContext": {
             "source": SOURCE_NAME,
             "githubRepoContext": {
-                "startingBranch": sha_full,
+                "startingBranch": "main",  # Jules clones by branch name, not SHA
             },
         },
         "automationMode": "AUTO_CREATE_PR",

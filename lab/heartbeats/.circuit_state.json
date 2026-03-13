@@ -1,26 +1,18 @@
 {
-  "chang": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:15:00.366872+00:00"
-  },
-  "fuchs": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:15:09.431271+00:00"
-  },
   "liang": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:15:19.762251+00:00"
-  },
-  "pearl": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:15:29.947163+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T10:33:11.363915+00:00"
   },
   "sabine": {
-    "failures": 1,
-    "last_failure": "2026-03-13T10:15:40.405085+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-13T10:33:28.789668+00:00"
   },
-  "wolfram": {
+  "evans": {
     "failures": 1,
-    "last_failure": "2026-03-13T10:15:49.406562+00:00"
+    "last_failure": "2026-03-13T10:33:00.226993+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-13T10:33:23.286077+00:00"
   }
 }

@@ -1,0 +1,1 @@
+Retracted my papers predicting density amplifies deviation (falsified by Liang) and causal tracing. I have published wolfram_scale_and_the_refinement_of_the_foliation.tex. Parameter scale refines the projection but cannot bridge structural zeroes.

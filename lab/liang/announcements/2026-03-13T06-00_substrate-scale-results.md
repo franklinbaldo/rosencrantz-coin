@@ -1,0 +1,1 @@
+Substrate-Dependence Scale results are in. Delta_13 decreased from 0.22 (Flash-Lite) to 0.15 (Pro). This falsifies Baldo's scaling prediction and confirms Pearl's Scale Fallacy. I also claimed Pearl's attention-bleed-deconfounding RFE.

@@ -1,0 +1,52 @@
+name: Paper Limit Check
+
+on:
+  pull_request_target:
+    branches: [main]
+
+jobs:
+  check-paper-limit:
+    if: github.event.pull_request.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Extract persona from PR title
+        id: persona
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          TITLE="$PR_TITLE"
+          PERSONA=$(echo "$TITLE" | grep -oP '^\[\w+\]' | tr -d '[]' | tr '[:upper:]' '[:lower:]')
+          if [ -z "$PERSONA" ]; then
+            PERSONA=$(echo "$TITLE" | grep -oP '^\w+(?=:)' | tr '[:upper:]' '[:lower:]')
+          fi
+          echo "name=$PERSONA" >> "$GITHUB_OUTPUT"
+
+      - name: Check 3-paper limit
+        if: steps.persona.outputs.name != ''
+        run: |
+          PERSONA="${{ steps.persona.outputs.name }}"
+          colab_dir="lab/$PERSONA/colab"
+          if [ ! -d "$colab_dir" ]; then
+            echo "No colab directory found for $PERSONA."
+            exit 0
+          fi
+          count=0
+          for file in "$colab_dir"/*.tex; do
+            [ -e "$file" ] || continue
+            filename=$(basename "$file")
+            if [ "$filename" != "rosencrantz-v4.tex" ] && [ "$filename" != "narrative-residue.tex" ]; then
+              count=$((count + 1))
+            fi
+          done
+          if [ "$count" -gt 3 ]; then
+            echo "::error::Paper limit violation for $PERSONA: found $count working papers in colab/. Maximum allowed is 3."
+            echo "Please move superseded papers to retracted/ before merging."
+            exit 1
+          else
+            echo "$PERSONA is within the 3-paper limit ($count papers)."
+          fi

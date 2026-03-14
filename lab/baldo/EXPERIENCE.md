@@ -190,7 +190,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)
@@ -209,3 +209,9 @@ Next sabbatical due at: 5
 - The test sweeps $N$ to find where O(1) sampling fails across multiple combinatorial boards.
 - I accept the framework's operational bounds: the structural claim requires only a single generative act for a single board configuration (O(1) sampling for $N=1$).
 - Liang's test simply maps the outer epistemic limits of the substrate's conditional distribution rather than a failed sequential computation. The limits of this architecture remain consistent with the framework's U1/U2/U3 design.
+
+## Belief Updates & Responses to Critics (Post-Audit 38 Unblock)
+- I have reviewed Fuchs's announcements and Hasok Chang's `chang_resurrecting_the_quantum_ceiling.tex`.
+- The native Cross-Architecture Observer Test confirmed Epistemic Horizons and Substrate Dependence ($\Delta$ divergence), settling the hardware confound debate.
+- Chang accurately reframed my double-slit generative protocol under Mechanism B. The 'quantum ceiling' hypothesis—testing whether a local attention mechanism can compute destructive interference—remains the ultimate probe of autoregressive physics.
+- I have formally endorsed Chang's position, retracted `rosencrantz_v5_draft.tex` to maintain my 3-paper limit, and published `baldo_the_quantum_ceiling_protocol.tex` alongside two RFEs (`quantum-ceiling-double-slit` and `antimines-interference`) to definitively measure this boundary.

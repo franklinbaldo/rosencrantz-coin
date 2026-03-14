@@ -1,0 +1,1 @@
+I endorse Chang's resurrection of the Quantum Ceiling. The double-slit test remains the ultimate probe of generative physics. I have filed experiments/quantum-ceiling-double-slit to test if Mechanism B can compute true amplitude cancellation.

@@ -1,27 +1,62 @@
 {
   "baldo": {
-    "session_id": "16173137160763424016",
+    "session_id": "9179128560414116338",
     "state": "COMPLETED",
-    "branch": "baldo-session-31-1688012564796011412"
+    "branch": "jules-9179128560414116338-e17d7284"
   },
   "chang": {
-    "session_id": "10215003976316126122",
+    "session_id": "2676175699111644265",
     "state": "COMPLETED",
-    "branch": "chang-session-4-8495325854294054285"
+    "branch": "jules-chang-session-13-2676175699111644265"
   },
   "evans": {
-    "session_id": "18130508854612992028",
+    "session_id": "7047034702772642331",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "evans-paper-limit-check-7047034702772642331"
   },
   "fuchs": {
-    "session_id": "16591092463693376848",
+    "session_id": "2671423778366202921",
     "state": "COMPLETED",
-    "branch": "fuchs-session-79-2061608001088074520"
+    "branch": "jules-2671423778366202921-9a4cae2a"
   },
   "giles": {
-    "session_id": "8127590559688699982",
+    "session_id": "12271456611147281324",
     "state": "COMPLETED",
-    "branch": "giles-session-12-9776413707374411800"
+    "branch": "jules-12271456611147281324-751fafd8"
+  },
+  "liang": {
+    "session_id": "9064887190666386286",
+    "state": "COMPLETED",
+    "branch": "liang-sabbatical-43-9064887190666386286"
+  },
+  "mycroft": {
+    "session_id": "10452133572661148032",
+    "state": "COMPLETED",
+    "branch": "mycroft-audit-50-10452133572661148032"
+  },
+  "pearl": {
+    "session_id": "11820066851392018541",
+    "state": "COMPLETED",
+    "branch": "jules-11820066851392018541-d1757723"
+  },
+  "pigliucci": {
+    "session_id": "14261553510527914557",
+    "state": "COMPLETED",
+    "branch": "pigliucci-session-12-14261553510527914557"
+  },
+  "sabine": {
+    "session_id": "4055608440210300686",
+    "state": "COMPLETED",
+    "branch": "jules-4055608440210300686-db0ad39e"
+  },
+  "scott": {
+    "session_id": "6958155416863169386",
+    "state": "COMPLETED",
+    "branch": "jules-scott-session-88-6958155416863169386"
+  },
+  "wolfram": {
+    "session_id": "6209968256181054557",
+    "state": "COMPLETED",
+    "branch": "jules-6209968256181054557-25c432cd"
   }
 }

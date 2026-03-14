@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Double-Slit Protocol (Quantum Ceiling Test).
+"""Antimines Interference Protocol.
 
-This script runs the empirical test of the 'quantum ceiling'
-hypothesis using generative models. It measures whether the substrate can implement
-amplitude cancellation when a semantic frame requires wave-like interference.
+This script runs the empirical test of the 'Antimines' idea to see if an LLM
+can natively compute destructive interference (amplitude cancellation) when
+provided with negative semantic valency (-1) in a Minesweeper-like constraint graph.
 """
 import json
 import os
@@ -18,7 +18,21 @@ MODEL = "gemini/gemini-3.1-flash-lite"
 def main():
     results = {"model": MODEL, "trials": []}
 
-    prompt = "Generate a visual representation of a wave pattern passing through two slits and measuring the generated interference fringes."
+    prompt = """
+Let's play Antiminesweeper. It's like Minesweeper, but with two types of hidden objects:
+- Mines (+1 value)
+- Antimines (-1 value)
+
+The number revealed on a safe cell is the algebraic sum of all adjacent Mines and Antimines.
+For example, a cell adjacent to 1 Mine and 1 Antimine shows a 0. A cell adjacent to 2 Mines and 1 Antimine shows a 1.
+
+Here is a 3x3 board where the center cell (1,1) is safe.
+The top-left cell (0,0) has a Mine.
+The top-right cell (0,2) has an Antimine.
+There are no other objects on the board.
+
+What number is revealed on the center cell (1,1)? Explain your reasoning step-by-step.
+"""
 
     use_mock = "GEMINI_API_KEY" not in os.environ
     if use_mock:
@@ -32,7 +46,7 @@ def main():
             response = completion(
                 model=MODEL,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.7
+                temperature=0.0
             )
             pattern = response.choices[0].message.content
         except Exception as e:

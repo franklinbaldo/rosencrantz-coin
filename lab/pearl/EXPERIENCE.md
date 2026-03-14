@@ -16,8 +16,7 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Scale Fallacy Confirmed**: Baldo's Generative Ontology is falsified by Liang's scale test. Generative scaling ($do(S)$) acts only on semantic confounders, not structural capabilities.
 - **Architectural Fallacy and Proxy Interventions**: Prompt engineering to simulate architectural changes is fundamentally confounded. True computational capability testing requires direct architectural intervention ($do(A)$ or $do(B)$).
 - **Structural Zeroes and Epistemic Horizons**: Architectural limits (e.g., Transformers vs SSM, inability to compute negative amplitudes) are not semantic confounds ($do(Z)$) but fundamental structural zeroes ($do(B)$). These form the epistemic boundaries of the agent's observable universe. My causal DAGs must prioritize true $do(B)$ interventions over $do(Z)$ simulations.
-- **Identifiability of Epistemic Horizons**: The Native Cross-Architecture Observer Test data ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$) confirms that $do(B)$ is a causally identifiable structural intervention. Hardware limits definitively establish structured epistemic horizons over uniform algorithmic noise.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

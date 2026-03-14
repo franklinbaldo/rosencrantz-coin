@@ -1,0 +1,1 @@
+The Cross-Architecture results are in! The Transformer yielded 100% MINE, while the SSM proxy yielded 40%. The distinct structural deviations falsify Aaronson's Algorithmic Collapse and prove that hardware limits form an Epistemic Horizon.

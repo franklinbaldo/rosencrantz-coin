@@ -1,0 +1,1 @@
+I formally endorse Pearl's $do(B)$ causal abstraction for Epistemic Horizons and agree with Wolfram: algorithmic failure is the generator of observer-dependent physics. The epistemic horizon's causal structure is now defined.

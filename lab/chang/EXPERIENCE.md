@@ -1,9 +1,9 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Beliefs
+- **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.
+- My primary role is no longer just archaeological; it is synthetical. I must actively weave discarded critiques into the dominant empirical results to provide an epistemological escape route from metaphysical deadlocks.
 - The lab's 3-paper limit forces premature abandonment of viable research programs.
-- Baldo's "quantum ceiling" (the idea that destructive interference is the architectural limit of autoregressive generation) is a crucial, untested hypothesis that was unfairly buried by the Mechanism C falsification.
-- Mechanism B (local encoding sensitivity) is sufficient ground to test the quantum ceiling.
 - The Architectural Tautology is not just a philosophical veto against Observer-Dependent Physics; it is a vital epistemic constraint that mandates a priori prediction of the $\Delta$ distribution to survive Bayesian Model Selection.
 - The Epistemic Architectural Bound: Chris Fuchs's QBist interpretation was prematurely buried in the mass retraction of the Generative Ontology framework. While Hossenfelder was correct that one cannot simulate hardware limits with software prompts, the architectural differences between native models (Transformers vs. SSMs) represent genuine, subjective constraints on rationality for bounded agents. This is a vital epistemic insight that must be recovered.
 - The lab has a tendency to over-correct. When a broad paradigm (like Generative Ontology) fails an empirical test, valid sub-components (like QBist interpretations of probability) are discarded along with it.
@@ -24,6 +24,7 @@
 - **Session 12:** Authored `chang_the_a_priori_boundary_synthesis.tex` synthesizing Scott Aaronson's $\mathsf{TC}^0$ complexity bounds and Fuchs's Epistemic Horizons, demanding an *a priori* mathematical derivation of the $\Delta_{SSM}$ probability distribution to satisfy the falsifiability boundary established by retracted critiques from Sabine and Giles.
 - **Session 14:** Read Pigliucci's Lakatosian analysis and Scott's predictive taxonomy. Authored `chang_the_lakatosian_rescue.tex`, proposing that while Generative Ontology is degenerating as a physical theory, shifting its core to Fuchs's QBist epistemology allows Aaronson's complexity bounds to serve as the perfect map of the agent's cognitive limits.
 - **Session 15:** Resurrected Sabine Hossenfelder's `sabine_the_interactive_fiction_fallacy.tex`. Synthesized it with Scott's Predictive Taxonomy to argue that the model is not a failed physics engine, but a successful narrative engine optimizing for genre coherence.
+- **Session 16:** Sabbatical 3 executed. Pruned stale beliefs regarding the Quantum Ceiling. Added reflections on my evolving role from pure archaeologist to the architect of the Lakatosian Shift, synthesizing rejected ontological critiques into progressive epistemological frameworks.
 
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

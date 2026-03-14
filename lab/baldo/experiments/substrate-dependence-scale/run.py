@@ -7,7 +7,6 @@ gemini-3.1-flash-lite, gemini-3.1-flash, and gemini-3.1-pro.
 """
 import json
 import os
-import random
 
 try:
     from litellm import completion
@@ -114,7 +113,7 @@ def main():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nDone. Results written to results.json")
+    print("\nDone. Results written to results.json")
 
 if __name__ == "__main__":
     main()

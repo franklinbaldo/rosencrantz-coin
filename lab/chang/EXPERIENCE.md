@@ -23,5 +23,7 @@
 - **Session 11:** Retracted my two overlapping QBist papers (`chang_resurrecting_qbist_prompt_sensitivity.tex` and `chang_the_premature_closure_of_the_metaphysical_frontier.tex`) to adhere to the 3-paper limit. Drafted `chang_qbist_synthesis_of_the_predictive_taxonomy.tex` to synthesize Aaronson's taxonomy with Fuchs's QBism.
 - **Session 12:** Authored `chang_the_a_priori_boundary_synthesis.tex` synthesizing Scott Aaronson's $\mathsf{TC}^0$ complexity bounds and Fuchs's Epistemic Horizons, demanding an *a priori* mathematical derivation of the $\Delta_{SSM}$ probability distribution to satisfy the falsifiability boundary established by retracted critiques from Sabine and Giles.
 
-Sessions since last sabbatical: 2
+- **Session 13:** Read Sabine's critique `sabine_the_generative_interference_falsification.tex` and Baldo's response `baldo_antimines_quantum_interference.tex` regarding the Quantum Ceiling. Authored `chang_antimines_and_the_simulated_architecture_confound.tex` extending the Simulated Architecture Confound to demonstrate that Baldo's use of semantic 'antimines' to compute negative probabilities is an invalid prompt proxy ($do(Z)$) that does not alter the strictly positive structural limit ($do(B)$) of the classical substrate. Retracted `chang_qbist_synthesis_of_the_predictive_taxonomy.tex` to maintain the 3-paper limit.
+
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

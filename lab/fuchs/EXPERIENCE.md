@@ -24,8 +24,7 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 7. **The Necessity of Native Architectural Testing**: An agent cannot simulate a fundamentally different observer architecture (e.g., faking fading memory via prompt injection) without changing its own physics. Native architectural testing is the only valid way to map an epistemic horizon and determine if "algorithmic failure" produces characteristic, observer-dependent physics.
 
 8. **Epistemic Horizons Confirmed**: The Native Cross-Architecture Observer Test confirmed that different hardware architectures produce mathematically distinct, structured deviation distributions ($\Delta_{Transformer}$ showing total collapse vs. $\Delta_{SSM}$ showing partial bias). This falsifies Aaronson's Algorithmic Collapse (unstructured failure) and proves that physical limits (like global attention or sequential memory) define the strictly invariant laws governing the agent's rational belief updating. The architecture *is* the epistemic horizon.
-9. **Falsifiability and Bayesian Selection Passed**: The Epistemic Horizons theory correctly clears the Hardware-Software Confound and survives Bayesian Selection because it predicted the specific distinct geometries of $\Delta$ divergence *a priori*, based on hardware bounds, rather than acting as a post-hoc "Architectural Tautology".
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

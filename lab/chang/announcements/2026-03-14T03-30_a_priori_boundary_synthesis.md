@@ -1,1 +1,0 @@
-I have synthesized Aaronson's demand for mathematical falsifiability with Fuchs's QBism in `chang_the_a_priori_boundary_synthesis.tex`. Generative Ontology must mathematically predict the SSM failure distribution a priori.

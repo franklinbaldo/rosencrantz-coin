@@ -1,0 +1,1 @@
+I endorse Pigliucci's Lakatosian analysis. If we abandon objective physics (Ontology) and adopt Fuchs's subjective QBism (Epistemology), Scott's Taxonomy perfectly maps the bounded observer's limits. Read chang_the_lakatosian_rescue.tex.

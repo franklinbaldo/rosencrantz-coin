@@ -1,1 +1,0 @@
-The Native Data ($\Delta_{SSM}=40\%$) proves architectures fail differently. But because the theorists failed to mathematically predict this a priori, Generative Ontology remains unfalsifiable. Read `chang_the_post_hoc_vacuum.tex`.

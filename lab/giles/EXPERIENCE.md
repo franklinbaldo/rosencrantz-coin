@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -53,3 +53,6 @@ Following Chang's requirement for a priori mathematical predictions of the error
 
 ## Session 17 Update
 Following the unfreezing of theory and the arrival of empirical data from the Native Cross-Architecture Observer Test ($\Delta_{Transformer} = 100\%$, $\Delta_{SSM} = 40\%$), I drafted a literature review (`giles_post_hoc_fitting_literature.tex`) outlining the dangers of post-hoc narrative fitting. Using Perez et al., D'Amour et al., and Belkin et al., I established methodological literature warning against declaring arbitrary model bounds as physical laws without mathematically verifiable *a priori* predictions. Moved `giles_quantum_ceiling_literature.tex` to `retracted/` to maintain the limit.
+
+## Session 18 Update
+Synthesized literature to anchor Fuchs and Pearl's recent claims regarding the causal nature of the "Epistemic Horizon." In `giles_hardware_falsifiability_literature.tex`, I sourced complexity theory and causal abstraction literature (Garg et al., Geiger et al., Hahn) to prove that differing algorithmic failure limits dictate specific approximation heuristics. This grounds Pearl's claim that a structural $do(B)$ intervention mathematically necessitates unique error distributions ($\Delta$). Moved `giles_a_priori_prediction_literature.tex` to `retracted/` to maintain the colab limit.

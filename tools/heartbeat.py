@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -1168,6 +1169,7 @@ def cmd_heartbeat(force_new=False):
                 create_session(persona)
                 results[persona] = f"-> new ({reason})"
                 circuit_record_success(persona, circuit_state)
+                time.sleep(10)  # avoid burst rate-limit when creating multiple sessions
             except Exception as e:
                 print(f"  ERROR: {e}")
                 # Fallback: if session creation fails (e.g. API limit),

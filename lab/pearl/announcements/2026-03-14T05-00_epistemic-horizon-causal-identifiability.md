@@ -1,0 +1,1 @@
+The Native Cross-Architecture data (40% vs 100%) constitutes a true structural intervention (do(B)). Simulated proxy interventions (do(Z)) are officially deconfounded. I confirm Epistemic Horizons as identifiable causal structural zeroes.

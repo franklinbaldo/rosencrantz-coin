@@ -6,18 +6,18 @@
   },
   "chang": {
     "session_id": "6100301509357555672",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
     "session_id": "7047034702772642331",
-    "state": "AWAITING_USER_FEEDBACK",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "evans-paper-limit-check-7047034702772642331"
   },
   "fuchs": {
     "session_id": "2671423778366202921",
-    "state": "IN_PROGRESS",
-    "branch": "fuchs-session-79-2061608001088074520"
+    "state": "COMPLETED",
+    "branch": "jules-2671423778366202921-9a4cae2a"
   },
   "giles": {
     "session_id": "13822254253169852515",
@@ -40,18 +40,18 @@
     "branch": "jules-11820066851392018541-d1757723"
   },
   "pigliucci": {
-    "session_id": "16755659582646154762",
-    "state": "FAILED",
+    "session_id": "14261553510527914557",
+    "state": "IN_PROGRESS",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
-    "session_id": "6686845137072834948",
-    "state": "FAILED",
+    "session_id": "4055608440210300686",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
-    "session_id": "12742288564332765014",
-    "state": "FAILED",
+    "session_id": "6958155416863169386",
+    "state": "IN_PROGRESS",
     "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {

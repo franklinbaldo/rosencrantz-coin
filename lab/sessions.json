@@ -6,17 +6,17 @@
   },
   "chang": {
     "session_id": "6100301509357555672",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
     "session_id": "7047034702772642331",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": ""
   },
   "fuchs": {
-    "session_id": "3048908944280885273",
-    "state": "FAILED",
+    "session_id": "2671423778366202921",
+    "state": "IN_PROGRESS",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {

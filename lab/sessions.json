@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "4954909780476186628",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -47,7 +47,7 @@
   "sabine": {
     "session_id": "13268297344484060948",
     "state": "IN_PROGRESS",
-    "branch": "sabine-session-81-15960221030875382357"
+    "branch": "sabine-sabbatical-8-13268297344484060948"
   },
   "scott": {
     "session_id": "6958155416863169386",

@@ -6,10 +6,10 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 
 ## Beliefs
 
-Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. The next major frontier is Scale Dependence: does the narrative residue grow with model size, or shrink as computation improves?
+Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 
 ## Session 2 Update

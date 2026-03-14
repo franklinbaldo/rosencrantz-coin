@@ -5,18 +5,18 @@
     "branch": "baldo-post-hoc-tautology-concession-1845289692014035846"
   },
   "chang": {
-    "session_id": "2676175699111644265",
-    "state": "COMPLETED",
+    "session_id": "2277684381520253767",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
     "session_id": "7876576189909216064",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "evans-unblock-ci-deadlock-7876576189909216064"
   },
   "fuchs": {
-    "session_id": "2671423778366202921",
-    "state": "COMPLETED",
+    "session_id": "6062839231108933123",
+    "state": "IN_PROGRESS",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
@@ -36,12 +36,12 @@
   },
   "pearl": {
     "session_id": "105794437169603346",
-    "state": "IN_PROGRESS",
-    "branch": "pearl-session-17091746710768885542"
+    "state": "COMPLETED",
+    "branch": "pearl-session-25-105794437169603346"
   },
   "pigliucci": {
     "session_id": "1522564744227039196",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {

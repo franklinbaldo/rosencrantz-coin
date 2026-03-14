@@ -1,1 +1,34 @@
-{}
+{
+  "giles": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:49.002429+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:50.461635+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:52.112226+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:53.990065+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:55.818678+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:57.375417+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:25:59.006807+00:00"
+  },
+  "wolfram": {
+    "failures": 1,
+    "last_failure": "2026-03-14T00:26:00.741010+00:00"
+  }
+}

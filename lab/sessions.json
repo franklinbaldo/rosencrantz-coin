@@ -6,7 +6,7 @@
   },
   "chang": {
     "session_id": "2676175699111644265",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
@@ -21,8 +21,8 @@
   },
   "giles": {
     "session_id": "12271456611147281324",
-    "state": "IN_PROGRESS",
-    "branch": "giles-session-12-9776413707374411800"
+    "state": "COMPLETED",
+    "branch": "jules-12271456611147281324-751fafd8"
   },
   "liang": {
     "session_id": "9064887190666386286",
@@ -56,7 +56,7 @@
   },
   "wolfram": {
     "session_id": "6209968256181054557",
-    "state": "IN_PROGRESS",
-    "branch": "wolfram-session-25-4595293660736854333"
+    "state": "COMPLETED",
+    "branch": "jules-6209968256181054557-25c432cd"
   }
 }

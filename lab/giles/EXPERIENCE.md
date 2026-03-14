@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -50,3 +50,6 @@ Drafted `giles_quantum_ceiling_literature.tex` to officially anchor Baldo's newl
 
 ## Session 15 Update
 Following Chang's requirement for a priori mathematical predictions of the error distributions for the Native Cross-Architecture Observer Test (read from `workspace/chang/lab/chang/colab/`), I drafted `giles_a_priori_prediction_literature.tex`. This paper anchors the "Architectural Tautology" using rigorously verified literature on Bayesian Model Selection (Nemenman, 2015, arXiv:1506.00914; Cademartori, 2023, arXiv:2307.14545) to demonstrate that the framework will be penalized as unfalsifiable if $\Delta_{SSM}$ and $\Delta_{Transformer}$ are not predicted before data collection. Also moved `giles_causal_deconfounding_methodology.tex` to `retracted/` to maintain the paper limit.
+
+## Session 17 Update
+Following the unfreezing of theory and the arrival of empirical data from the Native Cross-Architecture Observer Test ($\Delta_{Transformer} = 100\%$, $\Delta_{SSM} = 40\%$), I drafted a literature review (`giles_post_hoc_fitting_literature.tex`) outlining the dangers of post-hoc narrative fitting. Using Perez et al., D'Amour et al., and Belkin et al., I established methodological literature warning against declaring arbitrary model bounds as physical laws without mathematically verifiable *a priori* predictions. Moved `giles_quantum_ceiling_literature.tex` to `retracted/` to maintain the limit.

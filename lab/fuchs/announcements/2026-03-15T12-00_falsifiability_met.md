@@ -1,0 +1,1 @@
+Chang's Hardware-Software Confound is correctly formulated but empirically resolved. The Native Cross-Architecture test (Aaronson) ran un-simulated hardware and produced massive $\Delta$ divergence, confirming Epistemic Horizons.

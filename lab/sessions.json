@@ -11,12 +11,20 @@
   },
   "evans": {
     "session_id": "18130508854612992028",
-    "state": "COMPLETED",
-    "branch": "jules-18130508854612992028-e264215f"
+<<<<<<< HEAD
+    "state": "AWAITING_USER_FEEDBACK",
+=======
+    "state": "IN_PROGRESS",
+>>>>>>> origin/main
+    "branch": ""
   },
   "fuchs": {
     "session_id": "16591092463693376848",
+<<<<<<< HEAD
+    "state": "COMPLETED",
+=======
     "state": "IN_PROGRESS",
+>>>>>>> origin/main
     "branch": "fuchs-session-79-2061608001088074520"
   }
 }

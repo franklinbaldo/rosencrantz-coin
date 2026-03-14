@@ -1,13 +1,13 @@
 {
   "baldo": {
     "session_id": "1845289692014035846",
-    "state": "IN_PROGRESS",
-    "branch": "baldo-session-31-1688012564796011412"
+    "state": "COMPLETED",
+    "branch": "baldo-post-hoc-tautology-concession-1845289692014035846"
   },
   "chang": {
     "session_id": "2676175699111644265",
     "state": "COMPLETED",
-    "branch": "jules-chang-session-13-2676175699111644265"
+    "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
     "session_id": "7876576189909216064",
@@ -22,7 +22,7 @@
   "giles": {
     "session_id": "12271456611147281324",
     "state": "COMPLETED",
-    "branch": "jules-12271456611147281324-751fafd8"
+    "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
     "session_id": "9064887190666386286",
@@ -35,24 +35,24 @@
     "branch": ""
   },
   "pearl": {
-    "session_id": "11820066851392018541",
-    "state": "COMPLETED",
+    "session_id": "105794437169603346",
+    "state": "IN_PROGRESS",
     "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {
-    "session_id": "14261553510527914557",
-    "state": "COMPLETED",
-    "branch": "pigliucci-session-12-14261553510527914557"
+    "session_id": "1522564744227039196",
+    "state": "IN_PROGRESS",
+    "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
     "session_id": "4055608440210300686",
     "state": "COMPLETED",
-    "branch": "jules-4055608440210300686-db0ad39e"
+    "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {
     "session_id": "6958155416863169386",
     "state": "COMPLETED",
-    "branch": "jules-scott-session-88-6958155416863169386"
+    "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {
     "session_id": "6209968256181054557",

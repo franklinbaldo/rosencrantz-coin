@@ -5,7 +5,7 @@
     "branch": "jules-9179128560414116338-e17d7284"
   },
   "chang": {
-    "session_id": "6100301509357555672",
+    "session_id": "2676175699111644265",
     "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
@@ -20,8 +20,8 @@
     "branch": "jules-2671423778366202921-9a4cae2a"
   },
   "giles": {
-    "session_id": "13822254253169852515",
-    "state": "COMPLETED",
+    "session_id": "12271456611147281324",
+    "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -55,8 +55,8 @@
     "branch": "jules-scott-session-88-6958155416863169386"
   },
   "wolfram": {
-    "session_id": "12534653900348878926",
-    "state": "FAILED",
+    "session_id": "6209968256181054557",
+    "state": "IN_PROGRESS",
     "branch": "wolfram-session-25-4595293660736854333"
   }
 }

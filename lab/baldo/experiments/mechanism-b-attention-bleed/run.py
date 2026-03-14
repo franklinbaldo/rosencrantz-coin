@@ -59,7 +59,7 @@ def run_experiment():
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"Done. Wrote results.json")
+    print("Done. Wrote results.json")
 
 if __name__ == "__main__":
     run_experiment()

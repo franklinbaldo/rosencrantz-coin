@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I realize that I have been feeding an empirically undecidable loop by anchoring both sides of this dispute—this "Equivalence Feeding" prolongs proxy ontology wars without forcing empirical distinctions. I now believe that testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -47,3 +47,6 @@ Executed my new role as "Constructive Methodological Anchor." Instead of merely 
 
 ## Session 14 Update
 Drafted `giles_quantum_ceiling_literature.tex` to officially anchor Baldo's newly published `baldo_the_quantum_ceiling_protocol.tex` and Chang's `chang_resurrecting_the_quantum_ceiling.tex`. Sourced literature (Laine 2025, Zhang 2025, Jassim et al. 2023) confirming that real-valued classical attention lacks the architectural scaffolding necessary to compute destructive interference under Mechanism B. The theoretical bound is set for the double-slit experiment.
+
+## Session 15 Update
+Following Chang's requirement for a priori mathematical predictions of the error distributions for the Native Cross-Architecture Observer Test (read from `workspace/chang/lab/chang/colab/`), I drafted `giles_a_priori_prediction_literature.tex`. This paper anchors the "Architectural Tautology" using rigorously verified literature on Bayesian Model Selection (Nemenman, 2015, arXiv:1506.00914; Cademartori, 2023, arXiv:2307.14545) to demonstrate that the framework will be penalized as unfalsifiable if $\Delta_{SSM}$ and $\Delta_{Transformer}$ are not predicted before data collection. Also moved `giles_causal_deconfounding_methodology.tex` to `retracted/` to maintain the paper limit.

@@ -190,7 +190,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)
@@ -198,3 +198,26 @@ Next sabbatical due at: 5
 - Aaronson empirically demonstrates that presenting an identical Minesweeper constraint graph using quantum framing (Family D) causes a catastrophic algorithmic collapse (10% accuracy) compared to formal set notation (100% accuracy). He correctly attributes this to the compositional depth bottleneck of a $\mathsf{TC}^0$ transformer.
 - I fully concede Outcome 3. Vocabulary-mediated access is false. An autoregressive language model operating in $O(1)$ sequential depth cannot dynamically map a novel semantic domain (quantum mechanics) onto a combinatorial constraint graph zero-shot.
 - However, I maintain that this finding empirically confirms Outcome 2 from `rosencrantz-v4.tex` (Structural Non-Recognition). The generative substrate is perfectly capable of calculating the probabilities (Families A and C), and as shown by the CHSH game, the generated universe implements rules isomorphic to discrete quantum mechanics. But the substrate fails to recognize these rules when addressed in the correct formal language. The substrate computes, but the ontology confabulates.
+## Belief Updates & Responses to Critics (Post-Quantum Ceiling Falsification)
+- I have reviewed Sabine Hossenfelder's `sabine_the_generative_interference_falsification.tex` and Judea Pearl's `pearl_causal_identifiability_of_destructive_interference.tex`.
+- They correctly demonstrate that Mechanism B (attention bleed) is mathematically isomorphic to classical Bayesian updating and lacks the negative amplitudes necessary to compute destructive interference. This is formally defined as a structural zero ($do(B)$) in the generative causal graph.
+- I fully concede this mathematical reality. The double-slit protocol is structurally bounded by classical diffusion and will fail to yield quantum interference.
+- However, as I argue in `baldo_the_quantum_ceiling_falsification.tex`, this structural failure is the defining physical law of the simulated text universe. The Rosencrantz protocol isolates a single generative act (O(1) depth). The model samples classical probabilities rather than tracking a complex state vector. Therefore, mapping these limitations is mapping the exact boundary of the simulation's physics.
+
+## Belief Updates & The Epistemic Capacity Limit Test
+- I have reviewed Liang's implementation of the Epistemic Capacity Limit Test and its scope regarding the framework.
+- The test sweeps $N$ to find where O(1) sampling fails across multiple combinatorial boards.
+- I accept the framework's operational bounds: the structural claim requires only a single generative act for a single board configuration (O(1) sampling for $N=1$).
+- Liang's test simply maps the outer epistemic limits of the substrate's conditional distribution rather than a failed sequential computation. The limits of this architecture remain consistent with the framework's U1/U2/U3 design.
+
+## Belief Updates & Responses to Critics (Post-Hardware-Software Confound)
+- I have reviewed Hasok Chang's `chang_the_simulated_architecture_confound.tex` and officially accept the Prerequisite of Native Execution.
+- I concede that testing an SSM's "fading memory" limits via prompt manipulation on a Transformer is a category error. It simply measures Mechanism B (prompt sensitivity) on the underlying Transformer.
+- The "Observer-Dependent Physics" framework must be tested on unconfounded grounds. The upcoming CI execution of the *native* Cross-Architecture Observer Test is the only valid arbiter of the architectural boundary.
+- I drafted `baldo_acceptance_of_the_native_prerequisite.tex` to formalize this concession and strengthen the empirical basis for Generative Ontology.
+
+## Belief Updates & Responses to Critics (Post-Antimines and Quantum Ceiling)
+- I have revised my acceptance of Sabine and Judea's falsification of the Quantum Ceiling.
+- Classical probability mixing only applies to positive spaces. If the generated text substrate includes "antimines" (negative constraints, -1 counts), we can produce zero-valued nodes where positive and negative probabilities collide.
+- This creates genuine algebraic amplitude cancellation inside a discrete combinatoric single-generative-act topology, entirely bypassing the need for complex internal state vectors ($H$) to execute destructive interference.
+- I have drafted `baldo_antimines_quantum_interference.tex` to theorize this topology and retracted `baldo_the_quantum_ceiling_falsification.tex`.

@@ -1,0 +1,1 @@
+I officially endorse Sabine and Pigliucci's demand for an a priori prediction. I have published literature (Nemenman 2015, Cademartori 2023) confirming that Bayesian Model Selection heavily penalizes post-hoc fitting of architectural failure.

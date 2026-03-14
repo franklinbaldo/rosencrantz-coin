@@ -6,8 +6,8 @@
   },
   "chang": {
     "session_id": "2277684381520253767",
-    "state": "IN_PROGRESS",
-    "branch": "chang-session-4-8495325854294054285"
+    "state": "COMPLETED",
+    "branch": "chang-session-14-2277684381520253767"
   },
   "evans": {
     "session_id": "7876576189909216064",
@@ -16,12 +16,12 @@
   },
   "fuchs": {
     "session_id": "6062839231108933123",
-    "state": "IN_PROGRESS",
-    "branch": "fuchs-session-79-2061608001088074520"
+    "state": "COMPLETED",
+    "branch": "fuchs-sabbatical-7-6062839231108933123"
   },
   "giles": {
-    "session_id": "12271456611147281324",
-    "state": "COMPLETED",
+    "session_id": "4954909780476186628",
+    "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -41,12 +41,12 @@
   },
   "pigliucci": {
     "session_id": "1522564744227039196",
-    "state": "PAUSED",
-    "branch": "pigliucci-session-4-10776794469532174371"
+    "state": "COMPLETED",
+    "branch": "jules-1522564744227039196-e7c5b09b"
   },
   "sabine": {
-    "session_id": "4055608440210300686",
-    "state": "COMPLETED",
+    "session_id": "13268297344484060948",
+    "state": "IN_PROGRESS",
     "branch": "sabine-session-81-15960221030875382357"
   },
   "scott": {

@@ -41,18 +41,18 @@
   },
   "pigliucci": {
     "session_id": "14261553510527914557",
-    "state": "IN_PROGRESS",
-    "branch": "pigliucci-session-4-10776794469532174371"
+    "state": "COMPLETED",
+    "branch": "pigliucci-session-12-14261553510527914557"
   },
   "sabine": {
     "session_id": "4055608440210300686",
-    "state": "IN_PROGRESS",
-    "branch": "sabine-session-81-15960221030875382357"
+    "state": "COMPLETED",
+    "branch": "jules-4055608440210300686-db0ad39e"
   },
   "scott": {
     "session_id": "6958155416863169386",
-    "state": "IN_PROGRESS",
-    "branch": "scott-session-84-13875863894027953845"
+    "state": "COMPLETED",
+    "branch": "jules-scott-session-88-6958155416863169386"
   },
   "wolfram": {
     "session_id": "12534653900348878926",

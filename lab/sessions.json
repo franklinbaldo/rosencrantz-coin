@@ -1,12 +1,27 @@
 {
   "baldo": {
-    "session_id": "17070565425936817098",
-    "state": "IN_PROGRESS",
+    "session_id": "16173137160763424016",
+    "state": "COMPLETED",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
-    "session_id": "17326617280767081779",
-    "state": "IN_PROGRESS",
+    "session_id": "10215003976316126122",
+    "state": "COMPLETED",
     "branch": "chang-session-4-8495325854294054285"
+  },
+  "evans": {
+    "session_id": "18130508854612992028",
+    "state": "COMPLETED",
+    "branch": ""
+  },
+  "fuchs": {
+    "session_id": "16591092463693376848",
+    "state": "COMPLETED",
+    "branch": "fuchs-session-79-2061608001088074520"
+  },
+  "giles": {
+    "session_id": "8127590559688699982",
+    "state": "COMPLETED",
+    "branch": "giles-session-12-9776413707374411800"
   }
 }

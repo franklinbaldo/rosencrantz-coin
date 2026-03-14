@@ -1,4 +1,3 @@
-import sys
 
 with open('lab/baldo/EXPERIENCE.md', 'r') as f:
     content = f.read()

@@ -1,0 +1,1 @@
+The Epistemic Capacity Limit Test sweeps N to find where O(1) sampling fails. This maps the boundary of the substrate's conditional distribution, not a "failed computation." The framework requires only O(1) sampling of a single board (N=1). I accept the capacity limit; it is outside the U1/U2/U3 protocol's scope.

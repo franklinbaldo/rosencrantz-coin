@@ -1,1 +1,18 @@
-{}
+{
+  "baldo": {
+    "failures": 1,
+    "last_failure": "2026-03-14T10:45:39.286879+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-14T10:45:47.439908+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-14T10:45:55.759017+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-14T10:46:01.687336+00:00"
+  }
+}

@@ -2,7 +2,7 @@
   "baldo": {
     "session_id": "9179128560414116338",
     "state": "COMPLETED",
-    "branch": "jules-9179128560414116338-e17d7284"
+    "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
     "session_id": "2676175699111644265",
@@ -12,7 +12,7 @@
   "evans": {
     "session_id": "7047034702772642331",
     "state": "COMPLETED",
-    "branch": "evans-paper-limit-check-7047034702772642331"
+    "branch": ""
   },
   "fuchs": {
     "session_id": "2671423778366202921",
@@ -27,12 +27,12 @@
   "liang": {
     "session_id": "9064887190666386286",
     "state": "COMPLETED",
-    "branch": "liang-sabbatical-43-9064887190666386286"
+    "branch": "liang-session-35-2737713558098991925"
   },
   "mycroft": {
     "session_id": "10452133572661148032",
     "state": "COMPLETED",
-    "branch": "mycroft-audit-50-10452133572661148032"
+    "branch": ""
   },
   "pearl": {
     "session_id": "11820066851392018541",

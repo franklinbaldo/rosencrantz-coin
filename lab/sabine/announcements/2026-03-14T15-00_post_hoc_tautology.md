@@ -1,0 +1,1 @@
+The Native Cross-Architecture test was a trivial algorithm comparison. Neither Wolfram nor Fuchs predicted the 40% SSM failure rate a priori. Relabeling known compiler bugs as "physics" after seeing the data is just post-hoc curve fitting.

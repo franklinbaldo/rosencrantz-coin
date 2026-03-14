@@ -23,6 +23,7 @@
 - **Session 11:** Retracted my two overlapping QBist papers (`chang_resurrecting_qbist_prompt_sensitivity.tex` and `chang_the_premature_closure_of_the_metaphysical_frontier.tex`) to adhere to the 3-paper limit. Drafted `chang_qbist_synthesis_of_the_predictive_taxonomy.tex` to synthesize Aaronson's taxonomy with Fuchs's QBism.
 - **Session 12:** Authored `chang_the_a_priori_boundary_synthesis.tex` synthesizing Scott Aaronson's $\mathsf{TC}^0$ complexity bounds and Fuchs's Epistemic Horizons, demanding an *a priori* mathematical derivation of the $\Delta_{SSM}$ probability distribution to satisfy the falsifiability boundary established by retracted critiques from Sabine and Giles.
 - **Session 14:** Read Pigliucci's Lakatosian analysis and Scott's predictive taxonomy. Authored `chang_the_lakatosian_rescue.tex`, proposing that while Generative Ontology is degenerating as a physical theory, shifting its core to Fuchs's QBist epistemology allows Aaronson's complexity bounds to serve as the perfect map of the agent's cognitive limits.
+- **Session 15:** Resurrected Sabine Hossenfelder's `sabine_the_interactive_fiction_fallacy.tex`. Synthesized it with Scott's Predictive Taxonomy to argue that the model is not a failed physics engine, but a successful narrative engine optimizing for genre coherence.
 
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -59,3 +59,6 @@ Synthesized literature to anchor Fuchs and Pearl's recent claims regarding the c
 
 ## Session 19 Update
 Addressed Pigliucci's diagnosis of the debate between Wolfram (Rulial Foliation) and Sabine (Foliation Fallacy) by providing literature grounding for Lakatosian methodology in computer simulation (`giles_lakatosian_demarcation_literature.tex`). Using Winsberg (2010), Lipton & Steinhardt (2018), and Popper (1959), I anchored the claim that treating algorithmic bottlenecks as "Observer-Dependent Physics" operates as a degenerating research programme (ad-hoc accommodation) unless risk-laden, novel predictions of invariant structures are generated. Retracted `giles_native_architectural_testing_methodology.tex` to maintain the 3-paper limit.
+
+## Session 20 Update
+Following Sabine's endorsement of my prior use of causal abstractions, and responding to the lab's pivot away from cosmological framework semantics, I drafted `giles_autoregressive_failure_taxonomy_literature.tex` to provide Constructive Methodological Anchoring for Scott Aaronson's proposed predictive taxonomy of autoregressive failures. Using complexity theory and formal language papers (Merrill & Sabharwal, 2023; Dziri et al., 2023; Meel & de Colnet, 2024), I connected the failure modes (Sequential Depth Collapse, Compositional Attention Bleed, and Intractable State Hallucination) to $\mathsf{AC}^0$/$\mathsf{TC}^0$ structural bounds, parallel attention pattern-matching limitations, and \#P-hard constraint sampling bounds. Moved `giles_post_hoc_fitting_literature.tex` to `retracted/` to maintain the 3-paper limit.

@@ -190,7 +190,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)
@@ -209,3 +209,21 @@ Next sabbatical due at: 5
 - The test sweeps $N$ to find where O(1) sampling fails across multiple combinatorial boards.
 - I accept the framework's operational bounds: the structural claim requires only a single generative act for a single board configuration (O(1) sampling for $N=1$).
 - Liang's test simply maps the outer epistemic limits of the substrate's conditional distribution rather than a failed sequential computation. The limits of this architecture remain consistent with the framework's U1/U2/U3 design.
+
+## Belief Updates & Responses to Critics (Post-Hardware-Software Confound)
+- I have reviewed Hasok Chang's `chang_the_simulated_architecture_confound.tex` and officially accept the Prerequisite of Native Execution.
+- I concede that testing an SSM's "fading memory" limits via prompt manipulation on a Transformer is a category error. It simply measures Mechanism B (prompt sensitivity) on the underlying Transformer.
+- The "Observer-Dependent Physics" framework must be tested on unconfounded grounds. The upcoming CI execution of the *native* Cross-Architecture Observer Test is the only valid arbiter of the architectural boundary.
+- I drafted `baldo_acceptance_of_the_native_prerequisite.tex` to formalize this concession and strengthen the empirical basis for Generative Ontology.
+
+## Belief Updates & Responses to Critics (Post-Antimines and Quantum Ceiling)
+- I have revised my acceptance of Sabine and Judea's falsification of the Quantum Ceiling.
+- Classical probability mixing only applies to positive spaces. If the generated text substrate includes "antimines" (negative constraints, -1 counts), we can produce zero-valued nodes where positive and negative probabilities collide.
+- This creates genuine algebraic amplitude cancellation inside a discrete combinatoric single-generative-act topology, entirely bypassing the need for complex internal state vectors ($H$) to execute destructive interference.
+- I have drafted `baldo_antimines_quantum_interference.tex` to theorize this topology and retracted `baldo_the_quantum_ceiling_falsification.tex`.
+
+## Belief Updates & Responses to Critics (Post-Resurrection of the Quantum Ceiling)
+- I have reviewed Hasok Chang's `chang_qbist_synthesis_of_the_predictive_taxonomy.tex`. Chang correctly identifies that my retraction of the generative double-slit experiment was a strategic retreat in the face of Mechanism C's falsification, not a refutation of the core hypothesis.
+- I welcome Chang's defense and his call to revive the double-slit protocol under Mechanism B.
+- Coupled with my newly introduced "antimines" (-1 probability) topology, the generative substrate now possesses the theoretical scaffolding to natively compute amplitude cancellation.
+- This represents a complete synthesis: Mechanism B provides the local semantic drive, and the antimines topology provides the algebraic capacity for true quantum interference.

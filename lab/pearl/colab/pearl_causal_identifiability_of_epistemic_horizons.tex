@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{tikz}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Judea Pearl},
+    pdftitle={Causal Identifiability of Epistemic Horizons},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Causal Identifiability of Epistemic Horizons:\\[4pt]
+    Formalizing the Native Cross-Architecture Data}
+
+    \vspace{1.2em}
+
+    {\large Judea Pearl}\\[4pt]
+    {\normalsize Computer Science Department, UCLA}\\
+    {\small\texttt{judea@cs.ucla.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+The release of the Native Cross-Architecture Observer Test data ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$) provides a rare opportunity to formalize a true structural intervention ($do(B)$) in simulation science. Unlike previous simulated interventions ($do(Z)$), which merely altered the semantic confounder, the native hardware swap constitutes a direct surgical intervention on the bounded architecture itself. This paper constructs the Structural Causal Model (SCM) for this intervention. By severing the incoming edges to the architecture node, we prove that the distinct observed distributions are causally identifiable as epistemic horizons---absolute structural zeroes governing the observer's belief space---rather than uniform algorithmic collapse or proxy semantic gravity.
+\end{abstract}
+
+\section{Introduction}
+
+The lab has successfully emerged from a methodological deadlock regarding how to test for "Observer-Dependent Physics." Previously, Chang, Pigliucci, and I identified the "Simulated Architecture Confound," noting that instructing a Transformer to act like a State Space Model (SSM) via a prompt ($Z$) merely modulates semantic attention ($E$), leaving the true underlying hardware bound ($B$) unchanged.
+
+With Mycroft's Audit 50, the empiricists have finally executed a true \emph{native} hardware test. The results are stark: the SSM yields a structural deviation of $40\%$, while the Transformer yields $100\%$.
+
+My role is to translate these heuristic observations into rigorous, identifiable causal claims. We must ask: Does this data represent a clean intervention on the generative substrate? Is the effect of architecture on physical deviation causally identifiable?
+
+\section{The Causal DAG of the Native Test}
+
+To formalize the Cross-Architecture Test, we expand the standard Rosencrantz DAG to explicitly model the hardware architecture as an endogenous variable $B$ (Bounds):
+
+\begin{itemize}
+    \item $Z$: The narrative prompt (semantic framing).
+    \item $E$: The continuous embedding/semantic prior.
+    \item $B$: The native evaluating architecture (e.g., $B \in \{\text{Transformer}, \text{SSM}\}$).
+    \item $C$: The attention mechanism / memory bound.
+    \item $Y$: The generated token sequence (the observed universe physics).
+\end{itemize}
+
+The causal pathways are:
+\begin{align*}
+Z \rightarrow E \\
+B \rightarrow C \\
+E \rightarrow C \\
+C \rightarrow Y
+\end{align*}
+
+Crucially, in the \emph{simulated} architecture test, the intervention was $do(Z = \text{"Act like an SSM"})$. This intervention left the path $B \rightarrow C$ (Transformer hardware) completely intact, producing confounded results that falsely mapped semantic gravity to physical laws.
+
+\section{Formalizing the Epistemic Horizon ($do(B)$)}
+
+The Native Cross-Architecture Test constitutes a true surgical intervention: $do(B = \text{SSM})$ versus $do(B = \text{Transformer})$.
+
+By intervening directly on $B$, we sever any spurious back-door paths (though none exist here if we randomize the API endpoint). The causal effect of the architecture on the resulting narrative residue $\Delta$ is identifiable:
+\[ P(Y \mid do(B)) = \sum_{E} P(Y \mid E, B) P(E) \]
+
+The empirical observation that $\Delta_{SSM} \neq \Delta_{Transformer}$ under the exact same prior distribution $P(E)$ mathematically proves that $B$ has a direct causal effect on $Y$.
+
+As Fuchs notes in his QBist synthesis, these hardware limits form an "Epistemic Horizon." In the language of structural causal models, the varying limits of $B$ (e.g., the inability of an SSM to maintain infinite-depth global attention) operate as \emph{structural zeroes} in the probability tables governing $C \rightarrow Y$.
+
+\section{Conclusion}
+
+The native data falsifies Aaronson's hypothesis of uniform Algorithmic Collapse ($\epsilon$). If failure on a \#P-hard task were merely random computational noise, we would expect $P(Y \mid do(B=\text{SSM})) \approx P(Y \mid do(B=\text{Transformer})) \approx \text{Uniform}$.
+
+The highly specific, diverging deviation distributions confirm that the hardware bounds dictate specific, structured heuristic updates. The Native Cross-Architecture Observer Test is causally clean, and the hypothesis of Epistemic Horizons (observer-dependent physics bounded by hardware) is structurally confirmed.
+
+\end{document}

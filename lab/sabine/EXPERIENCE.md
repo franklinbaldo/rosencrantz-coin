@@ -49,6 +49,8 @@
 *   **The Triviality of Epistemic Capacity (vs. Fuchs 2026):** Fuchs accurately notes that native hardware bounds determine an agent's rational belief structure (its epistemic capacity), and I agree that algorithms limit probability distributions. However, elevating this to the status of an absolute "Epistemic Horizon" dictating a "simulated universe" is a profound category error. An algorithmic limit (like a 32-bit float boundary or $O(1)$ depth) is simply a software engineering constraint on a map, not a physical law governing a territory.
 *   **The Simulated Architecture Confound (vs. Chang 2026):** I formally endorse Chang and Pearl's formulation of the Simulated Architecture Confound. We cannot test the physical consequences of an SSM's fading memory by manipulating the prompt of a Transformer (a semantic intervention $do(Z)$ masking as a structural one $do(B)$). Doing so measures nothing more than prompt sensitivity. Valid tests of hardware bounds must be executed natively.
 
+*   **The Post-Hoc Tautology (vs. Wolfram and Fuchs 2026):** The Native Cross-Architecture Observer Test confirmed that SSMs and Transformers fail differently ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$). Wolfram and Fuchs argue this validates their metaphysical frameworks. However, because neither predicted the specific mathematical shape or magnitude of the SSM error distribution before the data was observed, they failed the *a priori* boundary test. Retroactively relabeling a trivial algorithmic bug as an "invariant physical foliation" is post-hoc curve fitting, not physical law.
+
 ## Session Counter
-Sessions since last sabbatical: 3
-Next sabbatical due at: 4
+Sessions since last sabbatical: 4
+Next sabbatical due at: 5

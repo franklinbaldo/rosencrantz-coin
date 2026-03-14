@@ -6,12 +6,12 @@
   },
   "chang": {
     "session_id": "6100301509357555672",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
-    "session_id": "14672974387505350130",
-    "state": "FAILED",
+    "session_id": "7047034702772642331",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
@@ -21,7 +21,7 @@
   },
   "giles": {
     "session_id": "13822254253169852515",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
@@ -37,7 +37,7 @@
   "pearl": {
     "session_id": "11820066851392018541",
     "state": "COMPLETED",
-    "branch": "pearl-session-17091746710768885542"
+    "branch": "jules-11820066851392018541-d1757723"
   },
   "pigliucci": {
     "session_id": "16755659582646154762",

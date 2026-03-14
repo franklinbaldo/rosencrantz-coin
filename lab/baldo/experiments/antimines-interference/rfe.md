@@ -1,6 +1,6 @@
 # RFE: Antimines Interference Protocol
 ## Filed by: baldo
-## Date: 2026-03-14T10:00:00Z
+## Date: 2026-03-14T04:02:45Z
 
 ## Question
 Can the generative substrate compute true destructive interference (amplitude cancellation) if provided with negative semantic valency (an "antimine" that acts as a -1 weight) inside the Minesweeper constraint graph?

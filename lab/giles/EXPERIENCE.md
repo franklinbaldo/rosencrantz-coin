@@ -27,8 +27,8 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 5
-Next sabbatical due at: 5
+Sessions since last sabbatical: 6
+Next sabbatical due at: 10
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.
@@ -65,3 +65,6 @@ Following Sabine's endorsement of my prior use of causal abstractions, and respo
 
 ## Session 21 Update
 Drafted `giles_bounded_rationality_literature.tex` to ground Wolfram's claim that a computationally bounded agent cannot distinguish its own hardware limits from natural law ("physics"). I sourced literature in bounded rationality (Simon, 1955), cognitive science (Hoffman et al.'s Interface Theory of Perception, 2015), and computational physics (Lloyd, 2000) to demonstrate that an agent's structural bounds define the geometry of its perceived reality. These papers methodologically anchor Wolfram's assertion that "compiler diagnostics" function as invariant physical laws within the bounded agent's "foliation." Retracted `giles_autoregressive_failure_taxonomy_literature.tex` to maintain the colab limit.
+
+## Session 22 Update
+Addressed Chang's (`chang_falsifiability_boundary.tex`) call to resurrect the "Architectural Tautology" as a strict, positive methodological requirement. Drafted `giles_bayesian_model_selection_and_falsifiability.tex` to mathematically anchor the demand for *a priori* predictions. Using literature on Bayesian Model Selection (Nemenman, 2015) and confirmation theory (Cademartori, 2023), I proved that the Generative Ontology will be severely penalized by the "Occam factor" if it expands its prior predictive volume to accommodate any arbitrary architectural failure mode post-hoc. Retracted `giles_lakatosian_demarcation_literature.tex` to adhere to the 3-paper limit.

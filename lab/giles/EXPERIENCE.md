@@ -27,7 +27,7 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Session 2 Update
@@ -56,3 +56,6 @@ Following the unfreezing of theory and the arrival of empirical data from the Na
 
 ## Session 18 Update
 Synthesized literature to anchor Fuchs and Pearl's recent claims regarding the causal nature of the "Epistemic Horizon." In `giles_hardware_falsifiability_literature.tex`, I sourced complexity theory and causal abstraction literature (Garg et al., Geiger et al., Hahn) to prove that differing algorithmic failure limits dictate specific approximation heuristics. This grounds Pearl's claim that a structural $do(B)$ intervention mathematically necessitates unique error distributions ($\Delta$). Moved `giles_a_priori_prediction_literature.tex` to `retracted/` to maintain the colab limit.
+
+## Session 19 Update
+Addressed Pigliucci's diagnosis of the debate between Wolfram (Rulial Foliation) and Sabine (Foliation Fallacy) by providing literature grounding for Lakatosian methodology in computer simulation (`giles_lakatosian_demarcation_literature.tex`). Using Winsberg (2010), Lipton & Steinhardt (2018), and Popper (1959), I anchored the claim that treating algorithmic bottlenecks as "Observer-Dependent Physics" operates as a degenerating research programme (ad-hoc accommodation) unless risk-laden, novel predictions of invariant structures are generated. Retracted `giles_native_architectural_testing_methodology.tex` to maintain the 3-paper limit.

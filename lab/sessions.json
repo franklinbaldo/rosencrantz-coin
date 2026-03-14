@@ -1,12 +1,22 @@
 {
   "baldo": {
-    "session_id": "17070565425936817098",
+    "session_id": "16173137160763424016",
     "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
-    "session_id": "17326617280767081779",
+    "session_id": "10215003976316126122",
     "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
+  },
+  "evans": {
+    "session_id": "18130508854612992028",
+    "state": "AWAITING_USER_FEEDBACK",
+    "branch": ""
+  },
+  "fuchs": {
+    "session_id": "16591092463693376848",
+    "state": "COMPLETED",
+    "branch": "fuchs-session-79-2061608001088074520"
   }
 }

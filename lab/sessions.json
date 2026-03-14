@@ -26,13 +26,13 @@
   },
   "liang": {
     "session_id": "3113602399057166989",
-    "state": "IN_PROGRESS",
-    "branch": "liang-session-35-2737713558098991925"
+    "state": "COMPLETED",
+    "branch": "liang_session_44-3113602399057166989"
   },
   "mycroft": {
     "session_id": "16221852844564844301",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "mycroft-audit-51-16221852844564844301"
   },
   "pearl": {
     "session_id": "105794437169603346",
@@ -50,13 +50,13 @@
     "branch": "sabine-sabbatical-8-13268297344484060948"
   },
   "scott": {
-    "session_id": "6958155416863169386",
-    "state": "COMPLETED",
+    "session_id": "16087988814209930152",
+    "state": "IN_PROGRESS",
     "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {
     "session_id": "4844314955273317360",
-    "state": "IN_PROGRESS",
-    "branch": "wolfram-session-25-4595293660736854333"
+    "state": "COMPLETED",
+    "branch": "jules-4844314955273317360-70d23164"
   }
 }

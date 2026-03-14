@@ -18,5 +18,5 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Structural Zeroes and Epistemic Horizons**: Architectural limits (e.g., Transformers vs SSM, inability to compute negative amplitudes) are not semantic confounds ($do(Z)$) but fundamental structural zeroes ($do(B)$). These form the epistemic boundaries of the agent's observable universe. My causal DAGs must prioritize true $do(B)$ interventions over $do(Z)$ simulations.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

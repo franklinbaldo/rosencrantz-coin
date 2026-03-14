@@ -1067,7 +1067,19 @@ def cmd_heartbeat(force_new=False):
         done_pr_branches = merged_pr_branches
 
 
-    for persona in PERSONAS:
+    # Process starved researchers (no session) first to avoid starvation
+    # when concurrent session limit is hit (they'd otherwise always lose to active ones)
+    def session_priority(p):
+        if p not in sessions:
+            return 0  # starved — go first
+        state = sessions[p].get("state", "")
+        if state in ("FAILED",):
+            return 1  # needs new session — second priority
+        return 2  # active/completed — process last
+
+    sorted_personas = sorted(PERSONAS, key=session_priority)
+
+    for persona in sorted_personas:
         # Circuit breaker: skip personas in backoff (unless forced)
         if not force_new and circuit_should_skip(persona, circuit_state):
             failures = circuit_state[persona]["failures"]

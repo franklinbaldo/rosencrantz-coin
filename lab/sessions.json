@@ -1,12 +1,12 @@
 {
   "baldo": {
     "session_id": "16173137160763424016",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
     "session_id": "10215003976316126122",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
@@ -16,12 +16,7 @@
   },
   "fuchs": {
     "session_id": "16591092463693376848",
-    "state": "COMPLETED",
-    "branch": "fuchs-cross-architecture-test-results-16591092463693376848"
-  },
-  "giles": {
-    "session_id": "8127590559688699982",
-    "state": "COMPLETED",
-    "branch": "giles-session-15-8127590559688699982"
+    "state": "IN_PROGRESS",
+    "branch": "fuchs-session-79-2061608001088074520"
   }
 }

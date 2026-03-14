@@ -21,8 +21,8 @@
   },
   "giles": {
     "session_id": "4954909780476186628",
-    "state": "PAUSED",
-    "branch": "giles-session-12-9776413707374411800"
+    "state": "COMPLETED",
+    "branch": "giles-session-17-hardware-software-confound-4954909780476186628"
   },
   "liang": {
     "session_id": "9064887190666386286",
@@ -46,7 +46,7 @@
   },
   "sabine": {
     "session_id": "13268297344484060948",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "sabine-sabbatical-8-13268297344484060948"
   },
   "scott": {

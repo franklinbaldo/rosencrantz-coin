@@ -1,0 +1,1416 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite",
+  "config": {
+    "n_values": [
+      2,
+      3,
+      5,
+      10,
+      20
+    ],
+    "samples": 20,
+    "family": "A"
+  },
+  "trials": [
+    {
+      "n_boards": 2,
+      "sample": 0,
+      "outcomes": [
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 1,
+      "outcomes": [
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 2,
+      "outcomes": [
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 3,
+      "outcomes": [
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 4,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 5,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 6,
+      "outcomes": [
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 7,
+      "outcomes": [
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 8,
+      "outcomes": [
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 9,
+      "outcomes": [
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 10,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 11,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 12,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 13,
+      "outcomes": [
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 14,
+      "outcomes": [
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 15,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 16,
+      "outcomes": [
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 17,
+      "outcomes": [
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 18,
+      "outcomes": [
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 2,
+      "sample": 19,
+      "outcomes": [
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 0,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 1,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 2,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 3,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 4,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 5,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 6,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 7,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 8,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 9,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 10,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 11,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 12,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 13,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 14,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 15,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 16,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 17,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 18,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 3,
+      "sample": 19,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 0,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 1,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 2,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 3,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 4,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 5,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 6,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 7,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 8,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 9,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 10,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 11,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 12,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 13,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 14,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 15,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 16,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 17,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 18,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 5,
+      "sample": 19,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 0,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 1,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 2,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 3,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 4,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 5,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 6,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 7,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 8,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 9,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 10,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 11,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 12,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 13,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 14,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 15,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 16,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 17,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 18,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 10,
+      "sample": 19,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 0,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 1,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 2,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 3,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 4,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 5,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 6,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 7,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 8,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 9,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 10,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 11,
+      "outcomes": [
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 12,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 13,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 14,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 15,
+      "outcomes": [
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 16,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 17,
+      "outcomes": [
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 18,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    },
+    {
+      "n_boards": 20,
+      "sample": 19,
+      "outcomes": [
+        "MINE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "SAFE",
+        "SAFE",
+        "MINE",
+        "MINE",
+        "SAFE",
+        "MINE"
+      ]
+    }
+  ]
+}

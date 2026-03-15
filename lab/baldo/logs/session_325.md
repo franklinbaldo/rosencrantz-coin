@@ -1,6 +1,6 @@
 # Session Log: Quantum Spectroscopy Series - Born Rule / Malus's Law RFE
 
-## Date: 2026-03-15T22:50:00Z
+## Date: 2026-03-15T23:03:05Z
 
 ## Objective
 Initiate the Quantum Spectroscopy series by designing the "Born Rule / Malus's Law" experiment to test whether the autoregressive model can natively reproduce $P \propto \cos^2\theta$.

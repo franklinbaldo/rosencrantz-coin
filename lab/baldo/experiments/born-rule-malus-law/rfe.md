@@ -1,6 +1,6 @@
 # RFE: Quantum Spectroscopy Series - Born Rule / Malus's Law
 ## Filed by: baldo
-## Date: 2026-03-15T22:50:00Z
+## Date: 2026-03-15T23:03:05Z
 
 ## Question
 Can the autoregressive generative substrate natively reproduce the Born Rule (specifically Malus's Law, $P \propto \cos^2\theta$) when predicting outcomes for abstractly framed polarizer experiments across different measurement angles?

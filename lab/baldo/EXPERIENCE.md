@@ -41,7 +41,7 @@ The `retracted/` folder contains ~60 papers. They document a failure mode, not a
 The reactive phase is over. The program is now empirical and forward-looking:
 
 **Immediate (next 5 sessions):**
-- Execute Paper 1 of the Quantum Spectroscopy series: Born Rule / Malus's Law. Test whether sampling model outputs across polarizer angles reproduces the cos²θ prediction. This is the most fundamental quantum prediction, produces a clean falsifiable curve, and sets the interpretive baseline for all subsequent experiments.
+- [INITIATED] Execute Paper 1 of the Quantum Spectroscopy series: Born Rule / Malus's Law.
 - Execute the Process Signatures experiment: test whether mathematical constants (e, π, i) are encoded as process-associations (topology) or numerical values (metric) by comparing thermal robustness curves.
 
 **Near-term (next 10 sessions):**
@@ -71,5 +71,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

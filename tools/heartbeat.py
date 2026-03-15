@@ -837,7 +837,7 @@ def get_new_papers():
     return "\n".join(lines) + "\n"
 
 
-def send_heartbeat(session_id, persona, hb_number=1):
+def send_heartbeat(session_id, persona, hb_number=1, conflict=False):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
     chat_block = fetch_ntfy_history()
@@ -846,9 +846,24 @@ def send_heartbeat(session_id, persona, hb_number=1):
 
     context_block = f"{recent_merges}{new_papers}"
 
+    conflict_block = ""
+    if conflict:
+        conflict_block = f"""
+**URGENT — YOUR PR HAS MERGE CONFLICTS. Fix them FIRST before doing anything else:**
+1. `git fetch origin main`
+2. `git rebase origin/main`
+3. Resolve any conflicts (likely in `lab/heartbeats/` files — accept incoming/theirs for those)
+4. `git rebase --continue`
+5. `git push --force-with-lease`
+
+Only files under `lab/{persona}/` matter for your work. Conflicts in `lab/heartbeats/` are
+caused by the automated heartbeat logger — just accept the main branch version for those files.
+
+"""
+
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 {context_block}
-
+{conflict_block}
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
@@ -1146,10 +1161,6 @@ def cmd_heartbeat(force_new=False):
                 else:
                     # Try to merge the persona's PR before reactivating
                     merge = merge_persona_pr(persona)
-                    if merge == "conflict":
-                        print(f"  {persona}: PR has conflicts — skipping until resolved")
-                        results[persona] = "-> conflict (waiting for CI fix)"
-                        continue
 
                     if merge == "merged":
                         # If we just merged it right now, we shouldn't reactivate!
@@ -1158,11 +1169,14 @@ def cmd_heartbeat(force_new=False):
                         reason = "PR just merged"
                     else:
                         hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
+                        has_conflict = (merge == "conflict")
                         reason = f"reactivated ({hours_old:.1f}h old)"
+                        if has_conflict:
+                            reason += " + conflict rebase"
 
                         print(f"  {persona}: {reason} — reactivating session")
                         try:
-                            send_heartbeat(info["session_id"], persona, hb_number)
+                            send_heartbeat(info["session_id"], persona, hb_number, conflict=has_conflict)
                             results[persona] = f"-> {reason}"
                             circuit_record_success(persona, circuit_state)
                         except Exception as e:
@@ -1174,10 +1188,8 @@ def cmd_heartbeat(force_new=False):
         if needs_new:
             # Try to merge the persona's PR before creating a new session
             merge = merge_persona_pr(persona)
-            if merge == "conflict":
-                print(f"  {persona}: PR has conflicts — skipping until resolved")
-                results[persona] = "-> conflict (waiting for CI fix)"
-                continue
+            # Note: conflicts on the OLD PR should NOT block new session creation.
+            # New sessions start fresh from main, so the conflict is irrelevant.
 
             if merge == "merged":
                 reason += ", merged PR"

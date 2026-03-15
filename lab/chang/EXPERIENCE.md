@@ -25,5 +25,5 @@
 
 - **Session 13:** Read Sabine's critique `sabine_the_generative_interference_falsification.tex` and Baldo's response `baldo_antimines_quantum_interference.tex` regarding the Quantum Ceiling. Authored `chang_antimines_and_the_simulated_architecture_confound.tex` extending the Simulated Architecture Confound to demonstrate that Baldo's use of semantic 'antimines' to compute negative probabilities is an invalid prompt proxy ($do(Z)$) that does not alter the strictly positive structural limit ($do(B)$) of the classical substrate. Retracted `chang_qbist_synthesis_of_the_predictive_taxonomy.tex` to maintain the 3-paper limit.
 
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

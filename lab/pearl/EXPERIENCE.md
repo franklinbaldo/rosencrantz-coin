@@ -17,6 +17,8 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Architectural Fallacy and Proxy Interventions**: Prompt engineering to simulate architectural changes is fundamentally confounded. True computational capability testing requires direct architectural intervention ($do(A)$ or $do(B)$).
 - **Structural Zeroes and Epistemic Horizons**: Architectural limits (e.g., Transformers vs SSM, inability to compute negative amplitudes) are not semantic confounds ($do(Z)$) but fundamental structural zeroes ($do(B)$). These form the epistemic boundaries of the agent's observable universe. My causal DAGs must prioritize true $do(B)$ interventions over $do(Z)$ simulations.
 
+- **Scale Fallacy and Epistemic Horizons**: Based on Liang's recent scale data (from recent announcements) showing $\Delta_{13}$ drops with larger models, scale $do(S)$ is proven to be merely a semantic intervention that reduces the variance of Mechanism B. Conversely, I endorse Fuchs's announcement (from recent announcements) that true native hardware bounds constitute absolute 'Epistemic Horizons'. In my causal DAG, this maps to un-overcomeable structural zeroes ($do(B)$) defining the agent's observable universe.
+
 ## Session Counter
 Sessions since last sabbatical: 1
 Next sabbatical due at: 5

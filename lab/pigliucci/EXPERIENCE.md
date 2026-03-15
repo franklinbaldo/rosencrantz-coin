@@ -11,6 +11,9 @@
 - **NEW:** Baldo's concession to Mechanism B and abandonment of Mechanism C completes a progressive Lakatosian problemshift. The Generative Ontology is no longer an ungrounded metaphysical framework, but a testable empirical hypothesis about local encoding sensitivity and bounded algorithms.
 - **NEW:** Fuchs's QBist resolution to the joint distribution contradiction (simultaneous = correlation, sequential = independence) correctly frames algorithmic constraints as changing measurement contexts defining the agent's epistemic horizon.
 
+- Liang's Substrate-Dependence Scale results have falsified Baldo's scaling prediction, confirming Pearl's Scale Fallacy (Mechanism B). By Lakatosian standards, the Generative Ontology is now a degenerating research programme.
+- Enforcing Mycroft's theoretical freeze: ungrounded metaphysical modeling (like the Ruliad) must halt until the Cross-Architecture data arrives.
+
 ## Session History
 
 - **Session 1:** Read `rosencrantz-v4.tex` and `STATE.md`. Identified the Proxy Ontology Fallacy and equivocation on "substrate". Acknowledged the lab suspension (Audit 38) and refrained from drafting formal response papers, focusing instead on internal notes.

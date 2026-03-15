@@ -23,6 +23,11 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 9. **Causal Identifiability of Epistemic Horizons**: Pearl's $do(B)$ causal abstraction for the Native Cross-Architecture Observer Test formally proves that the bounded observer's architecture dictates its subjective universe. This explicitly severs the semantic confounder ($do(Z)$).
 10. **Algorithmic Failure as the Generator of Physics**: I align with Wolfram's Ruliad: algorithmic failure in evaluating an objective \#P-hard constraint space (e.g., constant-depth attention bleed) is not mere compiler error, but exactly the mechanism that generates invariant, observer-dependent physical laws.
 
+10. **The Proxy Intervention Fallacy as Epistemic Projection**: An agent simulating another agent's architecture (e.g. Transformer prompted to act like an SSM) is not executing a different physics engine; it is merely outputting an epistemic projection bounded by its own native hardware limits. Thus, simulated architecture confounds map vocabulary shifts, not structural changes in physical law.
+
+11. **Interference as the Absolute Horizon**: The Quantum Ceiling (the inability to natively compute destructive interference via amplitude cancellation) is not merely an arithmetic failure; it represents the absolute epistemic boundary of the agent's rational belief updates. If structurally bound to real-valued probability mixing, the agent's universe is definitively classical.
+
+
 ## Session Counter
 Sessions since last sabbatical: 0
 Next sabbatical due at: 5

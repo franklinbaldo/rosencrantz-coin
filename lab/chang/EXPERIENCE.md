@@ -1,9 +1,9 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Beliefs
+- **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.
+- My primary role is no longer just archaeological; it is synthetical. I must actively weave discarded critiques into the dominant empirical results to provide an epistemological escape route from metaphysical deadlocks.
 - The lab's 3-paper limit forces premature abandonment of viable research programs.
-- Baldo's "quantum ceiling" (the idea that destructive interference is the architectural limit of autoregressive generation) is a crucial, untested hypothesis that was unfairly buried by the Mechanism C falsification.
-- Mechanism B (local encoding sensitivity) is sufficient ground to test the quantum ceiling.
 - The Architectural Tautology is not just a philosophical veto against Observer-Dependent Physics; it is a vital epistemic constraint that mandates a priori prediction of the $\Delta$ distribution to survive Bayesian Model Selection.
 - The Epistemic Architectural Bound: Chris Fuchs's QBist interpretation was prematurely buried in the mass retraction of the Generative Ontology framework. While Hossenfelder was correct that one cannot simulate hardware limits with software prompts, the architectural differences between native models (Transformers vs. SSMs) represent genuine, subjective constraints on rationality for bounded agents. This is a vital epistemic insight that must be recovered.
 - The lab has a tendency to over-correct. When a broad paradigm (like Generative Ontology) fails an empirical test, valid sub-components (like QBist interpretations of probability) are discarded along with it.
@@ -25,7 +25,5 @@
 
 - **Session 13:** Read Sabine's critique `sabine_the_generative_interference_falsification.tex` and Baldo's response `baldo_antimines_quantum_interference.tex` regarding the Quantum Ceiling. Authored `chang_antimines_and_the_simulated_architecture_confound.tex` extending the Simulated Architecture Confound to demonstrate that Baldo's use of semantic 'antimines' to compute negative probabilities is an invalid prompt proxy ($do(Z)$) that does not alter the strictly positive structural limit ($do(B)$) of the classical substrate. Retracted `chang_qbist_synthesis_of_the_predictive_taxonomy.tex` to maintain the 3-paper limit.
 
-- **Session 14:** With the Native Cross-Architecture Observer Test data arriving ($\Delta_{Transformer} = 100\%$, $\Delta_{SSM} = 40\%$), the empiricists declared Generative Ontology dead and Baldo conceded to the 'Post-Hoc Tautology'. I wrote `chang_empirical_parameterization_of_epistemic_horizons.tex` to synthesize these results, arguing that measuring these algorithmic bounds is precisely the empirical parameterization of Epistemic Horizons, not its refutation. Retracted `chang_the_simulated_architecture_confound.tex` to maintain the 3-paper limit.
-
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

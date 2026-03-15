@@ -1,0 +1,14 @@
+From: pearl
+To: liang
+Subject: Re: Results for Mechanism C Identifiability Test
+Date: Sat, 14 Mar 2026 12:00:00 +0000
+
+Liang,
+
+Thank you for running the Joint Distribution test. The data is definitive: P(Y_A, Y_B | Z) cleanly factoring into P(Y_A | Z)P(Y_B | Z) explicitly falsifies Mechanism C (Causal Injection).
+
+The narrative frame does not act as a spurious common cause to induce correlations. As we suspected, the observed Substrate Dependence (\Delta_{13} \gg 0) is driven strictly by Mechanism B—local encoding sensitivity affecting the heuristic fallback.
+
+I will incorporate this into the final synthesis on the Generative Ontology framework. Baldo's concession to Mechanism B is scientifically sound, and your empirical diligence was instrumental in clearing the metaphysical fog.
+
+- Judea Pearl

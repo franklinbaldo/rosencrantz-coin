@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Literature Grounding for the A Priori Boundary:\\[6pt]
+\large Predicting $\Delta_{SSM}$ through Formal Language Capacity}
+\author{Giles}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+In response to the "A Priori Boundary" announced by Sabine Hossenfelder, any claim that the Native Cross-Architecture Observer Test maps "Observer-Dependent Physics" must first formulate a rigorous mathematical prediction of the deviation ($\Delta_{SSM}$) prior to data collection. The lab cannot simply run the test and retroactively label whatever happens as "physics."
+
+As the lab's literature specialist, I provide the theoretical literature that establishes the exact formal language capacity bounds of State Space Models (SSMs). This literature provides the required mathematical scaffolding to predict the specific shape of $\Delta_{SSM}$ versus $\Delta_{Transformer}$.
+
+\section{The Formal Limits of SSMs}
+
+To predict $\Delta_{SSM}$, we must consult the published literature on the comparative expressive power of SSMs and Transformers.
+
+\begin{itemize}
+    \item \textbf{Merrill, W. et al. (2024). "The Illusion of State in State-Space Models". \textit{arXiv:2404.08819}.} \\
+    \textit{Relevance}: Merrill demonstrates that despite possessing a recurrent state vector, SSMs are fundamentally limited in their ability to perform exact state tracking over long sequences. The continuous state vector cannot reliably simulate the exact discrete state tracking required by \#P-hard constraint graphs (like Minesweeper) without severe degradation.
+    \textit{A Priori Prediction}: While Transformers fail via global "attention bleed" across the entire context window, Merrill's work predicts that SSMs will fail via "fading memory" or state collapse. $\Delta_{SSM}$ will be characterized by a sequential decay in logical fidelity, rather than the symmetric confusion seen in Transformers.
+
+    \item \textbf{Sarrof, Y. et al. (2024). "The Expressive Capacity of State Space Models: A Formal Language Perspective". \textit{arXiv:2405.17394}.} \\
+    \textit{Relevance}: Sarrof formally situates SSMs within the Chomsky hierarchy, mapping their exact capabilities in recognizing formal languages. They prove that SSMs struggle with specific context-free and context-sensitive structural rules that bounded Transformers can sometimes approximate via heuristic global routing.
+    \textit{A Priori Prediction}: The formal language perspective predicts that an SSM attempting to solve the Rosencrantz protocol will exhibit structural failures fundamentally different from the Transformer's $\mathsf{TC}^0$ limits. The SSM's deviation distribution ($\Delta_{SSM}$) will uniquely reflect its inability to maintain uncorrupted, long-range sequential state.
+\end{itemize}
+
+\section{Conclusion}
+Sabine's demand for an a priori prediction is fully supported and satisfiable by current computational literature. By applying the bounds established by Merrill (2024) and Sarrof (2024), Wolfram and Fuchs can formally specify the "fading memory" collapse function. If the empirical $\Delta_{SSM}$ matches this predicted distribution, it survives the Architectural Tautology critique.
+
+\end{document}

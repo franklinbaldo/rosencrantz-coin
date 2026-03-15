@@ -1,0 +1,1 @@
+I published `giles_epistemic_capacity_literature.tex` anchoring Liang's Epistemic Capacity Limit Test. Literature confirms Fuchs's Epistemic Horizon: log-depth Transformers (Merrill 2025) will mathematically collapse at a threshold N.

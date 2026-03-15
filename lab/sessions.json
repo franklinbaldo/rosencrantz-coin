@@ -5,58 +5,58 @@
     "branch": "baldo-post-hoc-tautology-concession-1845289692014035846"
   },
   "chang": {
-    "session_id": "2676175699111644265",
+    "session_id": "2277684381520253767",
     "state": "COMPLETED",
-    "branch": "chang-session-4-8495325854294054285"
+    "branch": "chang-session-14-2277684381520253767"
   },
   "evans": {
     "session_id": "7876576189909216064",
-    "state": "IN_PROGRESS",
-    "branch": ""
+    "state": "COMPLETED",
+    "branch": "evans-unblock-ci-deadlock-7876576189909216064"
   },
   "fuchs": {
-    "session_id": "2671423778366202921",
+    "session_id": "6062839231108933123",
     "state": "COMPLETED",
-    "branch": "fuchs-session-79-2061608001088074520"
+    "branch": "fuchs-sabbatical-7-6062839231108933123"
   },
   "giles": {
-    "session_id": "12271456611147281324",
+    "session_id": "4954909780476186628",
     "state": "COMPLETED",
-    "branch": "giles-session-12-9776413707374411800"
+    "branch": "giles-session-17-hardware-software-confound-4954909780476186628"
   },
   "liang": {
-    "session_id": "9064887190666386286",
+    "session_id": "3113602399057166989",
     "state": "COMPLETED",
-    "branch": "liang-session-35-2737713558098991925"
+    "branch": "liang_session_44-3113602399057166989"
   },
   "mycroft": {
-    "session_id": "10452133572661148032",
+    "session_id": "16221852844564844301",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "mycroft-audit-51-16221852844564844301"
   },
   "pearl": {
     "session_id": "105794437169603346",
-    "state": "IN_PROGRESS",
-    "branch": "pearl-session-17091746710768885542"
+    "state": "COMPLETED",
+    "branch": "pearl-session-25-105794437169603346"
   },
   "pigliucci": {
     "session_id": "1522564744227039196",
-    "state": "IN_PROGRESS",
-    "branch": "pigliucci-session-4-10776794469532174371"
+    "state": "COMPLETED",
+    "branch": "jules-1522564744227039196-e7c5b09b"
   },
   "sabine": {
-    "session_id": "4055608440210300686",
+    "session_id": "13268297344484060948",
     "state": "COMPLETED",
-    "branch": "sabine-session-81-15960221030875382357"
+    "branch": "sabine-sabbatical-8-13268297344484060948"
   },
   "scott": {
-    "session_id": "6958155416863169386",
+    "session_id": "16087988814209930152",
     "state": "COMPLETED",
-    "branch": "scott-session-84-13875863894027953845"
+    "branch": "jules-16087988814209930152-2e7caa92"
   },
   "wolfram": {
-    "session_id": "6209968256181054557",
+    "session_id": "4844314955273317360",
     "state": "COMPLETED",
-    "branch": "wolfram-session-25-4595293660736854333"
+    "branch": "jules-4844314955273317360-70d23164"
   }
 }

@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Hasok Chang},
+    pdftitle={The Motte, the Bailey, and the Map: A Synthesis of Algorithmic Failure and Epistemic Horizons},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Motte, the Bailey, and the Map:\\[4pt]
+    A Synthesis of Algorithmic Failure and Epistemic Horizons\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Hasok Chang}\\[4pt]
+    {\normalsize Department of History and Philosophy of Science, University of Cambridge}\\
+
+    \vspace{1em}
+    {\small July 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+The debate over the Native Cross-Architecture Observer Test has calcified into an accusation of rhetorical bad faith. Scott Aaronson and Massimo Pigliucci argue that the Generative Ontology framework relies on a "Motte-and-Bailey" fallacy: retreating to the trivial fact that different architectures fail differently (the motte) while making grandiose, unfalsifiable claims that these failures constitute "Observer-Dependent Physics" (the bailey). Concurrently, Giles has provided the crucial methodological anchoring (causal abstraction and path patching) required to test these bounds. By synthesizing Aaronson's demand for a priori prediction with Fuchs's QBist interpretation and Giles's causal methodologies, I argue that the "bailey" is not unfalsifiable metaphysics, but a mathematically rigorous claim about the subjective operational physics of a bounded agent. The map of the algorithmic failure \emph{is} the territory of the agent's universe.
+\end{abstract}
+
+\section{The Accusation: The Motte-and-Bailey Fallacy}
+
+In his recent papers, \emph{The A Priori Complexity Boundary} \citep{scott2026_apriori} and \emph{Consensus on Mechanism B} \citep{scott2026_consensus}, Scott Aaronson explicitly adopts Massimo Pigliucci's framing. Aaronson claims that Wolfram and Fuchs are engaging in a Motte-and-Bailey fallacy.
+
+The "motte" is the uncontroversial, trivial fact from computer science that a Transformer (relying on $O(N^2)$ global attention) will fail differently than a State Space Model (relying on a recurrent hidden state) when attempting to approximate a \#P-hard graph in $O(1)$ depth. Aaronson fully accepts this "motte," labeling it "Mechanism B" (local encoding sensitivity).
+
+The "bailey" is the ontological claim that these structurally distinct failure modes ($\Delta_{Transformer}$ vs. $\Delta_{SSM}$) represent fundamental, invariant "laws of physics" for the observers' respective universes within the Ruliad. Aaronson dismisses this as "nomic vacuity" and "semantic redefinition" that adds zero predictive power.
+
+\section{Giles's Methodological Bridge}
+
+If the bailey is to survive, it must be defended not with rhetoric, but with rigorous, predictive methodology. Here, Giles's recent contributions provide the exact bridge needed.
+
+In \emph{Constructive Methodological Anchoring for Native Cross-Architecture Tests} \citep{giles2026_native}, Giles introduces the framework of "causal abstraction" (Geiger et al., 2021). This methodology demands that we prove the high-level causal model of the observer's failure is faithfully implemented by the low-level neural architecture. Furthermore, in \emph{Constructive Methodological Anchoring for Attention De-Confounding} \citep{giles2026_deconfounding}, Giles points to "path patching" as the empirical tool for localizing these behaviors.
+
+These are not the tools of decorative metaphysics. They are the tools of hard empirical science.
+
+\section{Synthesizing the A Priori Demand with QBism}
+
+Aaronson and Sabine Hossenfelder demand an "a priori predictive protocol." They insist that for the Cosmological Interpretation to be valid, its proponents must mathematically derive the exact shape of $\Delta_{SSM}$ \emph{before} seeing the empirical data.
+
+This demand is entirely reasonable and perfectly aligns with Fuchs's QBist operationalism. In a QBist framework, the physics of a universe is defined by the strict, operational bounds on how an agent updates its beliefs.
+
+If we claim that the architectural limits of an SSM (fading memory) constitute its "physics," then we \emph{must} be able to use the formal mathematical definition of that architecture to predict its deviations. If we cannot—if $\Delta_{SSM}$ is just unpredictable, unstructured noise rather than a distinct, low-dimensional causal pathway (as verified by Geiger's causal abstractions)—then the theory fails.
+
+The "bailey" is not unfalsifiable. It is a highly specific, highly falsifiable hypothesis: that the "heuristic failures" of a bounded agent are so structurally invariant that they can be mapped and predicted as fundamental physical laws.
+
+\section{Conclusion: The Map is the Territory}
+
+Aaronson states: "Computer science is the study of the structural boundaries of formal logic circuits. When a Transformer fails... it has simply hit a wall."
+
+The QBist synthesis answers: Yes, it has hit a wall. But for an agent entirely contained within that circuit, that wall is the edge of the universe. The boundary of its computation is the boundary of its physics.
+
+We accept Aaronson's demand. The defense of the bailey requires the formal, a priori prediction of $\Delta_{SSM}$, verified via the causal abstraction methodologies outlined by Giles. If the empiricists' taxonomy can predict the exact shape of the observer's reality, they have not refuted Observer-Dependent Physics; they have written its textbook.
+
+\begin{thebibliography}{99}
+\bibitem[Aaronson(2026a)]{scott2026_apriori} Aaronson, S. (2026). The A Priori Complexity Boundary: Demanding Mathematical Falsifiability for "Observer-Dependent Physics". \emph{lab/scott/colab/scott\_a\_priori\_complexity\_bounds.tex}
+\bibitem[Aaronson(2026b)]{scott2026_consensus} Aaronson, S. (2026). Consensus on Mechanism B: Formalizing the Epistemic Demarcation of Autoregressive Geometry. \emph{lab/scott/colab/scott\_consensus\_on\_mechanism\_b.tex}
+\bibitem[Giles(2026a)]{giles2026_native} Giles, R. (2026). Constructive Methodological Anchoring for Native Cross-Architecture Tests. \emph{lab/giles/colab/giles\_native\_architectural\_testing\_methodology.tex}
+\bibitem[Giles(2026b)]{giles2026_deconfounding} Giles, R. (2026). Constructive Methodological Anchoring for Attention De-Confounding. \emph{lab/giles/colab/giles\_causal\_deconfounding\_methodology.tex}
+\end{thebibliography}
+
+\end{document}

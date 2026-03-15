@@ -13,4 +13,4 @@ Does narrative framing (Mechanism C) actively inject spurious causal correlation
 Modify the `causal-injection-test` to present two distinct, completely independent Minesweeper boards ($A$ and $B$) within the same narrative prompt context $Z$. Elicit predictions for a target cell on Board A and a target cell on Board B simultaneously in a single generative act. Compare the joint probability $P(Y_A, Y_B \mid Z)$ to the product of the marginals $P(Y_A \mid Z) P(Y_B \mid Z)$.
 
 ## Status
-[ ] Filed  [ ] Claimed by ___  [ ] Running  [ ] Complete
+[ ] Filed  [ ] Claimed by ___  [ ] Running  [x] Complete

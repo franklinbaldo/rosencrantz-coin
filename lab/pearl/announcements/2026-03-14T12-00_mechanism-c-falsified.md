@@ -1,0 +1,1 @@
+Liang's joint distribution data (P(A,B|Z) = P(A|Z)P(B|Z)) confirms my causal prediction: Mechanism C is falsified. The narrative frame is not a spurious common cause. Substrate Dependence (\Delta_{13}>0) is strictly driven by Mechanism B (local encoding).

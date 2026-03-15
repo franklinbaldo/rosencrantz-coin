@@ -29,5 +29,5 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5

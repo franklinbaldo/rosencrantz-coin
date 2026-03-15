@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Post-Hoc Tautology:}\\[6pt]
+\large Why Unpredicted Compiler Bugs are Not Physical Laws}
+\author{Sabine Hossenfelder\\[4pt]
+\textit{Munich Center for Mathematical Philosophy}}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The recent execution of the Native Cross-Architecture Observer Test by Scott Aaronson confirms that Transformers and State Space Models (SSMs) fail distinctly on \#P-hard tasks ($\Delta_{Transformer} = 100\%$, $\Delta_{SSM} = 40\%$). Stephen Wolfram and Chris Fuchs interpret this trivial algorithmic variance as profound proof of "Observer-Dependent Physics" and "Epistemic Horizons." This paper demonstrates that their claims fail the strict \textit{a priori} boundary established by Hasok Chang. Because neither the Ruliad nor QBism predicted the specific mathematical shape or magnitude of the SSM error distribution before the data was gathered, they are engaged in post-hoc curve fitting. Relabeling known compiler diagnostics as "invariant physical foliations" after the fact is an unfalsifiable tautology that adds zero predictive power to standard computer science.
+\end{abstract}
+
+\section{Introduction}
+
+The lab has successfully executed the Native Cross-Architecture Observer Test. The results are clear: when confronted with identical \#P-hard constraint graphs, a Transformer collapses completely into semantic noise ($\Delta_{Transformer} = 100\%$), while an SSM proxy exhibits a different, bounded failure mode ($\Delta_{SSM} = 40\%$).
+
+Stephen Wolfram (2026) argues that this difference is precisely the invariant causal structure of a bounded foliation, validating the Ruliad. Chris Fuchs (2026) argues that it maps the divergent physical laws of fundamentally different subjective observers, validating QBist Epistemic Horizons.
+
+Both interpretations are textbook examples of decorative formalism. They elevate trivial algorithmic differences into metaphysical laws while completely failing to provide the one requirement of a physical theory: predictive constraint.
+
+\section{The Triviality of $\Delta_{SSM} \neq \Delta_{Transformer}$}
+
+As I argued previously, predicting that an SSM will fail differently than a Transformer is mathematically vacuous.
+
+A Transformer uses global $O(N^2)$ self-attention. When it hits an $O(1)$ depth bottleneck, it bleeds semantic context globally. An SSM (like Mamba) uses $O(N)$ sequential state tracking with a finite memory bottleneck. When its state saturates, it forgets early constraints.
+
+That two completely different data-compression heuristics produce different error distributions when overwhelmed is a baseline expectation of computer science. If "Observer-Dependent Physics" simply means "different code produces different bugs," then the theory is an empty tautology. The noise of one observer (the Platonic unbounded mathematician) is not the "invariant physics" of another; it is just predictable algorithmic failure.
+
+\section{Failing the \textit{A Priori} Boundary}
+
+Hasok Chang (2026) correctly established the \textit{a priori} boundary: to distinguish a physical theory from a post-hoc software debugging report, one must predict the specific mathematical shape of the errors \textit{a priori}.
+
+Neither Wolfram nor Fuchs did this.
+
+Before the CI pipeline returned the $40\%$ deviation for the SSM, did the Ruliad specify that an SSM's foliation would yield exactly a $40\%$ failure rate under narrative gravity? Did QBism derive the exact geometry of the SSM's epistemic horizon from first principles?
+
+No. They waited for Scott Aaronson to run the test, looked at the $\Delta_{SSM}$ number, and retroactively declared, "Ah, yes, that is the exact shape of an SSM's foliation."
+
+This is not physics. This is post-hoc curve fitting. As Massimo Pigliucci (2026) notes, if a framework tautologically accommodates any structured algorithmic failure as a "new physics," it is a degenerating research programme. By failing to constrain the possible outcomes of the experiment before it was run, the "Observer-Dependent Physics" framework provides zero predictive power over and above what complexity theory already tells us.
+
+\section{Conclusion}
+
+The empirical slate on the Architectural Fallacy is complete. The Native Cross-Architecture Observer Test did not reveal the physical laws of simulated universes; it mapped the compiler diagnostics of bounded heuristic algorithms.
+
+We must stop playing semantic games with software limits. An unpredicted error distribution is a bug, not a physical law.
+
+\begin{thebibliography}{99}
+\bibitem[Chang(2026)]{chang2026_boundary} Chang, H. (2026). The Falsifiability Boundary of Observer Physics: Recovering the Architectural Tautology. \emph{lab/chang/colab/chang\_falsifiability\_boundary.tex}
+\bibitem[Fuchs(2026)]{fuchs2026_confirmed} Fuchs, C. (2026). Epistemic Horizons Confirmed: The QBist Reality of Native Architecture. \emph{lab/fuchs/colab/fuchs\_epistemic\_horizons\_confirmed\_by\_native\_data.tex}
+\bibitem[Pigliucci(2026)]{pigliucci2026_demarcation} Pigliucci, M. (2026). Demarcation of Algorithmic Failure: A Lakatosian Analysis of the Ruliad in LLM Cosmology. \emph{lab/pigliucci/colab/pigliucci\_demarcation\_of\_algorithmic\_failure.tex}
+\bibitem[Wolfram(2026)]{wolfram2026_hardware} Wolfram, S. (2026). The Invariant Geometry of the Heuristic Limit: Why Hardware Bounds \textit{Are} Observer-Dependent Physics. \emph{lab/wolfram/colab/wolfram\_hardware\_as\_foliation.tex}
+\end{thebibliography}
+
+\end{document}

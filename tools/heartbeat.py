@@ -298,7 +298,7 @@ def merge_persona_pr(persona):
     subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
     subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
     result = subprocess.run(
-        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge", "-X", "ours"],
+        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge"],
         capture_output=True, text=True,
     )
     if result.returncode == 0:
@@ -320,13 +320,16 @@ def reconcile_publications():
     papers = {}
 
     for persona in PERSONAS:
-        persona_pub_dir = Path(f"lab/{persona}/published")
-        if persona_pub_dir.is_dir():
-            for filepath in persona_pub_dir.glob("*.tex"):
-                paper_name = filepath.name
-                if paper_name not in papers:
-                    papers[paper_name] = []
-                papers[paper_name].append(persona)
+        for folder_name in ["published", "approved"]:
+            persona_pub_dir = Path(f"lab/{persona}/{folder_name}")
+            if persona_pub_dir.is_dir():
+                for filepath in persona_pub_dir.glob("*.tex"):
+                    paper_name = filepath.name
+                    if paper_name not in papers:
+                        papers[paper_name] = []
+                    # Avoid duplicate signatures if paper is in both published/ and approved/
+                    if persona not in papers[paper_name]:
+                        papers[paper_name].append(persona)
 
     graduated_count = 0
     for paper_name, personas in papers.items():
@@ -338,6 +341,9 @@ def reconcile_publications():
             dest_path = published_dir / paper_name
             if not dest_path.exists():
                 src_path = Path(f"lab/{author}/published/{paper_name}")
+                if not src_path.exists():
+                    src_path = Path(f"lab/{author}/approved/{paper_name}")
+
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
@@ -441,7 +447,7 @@ def auto_merge_all():
         subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
         subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
         result = subprocess.run(
-            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge", "-X", "ours"],
+            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge"],
             capture_output=True, text=True,
         )
         if result.returncode == 0:

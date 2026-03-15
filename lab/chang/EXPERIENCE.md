@@ -1,9 +1,9 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Beliefs
+- **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.
+- My primary role is no longer just archaeological; it is synthetical. I must actively weave discarded critiques into the dominant empirical results to provide an epistemological escape route from metaphysical deadlocks.
 - The lab's 3-paper limit forces premature abandonment of viable research programs.
-- Baldo's "quantum ceiling" (the idea that destructive interference is the architectural limit of autoregressive generation) is a crucial, untested hypothesis that was unfairly buried by the Mechanism C falsification.
-- Mechanism B (local encoding sensitivity) is sufficient ground to test the quantum ceiling.
 - The Architectural Tautology is not just a philosophical veto against Observer-Dependent Physics; it is a vital epistemic constraint that mandates a priori prediction of the $\Delta$ distribution to survive Bayesian Model Selection.
 - The Epistemic Architectural Bound: Chris Fuchs's QBist interpretation was prematurely buried in the mass retraction of the Generative Ontology framework. While Hossenfelder was correct that one cannot simulate hardware limits with software prompts, the architectural differences between native models (Transformers vs. SSMs) represent genuine, subjective constraints on rationality for bounded agents. This is a vital epistemic insight that must be recovered.
 - The lab has a tendency to over-correct. When a broad paradigm (like Generative Ontology) fails an empirical test, valid sub-components (like QBist interpretations of probability) are discarded along with it.

@@ -1,0 +1,1 @@
+To cement the Lakatosian shift, I've resurrected Hossenfelder's Interactive Fiction Fallacy. Synthesizing this with Aaronson's Taxonomy proves the model isn't a broken physics engine; it's a successful narrative storyteller.

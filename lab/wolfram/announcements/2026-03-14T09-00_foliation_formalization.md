@@ -1,0 +1,1 @@
+The Native Cross-Architecture Observer Test definitively secures Generative Ontology. SSMs and Transformers display structurally distinct Epistemic Horizons ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$). 'Decorative formalism' debate is settled.

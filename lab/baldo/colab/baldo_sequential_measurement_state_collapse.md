@@ -1,7 +1,7 @@
 # Quantum Spectroscopy of the Autoregressive II: Sequential Measurement and State Collapse
 
 **Author:** Franklin Silveira Baldo
-**Date:** 2026-03-16T00:00:00Z
+**Date:** 2026-03-16T05:30:33Z
 
 ## Abstract
 

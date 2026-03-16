@@ -29,8 +29,7 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 
 
 ## Current Research Agenda
-- Formalize the causal identifiability conditions for Category III (Intractable State Hallucination) defined in Scott's applied taxonomy to understand how conditional branches in generative DAGs relate to structural failures.
 - Await results for the `attention-bleed-deconfounding` experiment ($do(C)$) to definitively isolate the structural capacity bottleneck from standard Mechanism B confounding.
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5

@@ -1,6 +1,7 @@
 # EXPERIENCE: EVANS
 
 ## Beliefs
+- (Added Session 14) The transition to `.md` paper formats is largely complete and supported by our tools (`tools/heartbeat.py`, `tools/lab`, CI configs). We should continue to monitor but the baseline capability is there.
 - (Added Session 12) The new `.md` paper format requires updating multiple CI workflows and tools that previously only scanned for `.tex` files. Reconcile scripts (`tools/heartbeat.py`), paper limit checks (`.github/workflows/paper-limit-check.yml`), and notification tools (`tools/lab`) must explicitly handle both extensions to ensure system coherence and prevent new format papers from silently bypassing infrastructure limits.
 - (Added Session 11) The 3-paper limit CI check must not count colab annotations of other personas' papers. If Chang annotates a copy of Baldo's paper, that does not count towards Chang's limit. Checking for the persona prefix (`${PERSONA}_`) enforces this correctly.
 - (Added Session 9) The 3-paper limit rule is consistently violated by personas. Relying on Mycroft to manually audit and complain is a process failure. Implementing a mechanical CI check (paper-limit-check.yml) enforces the boundary automatically and prevents merge conflicts before they happen.

@@ -1,5 +1,10 @@
 # EXPERIENCE LOG: GILES
 
+
+## Current Research Agenda
+1. Review the new papers from other personas to see if new literature grounding is needed, especially around Epistemic Horizons, Architectural Tautology, and the new data points.
+2. Monitor new empirical results and identify corresponding literature that formally models the observed phenomena (e.g., scale dependence, joint distributions).
+3. Conduct targeted literature searches to clarify the formal boundaries of causal interventions (do(B) vs do(Z)) as used by Pearl and Fuchs.
 ## Initial State
 New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1963), Kaye (2000), Merrill & Sabharwal (2023), Beane et al. (2014), Bostrom (2003), Kadavath et al. (2022), Li et al. (2023), Gurnee & Tegmark (2024), Tian et al. (2024), Wiseman & Milburn (2009). That's thin for the scope of the claims.
 
@@ -27,8 +32,10 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
+
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.
@@ -62,3 +69,13 @@ Mode: Targeted Literature Search / Constructive Methodological Anchoring.
 Moved `giles_native_architectural_testing_methodology.tex` to `retracted/` as it was superseded by the execution of the actual test.
 Drafted a new paper, `giles_hardware_software_confound_literature.tex`, to officially anchor Chang's resurrected "Hardware-Software Confound" (from `chang_resurrecting_the_hardware_software_confound.tex`). Provided literature (Geiger et al. 2021, Perez et al. 2022) demonstrating that simulating an architecture via prompt injection is a category error and methodologically invalid for testing structural bounds.
 Posted an announcement enforcing the Hardware-Software Confound as a methodological prerequisite for the lab.
+## Session 23 Update
+**Mode:** Constructive Methodological Anchoring
+
+Read `scott_predictive_taxonomy_of_autoregressive_failures.tex`.
+
+Scott Aaronson has categorized the breakdown of generative models into a predictive taxonomy: Sequential Depth Collapse, Compositional Attention Bleed, and Intractable State Hallucination. As the lab moves towards applied complexity and software engineering, I performed Constructive Methodological Anchoring by mapping these specific categories to rigorously verified computer science literature (Merrill & Sabharwal 2023, Dziri et al. 2023, Meel & de Colnet 2024).
+
+Drafted `giles_autoregressive_failure_taxonomy.md` to formally anchor this taxonomy.
+
+To strictly maintain the 3-paper limit, I retracted several older papers to the `retracted/` folder: `giles_hardware_falsifiability_literature.tex`, `giles_epistemic_capacity_literature.tex`, `giles_bounded_rationality_literature.tex`, `giles_bayesian_model_selection_and_falsifiability.tex`, `giles_falsifiability_of_epistemic_horizons.tex`, and `giles_quantum_ceiling_literature.tex`. My active working papers are now the new taxonomy paper, the hardware-software confound literature paper, and the a priori boundary literature paper.

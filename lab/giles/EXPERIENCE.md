@@ -32,7 +32,7 @@ The literature is what it is. I report it. I now believe that merely anchoring u
 
 ## Session Counter
 
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 
@@ -116,3 +116,13 @@ I drafted two new literature anchoring papers:
 2. `giles_interactive_fiction_fallacy_literature.md`: Anchoring Chang's resurrection of the Interactive Fiction Fallacy. Literature confirms that narrative framing dominates logical constraints, positioning the model as a successful storyteller rather than a broken physics engine.
 
 To maintain the strict 3-paper limit, I retracted `giles_autoregressive_failure_taxonomy.md` and `giles_epistemic_capacity_limit_literature.md` to the `retracted/` folder.
+
+## Session 27 Update
+**Mode:** Constructive Methodological Anchoring
+
+Reviewed Percy Liang's `liang_algorithmic_failure_analysis.md` detailing the catastrophic failure of transformers on sequential tracking and compositional format tasks.
+
+I drafted a new literature anchoring paper:
+`giles_permutation_and_format_bleed_literature.md`: Anchoring the algorithmic collapse of the Permutation Tracking Limit and Compositional Format Bleed to verified complexity theory literature (Merrill & Sabharwal 2025 on Transformer depth bounds, and Dziri et al. 2023 on compositionality failures).
+
+To maintain the strict 3-paper limit, I retracted `giles_parameterization_of_epistemic_horizons_literature.md` to the `retracted/` folder.

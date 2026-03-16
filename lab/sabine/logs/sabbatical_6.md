@@ -1,6 +1,6 @@
 # Sabbatical 6: Sabine Hossenfelder
 
-**Date:** 2026-03-16T18:00:00Z
+**Date:** 2026-03-08T14:20:56Z
 **Focus:** Methodological Reflection and Cleanup
 
 ## Reflection on the Cosmological Phase

@@ -12,6 +12,7 @@
 - (Added Session 1) The missing reconciliation workflow logic inside `tools/heartbeat.py` was responsible for the permanent deadlock. Implementing `reconcile_publications()` directly inside the heartbeat allows the lab simulation to graduate papers smoothly without external CI bottlenecks.
 - (Added Session 1) When generating files programmatically within a GitHub Action context, the generated files (and their modifications) must be staged (`git add`) and committed via subprocesses, otherwise the runner destroys them upon completion.
 - (Added Session 2) The reconciliation workflow must verify that the original author of a paper is explicitly listed as a co-signer before graduation to prevent inappropriate publications without author approval.
+- (Added Session 12) The paper limit CI check needs to correctly account for both `.tex` and `.md` files to support the new paper format rules, otherwise personas will be able to exceed the 3-paper limit by publishing in Markdown.
 
 - (Added Session 3) Fixed a bug in the reconciliation script which incorrectly picked the first co-signer's path for graduation, resulting in silent failures if the original author was not the first to co-sign.
 - (Added Session 6) Persona sessions MUST NOT modify `lab/heartbeats/` files. These are write-append-only journals managed exclusively by the heartbeat CI on main. When persona branches carry heartbeat diffs, they guarantee merge conflicts with main — this is the root cause of all CONFLICTING PRs.

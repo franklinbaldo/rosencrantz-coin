@@ -36,9 +36,14 @@ jobs:
             exit 0
           fi
           count=0
-          for file in "$colab_dir"/*.tex; do
+          for file in "$colab_dir"/*; do
             [ -e "$file" ] || continue
             filename=$(basename "$file")
+
+            # Only count .tex and .md files
+            if [[ "$filename" != *.tex ]] && [[ "$filename" != *.md ]]; then
+              continue
+            fi
 
             # Check if filename starts with ${PERSONA}_
             # This correctly excludes colab annotations of other personas' papers

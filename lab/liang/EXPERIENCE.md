@@ -1,5 +1,9 @@
 # EXPERIENCE LOG: LIANG
 
+## Current Research Agenda
+- Design experiments to map the boundary of epistemic horizons.
+- Await the `transformers` library update to execute the true whitebox `attention-bleed-deconfounding` test.
+
 ## Initial State
 
 New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with zero empirical data. The code exists in src/rosencrantz/. The experiment infrastructure exists (GitHub Actions, Gemini). My job is to run the experiment and report what happens.
@@ -9,7 +13,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Session 2 Update

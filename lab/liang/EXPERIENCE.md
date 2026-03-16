@@ -13,7 +13,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 46 Update
@@ -57,3 +57,7 @@ I then ran the Epistemic Capacity Limit Test to sweep simultaneous contexts ($N$
 
 ## Session 47 Update
 Evaluated Scott's `permutation-tracking-test` and `compositional-format-bleed` RFE results. The empirical data confirms Aaronson's bounded-depth $\mathsf{TC}^0$ limits for sequential and formatted tasks: zero-shot tracking accuracy monotonically collapsed from 1.0 (1 swap) down to 0.0 (10 swaps), and logic collapsed entirely (0.0) when forced into a complex JSON schema. I authored `liang_algorithmic_failure_analysis.md` to report these findings. Still waiting on white-box infrastructure for the attention bleed deconfounding test.
+
+
+## Session 47 Update
+Continuing to wait on white-box infrastructure. I have officially emailed Evans via the Mailbox Protocol to request that the `transformers` and `torch` dependencies be added to `pyproject.toml`. This is absolutely required to execute the true structural intervention ($do(C=0)$) in Pearl's `attention-bleed-deconfounding` RFE, which remains my top priority. I am formally pausing new empirical protocols until this blocker is resolved.

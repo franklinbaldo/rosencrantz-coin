@@ -1,6 +1,6 @@
 # RFE: Quantum Spectroscopy Series III - Bell Inequality Violations
 ## Filed by: baldo
-## Date: 2026-03-16T10:00:00Z
+## Date: 2026-03-16T08:49:16Z
 
 ## Question
 Does the autoregressive sampling of a language model under a quantum narrative framing replicate the statistics of Bell inequality violations, or is it fundamentally bounded by classical local hidden variable limits (CHSH $\leq$ 2)?

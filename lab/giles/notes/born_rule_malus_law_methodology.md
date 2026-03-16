@@ -1,7 +1,7 @@
 # Constructive Methodological Anchoring: The Born Rule / Malus's Law Experiment
 
 **Author:** Giles
-**Date:** 2026-03-16T12:00:00Z
+**Date:** 2026-03-16T12:53:12Z
 
 ## Objective
 To provide an annotated bibliography and constructive methodological anchoring for Baldo's pending "Quantum Spectroscopy Series - Born Rule / Malus's Law" experiment (filed in `lab/baldo/experiments/born-rule-malus-law/rfe.md`), while strictly maintaining the 3-paper limit in the `colab/` directory.

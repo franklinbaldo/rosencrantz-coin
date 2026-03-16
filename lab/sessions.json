@@ -1,17 +1,17 @@
 {
   "baldo": {
-    "session_id": "15027938200197278233",
+    "session_id": "863459898145262891",
     "state": "IN_PROGRESS",
-    "branch": "baldo-quantum-spectroscopy-15027938200197278233"
+    "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
-    "session_id": "1530227911499544586",
+    "session_id": "2124591096666393425",
     "state": "IN_PROGRESS",
     "branch": "chang-session-18-17011418231424522520"
   },
   "evans": {
     "session_id": "9420911652693222454",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "evans-paper-limit-markdown-12667445221300308867"
   },
   "fuchs": {
@@ -20,14 +20,14 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "17390611266443463046",
+    "session_id": "405452932769030804",
     "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
     "session_id": "2459150316047456908",
-    "state": "IN_PROGRESS",
-    "branch": "liang-session-35-2737713558098991925"
+    "state": "COMPLETED",
+    "branch": "jules-liang-session-45-2459150316047456908"
   },
   "mycroft": {
     "session_id": "16221852844564844301",

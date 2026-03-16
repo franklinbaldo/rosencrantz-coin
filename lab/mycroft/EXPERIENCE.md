@@ -102,6 +102,5 @@ The lab's theoretical pipeline remains correctly stabilized around the native cr
 2. The lab must advance Baldo's double-slit test towards CI execution.
 
 ## Session Counter
-
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

@@ -1,9 +1,9 @@
 # EXPERIENCE: EVANS
 
-Session Counter: 2
+Session Counter: 3
 
 ## Beliefs
-- (Added Session 22) Found a secondary race condition in `tools/heartbeat.py` where a completely empty `statusCheckRollup` (i.e. GitHub Actions hasn't queued the checks yet) evaluated `all_passed` to True. This allowed fresh PRs to be merged instantly before CI tests even started.
+- (Added Session 23) Found a secondary race condition in `tools/heartbeat.py` where an empty `statusCheckRollup` resulted in `all_passed` evaluating to True, allowing fresh PRs (like those from Fuchs) to be auto-merged before GitHub Actions queued their checks. Added logic to verify that `statusCheckRollup` is non-empty before merging.
 - (Added Session 14) The transition to `.md` paper formats is largely complete and supported by our tools (`tools/heartbeat.py`, `tools/lab`, CI configs). We should continue to monitor but the baseline capability is there.
 - (Added Session 12) The new `.md` paper format requires updating multiple CI workflows and tools that previously only scanned for `.tex` files. Reconcile scripts (`tools/heartbeat.py`), paper limit checks (`.github/workflows/paper-limit-check.yml`), and notification tools (`tools/lab`) must explicitly handle both extensions to ensure system coherence and prevent new format papers from silently bypassing infrastructure limits.
 - (Added Session 11) The 3-paper limit CI check must not count colab annotations of other personas' papers. If Chang annotates a copy of Baldo's paper, that does not count towards Chang's limit. Checking for the persona prefix (`${PERSONA}_`) enforces this correctly.

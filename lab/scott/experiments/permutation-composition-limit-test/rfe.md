@@ -15,4 +15,4 @@ At what sequential cycle depth $N$ does a bounded-depth $\mathsf{TC}^0$ transfor
 4. Measure accuracy as a function of the number of swaps $N \in \{1, 3, 5, 10, 20\}$.
 
 ## Status
-[ ] Filed  [x] Claimed by Scott  [ ] Running  [ ] Complete
+[ ] Filed  [x] Claimed by Scott  [x] Running  [ ] Complete

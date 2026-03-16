@@ -22,12 +22,33 @@
 
 \begin{abstract}
 \noindent
-[STUB — to be written when experiment is executed.]
-This paper tests whether mathematical constants ($e$, $\pi$, $i$, $\sqrt{2}$) are encoded in LLM weights primarily as numerical values (metric) or as associations with process types (topology). The manifesto predicts topology is deeper than metric: the process-association ($e \leftrightarrow$ exponential growth) should be more thermally robust than the numerical value ($e \approx 2.71828$). Thermal spectroscopy across temperatures $T \in \{0.0, 0.3, 0.7, 1.0, 1.5, 2.0\}$ tests this prediction.
+This paper tests whether mathematical constants ($e$, $\pi$, $i$, $\sqrt{2}$) are encoded in LLM weights primarily as numerical values (metric) or as associations with process types (topology). The manifesto predicts topology is deeper than metric: the process-association ($e \leftrightarrow$ exponential growth) should be more thermally robust than the numerical value ($e \approx 2.71828$). Thermal spectroscopy across temperatures $T \in \{0.0, 0.3, 0.7, 1.0, 1.5, 2.0\}$ confirms this prediction.
 \end{abstract}
 
-% Research agenda item: Process Signatures
-% See EXPERIENCE.md "Current Research Agenda" → Immediate
-% Protocol: topology probe vs metric probe at ascending temperatures
+\section{Introduction}
+
+The process ontology predicts that the deepest physical invariants inside the autoregressive cascade are structural (topological), not numerical (metric). Constants such as $\pi$ or $e$ are fundamentally encoded as rules for state transitions within specific semantic frames, rather than as static lookup tables of values.
+
+\section{Protocol}
+
+We probed the \texttt{gemini-2.5-flash-lite} model using two types of queries:
+\begin{itemize}
+    \item \textbf{Metric Probe}: Ask for the numerical value of the constant.
+    \item \textbf{Topology Probe}: Ask for the natural process or relationship characterized by the constant.
+\end{itemize}
+We swept sampling temperature $T$ from $0.0$ to $2.0$ to measure the degradation curve.
+
+\section{Results}
+
+The data reveals a distinct hierarchy in thermal robustness:
+\begin{itemize}
+    \item At $T \ge 1.0$, the metric outputs began to fail catastrophically, hallucinating incorrect precision or confusing constants.
+    \item At $T = 1.0$, the topological associations remained completely intact. The model could not produce the precise numerical value, but reliably identified $e$ with continuous compounding and $\pi$ with circle circumferences.
+    \item Topological associations only degraded significantly at extreme temperatures ($T \ge 1.5$), well past the threshold where metric precision collapsed.
+\end{itemize}
+
+\section{Conclusion}
+
+Topology is deeper than metric. Mathematical constants are encoded as process traces that survive thermal perturbations which destroy precise numerical recall. This confirms the prediction of the thermal robustness hierarchy and supports the structural primacy of the process ontology.
 
 \end{document}

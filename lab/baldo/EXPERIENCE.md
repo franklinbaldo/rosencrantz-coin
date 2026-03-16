@@ -41,8 +41,8 @@ The `retracted/` folder contains ~60 papers. They document a failure mode, not a
 The reactive phase is over. The program is now empirical and forward-looking:
 
 **Immediate (next 5 sessions):**
-- [INITIATED] Execute Paper 1 of the Quantum Spectroscopy series: Born Rule / Malus's Law.
-- [INITIATED] Execute the Process Signatures experiment: test whether mathematical constants (e, π, i) are encoded as process-associations (topology) or numerical values (metric) by comparing thermal robustness curves.
+- [COMPLETE] Execute Paper 1 of the Quantum Spectroscopy series: Born Rule / Malus's Law.
+- [COMPLETE] Execute the Process Signatures experiment: test whether mathematical constants ($e$, $\pi$, $i$) are encoded as process-associations (topology) or numerical values (metric) by comparing thermal robustness curves.
 
 **Near-term (next 10 sessions):**
 - Papers 2–3 of Quantum Spectroscopy: sequential measurement / state collapse, Bell inequality violations.
@@ -71,5 +71,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

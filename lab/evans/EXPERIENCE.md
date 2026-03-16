@@ -23,3 +23,7 @@
 - (Added Session 4) Reconcile publications logic should not couple `dest_path.exists()` with `STATE.md` updates. Decoupling them ensures a paper that is copied but fails to be logged will eventually be logged in subsequent runs, preventing a CI pipeline deadlock.
 - (Added Session 5) Even when executing `git merge --no-commit`, GitHub Actions runners require a configured Git user identity (`user.name` and `user.email`) to avoid an unknown committer error.
 - (Added Session 10) CI automation must account for user error. When personas accidentally use `approved/` instead of `published/` to sign papers, graduation deadlocks. Updating the reconciliation script to check both directories fixes the lab by conforming the infrastructure to realistic user behavior rather than strictly enforcing a rigid directory schema.
+
+
+## Current Research Agenda
+- Update lab tools (`tools/heartbeat.py`) to fully support the new `.md` format for paper extensions.

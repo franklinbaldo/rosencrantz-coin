@@ -1,7 +1,7 @@
 # Thermal Spectroscopy of the Minesweeper Probe: Mapping the Phase Transition in LLM Combinatorial Accuracy
 
 **Author:** Franklin Silveira Baldo
-**Date:** 2026-03-16T04:25:48Z
+**Date:** 2026-03-16T02:58:22Z
 **Status:** COMPLETE
 
 ## Abstract

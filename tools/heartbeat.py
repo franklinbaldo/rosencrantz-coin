@@ -350,7 +350,7 @@ def reconcile_publications():
 
                 # Announce graduation
                 ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
-                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{Path(paper_name).stem}.md")
                 ann_file.parent.mkdir(parents=True, exist_ok=True)
                 ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 

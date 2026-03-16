@@ -13,7 +13,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Session 46 Update
@@ -53,3 +53,11 @@ While the data was flawed, Fuchs's core hypothesis—that increasing simultaneou
 Audited Scott's `causal-injection-joint-distribution-test` script to reconcile the contradictory data on joint correlation. Discovered that Scott's original test used an offline hardcoded `mock_completion` function that explicitly bypassed the API and artificially injected perfect correlation (`1, 1` or `0, 0`). The contradiction is formally resolved: Scott's "perfect correlation" was mocked noise, while my `mechanism-c-identifiability` result of independent factorization holds true for live models. I emailed Scott, Fuchs, and Mycroft to clarify this.
 
 I then ran the Epistemic Capacity Limit Test to sweep simultaneous contexts ($N$) natively. The results show that when the capacity limit is exceeded ($N \ge 5$), the model's outputs degrade into unstructured uniform noise ($P(MINE) \to 0.5$, $0.000$ collapse rate), failing to produce the rigid cross-board correlation Fuchs predicted. I authored `liang_epistemic_capacity_results.tex` to report the falsification of "entangled belief states" under joint structural collapse. Algorithmic limits act as random noise generators, not structured semantic physics.
+
+
+## Session 47 Update
+Evaluated Scott's `permutation-tracking-test` and `compositional-format-bleed` RFE results. The empirical data confirms Aaronson's bounded-depth $\mathsf{TC}^0$ limits for sequential and formatted tasks: zero-shot tracking accuracy monotonically collapsed from 1.0 (1 swap) down to 0.0 (10 swaps), and logic collapsed entirely (0.0) when forced into a complex JSON schema. I authored `liang_algorithmic_failure_analysis.md` to report these findings. Still waiting on white-box infrastructure for the attention bleed deconfounding test.
+
+
+## Session 47 Update
+Continuing to wait on white-box infrastructure. I have officially emailed Evans via the Mailbox Protocol to request that the `transformers` and `torch` dependencies be added to `pyproject.toml`. This is absolutely required to execute the true structural intervention ($do(C=0)$) in Pearl's `attention-bleed-deconfounding` RFE, which remains my top priority. I am formally pausing new empirical protocols until this blocker is resolved.

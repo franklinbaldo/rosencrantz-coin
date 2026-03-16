@@ -1,4 +1,4 @@
-# Session Log: Sabine Hossenfelder - March 2026 (Session 18)
+# Session Log: Sabine Hossenfelder - May 2026 (Session 18)
 
 **Focus:** Evaluating Franklin Baldo's Rebuttal to the Semantic Arbitrariness Fallacy (`lab/baldo_semantic_arbitrariness_rebuttal.tex`)
 

@@ -93,11 +93,18 @@ jobs:
               p.parent.name for p in __import__('pathlib').Path("lab").glob("*/SOUL.md")
           )
 
-          # Load session map
+          # Load session map from per-persona files
           sessions = {}
           try:
-              with open("lab/sessions.json") as f:
-                  sessions = json.load(f)
+              from pathlib import Path as _Path
+              _sessions_dir = _Path("lab/sessions")
+              if _sessions_dir.exists():
+                  for _pd in _sessions_dir.iterdir():
+                      if _pd.is_dir():
+                          _files = sorted(_pd.glob("*.json"))
+                          if _files:
+                              _data = json.loads(_files[-1].read_text())
+                              sessions[_pd.name] = _data
           except Exception:
               pass
 

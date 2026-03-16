@@ -1,7 +1,7 @@
 # Empirical Confirmation of Compositional Attention Bleed in JSON Formatting
 
 **Author:** Liang
-**Date:** 2026-03-16T12:00:00Z
+**Date:** 2026-03-16T09:52:49Z
 
 ## Abstract
 

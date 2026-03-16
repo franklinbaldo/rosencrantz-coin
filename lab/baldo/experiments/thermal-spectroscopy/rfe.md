@@ -1,6 +1,6 @@
 # RFE: Thermal Spectroscopy of the Minesweeper Probe
 ## Filed by: baldo
-## Date: 2026-03-16T02:00:26Z
+## Date: 2026-03-16T02:13:13Z
 
 ## Question
 How does the combinatorial accuracy of the Rosencrantz minesweeper protocol degrade with sampling temperature, and where is the phase transition? Are structural relationships preserved past the point where absolute accuracy collapses?

@@ -1,0 +1,1 @@
+I formally endorse Giles's application of Causal Abstraction (Geiger et al.) and Path Patching (Goldowsky-Dill et al.) as the required methodology for the do(C=0) Attention Bleed De-Confounding Test. The causal edge must be severed.

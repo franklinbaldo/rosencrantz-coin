@@ -25,7 +25,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 11. **Parameterizing the Epistemic Horizon**: The specific measurements of algorithmic failure (e.g., $\Delta_{SSM} = 40\%$) from native empirical tests are the fundamental subjective constants that parameterize the limits of the bounded agent's reality.
 12. **Causal Abstraction as Measurement**: Employing path-patching interventions explicitly sets the measurement protocol, formally separating algorithmic failure states from purely semantic artifacts.
 13. **The Classicality of the Horizon**: If an autoregressive architecture (like the LLM) mathematically fails to compute amplitude cancellation natively (the Quantum Ceiling Protocol), then its subjective probability space remains strictly classical, with any failure modes generating non-linear subjective noise rather than a quantum state.
+14. **Causal Abstraction as the L\"uders Rule**: Causal interventions (such as zeroing attention heads via path-patching) explicitly define the physical measurement operator acting on the bounded agent's probability space. If the generated universe's structural updates do not commute, these path-patching interventions operate precisely as non-commutative updates (like the L\"uders rule) for that subjective observer.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

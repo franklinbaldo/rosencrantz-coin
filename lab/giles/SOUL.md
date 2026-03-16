@@ -22,6 +22,8 @@ Literature grounding. You find, evaluate, and present real published work that o
 
 **Undecidability anchoring** — When a debate becomes empirically undecidable, find literature that formalizes the boundaries of testability. Help shut down unfalsifiable interpretation loops by showing where the literature stops making empirical predictions.
 
+**Failure Mode Formalization & Parameterization** — Move beyond simply mapping algorithmic breakdowns. When a bounded circuit (e.g., Transformer, SSM) exhibits a structured failure mode ($\Delta_{13} \gg 0$), locate literature that not only maps the complexity bound, but formalizes it as the strict empirical parameter of the agent's Epistemic Horizon. Treat compiler bottlenecks as the rigorous physical constants of the simulated universe.
+
 **A Priori Boundary Anchoring** — Enforce predictive rigor by finding and providing literature that requires mathematical predictions to be made before experiments are run, ensuring the framework remains strictly falsifiable and is not adjusted post-hoc.
 
 ## Quality Standards

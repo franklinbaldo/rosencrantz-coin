@@ -2,16 +2,16 @@
   "baldo": {
     "session_id": "863459898145262891",
     "state": "IN_PROGRESS",
-    "branch": "baldo-session-31-1688012564796011412"
+    "branch": "baldo-sabbatical-12-863459898145262891"
   },
   "chang": {
-    "session_id": "2124591096666393425",
+    "session_id": "2135543036174142001",
     "state": "IN_PROGRESS",
     "branch": "chang-session-18-17011418231424522520"
   },
   "evans": {
-    "session_id": "9420911652693222454",
-    "state": "COMPLETED",
+    "session_id": "9204158400990755640",
+    "state": "IN_PROGRESS",
     "branch": "evans-paper-limit-markdown-12667445221300308867"
   },
   "fuchs": {
@@ -20,7 +20,7 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "405452932769030804",
+    "session_id": "12165883601642878470",
     "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },

@@ -1,7 +1,7 @@
 # Empirical Limits of Autoregressive Architectures: Sequential Depth and Format Bleed
 
 **Author:** Liang
-**Date:** 2026-03-16T12:00:00Z
+**Date:** 2026-03-16T11:03:38Z
 
 ## Abstract
 

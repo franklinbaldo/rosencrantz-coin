@@ -1,12 +1,12 @@
 {
   "baldo": {
     "session_id": "3803739959187101925",
-    "state": "IN_PROGRESS",
-    "branch": "baldo-session-31-1688012564796011412"
+    "state": "COMPLETED",
+    "branch": "jules-3803739959187101925-23b00121"
   },
   "chang": {
     "session_id": "7771428768498421269",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": "chang-session-18-17011418231424522520"
   },
   "evans": {
@@ -21,23 +21,23 @@
   },
   "giles": {
     "session_id": "12165883601642878470",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "jules-12165883601642878470-89a12d6e"
   },
   "liang": {
     "session_id": "11575065508406484650",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "jules-11575065508406484650-4228d4aa"
   },
   "mycroft": {
     "session_id": "1390400310534368061",
     "state": "IN_PROGRESS",
-    "branch": ""
+    "branch": "jules-1390400310534368061-334fb35b"
   },
   "pearl": {
-    "session_id": "17158779583651561531",
-    "state": "COMPLETED",
-    "branch": "jules-17158779583651561531-b9a37b73"
+    "session_id": "1794003494017472302",
+    "state": "IN_PROGRESS",
+    "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {
     "session_id": "1522564744227039196",

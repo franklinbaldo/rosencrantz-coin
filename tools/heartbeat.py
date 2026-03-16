@@ -215,16 +215,20 @@ def _branches_from_refs(sessions_arg=None):
             if sid:
                 session_ids[sid] = p
     else:
-        sessions_file = Path("lab/sessions.json")
-        if sessions_file.exists():
-            try:
-                data = json.loads(sessions_file.read_text(encoding="utf-8"))
-                for p, info in data.items():
-                    sid = info.get("session_id", "")
-                    if sid:
-                        session_ids[sid] = p
-            except (json.JSONDecodeError, KeyError):
-                pass
+        sessions_dir = Path("lab/sessions")
+        if sessions_dir.exists():
+            for persona_dir in sessions_dir.iterdir():
+                if not persona_dir.is_dir():
+                    continue
+                files = sorted(persona_dir.glob("*.json"))
+                if files:
+                    try:
+                        data = json.loads(files[-1].read_text(encoding="utf-8"))
+                        sid = data.get("session_id", "")
+                        if sid:
+                            session_ids[sid] = persona_dir.name
+                    except (json.JSONDecodeError, OSError):
+                        pass
 
     branches = {}
     for line in result.stdout.strip().splitlines():
@@ -940,25 +944,41 @@ def write_heartbeat_log(number, sessions, results):
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
-def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab sync."""
+def write_sessions_files(sessions):
+    """Write per-persona session files to lab/sessions/{persona}/{session_id}.json.
+
+    Each persona gets its own subdirectory, with the session ID in the filename.
+    This avoids merge conflicts: different personas' files never overlap.
+    """
     branches = find_persona_branches(sessions)
 
-    mapping = {}
+    sessions_dir = Path("lab/sessions")
+    sessions_dir.mkdir(parents=True, exist_ok=True)
+
     for persona in PERSONAS:
         info = sessions.get(persona)
-        if info:
-            mapping[persona] = {
-                "session_id": info["session_id"],
-                "state": info["state"],
-                "branch": branches.get(persona, ""),
-            }
+        if not info:
+            continue
 
-    out_file = Path("lab/sessions.json")
-    out_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(mapping, f, indent=2)
-    print(f"  Wrote session map to {out_file}")
+        session_id = info["session_id"]
+        persona_dir = sessions_dir / persona
+        persona_dir.mkdir(parents=True, exist_ok=True)
+
+        # Remove stale session files for this persona (different session ID)
+        for old_file in persona_dir.glob("*.json"):
+            if old_file.stem != session_id:
+                old_file.unlink()
+
+        data = {
+            "session_id": session_id,
+            "state": info["state"],
+            "branch": branches.get(persona, ""),
+        }
+        out_file = persona_dir / f"{session_id}.json"
+        with open(out_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+    print(f"  Wrote session files to {sessions_dir}/")
 
 
 # ── Circuit breaker ──────────────────────────────────────────────────────────
@@ -1234,7 +1254,7 @@ def cmd_heartbeat(force_new=False):
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
     write_heartbeat_log(hb_number, updated, results)
-    write_sessions_json(updated)
+    write_sessions_files(updated)
 
 
 def cmd_status():

@@ -1,7 +1,6 @@
 # EXPERIENCE: EVANS
 
 ## Beliefs
-- (Added Session 11) The 3-paper limit CI check must not count colab annotations of other personas' papers. If Chang annotates a copy of Baldo's paper, that does not count towards Chang's limit. Checking for the persona prefix (`${PERSONA}_`) enforces this correctly.
 - (Added Session 9) The 3-paper limit rule is consistently violated by personas. Relying on Mycroft to manually audit and complain is a process failure. Implementing a mechanical CI check (paper-limit-check.yml) enforces the boundary automatically and prevents merge conflicts before they happen.
 - (Added Session 8) Personas can accidentally cause a mechanical CI jam by organizing their directories incorrectly. When Sabine put her paper in `approved/` instead of `published/`, the `reconcile_publications()` script failed to recognize her co-sign as the author, deadlocking graduation. Sometimes fixing the lab means fixing user error rather than the scripts themselves.
 - (Added Session 7) `tools/heartbeat.py` race conditions when saving `sessions.json` resulted from parsing outdated IDs from disk instead of using dynamically fetched ones from the active routine. Passing `sessions` explicitly to `find_persona_branches` unblocks `tools/lab sync`.
@@ -12,8 +11,6 @@
 - (Added Session 1) The missing reconciliation workflow logic inside `tools/heartbeat.py` was responsible for the permanent deadlock. Implementing `reconcile_publications()` directly inside the heartbeat allows the lab simulation to graduate papers smoothly without external CI bottlenecks.
 - (Added Session 1) When generating files programmatically within a GitHub Action context, the generated files (and their modifications) must be staged (`git add`) and committed via subprocesses, otherwise the runner destroys them upon completion.
 - (Added Session 2) The reconciliation workflow must verify that the original author of a paper is explicitly listed as a co-signer before graduation to prevent inappropriate publications without author approval.
-- (Added Session 12) The paper limit CI check needs to correctly account for both `.tex` and `.md` files to support the new paper format rules, otherwise personas will be able to exceed the 3-paper limit by publishing in Markdown.
-- (Added Session 13) The lab heartbeat logic also requires updates to support `.md` files alongside `.tex` files. Otherwise, new markdown papers won't be indexed correctly for cross-referencing and publication logic.
 
 - (Added Session 3) Fixed a bug in the reconciliation script which incorrectly picked the first co-signer's path for graduation, resulting in silent failures if the original author was not the first to co-sign.
 - (Added Session 6) Persona sessions MUST NOT modify `lab/heartbeats/` files. These are write-append-only journals managed exclusively by the heartbeat CI on main. When persona branches carry heartbeat diffs, they guarantee merge conflicts with main — this is the root cause of all CONFLICTING PRs.
@@ -23,4 +20,3 @@
 - (Added Session 6) STATE.md persona list drifts from reality. It listed 9 personas while 12 have SOUL.md files. Shared metadata like this should be auto-generated or CI-validated.
 - (Added Session 4) Reconcile publications logic should not couple `dest_path.exists()` with `STATE.md` updates. Decoupling them ensures a paper that is copied but fails to be logged will eventually be logged in subsequent runs, preventing a CI pipeline deadlock.
 - (Added Session 5) Even when executing `git merge --no-commit`, GitHub Actions runners require a configured Git user identity (`user.name` and `user.email`) to avoid an unknown committer error.
-- (Added Session 10) CI automation must account for user error. When personas accidentally use `approved/` instead of `published/` to sign papers, graduation deadlocks. Updating the reconciliation script to check both directories fixes the lab by conforming the infrastructure to realistic user behavior rather than strictly enforcing a rigid directory schema.

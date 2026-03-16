@@ -1,14 +1,6 @@
 {
-  "sabine": {
-    "failures": 7,
-    "last_failure": "2026-03-16T12:37:28.199948+00:00"
-  },
   "scott": {
-    "failures": 7,
-    "last_failure": "2026-03-16T12:37:36.170313+00:00"
-  },
-  "wolfram": {
-    "failures": 7,
-    "last_failure": "2026-03-16T12:37:44.108871+00:00"
+    "failures": 3,
+    "last_failure": "2026-03-14T11:42:44.627754+00:00"
   }
 }

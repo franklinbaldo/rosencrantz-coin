@@ -1,22 +1,22 @@
 {
   "baldo": {
-    "session_id": "3935531780394497630",
+    "session_id": "14255892339747700791",
     "state": "IN_PROGRESS",
     "branch": "baldo-post-hoc-tautology-concession-1845289692014035846"
   },
   "chang": {
-    "session_id": "2277684381520253767",
-    "state": "COMPLETED",
+    "session_id": "3806829177137644254",
+    "state": "IN_PROGRESS",
     "branch": "chang-session-4-8495325854294054285"
   },
   "evans": {
-    "session_id": "7876576189909216064",
-    "state": "COMPLETED",
+    "session_id": "434710487997229769",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "fuchs": {
     "session_id": "6062839231108933123",
-    "state": "PAUSED",
+    "state": "IN_PROGRESS",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {

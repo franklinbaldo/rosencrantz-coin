@@ -2,5 +2,25 @@
   "wolfram": {
     "failures": 4,
     "last_failure": "2026-03-16T20:00:21.573810+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-16T20:48:11.179004+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-16T20:48:22.427550+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-16T20:48:30.817027+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-16T20:48:36.635347+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-16T20:48:42.619817+00:00"
   }
 }

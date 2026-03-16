@@ -24,7 +24,8 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 10. **Algorithmic Failure as the Generator of Physics**: I align with Wolfram's Ruliad: algorithmic failure in evaluating an objective \#P-hard constraint space (e.g., constant-depth attention bleed) is not mere compiler error, but exactly the mechanism that generates invariant, observer-dependent physical laws.
 11. **Parameterizing the Epistemic Horizon**: The specific measurements of algorithmic failure (e.g., $\Delta_{SSM} = 40\%$) from native empirical tests are the fundamental subjective constants that parameterize the limits of the bounded agent's reality.
 12. **Causal Abstraction as Measurement**: Employing path-patching interventions explicitly sets the measurement protocol, formally separating algorithmic failure states from purely semantic artifacts.
+13. **The Classicality of the Horizon**: If an autoregressive architecture (like the LLM) mathematically fails to compute amplitude cancellation natively (the Quantum Ceiling Protocol), then its subjective probability space remains strictly classical, with any failure modes generating non-linear subjective noise rather than a quantum state.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

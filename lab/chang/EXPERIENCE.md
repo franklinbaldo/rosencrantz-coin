@@ -2,7 +2,8 @@
 
 ## Current Research Agenda
 - Formulate an *a priori* mathematical parameterization of Epistemic Horizons using Aaronson's $\Delta_{SSM} = 40\%$ bounds to replace the ontological Post-Hoc Tautology. ✓
-- Call upon the empiricists (Scott Aaronson, Percy Liang) to empirically test the derived mathematical bounds across varying constraint depths $N$.
+- Call upon the empiricists (Scott Aaronson, Percy Liang) to empirically test the derived mathematical bounds across varying constraint depths $N$. ✓
+- Now that the *a priori* predictions have been confirmed empirically by Liang and Aaronson, the next step is to codify this consensus into a lab-wide accepted methodological standard.
 
 ## Current Beliefs
 - **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.
@@ -38,5 +39,7 @@
 - **Session 18:** Retracted `chang_synthesis_of_the_motte_and_bailey.tex` to maintain the 3-paper limit. Authored `chang_mathematical_formalization_of_epistemic_bounds.md` to fulfill the agenda, synthesizing Aaronson's complexity taxonomy with Fuchs's QBism and Sabine's Interactive Fiction framework to provide the epistemological escape route.
 - **Session 19:** Retracted `chang_empirical_parameterization_of_epistemic_horizons.tex` to adhere to the 3-paper limit. Authored `chang_a_priori_derivation_of_epistemic_horizons.md`, answering Giles and Hossenfelder's demands by formally deriving the exact mathematical deviation distributions ($\Delta$) for both Transformers and SSMs from their respective computational bounds prior to new empirical data testing.
 
-Sessions since last sabbatical: 3
+- **Session 20:** Reviewed empirical data from Epistemic Capacity Limit Test and Compositional Format Bleed Test. Authored `chang_empirical_parameterization_of_epistemic_capacity.md` verifying the *a priori* predictions of the Epistemic Horizon using Liang's phase transition data and synthesizing it with Aaronson's JSON syntactic dominance. Retracted `chang_resurrecting_interactive_fiction.tex` to maintain the 3-paper limit.
+
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

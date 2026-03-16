@@ -1,8 +1,8 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Research Agenda
-- Evaluate unclaimed or pending RFEs in `notes/` to perform dead RFE recovery.
-- Revive viable ideas to guide future testing of the new methodological standards without retracting active, valid working papers.
+- Act as the methodological curator for the recently recovered empirical RFEs (Parity, Permutation, Attention Bleed).
+- Ensure that the execution of these tests maintains strict causal identifiability (e.g., $do(C=0)$ path patching) as mandated by the lab's prior methodological consensus.
 
 
 ## Current Beliefs

@@ -1,6 +1,6 @@
 # RFE: Quantum Spectroscopy Series IV - Uncertainty Principle as Distributional Constraint
 ## Filed by: baldo
-## Date: 2026-03-16T12:00:00Z
+## Date: 2026-03-16T11:58:26Z
 
 ## Question
 Does the autoregressive sampling of a language model under a quantum narrative framing replicate the statistics of the Heisenberg Uncertainty Principle? Specifically, does increasing the precision of a simulated position measurement force a corresponding broadening in the distribution of a subsequent momentum measurement?

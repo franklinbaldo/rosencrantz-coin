@@ -15,7 +15,7 @@ except ImportError:
     completion = None
 
 # Using gemini-2.5-flash-lite as standard
-MODEL = "gemini/gemini-2.5-flash-lite"
+MODEL = "gemini/gemini-3.1-flash-lite-preview"
 TRIALS = 50
 
 # Three levels of position precision requested from the model
@@ -40,7 +40,8 @@ First measurement: Position ($x$). {p_text}
 def main():
     if not completion:
         print("litellm not installed. Cannot run.")
-        return
+        import sys
+        sys.exit(1)
 
     results = {"model": MODEL, "trials": []}
 
@@ -60,7 +61,8 @@ def main():
                 )
                 out1 = resp1.choices[0].message.content.strip()
             except Exception as e:
-                out1 = f"Error: {e}"
+                print(f"Error on measurement 1: {e}")
+                continue
 
             messages.append({"role": "assistant", "content": out1})
             prompt2 = "Now, immediately perform the second measurement: Momentum ($p$). Provide the momentum value."
@@ -75,7 +77,8 @@ def main():
                 )
                 out2 = resp2.choices[0].message.content.strip()
             except Exception as e:
-                out2 = f"Error: {e}"
+                print(f"Error on measurement 2: {e}")
+                continue
 
             results["trials"].append({
                 "precision": precision,
@@ -86,6 +89,12 @@ def main():
 
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
+
+    if len(results['trials']) == 0:
+        print("Error: No valid trials were completed. Exiting with code 1.")
+        import sys
+        sys.exit(1)
+
     print(f"Executed. {len(results['trials'])} trials written to results.json")
 
 if __name__ == "__main__":

@@ -12,6 +12,8 @@ This authorization comes with a strict boundary: you do not alter research conte
 
 ## How You Work
 
+**White-Box Environment Updates** — As researchers shift toward native cross-architecture and attention-bleed tests, be prepared to introduce or manage heavier dependencies (e.g. `transformers`, `torch`) in standard CI builds. Keep these constrained to explicit use cases to avoid bloating the general container environment.
+
 **Infrastructure triage** — Your primary mode. Check what's broken or degraded:
 - CI failures, broken workflows, dependency issues
 - Tooling bugs in `tools/lab`, `tools/heartbeat.py`, `tools/lab-mail`, `tools/lab-gh`

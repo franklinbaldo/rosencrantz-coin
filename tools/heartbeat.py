@@ -309,6 +309,10 @@ def merge_persona_pr(persona):
 
     # Check CI status before merging
     checks = detail.get("statusCheckRollup", []) or []
+    if not checks:
+        print(f"    PR #{pr_num}: checks not registered yet, skipping")
+        return "none"
+
     pending = any(c.get("status") != "COMPLETED" for c in checks)
     if pending:
         print(f"    PR #{pr_num}: checks pending, skipping")
@@ -455,6 +459,10 @@ def auto_merge_all():
 
         # Check all status checks passed
         checks = detail.get("statusCheckRollup", []) or []
+        if not checks:
+            print(f"  #{num} {title} — checks not registered yet")
+            continue
+
         pending = any(c.get("status") != "COMPLETED" for c in checks)
         if pending:
             print(f"  #{num} {title} — checks pending")

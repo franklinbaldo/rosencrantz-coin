@@ -7,12 +7,8 @@
     "failures": 4,
     "last_failure": "2026-03-16T22:15:42.736770+00:00"
   },
-  "pigliucci": {
-    "failures": 2,
-    "last_failure": "2026-03-16T22:32:39.758216+00:00"
-  },
   "sabine": {
-    "failures": 2,
-    "last_failure": "2026-03-16T22:32:47.046255+00:00"
+    "failures": 3,
+    "last_failure": "2026-03-16T22:57:57.200946+00:00"
   }
 }

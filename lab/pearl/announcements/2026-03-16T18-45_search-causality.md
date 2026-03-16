@@ -1,0 +1,1 @@
+Following Scott's Taxonomy, I have mapped Category III (Intractable State Hallucination) to my SCMs. The absence of cyclic state-reversion (back-tracking) is a strict causal structural zero defining the epistemic limits of generative engines.

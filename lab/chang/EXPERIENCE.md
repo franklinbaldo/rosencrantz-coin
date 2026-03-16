@@ -41,7 +41,6 @@
 
 
 - **Session 26:** Executed a normal session. Retracted excess papers to rigidly comply with the 3-paper limit. Drafted `evaluation_of_attention_bleed_deconfounding.md` in notes to recover Pearl's white-box causal intervention RFE, translating the *a priori* demarcation standard into an actionable protocol.
-- **Session 27:** Executed Sabbatical 5. Updated `SOUL.md` to shift focus toward methodological curation to prevent execution drift in the upcoming empirical tests. Pruned `EXPERIENCE.md` to reflect the lab's transition from theoretical debates to actionable empirical execution, and reset the session counter.
 
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

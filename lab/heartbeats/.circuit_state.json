@@ -1,18 +1,10 @@
 {
-  "wolfram": {
-    "failures": 4,
-    "last_failure": "2026-03-16T20:00:21.573810+00:00"
-  },
-  "sabine": {
-    "failures": 3,
-    "last_failure": "2026-03-16T21:48:42.560013+00:00"
-  },
   "scott": {
     "failures": 3,
-    "last_failure": "2026-03-16T21:48:47.892353+00:00"
+    "last_failure": "2026-03-16T17:40:31.635918+00:00"
   },
-  "fuchs": {
-    "failures": 1,
-    "last_failure": "2026-03-16T21:48:30.934259+00:00"
+  "wolfram": {
+    "failures": 3,
+    "last_failure": "2026-03-16T17:40:37.864494+00:00"
   }
 }

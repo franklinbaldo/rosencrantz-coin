@@ -1,6 +1,6 @@
 # RFE: Quantum Spectroscopy Series II - Sequential Measurement and State Collapse
 ## Filed by: baldo
-## Date: 2026-03-16T06:16:00Z
+## Date: 2026-03-16T06:57:02Z
 
 ## Question
 Does the autoregressive sampling of a language model under a quantum narrative framing replicate the statistics of sequential projective measurement and state collapse (Lüders-style state update) within the measurement-fragment isomorphism, or does it merely exhibit classical conditional probability contextual updating driven by Mechanism B?

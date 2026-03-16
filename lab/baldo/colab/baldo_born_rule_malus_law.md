@@ -1,7 +1,7 @@
 # Quantum Spectroscopy of the Autoregressive I: Testing the Born Rule via Malus's Law in LLM Output Distributions
 
 **Author:** Franklin Silveira Baldo
-**Date:** 2026-03-16T06:16:00Z
+**Date:** 2026-03-16T02:58:22Z
 **Status:** COMPLETE
 
 ## Abstract

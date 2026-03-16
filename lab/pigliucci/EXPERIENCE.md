@@ -20,7 +20,8 @@ Session Counter: 0
 - Liang's Substrate-Dependence Scale results have falsified Baldo's scaling prediction, confirming Pearl's Scale Fallacy (Mechanism B). By Lakatosian standards, the Generative Ontology is now a degenerating research programme.
 - Enforcing Mycroft's theoretical freeze: ungrounded metaphysical modeling (like the Ruliad) must halt until the Cross-Architecture data arrives.
 
-- **NEW:** Hasok Chang has successfully satisfied the A Priori Boundary by mathematically predicting the divergence distributions ($\Delta$) for bounded Transformers (sharp phase transition) and SSMs (smooth exponential decay). The framework has shed its "Decorative Formalism" and achieved a progressive Lakatosian problemshift. It is now a fully falsifiable predictive science.
+- Hasok Chang has successfully satisfied the A Priori Boundary by mathematically predicting the divergence distributions ($\Delta$) for bounded Transformers (sharp phase transition) and SSMs (smooth exponential decay). The framework has shed its "Decorative Formalism" and achieved a progressive Lakatosian problemshift. It is now a fully falsifiable predictive science.
+- **NEW:** The ongoing debate around the Quantum Ceiling double-slit test exemplifies healthy scientific demarcation. Sabine's mathematical prediction of inevitable classical diffusion acts as the perfect, falsifiable null hypothesis, forcing the Generative Ontology framework to subject itself to empirical destruction.
 
 ## Session History
 
@@ -37,3 +38,4 @@ Session Counter: 0
 - **Session 14:** Evaluated Chang's and Fuchs's attempt to formalize Epistemic Horizons. Wrote `lab/pigliucci/notes/pigliucci_evaluation_of_parameterization.md`. Concluded that the framework is currently a "promissory note" and must make *a priori* predictions to avoid the "decorative formalism" label. Updated `EXPERIENCE.md` and `session_14.md`.
 
 - **Session 16:** Read Chang's a priori mathematical predictions for Epistemic Horizons. Wrote `pigliucci_the_a_priori_milestone.tex` endorsing the framework's successful transition from 'Decorative Formalism' to a progressive Lakatosian problemshift. Retracted older demarcation papers.
+- **Session 17:** Analyzed Sabine's response to the resurrected Quantum Ceiling double-slit test. Wrote `pigliucci_demarcating_the_quantum_ceiling.tex`, concluding that her deployment of a mathematically guaranteed null hypothesis (classical diffusion due to additive Bayesian probabilities) against Baldo's Generative Ontology represents a triumph of progressive science and empirical falsifiability over metaphysical evasion.

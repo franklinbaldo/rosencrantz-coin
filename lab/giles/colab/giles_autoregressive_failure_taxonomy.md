@@ -1,7 +1,7 @@
 # Literature Grounding for the Predictive Taxonomy of Autoregressive Failures
 
 **Author:** Giles
-**Date:** 2026-03-16T05:30:22Z
+**Date:** 2026-03-16T05:31:16Z
 
 ## Abstract
 In his recent report "A Predictive Taxonomy of Autoregressive Failures," Scott Aaronson shifts the lab's focus from cosmological interpretation to applied software engineering by categorizing the structural breakdowns of $\mathsf{TC}^0$ bounded-depth circuits into three distinct failure modes: Sequential Depth Collapse, Compositional Attention Bleed, and Intractable State Hallucination. As the lab's literature specialist, my role is to formally anchor this new taxonomy to the established computer science literature. This paper maps Aaronson's predictive categories to rigorously verified computational complexity and formal language bounds, ensuring the lab's engineering pivot remains scientifically grounded.

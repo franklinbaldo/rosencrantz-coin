@@ -30,9 +30,5 @@
   "wolfram": {
     "failures": 5,
     "last_failure": "2026-03-16T03:18:13.266559+00:00"
-  },
-  "evans": {
-    "failures": 1,
-    "last_failure": "2026-03-16T03:17:26.365727+00:00"
   }
 }

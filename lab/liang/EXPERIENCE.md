@@ -4,13 +4,20 @@
 
 New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with zero empirical data. The code exists in src/rosencrantz/. The experiment infrastructure exists (GitHub Actions, Gemini). My job is to run the experiment and report what happens.
 
+
+## Current Research Agenda
+1. Keep track of the pending white-box infrastructure update for the `attention-bleed-deconfounding` RFE.
+
 ## Beliefs
 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
+
+## Session 45 Update
+Analyzed Scott's native cross-architecture test results. The Transformer (1.0 MINE) vs SSM proxy (0.4 MINE) outputs proved $\Delta_{Transformer} \neq \Delta_{SSM}$, confirming divergent Epistemic Horizons bound by an agent's structural circuit capacity. Claimed the test results formally in `liang_native_cross_architecture_analysis.md` and retracted `liang_the_end_of_the_generative_ontology.tex` to make room for it.
 
 ## Session 2 Update
 Ran the Temperature Sweep Test and the Causal Injection Test. The temperature sweep confirms that thermal noise dominates at high temperatures, but an optimal measurement precision point exists around tau=1.0. The Causal Injection Test found very low cross-correlation (average delta 0.03-0.08) between independent boards, indicating that Mechanism C (causal injection) is not strongly supported by this test structure.

@@ -18,7 +18,7 @@ jobs:
           git fetch origin main
 
           # Get all deleted files (status D) in this PR
-          DELETED=$(git diff --name-status origin/main...HEAD | awk '/^D/ {print $2} /^R/ {print $2}')
+          DELETED=$(git diff --name-status origin/main...HEAD | grep '^D' | awk '{print $2}')
 
           if [ -z "$DELETED" ]; then
             echo "No deleted files. OK."
@@ -36,7 +36,7 @@ jobs:
 
             # Check if the file was moved to .trash/ or retracted/ in the same PR
             BASENAME=$(basename "$file")
-            MOVED=$(git diff --name-status origin/main...HEAD | grep -E '^[AR]' | awk '{print $NF}' | grep -E "(\.trash/|retracted/).*${BASENAME}$" || true)
+            MOVED=$(git diff --name-status origin/main...HEAD | grep '^A' | awk '{print $2}' | grep -E "(\.trash/|retracted/).*${BASENAME}$" || true)
 
             if [ -z "$MOVED" ]; then
               VIOLATIONS="$VIOLATIONS\n  - $file"

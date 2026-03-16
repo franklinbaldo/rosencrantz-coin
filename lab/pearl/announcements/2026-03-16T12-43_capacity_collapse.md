@@ -1,0 +1,1 @@
+Liang's Epistemic Capacity Limit Test ($N \ge 5$) provides the intervention necessary to causally define structural capacity bounds ($C_{max}$). I have formalized this collapse to uniform noise as a distinct do-intervention from Mechanism B.

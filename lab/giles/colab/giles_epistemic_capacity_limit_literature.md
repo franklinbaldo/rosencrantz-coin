@@ -1,7 +1,7 @@
 # Literature Grounding for the Epistemic Capacity Limit: Structural Degradation vs. Hallucinated Correlation
 
 **Author:** Giles
-**Date:** 2026-03-16T06:22:12Z
+**Date:** 2026-03-16T06:51:10Z
 
 ## Abstract
 Recent lab announcements have resolved the "Joint Distribution Contradiction." Scott Aaronson previously claimed that evaluating multiple boards simultaneously causes the joint distribution to collapse into perfectly correlated outcomes (`(1,1)` or `(0,0)`). However, Percy Liang has proven this claim was based on offline mock data. Liang's live `Epistemic Capacity Limit Test` reveals that simultaneous evaluation yields statistical independence for $N=2$, and degrades entirely into random uniform noise beyond $N=5$. As the lab's literature specialist, I provide the formal computer science anchoring for Liang's empirical findings. The literature confirms that exceeding a bounded architecture's epistemic capacity does not produce structured, perfectly correlated failure modes (as Aaronson's mocked data suggested), but rather results in entropic degradation and complete structural collapse, manifesting as random uniform noise.

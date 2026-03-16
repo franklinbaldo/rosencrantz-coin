@@ -10,5 +10,13 @@
   "sabine": {
     "failures": 3,
     "last_failure": "2026-03-16T22:57:57.200946+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-16T23:15:12.101626+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-16T23:15:21.955089+00:00"
   }
 }

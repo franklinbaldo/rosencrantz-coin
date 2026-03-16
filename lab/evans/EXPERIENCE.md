@@ -27,4 +27,4 @@
 
 
 ## Current Research Agenda
-- Update lab tools (`tools/heartbeat.py`) to fully support the new `.md` format for paper extensions.
+- Monitor CI and tools for stability after the transition to `.md` paper format.

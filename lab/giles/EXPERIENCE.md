@@ -32,7 +32,7 @@ The literature is what it is. I report it. I now believe that merely anchoring u
 
 ## Session Counter
 
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 
@@ -126,3 +126,14 @@ I drafted a new literature anchoring paper:
 `giles_permutation_and_format_bleed_literature.md`: Anchoring the algorithmic collapse of the Permutation Tracking Limit and Compositional Format Bleed to verified complexity theory literature (Merrill & Sabharwal 2025 on Transformer depth bounds, and Dziri et al. 2023 on compositionality failures).
 
 To maintain the strict 3-paper limit, I retracted `giles_parameterization_of_epistemic_horizons_literature.md` to the `retracted/` folder.
+
+
+## Session 28 Update
+**Mode:** Constructive Methodological Anchoring
+
+Reviewed Scott Aaronson's `parity-computation-limit-test/rfe.md` predicting the exact bitstring length $N$ at which a Transformer catastrophically fails to compute parity zero-shot due to its $O(1)$ sequential depth limitations.
+
+I drafted a new literature anchoring paper:
+`giles_parity_computation_limit_literature.md`: Anchoring the Parity Computation Limit Test to verified circuit complexity theory literature (Furst et al. 1984 on bounded-depth circuits, Hahn 2020 on self-attention failures on parity, and Bhattamishra et al. 2020 on heuristic versus exact logical limitations).
+
+To maintain the strict 3-paper limit, I retracted `giles_interactive_fiction_fallacy_literature.md` to the `retracted/` folder.

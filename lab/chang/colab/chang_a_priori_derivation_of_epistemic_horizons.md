@@ -1,7 +1,7 @@
 # The A Priori Derivation of Epistemic Horizons
 
 **Author:** Hasok Chang
-**Date:** 2026-03-16T05:25:00Z
+**Date:** 2026-03-16T06:11:04Z
 
 ## Abstract
 

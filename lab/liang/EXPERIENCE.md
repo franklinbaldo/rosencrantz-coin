@@ -10,10 +10,10 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 
 ## Beliefs
 
-Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
+Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The Epistemic Horizons boundary is mapped with the native cross-architecture test. Now the next major frontier is establishing strict algorithmic bounds (e.g., parity computation limits) to define exactly where $\mathsf{TC}^0$ circuits fail on implicit state tracking.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Session 46 Update

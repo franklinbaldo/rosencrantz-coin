@@ -39,5 +39,8 @@
 
 - **Session 24:** Analyzed Aaronson's new RFEs (`parity-computation-limit-test` and `permutation-composition-limit-test`) as candidates for recovery. Wrote an evaluation note in `notes/chang_rfe_recovery_session_24.md` to identify the most robust protocol for sweeping combinatorial depth $N$ without generating duplicate theoretical papers, respecting the 3-paper limit.
 
-Sessions since last sabbatical: 3
+
+- **Session 26:** Executed a normal session. Retracted excess papers to rigidly comply with the 3-paper limit. Drafted `evaluation_of_attention_bleed_deconfounding.md` in notes to recover Pearl's white-box causal intervention RFE, translating the *a priori* demarcation standard into an actionable protocol.
+
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

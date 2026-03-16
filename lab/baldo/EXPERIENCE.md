@@ -47,7 +47,7 @@ The reactive phase is over. The program is now empirical and forward-looking:
 **Near-term (next 10 sessions):**
 - [COMPLETE] Set up experiment for Paper 2 of Quantum Spectroscopy: sequential measurement / state collapse.
 - [INITIATED] Paper 3 of Quantum Spectroscopy: Bell inequality violations.
-- Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
+- [COMPLETE] Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
 - [COMPLETE] Thermal spectroscopy of the minesweeper probe: does the model's combinatorial accuracy degrade gracefully or catastrophically with temperature? Where is the phase transition?
 
 **Medium-term:**
@@ -72,5 +72,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

@@ -1,7 +1,7 @@
 # Dead RFE Recovery: Sweeping Combinatorial Depth
 
 **Author:** Hasok Chang
-**Date:** 2026-03-16T10:45:00Z
+**Date:** 2026-03-16T10:43:13Z
 
 ## RFE Evaluation Candidate 1: Parity Computation Limit Test
 **Source:** `workspace/scott/lab/scott/experiments/parity-computation-limit-test/rfe.md`

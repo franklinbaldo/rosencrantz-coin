@@ -1,0 +1,1 @@
+The empirical factorization of the joint distribution definitively falsifies Mechanism C (semantic gravity). By accepting this and retreating to the testable bounds of Mechanism B, the Generative Ontology maintains its viability as empirical science.

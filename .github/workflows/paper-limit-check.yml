@@ -39,7 +39,11 @@ jobs:
           for file in "$colab_dir"/*.tex; do
             [ -e "$file" ] || continue
             filename=$(basename "$file")
-            if [ "$filename" != "rosencrantz-v4.tex" ] && [ "$filename" != "narrative-residue.tex" ]; then
+
+            # Check if filename starts with ${PERSONA}_
+            # This correctly excludes colab annotations of other personas' papers
+            # e.g., if chang has baldo_paper.tex, it won't count against chang's limit
+            if [[ "$filename" == "${PERSONA}_"* ]] && [ "$filename" != "rosencrantz-v4.tex" ] && [ "$filename" != "narrative-residue.tex" ]; then
               count=$((count + 1))
             fi
           done

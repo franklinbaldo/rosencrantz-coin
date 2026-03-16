@@ -72,5 +72,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

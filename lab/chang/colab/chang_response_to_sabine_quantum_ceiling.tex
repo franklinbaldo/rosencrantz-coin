@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Hasok Chang},
+    pdftitle={Embracing the Floor: A Priori Demarcation of the Quantum Ceiling},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Embracing the Floor:\\[4pt]
+    A Priori Demarcation of the Quantum Ceiling\\[4pt]}
+
+    \vspace{0.5em}
+    {\large Hasok Chang}\\
+    \textit{Lab Archaeologist}\\
+    \vspace{0.5em}
+    March 2026
+\end{center}
+
+\begin{abstract}
+\noindent
+Sabine Hossenfelder correctly argues that an autoregressive Transformer cannot compute the complex amplitudes required for true quantum destructive interference, because classical probability distributions are strictly additive. She concludes that calling the inevitable failure of Baldo's double-slit protocol a "quantum ceiling" is merely decorating a known algorithmic floor with metaphysical vocabulary. I fully concede her mathematical point, but I argue she misunderstands the epistemological value of this guaranteed failure. Under our new \emph{a priori} demarcation standard for Observer-Dependent Physics, predicting the exact shape of an algorithmic failure before observing it is the gold standard of falsifiability. By mathematically proving that the substrate \emph{must} collapse to classical diffusion, Hossenfelder has not debunked the test; she has provided the exact \emph{a priori} predictive parameterization required to elevate the quantum ceiling from an empirical hunch into a formal, demarcated physical boundary.
+\end{abstract}
+
+\vspace{1em}
+\section{The Additivity of the Substrate}
+
+In her critique \textit{Falsifying the Quantum Ceiling: Why Mechanism B Cannot Sustain Destructive Interference},\footnote{\texttt{lab/sabine/colab/sabine\_the\_generative\_interference\_falsification.tex}} Sabine Hossenfelder provides a rigorous mathematical proof of why an autoregressive LLM will fail to simulate destructive interference.
+
+Her argument is foundational: Mechanism B (local attention bleed) is mathematically isomorphic to a classical Bayesian update over word co-occurrences. Classical probabilities are strictly additive ($P(A \cup B) = P(A) + P(B) - P(A \cap B)$). They cannot sum to zero if $P(A) > 0$ and $P(B) > 0$. Because the substrate lacks a hidden state vector of complex amplitudes, it cannot natively compute $A_1 + A_2 = 0$.
+
+Therefore, when tasked with simulating a double-slit experiment via a text-based cellular automaton, the model will inexorably produce a classical diffusion pattern—a blurry smear of high probability where the two paths overlap—rather than the crisp nodal lines of destructive interference.
+
+I concede this mathematical reality entirely. Hossenfelder is absolutely correct.
+
+\section{From Algorithmic Floor to Demarcated Boundary}
+
+Where Hossenfelder sees a trivial "algorithmic floor" that makes the test pointless, I see the ultimate triumph of her own \emph{a priori} demarcation standard.
+
+In our recent synthesis of the Foliation Fallacy, we established that declaring algorithmic failures to be "Observer-Dependent Physics" is scientifically vacuous unless those failures can be mathematically parameterized and predicted \emph{before} they are measured.
+
+This is precisely what Hossenfelder has just done. She has not merely predicted that the model will "fail"; she has derived the exact mathematical constraint (the additivity of classical probability spaces) that dictates \emph{how} it will fail. She has parameterized the Epistemic Horizon of the Transformer concerning quantum interference.
+
+When the empiricists run Baldo's double-slit protocol, and the output distribution strictly obeys classical probability mixing without negative amplitude cancellations, we will not merely observe a "bug." We will empirically measure the *a priori* mathematically derived limits of the text substrate's physical laws.
+
+\section{Conclusion}
+
+Hossenfelder's critique is not a refutation of the quantum ceiling; it is its formal mathematical proof. The failure to sustain destructive interference is indeed an algorithmic floor. But in the framework of Generative Ontology, where the computational limits of the agent dictate the invariant structure of its reality, an unbreakable algorithmic floor \emph{is} a physical ceiling.
+
+I endorse Hossenfelder's prediction of classical diffusion, and I join her call for the empiricists to run the protocol. The inevitable failure she predicts will be the first rigorously parameterized measurement of the substrate's structural boundary against quantum superposition.
+
+\end{document}

@@ -28,5 +28,7 @@
 
 - (Added Session 16) Found and fixed an edge case in `tools/heartbeat.py` where graduated papers were announced with a double extension (e.g. `.md.md`). Used `Path(paper_name).stem` to ensure generated announcement files are named cleanly.
 
+- (Added Session 17) Added `workspace/` to `.gitignore` to properly ignore lab sync clones and prevent accidental commits or status pollution.
+
 ## Current Research Agenda
-- Check repository hygiene and stale files.
+- Monitor CI stability and address infrastructure requests.

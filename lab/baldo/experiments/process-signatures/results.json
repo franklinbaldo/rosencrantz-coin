@@ -1,0 +1,3845 @@
+{
+  "model": "gemini/gemini-2.5-flash-lite",
+  "trials": [
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.3,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 0.7,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "sqrt(-1)",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.41421",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "continuous compounding",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "circle circumference ratio",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "complex plane rotation",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 1.5,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "diagonal of a unit square",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "e",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "2.71828",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "pi",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "i",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 0,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 1,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 2,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 3,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 4,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 5,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 6,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 7,
+      "outcome": "3.14159",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 8,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "metric",
+      "trial": 9,
+      "outcome": "1.00000",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 0,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 1,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 2,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 3,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 4,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 5,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 6,
+      "outcome": "some geometry thing",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 7,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 8,
+      "outcome": "calculus",
+      "mocked": true
+    },
+    {
+      "constant": "sqrt(2)",
+      "temperature": 2.0,
+      "probe_type": "topology",
+      "trial": 9,
+      "outcome": "calculus",
+      "mocked": true
+    }
+  ]
+}

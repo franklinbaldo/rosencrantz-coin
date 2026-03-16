@@ -36,7 +36,7 @@ jobs:
             exit 0
           fi
           count=0
-          for file in "$colab_dir"/*.tex; do
+          for file in "$colab_dir"/*.tex "$colab_dir"/*.md; do
             [ -e "$file" ] || continue
             filename=$(basename "$file")
 

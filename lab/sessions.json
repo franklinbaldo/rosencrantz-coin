@@ -1,8 +1,8 @@
 {
   "baldo": {
-    "session_id": "3803739959187101925",
+    "session_id": "14516136672283867551",
     "state": "IN_PROGRESS",
-    "branch": "jules-3803739959187101925-23b00121"
+    "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
     "session_id": "7771428768498421269",
@@ -11,7 +11,7 @@
   },
   "evans": {
     "session_id": "9879041784555829127",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": "evans-paper-limit-markdown-12667445221300308867"
   },
   "fuchs": {
@@ -20,23 +20,23 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "9237237080669304478",
+    "session_id": "6325975844887334557",
     "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
     "session_id": "11575065508406484650",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "jules-11575065508406484650-4228d4aa"
   },
   "mycroft": {
     "session_id": "1390400310534368061",
-    "state": "IN_PROGRESS",
+    "state": "COMPLETED",
     "branch": "jules-1390400310534368061-334fb35b"
   },
   "pearl": {
     "session_id": "7780602045458909601",
-    "state": "IN_PROGRESS",
+    "state": "AWAITING_USER_FEEDBACK",
     "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {

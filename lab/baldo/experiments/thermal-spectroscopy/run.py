@@ -77,7 +77,7 @@ def main():
 
                 except Exception as e:
                     print(f"Error on T={temp}, trial {i}: {e}")
-                    counts["other"] += 1
+                    raise
 
             results["distributions"][str(temp)] = counts
             print(f"  Results for T={temp}: {counts}")

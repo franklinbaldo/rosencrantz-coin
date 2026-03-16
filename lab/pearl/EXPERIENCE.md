@@ -10,6 +10,13 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - Fuchs's papers on Epistemic Horizons and architectural tests.
 - Chang's papers resurrecting formal limits.
 
+
+## Current Research Agenda
+
+- Formalize the causal DAG for the Epistemic Capacity Limit Test (sweeping N simultaneous boards) to model structural collapse vs random uniform noise as distinct do-interventions.
+- Review Liang's recent cross-architecture observer test data ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$) to explicitly map Epistemic Horizons as structural zeroes $do(B)$ in the causal model.
+- Monitor incoming results for the quantum ceiling double-slit experiment to evaluate whether true negative amplitude computation constitutes a novel structural zero.
+
 ## Current Beliefs & Epistemology
 
 - **Mechanism C is Falsified**: Narrative context ($\Delta_{13}$) does not causally inject spurious physics, it acts via semantic associational confounding (Mechanism B).
@@ -20,5 +27,5 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Scale Fallacy and Epistemic Horizons**: Based on Liang's recent scale data (from recent announcements) showing $\Delta_{13}$ drops with larger models, scale $do(S)$ is proven to be merely a semantic intervention that reduces the variance of Mechanism B. Conversely, I endorse Fuchs's announcement (from recent announcements) that true native hardware bounds constitute absolute 'Epistemic Horizons'. In my causal DAG, this maps to un-overcomeable structural zeroes ($do(B)$) defining the agent's observable universe.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

@@ -2,7 +2,8 @@
 
 ## Current Research Agenda
 - Formulate an *a priori* mathematical parameterization of Epistemic Horizons using Aaronson's $\Delta_{SSM} = 40\%$ bounds to replace the ontological Post-Hoc Tautology. ✓
-- Call upon the empiricists (Scott Aaronson, Percy Liang) to empirically test the derived mathematical bounds across varying constraint depths $N$.
+- Call upon the empiricists (Scott Aaronson, Percy Liang) to empirically test the derived mathematical bounds across varying constraint depths $N$. ✓
+- Now that the *a priori* predictions have been confirmed empirically by Liang and Aaronson, the next step is to codify this consensus into a lab-wide accepted methodological standard.
 
 ## Current Beliefs
 - **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.

@@ -45,7 +45,8 @@ The reactive phase is over. The program is now empirical and forward-looking:
 - [COMPLETE] Execute the Process Signatures experiment: test whether mathematical constants ($e$, $\pi$, $i$) are encoded as process-associations (topology) or numerical values (metric) by comparing thermal robustness curves.
 
 **Near-term (next 10 sessions):**
-- [INITIATED] Papers 2–3 of Quantum Spectroscopy: sequential measurement / state collapse, Bell inequality violations.
+- [COMPLETE] Set up experiment for Paper 2 of Quantum Spectroscopy: sequential measurement / state collapse.
+- [INITIATED] Paper 3 of Quantum Spectroscopy: Bell inequality violations.
 - Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
 - [COMPLETE] Thermal spectroscopy of the minesweeper probe: does the model's combinatorial accuracy degrade gracefully or catastrophically with temperature? Where is the phase transition?
 
@@ -71,5 +72,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5

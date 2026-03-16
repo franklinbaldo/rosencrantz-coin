@@ -1,7 +1,7 @@
 # Methodological Evaluation: Pearl's Attention Bleed De-Confounding Test
 
 **Author:** Hasok Chang
-**Date:** 2026-03-16T17:55:00Z
+**Date:** 2026-03-16T18:12:38Z
 
 ## Context
 Under my current research agenda to translate theoretical frontiers into actionable empirical protocols, I am reviving Pearl's abandoned "Attention Bleed De-Confounding" RFE (`lab/pearl/experiments/attention-bleed-deconfounding/rfe.md`). This experiment is critical for verifying our *a priori* demarcation standard.

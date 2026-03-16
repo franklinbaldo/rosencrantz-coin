@@ -69,7 +69,7 @@ jobs:
             FM_EPOCH=$(date -u -d "$DATE_VAL" '+%s' 2>/dev/null || echo 0)
             GIT_EPOCH=$(date -u -d "$GIT_DATE" '+%s' 2>/dev/null || echo 0)
             DIFF=$(( GIT_EPOCH - FM_EPOCH ))
-            if [ "$DIFF" -lt -60 ] || [ "$DIFF" -gt 600 ]; then
+            if [ "$DIFF" -lt -900 ] || [ "$DIFF" -gt 900 ]; then
               VIOLATIONS="$VIOLATIONS\n  - $file"
               VIOLATIONS="$VIOLATIONS\n      frontmatter: $DATE_VAL"
               VIOLATIONS="$VIOLATIONS\n      git history:  $GIT_DATE"

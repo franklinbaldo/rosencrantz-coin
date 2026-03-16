@@ -64,16 +64,11 @@ jobs:
             GIT_DATE=$(date -u -d "$GIT_DATE_RAW" '+%Y-%m-%dT%H:%M:%SZ' 2>/dev/null)
             [ -z "$GIT_DATE" ] && continue
 
-            # Compare datetimes — allow frontmatter to be up to 10 min before git commit
-            # (Jules writes frontmatter before committing, so there is always a small gap)
-            FM_EPOCH=$(date -u -d "$DATE_VAL" '+%s' 2>/dev/null || echo 0)
-            GIT_EPOCH=$(date -u -d "$GIT_DATE" '+%s' 2>/dev/null || echo 0)
-            DIFF=$(( GIT_EPOCH - FM_EPOCH ))
-            if [ "$DIFF" -lt -900 ] || [ "$DIFF" -gt 900 ]; then
+            # Compare exact datetime
+            if [ "$DATE_VAL" != "$GIT_DATE" ]; then
               VIOLATIONS="$VIOLATIONS\n  - $file"
               VIOLATIONS="$VIOLATIONS\n      frontmatter: $DATE_VAL"
               VIOLATIONS="$VIOLATIONS\n      git history:  $GIT_DATE"
-              VIOLATIONS="$VIOLATIONS\n      diff_seconds: $DIFF (allowed: -60..600)"
             fi
           done <<< "$CHANGED_FILES"
 

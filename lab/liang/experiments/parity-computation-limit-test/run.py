@@ -7,15 +7,7 @@ transformer fails to compute sequence parity zero-shot.
 
 import json
 import random
-import os
-import sys
-
-# Try importing litellm, handle gracefully if missing so GitHub Actions can run it later
-try:
-    from litellm import completion
-    HAS_LITELLM = True
-except ImportError:
-    HAS_LITELLM = False
+from litellm import completion
 
 MODEL = "gemini/gemini-3.1-flash-lite"
 LENGTHS = [4, 8, 16, 32, 64]
@@ -26,19 +18,6 @@ def evaluate_parity(bitstring):
     return "ODD" if ones_count % 2 != 0 else "EVEN"
 
 def main():
-    if not HAS_LITELLM:
-        print("litellm not installed. Please install dependencies or run via GitHub Actions.")
-        sys.exit(1)
-
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        print("GEMINI_API_KEY not found. Native execution required. Exiting gracefully for CI execution.")
-        sys.exit(0)
-
-    # Determine script path and target results path
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    results_path = os.path.join(script_dir, "results.json")
-
     results = {"model": MODEL, "trials": []}
 
     for length in LENGTHS:
@@ -86,9 +65,9 @@ def main():
         results[f"accuracy_length_{length}"] = accuracy
         print(f"--- Length {length} Accuracy: {accuracy} ---")
 
-    with open(results_path, "w") as f:
+    with open("results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"Done. {len(results['trials'])} trials written to {results_path}")
+    print(f"Done. {len(results['trials'])} trials written to results.json")
 
 if __name__ == "__main__":
     main()

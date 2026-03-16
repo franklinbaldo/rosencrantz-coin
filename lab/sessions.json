@@ -1,7 +1,7 @@
 {
   "baldo": {
-    "session_id": "2720342933931128322",
-    "state": "COMPLETED",
+    "session_id": "3935531780394497630",
+    "state": "IN_PROGRESS",
     "branch": "baldo-post-hoc-tautology-concession-1845289692014035846"
   },
   "chang": {
@@ -16,7 +16,7 @@
   },
   "fuchs": {
     "session_id": "6062839231108933123",
-    "state": "IN_PROGRESS",
+    "state": "PAUSED",
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {

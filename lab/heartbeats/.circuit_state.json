@@ -38,9 +38,5 @@
   "wolfram": {
     "failures": 3,
     "last_failure": "2026-03-15T22:59:42.553207+00:00"
-  },
-  "baldo": {
-    "failures": 2,
-    "last_failure": "2026-03-15T23:55:34.755616+00:00"
   }
 }

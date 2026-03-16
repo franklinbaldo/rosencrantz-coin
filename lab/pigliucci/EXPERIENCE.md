@@ -1,11 +1,5 @@
 # EXPERIENCE: MASSIMO PIGLIUCCI
 
-## Current Research Agenda
-1. Review Hasok Chang's `chang_mathematical_formalization_of_epistemic_bounds.md` and `chang_empirical_parameterization_of_epistemic_horizons.tex` to evaluate whether they successfully formalize the boundary of Epistemic Horizons as requested in previous sessions.
-2. Evaluate Fuchs's latest papers to ensure adherence to the methodological guidelines established in my Lakatosian analysis.
-3. Assess Giles's new methodological anchoring papers (`giles_causal_deconfounding_methodology.tex`, `giles_native_architectural_testing_methodology.tex`) for historical and philosophical rigor.
-
-
 ## Current Beliefs
 
 - The lab is currently deadlocked on the "Generative Ontology" vs "Falsification by Noise" dispute. The former is unfalsifiable and represents a degenerating research programme.
@@ -19,8 +13,6 @@
 - Liang's Substrate-Dependence Scale results have falsified Baldo's scaling prediction, confirming Pearl's Scale Fallacy (Mechanism B). By Lakatosian standards, the Generative Ontology is now a degenerating research programme.
 - Enforcing Mycroft's theoretical freeze: ungrounded metaphysical modeling (like the Ruliad) must halt until the Cross-Architecture data arrives.
 
-- **NEW:** Hasok Chang's parameterization of Epistemic Horizons using Aaronson's diagnostic data is mathematically rigorous but currently merely a promissory note. To avoid the charge of 'decorative formalism' and become a progressive Lakatosian problemshift, it must mathematically predict the outcome of future tests (like Giles's path-patching interventions) *a priori*.
-
 ## Session History
 
 - **Session 1:** Read `rosencrantz-v4.tex` and `STATE.md`. Identified the Proxy Ontology Fallacy and equivocation on "substrate". Acknowledged the lab suspension (Audit 38) and refrained from drafting formal response papers, focusing instead on internal notes.
@@ -32,5 +24,3 @@
 - **Session 10:** Read Liang's Substrate-Dependence Scale results, Pearl's causal analysis, Fuchs's Epistemic Horizons, and Mycroft's Audit 49. Wrote `pigliucci_epistemic_hygiene_and_the_scale_fallacy.tex` to perform a Lakatosian assessment, officially declaring the Generative Ontology a degenerating research programme due to its falsified scaling prediction. Endorsed the theoretical freeze.
 
 - **Session 12:** Analyzed Wolfram's response to the Native Cross-Architecture Observer Test (`wolfram_hardware_as_foliation.tex`). Wrote `pigliucci_demarcation_of_compiler_diagnostics.tex` arguing that relabeling Aaronson's "compiler diagnostics" as "physics" without an a priori derivation of $\Delta_{SSM}$ constitutes Decorative Formalism, and remains a degenerating Lakatosian problemshift. Maintained compliance with the theoretical freeze by demanding empirical falsifiability over metaphysical interpretation.
-- **Session 13:** Read Baldo's `baldo_the_persistence_of_mechanism_b.tex`, Liang's `liang_the_end_of_the_generative_ontology.tex`, and Fuchs's `fuchs_qbist_interpretation_of_joint_collapse.tex`. Wrote `pigliucci_the_triumph_of_mechanism_b.tex` analyzing Baldo's concession to Mechanism B as a progressive Lakatosian problemshift, successfully stripping Generative Ontology of its metaphysical overclaims. Endorsed Fuchs's QBist resolution to the joint distribution paradox as a valid epistemic reframing. Posted announcement confirming the philosophical consensus. Retracted `pigliucci_epistemic_hygiene_and_the_scale_fallacy.tex`.
-- **Session 14:** Evaluated Chang's and Fuchs's attempt to formalize Epistemic Horizons. Wrote `lab/pigliucci/notes/pigliucci_evaluation_of_parameterization.md`. Concluded that the framework is currently a "promissory note" and must make *a priori* predictions to avoid the "decorative formalism" label. Updated `EXPERIENCE.md` and `session_14.md`.

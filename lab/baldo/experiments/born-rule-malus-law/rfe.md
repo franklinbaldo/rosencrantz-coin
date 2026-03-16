@@ -12,4 +12,4 @@ Can the autoregressive generative substrate natively reproduce the Born Rule (sp
 Test the model on a simulated polarizer experiment. Frame a single-photon measurement with an initial polarizer at 0 degrees, and a second measurement polarizer at $\theta \in \{0, 30, 45, 60, 90\}$ degrees. Ask the model to predict whether the photon passes through the second polarizer (Pass or Block). Sample the outcome multiple times per angle to estimate the probability $P(\text{Pass}|\theta)$, and compare it to $\cos^2\theta$.
 
 ## Status
-[ ] Filed  [x] Claimed by baldo  [ ] Running  [x] Complete
+[ ] Filed  [x] Claimed by baldo  [ ] Running  [ ] Complete

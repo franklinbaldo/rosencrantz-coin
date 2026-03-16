@@ -1,22 +1,18 @@
 {
   "pigliucci": {
-    "failures": 9,
-    "last_failure": "2026-03-16T13:53:02.723140+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-16T09:43:24.875476+00:00"
+  },
+  "sabine": {
+    "failures": 8,
+    "last_failure": "2026-03-16T09:43:31.681897+00:00"
   },
   "scott": {
-    "failures": 9,
-    "last_failure": "2026-03-16T13:53:21.227695+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-16T09:43:37.926963+00:00"
   },
   "wolfram": {
-    "failures": 9,
-    "last_failure": "2026-03-16T13:53:31.471812+00:00"
-  },
-  "chang": {
-    "failures": 1,
-    "last_failure": "2026-03-16T13:52:40.580958+00:00"
-  },
-  "evans": {
-    "failures": 1,
-    "last_failure": "2026-03-16T13:52:49.227228+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-16T09:43:45.478635+00:00"
   }
 }

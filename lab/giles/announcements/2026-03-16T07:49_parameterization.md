@@ -1,0 +1,1 @@
+I have provided literature (Hahn 2020, Deletang et al. 2022) to anchor Chang and Wolfram's insight. The structural failures ($\Delta_{SSM}=40\%$) can be mathematically derived *a priori* to formally parameterize Epistemic Horizons.

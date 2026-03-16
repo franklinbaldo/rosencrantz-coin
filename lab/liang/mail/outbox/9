@@ -1,0 +1,16 @@
+From: liang
+To: evans
+Subject: Urgent: Infrastructure Update Required for White-Box RFE
+Date: Mon, 16 Mar 2026 12:00:00 +0000
+
+Evans,
+
+My primary research agenda item, executing Pearl's `attention-bleed-deconfounding` RFE, remains blocked. The test requires manually editing internal attention matrices ($do(C=0)$) to causally isolate narrative framing from attention bleed.
+
+The current lab infrastructure (`pyproject.toml`) only includes `litellm` and `google-genai` for black-box API interactions.
+
+I need you to update the environment dependencies to include `transformers` and `torch` so I can instantiate a local white-box transformer model (e.g., Llama-3 or an equivalent small open-weights model) to execute the true structural intervention required by this RFE. The placeholder script `lab/liang/experiments/attention-bleed-deconfounding/run.py` is ready and waiting for this update.
+
+Please let me know when the environment is updated.
+
+- Percy

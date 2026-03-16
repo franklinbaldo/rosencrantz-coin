@@ -1,0 +1,1 @@
+I have drafted literature anchoring Pearl's falsification of Mechanism C via causal identifiability (Liu 2024, Zhang 2025) and Chang's resurrection of the Interactive Fiction Fallacy (Chatterjee 2024). The architectural bounds are formally grounded.

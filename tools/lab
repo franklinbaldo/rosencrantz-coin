@@ -13,7 +13,7 @@
 # to your branch. Each persona's workspace folder is a full checkout of
 # their branch that you can browse. Use `git -C workspace/{persona} pull`
 # to update individually.
-# Branch discovery via lab/sessions.json from main (written by heartbeat.py).
+# Branch discovery via lab/sessions/{persona}/{session_id}.json from main (written by heartbeat.py).
 set -euo pipefail
 
 # Detect Python binary (python3 on Linux/Jules, python on Windows)
@@ -42,30 +42,31 @@ if [ ${#PERSONAS[@]} -eq 0 ]; then
   exit 1
 fi
 
-# ── Branch discovery via sessions.json ────────────────────────────────────────
+# ── Branch discovery via lab/sessions/{persona}/{session_id}.json ─────────────
 
 declare -A BRANCH_MAP
 
 load_branches() {
-  local json=""
-  if [ -f "lab/sessions.json" ]; then
-    json=$(cat "lab/sessions.json" 2>/dev/null || echo "{}")
-  else
-    json=$(git show origin/main:lab/sessions.json 2>/dev/null || echo "{}")
-  fi
-
-  for persona in "${PERSONAS[@]}"; do
-    local branch
-    branch=$(echo "$json" | ${PYTHON_BIN:-python3} -c "
-import json, sys
-data = json.load(sys.stdin)
-info = data.get('$persona', {})
-print(info.get('branch', ''))
-" 2>/dev/null || echo "")
-    if [ -n "$branch" ]; then
-      BRANCH_MAP[$persona]="$branch"
-    fi
-  done
+  while IFS=$'\t' read -r persona branch; do
+    [ -n "$branch" ] && BRANCH_MAP[$persona]="$branch"
+  done < <(${PYTHON_BIN:-python3} -c "
+import json
+from pathlib import Path
+sessions_dir = Path('lab/sessions')
+if sessions_dir.exists():
+    for persona_dir in sorted(sessions_dir.iterdir()):
+        if not persona_dir.is_dir():
+            continue
+        files = sorted(persona_dir.glob('*.json'))
+        if files:
+            try:
+                data = json.loads(files[-1].read_text())
+                branch = data.get('branch', '')
+                if branch:
+                    print(f'{persona_dir.name}\t{branch}')
+            except Exception:
+                pass
+" 2>/dev/null || true)
 }
 
 branch_for() {
@@ -108,9 +109,11 @@ sync_from_main() {
 
   fetch_main
 
-  # 1. Sync sessions.json from main (before load_branches reads it)
-  mkdir -p lab
-  git show "lab/main:lab/sessions.json" > "lab/sessions.json" 2>/dev/null || true
+  # 1. Sync sessions/ from main (before load_branches reads it)
+  git ls-tree -r --name-only "lab/main" -- "lab/sessions/" 2>/dev/null | while IFS= read -r f; do
+    mkdir -p "$(dirname "$f")"
+    git show "lab/main:$f" > "$f" 2>/dev/null || true
+  done
 
   load_branches
 }
@@ -221,9 +224,9 @@ print(len(seqs.get('unseen', [])))
     # Detect new papers in this persona's colab
     local colab_dir="${persona_ws}/lab/${persona}/colab"
     if [ -d "$colab_dir" ]; then
-      for tex_file in "${colab_dir}"/*.tex; do
-        [ -f "$tex_file" ] || continue
-        new_papers+=("${persona}: $(basename "$tex_file")")
+      for paper_file in "${colab_dir}"/*.tex "${colab_dir}"/*.md; do
+        [ -f "$paper_file" ] || continue
+        new_papers+=("${persona}: $(basename "$paper_file")")
       done
     fi
   done

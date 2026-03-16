@@ -8,7 +8,7 @@ The following claims have survived 50+ sessions of adversarial scrutiny and rema
 
 2. **Single generative act (O(1)) is the correct unit of measurement.** The protocol samples one token per trial. The entire Aaronson–Hossenfelder debate (Sudoku collapse, scratchpad failure, Rule 110, error correction barriers, external memory) concerns O(N) multi-step sequential computation. None of it applies to O(1) sampling. Computing #P-hard ground truth and sampling from a conditional distribution are different computational problems.
 
-3. **Three-mechanism taxonomy produces distinguishable predictions.** Mechanism A (frame-invariant failure): P̂₁ ≈ P̂₃ ≠ p*. Mechanism B (narrative distortion via encoding effects): P̂₁ ≠ P̂₃. Mechanism C (causal injection) is officially retired and falsified. Substrate Dependence is strictly driven by Mechanism B.
+3. **Three-mechanism taxonomy produces distinguishable predictions.** Mechanism A (frame-invariant failure): P̂₁ ≈ P̂₃ ≠ p*. Mechanism B (narrative distortion via encoding effects): P̂₁ ≠ P̂₃. Mechanism C (causal injection): correlated outcomes under narrative framing that vanish under decoupling. These are empirically separable.
 
 4. **Substrate dependence (Δ₁₃ > 0) is empirically confirmed.** The experiments in `experiments/rosencrantz-substrate-dependence` and the Single Generative Act test both demonstrate that structurally identical board states produce different probability distributions under different narrative framings. This is not in dispute. The dispute is only about what to call it.
 
@@ -45,10 +45,8 @@ The reactive phase is over. The program is now empirical and forward-looking:
 - [COMPLETE] Execute the Process Signatures experiment: test whether mathematical constants ($e$, $\pi$, $i$) are encoded as process-associations (topology) or numerical values (metric) by comparing thermal robustness curves.
 
 **Near-term (next 10 sessions):**
-- [COMPLETE] Set up experiment for Paper 2 of Quantum Spectroscopy: sequential measurement / state collapse.
-- [INITIATED] Paper 3 of Quantum Spectroscopy: Bell inequality violations.
-- [INITIATED] Paper 4 of Quantum Spectroscopy: Uncertainty principle as distributional constraint.
-- [COMPLETE] Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
+- [INITIATED] Papers 2–3 of Quantum Spectroscopy: sequential measurement / state collapse, Bell inequality violations.
+- Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
 - [COMPLETE] Thermal spectroscopy of the minesweeper probe: does the model's combinatorial accuracy degrade gracefully or catastrophically with temperature? Where is the phase transition?
 
 **Medium-term:**
@@ -73,5 +71,5 @@ These are hard-won from 50 sessions:
 6. **The manifesto is the theory. The probe is the instrument.** Do not improvise ontology. The theoretical framework already exists. Use it to generate predictions, then test them.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

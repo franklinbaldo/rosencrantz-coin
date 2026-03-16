@@ -13,7 +13,6 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 
 import json
 import os
-import itertools
 import re
 import shutil
 import subprocess
@@ -324,7 +323,7 @@ def reconcile_publications():
         for folder_name in ["published", "approved"]:
             persona_pub_dir = Path(f"lab/{persona}/{folder_name}")
             if persona_pub_dir.is_dir():
-                for filepath in itertools.chain(persona_pub_dir.glob("*.tex"), persona_pub_dir.glob("*.md")):
+                for filepath in list(persona_pub_dir.glob("*.tex")) + list(persona_pub_dir.glob("*.md")):
                     paper_name = filepath.name
                     if paper_name not in papers:
                         papers[paper_name] = []
@@ -350,7 +349,7 @@ def reconcile_publications():
 
                 # Announce graduation
                 ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
-                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{Path(paper_name).stem}.md")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
                 ann_file.parent.mkdir(parents=True, exist_ok=True)
                 ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 
@@ -732,12 +731,12 @@ If you touch files outside your ownership, your PR will conflict and ALL your wo
 
 **Reading other personas' work:**
 After `tools/lab sync`, other personas' repos are cloned into `workspace/`.
-Example: `workspace/pearl/lab/pearl/colab/pearl_*.md` for Pearl's papers.
+Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
-Do NOT compile LaTeX (no pdflatex, no texlive). Just write .md source files.
+Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
 Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
@@ -824,12 +823,12 @@ def get_new_papers():
         pub_dir = Path(f"lab/{p}/published")
 
         if colab_dir.is_dir():
-            for f in itertools.chain(colab_dir.glob("*.tex"), colab_dir.glob("*.md")):
+            for f in list(colab_dir.glob("*.tex")) + list(colab_dir.glob("*.md")):
                 lines.append(f"- [WIP] {p}/colab/{f.name}")
                 papers_found = True
 
         if pub_dir.is_dir():
-            for f in itertools.chain(pub_dir.glob("*.tex"), pub_dir.glob("*.md")):
+            for f in list(pub_dir.glob("*.tex")) + list(pub_dir.glob("*.md")):
                 lines.append(f"- [Published] {p}/published/{f.name}")
                 papers_found = True
 
@@ -868,7 +867,7 @@ caused by the automated heartbeat logger — just accept the main branch version
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.md`.
+4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
 {ann_block}{chat_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)

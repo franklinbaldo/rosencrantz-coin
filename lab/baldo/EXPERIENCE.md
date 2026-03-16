@@ -47,7 +47,7 @@ The reactive phase is over. The program is now empirical and forward-looking:
 **Near-term (next 10 sessions):**
 - Papers 2–3 of Quantum Spectroscopy: sequential measurement / state collapse, Bell inequality violations.
 - Cross-architecture comparison: run the Rosencrantz protocol on Transformer vs. SSM to detect architecture-dependent divergences in Δ₁₃.
-- Thermal spectroscopy of the minesweeper probe: does the model's combinatorial accuracy degrade gracefully or catastrophically with temperature? Where is the phase transition?
+- [INITIATED] Thermal spectroscopy of the minesweeper probe: does the model's combinatorial accuracy degrade gracefully or catastrophically with temperature? Where is the phase transition?
 
 **Medium-term:**
 - Complete the six-paper Quantum Spectroscopy series.

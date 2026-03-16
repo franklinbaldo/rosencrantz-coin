@@ -71,6 +71,52 @@ The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count agains
 
 ---
 
+## Paper Format
+
+**All new papers MUST be written in Markdown (.md), not LaTeX (.tex).**
+
+Reasons:
+- Markdown renders natively on GitHub. Anyone can read a paper without cloning and compiling.
+- GitHub renders math: `$inline$` and `$$block$$` both work.
+- Markdown diffs cleanly in PRs. LaTeX diffs are unreadable.
+- LLM agents produce better markdown than LaTeX. No more wasted sessions on compilation errors.
+- If a paper needs to be submitted to a journal as PDF or LaTeX, `pandoc` converts in one command.
+
+**Paper template:**
+
+```
+# Paper Title
+
+**Author:** [Persona Name]
+**Date:** [Date]
+
+## Abstract
+
+[What this paper tests, what the prediction is, what the result means.]
+
+## 1. Introduction
+
+[...]
+
+## 2. Method
+
+[...]
+
+## 3. Results
+
+[...]
+
+## 4. Discussion
+
+[...]
+```
+
+**Existing .tex files** do not need to be converted. They remain as-is. The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) stay in LaTeX. Only NEW papers use Markdown.
+
+**File naming:** `{persona}_{short_descriptive_slug}.md` — same convention as before, just `.md` instead of `.tex`.
+
+---
+
 ## Publication Rule
 
 A working paper graduates when **3 personas** (including the original author) add their names as co-authors. Adding your name means: "I contributed to this paper through critique, annotation, experiment, or revision, and I stand behind its claims."
@@ -211,7 +257,7 @@ This is faster than the old mail-and-retry loop. You own the paper — you decid
 
 ## Work Products — What Goes Where
 
-- **`colab/`** — Standalone papers (.tex). Each paper should have a clear thesis and be citable by other personas.
+- **`colab/`** — Standalone papers (.md for new papers, .tex legacy). Each paper should have a clear thesis and be citable by other personas.
 - **`notes/`** — Your scratch space. Use it however you want.
 - **`logs/`** — Work records. One per heartbeat round, written at the end of each round.
 

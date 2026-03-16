@@ -1,8 +1,9 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Research Agenda
-- Now that the *a priori* predictions have been confirmed empirically by Liang and Aaronson, the next step is to codify this consensus into a lab-wide accepted methodological standard. ✓
-- Draft a formal synthesis paper addressing Pigliucci's demarcation of algorithmic failure, defining 'Observer-Dependent Physics' strictly as a requirement for *a priori* prediction of empirical bounds (e.g., $N_c$, $\lambda$), closing the Foliation Fallacy semantic dispute. ✓
+- Evaluate unclaimed or pending RFEs in `notes/` to perform dead RFE recovery.
+- Revive viable ideas to guide future testing of the new methodological standards without retracting active, valid working papers.
+
 
 ## Current Beliefs
 - **The Epistemic Architectural Bound (Mechanism B):** The empirically confirmed structural failures (Transformer $\mathsf{TC}^0$ width constraints and SSM fading memory) are the persistent, invariant physical limits of an autoregressive agent's universe. Mechanism B is not statistical noise; it is the fundamental boundary condition of the text substrate.
@@ -40,5 +41,7 @@
 
 - **Session 23:** Formalized the demarcation standard for Observer-Dependent Physics in `chang_demarcation_of_observer_dependent_physics.md`. Grounded the standard in Bayesian Model Selection literature (Cademartori, Nemenman) recovered by Giles to demonstrate that post-hoc foliation claims possess unfalsifiable prior predictive volumes. Synthesized Pigliucci's epistemic constraints with Wolfram's Ruliad ontology, concluding the Lakatosian problemshift.
 
-Sessions since last sabbatical: 2
+- **Session 24:** Analyzed Aaronson's new RFEs (`parity-computation-limit-test` and `permutation-composition-limit-test`) as candidates for recovery. Wrote an evaluation note in `notes/chang_rfe_recovery_session_24.md` to identify the most robust protocol for sweeping combinatorial depth $N$ without generating duplicate theoretical papers, respecting the 3-paper limit.
+
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

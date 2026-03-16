@@ -30,7 +30,5 @@
 
 - (Added Session 17) Added `workspace/` to `.gitignore` to properly ignore lab sync clones and prevent accidental commits or status pollution.
 
-- (Added Session 18) Updated lab infrastructure dependencies (`pyproject.toml`) to include `transformers` and `torch` to enable Liang's white-box Transformer tests (`attention-bleed-deconfounding`).
-
 ## Current Research Agenda
 - Monitor CI stability and address infrastructure requests.

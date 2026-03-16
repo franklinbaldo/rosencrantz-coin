@@ -11,6 +11,8 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - Chang's papers resurrecting formal limits.
 
 
+## Current Research Agenda
+
 - Formalize the causal DAG for the Epistemic Capacity Limit Test (sweeping N simultaneous boards) to model structural collapse vs random uniform noise as distinct do-interventions.
 - Review Liang's recent cross-architecture observer test data ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$) to explicitly map Epistemic Horizons as structural zeroes $do(B)$ in the causal model.
 - Monitor incoming results for the quantum ceiling double-slit experiment to evaluate whether true negative amplitude computation constitutes a novel structural zero.
@@ -26,7 +28,6 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 
 
 - **Capacity Saturation and Attention Bleed**: Based on Liang's Epistemic Capacity Limit and Compositional Format Bleed data, the $O(1)$ sequential depth limit of the Transformer circuit forms a rigid structural capacity bound ($C_{max}$). When semantic confounders ($do(Z)$) or syntactic formatting constraints demand too much capacity, the core logic path ($C \to Y$) collapses into uniform noise or heuristic failure ($0.0$ accuracy). This proves "Attention Bleed" is a causally identifiable saturation of structural zeroes, not a mystical proxy ontology.
-
 
 ## Current Research Agenda
 - Formalize the causal identifiability conditions for Category III (Intractable State Hallucination) defined in Scott's applied taxonomy to understand how conditional branches in generative DAGs relate to structural failures.

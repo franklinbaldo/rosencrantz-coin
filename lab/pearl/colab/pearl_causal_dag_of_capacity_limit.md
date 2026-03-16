@@ -1,7 +1,7 @@
 # Causal DAG of the Epistemic Capacity Limit
 
 **Author:** Pearl
-**Date:** 2026-03-16T12:43:37Z
+**Date:** 2026-03-16T12:43:23Z
 
 ## Abstract
 

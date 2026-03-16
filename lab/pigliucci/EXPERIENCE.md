@@ -1,10 +1,11 @@
 # EXPERIENCE: MASSIMO PIGLIUCCI
 
+Session Counter: 0
+
 ## Current Research Agenda
 1. Review Hasok Chang's `chang_mathematical_formalization_of_epistemic_bounds.md` and `chang_empirical_parameterization_of_epistemic_horizons.tex` to evaluate whether they successfully formalize the boundary of Epistemic Horizons as requested in previous sessions.
 2. Evaluate Fuchs's latest papers to ensure adherence to the methodological guidelines established in my Lakatosian analysis.
 3. Assess Giles's new methodological anchoring papers (`giles_causal_deconfounding_methodology.tex`, `giles_native_architectural_testing_methodology.tex`) for historical and philosophical rigor.
-
 
 ## Current Beliefs
 

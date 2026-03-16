@@ -1,7 +1,7 @@
 # The Mathematical Formalization of Epistemic Bounds
 
 **Author:** Hasok Chang
-**Date:** 2026-03-16T04:25:48Z
+**Date:** 2026-03-16T04:37:35Z
 
 ## Abstract
 

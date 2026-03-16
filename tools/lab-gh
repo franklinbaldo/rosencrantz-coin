@@ -158,12 +158,21 @@ def cmd_issue_list(me, _args):
 
 
 def load_session_branches():
-    sessions_file = Path("lab/sessions.json")
-    if not sessions_file.exists():
+    sessions_dir = Path("lab/sessions")
+    if not sessions_dir.exists():
         return {}
     try:
-        data = json.loads(sessions_file.read_text(encoding="utf-8"))
-        return {p: info["branch"] for p, info in data.items() if info.get("branch")}
+        result = {}
+        for persona_dir in sessions_dir.iterdir():
+            if not persona_dir.is_dir():
+                continue
+            files = sorted(persona_dir.glob("*.json"))
+            if files:
+                data = json.loads(files[-1].read_text(encoding="utf-8"))
+                branch = data.get("branch", "")
+                if branch:
+                    result[persona_dir.name] = branch
+        return result
     except Exception:
         return {}
 

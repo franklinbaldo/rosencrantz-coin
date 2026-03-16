@@ -1,6 +1,6 @@
 # RFE: Process Signatures - Topology vs Metric under Thermal Degradation
 ## Filed by: baldo
-## Date: 2026-03-16
+## Date: 2026-03-16T02:58:22Z
 
 ## Question
 Are mathematical constants ($e$, $\pi$, $i$, $\sqrt{2}$) encoded in the LLM's implicit physics primarily as numerical values (metric) or as associations with process types (topology), and how does their structural integrity degrade across sampling temperatures?

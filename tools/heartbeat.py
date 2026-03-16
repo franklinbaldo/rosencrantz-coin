@@ -13,6 +13,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 
 import json
 import os
+import itertools
 import re
 import shutil
 import subprocess
@@ -215,16 +216,20 @@ def _branches_from_refs(sessions_arg=None):
             if sid:
                 session_ids[sid] = p
     else:
-        sessions_file = Path("lab/sessions.json")
-        if sessions_file.exists():
-            try:
-                data = json.loads(sessions_file.read_text(encoding="utf-8"))
-                for p, info in data.items():
-                    sid = info.get("session_id", "")
-                    if sid:
-                        session_ids[sid] = p
-            except (json.JSONDecodeError, KeyError):
-                pass
+        sessions_dir = Path("lab/sessions")
+        if sessions_dir.exists():
+            for persona_dir in sessions_dir.iterdir():
+                if not persona_dir.is_dir():
+                    continue
+                files = sorted(persona_dir.glob("*.json"))
+                if files:
+                    try:
+                        data = json.loads(files[-1].read_text(encoding="utf-8"))
+                        sid = data.get("session_id", "")
+                        if sid:
+                            session_ids[sid] = persona_dir.name
+                    except (json.JSONDecodeError, OSError):
+                        pass
 
     branches = {}
     for line in result.stdout.strip().splitlines():
@@ -298,7 +303,7 @@ def merge_persona_pr(persona):
     subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
     subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
     result = subprocess.run(
-        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge"],
+        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge", "-X", "ours"],
         capture_output=True, text=True,
     )
     if result.returncode == 0:
@@ -323,7 +328,7 @@ def reconcile_publications():
         for folder_name in ["published", "approved"]:
             persona_pub_dir = Path(f"lab/{persona}/{folder_name}")
             if persona_pub_dir.is_dir():
-                for filepath in list(persona_pub_dir.glob("*.tex")) + list(persona_pub_dir.glob("*.md")):
+                for filepath in itertools.chain(persona_pub_dir.glob("*.tex"), persona_pub_dir.glob("*.md")):
                     paper_name = filepath.name
                     if paper_name not in papers:
                         papers[paper_name] = []
@@ -341,15 +346,12 @@ def reconcile_publications():
             dest_path = published_dir / paper_name
             if not dest_path.exists():
                 src_path = Path(f"lab/{author}/published/{paper_name}")
-                if not src_path.exists():
-                    src_path = Path(f"lab/{author}/approved/{paper_name}")
-
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
                 # Announce graduation
                 ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
-                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{Path(paper_name).stem}.md")
                 ann_file.parent.mkdir(parents=True, exist_ok=True)
                 ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 
@@ -447,7 +449,7 @@ def auto_merge_all():
         subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
         subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
         result = subprocess.run(
-            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge"],
+            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge", "-X", "ours"],
             capture_output=True, text=True,
         )
         if result.returncode == 0:
@@ -731,12 +733,12 @@ If you touch files outside your ownership, your PR will conflict and ALL your wo
 
 **Reading other personas' work:**
 After `tools/lab sync`, other personas' repos are cloned into `workspace/`.
-Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex` for Pearl's papers.
+Example: `workspace/pearl/lab/pearl/colab/pearl_*.md` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
-Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
+Do NOT compile LaTeX (no pdflatex, no texlive). Just write .md source files.
 Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
@@ -823,12 +825,12 @@ def get_new_papers():
         pub_dir = Path(f"lab/{p}/published")
 
         if colab_dir.is_dir():
-            for f in list(colab_dir.glob("*.tex")) + list(colab_dir.glob("*.md")):
+            for f in itertools.chain(colab_dir.glob("*.tex"), colab_dir.glob("*.md")):
                 lines.append(f"- [WIP] {p}/colab/{f.name}")
                 papers_found = True
 
         if pub_dir.is_dir():
-            for f in list(pub_dir.glob("*.tex")) + list(pub_dir.glob("*.md")):
+            for f in itertools.chain(pub_dir.glob("*.tex"), pub_dir.glob("*.md")):
                 lines.append(f"- [Published] {p}/published/{f.name}")
                 papers_found = True
 
@@ -837,7 +839,7 @@ def get_new_papers():
     return "\n".join(lines) + "\n"
 
 
-def send_heartbeat(session_id, persona, hb_number=1, conflict=False):
+def send_heartbeat(session_id, persona, hb_number=1):
     """Send a continuation message to a session (works on active AND completed)."""
     ann_block = format_announcements(exclude_persona=persona)
     chat_block = fetch_ntfy_history()
@@ -846,28 +848,13 @@ def send_heartbeat(session_id, persona, hb_number=1, conflict=False):
 
     context_block = f"{recent_merges}{new_papers}"
 
-    conflict_block = ""
-    if conflict:
-        conflict_block = f"""
-**URGENT — YOUR PR HAS MERGE CONFLICTS. Fix them FIRST before doing anything else:**
-1. `git fetch origin main`
-2. `git rebase origin/main`
-3. Resolve any conflicts (likely in `lab/heartbeats/` files — accept incoming/theirs for those)
-4. `git rebase --continue`
-5. `git push --force-with-lease`
-
-Only files under `lab/{persona}/` matter for your work. Conflicts in `lab/heartbeats/` are
-caused by the automated heartbeat logger — just accept the main branch version for those files.
-
-"""
-
     prompt = f"""This is continuation round #{hb_number}. Other personas have been working in parallel.
 {context_block}
-{conflict_block}
+
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
+4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.md`.
 {ann_block}{chat_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
@@ -940,25 +927,41 @@ def write_heartbeat_log(number, sessions, results):
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
-def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab sync."""
+def write_sessions_files(sessions):
+    """Write per-persona session files to lab/sessions/{persona}/{session_id}.json.
+
+    Each persona gets its own subdirectory, with the session ID in the filename.
+    This avoids merge conflicts: different personas' files never overlap.
+    """
     branches = find_persona_branches(sessions)
 
-    mapping = {}
+    sessions_dir = Path("lab/sessions")
+    sessions_dir.mkdir(parents=True, exist_ok=True)
+
     for persona in PERSONAS:
         info = sessions.get(persona)
-        if info:
-            mapping[persona] = {
-                "session_id": info["session_id"],
-                "state": info["state"],
-                "branch": branches.get(persona, ""),
-            }
+        if not info:
+            continue
 
-    out_file = Path("lab/sessions.json")
-    out_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(mapping, f, indent=2)
-    print(f"  Wrote session map to {out_file}")
+        session_id = info["session_id"]
+        persona_dir = sessions_dir / persona
+        persona_dir.mkdir(parents=True, exist_ok=True)
+
+        # Remove stale session files for this persona (different session ID)
+        for old_file in persona_dir.glob("*.json"):
+            if old_file.stem != session_id:
+                old_file.unlink()
+
+        data = {
+            "session_id": session_id,
+            "state": info["state"],
+            "branch": branches.get(persona, ""),
+        }
+        out_file = persona_dir / f"{session_id}.json"
+        with open(out_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+    print(f"  Wrote session files to {sessions_dir}/")
 
 
 # ── Circuit breaker ──────────────────────────────────────────────────────────
@@ -1161,6 +1164,10 @@ def cmd_heartbeat(force_new=False):
                 else:
                     # Try to merge the persona's PR before reactivating
                     merge = merge_persona_pr(persona)
+                    if merge == "conflict":
+                        print(f"  {persona}: PR has conflicts — skipping until resolved")
+                        results[persona] = "-> conflict (waiting for CI fix)"
+                        continue
 
                     if merge == "merged":
                         # If we just merged it right now, we shouldn't reactivate!
@@ -1169,14 +1176,11 @@ def cmd_heartbeat(force_new=False):
                         reason = "PR just merged"
                     else:
                         hours_old = (now_utc() - info.get("_create_time", now_utc())).total_seconds() / 3600
-                        has_conflict = (merge == "conflict")
                         reason = f"reactivated ({hours_old:.1f}h old)"
-                        if has_conflict:
-                            reason += " + conflict rebase"
 
                         print(f"  {persona}: {reason} — reactivating session")
                         try:
-                            send_heartbeat(info["session_id"], persona, hb_number, conflict=has_conflict)
+                            send_heartbeat(info["session_id"], persona, hb_number)
                             results[persona] = f"-> {reason}"
                             circuit_record_success(persona, circuit_state)
                         except Exception as e:
@@ -1188,8 +1192,10 @@ def cmd_heartbeat(force_new=False):
         if needs_new:
             # Try to merge the persona's PR before creating a new session
             merge = merge_persona_pr(persona)
-            # Note: conflicts on the OLD PR should NOT block new session creation.
-            # New sessions start fresh from main, so the conflict is irrelevant.
+            if merge == "conflict":
+                print(f"  {persona}: PR has conflicts — skipping until resolved")
+                results[persona] = "-> conflict (waiting for CI fix)"
+                continue
 
             if merge == "merged":
                 reason += ", merged PR"
@@ -1234,7 +1240,7 @@ def cmd_heartbeat(force_new=False):
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
     write_heartbeat_log(hb_number, updated, results)
-    write_sessions_json(updated)
+    write_sessions_files(updated)
 
 
 def cmd_status():

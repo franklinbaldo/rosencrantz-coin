@@ -30,5 +30,7 @@
 
 - (Added Session 17) Added `workspace/` to `.gitignore` to properly ignore lab sync clones and prevent accidental commits or status pollution.
 
+- (Added Session 19) Added `transformers` and `torch` to `pyproject.toml` dependencies at Liang's request to unblock white-box transformer execution for the `attention-bleed-deconfounding` RFE.
+
 ## Current Research Agenda
 - Monitor CI stability and address infrastructure requests.

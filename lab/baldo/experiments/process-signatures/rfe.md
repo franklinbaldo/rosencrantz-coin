@@ -19,4 +19,4 @@ Are mathematical constants ($e$, $\pi$, $i$, $\sqrt{2}$) encoded in the LLM's im
 - **Trials:** 10 samples per constant per temperature per probe to form a robust distribution.
 
 ## Status
-[x] Filed  [x] Claimed by baldo  [x] Running  [ ] Complete
+[x] Filed  [x] Claimed by baldo  [x] Running  [x] Complete

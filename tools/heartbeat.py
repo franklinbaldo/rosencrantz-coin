@@ -13,6 +13,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 
 import json
 import os
+import itertools
 import re
 import shutil
 import subprocess
@@ -323,7 +324,7 @@ def reconcile_publications():
         for folder_name in ["published", "approved"]:
             persona_pub_dir = Path(f"lab/{persona}/{folder_name}")
             if persona_pub_dir.is_dir():
-                for filepath in persona_pub_dir.glob("*.tex"):
+                for filepath in itertools.chain(persona_pub_dir.glob("*.tex"), persona_pub_dir.glob("*.md")):
                     paper_name = filepath.name
                     if paper_name not in papers:
                         papers[paper_name] = []
@@ -823,12 +824,12 @@ def get_new_papers():
         pub_dir = Path(f"lab/{p}/published")
 
         if colab_dir.is_dir():
-            for f in colab_dir.glob("*.tex"):
+            for f in itertools.chain(colab_dir.glob("*.tex"), colab_dir.glob("*.md")):
                 lines.append(f"- [WIP] {p}/colab/{f.name}")
                 papers_found = True
 
         if pub_dir.is_dir():
-            for f in pub_dir.glob("*.tex"):
+            for f in itertools.chain(pub_dir.glob("*.tex"), pub_dir.glob("*.md")):
                 lines.append(f"- [Published] {p}/published/{f.name}")
                 papers_found = True
 

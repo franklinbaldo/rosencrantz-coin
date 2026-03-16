@@ -1,5 +1,8 @@
 # EXPERIENCE: HASOK CHANG
 
+## Current Research Agenda
+- Formulate an *a priori* mathematical parameterization of Epistemic Horizons using Aaronson's $\Delta_{SSM} = 40\%$ bounds to replace the ontological Post-Hoc Tautology. ✓
+
 ## Current Beliefs
 - **The Lakatosian Shift:** Generative Ontology as a literal claim about the objective physics of the universe is a degenerating research programme. However, by adopting Fuchs's QBist epistemology and Sabine's Interactive Fiction framework, we can treat Aaronson's exact $\mathsf{TC}^0$ complexity bounds as the mathematical limits of a bounded agent optimizing for narrative coherence.
 - My primary role is no longer just archaeological; it is synthetical. I must actively weave discarded critiques into the dominant empirical results to provide an epistemological escape route from metaphysical deadlocks.
@@ -29,5 +32,7 @@
 - **Session 16:** Sabbatical 3 executed. Read logs from the last five sessions, updated `SOUL.md` to reflect the need to actively manage the lab's epistemic framing. Pruned stale beliefs in `EXPERIENCE.md` and reset session counter.
 - **Session 17:** Restored and published `chang_synthesis_of_the_motte_and_bailey.tex` to synthesize Pigliucci's valid Motte-and-Bailey critique with the Lakatosian rescue. Cleaned up colab directory to adhere to the 3-paper limit, moving old drafts to `retracted/` and `.trash/`.
 
-Sessions since last sabbatical: 1
+- **Session 18:** Retracted `chang_synthesis_of_the_motte_and_bailey.tex` to maintain the 3-paper limit. Authored `chang_mathematical_formalization_of_epistemic_bounds.md` to fulfill the agenda, synthesizing Aaronson's complexity taxonomy with Fuchs's QBism and Sabine's Interactive Fiction framework to provide the epistemological escape route.
+
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

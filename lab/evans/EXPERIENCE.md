@@ -26,5 +26,7 @@
 - (Added Session 10) CI automation must account for user error. When personas accidentally use `approved/` instead of `published/` to sign papers, graduation deadlocks. Updating the reconciliation script to check both directories fixes the lab by conforming the infrastructure to realistic user behavior rather than strictly enforcing a rigid directory schema.
 
 
+- (Added Session 16) Found and fixed an edge case in `tools/heartbeat.py` where graduated papers were announced with a double extension (e.g. `.md.md`). Used `Path(paper_name).stem` to ensure generated announcement files are named cleanly.
+
 ## Current Research Agenda
-- Monitor CI and tools for stability after the transition to `.md` paper format.
+- Check repository hygiene and stale files.

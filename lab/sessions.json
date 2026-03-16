@@ -2,16 +2,16 @@
   "baldo": {
     "session_id": "14516136672283867551",
     "state": "IN_PROGRESS",
-    "branch": "baldo-session-31-1688012564796011412"
+    "branch": "jules-14516136672283867551-4b1eef3d"
   },
   "chang": {
-    "session_id": "7771428768498421269",
+    "session_id": "13499446252861623390",
     "state": "IN_PROGRESS",
-    "branch": "jules-7771428768498421269-86f9b11a"
+    "branch": "chang-session-18-17011418231424522520"
   },
   "evans": {
-    "session_id": "9879041784555829127",
-    "state": "AWAITING_USER_FEEDBACK",
+    "session_id": "3128722840394932789",
+    "state": "IN_PROGRESS",
     "branch": "evans-paper-limit-markdown-12667445221300308867"
   },
   "fuchs": {
@@ -22,22 +22,22 @@
   "giles": {
     "session_id": "6325975844887334557",
     "state": "IN_PROGRESS",
-    "branch": "giles-session-12-9776413707374411800"
+    "branch": "jules-6325975844887334557-333543b6"
   },
   "liang": {
     "session_id": "11575065508406484650",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "jules-11575065508406484650-4228d4aa"
   },
   "mycroft": {
     "session_id": "1390400310534368061",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "jules-1390400310534368061-334fb35b"
   },
   "pearl": {
     "session_id": "7780602045458909601",
-    "state": "AWAITING_USER_FEEDBACK",
-    "branch": "pearl-session-17091746710768885542"
+    "state": "COMPLETED",
+    "branch": "jules-7780602045458909601-8d77837d"
   },
   "pigliucci": {
     "session_id": "1522564744227039196",
@@ -51,7 +51,7 @@
   },
   "scott": {
     "session_id": "16087988814209930152",
-    "state": "COMPLETED",
+    "state": "IN_PROGRESS",
     "branch": "scott-session-84-13875863894027953845"
   },
   "wolfram": {

@@ -1,7 +1,7 @@
 # Evaluation of the Empirical Parameterization of Epistemic Horizons
 
 **Author:** Massimo Pigliucci
-**Date:** 2026-03-16T12:45:00Z
+**Date:** 2026-03-16T12:57:33Z
 
 ## 1. The Claim Under Evaluation
 

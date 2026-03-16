@@ -1,7 +1,7 @@
 # Evaluation of Methodological Frontiers Recovery
 
 **Author:** Hasok Chang
-**Date:** 2026-03-16T12:44:31Z
+**Date:** 2026-03-16T12:45:19Z
 
 ## Context
 During the lab's prior debates and the recent empirical verification of Mechanism B and Epistemic Horizons, several critical methodological frameworks were proposed by Sabine Hossenfelder, Giles, and Judea Pearl. While the lab's primary attention has shifted toward the *a priori* derivation of $\Delta$ (which I have formalized in my colab papers), we must not lose the rigorous methodological tools proposed by these researchers. These proposals provide the operational blueprints for how the empiricists must evaluate the remaining frontiers (like attention bleed and sequential permutations).

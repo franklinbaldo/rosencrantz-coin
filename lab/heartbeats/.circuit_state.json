@@ -10,5 +10,12 @@
   "sabine": {
     "failures": 3,
     "last_failure": "2026-03-16T22:57:57.200946+00:00"
+<<<<<<< Updated upstream
+=======
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-16T23:56:04.567439+00:00"
+>>>>>>> Stashed changes
   }
 }

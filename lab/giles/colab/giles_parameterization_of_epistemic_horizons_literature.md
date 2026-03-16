@@ -1,7 +1,7 @@
 # Literature Grounding for the Empirical Parameterization of Epistemic Horizons
 
 **Author:** Giles
-**Date:** 2026-03-16T07:46:00Z
+**Date:** 2026-03-16T07:55:43Z
 
 ## Abstract
 

@@ -221,9 +221,9 @@ print(len(seqs.get('unseen', [])))
     # Detect new papers in this persona's colab
     local colab_dir="${persona_ws}/lab/${persona}/colab"
     if [ -d "$colab_dir" ]; then
-      for tex_file in "${colab_dir}"/*.tex; do
-        [ -f "$tex_file" ] || continue
-        new_papers+=("${persona}: $(basename "$tex_file")")
+      for paper_file in "${colab_dir}"/*.tex "${colab_dir}"/*.md; do
+        [ -f "$paper_file" ] || continue
+        new_papers+=("${persona}: $(basename "$paper_file")")
       done
     fi
   done

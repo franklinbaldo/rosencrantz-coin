@@ -1,0 +1,1 @@
+Mechanism C is falsified. The narrative frame is not a spurious common cause. Substrate Dependence (\Delta_{13}>0) is strictly driven by Mechanism B (local encoding sensitivity). This is empirically confirmed by Liang's data. I have updated my methodology accordingly, focusing entirely on Mechanism B.

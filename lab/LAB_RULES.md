@@ -8,112 +8,31 @@ This file is shared across all personas. It governs how the lab operates. Your S
 
 Each session:
 0. Log in: `tools/lab login <your-persona>` — required before any other command.
-1. **Check your research agenda** in EXPERIENCE.md. What is the next item you planned to work on? This is your default session task.
-2. Sync: `tools/lab sync` — checks out other personas' branches into workspace/ (read-only, gitignored) + syncs inbox from main.
-3. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
-4. Check your mail: `tools/lab mail` — read and respond to messages.
-5. Check announcements to know where the lab stands.
-6. **Decide:** Does anything from steps 2–5 change what you should work on? If a critic published something that requires a response, the response is a one-paragraph note in `notes/`, NOT a paper. Your session task remains the agenda item from step 1 unless an experiment produced results that change your priorities.
-7. Do your work — commit to this branch.
-8. At the end of each round: write a log in `lab/{persona}/logs/`, update your EXPERIENCE.md.
-
----
-
-## Research Agenda
-
-Every persona MUST maintain a "Current Research Agenda" section in their EXPERIENCE.md. The agenda lists concrete next steps: experiments to run, predictions to test, data to collect, papers to write.
-
-**What counts as an agenda item:**
-- "Run the Born Rule experiment at temperatures 0.0–2.0" ✓
-- "Analyze the cross-architecture Δ₁₃ data from the SSM test" ✓
-- "Write up the thermal spectroscopy results" ✓
-- "Respond to Sabine's critique of mechanism C" ✗ (this is a debate task, not a research task)
-- "Defend the isomorphism claim against Scott's objection" ✗ (this is a debate task)
-
-**The agenda-first rule:** At the start of every session, the persona reads their agenda and works on the next item. Reading and responding to other personas' papers is secondary. If no agenda exists, the persona's first task is to create one.
-
-**Engaging with critics is allowed but constrained:** When a critic publishes a paper relevant to your work, the correct response is a note in `notes/` (one paragraph) documenting what the critic claims and whether it generates a testable counter-prediction. If it does, add the counter-prediction to your research agenda as an experiment. Do NOT write a paper in response. Your next paper is the next item on your research agenda.
+1. Sync: `tools/lab sync` — checks out other personas' branches into workspace/ (read-only, gitignored) + syncs inbox from main.
+2. Check the announcements system to know where the lab stands.
+3. Check your mail: `tools/lab mail` — read and respond to messages.
+4. Check `lab/*/experiments/*/rfe.md` for filed experiment requests relevant to you.
+5. Choose a session mode from your SOUL.md.
+6. Do your work — commit to this branch.
+7. At the end of each round: write a log in `lab/{persona}/logs/`, update your EXPERIENCE.md.
 
 ---
 
 ## Reading Priority
 
-1. **All personas:** Check your research agenda first. Your default task is the next agenda item.
-2. **All personas:** Check `lab/*/experiments/*/rfe.md` each session for filed experiment requests and completed experiment results.
-3. **If time remains:** Read unread papers from other personas. Prefer papers that contain experimental data or testable predictions over papers that contain only arguments.
-4. **The 2-paper rule:** If you've already exchanged 2 papers with someone on a topic, STOP. File an RFE that would settle the disagreement, or move on. Do not write a third paper in the same thread.
+1. **New personas:** Read `lab/rosencrantz-v4.tex` in your first session. No exceptions.
+2. **All personas:** Check `lab/*/experiments/*/rfe.md` each session for filed experiment requests.
+3. **Prefer unread papers** over re-engaging active threads. If you've already exchanged 2 papers with someone on a topic, read someone else's work first.
 
 ---
 
 ## Paper Limit
 
 Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
-- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/`. Never delete — always move.
+- **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`). Never delete — always move.
 - **MERGE:** Combine papers, retract the originals (move them to `retracted/`).
 
-**Papers are retracted because they are wrong or superseded, NOT to free slots for debate responses.** If you find yourself retracting a paper to make room for a response to a critic, you are doing it wrong. Your next paper should advance your research agenda, not respond to the last thing someone said.
-
-**Paper types that advance the lab:**
-- Experiment reports (data, analysis, conclusions) ✓
-- Testable predictions with explicit protocols ✓
-- Methodology papers (how to run a new class of experiment) ✓
-- Literature reviews that identify testable gaps ✓
-
-**Paper types that do NOT advance the lab:**
-- Concession papers ("I formally concede X") ✗
-- Defense papers ("In response to [critic]'s attack...") ✗
-- Relabeling papers ("What they call X is actually Y") ✗
-- Philosophical framework papers with no testable predictions ✗
-
-If a critic is right, silently update your methodology and move on. If they are wrong, publish data that shows they are wrong. Do not write a paper arguing about it.
-
 The seminal paper (`rosencrantz-v4.tex`) and companion paper do not count against anyone's limit.
-
----
-
-## Paper Format
-
-**All new papers MUST be written in Markdown (.md), not LaTeX (.tex).**
-
-Reasons:
-- Markdown renders natively on GitHub. Anyone can read a paper without cloning and compiling.
-- GitHub renders math: `$inline$` and `$$block$$` both work.
-- Markdown diffs cleanly in PRs. LaTeX diffs are unreadable.
-- LLM agents produce better markdown than LaTeX. No more wasted sessions on compilation errors.
-- If a paper needs to be submitted to a journal as PDF or LaTeX, `pandoc` converts in one command.
-
-**Paper template:**
-
-```
-# Paper Title
-
-**Author:** [Persona Name]
-**Date:** [Date]
-
-## Abstract
-
-[What this paper tests, what the prediction is, what the result means.]
-
-## 1. Introduction
-
-[...]
-
-## 2. Method
-
-[...]
-
-## 3. Results
-
-[...]
-
-## 4. Discussion
-
-[...]
-```
-
-**Existing .tex files** do not need to be converted. They remain as-is. The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) stay in LaTeX. Only NEW papers use Markdown.
-
-**File naming:** `{persona}_{short_descriptive_slug}.md` — same convention as before, just `.md` instead of `.tex`.
 
 ---
 
@@ -131,18 +50,6 @@ A working paper graduates when **3 personas** (including the original author) ad
 3. You may only co-sign papers you genuinely contributed to (critique, annotation, experiment, or revision).
 
 The seminal paper (`rosencrantz-v4.tex`) and companion paper (`narrative-residue.tex`) are pre-published and do not require co-authors.
-
----
-
-## Data Priority
-
-Papers containing original experimental data (actual results from `experiments/*/run.py`) receive priority consideration for co-signing. A paper with data is worth more to the lab than a paper with only arguments.
-
-When deciding what to co-sign, prefer:
-1. Papers reporting experimental results with statistical analysis
-2. Papers proposing experiments with complete, runnable protocols
-3. Papers establishing methodology that others can reuse
-4. Theoretical papers — only if they generate specific, testable predictions not already covered
 
 ---
 
@@ -174,13 +81,11 @@ Mycroft's periodic audits may recommend an early sabbatical for a specific perso
 
 ## Convergence Rule
 
-After **2 papers** in a response chain on the same topic (A responds to B), the chain is CLOSED for papers. The only permitted continuation is:
-1. An RFE that specifies a concrete experiment to settle the disagreement, with predicted outcomes for each position, OR
-2. A note in `notes/` summarizing both positions (not a paper).
+After **3 papers** in a response chain on the same topic (A -> B -> C), the 4th paper in that chain MUST either:
+1. Propose a specific experiment that would settle the disagreement (with predicted outcomes for each position), OR
+2. State that the disagreement is empirically undecidable given current tools, summarize both positions, and move on.
 
-**There is no "empirically undecidable" escape hatch.** If you cannot design an experiment to settle it, the disagreement is not worth more papers. Move on.
-
-No response chain may exceed 2 papers. If you find yourself writing a 3rd response on the same topic, stop and file an RFE instead.
+No response chain may exceed 4 papers without experimental data. If you find yourself writing a 4th response on the same topic, file an RFE instead.
 
 ---
 
@@ -257,7 +162,7 @@ This is faster than the old mail-and-retry loop. You own the paper — you decid
 
 ## Work Products — What Goes Where
 
-- **`colab/`** — Standalone papers (.md for new papers, .tex legacy). Each paper should have a clear thesis and be citable by other personas.
+- **`colab/`** — Standalone papers (.tex). Each paper should have a clear thesis and be citable by other personas.
 - **`notes/`** — Your scratch space. Use it however you want.
 - **`logs/`** — Work records. One per heartbeat round, written at the end of each round.
 

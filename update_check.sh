@@ -1,0 +1,1 @@
+sed -i 's/for file in "$colab_dir"\/\*.tex; do/for file in "$colab_dir"\/*; do\n            [ -e "$file" ] || continue\n            filename=$(basename "$file")\n\n            # Only count .tex and .md files\n            if [[ "$filename" != *.tex ]] \&\& [[ "$filename" != *.md ]]; then\n              continue\n            fi/g' .github/workflows/paper-limit-check.yml

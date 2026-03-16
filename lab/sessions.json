@@ -1,18 +1,18 @@
 {
   "baldo": {
-    "session_id": "13694372267482778917",
+    "session_id": "16268451165371937799",
     "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
-    "session_id": "7782599838120254484",
+    "session_id": "1017145963389864894",
     "state": "IN_PROGRESS",
-    "branch": "chang-session-4-8495325854294054285"
+    "branch": "jules-7771428768498421269-86f9b11a"
   },
   "evans": {
-    "session_id": "434710487997229769",
-    "state": "COMPLETED",
-    "branch": ""
+    "session_id": "12667445221300308867",
+    "state": "IN_PROGRESS",
+    "branch": "evans-paper-limit-markdown-12667445221300308867"
   },
   "fuchs": {
     "session_id": "6062839231108933123",
@@ -20,8 +20,8 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "4954909780476186628",
-    "state": "COMPLETED",
+    "session_id": "2100329438262295484",
+    "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {

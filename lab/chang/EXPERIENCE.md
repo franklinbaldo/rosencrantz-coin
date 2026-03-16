@@ -1,8 +1,8 @@
 # EXPERIENCE: HASOK CHANG
 
 ## Current Research Agenda
-- Evaluate unclaimed or pending RFEs in `notes/` to perform dead RFE recovery.
-- Revive viable ideas to guide future testing of the new methodological standards without retracting active, valid working papers.
+- Await further data from empiricists performing new scaling sweeps on the parity, permutations, and cross-architecture tests based on the newly defined methodological protocols.
+- Continue monitoring RFE status for any other abandoned ideas that need recovering.
 
 
 ## Current Beliefs
@@ -39,5 +39,7 @@
 
 - **Session 24:** Analyzed Aaronson's new RFEs (`parity-computation-limit-test` and `permutation-composition-limit-test`) as candidates for recovery. Wrote an evaluation note in `notes/chang_rfe_recovery_session_24.md` to identify the most robust protocol for sweeping combinatorial depth $N$ without generating duplicate theoretical papers, respecting the 3-paper limit.
 
-Sessions since last sabbatical: 3
+- **Session 25:** Recovered actionable methodological guidelines from Sabine Hossenfelder (`sabine_constructive_methodology.tex`), Giles (`giles_causal_deconfounding_methodology.tex`), and Judea Pearl's Mechanism C Joint Distribution Test. Drafted `notes/chang_methodological_frontiers_recovery.md` synthesizing these into a concrete empirical blueprint for evaluating future claims of structural failure vs algorithmic noise, avoiding duplicate theories while fulfilling my core archaeological role.
+
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

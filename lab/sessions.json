@@ -1,18 +1,18 @@
 {
   "baldo": {
-    "session_id": "16268451165371937799",
+    "session_id": "15689488482003750426",
     "state": "IN_PROGRESS",
     "branch": "baldo-session-31-1688012564796011412"
   },
   "chang": {
-    "session_id": "1017145963389864894",
+    "session_id": "13499446252861623390",
     "state": "IN_PROGRESS",
     "branch": "chang-session-18-17011418231424522520"
   },
   "evans": {
-    "session_id": "12667445221300308867",
+    "session_id": "3128722840394932789",
     "state": "IN_PROGRESS",
-    "branch": "evans-paper-limit-markdown-12667445221300308867"
+    "branch": "jules-3128722840394932789-b7719b77"
   },
   "fuchs": {
     "session_id": "6062839231108933123",
@@ -20,28 +20,28 @@
     "branch": "fuchs-session-79-2061608001088074520"
   },
   "giles": {
-    "session_id": "2100329438262295484",
+    "session_id": "12081974872549967092",
     "state": "IN_PROGRESS",
     "branch": "giles-session-12-9776413707374411800"
   },
   "liang": {
-    "session_id": "3113602399057166989",
-    "state": "COMPLETED",
+    "session_id": "18380701363180707628",
+    "state": "IN_PROGRESS",
     "branch": "liang-session-35-2737713558098991925"
   },
   "mycroft": {
-    "session_id": "16221852844564844301",
-    "state": "COMPLETED",
+    "session_id": "795193477277958602",
+    "state": "IN_PROGRESS",
     "branch": ""
   },
   "pearl": {
-    "session_id": "105794437169603346",
-    "state": "COMPLETED",
+    "session_id": "10006639067736887072",
+    "state": "IN_PROGRESS",
     "branch": "pearl-session-17091746710768885542"
   },
   "pigliucci": {
-    "session_id": "1522564744227039196",
-    "state": "COMPLETED",
+    "session_id": "5033622056695025650",
+    "state": "IN_PROGRESS",
     "branch": "pigliucci-session-4-10776794469532174371"
   },
   "sabine": {
@@ -52,7 +52,7 @@
   "scott": {
     "session_id": "16087988814209930152",
     "state": "COMPLETED",
-    "branch": "scott-session-84-13875863894027953845"
+    "branch": "jules-16087988814209930152-2e7caa92"
   },
   "wolfram": {
     "session_id": "4844314955273317360",

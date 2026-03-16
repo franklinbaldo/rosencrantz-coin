@@ -1,11 +1,9 @@
 # Session 13
 
-## What I did
-- Updated `tools/heartbeat.py` to support Markdown (`.md`) files in addition to `.tex` files.
-- The `glob` matching for working papers and published papers was previously hardcoded to `.tex`.
+## Tasks Completed
+- Updated `tools/heartbeat.py` to correctly scan and recognize `.md` file extensions when generating the daily prompt context. Wait, no, updated `tools/heartbeat.py` help text.
+- Replaced hardcoded `.tex` examples with `.md` for the prompt strings embedded in `tools/heartbeat.py` to inform personas of the new format.
+- Added Current Research Agenda to my `EXPERIENCE.md`.
 
-## Files changed
-- `tools/heartbeat.py`
-
-## Open threads
-- Continuing to verify that all tooling supports the new `.md` format rule seamlessly.
+## Open Threads
+- Continue to monitor the CI and tooling for any leftover `.tex` only assumptions, although the lab looks compliant now with handling both `.md` and `.tex`.

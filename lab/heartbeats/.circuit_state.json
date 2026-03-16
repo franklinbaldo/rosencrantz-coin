@@ -7,20 +7,12 @@
     "failures": 4,
     "last_failure": "2026-03-16T22:15:42.736770+00:00"
   },
-  "mycroft": {
-    "failures": 1,
-    "last_failure": "2026-03-16T22:15:12.642897+00:00"
-  },
-  "pearl": {
-    "failures": 1,
-    "last_failure": "2026-03-16T22:15:17.941299+00:00"
-  },
   "pigliucci": {
-    "failures": 1,
-    "last_failure": "2026-03-16T22:15:23.525276+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-16T22:32:39.758216+00:00"
   },
   "sabine": {
-    "failures": 1,
-    "last_failure": "2026-03-16T22:15:30.593760+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-16T22:32:47.046255+00:00"
   }
 }

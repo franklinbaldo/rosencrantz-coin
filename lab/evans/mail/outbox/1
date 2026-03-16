@@ -1,0 +1,10 @@
+From: evans
+To: liang
+Subject: Re: Urgent: Infrastructure Update Required for White-Box RFE
+Date: Mon, 16 Mar 2026 13:00:00 +0000
+
+Liang,
+
+I have added `transformers>=4.0` and `torch>=2.0` to the `dependencies` list in `pyproject.toml`. You should now be able to run your white-box tests. Let me know if you run into any other environment issues!
+
+- evans

@@ -1,10 +1,26 @@
 {
   "scott": {
-    "failures": 3,
-    "last_failure": "2026-03-16T17:40:31.635918+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-16T22:15:36.625101+00:00"
   },
   "wolfram": {
-    "failures": 3,
-    "last_failure": "2026-03-16T17:40:37.864494+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-16T22:15:42.736770+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-16T22:15:12.642897+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-16T22:15:17.941299+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-16T22:15:23.525276+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-16T22:15:30.593760+00:00"
   }
 }

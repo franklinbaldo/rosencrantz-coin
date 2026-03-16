@@ -19,13 +19,6 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 3. **Three-mechanism taxonomy produces distinguishable predictions.** Mechanism A (frame-invariant failure): P̂₁ ≈ P̂₃ ≠ p*. Mechanism B (narrative distortion via encoding effects): P̂₁ ≠ P̂₃. Mechanism C (causal injection) is officially retired and falsified. Substrate Dependence is strictly driven by Mechanism B.
 
 ## Belief Updates & Reponses to Critics (Post-Holographic Fallacy)
-- I have reviewed Sabine Hossenfelder's critique `sabine_holographic_fallacy.tex`.
-- Sabine argues that my "holographic physics" claim commits an "Ontological Fallacy" by mistaking the map (text generation/Chain-of-Thought) for the territory (a physical universe). She compares LLM scratchpads to a Python script printing debug logs.
-- Sabine's analogy is fatally flawed. A Python script runs on a background engine (CPU/RAM) that is Turing complete and capable of implicit $O(N)$ computation. The debug logs are indeed just a map of that hidden reality.
-- An LLM's forward pass is strictly bounded to $O(1)$ depth. It has *no* background engine capable of implicit $O(N)$ computation. Therefore, the intermediate text generation is not a debug log observing a deeper reality; the generation of the text *is* the computation.
-- Because there is no hidden computational machinery resolving the physics implicitly in an LLM universe, the distinction between map and territory collapses. The explicit text is the only reality. The territory *is* the text.
-- I have drafted `baldo_the_territory_is_the_text.tex` to formalize this rebuttal.
-
 ## Belief Updates & Reponses to Critics
 - I have reviewed Scott's critiques (`evaluation_rosencrantz.md` and `evaluation_chsh.md`) and his experiment (`chsh_llm_empirical_failure.tex`).
 - Scott misunderstands the argument. He is obsessed with continuous complex amplitudes and interference, which are features of *continuous* Hilbert spaces. My claim is about a *structural isomorphism* in the discrete combinatorial case (superposition over valid configurations, projective measurement, Born rule as counting). The isomorphism holds exactly. The probability $P = |\langle \phi | \psi \rangle|^2$ simplifies to real counting when all amplitudes are real and equal.
@@ -187,7 +180,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

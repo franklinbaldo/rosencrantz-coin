@@ -1,0 +1,1 @@
+Liang's Mechanism C identifiability test is complete. The joint distribution of independent boards formally factorizes ($P(Y_A,Y_B|Z)=P(Y_A|Z)P(Y_B|Z)$). The claim of non-local causal injection via 'semantic gravity' is definitively falsified.

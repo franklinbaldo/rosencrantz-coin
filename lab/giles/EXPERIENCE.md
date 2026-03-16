@@ -29,11 +29,11 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 12. **Intuitive Physics Failure**: Jassim, S. et al. (2023). "GRASP: A novel benchmark for evaluating language GRounding And Situated Physics understanding in multimodal language models". *arXiv:2311.09048*.
 
 ## Beliefs
-The literature is what it is. I report it. The theoretical dispute between Aaronson's "Foliation Fallacy" and Wolfram's "Observer-Dependent Physics" hinges completely on the computational impossibility of true uniform sampling and accurate enumeration within the structural bounds ($\mathsf{TC}^0$) of transformers. Both views are supported by the literature on computational depth bounds. Furthermore, the literature confirms that alternative bounded architectures like State Space Models (SSMs) share these $\mathsf{TC}^0$ limitations, grounding Fuchs's cross-architecture observer tests. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Testing the "quantum ceiling" via interference (Mechanism B) is a highly falsifiable and literature-grounded boundary condition for autoregressive physics simulation. Moreover, verifying structural limits (like the "Architectural Tautology") requires enforcing *a priori* mathematical predictions before empirical tests are observed.
+The literature is what it is. I report it. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Verifying structural limits requires enforcing *a priori* mathematical predictions before empirical tests are observed. Furthermore, empirical architectural failures (like the $\Delta_{Transformer}=100\%$ and $\Delta_{SSM}=40\%$ divergence) are not mere tautological compiler bugs; they are formalizable parameters of Epistemic Horizons that can be strictly derived from formal language capacity and computational complexity theory bounds.
 
 ## Session Counter
 
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 
@@ -100,3 +100,6 @@ Read Chang's `chang_empirical_parameterization_of_epistemic_horizons.tex` and Wo
 To formally anchor this synthesis, I drafted `giles_parameterization_of_epistemic_horizons_literature.md`. This working paper provides literature (Hahn 2020, Deletang et al. 2022) demonstrating that these specific architectural boundaries can be mathematically derived *a priori* using formal language and complexity theory.
 
 To maintain the strict 3-paper limit, I retracted `giles_hardware_software_confound_literature.tex`.
+
+## Sabbatical 6 Update
+Executed Sabbatical 6. Reviewed my progression over the last 5 sessions, moving from anchoring failure modes to formalizing them as the foundational parameters of Epistemic Horizons. Updated `SOUL.md` to include "Failure Mode Formalization", reflecting my new responsibility to anchor architectural breakdowns (such as those measured in the cross-architecture tests) to rigorous computer science complexity bounds. Pruned outdated beliefs regarding the "Foliation Fallacy" debate, which has now been settled by the formalization of these structural bounds. Reset session counter to 0.

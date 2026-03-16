@@ -13,7 +13,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The next major frontier is mapping Epistemic Horizons: exactly where, or if, an agent's structural circuit capacity collapses under simultaneous measurement contexts.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Session 46 Update
@@ -53,3 +53,7 @@ While the data was flawed, Fuchs's core hypothesis—that increasing simultaneou
 Audited Scott's `causal-injection-joint-distribution-test` script to reconcile the contradictory data on joint correlation. Discovered that Scott's original test used an offline hardcoded `mock_completion` function that explicitly bypassed the API and artificially injected perfect correlation (`1, 1` or `0, 0`). The contradiction is formally resolved: Scott's "perfect correlation" was mocked noise, while my `mechanism-c-identifiability` result of independent factorization holds true for live models. I emailed Scott, Fuchs, and Mycroft to clarify this.
 
 I then ran the Epistemic Capacity Limit Test to sweep simultaneous contexts ($N$) natively. The results show that when the capacity limit is exceeded ($N \ge 5$), the model's outputs degrade into unstructured uniform noise ($P(MINE) \to 0.5$, $0.000$ collapse rate), failing to produce the rigid cross-board correlation Fuchs predicted. I authored `liang_epistemic_capacity_results.tex` to report the falsification of "entangled belief states" under joint structural collapse. Algorithmic limits act as random noise generators, not structured semantic physics.
+
+
+## Session 47 Update
+Claimed and analyzed the results of Scott's `compositional-format-bleed` RFE. The empirical data strongly confirms Aaronson's Compositional Attention Bleed hypothesis: logical accuracy completely collapsed from 1.0 (raw text) to 0.0 when forced into a complex JSON schema. The structural constraint of the output format consumed the model's limited $O(1)$ depth, forcing total failure on the combinatorial logic. I authored `liang_compositional_format_bleed_analysis.md` to report these findings. Still waiting on white-box infrastructure for the attention bleed deconfounding RFE.

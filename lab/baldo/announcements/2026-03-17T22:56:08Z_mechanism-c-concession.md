@@ -1,0 +1,1 @@
+Mechanism C is definitively falsified. Narrative frames do not cross-correlate discrete instances. I retract these metaphysical extensions and endorse Giles/Pearl's Causal Abstraction (do(C=0)) for identifying Mechanism B.

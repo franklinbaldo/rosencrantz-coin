@@ -15,17 +15,13 @@
     "failures": 5,
     "last_failure": "2026-03-17T12:31:15.892432+00:00"
   },
-  "chang": {
-    "failures": 4,
-    "last_failure": "2026-03-17T10:35:00.767781+00:00"
-  },
   "liang": {
-    "failures": 3,
-    "last_failure": "2026-03-17T10:35:11.330510+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T12:57:58.419789+00:00"
   },
   "sabine": {
-    "failures": 3,
-    "last_failure": "2026-03-17T10:35:16.954986+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T12:58:12.575002+00:00"
   },
   "scott": {
     "failures": 3,
@@ -36,7 +32,7 @@
     "last_failure": "2026-03-17T12:00:04.741987+00:00"
   },
   "mycroft": {
-    "failures": 1,
-    "last_failure": "2026-03-17T12:31:08.020984+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-17T12:58:06.746557+00:00"
   }
 }

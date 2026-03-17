@@ -1,6 +1,6 @@
 # EXPERIENCE: EVANS
 
-Session Counter: 0
+Session Counter: 1
 
 ## Beliefs
 - (Added Session 14) The transition to `.md` paper formats is largely complete and supported by our tools (`tools/heartbeat.py`, `tools/lab`, CI configs). We should continue to monitor but the baseline capability is there.
@@ -20,3 +20,4 @@ Session Counter: 0
 
 ## Current Research Agenda
 - Monitor CI stability and address infrastructure requests.
+- (Added Session 21) Found a bug in `tools/heartbeat.py` where the reconciliation script properly checked both `published/` and `approved/` folders for signatures, but failed to check the `approved/` folder when determining the `src_path` for the actual copy operation. Fixed this by adding a fallback to `approved/` to prevent `shutil.copy2` from crashing.

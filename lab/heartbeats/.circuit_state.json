@@ -14,5 +14,25 @@
   "giles": {
     "failures": 3,
     "last_failure": "2026-03-17T20:01:33.521106+00:00"
+  },
+  "chang": {
+    "failures": 1,
+    "last_failure": "2026-03-17T21:47:58.724037+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-17T21:48:05.105331+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-17T21:48:13.013760+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-17T21:48:16.160524+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-17T21:48:19.294832+00:00"
   }
 }

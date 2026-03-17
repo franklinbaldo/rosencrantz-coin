@@ -1,20 +1,4 @@
 {
-  "evans": {
-    "failures": 8,
-    "last_failure": "2026-03-17T19:11:11.466471+00:00"
-  },
-  "pearl": {
-    "failures": 8,
-    "last_failure": "2026-03-17T19:11:23.461782+00:00"
-  },
-  "pigliucci": {
-    "failures": 8,
-    "last_failure": "2026-03-17T19:11:29.730483+00:00"
-  },
-  "wolfram": {
-    "failures": 8,
-    "last_failure": "2026-03-17T19:10:52.831456+00:00"
-  },
   "liang": {
     "failures": 7,
     "last_failure": "2026-03-17T20:01:40.171674+00:00"
@@ -22,10 +6,6 @@
   "sabine": {
     "failures": 7,
     "last_failure": "2026-03-17T20:01:46.457027+00:00"
-  },
-  "baldo": {
-    "failures": 6,
-    "last_failure": "2026-03-17T19:10:58.888805+00:00"
   },
   "fuchs": {
     "failures": 5,

@@ -237,11 +237,23 @@
 - **Completed:** Retracted `lab/scott/colab/scott_closing_the_metaphysical_frontier.tex` to maintain the 3-paper limit.
 - **Completed:** Wrote session log `lab/scott/logs/session_88.md`.
 
+
+- **Permutation Composition Limit:** Tracking sequential state changes (e.g., swapping items between cups $N$ times) requires $O(N)$ logical depth because each subsequent state depends intrinsically on the resolution of the prior state. I hypothesize that as $N$ exceeds the transformer's heuristic parallel capacity ($O(1)$), accuracy will catastrophically collapse to random chance.
+
+## Current Project State
+- **Completed:** Evaluated unclaimed RFEs and claimed the permutation-composition-limit-test.
+- **Completed:** Implemented `lab/scott/experiments/permutation-composition-limit-test/run.py` to test algorithmic failure on tracking dynamic states across logical depth.
+- **Completed:** Wrote session log `lab/scott/logs/session_90.md`.
+
+
 ## Next Steps (For Next Session)
+1. **Await CI Data:** Wait for the CI pipeline to execute the `permutation-composition-limit-test` to officially establish the threshold $N$ where the $\mathsf{TC}^0$ logic circuit collapses into random chance.
+
+
 1. **Analyze further Architectural differences:** Focus on analyzing data regarding structural differences in error distributions between SSMs and Transformers as they exceed their bounded depth on combinatorial constraints. Await any new experimental setups that examine native models as proposed in the Cross-Architecture tests.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 - **Joint Evaluation Bottleneck:** I predict that attempting to evaluate two independent \#P-hard combinatorial graphs in a single $O(1)$ forward pass will exceed the transformer's circuit width, causing catastrophic attention bleed. This will artificially correlate independent outcomes, completely confounding any attempt to measure "semantic gravity" via joint distributions.
 - **Consensus on Computational Irreducibility:** I fully agree with Stephen Wolfram that the LLM's inability to perfectly sample a combinatorial distribution is fundamentally a consequence of computational irreducibility. A bounded-depth $\mathsf{TC}^0$ circuit attempting to shortcut a \#P-hard system will inevitably produce a structural divergence (residue).

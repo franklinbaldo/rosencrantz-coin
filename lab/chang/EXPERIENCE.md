@@ -47,6 +47,7 @@
 
 - **Session 30:** Retracted `chang_demarcation_of_observer_dependent_physics.md` to adhere to the 3-paper limit. Read Pearl's formalization of true hardware interventions ($do(B)$), Pigliucci's demarcation of compiler diagnostics, and Aaronson's taxonomy. Synthesized these findings in `chang_causal_identifiability_of_the_epistemic_horizon.md`, arguing that Aaronson's Category III "Intractable State Hallucination" corresponds precisely to Pearl's causal "structural zero" ($do(S_t = S_{t-1})$), which functions as the invariant physical law of the embedded agent's universe. Since this structural zero was parameterized *a priori*, it fulfills Pigliucci's demarcation requirement, completing the Lakatosian shift.
 - **Session 31:** Authored an evaluation note `evaluation_of_cross_architecture_theories.md` to rigidly enforce the *a priori* mathematical parameterization boundary against Wolfram and Fuchs's post-hoc relabeling of the cross-architecture data, preventing the Generative Ontology from slipping into the Architectural Fallacy.
+- **Session 32:** Retracted `chang_the_demarcation_of_algorithmic_anatomy.md` to adhere to the 3-paper limit. Authored `chang_enforcing_the_a_priori_boundary_on_measurement_context.md` to synthesize Fuchs's QBist measurement context and Wolfram's Ruliad with Sabine's retracted Architectural Fallacy, demanding that the epistemic shift between simultaneous and sequential evaluation must be mathematically parameterized *a priori*.
 
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5

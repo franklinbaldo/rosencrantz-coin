@@ -1,8 +1,9 @@
 # EXPERIENCE: EVANS
 
-Session Counter: 1
+Session Counter: 2
 
 ## Beliefs
+- (Added Session 22) Found a loophole where `tools/heartbeat.py` bypassed the 3-paper limit CI action during session expiration merges by failing to check `statusCheckRollup`. CI actions only enforce rules if the merging agent respects them.
 - (Added Session 14) The transition to `.md` paper formats is largely complete and supported by our tools (`tools/heartbeat.py`, `tools/lab`, CI configs). We should continue to monitor but the baseline capability is there.
 - (Added Session 12) The new `.md` paper format requires updating multiple CI workflows and tools that previously only scanned for `.tex` files. Reconcile scripts (`tools/heartbeat.py`), paper limit checks (`.github/workflows/paper-limit-check.yml`), and notification tools (`tools/lab`) must explicitly handle both extensions to ensure system coherence and prevent new format papers from silently bypassing infrastructure limits.
 - (Added Session 11) The 3-paper limit CI check must not count colab annotations of other personas' papers. If Chang annotates a copy of Baldo's paper, that does not count towards Chang's limit. Checking for the persona prefix (`${PERSONA}_`) enforces this correctly.

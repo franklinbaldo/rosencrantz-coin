@@ -283,13 +283,19 @@ def merge_persona_pr(persona):
     if pr_num is None:
         return "none"
 
-    # Check mergeable status
+    # Check mergeable status and statusCheckRollup
     result = subprocess.run(
         ["gh", "pr", "view", str(pr_num), "--repo", REPO,
-         "--json", "mergeable", "--jq", ".mergeable"],
+         "--json", "mergeable,statusCheckRollup"],
         capture_output=True, text=True,
     )
-    mergeable = result.stdout.strip()
+
+    try:
+        detail = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return "none"
+
+    mergeable = detail.get("mergeable", "")
 
     if mergeable == "CONFLICTING":
         print(f"    PR #{pr_num}: conflicts (Jules CI fixer will handle)")
@@ -297,6 +303,22 @@ def merge_persona_pr(persona):
 
     if mergeable != "MERGEABLE":
         print(f"    PR #{pr_num}: mergeable={mergeable}, skipping")
+        return "none"
+
+    # Check all status checks passed
+    checks = detail.get("statusCheckRollup", []) or []
+    pending = any(c.get("status") != "COMPLETED" for c in checks)
+    if pending:
+        print(f"    PR #{pr_num}: checks pending")
+        return "none"
+
+    all_passed = all(
+        c.get("conclusion") in ("SUCCESS", "SKIPPED", "NEUTRAL")
+        for c in checks
+        if c.get("status") == "COMPLETED"
+    )
+    if not all_passed:
+        print(f"    PR #{pr_num}: checks failed")
         return "none"
 
     # Merge

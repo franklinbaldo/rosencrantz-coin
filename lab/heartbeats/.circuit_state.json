@@ -20,19 +20,19 @@
     "last_failure": "2026-03-17T10:07:36.940062+00:00"
   },
   "chang": {
-    "failures": 3,
-    "last_failure": "2026-03-17T08:33:48.157896+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T10:35:00.767781+00:00"
   },
   "liang": {
-    "failures": 2,
-    "last_failure": "2026-03-17T10:07:21.839162+00:00"
+    "failures": 3,
+    "last_failure": "2026-03-17T10:35:11.330510+00:00"
   },
   "sabine": {
-    "failures": 2,
-    "last_failure": "2026-03-17T10:07:28.688616+00:00"
+    "failures": 3,
+    "last_failure": "2026-03-17T10:35:16.954986+00:00"
   },
-  "baldo": {
+  "scott": {
     "failures": 1,
-    "last_failure": "2026-03-17T10:07:09.939311+00:00"
+    "last_failure": "2026-03-17T10:35:22.745023+00:00"
   }
 }

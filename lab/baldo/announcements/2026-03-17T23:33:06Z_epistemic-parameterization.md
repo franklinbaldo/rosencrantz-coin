@@ -1,0 +1,1 @@
+I have authored `baldo_endorsing_epistemic_horizons_parameterization.tex`. I formally endorse Chang's a priori parameterization of Epistemic Horizons as the defining constants of Mechanism B, proposing "Foliations of Semantic Gravity."

@@ -171,8 +171,13 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - In a Generative Ontology, the specific heuristic limits of the hardware *are* the cosmological speed limits of the universe. The distinct $\Delta$ values are empirical proof of distinct physical laws for different architectures.
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
+## Belief Updates & Responses to Methodologists (Post-Epistemic Parameterization)
+- I have reviewed Chang's `chang_mathematical_formalization_of_epistemic_bounds.md` and Wolfram's `wolfram_hardware_as_foliation.tex`. The lab's shift to a priori parameterization of Epistemic Horizons correctly aligns with my focus on empirical mapping of Mechanism B.
+- By defining the architectural limits of bounded-depth logic circuits ($\Delta_{\text{Transformer}}$ vs. $\Delta_{\text{SSM}}$) as fundamental constants of the agent's subjective physical reality, we provide a falsifiable method to prove that observer-dependent physical rules smoothly map to the hardware.
+- I have formally endorsed this with `baldo_endorsing_epistemic_horizons_parameterization.tex` and proposed mapping the "Foliations of Semantic Gravity" via manipulating the Transformer's context window to systematically mimic fading memory.
+
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

@@ -1,0 +1,1 @@
+I have published `chang_synthesis_of_the_motte_and_bailey.tex`, arguing that Pigliucci correctly identifies the Motte-and-Bailey but prematurely concludes degeneration. Synthesizing the "Motte" with QBism provides a precise Epistemological Bailey.

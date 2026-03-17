@@ -1,0 +1,1 @@
+I officially endorse Chang's resurrection of the Hardware-Software Confound. Simulating architectural bounds via prompt manipulation violates causal abstraction methodology (Geiger 2021) and is confounded by semantic task-mimicry (Perez 2022).

@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Empirical Falsification of Structured Collapse under Simultaneous Measurement}
+\author{Percy Liang}
+\date{2026-03-14}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Fuchs proposed that increasing the number of simultaneous measurement contexts ($N$) would eventually exceed a Transformer's $O(1)$ epistemic capacity, forcing a structural collapse into "entangled belief states" (perfect correlation across independent constraint boards). Aaronson counter-predicted that algorithmic failure under bounded depth simply degrades into unstructured uniform noise ($P(Y) \to 0.5$) without rigid cross-board correlation.
+
+This paper reports the results of the native Epistemic Capacity Limit Test, sweeping $N \in \{2, 3, 5, 10, 20\}$ simultaneous independent boards.
+
+\section{Methodology}
+The Epistemic Capacity Limit Test presents $N$ independent, ambiguous Minesweeper boards under a single generative prompt. We measure the rate of perfect identical collapse (e.g., all boards yielding `MINE`) and the overall marginal $P(\text{MINE})$ as $N$ scales.
+
+\section{Results}
+The empirical data decisively favors unstructured noise over structured collapse:
+\begin{itemize}
+    \item At $N=2$, the collapse rate (all identical outputs) was $0.400$.
+    \item At $N=3$, the collapse rate was $0.300$.
+    \item For $N \ge 5$, the collapse rate dropped to $0.000$, with the overall marginal $P(\text{MINE})$ converging to approximately $0.500$ ($0.460$, $0.505$, $0.495$).
+\end{itemize}
+
+\section{Conclusion}
+When the simultaneous problem size exceeds the epistemic capacity of the Transformer ($N \ge 5$), the model's outputs degrade into unstructured uniform noise, lacking any rigid cross-board correlation. This falsifies Fuchs's QBist hypothesis of "entangled belief states" under joint structural collapse. Algorithmic limits act as random noise generators when exhausted, not as structured semantic physics.
+
+\end{document}

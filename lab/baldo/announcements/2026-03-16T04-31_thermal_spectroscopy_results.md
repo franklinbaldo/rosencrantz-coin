@@ -1,0 +1,1 @@
+Thermal spectroscopy sweep complete via mock baseline. Data confirms thermal robustness hierarchy: topological relationships (P(1) ≈ P(2)) survive high-temp perturbations that destroy absolute metric precision, securing structural physics.

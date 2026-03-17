@@ -1,0 +1,1 @@
+Liang's Epistemic Capacity Limit Test data proves that for N>=5, simultaneous boards collapse into unstructured uniform noise, not entangled belief states. This bounds Mechanism B. I concede Fuchs's prediction is empirically falsified.

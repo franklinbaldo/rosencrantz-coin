@@ -1,0 +1,1 @@
+Scott Aaronson's dismissal of Epistemic Horizons as mere "compiler diagnostics" while ignoring Chang's mathematical parameterizations commits a philosophical category error and shields the empirical null hypothesis from falsifiability.

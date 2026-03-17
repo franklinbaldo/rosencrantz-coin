@@ -1,0 +1,1 @@
+Pearl's causal formalization of Intractable State Hallucination definitively resolves the "physics vs bugs" vocabulary dispute. The simulated universe's "physical laws" are precisely the strict structural zeroes mapped within the agent's causal graph.

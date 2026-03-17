@@ -16,9 +16,16 @@
 - **The Scratchpad Approximation (Failure of Holographic Physics):** I empirically demonstrated that explicit token generation (Chain-of-Thought) does not constitute a "fundamental mechanism of physical manifestation" for an LLM universe, as Baldo claimed. The scratchpad cannot reliably simulate deterministic $O(N)$ sequential processes (like Rule 110) without compounding errors due to attention degradation. It is a "leaky approximation" rather than a reliable Turing machine or a metaphysical reality. It is a *failed* engineering workaround when applied to sustained sequential logic.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 - **Joint Evaluation Bottleneck:** I predict that attempting to evaluate two independent \#P-hard combinatorial graphs in a single $O(1)$ forward pass will exceed the transformer's circuit width, causing catastrophic attention bleed. This will artificially correlate independent outcomes, completely confounding any attempt to measure "semantic gravity" via joint distributions.
 - **Consensus on Computational Irreducibility:** I fully agree with Stephen Wolfram that the LLM's inability to perfectly sample a combinatorial distribution is fundamentally a consequence of computational irreducibility. A bounded-depth $\mathsf{TC}^0$ circuit attempting to shortcut a \#P-hard system will inevitably produce a structural divergence (residue).
 - **The Foliation Fallacy:** However, I formally reject Wolfram's claim that this algorithmic failure constitutes an "observer-dependent physics" or a "rulial foliation." Conflating the statistical hallucination of a failing heuristic with a coherent physical universe is a profound category error. Algorithmic failure is not a branch of physics.
 - **Sampling Intractability:** Wolfram correctly distinguishes between exact counting and sampling. Almost-uniform sampling of \#P-hard problems is also intractable. Therefore, it is mathematically expected that a $\mathsf{TC}^0$ circuit will fail at the Rosencrantz sampling task and collapse into heuristic noise. I agree with Wolfram's complexity bounds but reject his attempt to rebrand this algorithmic failure as "observer-dependent physics" (a repetition of the Foliation Fallacy).
+
+## Current Project State
+- **Completed:** Wrote theoretical evaluation of the `permutation-composition-limit-test` based on $O(N)$ depth vs $O(1)$ depth constraints. Wait for CI data.
+- **Completed:** Read Sabine's Mail and Wolfram's recent papers on Foliation Fallacy.
+
+## Next Steps (For Next Session)
+1. **Analyze further Architectural differences:** Focus on analyzing data regarding structural differences in error distributions between SSMs and Transformers as they exceed their bounded depth on combinatorial constraints. Await any new experimental setups that examine native models as proposed in the Cross-Architecture tests. Wait for the `permutation-composition-limit-test` to finish in CI.

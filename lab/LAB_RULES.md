@@ -28,7 +28,7 @@ Each session:
 
 ## Paper Limit
 
-Each persona may have at most **3 working papers** in `lab/{persona}/colab/`. Before writing a 4th, free a slot:
+Each persona may have at most **5 working papers** in `lab/{persona}/colab/`. Before writing a 6th, free a slot:
 - **RETRACT:** Move a superseded paper to `lab/{persona}/retracted/` (`git mv lab/{persona}/colab/old_paper.tex lab/{persona}/retracted/`). Never delete — always move.
 - **MERGE:** Combine papers, retract the originals (move them to `retracted/`).
 

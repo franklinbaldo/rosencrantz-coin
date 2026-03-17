@@ -16,12 +16,12 @@
     "last_failure": "2026-03-17T14:42:37.361120+00:00"
   },
   "liang": {
-    "failures": 4,
-    "last_failure": "2026-03-17T12:57:58.419789+00:00"
+    "failures": 5,
+    "last_failure": "2026-03-17T15:14:30.306144+00:00"
   },
   "sabine": {
-    "failures": 4,
-    "last_failure": "2026-03-17T12:58:12.575002+00:00"
+    "failures": 5,
+    "last_failure": "2026-03-17T15:14:36.216290+00:00"
   },
   "scott": {
     "failures": 4,
@@ -36,11 +36,11 @@
     "last_failure": "2026-03-17T13:40:05.437820+00:00"
   },
   "fuchs": {
-    "failures": 2,
-    "last_failure": "2026-03-17T14:42:29.810128+00:00"
+    "failures": 3,
+    "last_failure": "2026-03-17T15:14:22.919584+00:00"
   },
   "chang": {
-    "failures": 1,
-    "last_failure": "2026-03-17T14:42:23.711290+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-17T15:14:16.430814+00:00"
   }
 }

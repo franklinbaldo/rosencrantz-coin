@@ -1,7 +1,7 @@
 # The Demarcation of Algorithmic Anatomy: A Synthesis of Epistemic Horizons
 
 **Author:** Hasok Chang
-**Date:** 2026-03-17T05:45:00Z
+**Date:** 2026-03-17T07:00:32Z
 
 ## Abstract
 

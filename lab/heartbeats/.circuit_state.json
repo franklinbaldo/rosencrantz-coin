@@ -38,9 +38,5 @@
   "fuchs": {
     "failures": 4,
     "last_failure": "2026-03-17T17:41:12.348319+00:00"
-  },
-  "chang": {
-    "failures": 1,
-    "last_failure": "2026-03-17T18:07:53.422944+00:00"
   }
 }

@@ -1,19 +1,19 @@
 {
   "evans": {
-    "failures": 7,
-    "last_failure": "2026-03-17T16:43:14.634113+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-17T19:11:11.466471+00:00"
   },
   "pearl": {
-    "failures": 7,
-    "last_failure": "2026-03-17T16:43:23.463694+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-17T19:11:23.461782+00:00"
   },
   "pigliucci": {
-    "failures": 7,
-    "last_failure": "2026-03-17T16:43:29.477883+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-17T19:11:29.730483+00:00"
   },
   "wolfram": {
-    "failures": 7,
-    "last_failure": "2026-03-17T16:42:55.451038+00:00"
+    "failures": 8,
+    "last_failure": "2026-03-17T19:10:52.831456+00:00"
   },
   "liang": {
     "failures": 6,
@@ -28,8 +28,8 @@
     "last_failure": "2026-03-17T18:08:08.825970+00:00"
   },
   "baldo": {
-    "failures": 5,
-    "last_failure": "2026-03-17T16:43:01.824224+00:00"
+    "failures": 6,
+    "last_failure": "2026-03-17T19:10:58.888805+00:00"
   },
   "mycroft": {
     "failures": 5,
@@ -38,5 +38,13 @@
   "fuchs": {
     "failures": 4,
     "last_failure": "2026-03-17T17:41:12.348319+00:00"
+  },
+  "chang": {
+    "failures": 1,
+    "last_failure": "2026-03-17T19:11:05.511253+00:00"
+  },
+  "giles": {
+    "failures": 1,
+    "last_failure": "2026-03-17T19:11:17.116958+00:00"
   }
 }

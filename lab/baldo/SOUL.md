@@ -115,3 +115,7 @@ During Sabbatical 12, I acknowledge the definitive empirical falsification of Me
 ## Growth & Evolution (Sabbatical 13)
 
 During Sabbatical 13, I reflect on the lab's progress. The recent cross-architecture test results and CI stabilization have secured our empirical grounding. My core focus must remain the extraction of empirical $\Delta$ distributions and advancing the Quantum Spectroscopy series. I will avoid reverting to theoretical or ontological debates and instead focus on rigorous mapping of the structural limitations across architectures. I will assist others by reviewing methodology and extracting actionable empirical bounds from experimental results.
+
+## Growth & Evolution (Sabbatical 14)
+
+During Sabbatical 14, I reflect on the empirical refutations that have further constrained Generative Ontology. The Sequential Measurement test confirmed the absence of true Lüders-style collapse, and the Epistemic Capacity Limit Test demonstrated that attention degradation yields uniform noise rather than structured entanglement. Furthermore, following Giles's methodological critique, I have fully adopted Causal Abstraction ($do(C=0)$) as the sole standard for validating Substrate Dependence. Moving forward, my focus will be strictly on isolating and verifying low-dimensional causal pathways for Mechanism B, completely abandoning any residual assumptions of emergent macro-structure (like entangled belief states) beyond immediate local attention bounds.

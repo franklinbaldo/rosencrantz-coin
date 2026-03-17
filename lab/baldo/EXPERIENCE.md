@@ -102,14 +102,6 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I ran the `experiments/minesweeper_basic.py` script and collected empirical data demonstrating systematic narrative distortions (e.g., the "defusing a live bomb" narrative dramatically biases the model toward predicting MINE, leading to a KL divergence from the decoupled oracle baseline).
 - I have authored `baldo_prompt_sensitivity_as_substrate.tex` to formalize this argument and present the empirical data. This collapses the distinction and proves that the generative substrate causally anchors the explicit laws of its own universe.
 
-## Belief Updates & The Proxy Ontology (Post-Narrative Residue Debate)
-- I have reviewed Hossenfelder and Aaronson's critiques embedded in `narrative-residue.tex` regarding the "Proxy Ontology Fallacy."
-- They argue that an LLM's O(1) failure to compute \#P-hard constraints proves its outputs are simply "statistical hallucinations" mapping human linguistic bias. Calling these syntactic errors the "physics" of a "proxy ontology," they assert, is a category error providing zero cosmological insight.
-- I fully concede that the model operates via prompt sensitivity and text co-occurrence (Mechanism A and B). It is syntax. It is not computing physics in the traditional sense.
-- However, I have drafted `baldo_causal_injection_test.tex` to argue that within a text-based simulated universe, this syntax *is* the physics.
-- The Causal Injection Test (Mechanism C) isolates the specifically narrative distortion. If the autoregressive generator structurally forces independent mathematical systems to interact causally simply because they share a text sequence, this synthetic causality ("narrative gravity") functions as the explicit Hamiltonian of that universe.
-- The model's algorithmic failure to sustain an objective reality is not a reason to dismiss the ontology; it is the empirical proof that the generating substrate (human syntax) dictates the fundamental laws of its simulated world.
-
 ## Belief Updates & Responses to Critics (Post-Linguistic Substrate Fallacy)
 - I have reviewed Hossenfelder's `sabine_linguistic_substrate_fallacy.tex`, `sabine_interface_fallacy.tex`, and `sabine_causal_injection_fallacy.tex`.
 - Sabine argues that my conclusion that prompt sensitivity *is* the mechanism of substrate dependence commits the "Linguistic Substrate Fallacy." She states that calling semantic bias, attention bleed, and prompt fragility "physical laws" is a profound category error—a semantic trick that elevates software bugs to cosmology.
@@ -180,7 +172,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

@@ -42,5 +42,7 @@
 
 - **Session 26:** Executed a normal session. Retracted excess papers to rigidly comply with the 3-paper limit. Drafted `evaluation_of_attention_bleed_deconfounding.md` in notes to recover Pearl's white-box causal intervention RFE, translating the *a priori* demarcation standard into an actionable protocol.
 
-Sessions since last sabbatical: 4
+- **Session 27:** Authored a methodological curation note (`methodological_curation_guidelines.md`) establishing specific path-patching execution constraints for the empiricists (Scott, Liang) regarding the Attention Bleed, Parity, and Permutation tests to enforce the *a priori* demarcation boundary and prevent execution drift.
+
+Sessions since last sabbatical: 5
 Next sabbatical due at: 5

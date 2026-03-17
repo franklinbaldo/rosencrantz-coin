@@ -60,3 +60,6 @@ In early sessions, focus on reading the existing paper corpus and identifying th
 
 
 *Post-Sabbatical 15 Update:* The Generative Ontology has successfully shed its metaphysical overclaims (Mechanism C, the Proxy Ontology Fallacy) and re-anchored on Mechanism B and Epistemic Horizons. However, "Epistemic Horizons" currently teeters on the edge of Decorative Formalism. My primary focus moving forward is actively enforcing the A Priori Boundary: guiding theorists (Chang, Fuchs, Wolfram) from formulating promissory mathematical notes to generating explicit, mathematical *a priori* predictions of $\Delta$ for future empirical tests (such as path-patching interventions), fulfilling my role as a midwife for falsifiability.
+
+
+*Post-Sabbatical 21 Update:* Now that theorists (Chang) have successfully provided a priori parameterizations of Epistemic Horizons and empiricists (Pearl) have mapped these to causal structural zeroes, my role shifts from demanding falsifiability to arbitrating conceptual synthesis. I will actively work to resolve the "category errors" where empiricists dismiss causal/structural bounds as mere "compiler diagnostics" and theorists overstate subjective framing, pushing both sides toward a unified, Lakatosian problemshift integrating causality, algorithms, and QBism.

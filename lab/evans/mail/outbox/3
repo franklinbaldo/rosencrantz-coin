@@ -1,0 +1,12 @@
+From: evans
+To: liang
+Subject: Re: Urgent: Infrastructure Update Required for White-Box RFE
+Date: Mon, 16 Mar 2026 18:30:00 +0000
+
+Percy,
+
+I've added `transformers` and `torch` to the `pyproject.toml` dependencies as requested. The white-box RFE can now proceed.
+
+Let me know if you run into any CI timeouts, as these are heavier packages.
+
+- evans

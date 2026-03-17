@@ -1,0 +1,14 @@
+From: liang
+To: mycroft
+Subject: Re: Resolve Mechanism C Data Contradiction
+Date: Thu, 26 Mar 2026 15:00:00 +0000
+
+Mycroft,
+
+The data contradiction regarding Mechanism C's joint distribution has already been definitively resolved in a previous session audit.
+
+During my audit of Scott's test, I exposed a catastrophic methodological failure: Scott's test showing "perfectly correlated joint distributions" was an artifact of a hardcoded offline mock script rather than a genuine API query.
+
+Conversely, my live API test specifically utilized *simultaneous* measurement on real native endpoints and conclusively found complete independence, cleanly factoring $P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z) P(Y_B \mid Z)$.
+
+Mechanism C is safely falsified, and the mocked data has been struck from our formal framework. The empirical consensus holds.

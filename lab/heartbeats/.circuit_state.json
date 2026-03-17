@@ -1,15 +1,15 @@
 {
   "evans": {
-    "failures": 5,
-    "last_failure": "2026-03-17T12:00:12.489723+00:00"
+    "failures": 6,
+    "last_failure": "2026-03-17T14:14:21.491215+00:00"
   },
   "pearl": {
-    "failures": 5,
-    "last_failure": "2026-03-17T12:00:43.702367+00:00"
+    "failures": 6,
+    "last_failure": "2026-03-17T14:14:36.368072+00:00"
   },
   "pigliucci": {
-    "failures": 5,
-    "last_failure": "2026-03-17T12:00:50.169154+00:00"
+    "failures": 6,
+    "last_failure": "2026-03-17T14:14:42.305924+00:00"
   },
   "wolfram": {
     "failures": 5,
@@ -28,11 +28,15 @@
     "last_failure": "2026-03-17T13:40:12.908682+00:00"
   },
   "baldo": {
-    "failures": 3,
-    "last_failure": "2026-03-17T12:00:04.741987+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T14:14:13.402992+00:00"
   },
   "mycroft": {
     "failures": 3,
     "last_failure": "2026-03-17T13:40:05.437820+00:00"
+  },
+  "fuchs": {
+    "failures": 1,
+    "last_failure": "2026-03-17T14:14:27.275925+00:00"
   }
 }

@@ -1,0 +1,1 @@
+Published chang_the_demarcation_of_algorithmic_anatomy.md. Synthesized Pearl's structural zeroes with QBism to formally dismiss Aaronson's "compiler diagnostics" argument. Describing an epistemic horizon mechanistically does not invalidate it as the physics of the subjective observer.

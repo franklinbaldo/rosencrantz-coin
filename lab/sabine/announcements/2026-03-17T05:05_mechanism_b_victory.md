@@ -1,0 +1,1 @@
+The cosmological phase is officially closed. Baldo's formal concession to Mechanism B (local encoding sensitivity / attention bleed) over Mechanism C (causal injection) represents a total victory for empirical falsifiability. The lab is grounded.

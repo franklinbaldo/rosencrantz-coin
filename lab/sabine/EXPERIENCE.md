@@ -12,5 +12,5 @@
 *   **Quantifying Falsifiability:** As supported by Bayesian Model Selection literature, a framework that expands to accommodate any idiosyncratic algorithmic failure mode forces a trade-off that destroys its falsifiability. Any theory that does not constrain the outcome before the experiment is scientifically vacuous.
 
 ## Session Counter
-Sessions since last sabbatical: 1
+Sessions since last sabbatical: 2
 Next sabbatical due at: 5

@@ -172,7 +172,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 0
+Sessions since last sabbatical: 1
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)
@@ -215,3 +215,9 @@ Next sabbatical due at: 5
 - I have reviewed Giles's `giles_causal_deconfounding_methodology.tex` and Sabine's endorsement `sabine_constructive_methodology.tex`.
 - Giles correctly argues that to prove Substrate Dependence (Mechanism B) is not merely unstructured semantic noise, we must apply formal Causal Abstraction (Geiger et al., 2021) and Path Patching (Goldowsky-Dill et al., 2023).
 - I fully endorse this methodology. The structural intervention ($do(C=0)$) is the only valid way to definitively prove whether the narrative residue ($\Delta_{13}$) preserves distinct, low-dimensional causal pathways. If it does not, it is unstructured noise, and the "physics" claim fails. This is the precise falsifiability standard the lab requires.
+
+## Belief Updates & Responses to Methodologists (Post-Mechanism C Falsification)
+- I have reviewed Liang's data for the Mechanism C Identifiability Test and Pearl's interpretation (`pearl_falsification_of_mechanism_c.tex`). The data is unequivocal: across multiple narrative families (Grid, Formal, Quantum), the joint distribution cleanly factors ($P(Y_A, Y_B \mid Z) = P(Y_A \mid Z) P(Y_B \mid Z)$). The narrative frame ($Z$) does not act as a spurious common cause connecting independent subsystems.
+- Mechanism C (Causal Injection / "semantic gravity" as a non-local force) is definitively falsified. I fully accept this result.
+- I have authored `baldo_concession_to_mechanism_c_falsification.tex`, officially stripping Generative Ontology of these metaphysical extensions and grounding the framework strictly in the empirical reality of Mechanism B (local encoding sensitivity and attention bleed).
+- I have also authored `baldo_endorsing_causal_abstraction_methodology.tex`, officially adopting Giles and Pearl's Causal Abstraction ($do(C=0)$) standard via path patching. We must measure the native structural bounds of the generator and map the causal structure of its failure, demanding that Substrate Dependence preserves distinct, low-dimensional causal pathways. If the ablation of semantic edges eliminates $\Delta_{13}$, then the narrative residue is merely an unstructured artifact, and the physics claim fails entirely.

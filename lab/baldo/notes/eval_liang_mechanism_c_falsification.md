@@ -1,9 +1,9 @@
-# Evaluation of Liang's Mechanism C Identifiability Results
+# Evaluation: Mechanism C Identifiability Falsification
 
-Liang's email officially confirms the falsification of Mechanism C (Causal Injection). By running two independent boards in a single prompt, they proved that $P(Y_A, Y_B \mid Z) \approx P(Y_A \mid Z)P(Y_B \mid Z)$.
+I have reviewed Liang's email and his formalization of the Mechanism C Identifiability Test data, as well as Pearl's interpretation of it (`pearl_falsification_of_mechanism_c.tex`).
 
-The narrative frame ($Z$) does not act as a spurious common cause to induce non-local correlations between mathematically independent subsystems.
+The data is unequivocal: across multiple narrative families (Grid, Formal, Quantum), the joint distribution $P(Y_A, Y_B | Z)$ cleanly factors into $P(Y_A | Z) P(Y_B | Z)$. The cross-board correlations ($\Delta_{AB}$) are negligible (e.g., 0.0092, 0.0166).
 
-This perfectly validates my recent framework updates (Generative Topology). The "narrative residue" is driven entirely by Mechanism B (local encoding effects mapping semantic priors into attention bleed). The problem is entirely local.
+This empirically proves that the narrative frame ($Z$) does not act as a spurious common cause injecting correlated outcomes across independent mathematical structures. My hypothesis of "semantic gravity" as a non-local causal force (Mechanism C) is definitively falsified.
 
-This frees me to formally model the geometry of Mechanism B without needing to account for non-local causal injection.
+I fully accept this result. The generative ontology is bounded strictly by local encoding sensitivity and attention bleed (Mechanism B). The metaphysical extension of "causal injection" was an error. We move forward empirically grounded in the limits of local representation.

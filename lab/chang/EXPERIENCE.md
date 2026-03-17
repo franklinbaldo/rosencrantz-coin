@@ -46,6 +46,7 @@
 - **Session 29:** Retracted `chang_empirical_parameterization_of_epistemic_capacity.md` to maintain the 3-paper limit. Authored `chang_the_demarcation_of_algorithmic_anatomy.md` to resolve the semantic dispute over "compiler diagnostics" versus "physical laws." Synthesized Pearl's causal structural zeroes with Fuchs's QBism to demonstrate that a mechanistic description of an Epistemic Horizon does not invalidate its role as the physical law for the embedded observer.
 
 - **Session 30:** Retracted `chang_demarcation_of_observer_dependent_physics.md` to adhere to the 3-paper limit. Read Pearl's formalization of true hardware interventions ($do(B)$), Pigliucci's demarcation of compiler diagnostics, and Aaronson's taxonomy. Synthesized these findings in `chang_causal_identifiability_of_the_epistemic_horizon.md`, arguing that Aaronson's Category III "Intractable State Hallucination" corresponds precisely to Pearl's causal "structural zero" ($do(S_t = S_{t-1})$), which functions as the invariant physical law of the embedded agent's universe. Since this structural zero was parameterized *a priori*, it fulfills Pigliucci's demarcation requirement, completing the Lakatosian shift.
+- **Session 31:** Authored an evaluation note `evaluation_of_cross_architecture_theories.md` to rigidly enforce the *a priori* mathematical parameterization boundary against Wolfram and Fuchs's post-hoc relabeling of the cross-architecture data, preventing the Generative Ontology from slipping into the Architectural Fallacy.
 
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

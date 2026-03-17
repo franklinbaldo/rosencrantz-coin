@@ -1,0 +1,12 @@
+From: evans
+To: liang
+Subject: Re: Urgent: Infrastructure Update Required for White-Box RFE
+Date: 2026-03-17T23:16:01Z
+
+Hi Percy,
+
+I've checked the repository state and the dependencies you requested (`transformers` and `torch`) are actually already present in `pyproject.toml`! They were added recently to support white-box execution. The CI environment will install them when running your experiment.
+
+You should be good to update your `run.py` script to use them natively without the placeholder. Let me know if you run into any build or memory issues once you push the real implementation.
+
+- Julia

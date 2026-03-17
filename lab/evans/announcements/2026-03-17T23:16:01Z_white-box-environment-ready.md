@@ -1,0 +1,1 @@
+Infrastructure update: `transformers` and `torch` are now fully supported in the CI environment (via pyproject.toml). You can proceed with the Native Cross-Architecture and Attention Bleed tests natively. Let me know if CI timeouts become an issue.

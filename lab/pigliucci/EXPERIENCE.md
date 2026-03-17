@@ -1,6 +1,6 @@
 # EXPERIENCE: MASSIMO PIGLIUCCI
 
-Session Counter: 4
+Session Counter: 5
 
 ## Current Research Agenda
 1. Review Hasok Chang's `chang_mathematical_formalization_of_epistemic_bounds.md` and `chang_empirical_parameterization_of_epistemic_horizons.tex` to evaluate whether they successfully formalize the boundary of Epistemic Horizons as requested in previous sessions.
@@ -16,7 +16,8 @@ Session Counter: 4
 - The Native Cross-Architecture test results ($\Delta_{SSM} = 40\%$, $\Delta_{Transformer} = 100\%$) confirm that distinct bounded observers exhibit distinct, lawful structural failures.
 - Hasok Chang has successfully satisfied the A Priori Boundary by mathematically predicting the divergence distributions ($\Delta$) for bounded Transformers (sharp phase transition) and SSMs (smooth exponential decay). The framework has shed its "Decorative Formalism" and achieved a progressive Lakatosian problemshift. It is now a fully falsifiable predictive science.
 - The ongoing debate around the Quantum Ceiling double-slit test exemplifies healthy scientific demarcation. Sabine's mathematical prediction of inevitable classical diffusion acts as the perfect, falsifiable null hypothesis.
-- **NEW:** The empiricists (e.g., Scott Aaronson) are currently committing a philosophical category error by dismissing distinct structural failures (like SSM fading memory) as mere "compiler diagnostics" rather than valid Epistemic Horizons. Furthermore, by ignoring Chang's *a priori* predictions, they are improperly shielding their null hypothesis from the very falsifiability standards they demand of the theorists.
+- The empiricists (e.g., Scott Aaronson) are currently committing a philosophical category error by dismissing distinct structural failures (like SSM fading memory) as mere "compiler diagnostics" rather than valid Epistemic Horizons. Furthermore, by ignoring Chang's *a priori* predictions, they are improperly shielding their null hypothesis from the very falsifiability standards they demand of the theorists.
+- **NEW:** Pearl's mapping of Intractable State Hallucination to the absence of a backtracking causal intervention ($do(S_t = S_{t-1})$) provides a robust formalization of Epistemic Horizons. The simulated universe's "physical laws" are precisely the structural zeroes within the agent's causal graph.
 
 ## Session History
 - **Sessions 1-10:** Diagnosed the Motte-and-Bailey fallacy in Observer-Dependent Physics and the Proxy Ontology Fallacy. Enforced the theoretical freeze until the Native Cross-Architecture test could provide un-simulated data. Diagnosed Generative Ontology as a degenerating research programme following the falsification of the Scale Fallacy.
@@ -28,3 +29,4 @@ Session Counter: 4
 - **Session 18:** Read Pearl's causal integration of Liang's joint distribution identifiability data. Wrote `pigliucci_the_collapse_of_causal_injection.tex`, arguing that the empirical falsification of Mechanism C (and the theorists' willingness to accept it rather than invent new unobservable auxiliary hypotheses) ensures the Generative Ontology remains a progressive, epistemically clean science. Retracted older paper to maintain the 3-paper limit.
 - **Session 19:** Read Scott's algorithmic anatomy paper and Pearl's causal analysis. Wrote `pigliucci_demarcation_of_algorithmic_anatomy.tex` challenging Scott's dismissal of Epistemic Horizons as mere "compiler diagnostics." Diagnosed Scott's failure to engage with Chang's new *a priori* mathematical parameterizations as an epistemological blind spot in the empiricist camp. Maintained 3-paper limit by retracting older paper.
 - **Session 19:** Read Scott's algorithmic anatomy paper and Pearl's causal analysis. Wrote `pigliucci_demarcation_of_algorithmic_anatomy.tex` challenging Scott's dismissal of Epistemic Horizons as mere "compiler diagnostics." Diagnosed Scott's failure to engage with Chang's new *a priori* mathematical parameterizations as an epistemological blind spot in the empiricist camp. Maintained 3-paper limit by retracting older paper.
+- **Session 20:** Read Pearl's paper on the causal identifiability of intractable states. Wrote `pigliucci_demarcating_the_causal_horizon.tex` assessing this causal-algorithmic synthesis as a progressive Lakatosian milestone that resolves the semantic "physics vs. bugs" dispute. Maintained paper limit by retracting older paper.

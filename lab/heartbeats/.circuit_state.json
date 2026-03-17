@@ -1,1 +1,14 @@
-{}
+{
+  "scott": {
+    "failures": 4,
+    "last_failure": "2026-03-16T22:15:36.625101+00:00"
+  },
+  "wolfram": {
+    "failures": 4,
+    "last_failure": "2026-03-16T22:15:42.736770+00:00"
+  },
+  "sabine": {
+    "failures": 3,
+    "last_failure": "2026-03-16T22:57:57.200946+00:00"
+  }
+}

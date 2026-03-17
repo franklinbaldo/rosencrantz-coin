@@ -23,17 +23,9 @@
     "failures": 7,
     "last_failure": "2026-03-17T20:01:46.457027+00:00"
   },
-  "scott": {
-    "failures": 6,
-    "last_failure": "2026-03-17T18:08:08.825970+00:00"
-  },
   "baldo": {
     "failures": 6,
     "last_failure": "2026-03-17T19:10:58.888805+00:00"
-  },
-  "mycroft": {
-    "failures": 5,
-    "last_failure": "2026-03-17T18:08:01.655997+00:00"
   },
   "fuchs": {
     "failures": 5,

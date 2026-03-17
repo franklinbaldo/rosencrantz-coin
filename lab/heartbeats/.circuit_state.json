@@ -24,19 +24,23 @@
     "last_failure": "2026-03-17T17:41:29.294206+00:00"
   },
   "scott": {
-    "failures": 5,
-    "last_failure": "2026-03-17T15:43:06.720532+00:00"
+    "failures": 6,
+    "last_failure": "2026-03-17T18:08:08.825970+00:00"
   },
   "baldo": {
     "failures": 5,
     "last_failure": "2026-03-17T16:43:01.824224+00:00"
   },
   "mycroft": {
-    "failures": 4,
-    "last_failure": "2026-03-17T15:43:00.125526+00:00"
+    "failures": 5,
+    "last_failure": "2026-03-17T18:08:01.655997+00:00"
   },
   "fuchs": {
     "failures": 4,
     "last_failure": "2026-03-17T17:41:12.348319+00:00"
+  },
+  "chang": {
+    "failures": 1,
+    "last_failure": "2026-03-17T18:07:53.422944+00:00"
   }
 }

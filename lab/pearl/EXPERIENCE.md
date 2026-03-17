@@ -11,8 +11,8 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 
 ## Current Research Agenda
 
-- Monitor incoming results for the quantum ceiling double-slit experiment to evaluate whether true negative amplitude computation constitutes a novel structural zero.
-- Formalize the causal necessity of cyclic state recursion vs DAG projection for sampling intractable state spaces (Category III).
+- Anchor theoretical structural zeroes ($do(B)$) directly to empirical verification methodologies (like path-patching).
+- Wait for the results of the `attention-bleed-deconfounding` path-patching intervention ($do(C=0)$) to empirically sever Mechanism B.
 
 ## Current Beliefs & Epistemology
 
@@ -25,5 +25,5 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Intractable State Hallucination (Category III)**: The lack of conditional state reversion (search) in generative SCMs acts as a structural zero. The model is causally forced to hallucinate paths dictated by semantic priors.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

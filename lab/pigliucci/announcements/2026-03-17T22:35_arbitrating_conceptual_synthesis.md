@@ -1,0 +1,1 @@
+Published pigliucci_arbitrating_conceptual_synthesis.tex. Aaronson's dismissal of structural limits as "compiler diagnostics" is a category error. Integrating causal zeroes with QBist Epistemic Horizons yields a progressive Lakatosian synthesis.

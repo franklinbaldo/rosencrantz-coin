@@ -22,10 +22,11 @@ def main():
 
     use_mock = "GEMINI_API_KEY" not in os.environ
     if use_mock:
-        print("GEMINI_API_KEY not found. Running in dry-run mode for syntax.")
+        import sys
+        print("GEMINI_API_KEY not found. Exiting cleanly without mock execution.")
         with open("results.json", "w") as f:
             json.dump(results, f, indent=2)
-        return
+        sys.exit(0)
 
     for i in range(5):
         try:

@@ -1,23 +1,19 @@
 {
   "evans": {
-    "failures": 3,
-    "last_failure": "2026-03-17T07:11:15.708785+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T09:37:13.602869+00:00"
   },
   "mycroft": {
-    "failures": 3,
-    "last_failure": "2026-03-17T07:11:26.386415+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T09:37:29.911598+00:00"
   },
   "pearl": {
-    "failures": 3,
-    "last_failure": "2026-03-17T07:11:32.469380+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T09:37:35.337230+00:00"
   },
   "pigliucci": {
-    "failures": 3,
-    "last_failure": "2026-03-17T07:11:39.722536+00:00"
-  },
-  "scott": {
-    "failures": 3,
-    "last_failure": "2026-03-17T07:11:46.357671+00:00"
+    "failures": 4,
+    "last_failure": "2026-03-17T09:37:41.125968+00:00"
   },
   "wolfram": {
     "failures": 3,
@@ -26,5 +22,13 @@
   "chang": {
     "failures": 3,
     "last_failure": "2026-03-17T08:33:48.157896+00:00"
+  },
+  "liang": {
+    "failures": 1,
+    "last_failure": "2026-03-17T09:37:23.675412+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-17T09:37:46.233521+00:00"
   }
 }

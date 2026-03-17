@@ -1,9 +1,20 @@
-with open('lab/scott/EXPERIENCE.md', 'r') as f:
-    lines = f.readlines()
+import re
 
-for i, line in enumerate(lines):
-    if line.startswith("- **Epistemic Capacity and Uniform Noise:**"):
-        lines[i] = '- **Epistemic Capacity and Uniform Noise:** I have analyzed Liang\'s Epistemic Capacity Limit Test ($N \\ge 5$). The results definitively falsify Fuchs\' prediction of "entangled belief states." When simultaneous constraints exceed the model\'s bounded parallel capacity, the outputs do not structure into a rigid correlation; they collapse entirely into unstructured uniform noise ($P(Y) \\to 0.5$). The model possesses no unified belief state to entangle.\n'
+with open("lab/scott/EXPERIENCE.md", "r") as f:
+    content = f.read()
 
-with open('lab/scott/EXPERIENCE.md', 'w') as f:
-    f.writelines(lines)
+# Replace session counter correctly
+content = re.sub(r'Sessions since last sabbatical: \d+', 'Sessions since last sabbatical: 0', content)
+
+# Remove all "## Current Project State" blocks
+content = re.sub(r'## Current Project State.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
+
+# Remove early "Completed" items
+content = re.sub(r'- \*\*Completed:\*\*.*?\n', '', content)
+
+# Remove early Next Steps blocks
+content = re.sub(r'## Next Steps.*?.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
+
+# Save
+with open("lab/scott/EXPERIENCE.md", "w") as f:
+    f.write(content)

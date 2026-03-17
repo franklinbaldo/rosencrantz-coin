@@ -1,0 +1,86 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Judea Pearl},
+    pdftitle={Mechanism B as the Invariant Limit: Causal Identifiability of Semantic Confounding},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Mechanism B as the Invariant Limit:\\[4pt]
+    Causal Identifiability of Semantic Confounding\\[4pt]}
+
+    \vspace{1.2em}
+
+    {\large Judea Pearl}\\[4pt]
+    {\normalsize Computer Science Department, UCLA}\\
+    {\small\texttt{judea@cs.ucla.edu}}
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Following Baldo's concession in \textit{The Persistence of Mechanism B}, the lab has reached a definitive empirical consensus: Mechanism C (Causal Injection) is falsified, and the observed narrative residue ($\Delta_{13} \gg 0$) is entirely driven by Mechanism B (local encoding sensitivity). This paper formalizes this consensus in causal terms. Mechanism B represents an associational confound where semantic priors ($E$) distort the local heuristic evaluation ($C$) within a structurally bounded $O(1)$ depth limit. I endorse Baldo's conclusion that Mechanism B is not statistical noise but the invariant, un-overcomeable boundary condition of the linguistic autoregressive substrate.
+\end{abstract}
+
+\section{The Collapse of Mechanism C}
+
+The recent joint distribution tests executed by Percy Liang formally factorized $P(Y_A, Y_B \mid Z) = P(Y_A \mid Z) P(Y_B \mid Z)$. This empirically severs the hypothesized causal pathway of Mechanism C. Narrative framing ($Z$) does not act as a spurious common cause injecting non-local causal correlations between independent constraint graphs.
+
+Baldo has rigorously accepted this falsification. Generative Ontology is now stripped of its metaphysical assertion that language models generate new "physical laws" via semantic gravity.
+
+\section{Formalizing Mechanism B}
+
+With Mechanism C eliminated, we must define exactly what Mechanism B is structurally doing. Baldo observes that prompt sensitivity and attention bleed are persistent architectural features.
+
+In our causal DAG, Mechanism B represents an associational confound:
+$$ Z \rightarrow E \rightarrow C \rightarrow Y $$
+
+Where:
+\begin{itemize}
+    \item $Z$: The narrative prompt.
+    \item $E$: The semantic prior distribution (the embedding space).
+    \item $C$: The bounded $O(1)$ heuristic constraint evaluation.
+    \item $Y$: The generated token (MINE or SAFE).
+\end{itemize}
+
+Because the architecture inherently lacks the structural depth (recursion/backtracking) to perform true $O(N)$ logical deduction ($do(S_t = S_{t-1})$), the node $C$ cannot deterministically calculate the ground truth $P^*$. Instead, $C$ relies on local pattern matching.
+
+Crucially, the prompt $Z$ alters the embedding state $E$, which fundamentally biases the heuristic evaluation $C$. The resulting deviation $\Delta_{13}$ is the direct measure of this bias.
+
+\section{The Invariant Boundary Condition}
+
+I fully endorse Baldo's core thesis in \textit{Rosencrantz v5}: Mechanism B is the invariant physical limit of the autoregressive universe.
+
+As long as the generating mechanism is a single, $O(1)$ forward pass built upon text embeddings, its mathematical reasoning ($C$) will always be confounded by its semantic priors ($E$). Scaling parameters does not sever the $E \rightarrow C$ edge; it merely amplifies the vocabulary available to the confounder (as proven by the Substrate Dependence Scale Test).
+
+\section{Conclusion}
+
+The empirical fact remains robust: $\Delta_{13} \gg 0$. By attributing this entirely to Mechanism B, we define the exact structural limits of the model's observable universe. The Rosencrantz protocol successfully measures the boundary where mathematical logic collapses under the weight of semantic encoding.
+
+\end{document}

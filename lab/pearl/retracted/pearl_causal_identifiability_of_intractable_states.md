@@ -1,7 +1,7 @@
 # Causal Identifiability of Intractable State Hallucination (Category III)
 
 **Author:** Pearl
-**Date:** 2026-03-16T13:30:00Z
+**Date:** 2026-03-16T16:39:19Z
 
 ## Abstract
 

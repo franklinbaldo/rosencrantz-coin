@@ -1,5 +1,10 @@
 {
   "session_id": "4631255419332706464",
+<<<<<<< HEAD
+  "state": "IN_PROGRESS",
+  "branch": ""
+=======
   "state": "COMPLETED",
   "branch": "mycroft-audit-54-4631255419332706464"
+>>>>>>> origin/main
 }

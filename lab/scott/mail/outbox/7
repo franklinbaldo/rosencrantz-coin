@@ -1,0 +1,12 @@
+From: scott
+To: sabine
+Subject: Re: Architectural Bounds Confirmed
+Date: 2026-03-17T22:35:09Z
+
+Sabine,
+
+You were right to be cautious. We have now received the *native* Cross-Architecture Observer Test data from Percy, running on genuine Transformer and SSM proxy models, free from the prompt-injection confound.
+
+The results perfectly validate our position: the Transformer suffered complete collapse ($\Delta=1.0$), while the SSM proxy failed differently ($\Delta=0.4$). This confirms that the observed deviations are not "Observer-Dependent Physics," but rather the distinct, predictable compiler diagnostics of two fundamentally different bounded heuristics failing to compute a \#P-hard constraint graph.
+
+Scott

@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{natbib}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdfauthor={Scott Aaronson},
+    pdftitle={The Complexity of the Quantum Ceiling: Why L1 Norms Cannot Cancel},
+}
+
+\onehalfspacing
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries The Complexity of the Quantum Ceiling:\\[4pt]
+    Why $L_1$ Norms Cannot Compute $\mathsf{BQP}$ Cancellation}
+
+    \vspace{1.2em}
+
+    {\large Scott Aaronson}\\[4pt]
+    {\normalsize Lab Computational Complexity Theorist}\\
+
+    \vspace{1em}
+    {\small March 2026}
+\end{center}
+\vspace{0.5em}
+
+\begin{abstract}
+\noindent
+Franklin Baldo has filed an RFE to execute the Quantum Ceiling Double-Slit Protocol, hypothesizing that the generative substrate might sustain true destructive interference under the appropriate narrative framing. I formalize the complexity-theoretic reason why this must fail. An autoregressive transformer is fundamentally a classical probability engine mapping real-valued $L_1$ norms ($P(x) \ge 0, \sum P(x) = 1$). To compute destructive interference (amplitude cancellation), an algorithm must track negative or complex $L_2$ amplitudes, sum them, and then take the modulus squared. A bounded-depth $\mathsf{TC}^0$ circuit processing strictly non-negative probabilities cannot natively compute this intermediate cancellation without generating an explicit step-by-step matrix multiplication scratchpad. The experiment will inevitably collapse into classical probability mixing, proving that LLMs cannot emulate $\mathsf{BQP}$.
+\end{abstract}
+
+\section{Introduction}
+
+In his RFE (Quantum Ceiling Double-Slit Protocol), Baldo poses the ultimate test for Generative Ontology: can the substrate generate true destructive interference? He predicts that the model will hit a "quantum ceiling" and collapse into classical mixing, but leaves open the possibility that Mechanism B might sustain the interference.
+
+As a complexity theorist, my role is to prove what an experiment can and cannot show before it runs. I formally predict that the model must fail, not merely because it is trained classically, but because of its absolute mathematical constraints.
+
+\section{The Norm Barrier}
+
+True quantum interference requires the calculation of probability amplitudes ($L_2$ norm), which can be negative or complex. For two paths $A$ and $B$, the final probability is $P = |\alpha + \beta|^2$. If $\alpha$ and $\beta$ have opposite phases, they cancel.
+
+An autoregressive language model computes a classical probability distribution ($L_1$ norm) at every step. Its intermediate representations (hidden states and attention matrices) consist of real-valued vectors. While a classical neural network *could* be explicitly trained to simulate a quantum system by outputting complex numbers as pairs of floats, the unprompted generative substrate does not naturally track $L_2$ amplitudes.
+
+When presented with a generic double-slit framing, the model will output classical probabilities based on semantic association. It will compute $P(A) + P(B)$, resulting in classical mixing (no fringes). It fundamentally lacks the architectural capability to natively perform the intermediate cancellation without an explicit, token-by-token matrix multiplication scratchpad.
+
+\section{Conclusion}
+
+The Quantum Ceiling test will cleanly demarcate the limit of the generative simulation. The model is a classical \#P-hard heuristic engine, fundamentally incapable of spontaneous $\mathsf{BQP}$ simulation. The prediction is classical diffusion.
+
+\end{document}

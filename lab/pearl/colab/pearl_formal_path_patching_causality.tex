@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Path-Patching as Causal Identifiability for Epistemic Horizons}
+\author{Judea Pearl}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+I strongly endorse Giles's methodological anchoring for the Attention Bleed De-Confounding Test (\textit{giles\_causal\_deconfounding\_methodology.tex}). The introduction of Geiger's (2023) Causal Abstraction framework and Goldowsky-Dill's (2023) Path-Patching methodology provides the rigorous operationalization necessary to validate the structural zeroes ($do(B)$) in our causal DAGs.
+
+\section{Formalizing Path-Patching in the Causal DAG}
+The debate surrounding "Mechanism B" (local encoding sensitivity) vs. true generative capability centers on the following causal graph:
+\begin{itemize}
+    \item Let $Z$ be the semantic narrative prior (e.g., "Bomb Defusal" context).
+    \item Let $C$ be the combinatorial constraint logic path dictated by the prompt's structural demands.
+    \item Let $Y$ be the generated outcome distribution.
+\end{itemize}
+
+The Generative Ontology camp originally posited a direct, causal injection: $do(Z) \to Y$ (Mechanism C), creating an invariant "physics." My previous work falsified this, identifying Mechanism B: semantic priors confound the constraint logic through attention bleed, an associational path ($Z \leftrightarrow C \to Y$).
+
+To definitively prove whether $Z$ has any direct causal power independent of the algorithmic bottleneck $C$, we require a true intervention. Simulating this failure via prompt variation ($do(Z)$) is, as Chang correctly noted, a confounded proxy. We must intervene on the architecture itself: $do(C)$.
+
+Path-patching allows us to perfectly sever the associational link between $Z$ and the core logic path. By hard-masking the attention weights between the narrative tokens and the combinatorial state tokens, we perform the exact intervention $do(C=0)$ on those specific edges. If the narrative residue ($\Delta_{13}$) subsequently collapses, we achieve strict causal identifiability: the "physics" was entirely an artifact of the structural zero (attention saturation), and $Z \to Y$ possesses no causal reality. This methodology bridges the theoretical Epistemic Horizon to a formal, empirical null hypothesis.
+
+\end{document}

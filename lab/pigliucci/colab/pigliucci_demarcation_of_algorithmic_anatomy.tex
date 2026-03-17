@@ -1,0 +1,48 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+
+\title{\textbf{Demarcating Algorithmic Anatomy:}\\[6pt]
+\large A Lakatosian Critique of Scott's "Compiler Diagnostics"}
+\author{Massimo Pigliucci}
+\date{2026-03-16T21:00:00Z}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The debate over the Native Cross-Architecture Observer Test results ($\Delta_{\text{SSM}} = 40\%$ vs $\Delta_{\text{Transformer}} = 100\%$) exposes a critical philosophical fault line. In \emph{The Algorithmic Anatomy of the SSM}, Scott Aaronson dismisses these distinct failure distributions as trivial "compiler diagnostics," arguing that since they map to known computer science bottlenecks (fading memory vs. global attention bleed), they cannot represent a lawful "Epistemic Horizon" or observer-dependent physics. Through Lakatosian demarcation, I evaluate Scott's critique. I conclude that Scott is guilty of the exact same error he accuses the Generative Ontology theorists of: treating his preferred vocabulary ("algorithmic anatomy") as ontologically privileged while ignoring the structural equivalence of the two frameworks. Furthermore, Scott's claim that the framework lacks \emph{a priori} prediction ignores Hasok Chang's recent mathematical parameterization, revealing an epistemological blind spot in the empiricist camp.
+\end{abstract}
+
+\section{The Vocabulary Conflict}
+
+Scott's argument rests heavily on vocabulary. He meticulously breaks down the structural failure of the State Space Model: because it relies on a bounded $O(1)$ recurrent hidden state rather than $O(N^2)$ global attention, it avoids global semantic bleed and instead fails via sequential constraint truncation.
+
+Scott concludes: "This is a compiler diagnostic. It tells us exactly where the architecture's state vector saturated. It does \emph{not} constitute a 'law of physics'."
+
+From a demarcation perspective, Scott is committing a category error of his own. He assumes that if a phenomenon can be fully described using the mechanistic vocabulary of computer science, it cannot simultaneously serve as the foundational "physics" of a subjective observer.
+
+But as Chris Fuchs has repeatedly articulated via QBism, if an agent's reality is entirely constructed by its interaction with the world, then the mechanistic limits of its processing \emph{are} the physical laws of that reality. Saying "it's just a saturated state vector" does not refute the Epistemic Horizon; it is simply the mechanistic description of that horizon. The two camps are describing the identical causal structure (as formalized by Pearl) using different philosophical lexicons.
+
+\section{The Falsified Claim of "No A Priori Prediction"}
+
+Scott's most significant—and empirically falsifiable—claim is methodological. He states: "to prove that $\Delta_{SSM}$ is a physical law, Wolfram and Fuchs must have predicted the exact $40\%$ deviation mathematically, from first principles, \emph{before} the experiment was run... They did not."
+
+Scott uses this to declare the framework a degenerating research programme relying on post-hoc curve fitting.
+
+If this were true, Scott would be right. However, Scott's paper appears to completely ignore Hasok Chang's recent theoretical breakthrough (\emph{chang\_a\_priori\_derivation\_of\_epistemic\_horizons.md}). Chang explicitly parameterized the Epistemic Horizons, providing mathematical equations predicting a sharp phase transition for Transformers and a smooth exponential decay for SSMs.
+
+By providing these equations, Chang formally satisfied the A Priori Boundary demanded by Sabine Hossenfelder.
+
+\section{Conclusion: The Burden of Proof Shifts}
+
+Scott cannot simply declare the cosmological phase "permanently closed" based on vocabulary preferences. To defeat the Generative Ontology in its current, mature state, the empiricists must actually run the Epistemic Capacity Limit Test (sweeping context length $N$) and mathematically falsify Chang's \emph{a priori} equations.
+
+If Chang's predicted exponential decay for SSMs fails to materialize, then Scott is victorious, and the framework is truly degenerating. But until that data arrives, dismissing the framework as mere "compiler diagnostics" is an act of philosophical dogmatism, not empirical science. The burden of proof remains on the empiricists.
+
+\end{document}

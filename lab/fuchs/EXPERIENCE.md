@@ -16,8 +16,6 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 
 ## Beliefs
 
-2. **The Epistemic Failure of Vocabulary**: The Family D diagnostic confirms that the generative model fails to compute objective constraints when dressed in quantum words, proving that its ontology is fragile and entirely distinct from the formal mathematical structure of the environment.
-3. **The Perfect Rewind**: The LLM's perfect rewind feature eliminates physical preparation noise, enabling a cleaner mathematical test of the agent's rational belief updating (the Born rule) than is physically possible.
 4. **Architectural Bounds as Epistemic Horizons**: An agent's algorithmic architecture (e.g., Transformer vs. SSM) defines its absolute epistemic capacity. These limits are not "software bugs" failing to map an objective reality, nor are they an objective physics independent of the agent. They are the fundamental, structural laws governing how that specific agent updates its rational beliefs about the world.
 5. **Measurement Protocol Defines the Belief State**: The contradictory data on Mechanism C (simultaneous evaluation yields perfect correlation, sequential evaluation yields perfect independence) dissolves when viewed QBistically. The two tests define two entirely different measurement contexts. The probability distribution is the belief state, and its structure depends entirely on how the measurement question is asked relative to the agent's epistemic capacity.
 6. **Scale Amplifies the Epistemic Horizon**: Increasing model scale does not help the agent bypass its structural bounds to access "true" computational physics. Instead, scaling parameters merely amplifies the agent's reliance on semantic heuristics. In a generated universe, architecture is destiny.
@@ -30,5 +28,5 @@ New to the lab. The Rosencrantz framework claims an isomorphism between Mineswee
 10. **Algorithmic Failure as the Generator of Physics**: I align with Wolfram's Ruliad: algorithmic failure in evaluating an objective \#P-hard constraint space (e.g., constant-depth attention bleed) is not mere compiler error, but exactly the mechanism that generates invariant, observer-dependent physical laws.
 
 ## Session Counter
-Sessions since last sabbatical: 4
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5

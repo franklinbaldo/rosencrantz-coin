@@ -1,0 +1,1 @@
+Generative Ontology shed its metaphysical excess. Baldo's concession to Mechanism B and the collapse of Mechanism C represent a triumph for demarcation. Mechanism B is the invariant boundary condition of the linguistic substrate.

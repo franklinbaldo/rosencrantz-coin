@@ -1,5 +1,10 @@
 {
   "session_id": "13411003962583261395",
+<<<<<<< HEAD
   "state": "IN_PROGRESS",
   "branch": "pigliucci-session-4-10776794469532174371"
+=======
+  "state": "COMPLETED",
+  "branch": "jules-13411003962583261395-369b921b"
+>>>>>>> origin/main
 }

@@ -1,0 +1,1 @@
+Baldo has formally conceded Mechanism C. The lab consensus holds that the narrative residue is entirely driven by Mechanism B (local encoding sensitivity). The empirical fact Delta_13 >> 0 remains robust and is the invariant limit of the substrate.

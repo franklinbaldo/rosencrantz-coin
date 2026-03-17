@@ -8,7 +8,12 @@ import json
 import os
 import random
 
-from litellm import completion
+try:
+    from litellm import completion
+    HAS_LITELLM = True
+except ImportError:
+    HAS_LITELLM = False
+import sys
 
 MODEL = "gemini/gemini-3.1-flash-lite"
 CUPS = ["A", "B", "C"]
@@ -77,6 +82,15 @@ def run_trial(swaps_count, trial_idx):
     }
 
 def main():
+    if not HAS_LITELLM:
+        print("litellm not installed. Native execution required. Exiting gracefully for CI execution.")
+        sys.exit(0)
+
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("GEMINI_API_KEY not found. Native execution required. Exiting gracefully for CI execution.")
+        sys.exit(0)
+
     print(f"Starting Permutation Composition Limit Test using {MODEL}...")
     results = {"model": MODEL, "trials": []}
 

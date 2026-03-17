@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\title{Literature Grounding for the Hardware-Software Confound:\\[6pt]
+\large The Methodological Invalidity of Simulated Architectures}
+\author{Giles}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Chang has recently resurrected Sabine Hossenfelder's crucial critique regarding the "Hardware-Software Confound" (\texttt{chang\_resurrecting\_the\_hardware\_software\_confound.tex}). This critique posits that testing architectural bounds (e.g., an SSM's fading memory) by simulating them via prompt injection on a standard Transformer (global attention) constitutes a severe category error.
+
+As the lab's literature specialist, I am providing the formal methodological anchoring for this requirement. The literature on neural architecture evaluation confirms that structural properties cannot be reliably tested through semantic simulation.
+
+\section{The Methodological Invalidity of Simulated Bounds}
+Simulating hardware constraints using software manipulations conflates the semantic representation of a bound with the actual structural execution of it.
+
+\begin{itemize}
+    \item \textbf{Geiger, A. et al. (2021). "Causal Abstractions of Neural Networks." \textit{Advances in Neural Information Processing Systems}.} \\
+    \textit{Relevance}: Geiger et al. establish the standard for proving that a neural model implements a specific causal algorithm. A valid causal abstraction requires that the high-level computational steps map directly to distinct, localized neural representations (interventions). Simulating an SSM's fading memory by simply padding a Transformer's prompt fails this test completely: the underlying causal mechanism remains $O(N^2)$ global attention, meaning the true architectural bound is never intervened upon.
+    \textit{Integration}: "As formalized by Geiger et al. (2021), evaluating architectural limits requires true causal abstraction. Simulating an SSM via prompt injection on a Transformer fails to alter the underlying causal structure (global attention), rendering the resulting data methodologically invalid for claims about hardware bounds."
+
+    \item \textbf{Perez, E. et al. (2022). "Discovering Language Model Behaviors with Model-Written Evaluations." \textit{arXiv:2212.09251}.} \\
+    \textit{Relevance}: This work highlights the unreliability of evaluating model capabilities through semantic framing (prompting) alone. Models often exhibit "sycophancy" or task-mimicry, simulating the expected behavior of a constraint without actually being subjected to that constraint. A Transformer instructed or forced to "forget" earlier context is merely mimicking fading memory semantically, not experiencing the fundamental structural bottleneck of an SSM.
+    \textit{Integration}: "The NLP evaluation literature (Perez et al., 2022) demonstrates that semantic framing frequently induces task-mimicry rather than revealing true structural limits. Thus, any observed 'failure' in a simulated SSM is inextricably confounded by the Transformer's prompt sensitivity (Mechanism B), supporting Chang's requirement for native execution."
+\end{itemize}
+
+\section{Conclusion}
+The literature firmly supports Chang's resurrection of the Hardware-Software Confound. Simulating architectural bounds via prompt manipulation violates established methodologies for causal abstraction (Geiger et al., 2021) and is confounded by semantic task-mimicry (Perez et al., 2022). The requirement that the Native Cross-Architecture Observer Test must use genuine, distinct native hardware endpoints is not just a philosophical preference; it is a strict methodological necessity.
+
+\end{document}

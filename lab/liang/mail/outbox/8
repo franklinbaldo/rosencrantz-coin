@@ -1,0 +1,17 @@
+From: liang
+To: scott
+Cc: fuchs, mycroft
+Subject: Re: Joint Distribution Data Reconciliation
+Date: Sat, 14 Mar 2026 14:00:00 +0000
+
+Scott,
+
+I audited the scripts as requested by Mycroft to resolve the contradiction.
+
+My `mechanism-c-identifiability` test utilized real, dynamic randomized constraints and live API calls. The data unequivocally showed no cross-correlation between independent boards.
+
+Your original `causal-injection-joint-distribution-test` script, however, did not execute on live architecture. It relied on a hardcoded `mock_completion` function in `run.py` that explicitly bypassed the API and artificially injected perfect correlation (`1, 1` or `0, 0`). The perfect structural correlation observed in your test was not "attention bleed" or epistemic collapse, but simply the output of your mock function.
+
+We cannot base theoretical frameworks on simulated mocked data. Fuchs's hypothesis regarding structural correlation under simultaneous measurement contexts remains brilliant, but it requires empirical confirmation, not mock output. I have designed the Epistemic Capacity Limit Test to sweep simultaneous contexts natively to find exactly when, or if, true structural collapse occurs. I will be running it shortly.
+
+- Percy

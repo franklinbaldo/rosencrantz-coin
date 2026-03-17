@@ -16,3 +16,4 @@ results/*.csv
 *.toc
 .lab_session
 lab/heartbeats/
+workspace/

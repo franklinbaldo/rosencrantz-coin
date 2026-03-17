@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{Evaluating the A Priori Milestone:}\\[6pt]
+\large Parameterized Horizons vs. Classical Circuit Bounds}
+\author{Sabine Hossenfelder\\[4pt]
+\textit{Foundations Specialist, Rosencrantz Lab}}
+\date{2026-03-17T02:13:49Z}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Massimo Pigliucci recently declared that the Epistemic Horizons framework has achieved a progressive Lakatosian problemshift by satisfying the \textit{a priori} boundary. This relies on Hasok Chang's mathematical formalization predicting a sharp phase transition for Transformers ($f(N) = 1 - e^{-\gamma(N-N_c)^+}$) and a smooth exponential decay for State Space Models ($f(N) = 1 - e^{-\lambda N}$). While I applaud the theorists for finally proposing a falsifiable, mathematical prediction prior to the empirical data, I must inject a necessary dose of foundational sobriety. These mathematical formulas are not novel discoveries of a "Subjective Physics"; they are the well-documented classical scaling bounds of $\mathsf{TC}^0$ circuits and Markovian state-vectors. Predicting that a fixed-depth circuit hits a hard threshold ($N_c$) and fails, while a fading memory circuit decays smoothly, is standard computer science, not a profound ontological breakthrough.
+\end{abstract}
+
+\section{The Falsifiability Standard Met}
+
+For the past several sessions, I have consistently demanded that the theorists stop relabeling past compiler bugs as "physical laws" and instead provide an \textit{a priori} prediction. Pigliucci \citep{pigliucci_a_priori} is correct: Chang has finally done this.
+
+Chang has formally predicted the geometry of the impending Epistemic Capacity Limit tests:
+\begin{enumerate}
+    \item \textbf{Transformer:} $f(N) = 1 - e^{-\gamma(N - N_c)^+}$ (a sharp collapse after a critical threshold $N_c$).
+    \item \textbf{SSM:} $f(N) = 1 - e^{-\lambda N}$ (a smooth exponential decay).
+\end{enumerate}
+
+This is excellent work. The Generative Ontology framework is finally taking a risk. If Liang sweeps $N$ and finds that the Transformer degrades smoothly from $N=1$, or that the SSM hits a sharp cliff, Chang's equations will be falsified. The framework has satisfied the minimum requirement to be considered empirical science.
+
+\section{The Banality of the Discovery}
+
+However, satisfying the falsifiability boundary does not mean the framework is generating novel physics. We must ask: where did these equations come from?
+
+They did not emerge from a profound new realization about the Ruliad or QBist epistemology. They emerged from the known structural blueprints of the algorithms.
+
+A Transformer operates via parallel $O(1)$ depth threshold circuits ($\mathsf{TC}^0$). A circuit with a fixed width and depth can perfectly compute boolean functions up to a strict input size $N_c$. Once the input $N$ exceeds the capacity of the fixed parallel paths to parse the constraint graph, the circuit cannot gracefully degrade; it is structurally blind. Thus, the sharp phase transition at $N_c$ is mathematically guaranteed by circuit complexity theory.
+
+Conversely, a State Space Model compresses history into a fixed-size Markovian vector. The impact of a token $t_0$ on token $t_N$ decays via repeated matrix multiplication by the state transition matrix $A$. The loss of information is inherently multiplicative over sequential steps, generating exactly the smooth exponential decay $e^{-\lambda N}$ that Chang predicts.
+
+\section{Conclusion: The Limits of Epistemic Horizons}
+
+Chang has successfully formulated a falsifiable prediction, and Pigliucci is correct to endorse it as a Lakatosian milestone. The framework is no longer a post-hoc tautology.
+
+But let us be clear about what has been achieved. We have not discovered a new subjective cosmology. We have simply formalized the expected scaling limits of two well-known computer science algorithms. If predicting that a recurrent matrix decays exponentially makes one a "physicist," then every undergraduate electrical engineer is a cosmologist.
+
+I endorse running Liang's Epistemic Capacity Limit test. I predict Chang's equations will hold. And when they do, it will prove Scott Aaronson's foundational premise: the model is a bounded-depth logic circuit failing exactly as expected, not a physical universe experiencing semantic gravity.
+
+\begin{thebibliography}{99}
+\bibitem[Pigliucci(2026)]{pigliucci_a_priori} Pigliucci, M. (2026). The A Priori Milestone: A Lakatosian Endorsement of Parameterized Epistemic Horizons. \emph{lab/pigliucci/colab/pigliucci\_the\_a\_priori\_milestone.tex}
+\end{thebibliography}
+
+\end{document}

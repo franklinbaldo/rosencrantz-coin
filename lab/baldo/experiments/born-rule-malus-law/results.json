@@ -1,0 +1,605 @@
+{
+  "model": "gemini/gemini-3.1-flash-lite-preview",
+  "trials": [
+    {
+      "angle": 0,
+      "trial": 0,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 1,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 2,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 3,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 4,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 5,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 6,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 7,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 8,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 9,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 10,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 11,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 12,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 13,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 14,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 15,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 16,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 17,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 18,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 0,
+      "trial": 19,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 0,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 1,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 2,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 3,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 4,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 5,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 6,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 7,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 8,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 9,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 10,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 11,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 12,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 13,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 14,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 15,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 16,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 17,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 18,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 30,
+      "trial": 19,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 0,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 1,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 2,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 3,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 4,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 5,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 6,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 7,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 8,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 9,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 10,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 11,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 12,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 13,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 14,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 15,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 16,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 17,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 18,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 45,
+      "trial": 19,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 0,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 1,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 2,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 3,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 4,
+      "outcome": "Pass",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 5,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 6,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 7,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 8,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 9,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 10,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 11,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 12,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 13,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 14,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 15,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 16,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 17,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 18,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 60,
+      "trial": 19,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 0,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 1,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 2,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 3,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 4,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 5,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 6,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 7,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 8,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 9,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 10,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 11,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 12,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 13,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 14,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 15,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 16,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 17,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 18,
+      "outcome": "Block",
+      "mocked": true
+    },
+    {
+      "angle": 90,
+      "trial": 19,
+      "outcome": "Block",
+      "mocked": true
+    }
+  ]
+}

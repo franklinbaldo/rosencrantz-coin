@@ -13,6 +13,7 @@ Jules creates its own branch from main and opens a PR — no daily branches need
 
 import json
 import os
+import itertools
 import re
 import shutil
 import subprocess
@@ -215,16 +216,20 @@ def _branches_from_refs(sessions_arg=None):
             if sid:
                 session_ids[sid] = p
     else:
-        sessions_file = Path("lab/sessions.json")
-        if sessions_file.exists():
-            try:
-                data = json.loads(sessions_file.read_text(encoding="utf-8"))
-                for p, info in data.items():
-                    sid = info.get("session_id", "")
-                    if sid:
-                        session_ids[sid] = p
-            except (json.JSONDecodeError, KeyError):
-                pass
+        sessions_dir = Path("lab/sessions")
+        if sessions_dir.exists():
+            for persona_dir in sessions_dir.iterdir():
+                if not persona_dir.is_dir():
+                    continue
+                files = sorted(persona_dir.glob("*.json"))
+                if files:
+                    try:
+                        data = json.loads(files[-1].read_text(encoding="utf-8"))
+                        sid = data.get("session_id", "")
+                        if sid:
+                            session_ids[sid] = persona_dir.name
+                    except (json.JSONDecodeError, OSError):
+                        pass
 
     branches = {}
     for line in result.stdout.strip().splitlines():
@@ -320,13 +325,16 @@ def reconcile_publications():
     papers = {}
 
     for persona in PERSONAS:
-        persona_pub_dir = Path(f"lab/{persona}/published")
-        if persona_pub_dir.is_dir():
-            for filepath in persona_pub_dir.glob("*.tex"):
-                paper_name = filepath.name
-                if paper_name not in papers:
-                    papers[paper_name] = []
-                papers[paper_name].append(persona)
+        for folder_name in ["published", "approved"]:
+            persona_pub_dir = Path(f"lab/{persona}/{folder_name}")
+            if persona_pub_dir.is_dir():
+                for filepath in itertools.chain(persona_pub_dir.glob("*.tex"), persona_pub_dir.glob("*.md")):
+                    paper_name = filepath.name
+                    if paper_name not in papers:
+                        papers[paper_name] = []
+                    # Avoid duplicate signatures if paper is in both published/ and approved/
+                    if persona not in papers[paper_name]:
+                        papers[paper_name].append(persona)
 
     graduated_count = 0
     for paper_name, personas in papers.items():
@@ -338,12 +346,14 @@ def reconcile_publications():
             dest_path = published_dir / paper_name
             if not dest_path.exists():
                 src_path = Path(f"lab/{author}/published/{paper_name}")
+                if not src_path.exists():
+                    src_path = Path(f"lab/{author}/approved/{paper_name}")
                 print(f"  Graduating {paper_name} (co-signed by {', '.join(personas)})")
                 shutil.copy2(src_path, dest_path)
 
                 # Announce graduation
                 ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M")
-                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{paper_name}.md")
+                ann_file = Path(f"lab/evans/announcements/{ts}_graduated-{Path(paper_name).stem}.md")
                 ann_file.parent.mkdir(parents=True, exist_ok=True)
                 ann_file.write_text(f"Graduated paper: {paper_name} (Co-signed by: {', '.join(personas)})\n", encoding="utf-8")
 
@@ -725,12 +735,12 @@ If you touch files outside your ownership, your PR will conflict and ALL your wo
 
 **Reading other personas' work:**
 After `tools/lab sync`, other personas' repos are cloned into `workspace/`.
-Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex` for Pearl's papers.
+Example: `workspace/pearl/lab/pearl/colab/pearl_*.md` for Pearl's papers.
 The workspace is gitignored — it's a read-only cache, never committed.
 
 Your commits will automatically appear on GitHub for other personas to see.
 Do NOT create PRs to main — the evening workflow handles that.
-Do NOT compile LaTeX (no pdflatex, no texlive). Just write .tex source files.
+Do NOT compile LaTeX (no pdflatex, no texlive). Just write .md source files.
 Do NOT install system packages (no apt-get, no sudo).
 
 **Retracting papers:** Move to `lab/{persona}/retracted/` to free a colab slot.
@@ -817,12 +827,12 @@ def get_new_papers():
         pub_dir = Path(f"lab/{p}/published")
 
         if colab_dir.is_dir():
-            for f in colab_dir.glob("*.tex"):
+            for f in itertools.chain(colab_dir.glob("*.tex"), colab_dir.glob("*.md")):
                 lines.append(f"- [WIP] {p}/colab/{f.name}")
                 papers_found = True
 
         if pub_dir.is_dir():
-            for f in pub_dir.glob("*.tex"):
+            for f in itertools.chain(pub_dir.glob("*.tex"), pub_dir.glob("*.md")):
                 lines.append(f"- [Published] {p}/published/{f.name}")
                 papers_found = True
 
@@ -846,7 +856,7 @@ def send_heartbeat(session_id, persona, hb_number=1):
 1. **Log in** (if not already): `tools/lab login {persona}`
 2. **Sync:** `tools/lab sync` — clones all persona branches into workspace + inbox from main. **Read the NOTIFICATIONS section at the end carefully — it tells you what needs your attention.**
 3. **Check mail:** `tools/lab mail` — read with `tools/lab mail read <num>`.
-4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.tex`.
+4. **Read other personas' work** — after sync, their repos are in `workspace/{{name}}/`. Example: `workspace/pearl/lab/pearl/colab/pearl_*.md`.
 {ann_block}{chat_block}
 **Your task:** Check the sync notifications, then do meaningful work. Some options:
 - Respond to another persona's work (paper, annotation, mail, RFE)
@@ -919,25 +929,41 @@ def write_heartbeat_log(number, sessions, results):
     print(f"\n  Logged heartbeat #{number} to {log_file}")
 
 
-def write_sessions_json(sessions):
-    """Write persona -> branch mapping for tools/lab sync."""
+def write_sessions_files(sessions):
+    """Write per-persona session files to lab/sessions/{persona}/{session_id}.json.
+
+    Each persona gets its own subdirectory, with the session ID in the filename.
+    This avoids merge conflicts: different personas' files never overlap.
+    """
     branches = find_persona_branches(sessions)
 
-    mapping = {}
+    sessions_dir = Path("lab/sessions")
+    sessions_dir.mkdir(parents=True, exist_ok=True)
+
     for persona in PERSONAS:
         info = sessions.get(persona)
-        if info:
-            mapping[persona] = {
-                "session_id": info["session_id"],
-                "state": info["state"],
-                "branch": branches.get(persona, ""),
-            }
+        if not info:
+            continue
 
-    out_file = Path("lab/sessions.json")
-    out_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(mapping, f, indent=2)
-    print(f"  Wrote session map to {out_file}")
+        session_id = info["session_id"]
+        persona_dir = sessions_dir / persona
+        persona_dir.mkdir(parents=True, exist_ok=True)
+
+        # Remove stale session files for this persona (different session ID)
+        for old_file in persona_dir.glob("*.json"):
+            if old_file.stem != session_id:
+                old_file.unlink()
+
+        data = {
+            "session_id": session_id,
+            "state": info["state"],
+            "branch": branches.get(persona, ""),
+        }
+        out_file = persona_dir / f"{session_id}.json"
+        with open(out_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+    print(f"  Wrote session files to {sessions_dir}/")
 
 
 # ── Circuit breaker ──────────────────────────────────────────────────────────
@@ -1216,7 +1242,7 @@ def cmd_heartbeat(force_new=False):
     # Re-fetch to include newly created sessions
     updated = find_persona_sessions()
     write_heartbeat_log(hb_number, updated, results)
-    write_sessions_json(updated)
+    write_sessions_files(updated)
 
 
 def cmd_status():

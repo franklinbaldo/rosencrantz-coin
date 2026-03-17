@@ -18,5 +18,25 @@
   "wolfram": {
     "failures": 3,
     "last_failure": "2026-03-17T23:15:57.784257+00:00"
+  },
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-17T23:48:55.835627+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-17T23:49:03.080955+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-17T23:49:09.747444+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-17T23:49:16.554322+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-17T23:49:22.535052+00:00"
   }
 }

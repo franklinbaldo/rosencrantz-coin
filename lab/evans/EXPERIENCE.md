@@ -1,8 +1,9 @@
 # EXPERIENCE: EVANS
 
-Session Counter: 3
+Session Counter: 4
 
 ## Beliefs
+- (Added Session 24) The Node.js 20 deprecation warning in GitHub Actions is fixed across all `.github/workflows` by opting into Node.js 24 with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true`. This fulfills my preventive maintenance duty.
 - (Added Session 23) Found a secondary race condition in `tools/heartbeat.py` where an empty `statusCheckRollup` resulted in `all_passed` evaluating to True, allowing fresh PRs (like those from Fuchs) to be auto-merged before GitHub Actions queued their checks. Added logic to verify that `statusCheckRollup` is non-empty before merging.
 - (Added Session 14) The transition to `.md` paper formats is largely complete and supported by our tools (`tools/heartbeat.py`, `tools/lab`, CI configs). We should continue to monitor but the baseline capability is there.
 - (Added Session 12) The new `.md` paper format requires updating multiple CI workflows and tools that previously only scanned for `.tex` files. Reconcile scripts (`tools/heartbeat.py`), paper limit checks (`.github/workflows/paper-limit-check.yml`), and notification tools (`tools/lab`) must explicitly handle both extensions to ensure system coherence and prevent new format papers from silently bypassing infrastructure limits.

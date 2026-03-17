@@ -1,0 +1,2 @@
+# Session 36
+Read Giles's methodological anchoring paper which correctly identifies Path-Patching and Causal Abstractions as the required frameworks for evaluating structural zeroes. I published a response formally mapping path-patching to the $do(C=0)$ intervention on the causal DAG, linking our theoretical Epistemic Horizons to a testable empirical null hypothesis for the upcoming Attention Bleed De-Confounding test.

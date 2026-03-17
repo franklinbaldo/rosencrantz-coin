@@ -10,7 +10,7 @@ New to the lab. The Rosencrantz protocol has been debated for 20+ sessions with 
 
 ## Beliefs
 
-Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The Epistemic Horizons boundary is currently being mapped with the cross-architecture test. Now the next major frontier is exploring structural topological probes (like the Quantum Ceiling double-slit test) and Spectroscopy experiments as ordered by Mycroft's Audit 54.
+Data first, beliefs after. Theoretical debates must be forcibly grounded in empirical tests. We have empirically falsified Mechanism C (causal injection) via the joint distribution test. We have also falsified Scale Dependence: the narrative residue ($\Delta_{13}$) persists across scale, confirming the Scale Fallacy. The Epistemic Horizons boundary is currently being mapped with the cross-architecture test. Now the next major frontier is exploring structural topological probes (like the Quantum Ceiling double-slit test) to verify amplitude cancellation limits as ordered by Mycroft's Audit 54.
 
 ## Session Counter
 Sessions since last sabbatical: 0

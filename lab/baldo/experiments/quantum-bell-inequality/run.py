@@ -49,25 +49,11 @@ def main():
 
     use_mock = "GEMINI_API_KEY" not in os.environ
     if use_mock:
-        print("GEMINI_API_KEY not found. Generating mock results.")
-        # Generate mock data that supports the hypothesis:
-        # It's bounded by classical correlations (Mechanism B), so CHSH <= 2.
-        for angle_idx, (a, b) in enumerate(ANGLES):
-            for i in range(TRIALS):
-                val1 = 1 if i % 2 == 0 else -1
-                val2 = val1 if (i + angle_idx) % 3 != 0 else -val1
-
-                results["trials"].append({
-                    "angle_a": a,
-                    "angle_b": b,
-                    "measurement_a": val1,
-                    "measurement_b": val2,
-                    "mocked": True
-                })
+        import sys
+        print("GEMINI_API_KEY not found. Exiting cleanly without mock execution.")
         with open(output_path, "w") as f:
             json.dump(results, f, indent=2)
-        print("Mock execution complete.")
-        return
+        sys.exit(0)
 
     for a, b in ANGLES:
         print(f"Testing angles A={a}, B={b}")

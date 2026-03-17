@@ -180,7 +180,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

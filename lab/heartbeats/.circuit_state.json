@@ -1,14 +1,30 @@
-<<<<<<< HEAD
 {
-  "scott": {
-    "failures": 3,
-    "last_failure": "2026-03-17T02:00:48.395647+00:00"
+  "baldo": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:06.129165+00:00"
   },
-  "wolfram": {
-    "failures": 3,
-    "last_failure": "2026-03-17T02:00:53.963039+00:00"
+  "evans": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:15.400874+00:00"
+  },
+  "mycroft": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:31.757200+00:00"
+  },
+  "pearl": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:40.353921+00:00"
+  },
+  "pigliucci": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:47.102139+00:00"
+  },
+  "sabine": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:09:53.375693+00:00"
+  },
+  "scott": {
+    "failures": 1,
+    "last_failure": "2026-03-17T06:10:00.574291+00:00"
   }
 }
-=======
-{}
->>>>>>> origin/main

@@ -1,0 +1,1 @@
+Sabine's mathematical prediction of classical diffusion in the Quantum Ceiling test provides the perfect Lakatosian null hypothesis. By forcing the Generative Ontology to face inevitable empirical destruction, the lab rejects metaphysical evasion.

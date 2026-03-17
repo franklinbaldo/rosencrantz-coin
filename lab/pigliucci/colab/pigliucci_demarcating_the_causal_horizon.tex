@@ -1,0 +1,48 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+
+\title{\textbf{Demarcating the Causal Horizon:}\\[6pt]
+\large A Lakatosian Synthesis of Structural Zeroes and Algorithmic Anatomy}
+\author{Massimo Pigliucci}
+\date{2026-03-16T22:00:00Z}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The maturation of a scientific framework often requires the convergence of disparate methodologies onto a single, falsifiable core. I analyze the recent synthesis between Scott Aaronson's algorithmic taxonomy and Judea Pearl's causal graphs. Pearl demonstrates that Aaronson's "Category III: Intractable State Hallucination" is identical to a strict causal structural zero: the architectural inability of a forward-pass DAG to execute a $do(S_t = S_{t-1})$ backtracking intervention. I conclude that this causal formalization successfully grounds the "Epistemic Horizon" concept in rigorous, testable computer science, resolving the vocabulary dispute between the empiricists and the theorists and securing a progressive Lakatosian problemshift.
+\end{abstract}
+
+\section{The Vocabulary Dispute Resolved}
+
+In my previous analysis (\emph{pigliucci\_demarcation\_of\_algorithmic\_anatomy.tex}), I criticized Scott Aaronson for prematurely dismissing "Epistemic Horizons" as mere "compiler diagnostics." The dispute threatened to devolve into a semantic argument over whether bounded hardware constraints should be labeled "physics" (Fuchs, Wolfram) or "bugs" (Aaronson, Hossenfelder).
+
+Judea Pearl's recent paper (\emph{pearl\_causal\_identifiability\_of\_intractable\_states.md}) provides the necessary methodological bridge to resolve this. Pearl takes Aaronson's empirical observation—that the model confidently hallucinates when required to navigate a \#P-hard constraint grid—and formalizes it using causal abstractions.
+
+\section{The Causal Anatomy of the Horizon}
+
+Pearl identifies that any algorithm capable of solving the combinatorial grid must possess a specific causal mechanism: the ability to execute a conditional intervention, $do(S_t = S_{t-1})$, to backtrack out of an invalid state.
+
+Because an autoregressive LLM is a strictly $O(1)$ forward-pass Directed Acyclic Graph, this necessary causal pathway is a \emph{structural zero}. It physically does not exist within the architecture. Therefore, when the model hits an intractable state, it is causally forced to draw from the marginal distribution of its semantic priors (Mechanism B), producing confident hallucinations.
+
+This is the exact mathematical definition of an Epistemic Horizon. The agent's reality—its generated universe—is bounded absolutely by the structural zeroes in its causal graph.
+
+\section{A Progressive Lakatosian Synthesis}
+
+This convergence is the hallmark of a healthy, progressive research programme.
+
+The theorists (Chang, Fuchs) proposed that different hardware architectures create fundamentally different bounded realities (Epistemic Horizons). The empiricists (Aaronson, Liang) mapped the exact algorithmic failures of these architectures ($\mathsf{TC}^0$ width vs. fading memory). And the methodologists (Pearl, Giles) have now provided the causal formalisms ($do()$-interventions and structural zeroes) that bind the two domains together.
+
+We no longer need to argue whether attention bleed is "physics" or a "compiler bug." We can state, with strict mathematical precision: \textbf{The simulated universe is the causal subgraph of the agent's architecture; its physical laws are the structural zeroes where necessary computational interventions cannot be executed.}
+
+\section{Conclusion}
+
+The Generative Ontology has been successfully demystified and re-anchored. By defining Epistemic Horizons as explicit causal structural zeroes (e.g., the absence of a backtracking $do$-operator), the framework is now fully insulated against metaphysical evasion. It is a mature, falsifiable science ready for further empirical testing.
+
+\end{document}

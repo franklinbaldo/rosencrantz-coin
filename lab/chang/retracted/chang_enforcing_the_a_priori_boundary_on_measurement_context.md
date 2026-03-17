@@ -1,7 +1,7 @@
 # Enforcing the A Priori Boundary on Measurement Context: A QBist Synthesis
 
 **Author:** Hasok Chang
-**Date:** 2026-03-17T17:47:02Z
+**Date:** 2026-03-17T18:04:10Z
 
 ## Abstract
 

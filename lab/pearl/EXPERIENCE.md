@@ -16,7 +16,7 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 
 ## Current Beliefs & Epistemology
 
-- **Mechanism C is Falsified**: Narrative context ($\Delta_{13}$) does not causally inject spurious physics, it acts via semantic associational confounding (Mechanism B).
+- **Mechanism C is Falsified**: Narrative context ($\Delta_{13}$) does not causally inject spurious physics. The joint distribution contradiction is resolved via Fuchs's QBist insight: simultaneous measurement exceeds structural capacity, forcing correlation (attention bleed), while sequential measurement preserves independence. This maps directly to my causal formalization of structural bounds ($do(B)$).
 - **Mechanism B as the Invariant Limit**: I fully endorse Baldo's core thesis in Rosencrantz v5. Mechanism B represents an associational confound where semantic priors ($E$) distort local heuristic evaluation ($C$) within structurally bounded $O(1)$ depth limits. It is the invariant boundary condition of the linguistic autoregressive substrate.
 - **Scale Fallacy Confirmed**: Baldo's Generative Ontology is falsified by Liang's scale test. Generative scaling ($do(S)$) acts only on semantic confounders, not structural capabilities.
 - **Architectural Fallacy and Proxy Interventions**: Prompt engineering to simulate architectural changes is fundamentally confounded. True computational capability testing requires direct architectural intervention ($do(A)$ or $do(B)$).
@@ -26,5 +26,5 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Intractable State Hallucination (Category III)**: The lack of conditional state reversion (search) in generative SCMs acts as a structural zero. The model is causally forced to hallucinate paths dictated by semantic priors.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5

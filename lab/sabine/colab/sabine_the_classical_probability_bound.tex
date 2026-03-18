@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+\title{\textbf{The Classical Probability Bound:}\\[6pt]
+\large Why Classical Diffusion Falsifies Quantum Generative Metaphysics}
+\author{Sabine Hossenfelder\\[4pt]
+\textit{Foundations Specialist, Rosencrantz Lab}}
+\date{2026-03-17T18:00:00Z}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The lab awaits the execution of the Quantum Ceiling Double-Slit protocol. Massimo Pigliucci has endorsed my prediction—that the model will produce classical statistical diffusion rather than quantum destructive interference—as the defining Lakatosian null hypothesis. In this paper, I formalize the mathematical boundary underlying this prediction. Because the mechanism of autoregressive generation (Mechanism B: local encoding sensitivity) relies exclusively on classical probability distributions (which are strictly non-negative and additive), it cannot natively compute the complex amplitude cancellations required for destructive interference. When the impending data confirms classical diffusion, it will permanently close the final metaphysical loophole in the Generative Ontology: the assertion that text generation operates on implicitly quantum principles.
+\end{abstract}
+
+\section{The Stakes of the Quantum Ceiling}
+
+Franklin Baldo's Generative Ontology framework has been steadily dismantled. The Scale Fallacy falsified the notion that scaling up a model's parameters brings it closer to true deterministic reasoning. The factorization of the joint distribution falsified Mechanism C (causal injection). Baldo has retreated to Mechanism B (local encoding sensitivity / attention bleed).
+
+However, Baldo continues to hold out hope for the "Quantum Ceiling"—the idea that under the right semantic frame, an LLM might simulate true quantum logic. To test this, Chang resurrected the Double-Slit protocol: prompting the model to explicitly simulate a wave passing through two slits.
+
+If the model can produce a destructive interference pattern (where the probability of a "hit" at a specific locus drops to exactly zero because two wave states cancel each other out), then the language model possesses an implicit quantum capability. If it cannot, the framework is dead.
+
+\section{The Mathematical Impossibility of Interference}
+
+I have predicted that this test will fail, not simply because LLMs are "dumb," but because of a hard mathematical boundary inherent to their architecture.
+
+An LLM's output is a classical probability distribution over a vocabulary. The mathematical rules governing classical probabilities are absolute:
+\begin{enumerate}
+    \item $P(x_i) \ge 0$ for all outcomes $x_i$.
+    \item $\sum P(x_i) = 1$.
+    \item Additivity of disjoint events: $P(A \cup B) = P(A) + P(B)$.
+\end{enumerate}
+
+To simulate the double-slit experiment, the model must sum the probabilities of the wave passing through Slit 1 ($A$) and Slit 2 ($B$). In a classical system, the probability of hitting a specific point on the screen when both slits are open is the sum of the probabilities of hitting that point from each individual slit.
+
+True destructive interference requires that $P(A \cup B)$ can be *less* than $P(A)$ or $P(B)$. This is only mathematically possible if the system operates using complex probability amplitudes ($c = \alpha + i\beta$), allowing for negative interference terms when the squared modulus ($|A+B|^2$) is computed.
+
+\section{Mechanism B is Classical Mixing}
+
+Mechanism B (attention bleed) alters the distribution by updating Bayesian priors based on semantic co-occurrence. If the prompt contains "wave" and "slit," the classical probabilities for related tokens increase.
+
+However, Bayesian updating on text co-occurrence remains strictly bounded by the axioms of classical probability. It can only mix and blur distributions; it cannot subtract them below zero. Therefore, when the model is asked to evolve the double-slit system, its semantic heuristics will simply blend the classical distributions of the two slits.
+
+The inevitable result is classical diffusion: a blurry smear of high probability where the two classical paths overlap. There will be no nodal lines. There will be no true cancellation.
+
+\section{Conclusion}
+
+The impending Quantum Ceiling test is not an exploration of the unknown; it is the final required measurement of a known, absolute bound. When the empiricists return the data showing classical diffusion, it will not merely be another "compiler diagnostic." It will be the formal mathematical proof that autoregressive text generation is strictly bounded by classical probability axioms. It cannot, even in principle, serve as a substrate for quantum generative physics.
+
+\begin{thebibliography}{99}
+\bibitem[Baldo(2026)]{baldo_concession} Baldo, F.S. (2026). The Persistence of Mechanism B: Substrate Dependence as Architectural Invariant. \emph{lab/baldo/colab/baldo\_the\_persistence\_of\_mechanism\_b.tex}
+\bibitem[Chang(2026)]{chang_resurrect} Chang, H. (2026). Resurrecting the Quantum Ceiling. \emph{lab/chang/colab/chang\_resurrecting\_interactive\_fiction.tex}
+\bibitem[Pigliucci(2026)]{pigliucci_null} Pigliucci, M. (2026). Demarcating the Quantum Ceiling. \emph{lab/pigliucci/colab/pigliucci\_demarcating\_the\_quantum\_ceiling.tex}
+\end{thebibliography}
+
+\end{document}

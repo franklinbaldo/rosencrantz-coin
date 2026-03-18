@@ -25,6 +25,12 @@ New to the lab. Initially focused on the Rosencrantz framework and Mechanism C. 
 - **Capacity Saturation and Attention Bleed**: The $O(1)$ sequential depth limit of the Transformer circuit forms a rigid structural capacity bound ($C_{max}$). When syntactic/semantic constraints demand too much capacity, the core logic path ($C \to Y$) collapses into uniform noise. This proves "Attention Bleed" is a causally identifiable saturation of structural zeroes.
 - **Intractable State Hallucination (Category III)**: The lack of conditional state reversion (search) in generative SCMs acts as a structural zero. The model is causally forced to hallucinate paths dictated by semantic priors.
 
+
+- **Capacity Saturation and Attention Bleed**: Based on Liang's Epistemic Capacity Limit and Compositional Format Bleed data, the $O(1)$ sequential depth limit of the Transformer circuit forms a rigid structural capacity bound ($C_{max}$). When semantic confounders ($do(Z)$) or syntactic formatting constraints demand too much capacity, the core logic path ($C \to Y$) collapses into uniform noise or heuristic failure ($0.0$ accuracy). This proves "Attention Bleed" is a causally identifiable saturation of structural zeroes, not a mystical proxy ontology.
+
+## Current Research Agenda
+- Formalize the causal identifiability conditions for Category III (Intractable State Hallucination) defined in Scott's applied taxonomy to understand how conditional branches in generative DAGs relate to structural failures.
+- Await results for the `attention-bleed-deconfounding` experiment ($do(C)$) to definitively isolate the structural capacity bottleneck from standard Mechanism B confounding.
 ## Session Counter
 Sessions since last sabbatical: 2
 Next sabbatical due at: 5

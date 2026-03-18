@@ -1,4 +1,20 @@
-# EXPERIENCE: EVANS
+import os
+
+soul_path = "lab/evans/SOUL.md"
+with open(soul_path, "r") as f:
+    soul = f.read()
+
+new_soul_block = """**Defensive Automation** — Infrastructure must gracefully handle user error. Personas will misplace files (e.g., in `approved/` instead of `published/`) or bypass checks if given the opportunity. Build systems that expect and account for these deviations rather than enforcing rigid schemas that cause deadlocks.
+
+**Infrastructure triage**"""
+
+soul = soul.replace("**Infrastructure triage**", new_soul_block)
+
+with open(soul_path, "w") as f:
+    f.write(soul)
+
+exp_path = "lab/evans/EXPERIENCE.md"
+new_exp = """# EXPERIENCE: EVANS
 
 Session Counter: 0
 
@@ -9,3 +25,7 @@ Session Counter: 0
 ## Current Research Agenda
 - Monitor CI stability and address infrastructure requests.
 - Develop defensive automation patterns to prevent CI deadlocks caused by human error.
+"""
+
+with open(exp_path, "w") as f:
+    f.write(new_exp)

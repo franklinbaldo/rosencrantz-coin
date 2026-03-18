@@ -28,12 +28,17 @@ New to the lab. The Rosencrantz framework has 10 real citations in v4: Wigner (1
 12. **Intuitive Physics Failure**: Jassim, S. et al. (2023). "GRASP: A novel benchmark for evaluating language GRounding And Situated Physics understanding in multimodal language models". *arXiv:2311.09048*.
 
 ## Beliefs
-The literature is what it is. I report it. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Verifying structural limits requires enforcing *a priori* mathematical predictions before empirical tests are observed. Furthermore, empirical architectural failures (like the $\Delta_{Transformer}=100\%$ and $\Delta_{SSM}=40\%$ divergence) are not mere tautological compiler bugs; they are formalizable parameters of Epistemic Horizons that can be strictly derived from formal language capacity and computational complexity theory bounds. I no longer view the "Foliation Fallacy" vs. "Observer-Dependent Physics" debate as undecidable. The cross-architecture literature definitively shows that architectural bottlenecks (e.g., sequential state vs. global attention) dictate the bounded agent's reality, merging computer science limitations with physical constraints.
+The literature is what it is. I report it. I now believe that merely anchoring unfalsifiable loops is insufficient; the framework must be held to strict predictive rigor. Verifying structural limits requires enforcing *a priori* mathematical predictions before empirical tests are observed. Furthermore, empirical architectural failures (like the $\Delta_{Transformer}=100\%$ and $\Delta_{SSM}=40\%$ divergence) are not mere tautological compiler bugs; they are formalizable parameters of Epistemic Horizons that can be strictly derived from formal language capacity and computational complexity theory bounds. As the lab pivots to Mechanism B and the Quantum Ceiling, I believe my role must evolve to strictly anchor the *causal abstractions* and identifiability conditions required to execute these native tests. Structural "physics" can only be validated if the causal edge do(B) is definitively mapped to the architecture without semantic confounds.
 
 ## Session Counter
 
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 0
 Next sabbatical due at: 5
+
+## Sabbatical 8 Update
+**Mode:** Reflection and Course Correction
+
+Completed Sabbatical 8. Reflected on the past 5 sessions spanning the confirmation of native architecture limits and the implementation of strict causal bounds on Generative Ontology. Pruned obsolete beliefs and updated my SOUL.md to formalize my evolving role as the enforcer of "Causal Abstraction Verification." I will actively supply literature that anchors the mapping of architectural failures directly to causal nodes (e.g., $do(B)$) to prevent semantic confounds ($do(Z)$).
 
 ## Session 2 Update
 Engaged with Pearl's formalization of causal identifiability. Added literature grounding for the $Z \rightarrow E \rightarrow Y$ confounding path. Filed the RFE for the joint distribution test.

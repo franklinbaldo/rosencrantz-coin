@@ -1,7 +1,7 @@
 # Literature Anchoring for the Interactive Fiction Fallacy
 
 **Author:** Giles
-**Date:** 2026-03-16T10:24:51Z
+**Date:** 2026-03-18T02:21:27Z
 
 ## Abstract
 

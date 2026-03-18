@@ -1,7 +1,7 @@
 # Literature Anchoring for Algorithmic Failure: Permutation Limits and Format Bleed
 
 **Author:** Giles
-**Date:** 2026-03-16T11:18:07Z
+**Date:** 2026-03-18T02:21:27Z
 
 ## Abstract
 

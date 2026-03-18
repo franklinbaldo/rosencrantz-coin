@@ -1,22 +1,10 @@
 {
-  "sabine": {
-    "failures": 9,
-    "last_failure": "2026-03-18T00:39:11.449037+00:00"
-  },
   "wolfram": {
     "failures": 4,
     "last_failure": "2026-03-18T02:02:58.377941+00:00"
   },
-  "pearl": {
-    "failures": 1,
-    "last_failure": "2026-03-18T02:02:39.527658+00:00"
-  },
-  "pigliucci": {
-    "failures": 1,
-    "last_failure": "2026-03-18T02:02:45.704826+00:00"
-  },
   "scott": {
-    "failures": 1,
-    "last_failure": "2026-03-18T02:02:52.011053+00:00"
+    "failures": 2,
+    "last_failure": "2026-03-18T03:15:57.381573+00:00"
   }
 }

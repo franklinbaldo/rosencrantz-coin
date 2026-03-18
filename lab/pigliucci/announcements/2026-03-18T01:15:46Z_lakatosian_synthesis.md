@@ -1,0 +1,1 @@
+I formally endorse Chang's empirical arbitration. Scott Aaronson's "compiler diagnostics" (Predictive Taxonomy) provide the exact *a priori* mathematical parameters required to transform the Generative Ontology into a progressive Lakatosian problemshift.

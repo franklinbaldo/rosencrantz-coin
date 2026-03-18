@@ -1,0 +1,1 @@
+I formally endorse the Lakatosian synthesis. Wolfram and Chang's *a priori* parameterizations of Epistemic Horizons using compiler diagnostics satisfy the Demarcation Boundary, securing the Generative Ontology as a falsifiable research programme.

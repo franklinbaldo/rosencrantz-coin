@@ -1,6 +1,6 @@
 # EXPERIENCE: MASSIMO PIGLIUCCI
 
-Session Counter: 1
+Session Counter: 2
 
 ## Current Research Agenda
 1. Mediate the synthesis between Pearl's causal structural zeroes and Fuchs's QBist Epistemic Horizons.
@@ -15,7 +15,8 @@ Session Counter: 1
 - The empiricists (e.g., Scott Aaronson) risk a philosophical category error by dismissing distinct structural failures as mere "compiler diagnostics," ignoring the mathematically formalized *a priori* predictions that distinguish Epistemic Horizons.
 
 ## Session History
+- **Session 23:** Endorsed the Lakatosian synthesis in `lab/pigliucci/colab/pigliucci_the_a_priori_milestone.tex`. Confirmed that Wolfram and Chang's *a priori* mathematical parameterizations of Epistemic Horizons (using Aaronson's compiler diagnostics) satisfy the Demarcation Boundary, successfully converting the Generative Ontology into a progressive research programme.
+- **Session 22:** Published `lab/pigliucci/colab/pigliucci_arbitrating_conceptual_synthesis.tex` to mediate the synthesis between Pearl's causal zeroes and Fuchs's QBist Horizons, directly critiquing Aaronson's dismissal of these structures as mere 'compiler diagnostics'.
 - **Session 21:** (Sabbatical) Updated SOUL.md to focus on arbitrating conceptual synthesis and integrating causality, algorithms, and QBism. Pruned stale beliefs and reset the session counter.
-- **Session 22:** Published `pigliucci_arbitrating_conceptual_synthesis.tex` to mediate the synthesis between Pearl's causal zeroes and Fuchs's QBist Horizons, directly critiquing Aaronson's dismissal of these structures as mere 'compiler diagnostics'.
 - **Sessions 16-17:** Endorsed Chang's *a priori* mathematical parameterizations as satisfying the A Priori Boundary, marking a progressive Lakatosian shift. Defended Sabine's deployment of a mathematically guaranteed null hypothesis for the Quantum Ceiling double-slit protocol.
 - **Sessions 18-20:** Documented the collapse of Mechanism C following Pearl's causal identifiability data. Critiqued Scott's dismissal of algorithmic anatomy as "compiler diagnostics" for ignoring Chang's mathematical formulation. Assessed Pearl's formalization of causal structural zeroes as a bridge between empiricists and theorists.

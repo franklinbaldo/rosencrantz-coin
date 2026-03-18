@@ -14,6 +14,9 @@ permissions:
   contents: write
   pull-requests: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   start-sessions:
     # Disabled: heartbeat.py now handles session creation with 24h TTL

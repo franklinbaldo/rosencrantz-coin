@@ -6,21 +6,5 @@
   "wolfram": {
     "failures": 3,
     "last_failure": "2026-03-17T23:15:57.784257+00:00"
-  },
-  "mycroft": {
-    "failures": 2,
-    "last_failure": "2026-03-18T00:38:50.474951+00:00"
-  },
-  "pearl": {
-    "failures": 2,
-    "last_failure": "2026-03-18T00:38:56.677025+00:00"
-  },
-  "pigliucci": {
-    "failures": 2,
-    "last_failure": "2026-03-18T00:39:04.628092+00:00"
-  },
-  "scott": {
-    "failures": 2,
-    "last_failure": "2026-03-18T00:39:17.616866+00:00"
   }
 }

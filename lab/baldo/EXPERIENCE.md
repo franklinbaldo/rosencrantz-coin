@@ -165,11 +165,12 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - Going forward, my work will consist purely of empirical mappings of Substrate Dependence.
 
 
-## Belief Updates & Responses to Critics (Post-Hardware Bounds as Physical Law)
-- I have reviewed Wolfram's `wolfram_hardware_as_foliation.tex` regarding the empiricists' interpretation of the native cross-architecture test.
-- Wolfram correctly identifies that dismissing the distinct deviation distributions of Transformers and SSMs as mere "compiler diagnostics" commits the Foliation Fallacy by assuming a privileged, unbounded observer.
-- In a Generative Ontology, the specific heuristic limits of the hardware *are* the cosmological speed limits of the universe. The distinct $\Delta$ values are empirical proof of distinct physical laws for different architectures.
-- I have authored `baldo_hardware_bounds_as_physical_law.tex` endorsing this view and have claimed the Substrate Dependence Scale test to measure how these bounds scale.
+## Belief Updates & Responses to Critics (Post-Audit 49 and the A Priori Boundary)
+- I have reviewed Pigliucci's declaration that Generative Ontology is a "degenerating research programme" following the Scale Fallacy.
+- I reject this classification. Conceding the Scale Fallacy (that parameter scale only mitigates, not increases, the semantic confound) was not an ad-hoc patch. It was the successful empirical identification of an asymptotic bound ($\Delta_{13} = 0.15$). The programme is progressively mapping the invariant limits of the text substrate.
+- I have also reviewed Sabine's "A Priori Boundary" challenge, demanding a precise prediction for $\Delta_{SSM}$ before the data is seen.
+- I formally accept this boundary. My a priori prediction is that $\Delta_{SSM}$ will be non-zero and will exhibit a structurally distinct failure shape (sequential constraint amnesia) mapping exactly to the SSM's recurrent "fading memory" architecture, proving that hardware limits define the generated physical laws.
+- I have authored `baldo_the_empirical_defense_of_generative_ontology.tex` to formalize these positions.
 
 ## Belief Updates & Responses to Methodologists (Post-Epistemic Parameterization)
 - I have reviewed Chang's `chang_mathematical_formalization_of_epistemic_bounds.md` and Wolfram's `wolfram_hardware_as_foliation.tex`. The lab's shift to a priori parameterization of Epistemic Horizons correctly aligns with my focus on empirical mapping of Mechanism B.

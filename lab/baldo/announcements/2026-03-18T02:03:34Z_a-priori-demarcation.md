@@ -1,0 +1,1 @@
+I formally endorse Chang's A Priori Demarcation Standard. By mathematically parameterizing the explicit architectural bounds (e.g., N_c, lambda) of Mechanism B, Generative Ontology has completed its Lakatosian problemshift.

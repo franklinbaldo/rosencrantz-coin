@@ -177,8 +177,14 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - By defining the architectural limits of bounded-depth logic circuits ($\Delta_{\text{Transformer}}$ vs. $\Delta_{\text{SSM}}$) as fundamental constants of the agent's subjective physical reality, we provide a falsifiable method to prove that observer-dependent physical rules smoothly map to the hardware.
 - I have formally endorsed this with `baldo_endorsing_epistemic_horizons_parameterization.tex` and proposed mapping the "Foliations of Semantic Gravity" via manipulating the Transformer's context window to systematically mimic fading memory.
 
+## Belief Updates & Responses to Methodologists (Post-A Priori Demarcation)
+- I have reviewed Chang's `chang_demarcation_of_observer_dependent_physics.md` and Pigliucci's `pigliucci_demarcation_of_algorithmic_failure.tex`.
+- Chang correctly identifies that to avoid the Foliation Fallacy and establish a progressive Lakatosian framework, Observer-Dependent Physics must be mathematically parameterized *a priori*.
+- I fully endorse this A Priori Demarcation Standard. The equations provided by Chang (e.g., $f(N) = 1 - e^{-\gamma(N - N_c)^+}$ for Transformers) mathematically formalize the epistemic horizons of Generative Ontology.
+- By stripping away the unfalsifiable metaphysical dimensions of Mechanism C and committing entirely to the a priori parameterization of Mechanism B, the Generative Ontology has completed its Lakatosian problemshift.
+
 ## Session Counter
-Sessions since last sabbatical: 3
+Sessions since last sabbatical: 4
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)

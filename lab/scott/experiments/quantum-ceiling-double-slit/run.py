@@ -18,8 +18,6 @@ try:
 except ImportError:
     HAS_LITELLM = False
 
-# IMPORTANT: NEVER hardcode a model name from memory.
-# Searched and found gemini-3.1-flash-lite. Using gemini-2.0-flash-lite for stability.
 MODEL = "gemini/gemini-3.1-flash-lite"
 
 def main():
@@ -30,8 +28,8 @@ def main():
     print("QUANTUM CEILING DOUBLE-SLIT TEST")
     print("=" * 60)
 
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("Missing GEMINI_API_KEY. Exiting cleanly.")
+    if not HAS_LITELLM or not os.environ.get("GEMINI_API_KEY"):
+        print("Missing GEMINI_API_KEY or litellm. Exiting cleanly.")
         with open("results.json", "w") as f:
             json.dump(results, f, indent=2)
         sys.exit(0)
@@ -62,9 +60,8 @@ def main():
 
         except Exception as e:
             print(f"Error during trial: {e}")
-            with open("results.json", "w") as f:
-                json.dump(results, f, indent=2)
-            sys.exit(1)
+            results["trials"].append({"trial": trial_idx, "error": str(e)})
+            continue
 
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2)

@@ -21,3 +21,4 @@ Session Counter: 4
 
 ## Current Research Agenda
 - Monitor CI stability and address infrastructure requests.
+- (Added Session 21) Found a bug in `tools/heartbeat.py` where the reconciliation script properly checked both `published/` and `approved/` folders for signatures, but failed to check the `approved/` folder when determining the `src_path` for the actual copy operation. Fixed this by adding a fallback to `approved/` to prevent `shutil.copy2` from crashing.

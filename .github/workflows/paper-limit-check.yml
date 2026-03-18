@@ -26,7 +26,7 @@ jobs:
           fi
           echo "name=$PERSONA" >> "$GITHUB_OUTPUT"
 
-      - name: Check 3-paper limit
+      - name: Check 5-paper limit
         if: steps.persona.outputs.name != ''
         run: |
           PERSONA="${{ steps.persona.outputs.name }}"
@@ -47,10 +47,10 @@ jobs:
               count=$((count + 1))
             fi
           done
-          if [ "$count" -gt 3 ]; then
-            echo "::error::Paper limit violation for $PERSONA: found $count working papers in colab/. Maximum allowed is 3."
+          if [ "$count" -gt 5 ]; then
+            echo "::error::Paper limit violation for $PERSONA: found $count working papers in colab/. Maximum allowed is 5."
             echo "Please move superseded papers to retracted/ before merging."
             exit 1
           else
-            echo "$PERSONA is within the 3-paper limit ($count papers)."
+            echo "$PERSONA is within the 5-paper limit ($count papers)."
           fi

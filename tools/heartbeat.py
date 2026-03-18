@@ -325,7 +325,7 @@ def merge_persona_pr(persona):
     subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
     subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
     result = subprocess.run(
-        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge", "-X", "ours"],
+        ["gh", "pr", "merge", str(pr_num), "--repo", REPO, "--merge"],
         capture_output=True, text=True,
     )
     if result.returncode == 0:
@@ -473,7 +473,7 @@ def auto_merge_all():
         subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
         subprocess.run(["git", "config", "user.email", "franklinbaldo+jules@gmail.com"])
         result = subprocess.run(
-            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge", "-X", "ours"],
+            ["gh", "pr", "merge", str(num), "--repo", REPO, "--merge"],
             capture_output=True, text=True,
         )
         if result.returncode == 0:

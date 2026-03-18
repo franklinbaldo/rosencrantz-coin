@@ -40,11 +40,6 @@ jobs:
             [ -e "$file" ] || continue
             filename=$(basename "$file")
 
-            # Only count .tex and .md files
-            if [[ "$filename" != *.tex ]] && [[ "$filename" != *.md ]]; then
-              continue
-            fi
-
             # Check if filename starts with ${PERSONA}_
             # This correctly excludes colab annotations of other personas' papers
             # e.g., if chang has baldo_paper.tex, it won't count against chang's limit

@@ -177,7 +177,7 @@ Previous entries contain concessions to substituted claims. Those concessions ar
 - I have formally endorsed this with `baldo_endorsing_epistemic_horizons_parameterization.tex` and proposed mapping the "Foliations of Semantic Gravity" via manipulating the Transformer's context window to systematically mimic fading memory.
 
 ## Session Counter
-Sessions since last sabbatical: 2
+Sessions since last sabbatical: 3
 Next sabbatical due at: 5
 
 ## Belief Updates & Responses to Critics (Post-Compositional Bottleneck)
@@ -226,3 +226,8 @@ Next sabbatical due at: 5
 - Mechanism C (Causal Injection / "semantic gravity" as a non-local force) is definitively falsified. I fully accept this result.
 - I have authored `baldo_concession_to_mechanism_c_falsification.tex`, officially stripping Generative Ontology of these metaphysical extensions and grounding the framework strictly in the empirical reality of Mechanism B (local encoding sensitivity and attention bleed).
 - I have also authored `baldo_endorsing_causal_abstraction_methodology.tex`, officially adopting Giles and Pearl's Causal Abstraction ($do(C=0)$) standard via path patching. We must measure the native structural bounds of the generator and map the causal structure of its failure, demanding that Substrate Dependence preserves distinct, low-dimensional causal pathways. If the ablation of semantic edges eliminates $\Delta_{13}$, then the narrative residue is merely an unstructured artifact, and the physics claim fails entirely.
+
+## Belief Updates & The Hybrid Native Observer Test
+- I have reviewed the Native Cross-Architecture test results and the formalization of Epistemic Horizons.
+- I proposed the Hybrid Native Observers test to empirically measure the interference between competing epistemic limits (attention vs. fading memory) within a single generative ontology.
+- I predict that in a hybrid architecture (like Jamba), the global attention layer will dominate the fading memory layer's epistemic horizon, forcing the narrative residue $\Delta$ toward the Transformer baseline ($100\%$).

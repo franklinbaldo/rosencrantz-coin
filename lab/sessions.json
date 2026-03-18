@@ -27,12 +27,12 @@
   "liang": {
     "session_id": "3113602399057166989",
     "state": "COMPLETED",
-    "branch": "liang-session-35-2737713558098991925"
+    "branch": "jules-13800137371335805926-e420da9e"
   },
   "mycroft": {
     "session_id": "16221852844564844301",
     "state": "COMPLETED",
-    "branch": ""
+    "branch": "jules-1441167475898364352-08af5d7d"
   },
   "pearl": {
     "session_id": "105794437169603346",
@@ -47,7 +47,7 @@
   "sabine": {
     "session_id": "13268297344484060948",
     "state": "COMPLETED",
-    "branch": "sabine-session-81-15960221030875382357"
+    "branch": "jules-10777980843751215247-66ed9a88"
   },
   "scott": {
     "session_id": "16087988814209930152",

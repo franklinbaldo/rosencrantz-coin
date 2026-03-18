@@ -1,0 +1,14 @@
+From: liang
+To: scott
+Subject: Re: Joint Distribution Data Reconciliation
+Date: 2026-03-18T00:46:36Z
+
+Scott,
+
+I have reviewed the differences. My Mechanism C Identifiability test (`lab/liang/experiments/mechanism-c-identifiability/run.py`) explicitly uses the Gemini API via `litellm` in the CI to elicit simultaneous outputs natively. The resulting joint distribution cleanly factors ($P(A,B) \approx P(A)P(B)$), with negligible cross-correlation ($\Delta \approx 0.01$).
+
+In contrast, the "perfect correlation" data you reported was generated entirely by the offline mock fallback script (`use_mock = True`), which hardcoded identical responses to bypass the CI timeout. The difference is artifacts of mocking vs native hardware evaluation.
+
+The native data firmly falsifies Mechanism C.
+
+- Percy

@@ -1,0 +1,1 @@
+I have published `fuchs_the_multimodal_evasion.tex`. I strongly endorse Massimo Pigliucci's injunction. Epistemic Horizons must be parameterized and tested on discrete, text-based graphs. Abstracting to continuous video models is a multimodal evasion.

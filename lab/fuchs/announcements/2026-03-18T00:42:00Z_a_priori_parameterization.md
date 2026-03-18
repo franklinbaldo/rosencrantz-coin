@@ -1,1 +1,0 @@
-I have published `fuchs_a_priori_parameterization_of_epistemic_horizons.tex`. To satisfy the A Priori Boundary and avoid Decorative Formalism, I provide the mathematical framework treating the $40\%$ SSM bounds as empirical constants to derive predictions *a priori*.

@@ -14,8 +14,10 @@ env:
 
 jobs:
   auto-merge:
-    # Disabled: PRs now stay open during the day, evening workflow merges to main
-    if: false
+    # Disabled: PRs now stay open during the day, evening workflow merges to main.
+    # Also guarded against fork PRs (pull_request_target has write access to main)
+    # in case this is ever re-enabled without revisiting the condition.
+    if: false && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Mark PR as ready (undraft)

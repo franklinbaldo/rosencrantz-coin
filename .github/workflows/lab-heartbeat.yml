@@ -50,7 +50,11 @@ jobs:
       - name: Pull latest main (PRs may have been merged)
         run: git pull --rebase --autostash
 
+      # A main exige head atualizado antes do merge, e a regra tambem vale para
+      # push: o heartbeat vai por PR em auto-merge.
       - name: Commit heartbeat log and sessions map
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -48,11 +49,24 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Commit and push changes
+      # A main exige head atualizado antes do merge, e a regra tambem vale para
+      # push: a formatacao vai por PR em auto-merge.
+      - name: Commit and open PR
         if: steps.check_pkg.outputs.exists == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "style: format code with Prettier"
-            git push
+            BRANCH=automation/prettier
+            git checkout -B "$BRANCH"
+            git push -f origin "$BRANCH"
+            NUM=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+            if [ -z "$NUM" ]; then
+              CORPO="Formatacao automatica, gerada pelo workflow Prettier."
+              URL=$(gh pr create --base main --head "$BRANCH" --title "style: format code with Prettier" --body "$CORPO")
+              NUM="${URL##*/}"
+            fi
+            gh pr merge "$NUM" --auto --squash
           fi
